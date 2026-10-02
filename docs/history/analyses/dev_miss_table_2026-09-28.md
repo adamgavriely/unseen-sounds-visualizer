@@ -1,6 +1,6 @@
 # DEV misses and wrong pictures of B0 (scored render, ours with gate) — 2026-09-28
 
-*Diagnostic, DEV only (49 clips, 36 needed sounds). No TEST data. B0 = `dev_monocap_v31` with the PANNs veto 0.05, the arm that the DEV check calls B0 (docs/dev_candidates_check_2026-09-28.md): 14 hits, 22 misses, 24 wrong pictures (6 visible / 11 cross / 7 phantom). All three numbers are reproduced here with `score_per_sound`. Data: `benchmark/gold/dev_miss_table.json`.*
+*Diagnostic, DEV only (49 clips, 36 needed sounds). No TEST data. B0 = `dev_monocap_v31` with the PANNs veto 0.05, the arm that the DEV check calls B0 (docs/history/analyses/dev_candidates_check_2026-09-28.md): 14 hits, 22 misses, 24 wrong pictures (6 visible / 11 cross / 7 phantom). All three numbers are reproduced here with `score_per_sound`. Data: `benchmark/gold/dev_miss_table.json`.*
 
 ## How it was made
 - **Pictures**: `data/work/protocol_proposed_dev_monocap_v31/<clip>/augmentations.json`, copied from the cluster. They equal `devcand/B0r_proposed` on 49 / 49 clips. Read with `score_per_sound.load_pictures`. Hit or miss per needed sound: `dev_candidates_check.needed_hit` (same hits as `score_clip`). The type of each wrong picture = the change in `score_clip`'s counts when that picture is added (pictures in start order, the scorer's own order).

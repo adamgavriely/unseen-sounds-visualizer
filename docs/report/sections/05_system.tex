@@ -1,11 +1,10 @@
 % ======================================================================
-\section{The system (\Dp)}\label{sec:system}
+\section{The final system}\label{sec:system}
 
-This section describes the frozen system \Dp{} exactly as the code runs it. \Dp{} is the configuration
-\texttt{ARMS["SHIP8+MD3+WW5+SL"]} of the scoring harness (\fp{benchmark/gold/round13_dev.py}, line 243) and
-\cfgv{config.use_shipped()} of the live pipeline (\fp{config.py}, lines 503--572), frozen on 2 Oct 2026 at
-01:20 UTC under git tag \texttt{detector-frozen-2026-10-02}. Where the scored harness and the live pipeline
-differ, the difference is stated (Section~\ref{sec:parity}). Every value below gives its configuration variable;
+This section describes the final system exactly as the code runs it: the configuration
+\cfgv{config.use_shipped()} (\fp{config.py}), frozen on 2 Oct 2026 under git tag
+\texttt{detector-frozen-2026-10-02}. Where the scoring harness and the live pipeline differ, the difference is
+stated (Section~\ref{sec:parity}). Every value below gives its configuration variable;
 Appendix~\ref{app:config} lists them all.
 
 \subsection{Overview}
@@ -69,16 +68,26 @@ Figure~\ref{fig:pipeline} shows the data flow. In words, for one video:
 \node[model, right=0.5mm of s6, text width=1.6cm] {Qwen-Image-2512 + Qwen3.8 + EasyOCR};
 \node[model, right=0.5mm of s6b, text width=1.6cm] {Qwen3-Omni (group), Qwen3.8 (depict)};
 \end{tikzpicture}}
-\caption{The \Dp{} pipeline. Blue: detection (stage 4); orange: the on-screen decision (stage 5); green: pictures and
+\caption{The final pipeline. Blue: detection (stage 4); orange: the on-screen decision (stage 5); green: pictures and
 display. Dashed: context only (objects and transcript never decide on their own). The scene check of the witness
 rule in stage 4b also uses Qwen3.8-27B.}
 \label{fig:pipeline}
 \end{figure}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/example_fire_alarm.jpg}
+\caption{Output of the final system on a development clip (AudioSet-Strong, a corridor). A fire alarm rings
+from 9.0\,s; the alarm bell itself is not in the frame. The system detects \emph{Alarm}, the on-screen check finds no
+visible source, and the panel on the right shows the generated picture from 8.9\,s while the alarm sounds. In the
+scoring this is a hit.}
+\label{fig:example}
+\end{figure}
+
 \subsection{Stages at a glance}
 \begin{table}[h]
 \centering\small
-\caption{Stages, models and key parameters of \Dp{} (order of \fp{src/pipeline.py}, \texttt{run}).}
+\caption{Stages, models and key parameters of the final system (in the order of \fp{src/pipeline.py}).}
 \label{tab:stages}
 \begin{tabular}{L{0.4cm}L{2.4cm}L{5.0cm}L{6.4cm}}
 \toprule
@@ -131,7 +140,7 @@ listener after the detectors missed it; a \emph{twinned} span is one both detect
 
 {\small
 \begin{longtable}{L{0.4cm}L{2.8cm}L{7.9cm}L{3.2cm}}
-\caption{Stage 4 of \Dp{}, step by step (values as shipped).}\label{tab:stage4}\\
+\caption{Stage 4 of the final system, step by step.}\label{tab:stage4}\\
 \toprule
 \# & step & rule & variable(s) \\
 \midrule\endfirsthead
@@ -144,7 +153,7 @@ listener after the detectors missed it; a \emph{twinned} span is one both detect
 5 & masked-weak veto & a BEATs-only span with confidence $<0.5$ under speech or music ($\geq 0.3$) is dropped unless a listener accepts it & \cfgv{MASKED_WEAK_VETO} \\
 6 & DASM clip veto & a span whose family DASM never reaches 0.0839 anywhere in the clip is dropped unless a listener keeps it & \cfgv{DASM_CLIP_VETO} \\
 7 & \textbf{witness rule} & pass if DASM $\geq 0.35$ for the family within the span $\pm 0.5$\,s; else pass if \emph{both} listener inventories name the family; if exactly one does, ask the scene check (Section~\ref{sec:scenecheck}); otherwise drop & \cfgv{DASM_LOCAL_VETO} 0.35, \cfgv{DASM_LOCAL_KEEP} both, \cfgv{SCENE_FIT_LOGIT} \\
-8 & inventory keep (K4A-D) & a span with confidence $\geq 0.35$ for which both inventories exist and neither names its family (or a descendant) is dropped, unless DASM $\geq 0.575$ within $\pm 0.5$\,s & \cfgv{KEEP_NEEDS_V4_ALL} onto, \ldots\cfgv{_DASM_KEEP} \\
+8 & inventory keep & a span with confidence $\geq 0.35$ for which both inventories exist and neither names its family (or a descendant) is dropped, unless DASM $\geq 0.575$ within $\pm 0.5$\,s & \cfgv{KEEP_NEEDS_V4_ALL} onto, \ldots\cfgv{_DASM_KEEP} \\
 9 & band-twin pull & the start moves back to an earlier same-family FlexSED run ($\geq 0.5$) that ends $\leq 1$\,s before and starts $\leq 1.5$\,s before it & \cfgv{BAND_TWIN_PULL} 0.5 \\
 10 & continuation veto & a span is dropped when a same-family FlexSED run ($\geq 0.5$) began $\geq 1.5$\,s earlier and is still on at its start (it is a later piece of a sound already shown) & \cfgv{CONTINUATION_VETO} 0.5 \\
 11 & FlexSED veto & a span whose family FlexSED never reaches 0.3 in the clip is dropped & \cfgv{FLEXSED_VETO} 0.3 \\
@@ -156,9 +165,9 @@ listener after the detectors missed it; a \emph{twinned} span is one both detect
 \end{longtable}
 }
 
-The DASM thresholds 0.0839 and 0.575 were calibrated in detector round 6 (\fp{benchmark/detector_round6.json}); the
-FineLAP bar 0.329 in round 31. Steps 4--8 and 12--16 depend on listener answers that are computed from a first pass
-with the old pipeline (the candidate ``pools''), so the shipped detector cannot run without that pass
+The DASM thresholds 0.0839 and 0.575 and the FineLAP bar 0.329 were calibrated during development
+(Appendix~\ref{app:history}); every other threshold was set once and not tuned on the test set. Steps 4--8 and 12--16 depend on listener answers that are computed from a first pass
+with the September baseline (the candidate ``pools''), so the final detector cannot run without that pass
 (Section~\ref{sec:repro}).
 
 \subsubsection{The scene check}\label{sec:scenecheck}
@@ -167,9 +176,8 @@ in the scene. The span is cut into stretches of about 5\,s; for each, six frames
 shown with the question ``Could the sound of $\langle$label$\rangle$ plausibly be heard in this scene? Answer yes or
 no.'' and its negated twin. The answer is read from the first output token as
 $d = m(Q) - m(\bar Q)$, where $m$ = max logit over \{yes, Yes\} minus max logit over \{no, No\}; $d>0$ counts as yes,
-and the sound passes if most stretches say yes. This logit readout (Round 60L) replaced a text answer that was cut
-off after four tokens on 10--15\,\% of calls; it is the only difference between the system D and \Dp{}
-(Section~\ref{sec:history}).
+and the sound passes if most stretches say yes. Reading the logits replaced an earlier text answer that was cut
+off after four tokens on 10--15\,\% of calls (Appendix~\ref{app:history}).
 
 \subsection{What may be drawn}\label{sec:labelfilter}
 The label filter (\cfgv{LABEL_FILTER = "depictable"}, \fp{src/labels.py}, \cfgv{is_salient_nonspeech}) maps every
@@ -201,7 +209,7 @@ burst:
   \item A stretch is visible if yes-votes outnumber no-votes. The sound is silenced only if \emph{every} stretch is
         visible; otherwise its picture is kept for the whole burst.
   \item \textbf{Kinship.} A sound is also silenced if a silenced sound of the same source overlaps it in time
-        (shipped: only when the visible label is the same or more specific; Section~\ref{sec:parity}).
+        (live: only when the visible label is the same or more specific; Section~\ref{sec:parity}).
   \item \textbf{Speech context.} If at least four words of speech fall within 3\,s of a sound, a text-only question
         asks whether the people react to it; a yes gives the sound priority for a slot and can rescue a sound just
         below the display bar. Speech never enters a picture.
@@ -236,14 +244,14 @@ rater (Section~\ref{sec:disclosures}).
 
 \subsection{Stage 6b: display}\label{sec:display}
 \begin{enumerate}
-  \item \textbf{Depict-event} (Round 57): a picture is dropped if, on six frames around its start, the VLM says its
+  \item \textbf{Depict-event}: a picture is dropped if, on six frames around its start, the VLM says its
         event is visibly happening (and its negated twin agrees) \emph{and} a maker the gate named could be mistaken
         for the sound.
   \item \textbf{Repeat merge}: bursts of one label join into one appearance if the gap from the previous real end is
         $\leq 2.5$\,s (\cfgv{MERGE_GAP}).
   \item \textbf{Dwell}: each appearance stays at least 1.5\,s (\cfgv{MIN_DWELL}) and at most 1\,s past the real end
         of the sound (\cfgv{MAX_AFTER_END}).
-  \item \textbf{Grouping} (Round 47): for two same-family pictures whose gap is at most 8\,s, Qwen3-Omni hears the
+  \item \textbf{Grouping}: for two same-family pictures whose gap is at most 8\,s, Qwen3-Omni hears the
         audio from just before the first ends to just after the second starts and is asked whether the second is ``the
         same continuing sound \ldots{} (one alarm or engine with a short pause)'' or ``a new, separate event
         (\ldots{} a second bark, knock or shot)''; both option orders must say ``same'' to merge.
@@ -252,15 +260,15 @@ rater (Section~\ref{sec:disclosures}).
 \end{enumerate}
 
 \subsection{Scored harness versus live pipeline}\label{sec:parity}
-The numbers in this report come from the DEV/TEST harness, which runs the pipeline's own stage-4 functions on cached
+The numbers in this report come from the scoring harness, which runs the pipeline's own stage-4 functions on cached
 model scores and replays the gate answers of a full run. A parity check (\fp{benchmark/gold/parity_check.py}) and an
 independent re-export of every decision (the Decision Inspector, Section~\ref{sec:repro}) reproduce the published
 counts exactly (0 of 159 clips differ). The live configuration \cfgv{use_shipped()} differs from the scored one in
 four known ways:
 \begin{itemize}
   \item \textbf{Kinship direction.} Live: a visible label silences only the same or a more specific label. Scored:
-        either direction. This was a deliberate logic fix made after the scored tables (\fp{docs/prereg_v4.md},
-        line 2240); its effect on \Dp{} was not re-measured.
+        either direction. This was a deliberate logic fix made after the scored tables; its effect on the final
+        numbers was not re-measured.
   \item \textbf{Picture end.} Live pictures end at most 1\,s after their sound; scored pictures had no cap. Starts --
         the scored quantity -- are identical; on 3 TEST clips a picture ends 0.04--0.38\,s earlier live.
   \item \textbf{Subject path.} The scored runs used the older depiction path, which can drop a sound whose depiction

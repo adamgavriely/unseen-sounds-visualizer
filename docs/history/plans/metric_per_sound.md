@@ -4,7 +4,7 @@
 detection, decision analysis, adversarial, annotation quality, thesis examiner, IR) answered
 the same brief without seeing our results, then debated eight disagreements. Below: what all
 ten agree on, the one split, and the rule we adopt. The brief and both rounds are kept in the
-session scratchpad; positions are summarised in docs/scoring_panel_2026-09-19.md.*
+session scratchpad; positions are summarised in docs/history/panels/scoring_panel_2026-09-19.md.*
 
 *Note, 27 Sept 2026 (thesis consistency pass): two facts below were stale and are corrected in place. (1) The label
 rule in the code is `MIN_DEPTH = 1` (`benchmark/gold/score_per_sound.py`, fix of 2026-09-21), not "depth < 2 never
@@ -127,7 +127,7 @@ changes; `slurm/job_sliceb_render.sh`, `--clip-dir data/input/audioset_strong`, 
 reported separately from the benchmark clips (100 at the time of writing; 109 today), noting that slice B was earlier used to
 *evaluate* the detector (never to select its bar).
 
-**Addendum (2026-09-20 09:10):** the detector-arm rule (docs/prereg_v4.md) kept BEATs (v4ab
+**Addendum (2026-09-20 09:10):** the detector-arm rule (docs/history/preregistrations/prereg_v4.md) kept BEATs (v4ab
 gated 2.60 < v4b 2.85, CI below 0), so the adopted v4 configuration is v4b. The v4b pipeline
 (BEATs + Qwen3.8-27B; FLUX; same three systems; render only) is therefore rendered once on
 slice B as well (`slurm/job_sliceb_render_v4b.sh`, tag `v4b_sliceB`), queued before any

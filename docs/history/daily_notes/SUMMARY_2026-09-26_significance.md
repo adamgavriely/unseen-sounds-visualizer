@@ -1,6 +1,6 @@
 # How to win more clearly over the baselines — simple summary (26 Sept)
 
-Five reviewers, four rounds (`docs/panel_2026-09-26_plan.md`, signed 5 of 5).
+Five reviewers, four rounds (`docs/history/panels/panel_2026-09-26_plan.md`, signed 5 of 5).
 
 ## The answer
 - **F1 against "draw everything" cannot become significant.** It would need about 320–570 clips; we have 60 on

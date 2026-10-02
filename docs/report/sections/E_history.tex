@@ -1,14 +1,57 @@
 % ======================================================================
-\section{Development process and history}\label{sec:history}
+\section{Development history}\label{app:history}
 
-The system was not designed in one step. It reached \Dp{} through fourteen phases and, in the last week, more
-than sixty numbered, pre-registered rounds. This section explains the working rules, then the history in three
-tables: the phases (Table~\ref{tab:eras}), the chain of shipped changes (Table~\ref{tab:shipchain}) and the main
-rejected ideas (Table~\ref{tab:rejected}). Appendix~\ref{app:rounds} has one row per round.
+This appendix is the record of how the final system was reached: how the data grew, the working rules, the earlier
+versions of the system, every accepted change, the main rejected ideas, the history of the pictures and of the
+evaluation, and a round-by-round table. Internal codes from the development logs appear here in parentheses so
+that each row can be found in \fp{docs/history/}; Appendix~\ref{app:glossary} maps them to plain names.
+
+\subsection{How the data grew}\label{app:datahistory}
+\paragraph{Clip-level benchmark (August--September).} 274 short clips (10--20\,s) were labelled by the author into four
+scenarios: unseen ambient (48 clips), mixed (25), seen ambient (132) and no ambient (69). Four sourcing strategies
+(keyword scraping, AudioSet strong segments, curated film scenes, UnAV-100 overlap moments) and an automatic filter
+all landed at 15--20\,\% usable clips, which is why the set stopped at 274 rather than the planned 300. A test set of
+100 clips (25 per scenario) was used by the early systems and the model judge (Appendix~\ref{app:judge}).
+
+\paragraph{Per-sound labels (22 September).} After the judge-based evaluation was abandoned, clips were labelled per
+sound. The first export had 139 clips: 109 benchmark clips and 30 AudioSet-Strong clips with a consequential sound at
+least half under speech or music (``slice B'', always reported separately). The 109 were split by provenance into 49
+development clips (``DEV-49'', clips already touched by earlier runs) and 60 test clips (``TEST-60'', labelled after
+the system was frozen). The September test table (Section~\ref{sec:sept-table}) is on TEST-60.
+
+\paragraph{New clips (29 September -- 1 October).} 50 more clips were labelled with a stand-alone tool in three
+batches: 31 YouTube clips found by scene type and 19 AudioSet-Strong evaluation clips. They were split into 22
+development (``DEV2'') and 28 test (``TEST2'') clips by a hash of the clip name or by balanced pairs, and merged on
+30 Sept into the development set (49 + 22 = 71 clips) and the test set (60 + 28 = 88 clips) used in the body.
+
+\begin{table}[h]
+\centering\small
+\caption{Parts of the two evaluation sets.}
+\begin{tabular}{lrrrrrl}
+\toprule
+part & clips & sounds & needed & imp.~3 & clips w.\ needed & unseen/mixed/seen/none \\
+\midrule
+DEV-49 & 49 & 95 & 38 & 14 & 24 & 16/9/16/8 \\
+DEV2 & 22 & 59 & 20 & 3 & 14 & 8/7/7/0 \\
+TEST-60 & 60 & 94 & 43 & 11 & 28 & 13/15/12/20 \\
+TEST2 & 28 & 60 & 22 & 2 & 15 & 8/8/10/2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Needed-sound count.} The development count moved during the last week: 55 at the first merged scoring, 58
+after the visibility re-check (three sounds changed from seen to needed), 57 after a control round, and back to 58 after
+a correction. Every system was re-scored on each version; the test labels were never changed.
+
+\paragraph{AudioSet sets.} A calibration set of 280 AudioSet-Strong clips decided detector rounds 4--12 with a cost on
+timed AudioSet labels. Round 12 showed that under a corrected version of that cost the detector of the time was worse
+than showing nothing (1.650 vs 0.986 per clip), because AudioSet labels only a few sounds per clip; the set was retired
+as a decision test. The screening set of 415 clips was then used only for single audio rules, and a fresh set of 422
+clips built for a last confirmation was never scored.
 
 \subsection{Working rules}\label{sec:rules}
-From 13 Sept the following rules governed every change (\fp{docs/plan_robustness.md},
-\fp{docs/prereg_round13_detector_push.md}):
+From 13 Sept the following rules governed every change (\fp{docs/history/plans/plan_robustness.md},
+\fp{docs/history/preregistrations/prereg_round13_detector_push.md}):
 \begin{enumerate}
   \item \textbf{Pre-register.} Before a run, write the idea, the exact rule, the data it is decided on and the pass
         bar, and commit it. Results are appended below the pre-registration, never edited into it.
@@ -24,7 +67,7 @@ From 13 Sept the following rules governed every change (\fp{docs/plan_robustness
         clause, Section~\ref{sec:passrules}).
   \item \textbf{Consult and record.} Major choices were reviewed by panels of independent model reviewers (Claude
         instances with assigned roles, two to five per panel, one to four rounds), whose reports are in
-        \fp{docs/review/} and \fp{docs/panel_*.md}; every decision and its reason is in a dated log.
+        \fp{docs/history/review/} and \fp{docs/panel_*.md}; every decision and its reason is in a dated log.
 \end{enumerate}
 
 \subsection{Phases}
@@ -47,19 +90,19 @@ dates & system & scored by & outcome and why it changed \\
 28 Sep & rounds 4--12 on AudioSet sets: EAT, Dasheng, DASM, SAM-Audio, 17 ideas, local contrast, DASM rescue, masker tests & cost on AudioSet labels & all failed on the 415; round 12 showed the AudioSet cost cannot track the task: harness retired \\
 28--30 Sep & rounds 13--14: listener rescue (Qwen3-Omni, Audio Flamingo Next) + DASM vote; tagger clips added & DEV-49, then merged DEV & first gains in hits (TO1+F7F8) \\
 30 Sep--01 Oct & ship chain SHIP1--SHIP8 on merged DEV/TEST & merged DEV, pass rules & DEV 18/51/3.690 $\to$ 28/21/2.282 (Table~\ref{tab:shipchain}) \\
-01--02 Oct & rounds 46--66: display rules, witness rule, scene check, many gate ideas & merged DEV, held-out 415 & \Dp{}: DEV 29/15/2.056; frozen 2 Oct 01:20 UTC \\
+01--02 Oct & rounds 46--66: display rules, witness rule, scene check, many gate ideas & merged DEV, held-out 415 & the final system: DEV 29/15/2.056; frozen 2 Oct 01:20 UTC \\
 \end{longtable}
 
 \subsection{The shipped chain}\label{sec:shipchain}
-Table~\ref{tab:shipchain} is the backbone of the history: every change that entered \Dp{}, in order, with its
+Table~\ref{tab:shipchain} is the backbone of the history: every change that entered the final system, in order, with its
 development and test numbers on the merged sets. Development numbers use the corrected gold (58 needed sounds);
-test numbers are the reads made after each change shipped. Sources: \fp{docs/review/improvements_log_2026-09-30.md},
-\fp{docs/review/detector_final_2026-10-02.md}, \fp{docs/prereg_round13_detector_push.md}.
+test numbers are the reads made after each change shipped. Sources: \fp{docs/history/review/improvements_log_2026-09-30.md},
+\fp{docs/history/review/detector_final_2026-10-02.md}, \fp{docs/history/preregistrations/prereg_round13_detector_push.md}.
 
 {\small
 \begin{longtable}{L{2.6cm}L{6.1cm}L{2.5cm}L{3.0cm}}
-\caption{Changes that shipped, from the old pipeline to \Dp. Hits / wrong / cost; DEV hits out of 58, TEST out of 65.
-The $p$ in the TEST column is one-sided, against the old pipeline B0r for SHIP5--SHIP8 and against B for D and \Dp.}\label{tab:shipchain}\\
+\caption{Changes that shipped, from the old pipeline to the final system. Hits / wrong / cost; DEV hits out of 58, TEST out of 65.
+The $p$ in the TEST column is one-sided, against the old pipeline B0r for SHIP5--SHIP8 and against B for D and the final system.}\label{tab:shipchain}\\
 \toprule
 step (name in logs) & what it adds & merged DEV & merged TEST \\
 \midrule\endfirsthead
@@ -79,17 +122,17 @@ TO1+F7F8 (R14) & listener rescue of weak FlexSED runs (tiered: Qwen alone above 
 + depict-event (R57) & drop a picture whose event is visibly happening & 29 / 17 $\to$ 18$^{a}$ / 2.141 & 22 / 26 / 2.545 \\
 = \textbf{B} (SHIP8+MD3) & base of the last rounds & \textbf{29 / 18 / 2.141} & \textbf{22 / 26 / 2.545} \\
 + witness rule + scene check (R53+R60) = D & weak sounds need DASM, both listeners, or one listener and a plausible scene & 29 / 14 / 2.028$^{b}$ & 24 / 23 / 2.386 \\
-+ logit readout (R60L) = \textbf{\Dp} & scene check read as a probability, no cut-off answers & \textbf{29 / 15 / 2.056} & \textbf{24 / 24 / 2.409} ($p$ 0.034 vs B) \\
++ logit readout (R60L) = \textbf{final system} & scene check read as a probability, no cut-off answers & \textbf{29 / 15 / 2.056} & \textbf{24 / 24 / 2.409} ($p$ 0.034 vs B) \\
 \end{longtable}
 }
 \noindent\footnotesize $^{a}$ Round 57 scored 29/17 with 26 listener answers missing from a cache; after the cache
 was filled (1 Oct evening) the same system scores 29/18/2.141, so its net development effect is zero.
 $^{b}$ D's 2.028 contains one gain caused by a cut-off answer (``based on the'') that removed a wrong \emph{Glass}
-picture; the logit readout of \Dp{} cannot be cut off, so that picture returns (+1 wrong). The pass bar of Round 60L
+picture; the logit readout of the final system cannot be cut off, so that picture returns (+1 wrong). The pass bar of Round 60L
 was set against B, not against D, for this reason (prereg lines 4504--4542).
 \normalsize
 
-\paragraph{What the table shows.} From the old pipeline to \Dp{} the development set gained 11 hits and lost 36 wrong
+\paragraph{What the table shows.} From the old pipeline to the final system the development set gained 11 hits and lost 36 wrong
 pictures (cost $3.690 \to 2.056$). The test set gained 3 hits and lost 16 wrong pictures ($2.909 \to 2.409$). About a
 third of the development gain in cost carried over to the test set; with well over a hundred development variants
 tried, some of the development gain is expected to be selection luck (``winner's curse''), and the test numbers are
@@ -154,9 +197,9 @@ drawn as a door) and was rejected. One of the 26 Qwen-Image pictures was later f
 telephone bell drawn as a desk bell), so the $+22$-point result is reported as ``not clean''. A planned sealed
 confirmation sitting was cancelled on 28 Sept and replaced by the check-and-redraw loop of Section~\ref{sec:pictures}.
 A wording test the same day kept the hand-written subject table: 7 of 7 known cases right, against 3 of 7 for two
-generic VLM wording methods (\fp{docs/picture_sense_test_2026-09-28.md}).
+generic VLM wording methods (\fp{docs/history/analyses/picture_sense_test_2026-09-28.md}).
 
-\subsection{Evaluation history: the judge era}\label{sec:judge-era}
+\subsection{Earlier evaluation by model judge (superseded)}\label{app:judge}
 The proposal planned an automatic evaluation: a VLM describes the augmented video, an LLM writes a reference of what
 the viewer should learn, and an independent LLM scores the description against the reference on a 0--4 scale. It
 was built and run, and it failed in instructive ways:
@@ -179,3 +222,134 @@ was built and run, and it failed in instructive ways:
 \end{enumerate}
 A five-reviewer scoring panel on 19 Sept moved the primary score to per-sound matching against human labels
 (Section~\ref{sec:task}) and kept the judge as a secondary instrument. The answer to RQ4 is built on this history.
+
+\subsection{Comparisons between versions}\label{app:versions}
+The final development phase compared each accepted change with the version before it and, early on, with the
+September baseline (``B0r''). Paired clip bootstrap on the test set, 2000 draws; $d$ = mean per-clip cost difference;
+one-sided $p$ (a two-sided value is about twice as large).
+\begin{center}\small
+\begin{tabular}{lrrl}
+\toprule
+comparison & $d$ & 95\,\% interval & one-sided $p$ \\
+\midrule
+final system vs the version before its last three rules (B) & $-0.136$ & $[-0.295,\ 0.000]$ & 0.034 \\
+same, scene check read as text (D) vs B & $-0.159$ & $[-0.341,\ -0.023]$ & 0.0145 \\
+intermediate version (SHIP8) vs September baseline & $-0.341$ & $[-0.636,\ -0.045]$ & 0.017 \\
+first listener stack (TO1+F7F8) vs September baseline, pre-registered & $-0.091$ & $[-0.250,\ +0.045]$ & 0.132 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Version B scored 29 / 18 / 2.141 (development) and 22 / 26 / 2.545 (test); D scored 29 / 14 / 2.028 and
+24 / 23 / 2.386. The four early test reads of 30 Sept were also corrected for multiplicity (Holm); none was
+significant after correction.
+
+\paragraph{Repeat-merge gap.} Re-reading the same saved pictures at different merge gaps moves wrong-picture counts but
+not the ranking (hits / wrong / cost):
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+gap (s) & SHIP8, dev. & baseline, dev. & SHIP8, test & baseline, test \\
+\midrule
+1.5 & 28 / 23 / 2.338 & 18 / 57 / 3.859 & 23 / 30 / 2.591 & 21 / 44 / 3.000 \\
+2.0 & 28 / 21 / 2.282 & 18 / 51 / 3.690 & 23 / 29 / 2.568 & 21 / 40 / 2.909 \\
+3.0 & 28 / 18 / 2.197 & 17 / 43 / 3.521 & 22 / 27 / 2.568 & 20 / 33 / 2.795 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The baseline gains more from a longer gap (many of its pictures are repeats), so the final system (gap 2.5\,s) against
+the baseline (gap 2.0\,s) is not a like-for-like comparison.
+
+% ======================================================================
+\subsection{Round-by-round record}\label{app:rounds}
+One row per round or main arm, in order. Results are hits / wrong / cost on merged DEV (55 or 58 needed, see
+Appendix~\ref{app:datahistory}) unless marked; ``415'' = held-out AudioSet-Strong screen; ``old DEV'' = DEV-49. Full text,
+bars and line numbers: \fp{docs/history/preregistrations/prereg_v4.md} (amendments), \fp{docs/prereg_round4..12*.md},
+\fp{docs/history/preregistrations/prereg_round13_detector_push.md} (rounds 13--66). Counted from that file: rounds 13--28 ran 129 new
+full-pipeline variants (106 on DEV-49 alone), rounds 29--41 ran 21 more and 42 component screens, rounds 42--57 ran 5
+full variants and about 30 screens, rounds 58--66 four full variants and 15 screens.
+
+{\scriptsize
+\begin{longtable}{L{1.4cm}L{4.4cm}L{5.0cm}L{3.6cm}}
+\toprule
+round & idea & result & verdict \\
+\midrule\endfirsthead
+\toprule round & idea & result & verdict \\ \midrule\endhead
+\bottomrule\endfoot
+\multicolumn{4}{l}{\emph{September amendments (prereg\_v4)}} \\
+am.\ 5 & per-sound gold, F1 headline & $\Delta$F1 $+0.028\ [-0.022, +0.074]$; precision, false alarms significant & F1 null \\
+am.\ 8 & FlexSED union, bar 0.8 & passes 3/3 rules & shipped \\
+am.\ 9 & viewer cost, $\beta = 2$ (post hoc) & gated 3.36 vs blind 4.24; silence 2.79 & reported metric \\
+am.\ 10 & FlexSED veto 0.3 & 4.12 $\to$ 3.59 & shipped \\
+am.\ 11--15 & per-family bars; speech-removed view; family silence; any-stretch rule; OWLv2 vote & each worse or neutral & rejected \\
+am.\ 16 & PANNs veto 0.05 & 3.02 / 3.10 & shipped \\
+am.\ 17 & tagger ensemble & CED mis-scaled & rejected \\
+am.\ 18--20 & visibility signals (video, SAM 3, synchrony) & all at break-even 2:1 & rejected \\
+am.\ 21 & final September TEST table & Table~\ref{tab:sept} & reported \\
+am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUROC 0.53; AUROC 0.661 & rejected \\
+\multicolumn{4}{l}{\emph{Rounds 4--12 (AudioSet harness, 28 Sept)}} \\
+4 & BEATs self-veto replaces PANNs veto & 415 neutral; later worse on DEV and TEST (2.83 vs 2.63, $p$ 0.043) & reverted 30 Sept \\
+5 & EAT, Dasheng & 415 $+0.087$ & fail \\
+6 & DASM as detector & 415 $+0.294\ [+0.111, +0.511]$ & fail (kept as witness) \\
+7, 7b & SAM-Audio separation & quality check failed & stop \\
+8 & 17 ideas (I1--I10) & closest I7 $-0.039$, $p$ 0.061 & fail \\
+9 & local contrast J2 & 415 pass, DEV 14$\to$13 hits & not shipped \\
+10 & DASM rescue R0--R7 & 9 of 61 targets reachable & hold \\
+11 & masker tests & all worse & no pick \\
+12 & cost v2 on AudioSet & shipped 1.650 vs nothing 0.986 & harness retired \\
+\multicolumn{4}{l}{\emph{Rounds 13--28 (29--30 Sept)}} \\
+13 & listener rescue, many question forms; R13-1 twin-max & ${\sim}3$ wrong per extra hit; R13-1 TEST = B0r & R13-1 kept inside TO1 \\
+14 & TO1+F7F8 & old DEV 18/24/2.45 vs 2.78; merged 23/48/3.155; TEST 22/38/2.818 ($p$ 0.13) & shipped (SHIP1) \\
+16 & N2b masked-weak veto & 23/44/3.042; TEST 22/35/2.750 & shipped \\
+19--20 & DR2 DASM rescue & 24/44/2.986 & shipped (SHIP2) \\
+21 & K-V4 inventory keep & 24/41/2.901 & shipped (SHIP3) \\
+22--27 & N2c, stacks, K2 variants & N2c 22/38/2.930 lost a hit & rejected \\
+28 & DV DASM clip veto & 24/34/2.704; TEST 23/34/2.682 & shipped (SHIP4) \\
+\multicolumn{4}{l}{\emph{Rounds 29--41 (30 Sept -- 1 Oct)}} \\
+29 & F8-U, DV-L, DV-G; V4D; GA & +2 hits for +7 wrong; no-op; $-5$ hits; STOP; STOP & rejected \\
+30 & BTP band-twin pull & 25/33/2.620; TEST 23/33/2.659 & shipped (SHIP5) \\
+30 & K4AO; PIC-SIM; RT & held; nothing flips; no-op & held / rejected \\
+31 & CONT continuation veto & 25/28/2.479; TEST 24/32/2.591 & shipped (SHIP6) \\
+31 & FineLAP veto 0.329 & 25/27/2.451; TEST 24/31/2.568 & shipped (SHIP7) \\
+31 & RPT-S, PMC, N2c, DVG, PTC, SUBJ, OM, SPOT, H2 & screens or arms without gain & rejected \\
+32 & FineLAP in DASM's seat; DV2 & +11 wrong; Thunder lost & rejected \\
+33 & SPOT-V, change-point onsets, K4A-4E, SSL-SaN gate & all ``Yes''; $-7$ hits; no-op; STOP & rejected \\
+34 & MOSS-Audio as listener & +4/$-9$ needed, +63 other & rejected \\
+35 & DBX, DBR & premise wrong; cost not lower & rejected \\
+re-check & visibility re-check (gold) & 3/14 flips; control 0/20 & gold change \\
+35 & K4A-D (K4AO + DASM keep) & 28/58, 21/2.282; TEST 23/29/2.568 ($p$ 0.017) & shipped (SHIP8) \\
+36--37 & DASM impact peaks + VLM naming; BOX gate & +2 cross; $-7$ seen silenced & rejected \\
+38 & CF, BOX-2, GBTP, SHIP8+BOX2, SYNC, SYNC-2 & best BOX-2 arm 29/26/2.366 & rejected \\
+39 & DETACHED-ADD, CONTRAST, MAKER-VIS, RELABEL-GATE & +7 wrong; +142 other; $-9$ hits; hit lost & rejected \\
+40--40e & EXPECT chain & A4: DEV 31/26/2.254, TEST 25/35/2.614 & not shipped \\
+41 & AGREE, NAMED-VETO, PRIOR415 & below bar; hits lost; no change & rejected \\
+\multicolumn{4}{l}{\emph{Rounds 42--57 (1 Oct)}} \\
+42 & held-out check of EXPECT-A4 audio chain & 74/92 = 0.80 precise vs 0.38--0.39 raw & diagnostic \\
+42b & EXPECT-A5 (7 vouched families) & DEV 30/21/2.169; TEST 23/31/2.614 & not shipped \\
+43--43c, 50 & gate gold-set variants (HUMAN, HUMAN-2, HUMAN-ADD) & one sound short of the bar at best & rejected \\
+44 & AVNAME (eyes + ears name the sound) & rename 15/34; drop 27/17/2.225, TEST no change & rejected \\
+45 & AGREE-EARS (second listener family) & DEV 31/24/2.197; 415 0.833 $<$ 0.85; TEST 2.659 & rejected \\
+46, 46b & gold scope (blind rating of wrong pictures) & $\approx$1 in 6 is a real unlisted sound & no gold edit \\
+-- & merge gap 2.5\,s & 28/20/2.254 & shipped \\
+47 & GRP-A grouping by Qwen3-Omni, $\leq$8\,s & 28/18/2.197 & shipped \\
+48 & MD3 shortest span 0.3\,s & 29/18/2.141 & shipped (= B) \\
+49 & BANDLIST & 0 hits, +6 wrong & rejected \\
+51, 52b, 55 & pause rules, kin-keep, frame-pause & 415 STOP & rejected \\
+52 & SK7 strong keep & 29/22/2.254 & rejected \\
+53, 53d & WEAK-WITNESS alone & 27/13/2.113 (2 hits lost); 27/17/2.225 & fail alone \\
+53b, 53c & witness bars from the 415 & outside allowed range & stop \\
+54, 54b & SIGN (visible effect) & 0 flips; ``no'' on 9/10 & rejected \\
+56 & TWIN-SHORT & 27/36/2.761 & rejected \\
+57 & DEPICT-EVENT & 29/17 (net 0 after cache fill) & shipped \\
+\multicolumn{4}{l}{\emph{Rounds 58--66 (1--2 Oct)}} \\
+58, 58b & tight listener cut; FlexSED witness & 415 precision 0.400, 0.297 & stop \\
+59 & context $\pm$5\,s & 415 0.333 & stop \\
+60 & SCENE-MARGIN + witness (= D) & 29/14/2.028; TEST 24/23/2.386 ($p$ 0.0145) & shipped \\
+61b--d & look-alike reasoning (Qwen, Gemma) & hits lost in every variant & fail \\
+62, 62b & logit gate; PRIOR & AUROC 0.647 / 0.644 $<$ 0.65 & stop \\
+60L & scene check by logit margin (= the final system) & 29/15/2.056; TEST 24/24/2.409 ($p$ 0.034) & \textbf{shipped, frozen} \\
+63 & tagger ensemble & 415 recall 0.152 vs 0.197 & stop \\
+64 & concealed action \{Bell\} & 30/14/1.972 (one clip) & not general, not shipped \\
+65 & perceptual-onset return & 415 0.115 & stop \\
+66 & NAME-ALL crop margin & gate screen passed; DEV 26/12/2.141 (3 hits lost) & fail \\
+\end{longtable}
+}

@@ -1,6 +1,6 @@
 # Panel 2026-09-26 — round 3 answers (sign or amend)
 
-Plan: docs/panel_2026-09-26_plan.md
+Plan: docs/history/panels/panel_2026-09-26_plan.md
 
 ## P1 — round 3
 
@@ -54,7 +54,7 @@ D2 wording acceptable with the B.6 guard. Nothing else in B touches a sealed thi
 **SIGN**, with my D2 dissent recorded as the plan states, and one amendment to B.6 so that the "yes/no" cannot become a look by accident (the 23 Sep accidental read came from a script that printed both halves).
 
 **AMEND B.6 — replacement text (append after the committed sentence):**
-> The TEST render jobs run with no scorer, judge or audit invoked on the TEST tag; `score_per_sound.py`, `arm_compare.py`, `judge_direct.py` and `timing_audit.py` are not pointed at it, and no log line prints a hit, miss, F1, P or cost for a TEST clip. Adam gives his yes/no before any such number exists, and it is written into `docs/prereg_v4.md` with a timestamp. If no, the renders are never scored in this thesis. If yes, the table is scored once, with the Holm family of A.2 and the per-category rows, and the read is added to the history table as the fifth. No other TEST number is read after it.
+> The TEST render jobs run with no scorer, judge or audit invoked on the TEST tag; `score_per_sound.py`, `arm_compare.py`, `judge_direct.py` and `timing_audit.py` are not pointed at it, and no log line prints a hit, miss, F1, P or cost for a TEST clip. Adam gives his yes/no before any such number exists, and it is written into `docs/history/preregistrations/prereg_v4.md` with a timestamp. If no, the renders are never scored in this thesis. If yes, the table is scored once, with the Holm family of A.2 and the per-category rows, and the read is added to the history table as the fifth. No other TEST number is read after it.
 
 **On the three questions asked.** (1) Holm family of seven, all printed rows, two-sided p from `paired_ci` with the 1/2000 resolution stated, applied identically to the DEV like-for-like and the 23 Sep TEST look: right, and conservative in the direction an examiner wants; ΔR staying in the family is correct — its significant loss is part of the same trade and must not be dropped. (2) D2 wording: acceptable with the amendment above; the "whatever it shows" clause committed before rendering is what makes it defensible, and I would still footnote in the thesis that this is the fifth read. (3) Nothing in B touches a sealed thing: D1(b) and D5 are DEV-only; D8 reads subject texts the assistant wrote, no answers or arm key; D6 is descriptive on the calibration set; the D4 packet shows the second annotator TEST *clips*, not system output or scores, which is not a read. B.3 re-analysing the already-read 23 Sep TEST numbers under a correction declared in A.2 is not a new read, provided A.2 is committed before the table is computed.
 

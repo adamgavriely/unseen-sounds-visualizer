@@ -4,10 +4,10 @@
 AudioSet-Strong fit set (the 280, `R.use_set("calib")`) and the held-out set (the 415, `"heldout"`). DEV and the fresh
 set only through the conditional steps at the end; TEST never. Harness: `benchmark/detector_round11.py` (reuses
 `detector_round8` for the stack, gate 0, scoring, bootstrap and Holm), results in `benchmark/detector_round11.json`, jobs
-`slurm/job_round11_*.sh`. Round 10 (`docs/prereg_round10_rescue.md`, running) is not touched; none of its files is edited.*
+`slurm/job_round11_*.sh`. Round 10 (`docs/history/preregistrations/prereg_round10_rescue.md`, running) is not touched; none of its files is edited.*
 
 ## Why
-The audit (`docs/detector_audit_2026-09-28.md`) found that the largest group of missed needed sounds is sounds FlexSED
+The audit (`docs/history/analyses/detector_audit_2026-09-28.md`) found that the largest group of missed needed sounds is sounds FlexSED
 scores 0.4–0.8, below its bar 0.8 (the "band group"). Every rule so far that let them in also let in ≥ 2 false spans per
 rescued event (break-even under C is 2: a miss costs 4, a false span 2). A Fable consult's diagnosis: the band phantoms
 are FlexSED queries that light up on speech-ness or music-ness itself. So round 11 does not ask a second detector; it
@@ -120,7 +120,7 @@ M1 and M1m: the share of candidates with Δ < 0, split true / false × masked / 
 - **Picked on the 280** iff C-overlap < baseline AND C-onset < baseline (M1, M1m, M1b, M2, M3, M5, M7, C, W).
 - Each picked cell goes to the 415 alone, frozen; it **passes** iff the upper 95 % CI of ΔC-overlap < 0. **Holm** across
   the cells sent (one-sided p, family α = 0.025, step-down); a cell counts as passed only if it passes AND Holm rejects it.
-- **Before the 415 is scored**, `docs/setup_audit_2026-09-28.md` is read. If it reports a timing / alignment or scorer bug,
+- **Before the 415 is scored**, `docs/history/analyses/setup_audit_2026-09-28.md` is read. If it reports a timing / alignment or scorer bug,
   the 415 is not scored and the round stops with a report. If it does not exist yet, the 415 waits.
 
 ## Next steps, only for a cell that passes the 415 (fixed in outline now; finished as a dated amendment before computing)
@@ -154,7 +154,7 @@ unchanged (seed 0, per target clip; no DCASE file is a target, so nothing is exc
 accepted and disclosed. The music pool stays the 280 one above. Nothing else changes.
 
 ## Note 2026-09-28 — HOLD on the 415 (from the lead, before any round-11 cost)
-The setup audit (`docs/setup_audit_2026-09-28.md`) found that the AudioSet cost C punishes any added span (on the 415 an
+The setup audit (`docs/history/analyses/setup_audit_2026-09-28.md`) found that the AudioSet cost C punishes any added span (on the 415 an
 empty output beats the shipped stack; each bark of a run is counted as its own event; there is no time tolerance). A
 corrected cost is being defined, and the picks will be re-judged under it. So round 11 runs **the 280 step only, exactly
 as registered** (cost C as above), and reports it. **The 415, DEV and the fresh set are not run for any cell** — not even
@@ -199,7 +199,7 @@ Post hoc, descriptive only (`descriptive_auroc_280` in the json; true vs false c
 M2 margin 0.65, FlexSED peak 0.66, rise 0.60, prominence 0.55; the "long stationary" branch points the wrong way (low CV:
 0.35) and so does the speech correlation (0.42: true candidates follow the Speech query curve slightly *more*).
 **Why no filter can win here:** even A0 rescues only 9 of the 61 band events (the rest have no candidate: short sounds
-under the 0.5-s minimum span, see `docs/dropped_sounds_why_2026-09-28.md`). A perfect filter would gain at most
+under the 0.5-s minimum span, see `docs/history/analyses/dropped_sounds_why_2026-09-28.md`). A perfect filter would gain at most
 9 × 4 / 280 = −0.129 and could keep at most 18 phantoms to break even; the best cell by margin (M2) kept 17 phantoms and
 lost all 9 rescues.
 

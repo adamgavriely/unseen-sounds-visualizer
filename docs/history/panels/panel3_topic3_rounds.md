@@ -1,6 +1,6 @@
 # Topic 3 — Evaluation: panel rounds (27 Sept 2026)
 
-Brief: docs/panel3_topic3_*.md · context: docs/panel3_common_context.md
+Brief: docs/panel3_topic3_*.md · context: docs/history/panels/panel3_common_context.md
 
 ## T3-c — round 1 (thesis examiner, related work)
 
@@ -228,7 +228,7 @@ by Monday no ethics filing; β-spec §5 must be amended from TEST to DEV stimuli
 
 **(4) β crossings, one table** (recomputed from committed curve files, grid 0–4): test_final_v33 / test_bench / 60: 0.39,
 2.56. dev_monocap_v31 / dev / 49: 0.46, 2.33. v4b4 / bench / 109: 0.40, 1.27. beta_spec §2 (DEV, 23 Sept, v4b6 era): 0.35,
-1.37 [0.71, 2.19]. **T3-a's 0.35 / 1.37 / 4.30 is the stale set.** `docs/FOR_SUPERVISOR.md:68` still quotes 1.37 — update.
+1.37 [0.71, 2.19]. **T3-a's 0.35 / 1.37 / 4.30 is the stale set.** `docs/supervisor/FOR_SUPERVISOR.md:68` still quotes 1.37 — update.
 The 4.30 oracle ceiling is not reproducible from any committed curve file → "consistent with > 4, not verified".
 
 **Agreed:** F1 first, null with MDE; annotator 2 + independent glance raters; no TEST reads; 10-row exposure log +

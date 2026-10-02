@@ -1,7 +1,7 @@
 # Chapter 5 — Results (draft, 27 Sept 2026)
 
-*Order fixed before the final numbers were read (`docs/panel_2026-09-26_plan.md` §A, signed 5/5) and confirmed by the
-evaluation panel (`docs/panel3_topic3_rounds.md`, rounds 2–3 and "Topic 3 — outcome", signed by all three): the
+*Order fixed before the final numbers were read (`docs/history/panels/panel_2026-09-26_plan.md` §A, signed 5/5) and confirmed by the
+evaluation panel (`docs/history/panels/panel3_topic3_rounds.md`, rounds 2–3 and "Topic 3 — outcome", signed by all three): the
 pre-registered primary metric first, then the declared secondary family with a multiple-testing correction, then the
 cost curve as an interval claim, then the analyses that explain the result. Every number below is read from a committed
 file named beside it. Every p-value is two-sided, from the paired bootstrap draws; no one-sided share of draws (such as
@@ -47,7 +47,7 @@ clips used during development, shown beside TEST for transparency.
 The pre-registered primary is null: +0.059 [−0.030, +0.144] on TEST, positive on both halves and significant on neither.
 The design could not have detected an effect of this size: with 60 clips the smallest effect detectable at 80 % power is
 about +0.13 (from the interval width), and about 320–570 clips would be needed for a true +0.03–0.05. The oracle
-diagnostic points at the cause (`docs/GOLD_RERUN_2026-09-22.md` §9a, 22 Sep renders, 109 benchmark clips, which include
+diagnostic points at the cause (`docs/history/analyses/GOLD_RERUN_2026-09-22.md` §9a, 22 Sep renders, 109 benchmark clips, which include
 the TEST clips — exposure row 1 in §5.15): when the detector is replaced by the annotator's own sound list, the same gate's
 F1 gain is significant (+0.067 [+0.012, +0.117]); giving back only the missed sounds, while keeping every false alarm the
 detector made, already makes it significant (+0.075 [+0.029, +0.119]). So misses, not false alarms, cause the null. F1
@@ -154,10 +154,10 @@ screen and mixed clips.
 
 ## 5.7 Why F1 does not move: the detector, not the gate
 
-- **Oracle diagnostics** (§5.3; `docs/GOLD_RERUN_2026-09-22.md` §9a): with the annotator's sound list the gate's F1 gain is
+- **Oracle diagnostics** (§5.3; `docs/history/analyses/GOLD_RERUN_2026-09-22.md` §9a): with the annotator's sound list the gate's F1 gain is
   significant; with the missed sounds alone given back it already is. Misses, not false alarms, cause the null.
 - **Where needed sounds are lost** (DEV miss autopsy of the `v4b6` row of 23 Sep, an earlier pipeline, 21 misses;
-  `docs/GOLD_RERUN_2026-09-22.md` §15): 11 never detected, 5 timing, 3 gate, 2 label filter. The final
+  `docs/history/analyses/GOLD_RERUN_2026-09-22.md` §15): 11 never detected, 5 timing, 3 gate, 2 label filter. The final
   DEV row (§5.4) has 22 misses (14 of 36 hit); it has not been re-autopsied.
 - **Detector on 280 human-labelled AudioSet-Strong clips** (descriptive, shipped bars, out of sample; `benchmark/audioset_stage4_report.json`):
   the shipped stack keeps BEATs' recall of consequential events within about 3 points (51.3 % vs 54.5 %) and cuts false
@@ -177,7 +177,7 @@ paying for them in wrong pictures. None touched TEST; each rule was written befo
 **Where the missing recall sits (DEV-49, diagnostic only — an oracle-bar read on the very sounds it would be scored on,
 so no bar is chosen from it).** Of 36 needed sounds, the caches reach 21 at the shipped bars and 30 at looser bars; 4 are
 below every detector (amendment 22). The detection panel splits the same ceiling into three tiers (reviewer cache read on
-the 33 depictable needed sounds, `docs/panel3_topic1_rounds.md`, T1-a round 1; not a committed result file):
+the 33 depictable needed sounds, `docs/history/panels/panel3_topic1_rounds.md`, T1-a round 1; not a committed result file):
 
 | tier | DEV sounds | what it means |
 |---|---|---|
@@ -262,7 +262,7 @@ same text 26 (+0.22 [+0.07, +0.37]); with the V3 text 32 (+0.33 [+0.22, +0.46]);
 same. V3 was rejected for one invented object (a thud drawn as a door), and the new generator alone shows one wrong
 object (a ringing phone drawn as a desk bell), so neither is adopted as clean. Six automatic picture checkers failed
 calibration against the human rater (§5.13). The frozen final setup is Qwen-Image-2512 with the V3.1 text
-(`docs/freeze_picture_setup_2026-09-25.md`); it replaces FLUX.1-schnell only if the sealed confirmation sitting
+(`docs/history/preregistrations/freeze_picture_setup_2026-09-25.md`); it replaces FLUX.1-schnell only if the sealed confirmation sitting
 confirms it (rules in Chapter 6 §6.3). **Final frozen setup: [pending — blind confirmation sitting]**.
 
 ## 5.12 Timing
@@ -279,11 +279,11 @@ should know which measurements this project could not make.
 
 | instrument | what it tried to measure | result | source |
 |---|---|---|---|
-| model-made references (tags `v2`, `v3`) | what the viewer should have been shown | circular: written by the system's own VLM from the detector's own events, so they reward whichever system repeats the detector | `docs/supervisor_meeting/04_LIMITATIONS.md` |
+| model-made references (tags `v2`, `v3`) | what the viewer should have been shown | circular: written by the system's own VLM from the detector's own events, so they reward whichever system repeats the detector | `docs/supervisor/supervisor_meeting/04_LIMITATIONS.md` |
 | independent four-model reference (Qwen2-Audio, CLAP, Idefics3, Phi-3.5) | "nothing beyond the picture" (the gate decision) | agrees with the human tag on 55 of 100 clips — chance on the silence decision | same |
-| audio-visual "with vs without sound" reference (Qwen2.5-Omni-7B) | "is anything missing?" | balanced accuracy 49.5 % (bar 67.7 %), κ 0.00, placebo 37 % | `docs/prereg_av_reference.md` |
-| gap-closing score (same model, four fixed questions) | does sound change what a viewer can answer | AUROC 0.53 (0.529; bar 0.75); shifted frames move the answers as much as the soundtrack | `docs/prereg_gap_closing.md` |
-| six automatic picture checkers (Idefics3 marker, CLIP-L marker, GLM per-picture judge, Gemma verifier, PP-1, pairwise GLM) | is the picture recognisable | all failed calibration against the human rater (e.g. Idefics3 / CLIP-L markers 25/32, bar 26; GLM κ 0.45; Gemma verifier κ 0.28; PP-1 "can't tell" on 502 of 567; pairwise chose the first picture 187 of 190 times) | `docs/LEDGER_2026-09-26.md`; `docs/panel_2026-09-26b_round1.md` |
+| audio-visual "with vs without sound" reference (Qwen2.5-Omni-7B) | "is anything missing?" | balanced accuracy 49.5 % (bar 67.7 %), κ 0.00, placebo 37 % | `docs/history/preregistrations/prereg_av_reference.md` |
+| gap-closing score (same model, four fixed questions) | does sound change what a viewer can answer | AUROC 0.53 (0.529; bar 0.75); shifted frames move the answers as much as the soundtrack | `docs/history/preregistrations/prereg_gap_closing.md` |
+| six automatic picture checkers (Idefics3 marker, CLIP-L marker, GLM per-picture judge, Gemma verifier, PP-1, pairwise GLM) | is the picture recognisable | all failed calibration against the human rater (e.g. Idefics3 / CLIP-L markers 25/32, bar 26; GLM κ 0.45; Gemma verifier κ 0.28; PP-1 "can't tell" on 502 of 567; pairwise chose the first picture 187 of 190 times) | `docs/history/daily_notes/LEDGER_2026-09-26.md`; `docs/history/panels/panel_2026-09-26b_round1.md` |
 
 Two instruments survived: the human-grounded per-sound scorer (one annotator's gold) and the Gemma direct judge (a
 secondary, "validated for ranking, not absolute quality"; it cannot tell a picture from a text tag, §5.10).
@@ -294,7 +294,7 @@ secondary, "validated for ranking, not absolute quality"; it cannot tell a pictu
   onset difference — **[pending]**). The benchmark is a pilot benchmark (v1, 139 clips); the protocol is the
   contribution, the numbers are provisional.
 - **DHH helpfulness untested.** No deaf or hard-of-hearing viewer has used the system; the viewer study that would measure
-  β was designed and not run (`docs/beta_specification.md` §5). A hearing sound-off pilot, if run, is a proxy on DEV clips
+  β was designed and not run (`docs/history/plans/beta_specification.md` §5). A hearing sound-off pilot, if run, is a proxy on DEV clips
   only, never a DHH study.
 - **Modelled viewer cost** is post hoc (§5.2) and β is assumed; hence the interval of §5.5.
 - **Picture recognition** is an author-rater glance test until independent raters exist (§5.11).
@@ -309,9 +309,9 @@ secondary, "validated for ranking, not absolute quality"; it cannot tell a pictu
 
 ## 5.15 TEST exposure log (appendix)
 
-*TEST (60 clips, `test_bench`) is held out, with disclosed exposure. Sources: `docs/LEDGER_2026-09-26.md` audit finding 1
-(ten exposures), `docs/prereg_v4.md`, `docs/WEEK_PLAN_2026-09-26.md` A2. The ledger counts 5 deliberate reads and 10
-exposures. The sources do not use one list of which five are deliberate (`docs/panel_2026-09-26_plan.md` §7 lists the
+*TEST (60 clips, `test_bench`) is held out, with disclosed exposure. Sources: `docs/history/daily_notes/LEDGER_2026-09-26.md` audit finding 1
+(ten exposures), `docs/history/preregistrations/prereg_v4.md`, `docs/history/daily_notes/WEEK_PLAN_2026-09-26.md` A2. The ledger counts 5 deliberate reads and 10
+exposures. The sources do not use one list of which five are deliberate (`docs/history/panels/panel_2026-09-26_plan.md` §7 lists the
 23 Sep accidental print among the reads; `GOLD_RERUN` §14c calls the whitelist check "read once on TEST"), so the "kind"
 column uses each source's own words.*
 
@@ -324,7 +324,7 @@ column uses each source's own words.*
 | 5 | 23 Sep | Accidental print of the veto / family-gate rows on TEST (`prereg_v4.md`, "Disclosure: an unplanned look at TEST") | unplanned print | the veto's TEST result was known before the remaining grid cells; amendment 10's second clarification was written after it; amendment 16's TEST threshold (≥ 15 hits) was set from the printed 17 hits |
 | 6 | 23 Sep | Amendment 16's PANNs-veto grid endpoints {0.02, 0.05, 0.10}, chosen after reading the 109-clip table (0.20 left out) | indirect | the range of the veto grid (the cell inside it was chosen on DEV) |
 | 7 | 23 Sep | The single look, `test_final_v30` (`prereg_v4.md`, "THE SINGLE TEST LOOK") | planned | adoption of both vetoes by the go/no-go written before it |
-| 8 | 24 Sep | Second look, timing: `test_monocap_v31` vs `test_final_v30` (`docs/test_second_look.md`) | planned | the onset rule kept as a bug fix (verdict inconclusive), its gain reported as DEV-only; the cap removal was decided before the number |
+| 8 | 24 Sep | Second look, timing: `test_monocap_v31` vs `test_final_v30` (`docs/history/analyses/test_second_look.md`) | planned | the onset rule kept as a bug fix (verdict inconclusive), its gain reported as DEV-only; the cap removal was decided before the number |
 | 9 | 24–25 Sep | Direct judge (Gemma-4-31B) trust checks on `v4b4` renders of all 139 clips, TEST included (`NIGHT_REPORT_2026-09-25.md` §7) | indirect | the choice of Gemma as the secondary judge |
 | 10 | 25–26 Sep | Amendment 21 final table, `test_final_v33` (rule committed before the render; Adam's yes 25 Sep 21:50; scored 26 Sep) | planned | nothing after it: it replaced the 23 Sep table by the committed rule, and no TEST number has been read since |
 | S | found 26 Sep | **Split overlap.** Two DEV/TEST definitions coexist: 35 of the scorer's 60 TEST clips are in `split.json`'s DEV-79, where FlexSED's bar 0.8 (amendment 8) and the detector-level rejections (amendment 12, `GOLD_RERUN` §13) were selected; 20 of the scorer's DEV-49 are `split.json` TEST (`prereg_v4.md`, correction after amendment 21) | design, not a read | FlexSED's bar and the detector rejections. Mitigation: the DEV-49 end-to-end grid also selects 0.8; on the clean DEV-49 the bar passes two of its three adoption rules and misses the third by 0.011 (§5.7) |
@@ -349,4 +349,4 @@ limits recall. DHH helpfulness is untested.
 
 ## References
 
-This chapter cites no literature; the shared reference list is `docs/thesis/references.md`.
+This chapter cites no literature; the shared reference list is `docs/history/earlier_drafts/thesis/references.md`.

@@ -22,9 +22,9 @@ human frame labels (no visibility labels), and 50 never-annotated clips used for
 Pictures (blind human glance test, 54 sounds): old generator 14/54 recognised, Qwen-Image-2512 26/54 (+22 pts, sig.);
 one new-generator picture showed a wrong object.
 
-**Full records:** `docs/prereg_v4.md` (amendments 1–23), `docs/LEDGER_2026-09-26.md` (everything tried, valid/discarded),
-`docs/GOLD_RERUN_2026-09-22.md`, `docs/thesis/ch3_method.md`, `docs/thesis/ch5_results.md`, supervisor page
-`docs/supervisor_2026-09-26/index.html`. Repository `P:\MscProj` — read anything, change nothing, do not ssh.
+**Full records:** `docs/history/preregistrations/prereg_v4.md` (amendments 1–23), `docs/history/daily_notes/LEDGER_2026-09-26.md` (everything tried, valid/discarded),
+`docs/history/analyses/GOLD_RERUN_2026-09-22.md`, `docs/history/earlier_drafts/thesis/ch3_method.md`, `docs/history/earlier_drafts/thesis/ch5_results.md`, supervisor page
+`docs/supervisor/supervisor_2026-09-26/index.html`. Repository `P:\MscProj` — read anything, change nothing, do not ssh.
 
 **House rules.** Every choice is made by a test with a bar written before it runs; a shared stage is chosen by the BLIND
 system's own numbers, never by the gated system's gain; negative results are reported; no TEST reads.

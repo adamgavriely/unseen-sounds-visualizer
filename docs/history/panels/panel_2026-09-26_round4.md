@@ -1,6 +1,6 @@
 # Panel 2026-09-26 — round 4 (final): 5 of 5 SIGN
 
-Plan: docs/panel_2026-09-26_plan.md (v2). Non-blocking notes, adopted into the plan's execution:
+Plan: docs/history/panels/panel_2026-09-26_plan.md (v2). Non-blocking notes, adopted into the plan's execution:
 
 - **P1** SIGN. Both [merge] choices checked against `score_per_sound.py` l.174–176 and `reason.py` l.396–412.
 - **P2** SIGN. `paired_ci` is unpacked as a 4-tuple by `main()` (l.436): return the draws through a new helper,

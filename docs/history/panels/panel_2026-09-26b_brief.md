@@ -5,10 +5,10 @@ project."* He will show a supervisor page (mostly images, videos, graphs; minima
 tried, why we dropped or selected things, good / bad / complicated examples, and questions to ask.
 
 You are one of six reviewers, each owning one part (below). Repository `P:\MscProj` — read anything, change
-nothing, do not ssh to the cluster. Key records: `docs/PLAN.md`, `docs/prereg_v4.md` (amendments 1–21),
-`docs/GOLD_RERUN_2026-09-22.md`, `docs/NIGHT_REPORT_2026-09-{18,20,24,25}.md`, `docs/night_report_2026-09-14.md`,
-`docs/failure_catalogue.md`, `docs/test_second_look.md`, `docs/picture_v3_prereg.md`,
-`docs/freeze_picture_setup_2026-09-25.md`, `docs/panel_2026-09-25_*.md`, `docs/panel_2026-09-26_plan.md` (signed
+nothing, do not ssh to the cluster. Key records: `docs/history/plans/PLAN.md`, `docs/history/preregistrations/prereg_v4.md` (amendments 1–21),
+`docs/history/analyses/GOLD_RERUN_2026-09-22.md`, `docs/NIGHT_REPORT_2026-09-{18,20,24,25}.md`, `docs/history/daily_notes/night_report_2026-09-14.md`,
+`docs/history/plans/failure_catalogue.md`, `docs/history/analyses/test_second_look.md`, `docs/history/preregistrations/picture_v3_prereg.md`,
+`docs/history/preregistrations/freeze_picture_setup_2026-09-25.md`, `docs/panel_2026-09-25_*.md`, `docs/history/panels/panel_2026-09-26_plan.md` (signed
 5/5 yesterday: reporting hierarchy, Holm families), `config.py`, `src/`, `benchmark/`.
 
 ## Where things stand (one paragraph)

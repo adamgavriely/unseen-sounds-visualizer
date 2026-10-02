@@ -115,7 +115,7 @@ cell (280; the 415 for the pick).
   that repeats a shipped one, so the union absorbs twins (the family-level count in am. 12 did the same implicitly), and
   shipped spans are never moved (am. 12's outcome: residual timing pulled mix onsets into the noise floor).
 
-### Note added 2026-09-28, before any residual cache or cost existed (from `docs/detector_audit_2026-09-28.md`)
+### Note added 2026-09-28, before any residual cache or cost existed (from `docs/history/analyses/detector_audit_2026-09-28.md`)
 The harness scores with `config.LABEL_FILTER = "lists"`, but the shipped profile draws with `"depictable"` (about 20 % of
 today's false spans carry labels the shipped system never draws). **The primary above is unchanged** (lists; the pick and
 the 415 test use it). **Secondary rows:** every cell on the 280, and the pick on the 415, are also scored with

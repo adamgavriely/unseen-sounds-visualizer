@@ -49,4 +49,4 @@ Live use: `slurm/run_best.sh <name> <folder>` (or `src/pipeline.py`) runs all of
 
 **The main lesson:** the remaining errors are where the models disagree at about chance level, and where "the object is on screen" is not "you can see the sound happening" (church tower vs ringing bell). That is the honest limit of today's open models; a larger vision model (235B) is future work.
 
-Full record: `docs/prereg_round13_detector_push.md` (every pre-registration and result), panels in `docs/review/panel_2026-10-01/`, `panel2_2026-10-01/`, `vlm_panel_2026-10-01/`, supervisor log `docs/review/improvements_log_2026-09-30.md`, ledger of the frozen version `benchmark/gold/ledger_SHIP8_MD3_WW5.json` (D before 60L).
+Full record: `docs/history/preregistrations/prereg_round13_detector_push.md` (every pre-registration and result), panels in `docs/history/review/panel_2026-10-01/`, `panel2_2026-10-01/`, `vlm_panel_2026-10-01/`, supervisor log `docs/history/review/improvements_log_2026-09-30.md`, ledger of the frozen version `benchmark/gold/ledger_SHIP8_MD3_WW5.json` (D before 60L).

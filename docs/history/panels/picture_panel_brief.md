@@ -21,7 +21,7 @@ decide_subjects), `src/stage6_visual_augmentation/__init__.py` (plain_prompt, _d
    driving"; heard *Toot* (a horn) → drew "Train moving"; heard *Car* → drew "Vehicle driving"; heard
    *Thunder* → drew "Sky rumbles"; heard *Boom* → drew "Bomb explodes").
 
-## What was tried last night (docs/NIGHT_REPORT_2026-09-24.md, docs/picture_quality_prereg.md)
+## What was tried last night (docs/history/daily_notes/NIGHT_REPORT_2026-09-24.md, docs/history/preregistrations/picture_quality_prereg.md)
 - DEPICT_V2: object that makes the sound first; never sky/body part alone; homonyms qualified.
 - KIND_ALWAYS + KIND_PROMPT_V2: ask the frames which kind (setting + era). **Said "unknown" 32 of 33.**
 - Place-phrase strip: removes "in palace", "on street" (the scene was leaking into the picture).

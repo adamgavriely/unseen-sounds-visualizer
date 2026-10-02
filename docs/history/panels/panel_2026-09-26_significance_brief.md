@@ -20,13 +20,13 @@ picture subject (Qwen3.8) → Qwen-Image-2512 picture in a side panel. Baselines
 per-sound P/R/F1; viewer cost = 4 × miss + 2 × wrong picture; paired clip bootstrap 2000, seed 0.
 Gold: one annotator (Adam), 139 clips = DEV 49 (33 needed sounds), TEST 60, slice B 30.
 
-**DEV 49, current system, gate − blind, same timing** (`docs/NIGHT_REPORT_2026-09-25.md` §5):
+**DEV 49, current system, gate − blind, same timing** (`docs/history/daily_notes/NIGHT_REPORT_2026-09-25.md` §5):
 F1 0.38 vs 0.33, ΔF1 +0.048 [−0.054, +0.131] **null**; ΔP +0.115 [+0.020, +0.204] sig; ΔFA/clip −0.53
 [−0.78, −0.31] sig; Δcost −0.82 [−1.39, −0.20] sig; clean-clip accuracy +0.23 [+0.07, +0.39] sig.
 **vs SILENCE**: F1 +0.38 [+0.24, +0.50] sig; viewer cost −0.16 [−0.74, +0.41] **null**.
 **TEST 60** (read twice deliberately; further looks need Adam's yes): the old-timing gate vs silence F1 +0.29
 [+0.20, +0.38], vs blind ΔF1 +0.028 null, ΔP +0.062 sig, ΔR −0.076 sig (gate loses 6 needed sounds), FA −0.55
-sig (`docs/GOLD_RERUN_2026-09-22.md`). Current TEST F1 ≈ 0.38–0.40. Blind/caption at new timing not rendered on TEST.
+sig (`docs/history/analyses/GOLD_RERUN_2026-09-22.md`). Current TEST F1 ≈ 0.38–0.40. Blind/caption at new timing not rendered on TEST.
 
 **Why F1 is null vs blind** (anatomy, TEST + DEV): the gate removes 2/3 of on-screen pictures (31 → 10) but
 silences 6 needed sounds (a bird called "visible" because other birds are on screen; a visible bell while
@@ -44,11 +44,11 @@ the clips the project exists for) −0.50 null (pictures weakest there).
 **Pictures (human, blind, Adam)**: round 2 on 50 fresh clips — today 14/54 understood, new generator 26/54
 (+0.22 sig), generator + V3 text 32/54 (+0.33 sig, but V3 vetoed for one invented object). A frozen final
 setup (Qwen-Image-2512 + guarded scene-kind prompt + templates + word cards) awaits Adam's one confirmation
-sitting (168 cards, 50 frozen clips; `docs/freeze_picture_setup_2026-09-25.md`). Three automatic picture
+sitting (168 cards, 50 frozen clips; `docs/history/preregistrations/freeze_picture_setup_2026-09-25.md`). Three automatic picture
 checkers failed calibration against Adam.
 
 **Timing**: onset rule on DEV F1 +0.10 sig (selected, 3/4 recoveries in-sample); TEST second look
-inconclusive (`docs/test_second_look.md`). No span cap (Adam's principle); 4/15 TEST pictures linger > 2 s.
+inconclusive (`docs/history/analyses/test_second_look.md`). No span cap (Adam's principle); 4/15 TEST pictures linger > 2 s.
 
 **Rules we keep** (break one only with a stated reason): a shared stage (detector, timing, display bar) is
 never chosen by ΔF1 — only by the BLIND system's own DEV F1; primary metric not changed after seeing numbers

@@ -1,8 +1,8 @@
-> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/prereg_v4.md` amendment 21 (final TEST table), `docs/WEEK_PLAN_2026-09-26.md`, `docs/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
+> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/history/preregistrations/prereg_v4.md` amendment 21 (final TEST table), `docs/history/daily_notes/WEEK_PLAN_2026-09-26.md`, `docs/history/daily_notes/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
 
 # Supervisor update — Visual Augmentation of Audio Semantics for Accessibility
 
-*Adam Gavriely, 16 September 2026. Detail: `docs/EXECUTIVE_SUMMARY.pdf` (plain language) and
+*Adam Gavriely, 16 September 2026. Detail: `docs/supervisor/EXECUTIVE_SUMMARY.pdf` (plain language) and
 the thesis draft `docs/report/report.pdf` (19 pages).*
 
 This is my first update and it comes late — I am sorry. The short version: the system from

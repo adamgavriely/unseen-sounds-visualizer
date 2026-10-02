@@ -7,7 +7,7 @@ update and the meeting page); the briefs are kept so the questions asked are on 
 
 | date | panel | outcome applied in |
 |---|---|---|
-| 2026-09-15 | 4 Fables: how to score / the reference sentence | `docs/prereg_av_reference.md`, `docs/prereg_gap_closing.md` |
+| 2026-09-15 | 4 Fables: how to score / the reference sentence | `docs/history/preregistrations/prereg_av_reference.md`, `docs/history/preregistrations/prereg_gap_closing.md` |
 | 2026-09-15 | 2 Fables: improve the gap-closing concept (quiz design) | report §evaluation (proposed, not built) |
 | 2026-09-16 | 10 Fables: what would bring real value in scoring and evaluation | oracle correction, cost tables, trade-off figure, statistics honesty, supervisor update |
-| 2026-09-17 | 8 Fables: the 20-minute meeting page | `docs/supervisor_meeting/meeting_page/` |
+| 2026-09-17 | 8 Fables: the 20-minute meeting page | `docs/supervisor/supervisor_meeting/meeting_page/` |

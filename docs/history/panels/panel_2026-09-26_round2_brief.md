@@ -1,11 +1,11 @@
 # Panel 2026-09-26 — round 2 brief: critique each other, then vote
 
-Read all five round-1 answers: `docs/panel_2026-09-26_round1.md`.
+Read all five round-1 answers: `docs/history/panels/panel_2026-09-26_round1.md`.
 
 ## Corrections to the round-1 brief (verified)
 - **CAPTION is not gated** (P4 is right): `benchmark/run_protocol.py` l.156–161 sets `GATE_ENABLED=False` for
   `audio_caption`. Every "pictures vs caption" number compares gated pictures with *ungated* text.
-- **The brief quoted an old TEST row** (P5 is right). The single deliberate TEST look of 23 Sep (`docs/prereg_v4.md`
+- **The brief quoted an old TEST row** (P5 is right). The single deliberate TEST look of 23 Sep (`docs/history/preregistrations/prereg_v4.md`
   "THE SINGLE TEST LOOK", final cell, old timing, 60 clips): ours vs blind ΔF1 +0.047 [−0.057, +0.134] null,
   **ΔP +0.143 [+0.034, +0.264] sig, Δcost +0.73 [+0.20, +1.33] sig**; vs silence all 60 +0.33 [−0.33, +1.07] null,
   **unseen 13 clips +3.08 [+1.08, +5.38] sig** (precision 0.846 there). Then on 24 Sep TEST was read again for the

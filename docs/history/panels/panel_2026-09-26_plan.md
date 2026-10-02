@@ -1,6 +1,6 @@
 # Panel 2026-09-26 — the merged plan, v2 (round 3 amendments merged; round 4: final sign)
 
-Rounds: `docs/panel_2026-09-26_round1.md`, `_round2.md`, `_round3.md`. Round 3: P5 signed (dissent on D2
+Rounds: `docs/history/panels/panel_2026-09-26_round1.md`, `_round2.md`, `_round3.md`. Round 3: P5 signed (dissent on D2
 recorded), P1/P2/P3/P4 signed with amendments, all merged below. Where two amendments conflicted, the choice is
 marked **[merge]** with its reason.
 
@@ -86,7 +86,7 @@ clips for a true +0.03–0.05); the honest gain is a **reporting** change, not a
    `score_per_sound.py`, `arm_compare.py`, `judge_direct.py` and `timing_audit.py` are not pointed at it, and
    the TEST render directories are excluded from every script that loops over both halves. The assistant reads
    TEST job logs for completion and errors only; no per-clip line (gate verdicts, subjects) is quoted anywhere
-   until Adam's yes. Adam's yes/no is written into `docs/prereg_v4.md` with a timestamp before any number
+   until Adam's yes. Adam's yes/no is written into `docs/history/preregistrations/prereg_v4.md` with a timestamp before any number
    exists. If no, the renders are never scored in this thesis. If yes, the table is scored once with families 1
    and 2 and the category rows, and the read joins the history table as the fifth. No other TEST number is read
    after it. (P5's dissent — a fifth read — recorded.)
@@ -111,6 +111,6 @@ detector bars, a cap, any change to the sealed confirmation sitting.
 [merge] choices in particular.
 
 ## Round 4: SIGNED 5/5 (2026-09-26)
-Execution notes adopted (`docs/panel_2026-09-26_round4.md`): B.3 Holm via a new helper returning the draws,
+Execution notes adopted (`docs/history/panels/panel_2026-09-26_round4.md`): B.3 Holm via a new helper returning the draws,
 with an equality assert against the printed row; B.4 derived text tags restricted to ours' **placed** spans, with a
 per-clip span-equality print; B.7's re-score listed in the read history.

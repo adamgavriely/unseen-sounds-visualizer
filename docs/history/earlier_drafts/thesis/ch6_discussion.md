@@ -1,7 +1,7 @@
 # Chapter 6 — Discussion (draft, 27 Sept 2026)
 
-*Every number below is taken from Chapter 5 (`docs/thesis/ch5_results.md`) or from the pre-registration record
-(`docs/prereg_v4.md`), which name the committed result files. Items marked **[pending]** are filled when their run or
+*Every number below is taken from Chapter 5 (`docs/history/earlier_drafts/thesis/ch5_results.md`) or from the pre-registration record
+(`docs/history/preregistrations/prereg_v4.md`), which name the committed result files. Items marked **[pending]** are filled when their run or
 sitting finishes.*
 
 ## 6.1 What the results mean for a DHH viewer: restraint before recall
@@ -12,7 +12,7 @@ sounds (§5.4). That is about ten wrong pictures removed for each needed sound l
 
 Whether this is a good trade depends on the price of a wrong picture. The modelled viewer cost puts a missed
 sound at 4 and a wrong picture at β; a picture is then worth showing when the chance that it is right is above
-β / (4 + β) (`docs/beta_specification.md` §1), one in three at β = 2. So β sets how ready the system should be to
+β / (4 + β) (`docs/history/plans/beta_specification.md` §1), one in three at β = 2. So β sets how ready the system should be to
 draw.
 
 Because β for DHH viewers is not known, the result is an interval (§5.5). **On TEST, the gated system is the
@@ -98,10 +98,10 @@ Recognition is not the only bar: a picture can be recognised and still say somet
 rejected because it invented an object (a thud drawn as a door), and the new generator showed one wrong object (a
 ringing phone drawn as a desk bell). A DHH viewer cannot check a picture against the sound. The image-generation
 panel ranked an invented object as the worst picture error, above drawing what is already visible
-(`docs/panel3_topic2_rounds.md`).
+(`docs/history/panels/panel3_topic2_rounds.md`).
 
 The project therefore wrote a **false-message rule** before the final sitting
-(`docs/freeze_picture_setup_2026-09-25.md`, rule 2). In plain words: a picture is a false message if it shows as the
+(`docs/history/preregistrations/freeze_picture_setup_2026-09-25.md`, rule 2). In plain words: a picture is a false message if it shows as the
 maker of the sound an object that is not the source (or a label in the source's family chain, its short qualifier,
 or a word on a closed list declared in advance), or if it shows a person for a sound that is not a human sound. The
 frozen final setup, Qwen-Image-2512 with the V3.1 text, is judged as one package in a sealed sitting: 81 frozen
@@ -165,11 +165,11 @@ of this kind are already used in sound-event detection (Bilen et al., 2020).
 under speech and music. The unscored held-out AudioSet-Strong set, weighted towards complex scenes, is ready as its
 test set.
 
-**The DHH user study, as designed** (`docs/beta_specification.md` §5, pre-registered, not run). Five to ten DHH
+**The DHH user study, as designed** (`docs/history/plans/beta_specification.md` §5, pre-registered, not run). Five to ten DHH
 viewers watch the rendered side-panel output, with real pictures and real timing, and after each clip answer one
 fixed question: "Did this panel help you, hurt you, or neither?". An ordinal regression, helped ~ a × (missed needed
 sounds) + b × (wrong pictures), gives the measured price β̂ = 4b / a with a 95 % interval. The fit is repeated within
-importance and clip category, because a β that changes with context is itself a finding. A hearing sound-off pilot was also designed (`docs/panel3_topic3_rounds.md`); it would use
+importance and clip category, because a β that changes with context is itself a finding. A hearing sound-off pilot was also designed (`docs/history/panels/panel3_topic3_rounds.md`); it would use
 DEV clips only and would be reported as a proxy, never as a DHH study.
 
 **Benchmark v2.** At least 300 clips, as the proposal planned; at least two annotators with agreement reported; a β
@@ -200,4 +200,4 @@ cost curve and logged protocol let the next system, and the first DHH study, be 
 
 ## References
 
-All works cited in this chapter are listed in the shared reference list, `docs/thesis/references.md`.
+All works cited in this chapter are listed in the shared reference list, `docs/history/earlier_drafts/thesis/references.md`.

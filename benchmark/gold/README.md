@@ -1,3 +1,24 @@
+# benchmark/gold — labels, scorer and scoring harness
+
+This folder holds the human labels, the per-sound scorer, and the harness that scored every version of the system.
+Most of its ~500 files are per-round experiment scripts and their result files; they stay here because the
+pipeline imports some of them and the development record cites them by path. The files that matter for the final
+system:
+
+| purpose | files |
+|---|---|
+| **Labels** | `annotations/gold_AG.json` (all per-sound labels), `dev_stems.txt`, `test_stems.txt`, `tagger_split.json` |
+| **Scorer** | `score_per_sound.py` (matching rules, cost), `holm_table.py`, `dev_candidates_check.py` (bootstrap) |
+| **Harness** (used by the pipeline too) | `round13_dev.py` (variants; the final system is `SHIP8+MD3+WW5+SL`), `tagger_prep.py` (imported by `src/listener_prep.py`), `merged_dev.py`, `test_vs_ship8.py`, `final_test.py`, `parity_check.py` |
+| **Decision trail** | `inspector_trail_export.py`, `render_trail_media.py` → `docs/inspector2/` |
+| **Analyses cited in the report** | `ceiling_ship7.md`, `visible_weight_sweep.md`, `final_test_ship8.{json,md}`, `holm_test_final_v33_test_bench.json`, `ledger_*.json` |
+| **Labelling tool** | `index.html`, `tool_template.html` (guideline) |
+| Everything else | per-round experiment scripts and results (`expect*`, `nameall*`, `weakwitness*`, …), described in `docs/history/preregistrations/prereg_round13_detector_push.md` |
+
+Short codes in file names (SHIP8, WW5, …) are explained in the report, Appendix D.
+
+---
+
 # Gold set (human annotation of the 100 test clips)
 
 Why: the thesis has one annotator (Adam) with a single clip-level label; every automatic

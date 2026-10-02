@@ -19,7 +19,7 @@ Nothing below reads Adam's tags or any gold label of DEV, TEST, TEST2, the 415 o
 2. **AudioSet-Strong clips** (Adam, 2026-09-30: human strong labels are useful). Evaluation split only, from the pool
    left after excluding every YouTube id in the fresh set's exclusion union, the 500 ids drawn for the 415, the 500 ids
    drawn for the fresh set, and any id anywhere under `benchmark/`, `data/`, `docs/`, `tagger/`. The fresh set itself
-   (422 clips) is NOT used: it is a sealed confirmation set (`docs/prereg_fresh_confirm_set.md`). Keep a candidate iff
+   (422 clips) is NOT used: it is a sealed confirmation set (`docs/history/preregistrations/prereg_fresh_confirm_set.md`). Keep a candidate iff
    its strong labels have >= 2 distinct depictable non-speech, non-music event types, it is not a still image, and
    BEATs n_sounds >= 2. Order: `random.Random(20260930)` shuffle of the eligible pool. At most 30 in the tool.
    The strong labels stay private (`benchmark/gold/tagger_audioset_sources.json`) and are used only to check Adam's
@@ -35,7 +35,7 @@ Nothing below reads Adam's tags or any gold label of DEV, TEST, TEST2, the 415 o
   stays untouched.
 - Target: 53 clips (a001–a053), so the tool lists 100. `tagger_refresh.py` uses MAX_AUDIOSET = 53 and no web clips.
 - Disclosure: eval split only, so BEATs/PANNs (trained on AudioSet train) see unseen clips; DASM's checkpoint was picked
-  on AudioSet-Strong eval (`docs/prereg_round6_dasm.md`), so these clips slightly favour DASM.
+  on AudioSet-Strong eval (`docs/history/preregistrations/prereg_round6_dasm.md`), so these clips slightly favour DASM.
 
 ## Amendment 2 (Adam, 2026-09-30 00:47 UTC, before any new clip is in the tool): "I don't care if BEATs detected"
 - New AudioSet clips no longer need BEATs n_sounds >= 2; the keep rule is >= 3 labelled sound types + download,

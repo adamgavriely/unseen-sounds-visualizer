@@ -8,9 +8,9 @@ files named; nothing is rounded up.*
 
 ### Detector (stage 4): three candidates, one held-out table
 
-- **FLAM attempt 2** — FAILED as pre-registered (docs/prereg_v4.md §4): buried-sound recall
+- **FLAM attempt 2** — FAILED as pre-registered (docs/history/preregistrations/prereg_v4.md §4): buried-sound recall
   70% ✔, clear 88% ✔, but 62 false spans/min ✘ and 8/23 dev reals lost ✘.
-- **PretrainedSED BEATs-strong** (docs/prereg_psed.md) — FAILED on one of eight bars: DCASE
+- **PretrainedSED BEATs-strong** (docs/history/preregistrations/prereg_psed.md) — FAILED on one of eight bars: DCASE
   masked recall 34% (BEATs 9.5%), clear 44% (33%), FP 3.9/min (5.2), onset error 0.19 s
   (0.35), 91% within 0.5 s (80%), phantoms gone 70/77 — all ✔; **dev reals kept 7/23** ✘
   (bar ≥ 21). Diagnosis: genuine low scores on long ambient sounds under music/speech.
@@ -31,7 +31,7 @@ files named; nothing is rounded up.*
   v4 detector — and a **detector arm** was pre-registered with its rule fixed before any
   protocol score: PSED rows (v4a, v4ab) run next to the BEATs rows; PSED is adopted iff
   v4ab's gated score beats v4b's with a paired CI not entirely below 0. Both 20-clip
-  checks are queued. Thesis wording is in docs/prereg_v4.md (last section).
+  checks are queued. Thesis wording is in docs/history/preregistrations/prereg_v4.md (last section).
 
 ### Gate (stage 5)
 
@@ -66,7 +66,7 @@ Fable's verdict: complete the coded rubric, in code not in the prompt, declared 
 to every system and every row, keep the old judge as a second column, and put the real
 effort into making the gate silence more. Done:
 
-- **Judge v4 (rubric-enforced)**, declared in docs/prereg_v4.md: on no-due clips a
+- **Judge v4 (rubric-enforced)**, declared in docs/history/preregistrations/prereg_v4.md: on no-due clips a
   non-empty panel (or a caption naming a sound) is capped at 2. `scripts/rubric_enforce.py`.
 - Under it: v3 gated **2.83 vs blind 2.73** (+0.10, CI [−0.09, +0.30]); v3 under the v4 pair
   2.88 vs 2.80; v4b 20-clip 2.65 vs 2.40 (+0.25, n = 20). The gate is finally *visible*,
@@ -123,7 +123,7 @@ met by the letter (mean > 0, CI not below 0) and by a hair; the rule should have
 margin. Stated as such.
 
 **Qwen3.8 thinking arm, final:** on-screen 51.2%, off-screen 78.0% — worse than direct
-(56.3 / 82.6) and 3× slower; thinking stays off (docs/prereg_qwen38_visibility.md).
+(56.3 / 82.6) and 3× slower; thinking stays off (docs/history/preregistrations/prereg_qwen38_visibility.md).
 
 ## Decisions for the morning
 

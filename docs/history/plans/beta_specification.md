@@ -28,7 +28,7 @@ This is why beta is not a scoring detail. It sets how trigger-happy the system s
 > (0.35, 1.37 [0.71, 2.19], 4.30) come from the 23 Sep DEV curve under `use_v4("59")` (8-s cap on, before amendment 21).
 > Final: ours cheaper than blind above β = 0.39 (TEST, `test_final_v33`) / 0.46 (DEV, `dev_monocap_v31`); cheaper than
 > silence below β = 2.56 (TEST) / 2.33 (DEV); the oracle line is not crossed within β ≤ 4, and 4.30 is not verified from a
-> committed file (`docs/thesis/ch5_results.md` §5.5). The text below is kept as a record.
+> committed file (`docs/history/earlier_drafts/thesis/ch5_results.md` §5.5). The text below is kept as a record.
 
 Two ends of the range are fixed by the structure of the problem, not by preference:
 
@@ -122,7 +122,7 @@ a clip and before the number is compared with anything in section 2.
 ## 6. What this means for the thesis
 
 > **Superseded 2026-09-27 — see ch5 (final crossings 0.39/2.56 TEST, 0.46/2.33 DEV).** The sentence below uses the
-> stale 1.4 and 0.35. Final wording (`docs/thesis/ch5_results.md` §5.5): on TEST the gated system is the cheapest of the
+> stale 1.4 and 0.35. Final wording (`docs/history/earlier_drafts/thesis/ch5_results.md` §5.5): on TEST the gated system is the cheapest of the
 > three for β between 0.39 and 2.56 (DEV 0.46 to 2.33). The text below is kept as a record.
 
 The significance of this work is conditional, and saying so precisely is stronger than picking a

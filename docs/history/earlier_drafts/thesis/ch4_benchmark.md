@@ -4,7 +4,7 @@
 splits, the per-sound metric, the modelled viewer cost and the statistics. Results are in Chapter 5. Clip and sound
 counts were computed for this chapter from `benchmark/gold/annotations/gold_AG.json` (export of 22 Sept 2026,
 09:23 UTC) with the scorer's own loader (`benchmark/gold/score_per_sound.py`); they agree with
-`docs/GOLD_RERUN_2026-09-22.md` §1. Other sources are named beside each number. **[pending]** marks items not yet
+`docs/history/analyses/GOLD_RERUN_2026-09-22.md` §1. Other sources are named beside each number. **[pending]** marks items not yet
 available.*
 
 ## 4.1 Clips: sources, populations and categories
@@ -65,7 +65,7 @@ it); **obvious**, meaning that with the sound off a viewer would still know the 
 (Chapter 2 §2.1) to whole sounds: a sound needs a picture only if the video does not already show that it is
 happening.
 
-**Importance (rule of 22 Sept 2026,** declared before the gold re-run; `docs/metric_per_sound.md`). Importance is a
+**Importance (rule of 22 Sept 2026,** declared before the gold re-run; `docs/history/plans/metric_per_sound.md`). Importance is a
 property of the sound, not of the screen: the annotator rates it **as if the screen were black**. **1** = the steady
 noise of the place, with no start and no end (distant traffic, wind, rain). **2** = something happens that you can
 say in one sentence (footsteps, a door, one bird call). **3** = danger or a key moment of the story (siren, alarm,
@@ -99,15 +99,15 @@ FlexSED's bar passes two of its three adoption rules and misses the third by 0.0
 
 The only reliability number so far is **intra-rater**, and it is on an older, clip-level label of an earlier
 274-clip set: the author re-labelled 60 clips blind to his first labels and agreed with himself on 78 %, κ 0.60
-(`docs/EXECUTIVE_SUMMARY.md` §11; `docs/LEDGER_2026-09-26.md`, row F4; `docs/PLAN.md`). It does not measure this per-sound gold. A **second annotator** will label 30
+(`docs/supervisor/EXECUTIVE_SUMMARY.md` §11; `docs/history/daily_notes/LEDGER_2026-09-26.md`, row F4; `docs/history/plans/PLAN.md`). It does not measure this per-sound gold. A **second annotator** will label 30
 DEV and TEST clips (no slice B; amendment 21), stratified by category, with the same fields. Declared reading
-(`docs/FOR_SUPERVISOR.md` §3a): Cohen's κ on *needed* is the key number; κ ≥ 0.6 counts as substantial, κ < 0.4
+(`docs/supervisor/FOR_SUPERVISOR.md` §3a): Cohen's κ on *needed* is the key number; κ ≥ 0.6 counts as substantial, κ < 0.4
 would make the definition unreliable. Also reported: κ on visible and obvious, weighted κ on importance, median
 onset difference. **Result: κ [pending].**
 
 ## 4.6 The per-sound metric
 
-The rule was set on 19 Sept 2026 after a ten-reviewer debate (`docs/metric_per_sound.md`) and is implemented in
+The rule was set on 19 Sept 2026 after a ten-reviewer debate (`docs/history/plans/metric_per_sound.md`) and is implemented in
 `score_per_sound.py`. One rule scores every system.
 
 **Matching, time first, label second.**
@@ -149,7 +149,7 @@ F1 prices a missed sound and a wrong picture the same; a viewer may not. The **m
 
     cost = 4 × (needed sounds with no picture) + β × (wrong pictures)
 
-(`docs/beta_specification.md` §1). A miss is fixed at 4, so only β, the price of a wrong picture, varies. The
+(`docs/history/plans/beta_specification.md` §1). A miss is fixed at 4, so only β, the price of a wrong picture, varies. The
 weights (4 and 2) predate the gold, but the cost was promoted to a reported outcome after F1 came out null
 (amendment 9): it is a **post-hoc** outcome, with β = 2 *assumed*. The cost implies a decision rule: show a picture
 when its chance of being right exceeds **p\* = β / (4 + β)** (11 % at β = 0.5, 33 % at β = 2, 50 % at β = 4).
@@ -189,7 +189,7 @@ split, where every sound is human-timed, so false spans per minute is a real fal
 ## 4.10 What a release would contain, and what v2 needs
 
 This is a **pilot benchmark**: 139 clips, one annotator. The protocol is the contribution; the numbers are
-provisional. The evaluation panel's minimal release (`docs/panel3_topic3_rounds.md`, T3-c, T3-b):
+provisional. The evaluation panel's minimal release (`docs/history/panels/panel3_topic3_rounds.md`, T3-c, T3-b):
 
 1. clip IDs, timestamps and licence notes, no video (most clips are "research use; not redistributed", and 28
    sources must first be recorded);
@@ -211,4 +211,4 @@ with a script that scores a submission folder (T3-a, T3-b).
 
 ## References
 
-All works cited in this chapter are listed in the shared reference list, `docs/thesis/references.md`.
+All works cited in this chapter are listed in the shared reference list, `docs/history/earlier_drafts/thesis/references.md`.

@@ -5,7 +5,7 @@ seconds limit"). This page is committed before the TEST run is submitted; nothin
 after the TEST numbers are seen.
 
 **Disclosure.** TEST was looked at once deliberately on 2026-09-23 (the planned single look of the
-adopted cell, `test_final_v30`), and once accidentally before that (disclosed in `docs/prereg_v4.md`).
+adopted cell, `test_final_v30`), and once accidentally before that (disclosed in `docs/history/preregistrations/prereg_v4.md`).
 This is the **second deliberate look**. The change being confirmed was chosen on DEV, where the five
 early cases were found; 3 of its 4 DEV recoveries are those cases. The DEV gain is therefore the
 selection estimate and is optimistic; the TEST number is the one to report.

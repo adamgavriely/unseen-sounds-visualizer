@@ -1,6 +1,6 @@
 # Topic 1 — Sound detection (3 reviewers × 3 rounds)
 
-Read `docs/panel3_common_context.md` first. Adam: *"we HAVE to recognize more sounds — losing so many sounds is very bad."*
+Read `docs/history/panels/panel3_common_context.md` first. Adam: *"we HAVE to recognize more sounds — losing so many sounds is very bad."*
 
 ## What the detector is and how it performs
 - **Stack:** BEATs (AudioSet-2M, 527 classes, 2-s windows / 0.25-s hop) ∪ FlexSED (Dasheng + CLAP text queries over 215
@@ -18,7 +18,7 @@ Read `docs/panel3_common_context.md` first. Adam: *"we HAVE to recognize more so
   0.000–0.026. Without those filters FlexSED under speech/music gives 2–5 false labels per clip.
 - **AudioSet-Strong, 280 human-labelled clips (out of sample, descriptive):** BEATs 0.35: consequential recall 54.5 %,
   6.41 false spans/min; shipped stack 51.3 %, 4.56; FlexSED at 0.8 recovers 0 of 31 masked consequential events.
-- **Detector round today (amendments 22–23, `docs/prereg_v4.md`; Stage 0 on the 280 clips,
+- **Detector round today (amendments 22–23, `docs/history/preregistrations/prereg_v4.md`; Stage 0 on the 280 clips,
   `benchmark/detector_round_stage0.json`):**
 
       cell                          conseq onset-recall  recall   masked(31)  false/min
@@ -31,7 +31,7 @@ Read `docs/panel3_common_context.md` first. Adam: *"we HAVE to recognize more so
   By the rule written first nothing was picked (no cell at ≤ shipped false spans raised recall). The cascade E is now a
   separate, disclosed question tested on DEV renders (amendment 23: blind arm must gain ≥ 2 hits at viewer cost ≤ shipped);
   renders are running.
-- **Tried and dropped (13 pre-registered attempts, `docs/LEDGER_2026-09-26.md`):** PANNs alone, CLAP verifier, Qwen2-Audio
+- **Tried and dropped (13 pre-registered attempts, `docs/history/daily_notes/LEDGER_2026-09-26.md`):** PANNs alone, CLAP verifier, Qwen2-Audio
   verifier, Demucs/HTDemucs/DeepFilterNet separation views, FLAM ×2, PretrainedSED (5 backbones, ensemble), fusion V1–V3,
   AST/CED votes, hysteresis onset, rank admission, prompt ensemble, per-family FlexSED bars.
 - **Web check (27 Sept):** no newer detector with public weights; boundary-aware SED (PSDS1 49.6, arXiv 2601.04178) and

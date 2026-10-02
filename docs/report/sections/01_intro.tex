@@ -52,42 +52,51 @@ the answer to each.
         it is neither visible (``seen making the sound now'') nor obvious (``with the sound off, the viewer
         would still know it is happening''), and it is an event, not steady background
         (Section~\ref{sec:task}).
-  \item \textbf{A per-sound benchmark}: 189 human-labelled clips, of which 159 form the merged development
-        (71) and test (88) sets used for the final numbers, with timed labels, visibility and importance per
-        sound (Section~\ref{sec:benchmark}).
+  \item \textbf{A per-sound benchmark}: a development set of 71 clips and a test set of 88 clips with timed labels,
+        visibility and importance for every sound (Section~\ref{sec:benchmark}).
   \item \textbf{A metric that matches the decision}: hits, wrong pictures split by cause, and a viewer cost
         that prices a missed sound at twice a wrong picture, with a sensitivity scale for on-screen pictures
         (Section~\ref{sec:metric}).
-  \item \textbf{A working pipeline} (\Dp) of open models with no training, runnable on one video
-        (\fp{main.py}; a ComfyUI wrapper lives in \fp{comfyui_nodes/}) (Section~\ref{sec:system}).
-  \item \textbf{A complete, pre-registered development record}: every idea, its pass bar written before the run,
-        its result and the reason it was kept or dropped (Section~\ref{sec:history}, Appendix~\ref{app:rounds}).
+  \item \textbf{A working system} of open models with no training, runnable on one video (\fp{main.py}; a
+        ComfyUI wrapper is in \fp{comfyui_nodes/}) (Section~\ref{sec:system}).
   \item \textbf{An error analysis} that locates the limit of today's open models for this task: sounds no model
         hears, and the confusion between an object being present and the object making the sound
         (Section~\ref{sec:analysis}).
-  \item \textbf{Negative results about automatic evaluation}: references written by models are circular or decide
-        visibility at chance, and LLM judges cannot tell a picture from a text tag (Section~\ref{sec:judge-era}).
+  \item \textbf{A complete, pre-registered development record}: every idea tried, its pass bar written before the
+        run, its result and the reason it was kept or dropped, including negative results about automatic
+        evaluation with model judges (Appendix~\ref{app:history}).
 \end{enumerate}
 
 \subsection{How to read this report}
 This is a technical report in the sense of the course guidelines: it aims at a depth that lets a reader
-reproduce the system and its numbers. Section~\ref{sec:related} places the work. Sections~\ref{sec:task}
-and~\ref{sec:benchmark} define the task, the metric and the data. Section~\ref{sec:system} describes the frozen
-system stage by stage with every threshold. Section~\ref{sec:history} gives the development process and history,
-Section~\ref{sec:results} the results (raw counts and derived scores), Section~\ref{sec:analysis} the error
-analysis, Section~\ref{sec:disclosures} the disclosures, Section~\ref{sec:limits} limitations and future work, and
-Section~\ref{sec:repro} exact reproduction steps. The appendices hold the prompts, the full configuration, the
-round-by-round table and a glossary.
+reproduce the system and its numbers. The main body describes the \textbf{final system} only.
+Section~\ref{sec:related} places the work. Sections~\ref{sec:task} and~\ref{sec:benchmark} define the task, the
+metric and the data. Section~\ref{sec:system} describes the final system stage by stage with every threshold,
+Section~\ref{sec:results} gives the results, Section~\ref{sec:analysis} the error analysis,
+Section~\ref{sec:disclosures} the threats to validity, Section~\ref{sec:limits} limitations and future work, and
+Section~\ref{sec:repro} exact reproduction steps.
+
+The final system was reached through a pre-registered development process of about seventy rounds. That process,
+the earlier versions of the system and every rejected idea are described in Appendix~\ref{app:history}; the body
+refers to it only where a rejected alternative explains a design choice. Appendix~\ref{app:sources} lists the
+result file behind every number in the body, and Appendix~\ref{app:glossary} maps the short internal names used in
+the development logs to the plain names used here.
 
 \paragraph{Plain-language summary.} The system listens to a video and looks at it. When it hears something
 (for example a dog barking) it asks: can the viewer already see the dog barking? If yes, it does nothing. If
-no, it draws a picture of a barking dog and shows it next to the video while the bark is heard. On new test
+no, it draws a picture of a barking dog and shows it next to the video while the bark is heard. On the test
 videos it finds about 37\,\% of the sounds a deaf viewer would need, and about half of the pictures it shows are
 right. Most of what it misses, it misses because no current open model hears the sound under speech and music,
 or because the vision model believes a visible object is the source when it is not.
 
+\paragraph{Names used in this report.} \emph{The final system} is the code at git tag
+\texttt{detector-frozen-2026-10-02}, configured by \cfgv{config.use_shipped()}. \emph{The September baseline}
+is the system of the September test table, configured by \cfgv{config.use_scored()}. \emph{Show nothing} is a
+system that never shows a picture. \emph{The development set} and \emph{the test set} are defined in
+Section~\ref{sec:benchmark}; \emph{the screening set} is 415 AudioSet-Strong clips used only to screen audio
+rules.
+
 \paragraph{Repository map.} The code is in \fp{src/} (one package per stage), the entry point is
-\fp{main.py}, the configuration is \fp{config.py} (\cfgv{use_shipped()} sets the frozen system), the benchmark
-and scoring harness are in \fp{benchmark/} and \fp{benchmark/gold/}, cluster job scripts in \fp{slurm/}, and every
-pre-registration, panel and decision log in \fp{docs/}. Appendix~\ref{app:glossary} explains the internal names
-(B0r, SHIP8, WW5, \ldots) that appear in the logs.
+\fp{main.py}, the configuration is \fp{config.py}, the benchmark and scoring harness are in \fp{benchmark/},
+cluster job scripts in \fp{slurm/}, this report in \fp{docs/report/}, and the development record in
+\fp{docs/history/}. The top-level \fp{README.md} gives the full layout.

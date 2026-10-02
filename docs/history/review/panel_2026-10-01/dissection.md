@@ -56,7 +56,7 @@ Audio Flamingo (A) whole-clip lists name the family.
 | C | tg_d133 | Fart 0.0 | 0.908 | 0.869 | 0.612 | YY | Fart@0.22 conf 0.94: stage 5 augment=false (a kind of Fart, whose source is visible - stay silent); Digestive@0.06 conf  |
 | C | tg_d133 | Fart 5.6 | 0.863 | 0.86 | 0.578 | YY | Fart@6.30 conf 0.91: stage 5 augment=false (source visible on screen (boxer dog) - stay silent) |
 
-Kill-flag analysis of the 6 strongly heard B misses (`docs/review/kill_flags_ship8.md`): Gasp — min span (0.25 s) + N2 + DASM
+Kill-flag analysis of the 6 strongly heard B misses (`docs/history/review/kill_flags_ship8.md`): Gasp — min span (0.25 s) + N2 + DASM
 clip veto; Train — CONT continuation veto (reverting adds 66 rows); rooster tg_d029 — mirror veto + FlexSED cross veto (Round 52
 running: conf >= 0.7 skips both); Dishes — mirror + N2 + K4A-D; Laughter — min span (fixed by MD3); Clapping — FlexSED bar +
 min span + PANNs. C-bucket gate kills: pet_shop Bird, bell_miami Bell, tg_d133 Fart ×2 (source judged visible; Adam's ratings:

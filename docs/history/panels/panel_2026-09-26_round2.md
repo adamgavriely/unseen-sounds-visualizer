@@ -1,6 +1,6 @@
 # Panel 2026-09-26 — round 2 answers
 
-Brief: docs/panel_2026-09-26_round2_brief.md
+Brief: docs/history/panels/panel_2026-09-26_round2_brief.md
 
 ## P1 — round 2
 (verbatim text kept in the session transcript; key points:)

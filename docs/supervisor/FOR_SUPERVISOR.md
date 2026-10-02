@@ -1,4 +1,4 @@
-> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/prereg_v4.md` amendment 21 (final TEST table), `docs/WEEK_PLAN_2026-09-26.md`, `docs/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
+> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/history/preregistrations/prereg_v4.md` amendment 21 (final TEST table), `docs/history/daily_notes/WEEK_PLAN_2026-09-26.md`, `docs/history/daily_notes/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
 
 # For the supervisor — where the project stands, and what needs a decision
 
@@ -11,7 +11,7 @@ place a reviewer can push.
 
 The pipeline shows a generated picture beside a video for ambient sounds whose source is off screen.
 The final evaluation was taken **once**, on 60 clips never used for any choice, under rules written
-down beforehand (`docs/prereg_v4.md`).
+down beforehand (`docs/history/preregistrations/prereg_v4.md`).
 
     TEST, 60 clips        precision   recall   wrong pictures/clip   cost to the viewer
     before this week        0.231      0.419        1.00                  3.67
@@ -69,7 +69,7 @@ there". The metric fixes a missed sound at 4 and calls the wrong-picture cost be
     [**Superseded 2026-09-27 — see ch5 (final crossings 0.39/2.56 TEST, 0.46/2.33 DEV).** The 0.35, 1.37 and 4.30 in
     this block are the 23 Sep DEV values (8-s cap on). Final: ours cheaper than blind above β = 0.39 (TEST) / 0.46
     (DEV) and cheaper than silence below β = 2.56 (TEST) / 2.33 (DEV); the oracle line is not crossed within β ≤ 4 and
-    4.30 is not verified from a committed file (`docs/thesis/ch5_results.md` §5.5).]
+    4.30 is not verified from a committed file (`docs/history/earlier_drafts/thesis/ch5_results.md` §5.5).]
   * The project's own September rubric asserted **2.0**, which lies inside that interval -- so on
     this evidence neither "we win at beta = 2" nor "we lose at beta = 2" is established.
   * The published DHH literature does not give one number. It gives a low beta for danger sounds
@@ -79,13 +79,13 @@ there". The metric fixes a missed sound at 4 and calls the wrong-picture cost be
   **What we need from you:** whether reporting an operating CURVE with these limits is acceptable
   for the thesis, or whether you want a single declared operating point defended. A viewer study to
   measure beta was designed and **not run** -- there is no DHH participant community available here.
-  The design is in `docs/beta_specification.md` if you want it attempted.
+  The design is in `docs/history/plans/beta_specification.md` if you want it attempted.
 
 **(c) ComfyUI as a demo.** You suggested it as a GUI for the pipeline; that was the right reading and
 an earlier assessment of it as an image generator answered the wrong question. It is built: the seven
 stages load as nodes, it accepts any video, and the gate is a switch a committee can flip. The
 server was killed by a memory limit on its first real run and the fix (more RAM) has not been
-re-tested. Status in `docs/ComfyUI.md`.
+re-tested. Status in `docs/comfyui/ComfyUI.md`.
 
   **What we need from you:** is this a defence artefact (~1 more day, no risk) or should it become
   the pipeline (~1 week, and it would have to reproduce the final numbers exactly before anything
@@ -96,7 +96,7 @@ re-tested. Status in `docs/ComfyUI.md`.
   * **An accidental look at TEST.** A script printed the TEST rows for the gate experiment before
     the planned single look. No decision was taken on them and the operating point had already been
     chosen on DEV, but the single-look guarantee is broken for that one comparison and is described
-    as "confirmatory" rather than clean. Full disclosure in `docs/prereg_v4.md`.
+    as "confirmatory" rather than clean. Full disclosure in `docs/history/preregistrations/prereg_v4.md`.
   * **TEST is composed slightly in our favour.** It carries 20 no-ambient clips to DEV's 9, and
     everything adopted is a detector change whose job is to stop the detector inventing sounds.
     This was written down *before* the TEST numbers were read, and results are reported per category

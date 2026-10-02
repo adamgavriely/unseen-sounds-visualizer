@@ -2,7 +2,7 @@
 
 *The system as scored in the final TEST table (amendment 21, tag `test_final_v33`); one call reproduces it:
 `config.use_shipped()`. Every choice below was made by a test with a bar written before the run; the alternatives
-that failed are listed with the reason (full ledger: `docs/LEDGER_2026-09-26.md`).*
+that failed are listed with the reason (full ledger: `docs/history/daily_notes/LEDGER_2026-09-26.md`).*
 
 ## 3.1 Task and output
 
@@ -59,4 +59,4 @@ TEST pictures outlast their sound by more than 2 s (a principled end rule could 
 
 ## References
 
-This chapter cites no literature; the shared reference list is `docs/thesis/references.md`.
+This chapter cites no literature; the shared reference list is `docs/history/earlier_drafts/thesis/references.md`.

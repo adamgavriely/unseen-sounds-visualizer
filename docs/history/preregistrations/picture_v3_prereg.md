@@ -3,7 +3,7 @@
 2026-09-24. Adam: pictures are drawn from the family tag instead of the specific sound; the scene must
 be used; the prompt and probably the model need to be much better; use a stronger judge; ask what is
 seen and whether it fits. Settled by a panel of five reviewers over two rounds
-(`docs/picture_panel_brief.md`, `docs/picture_panel_round2.md`); round 3 reviews the built code and
+(`docs/history/panels/picture_panel_brief.md`, `docs/history/panels/picture_panel_round2.md`); round 3 reviews the built code and
 this page before anything runs.
 
 ## The two arms (same sounds, same seed)
@@ -103,7 +103,7 @@ car-door sound, and only the scene could tell a car door from a house door. The 
 ## Amendment 2 — 2026-09-25, after round 2 of the night panel, before any N picture is seen or rated
 
 Written after V3's *subjects* on the 50 clips were read (text only) and before any picture of any arm
-was looked at or any rating received (`docs/panel_2026-09-25_brief.md`, `…_round2.md`).
+was looked at or any rating received (`docs/history/panels/panel_2026-09-25_brief.md`, `…_round2.md`).
 
 * **Adam rates today / N0 / N, as declared.** N stays: dropping it after reading its subjects would be
   a fork, and N vs N0 is the prompt-versus-model split he asked for. **Primary: N vs today.** N0 vs

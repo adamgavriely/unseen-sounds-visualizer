@@ -1,6 +1,6 @@
 # Topic 3 — How to evaluate a task nobody has evaluated before (3 reviewers × 3 rounds)
 
-Read `docs/panel3_common_context.md` first. Adam: *"this kind of work hasn't been done before and we need to think how to
+Read `docs/history/panels/panel3_common_context.md` first. Adam: *"this kind of work hasn't been done before and we need to think how to
 evaluate it properly."*
 
 ## What the system must get right (and what can go wrong)
@@ -9,7 +9,7 @@ moment (timing), understood at a glance (picture). Errors: a missed needed sound
 kind, or source already visible — redundant); a late/early picture; an unreadable or misleading picture.
 
 ## What exists now
-- **Per-sound gold metric** (`docs/metric_per_sound.md`, `benchmark/gold/score_per_sound.py`): a needed sound is a hit if a
+- **Per-sound gold metric** (`docs/history/plans/metric_per_sound.md`, `benchmark/gold/score_per_sound.py`): a needed sound is a hit if a
   same-family picture starts within [−0.5, +1.0] s of its onset; P/R/F1 per sound; **viewer cost** = 4 × misses + 2 × wrong
   pictures per clip (post hoc, weights from a September rubric); β operating curve (`cost_curve.py`); Holm-corrected
   secondary family; paired clip bootstrap. It never looks at what the picture shows.
@@ -22,7 +22,7 @@ kind, or source already visible — redundant); a late/early picture; an unreada
 - **Failed instruments (all recorded):** model-made references (circular); independent 4-model reference (chance on
   silence); "with vs without sound" audio-visual reference (49.5 %); gap-closing score (AUROC 0.53); six automatic picture
   checkers.
-- **A viewer study** was designed (`docs/beta_specification.md`) but not run: no DHH participants available; hearing
+- **A viewer study** was designed (`docs/history/plans/beta_specification.md`) but not run: no DHH participants available; hearing
   viewers with sound off would be a proxy.
 - **Integrity issues to manage:** TEST was exposed 10 times (5 deliberate); the primary (F1) is null by construction (MDE ≈
   0.13 at n = 60; ~320–570 clips needed); viewer cost was declared after F1 came out null; detector bars chosen on a split

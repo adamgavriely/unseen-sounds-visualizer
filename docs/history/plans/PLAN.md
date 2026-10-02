@@ -82,7 +82,7 @@ staying silent is the correct behaviour and the gate's whole reason to exist. Si
 gated system abstains far more than the baselines by construction, the error applied
 asymmetrically to the system under test. Empty candidates are now scored in code, not
 by the judge: 4 if the reference says nothing was missing, 0 otherwise. Written up in
-`docs/project_notes.tex` §Scoring an abstention.
+`docs/history/earlier_drafts/project_notes.tex` §Scoring an abstention.
 
 **2. The pilot measured one scenario.** Clips were taken alphabetically and `mixed/`
 sorts first, so every record came from the scenario that most flatters the blind

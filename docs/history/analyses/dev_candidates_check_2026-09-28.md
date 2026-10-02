@@ -90,11 +90,11 @@ against B1 (primary) and B0. Report only: nothing is shipped from this check.
 No bar is refitted on DEV; no TEST or slice-B clip is read; no second variant of any candidate.
 
 ## Amendment 1 (2026-09-28, Adam via the lead; written while job 31330563 was 35 s old, before any number of this check existed)
-**The check is now confirmatory.** DEV replaces the retired AudioSet test (`docs/prereg_round12_v2.md`). The candidates
+**The check is now confirmatory.** DEV replaces the retired AudioSet test (`docs/history/preregistrations/prereg_round12_v2.md`). The candidates
 were fixed before DEV was looked at, with the values frozen on the 280. Main goal: more needed sounds heard, fewer real
 sounds dropped.
 
-**Three more candidates (round 10, `docs/prereg_round10_rescue.md`, `benchmark/detector_round10.py`), values unchanged:**
+**Three more candidates (round 10, `docs/history/preregistrations/prereg_round10_rescue.md`, `benchmark/detector_round10.py`), values unchanged:**
 - **R1 — DASM agrees with a FlexSED 0.4–0.8 band candidate.** Band candidates per FlexSED column: spans at 0.4 (low 0.4,
   min 0.5 s) with peak < 0.8, no BEATs 0.175 span of the same canonical family within 1 s (such a candidate is discarded,
   not merged), BEATs self-veto (b 0.1218). Admitted iff DASM scores the family ≥ 0.359375 at some frame in

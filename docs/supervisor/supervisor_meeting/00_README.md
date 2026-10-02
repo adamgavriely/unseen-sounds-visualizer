@@ -1,4 +1,4 @@
-> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/prereg_v4.md` amendment 21 (final TEST table), `docs/WEEK_PLAN_2026-09-26.md`, `docs/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
+> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/history/preregistrations/prereg_v4.md` amendment 21 (final TEST table), `docs/history/daily_notes/WEEK_PLAN_2026-09-26.md`, `docs/history/daily_notes/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
 
 # Supervisor meeting — what is in this folder and how to use it
 

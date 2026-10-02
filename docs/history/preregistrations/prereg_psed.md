@@ -1,7 +1,7 @@
 # Pre-registration: PretrainedSED BEATs-strong as the detector (v4 stage 4, attempt ten)
 
 *Committed 2026-09-18 night, before the run. Decided with Adam after Fable's review of the
-two FLAM attempts (both failed on precision; docs/prereg_v4.md §4).*
+two FLAM attempts (both failed on precision; docs/history/preregistrations/prereg_v4.md §4).*
 
 ## What is swapped
 
@@ -66,4 +66,4 @@ where PSED hears Gobble/Turkey). Reading: frame-level fine-tuning on AudioSet-St
 model precise and well-timed but conservative on long ambient sounds under music and speech
 in YouTube video — the opposite failure to FLAM's. Recorded as attempt ten; BEATs stays. The
 held-out real-world table on gold slice B (benchmark/audioset_detector_eval.py, declared in
-docs/prereg_v4.md) is run for all three detectors regardless.
+docs/history/preregistrations/prereg_v4.md) is run for all three detectors regardless.

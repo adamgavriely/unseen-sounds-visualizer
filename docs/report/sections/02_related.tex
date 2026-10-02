@@ -35,14 +35,14 @@ benchmarked on MMAU~\cite{sakshi2024mmau}. In this project two of them (Qwen3-Om
 as \emph{listeners}: they are asked whether a candidate sound is present and to list what they hear, and their
 answers decide whether a weak detection is kept. Their free text never reaches the picture prompt, because asked
 ``what is making this sound?'' the listener named a different maker on 35 of 54 sounds (a hen's cluck became ``goats
-bleating''; \fp{docs/freeze_picture_setup_2026-09-25.md}).
+bleating''; \fp{docs/history/preregistrations/freeze_picture_setup_2026-09-25.md}).
 
 \paragraph{Vision--language models.} Qwen2.5-VL~\cite{bai2025qwen25vl}, LLaVA~\cite{liu2023llava} and their
 successors answer open questions about frames and are the only component that can decide whether a sound's source
 is visible without a fixed object list. Known failure modes matter for this task: a prior on answer letters in
 multiple choice~\cite{zheng2024pride}, weak handling of negation~\cite{alhamoud2025negbench}, and a tendency to
 treat a present object as the sounding one, which recent audio-visual benchmarks also report (the project's VLM
-panel notes list them, \fp{docs/review/vlm_panel_2026-10-01/f2_prompts.md}). Section~\ref{sec:analysis} shows that this last failure is the main limit of
+panel notes list them, \fp{docs/history/review/vlm_panel_2026-10-01/f2_prompts.md}). Section~\ref{sec:analysis} shows that this last failure is the main limit of
 the gate.
 
 \paragraph{Sound-source localisation and off-screen sound.} Self-supervised localisation~\cite{senocak2018localize,
@@ -53,7 +53,7 @@ negatives helps~\cite{juanola2025silence}. Off-screen separation~\cite{owens2018
 yoshida2023offscreen} outputs audio, not a decision about what the viewer needs. These models answer ``where?'', not
 ``whether?'', and none was found that decides ``visible and making the sound now''; two such signals
 (an audio-visual localiser and an audio-visual synchrony model) were tested as gate votes and rejected
-(Section~\ref{sec:history}).
+(Appendix~\ref{app:history}).
 
 \paragraph{Audio-to-image generation.} Sound2Scene~\cite{sungbin2023sound2scene}, AudioToken~\cite{yariv2023audiotoken},
 SonicDiffusion~\cite{biner2024sonicdiffusion}, Seeing Sound~\cite{petermann2025seeingsound} and
@@ -67,5 +67,5 @@ decision with a \emph{blind} baseline that uses the same detector and generator 
 \paragraph{Evaluation with model judges.} LLM-as-a-judge has documented position, length and self-preference
 biases~\cite{zheng2023judge}; audio-caption metrics validated against people (FENSE~\cite{zhou2022audiocapeval},
 CLAIR-A~\cite{wu2025claira}) exist for text, not for pictures shown beside a video. The proposal planned an
-automatic protocol (a VLM describes the augmented video, an LLM scores it against a reference). Section~\ref{sec:judge-era}
+automatic protocol (a VLM describes the augmented video, an LLM scores it against a reference). Appendix~\ref{app:judge}
 reports why it was replaced by per-sound scoring against human labels.

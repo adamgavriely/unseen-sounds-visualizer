@@ -1,7 +1,7 @@
 # Chapter 1 — Introduction (draft, 27 Sept 2026)
 
 *Every number in this chapter is taken from a committed file. Most come from Chapter 5
-(`docs/thesis/ch5_results.md`), which names the result file beside each table. Items marked **[pending]** are
+(`docs/history/earlier_drafts/thesis/ch5_results.md`), which names the result file beside each table. Items marked **[pending]** are
 filled when their run or sitting finishes.*
 
 ## 1.1 The problem: sounds that are heard but not seen
@@ -75,7 +75,7 @@ thesis where it is answered, and says how fully.
 | RQ4 | How should such systems be evaluated? | Per sound, against human labels, with an onset window; a modelled viewer cost over a range of prices for a wrong picture; rules written before each run. The proposal's automatic protocol (a vision-language model describes, a language model judges) was tried and failed: its references were circular or at chance. | Ch. 4; §5.5; §5.13 |
 | RQ5 | How does the pipeline compare with audio-to-visual generation approaches? | Partly. A direct audio-to-image model was not run. The *blind* arm stands in for it: the same detector and generator, drawing every detected sound without looking at the video. The audio-captioning baseline became the text-tags arm. | §5.3–5.4; §5.10; Ch. 6 |
 
-For RQ5, the image-generation review panel (`docs/panel3_topic2_rounds.md`) judged that audio-conditioned image
+For RQ5, the image-generation review panel (`docs/history/panels/panel3_topic2_rounds.md`) judged that audio-conditioned image
 models draw the whole scene rather than the one source, with no way to forbid a wrong object. The blind arm
 isolates the part this thesis adds: the decision *not* to draw.
 
@@ -111,7 +111,7 @@ The thesis makes five contributions. Each is stated at the strength the evidence
    pre-written bar of 0.70 (§5.8). No detector with public weights that hears under speech was found.
 
 5. **A pre-registered, fully logged evaluation.** Every choice was made by a test with a bar written before the
-   run (`docs/prereg_v4.md`, amendments 1–25). Negative results are reported, including every automatic
+   run (`docs/history/preregistrations/prereg_v4.md`, amendments 1–25). Negative results are reported, including every automatic
    instrument that failed its own calibration bar (§5.13). The TEST set is *held out, with disclosed
    exposure*: all ten exposures are dated in an appendix log, together with a split overlap found late (§5.15).
 
@@ -145,4 +145,4 @@ The thesis makes five contributions. Each is stated at the strength the evidence
 
 ## References
 
-All works cited in this chapter are listed in the shared reference list, `docs/thesis/references.md`.
+All works cited in this chapter are listed in the shared reference list, `docs/history/earlier_drafts/thesis/references.md`.

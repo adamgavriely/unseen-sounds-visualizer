@@ -40,7 +40,7 @@ improves SED.
 
 1. Knobs (bar, veto, bounds) are set by the dev-split sweep, once. The test split is never
    looked at for tuning.
-2. Every failure seen in a video goes into `docs/failure_catalogue.md` with clip, stage,
+2. Every failure seen in a video goes into `docs/history/plans/failure_catalogue.md` with clip, stage,
    confidence. A design change needs >= 3 catalogued cases of one pattern, or a metric
    move on dev. One-offs go to Limitations.
 3. Demos illustrate. They never trigger a change directly.

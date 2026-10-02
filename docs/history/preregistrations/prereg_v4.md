@@ -50,7 +50,7 @@ cumulative table is the result either way.
 
 ## §4 FLAM, second attempt (the part that is a new experiment)
 
-The first attempt (docs/prereg_flam.md) used the 527 bare AudioSet names as queries and
+The first attempt (docs/history/preregistrations/prereg_flam.md) used the 527 bare AudioSet names as queries and
 failed on precision (FP/min 693–2728 vs BEATs 5.2) while finding 70–85% of buried sounds.
 Declared here, before the run:
 
@@ -83,7 +83,7 @@ table with the numbers, and v4 continues from stage 5 with BEATs.
 
 ## §5 Qwen3.8-27B — the visibility check already ran
 
-docs/prereg_qwen38_visibility.md, thinking-off arm (job 30546271): on-screen recall
+docs/history/preregistrations/prereg_qwen38_visibility.md, thinking-off arm (job 30546271): on-screen recall
 **56.3%** (bar ≥ 50% ✔), off-screen recall **82.6%** (bar ≥ 95% ✘) — the same trade the
 32B made. The thinking arm (30546328) is still running. Whatever it says, the swap goes
 ahead by decision (best models), the numbers are disclosed next to the 7B's, and no prompt
@@ -130,11 +130,11 @@ PretrainedSED (v4 candidate) and FLAM-v2 (the failed attempt) on the same clips:
 masked consequential events, of all consequential events, of all events; false spans per
 minute (every sound in these clips is labelled, so this is a real false-alarm rate); onset
 error. No pass bar: it is the held-out check that the DCASE-chosen detector setting
-transfers to real-world video. The PretrainedSED decision stays with docs/prereg_psed.md.
+transfers to real-world video. The PretrainedSED decision stays with docs/history/preregistrations/prereg_psed.md.
 
 ## Added 2026-09-19 00:40, after the PretrainedSED result and before any protocol score: the detector arm
 
-PretrainedSED failed its eighth bar (docs/prereg_psed.md) and per that pre-registration
+PretrainedSED failed its eighth bar (docs/history/preregistrations/prereg_psed.md) and per that pre-registration
 **BEATs stays the v4 detector**. Observed after the fact: that bar's population is BEATs'
 own detections judged real by a human (23 items), so it measures agreement with BEATs
 rather than recall of ground truth; on gold slice B (declared above, no pass bar, 111
@@ -467,7 +467,7 @@ the display bar cannot move PSED's operating point. (d) Scorer subsets are named
 (`bench`, `dev`, `test`, `test_bench`, `sliceB`); each system is scored on the clips it has
 rendered and the paired ΔF1 on the intersection, with the clip counts printed.
 
-**Re-run outcome (v4b4 / v4ab4), 2026-09-22 17:45 — full detail in `docs/GOLD_RERUN_2026-09-22.md`.**
+**Re-run outcome (v4b4 / v4ab4), 2026-09-22 17:45 — full detail in `docs/history/analyses/GOLD_RERUN_2026-09-22.md`.**
 v4b4 on the 109 benchmark clips (79 needed sounds), gated vs blind, paired clip bootstrap:
 ΔF1 **+0.028 [−0.022, +0.074]** (primary, null) · ΔP +0.062 [+0.016, +0.109] · ΔR −0.076
 [−0.141, −0.026] · ΔFA/clip −0.55 [−0.78, −0.37] · Δ clean-clip accuracy +0.172 [+0.082, +0.273] ·
@@ -486,7 +486,7 @@ gain against a significant recall loss.
 Observed on v3 (100 clips) and the v4b 20-clip check: on clips tagged seen / no-ambient
 (grounded reference "nothing beyond the picture") the LLM judge gives a *redundant* picture
 4 on most clips (blind 3.80 mean on the 10 no-due clips of the check), the same as correct
-silence. The protocol already codes one side of the declared rubric (docs/plan_robustness.md,
+silence. The protocol already codes one side of the declared rubric (docs/history/plans/plan_robustness.md,
 2026-09-14: wrong silence costs 4, redundant picture ~1) — an empty panel on a no-due clip
 is 4 in code — but not the other. This completes it, in code, not in the prompt:
 
@@ -537,7 +537,7 @@ do not exceed BEATs' at its shipping bar 0.35 on the same clips. Slice B (111 cl
 annotations) stays the untouched check. DCASE remains only for the visibility check until
 Adam's visibility annotations replace it. The PSED row (v4ab) is re-run at the new bar; the
 DCASE-chosen 0.20 row is kept as a record. The five-model average is judged by the same rule
-and the same slice-B pass rule (docs/prereg_psed_ensemble.md), with its bar from the
+and the same slice-B pass rule (docs/history/preregistrations/prereg_psed_ensemble.md), with its bar from the
 calibration set.
 
 ### Calibration result (2026-09-19, `benchmark/detector_calib.json`)
@@ -557,7 +557,7 @@ PSED, at 1.7 more false spans per minute — a trade along the curve, not a bett
 (slice B cannot resolve a 3-point difference). By its declared rule (≥ 65.7% AND ≤ 2.59/min)
 the average **fails** on the false-alarm side; the ensemble attempt is closed. PSED at the
 DCASE bar (0.20) stays the running v4ab row; the protocol is not re-run at 0.15 now — one
-final detector configuration (docs/prereg_detector_v5.md) will be run once through the
+final detector configuration (docs/history/preregistrations/prereg_detector_v5.md) will be run once through the
 protocol when the last detector attempt closes.
 
 ## Stage-2 swap check (declared 2026-09-20, before running): SAM 3 vs OWLv2 on the DCASE visibility set
@@ -1683,7 +1683,7 @@ different ceilings, and they must not be conflated:
                   RECALL rather than precision. It is a full amendment: DEV selection, both arms,
                   one TEST look.
 
-Full review of what the pipeline does and does not do with the video: docs/video_understanding_review.md
+Full review of what the pipeline does and does not do with the video: docs/history/analyses/video_understanding_review.md
 
 ### Amendment 18c, outcome (2026-09-23): SAM 3 is a better detector and lands on the SAME line
 
@@ -1806,11 +1806,11 @@ it was the objection of the project's own author that prompted it.
 
 ## Amendment 21 — the final like-for-like TEST table (2026-09-25 evening, before any render)
 
-Panel of five, four rounds (`docs/panel_2026-09-26_plan.md`, signed 5/5; D2 carried 4–1, P5 dissenting: "a fifth
+Panel of five, four rounds (`docs/history/panels/panel_2026-09-26_plan.md`, signed 5/5; D2 carried 4–1, P5 dissenting: "a fifth
 read"). Proposed: render ours, blind and ungated text tags on TEST at the shipped configuration (onset rule on, cap
 off), one card class (H200/A100), each arm copying the base env of `test_monocap_v31` (`V4=590 FBAR=0.8 VETO=0.3
 PVETO=0.05`, `MAXSPAN=none`), checked in the `[v4]` log lines. **Both the render and the scoring wait for Adam's
-explicit yes** (a TEST render of a baseline is a further look — `docs/NIGHT_REPORT_2026-09-25.md` §5).
+explicit yes** (a TEST render of a baseline is a further look — `docs/history/daily_notes/NIGHT_REPORT_2026-09-25.md` §5).
 
 Committed now: *If Adam says yes, this table replaces the 23 Sep table as the thesis's TEST table whatever it shows;
 the 23 Sep table moves to the read history. If Adam says no, the 23 Sep table stays the headline and the onset fix
@@ -1874,7 +1874,7 @@ rules on DEV-49 from caches is reported beside this note. The original line stay
 clip bootstrap, 2000, seed 0; the two differ on 7 of 49 clips): a tie, as expected (the judge reads the text tag as the
 label itself). The ungated text row stays in the table as the baseline, with its confound stated.
 Read count (2026-09-26): amendment 21 is the **fifth deliberate read** of TEST and the **tenth exposure** counting prints
-and diagnostics (`docs/LEDGER_2026-09-26.md`, audit finding 1).
+and diagnostics (`docs/history/daily_notes/LEDGER_2026-09-26.md`, audit finding 1).
 
 ### Amendment 8 re-checked on the clean DEV-49 (week plan B.1, 2026-09-27; report only, rules unchanged)
 `benchmark/gold/flexsed_recheck_dev49.py` → `flexsed_recheck_dev49.json`. Rule 1 (masked sounds recovered ≥ 44 %):
@@ -1936,7 +1936,7 @@ from the masked sounds that motivated FlexSED; the thesis states this.
 ## Amendment 22 — the detector round (2026-09-27, written before any cell is scored; TEST is not touched)
 
 Adam: *"we HAVE to recognize more sounds"*; *"try it on DEV without touching TEST"*. Panel (F1, F4, P2;
-`docs/panel_2026-09-27_detector_brief.md`). Motivation, not a selection source: on DEV-49 the caches reach 30 of 36 needed
+`docs/history/panels/panel_2026-09-27_detector_brief.md`). Motivation, not a selection source: on DEV-49 the caches reach 30 of 36 needed
 sounds at looser bars vs 21 at the shipped ones (only 4 below every detector) — an oracle-bar ceiling read on the very
 sounds it would be scored on, so **no bar is chosen from it**.
 
@@ -2013,7 +2013,7 @@ Adam's approval to download. Fail → reported as a negative. TEST is not touche
 
 ## Amendment 24 — detector round 2: a new corroborator, a cost rule, a held-out set of complex scenes (2026-09-27, written before any number; TEST is not touched)
 
-Source: the three-reviewer detection panel (`docs/panel3_topic1_rounds.md`, rounds 1–3, signed by all three). Adam's
+Source: the three-reviewer detection panel (`docs/history/panels/panel3_topic1_rounds.md`, rounds 1–3, signed by all three). Adam's
 direction (27 Sept): "do anything you can to improve the detector — we want complex-situation audio, not clean audio";
 his yes to a new AudioSet-Strong download was given the same day.
 
@@ -2397,16 +2397,16 @@ taggers find more of the sounds (recall +5 to +14 points at the same bars), but 
 and with a bar refitted to BEATs' span count on the 280 the gain did not carry over to the 415. So
 on the 280 the gain appeared only with the refitted bar (at the shipped bars neither tagger was better).
 
-## 2026-09-28 — detector round 6 (DASM in place of or next to FlexSED): pre-registered in `docs/prereg_round6_dasm.md` (written before any DASM score or cost)
+## 2026-09-28 — detector round 6 (DASM in place of or next to FlexSED): pre-registered in `docs/history/preregistrations/prereg_round6_dasm.md` (written before any DASM score or cost)
 
-## 2026-09-28 — detector round 7 (SAM-Audio: remove speech and music, re-run BEATs + FlexSED on the residual, union with the shipped stack): pre-registered in `docs/prereg_round7_samaudio.md` (written before any SAM-Audio output or cost)
+## 2026-09-28 — detector round 7 (SAM-Audio: remove speech and music, re-run BEATs + FlexSED on the residual, union with the shipped stack): pre-registered in `docs/history/preregistrations/prereg_round7_samaudio.md` (written before any SAM-Audio output or cost)
 
-## 2026-09-28 — detector round 8 (new ideas: repetition bar, per-clip normalisation, parent emission, VLM scene prior, local-contrast veto, onset fixes, multi-scale and band-limited BEATs/FlexSED): pre-registered in `docs/prereg_round8_ideas.md` (written before any round-8 cache or cost)
+## 2026-09-28 — detector round 8 (new ideas: repetition bar, per-clip normalisation, parent emission, VLM scene prior, local-contrast veto, onset fixes, multi-scale and band-limited BEATs/FlexSED): pre-registered in `docs/history/preregistrations/prereg_round8_ideas.md` (written before any round-8 cache or cost)
 
-## 2026-09-28 — fresh AudioSet-Strong confirmation set (500 eval ids drawn with the 415 recipe, seed 20260928, disjoint from the 280, the 415, DEV, TEST, slice B and every repo list; final check only for a candidate that passes the 415, no result read before that): pre-registered in `docs/prereg_fresh_confirm_set.md` (written before any download)
+## 2026-09-28 — fresh AudioSet-Strong confirmation set (500 eval ids drawn with the 415 recipe, seed 20260928, disjoint from the 280, the 415, DEV, TEST, slice B and every repo list; final check only for a candidate that passes the 415, no result read before that): pre-registered in `docs/history/preregistrations/prereg_fresh_confirm_set.md` (written before any download)
 
-## 2026-09-28 — detector round 9 (local-contrast veto on BEATs-only spans, alone and with round 8's I7): pre-registered in `docs/prereg_round9_contrast.md` (written before any round-9 cost)
+## 2026-09-28 — detector round 9 (local-contrast veto on BEATs-only spans, alone and with round 8's I7): pre-registered in `docs/history/preregistrations/prereg_round9_contrast.md` (written before any round-9 cost)
 
-## 2026-09-28 — detector round 10 (a discriminator for heard-but-dropped FlexSED 0.4–0.8 sounds: DASM agreement, query paraphrases, perturbation stability; + I4 / I6 confirmed): pre-registered in `docs/prereg_round10_rescue.md` (written before any round-10 cache or cost)
+## 2026-09-28 — detector round 10 (a discriminator for heard-but-dropped FlexSED 0.4–0.8 sounds: DASM agreement, query paraphrases, perturbation stability; + I4 / I6 confirmed): pre-registered in `docs/history/preregistrations/prereg_round10_rescue.md` (written before any round-10 cache or cost)
 
-## 2026-09-28 — detector round 11 (is the FlexSED 0.4–0.8 band evidence caused by the speech / music masker? foreign-masker dose-response, argmax margin, masker-envelope correlation, two-regime shape, per-clip cap, time reversal): pre-registered in `docs/prereg_round11_masker.md` (written before any round-11 cache or cost)
+## 2026-09-28 — detector round 11 (is the FlexSED 0.4–0.8 band evidence caused by the speech / music masker? foreign-masker dose-response, argmax margin, masker-envelope correlation, two-regime shape, per-clip cap, time reversal): pre-registered in `docs/history/preregistrations/prereg_round11_masker.md` (written before any round-11 cache or cost)

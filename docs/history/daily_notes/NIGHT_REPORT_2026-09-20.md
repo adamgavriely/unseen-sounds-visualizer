@@ -15,7 +15,7 @@ result files; nothing is estimated.
    both started at once; I cancelled the L4 copy by hand.
 2. **SAM-Audio is out.** Three Fables (engineer, project manager, examiner) agreed: it is the
    SOTA for open-vocabulary prompts, but for two fixed classes (speech, music) a stem model
-   is stronger and has no 2023-era dependencies. Amendment 3 in `docs/prereg_detector_v5.md`:
+   is stronger and has no 2023-era dependencies. Amendment 3 in `docs/history/preregistrations/prereg_detector_v5.md`:
    HTDemucs (`htdemucs_ft`, already installed on BIU) makes the views instead.
 3. **V4 (cleaned-audio views) ran end to end on BIU** — no pod needed. 391 clips separated on
    one L4 in 25 min, PSED scored all four versions, selection on the calibration set.
@@ -68,7 +68,7 @@ up much longer (median span 10.0 s vs 4–5.7 s) because the hysteresis low bar 
 no onset refinement let PSED spans run through the clip. A draft row **v4ab2** with two
 detector-agnostic fixes (filter by ontology *branch*; span ends after 1 s below the bar +
 a cap from the calibration set), applied to both detectors, is written in
-`docs/prereg_v4.md` — **not run**: it waits for your approval (one product question: keep
+`docs/history/preregistrations/prereg_v4.md` — **not run**: it waits for your approval (one product question: keep
 baby cry / footsteps?) and for the per-sound F1 gate (run v4ab2 only if PSED's F1-strict on
 your annotations ≥ BEATs' on the filtered classes).
 

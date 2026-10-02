@@ -2,28 +2,27 @@
 Subtitles carry speech. The other sounds of a video -- a siren behind the camera, a dog barking in the next
 room, glass breaking off screen -- reach a deaf or hard-of-hearing viewer only if a captioner chose to write them
 down, and captioning practice says to leave out any sound whose source can be seen. This project builds and
-evaluates a system that closes the remaining gap automatically. Given a video, it detects the non-speech,
-non-music sounds, decides for each one whether its source is already visible, and shows a generated picture of
-the sound beside the video only while an \emph{off-screen} sound is heard. No model is trained: the system is a
-chain of open foundation models (two sound detectors, two audio-language ``listeners'', a third audio model
-used as a witness, a 27-billion-parameter vision--language model for the on-screen decision, and a
-text-to-image model), joined by rules that were each fixed on a development set before being tested.
+evaluates a system that fills this gap automatically. Given a video, it detects the non-speech, non-music
+sounds, decides for each one whether its source is already visible, and shows a generated picture of the sound
+beside the video only while an \emph{off-screen} sound is heard. No model is trained: the system is a chain of
+open models (two sound detectors, two audio-language models used as listeners, a third audio model used as a
+witness, a 27-billion-parameter vision--language model for the on-screen decision, and a text-to-image model),
+joined by rules that were each fixed on a development set before being tested.
 
-The system is scored per sound against human labels on 159 video clips (71 development, 88 test). A
-\emph{hit} is a picture of the right sound family that starts between 0.5\,s before and 1\,s after the sound;
-a \emph{wrong} picture is one whose source is on screen, that belongs to another sound, or that has no sound at
-all; the cost per clip is $(4\cdot\text{missed} + 2\cdot\text{wrong})/\text{clips}$. The frozen system
-(\Dp, git tag \texttt{detector-frozen-2026-10-02}) gets 29 of 58 needed sounds with 15 wrong pictures on the
-development set (cost 2.056) and 24 of 65 with 24 wrong on the test set (cost 2.409). The pipeline used for the
-September test table (the ``old pipeline'') scored 18 / 51 / 3.690 and 21 / 40 / 2.909 on the same two sets.
-On the test set \Dp{} is cheaper than the last shipped base B (2.545) with a one-sided bootstrap $p = 0.034$
-(about 0.07 two-sided). The test set was read after every shipped change, so it is a report on a seen set, not
-a blind confirmation; Section~\ref{sec:disclosures} lists this and the other threats to validity in one place.
+The system is scored per sound against human labels on a development set of 71 clips and a test set of 88
+clips. A \emph{hit} is a picture of the right kind of sound that starts between 0.5\,s before and 1\,s after the
+sound; a \emph{wrong} picture shows a sound whose source is on screen, belongs to another sound, or has no sound
+under it; the cost per clip is $(4\cdot\text{missed} + 2\cdot\text{wrong})/\text{clips}$. The final system finds
+29 of 58 needed sounds with 15 wrong pictures on the development set (cost 2.056) and 24 of 65 with 24 wrong on
+the test set (cost 2.409). The September baseline scored 3.690 and 2.909 on the same sets, and showing nothing at
+all costs 3.268 and 2.955. The test set was read after every accepted change during development, so the test
+numbers are a report on a seen set, not a blind confirmation; Section~\ref{sec:disclosures} lists this and the
+other threats to validity.
 
-The report gives the full development record: about 66 pre-registered rounds and well over a hundred
-full-pipeline variants, what each one tried and why it was rejected. The main finding is where the remaining
-errors sit. With every stage made perfect on the same detections the pipeline would still miss about a fifth
-of the needed sounds, because no model hears them; and the largest single loss is the on-screen decision, where
-today's open vision--language models confuse ``the object is in the frame'' with ``the object is making this
-sound now''. A user study with deaf viewers was not run, so the claim that the pictures help is untested.
+The largest remaining losses are well located. With every stage made perfect on the same detections, the
+pipeline would still miss about a fifth of the needed sounds, because no model hears them under speech and music;
+and the single largest decision loss is the on-screen check, where today's open vision--language models confuse
+``the object is in the frame'' with ``the object is making this sound now''. The development record -- about
+seventy pre-registered rounds of experiments -- is given in Appendix~\ref{app:history}. A study with deaf viewers
+was not run, so the claim that the pictures help is untested.
 \end{abstract}

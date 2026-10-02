@@ -4,7 +4,7 @@
 \subsection{What counts as a needed sound}\label{sec:needed}
 The unit of evaluation is one sound in one clip. For every sound the annotator records a label (mapped to the
 AudioSet ontology), its onset and offset (about 0.5-s precision), and four judgements
-(\fp{benchmark/gold/tool_template.html}, \fp{docs/metric_per_sound.md}):
+(\fp{benchmark/gold/tool_template.html}, \fp{docs/history/plans/metric_per_sound.md}):
 
 \begin{description}[style=nextline]
   \item[visible] the thing making the sound is \emph{seen making it now}. A barking dog on screen is visible; a
@@ -58,7 +58,7 @@ Each scored needed sound is a \textbf{hit} or a \textbf{miss}. Each picture that
 gives a human check of how often a ``wrong'' picture is in fact a real sound the labels missed.
 
 \subsection{Viewer cost}\label{sec:metric}
-The decision metric of the final rounds is the viewer cost per clip,
+The decision metric is the viewer cost per clip,
 \begin{equation}
   C \;=\; \frac{4\cdot\#\text{missed} \;+\; \beta\cdot\#\text{wrong}}{\#\text{clips}},\qquad \beta = 2,
   \label{eq:cost}
@@ -68,7 +68,7 @@ twice a wrong picture: one hit pays for at most two wrong pictures, so a picture
 that it is right exceeds $\beta/(4+\beta) = 1/3$. The weights come from the rubric of the September judge
 (a withheld picture scored 0 where one was due, a redundant one about 3 of 4) and were declared for a gate sweep
 before any per-sound result; they were promoted to a reported outcome only after per-sound F1 came out null
-(amendment 9, 22 Sept), so the choice of $\beta = 2$ is \emph{post hoc} and is reported with sensitivity.
+(22 Sept), so the choice of $\beta = 2$ is \emph{post hoc} and is reported with sensitivity.
 
 \paragraph{On-screen weight $w$.} A picture of a sound whose source is on screen is less harmful than a picture of
 nothing. From 1 Oct the cost is also reported as
@@ -78,7 +78,7 @@ nothing. From 1 Oct the cost is also reported as
   \label{eq:costw}
 \end{equation}
 with $w=2$ (Eq.~\ref{eq:cost}) as the primary. Wins that hold only at $w=1$ were to go to a separate ``more hits''
-profile, never to the main system (\fp{docs/prereg_round13_detector_push.md}, line 2050).
+profile, never to the main system.
 
 \paragraph{Why not F1.} Per-sound F1 on the same labels was the pre-registered headline from 22 Sept. It weighs a
 miss and a wrong picture equally, and the gate's value lies almost entirely in the wrong pictures it removes, so the
@@ -90,28 +90,27 @@ significantly (Section~\ref{sec:sept-table}). F1, precision and recall are still
 All comparisons are paired by clip. A \textbf{paired clip bootstrap} (2000 draws, seed 0) resamples clips and scores
 every system on the same resampled clips. Two read-outs are used, and the report always says which:
 \begin{itemize}
-  \item \emph{Detector rounds} (\fp{benchmark/gold/dev_candidates_check.py}, \texttt{boot}): mean per-clip cost
+  \item \emph{Development comparisons}: mean per-clip cost
         difference $d$, a 95\,\% percentile interval, and a \textbf{one-sided} $p$ = share of draws with
-        $d \geq 0$. All $p$-values of the 29~Sept--2~Oct detector push (0.034, 0.017, 0.015, \ldots) are of this
-        kind. A two-sided value is about twice as large.
-  \item \emph{September test table} (\fp{benchmark/gold/holm_table.py}): \textbf{two-sided}
+        $d \geq 0$. All $p$-values of the final development phase are of this kind; a two-sided value is about
+        twice as large.
+  \item \emph{September test table}: \textbf{two-sided}
         $p = \min(1, 2\min(P(d\geq0), P(d\leq0)))$ with Holm step-down correction at $\alpha = 0.05$ over two
         pre-declared families (7 and 3 comparisons).
 \end{itemize}
 With 88 test clips the smallest cost difference this design can detect is about 0.19 per clip; a difference of
-0.09 would need about 385 clips (prereg line 902). Most single changes in Section~\ref{sec:history} are smaller
+0.09 would need about 385 clips. Most single changes made during development (Appendix~\ref{app:history}) are smaller
 than that, which is why decisions were made on pre-declared rules on the development set and not on test
 significance.
 
 \subsection{Pass rules on the development set}\label{sec:passrules}
-A change was adopted (``shipped'') only if it passed a rule written before its run, on the merged development set:
+A change to the system was accepted only if it passed a rule written before its run, on the development set:
 \begin{description}
-  \item[main rule] hits $\geq$ base, wrong $\leq$ base $+\,2\times$(hits gained), cost $<$ base, and no needed hit
-        lost on either part of the development set;
-  \item[fewer-pictures clause] (from 30 Sept, 16:02) cost $<$ base, at least three wrong pictures removed per hit
-        lost, and at most three hits lost;
-  \item[held-out screen] rules about the audio part could be screened first on 415 held-out AudioSet-Strong clips
-        with timed labels, never seen by the selection (Section~\ref{sec:heldout}).
+  \item[main rule] hits $\geq$ before, wrong $\leq$ before $+\,2\times$(hits gained), cost $<$ before, and no needed
+        hit lost;
+  \item[fewer-pictures rule] cost $<$ before, at least three wrong pictures removed per hit lost, and at most three
+        hits lost;
+  \item[screening] a rule about the audio alone could first be screened on the screening set
+        (Section~\ref{sec:benchmark}) and stopped there, but never accepted on it.
 \end{description}
-From 1 Oct the standing rule was: a pre-registered development pass ships, and the test set is read once
-afterwards and only reported. Section~\ref{sec:disclosures} counts how often that happened.
+The test set was read only after a change was accepted, and only reported. Section~\ref{sec:disclosures} counts how often that happened.

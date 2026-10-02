@@ -2,7 +2,7 @@
 
 2026-09-25. Adam: *"the AI judge should judge unneeded pictures too: on every picture it sees it should
 give a score on how much information it adds, or if unnecessary deduct points."* Panel P2, P4, P5, two
-rounds (`docs/panel_2026-09-25_judge_per_picture.md`). This page is committed before the measure is run.
+rounds (`docs/history/panels/panel_2026-09-25_judge_per_picture.md`). This page is committed before the measure is run.
 
 ## Order of events (disclosed)
 

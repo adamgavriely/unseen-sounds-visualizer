@@ -2,7 +2,7 @@
 
 Code at commit 3995769. Selected on picture-DEV by the AI assistant (Claude), blind to arm ("selected, assistant-screened" — a model-based
 selection, not a calibrated instrument; assistant vs Adam kappa 0.46 on round 1;
-`docs/panel_2026-09-25_scene_prompt.md`, assistant screening result).
+`docs/history/panels/panel_2026-09-25_scene_prompt.md`, assistant screening result).
 
 **Final setup ("final")**
 * Subject text: V3.1 — `PICTURE_V3` + `PICTURE_SCENE` + `PICTURE_SCENE_GUARD2` (the specific source; the scene may add
@@ -46,7 +46,7 @@ show. So the control is faithful to today's system; the page is unchanged. FINAL
 
 ## Amendment (panel 3, topic 2) — rules for the sealed sitting, written before any FINAL picture or answer is seen
 
-Signed by the three picture reviewers (`docs/panel3_topic2_rounds.md`, round 3). [NAME] / [NAMES] are filled in by Adam
+Signed by the three picture reviewers (`docs/history/panels/panel3_topic2_rounds.md`, round 3). [NAME] / [NAMES] are filled in by Adam
 before he sits; nothing else changes after that.
 
 ```
@@ -63,7 +63,7 @@ Amendment, 2026-09-27 (panel 3, topic 2), written before any FINAL picture or an
 3. Report-only rows beside the primary, never replacing it: clip-cluster bootstrap over the 50 clips; the split
    source != family (34) / source == family (47); wrong count per arm; template pictures separately.
 4. Glance: each card is shown at 384 px for 1.5 s, then hidden and never re-shown. The page shows a card for 1.5 s after
-   "Show" (as built 2026-09-25, docs/SUMMARY_2026-09-25_while_you_slept.md); its HTML sits with the sealed files and
+   "Show" (as built 2026-09-25, docs/history/daily_notes/SUMMARY_2026-09-25_while_you_slept.md); its HTML sits with the sealed files and
    is committed after scoring; the report states whether this held for every card.
 5. Disclosed: the confirm sheet counts "goat" correct for the 2 Bleat sources (Bleat sits under Sheep and Goat);
    round 2's Sheep source did not.

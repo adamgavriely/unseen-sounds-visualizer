@@ -2,7 +2,7 @@
 
 Mandate: *"fix everything we said, and consult Fable on everything you can improve and do it … we will
 prepare for another supervisor meeting tomorrow."* Panel of five (P1 timing, P2 statistics, P3 models,
-P4 evaluation, P5 DHH/supervisor), two rounds: `docs/panel_2026-09-25_brief.md`, `…_round2.md`.
+P4 evaluation, P5 DHH/supervisor), two rounds: `docs/history/panels/panel_2026-09-25_brief.md`, `…_round2.md`.
 
 ## 1. The reproduction check (before any TEST number)
 
@@ -12,12 +12,12 @@ when its switches are off, so the TEST comparison below is between configuration
 Both jobs' logs confirm the switches reached the run (`ONSET_MONOTONE True`, `MAX_SPAN None`, vetoes
 0.3 / 0.05, FlexSED bar 0.8).
 
-## 2. TEST, the second deliberate look (rule frozen in `docs/test_second_look.md`)
+## 2. TEST, the second deliberate look (rule frozen in `docs/history/analyses/test_second_look.md`)
 
 F1 0.400 -> 0.381, dF1 -0.019 [-0.127, +0.082]; recovered 2, lost 2 (one each to the onset rule, one
 each to the cap). **Verdict: inconclusive** — the onset rule stays as a trace-proven bug fix, its gain is
 DEV-only; the cap stays off (one chainsaw lost, one church bell gained). Full table in
-`docs/test_second_look.md`. Supervisor sentence (P2): "On the 60 held-out TEST clips the timing fix
+`docs/history/analyses/test_second_look.md`. Supervisor sentence (P2): "On the 60 held-out TEST clips the timing fix
 neither helped nor hurt (one sound gained, one lost, F1 -0.02 [-0.13, +0.08]); it stays as a bug fix
 proven by the trace, its DEV gain is reported as DEV-selected, and removing the picture cap traded one
 chainsaw for one church bell."
@@ -70,7 +70,7 @@ like-for-like reporting render (P2) wait until the picture setup is frozen.
 ## 7. The rebuilt judge: trust checks (139 clips, `v4b4` renders)
 
 `judge_direct.py` (Gemma-4-31B sees the pictures; reference = template over the annotator's ticks;
-0 of 417 replies unparsed). Bars unchanged from `docs/judge_plan.md`:
+0 of 417 replies unparsed). Bars unchanged from `docs/history/plans/judge_plan.md`:
 
     system          B1 Spearman rho vs viewer cost      B2 clean - wrong-picture clips
     proposed        -0.722 [-0.815, -0.617]  PASS       +1.11 [+0.61, +1.58]  PASS

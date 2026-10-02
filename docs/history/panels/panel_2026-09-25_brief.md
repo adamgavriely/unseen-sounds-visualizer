@@ -18,15 +18,15 @@ wrong; paired clip bootstrap, 2000 draws, seed 0. Gold: one annotator, 139 clips
 slice B 30). It never looks at what the picture shows.
 
 **Timing.** `ONSET_MONOTONE` (a later stage may never move a start earlier than its anchor —
-`docs/onset_timing.md`) on DEV 49: F1 0.293 → 0.395, P +0.093, R +0.111, cost −0.45, all CIs exclude
+`docs/history/analyses/onset_timing.md`) on DEV 49: F1 0.293 → 0.395, P +0.093, R +0.111, cost −0.45, all CIs exclude
 0, 4 recovered / 0 lost. 3 of the 4 recoveries are the cases the bug was found on. With the 8-s
-picture cap also removed (Adam's decision, final — `docs/test_second_look.md`): F1 0.378, 4 recovered,
+picture cap also removed (Adam's decision, final — `docs/history/analyses/test_second_look.md`): F1 0.378, 4 recovered,
 1 lost (a church bell, lost because the longer span makes the visibility vote sample frames where the
 bell tower is on screen), not significant on DEV. Ends: median end error on drawn specs −1.70 s →
 −0.06 s; on the rendered panel median displayed end −2.65 s → −0.25 s, 1 of 16 lingering > 2 s.
 A switches-off reproduction run matches the base exactly (23/23 starts, every metric), twice.
 **TEST 60 (the approved second look, onset rule on + cap off) is finishing now**; the decision rule is
-frozen in `docs/test_second_look.md`.
+frozen in `docs/history/analyses/test_second_look.md`.
 
 **Earlier gate result (2026-09-22, old timing):** vs SILENCE F1 +0.290 [+0.199, +0.377]; vs BLIND
 (draw every detected sound, no gate) ΔF1 +0.028 [−0.022, +0.074] null, ΔP +0.062 significant, ΔR
@@ -37,7 +37,7 @@ frozen in `docs/test_second_look.md`.
 Qwen-Image 18/32; FLUX ≈30 % vs Qwen-Image ≈48 % pooled over seeds. His complaint: pictures show the
 family tag, not the specific sound (train → "vehicle", ambulance → generic siren), and ignore the
 scene (a car door heard in a car drawn as a house door; a rooster drawn as a generic bird).
-`PICTURE_V3` (signed by a five-reviewer panel over three rounds, `docs/picture_v3_prereg.md`):
+`PICTURE_V3` (signed by a five-reviewer panel over three rounds, `docs/history/preregistrations/picture_v3_prereg.md`):
 specific source from the detector's own sub-labels (`labels.choose_source`), a depiction prompt for
 the whole source caught making this sound with no place, Qwen-Image-2512 with a negative prompt.
 A round-2 blind rating (no name shown, Adam types what he sees) on **50 never-annotated clips**, three

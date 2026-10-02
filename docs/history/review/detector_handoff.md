@@ -7,7 +7,7 @@ run ≥ 0.5) → CONT (drop continuation pieces) → FineLAP veto 0.329 on rescu
 listener names unless DASM ≥ 0.575 hears it) → stage-5 visibility gate (Qwen3.8-27B majority of name/ab/desc).
 - Merged DEV (71 clips, 58 needed): **28 hits / 21 wrong (6 vis / 13 cross / 2 phantom) / cost 2.282** (old B0r 18/51/3.690)
 - Merged TEST (88 clips, 65 needed): **23 / 29 (4/20/5) / 2.568**, p 0.017 vs B0r 21/40/2.909 (final_test_ship8.md)
-- Per-item errors: docs/review/ledger_ship8.md. Supervisor log: docs/review/improvements_log_2026-09-30.md.
+- Per-item errors: docs/history/review/ledger_ship8.md. Supervisor log: docs/history/review/improvements_log_2026-09-30.md.
 - New clips: src/listener_prep.py builds listener answers + DASM + FineLAP (~/venv_flap) on the spot (ComfyUI-ready).
 
 ## How to run / score
@@ -24,7 +24,7 @@ listener names unless DASM ≥ 0.575 hears it) → stage-5 visibility gate (Qwen
 ## Rules in use
 - Cost = (4·miss + 2·wrong)/clips. Hit = same-family picture starting −0.5…+1.0 s from the gold onset. Strict: a second picture
   of a sound still playing counts wrong (Adam).
-- Pass vs base (pre-register every arm first in docs/prereg_round13_detector_push.md): old rule (hits ≥ base, wrong ≤ base +
+- Pass vs base (pre-register every arm first in docs/history/preregistrations/prereg_round13_detector_push.md): old rule (hits ≥ base, wrong ≤ base +
   2×gain, cost < base, no needed hit lost on either DEV part) OR fewer-pictures clause (cost < base, ≥ 3 wrong removed per hit
   lost, ≤ 3 lost). Hits first (Adam).
 - Secondary: visible-weighted cost (w = 0/1/2 for on-screen pictures; benchmark/gold/visible_weight_sweep.md). A change that
@@ -57,6 +57,6 @@ Shipped MERGE_GAP 1.5 s, but all scores use 2.0 s (merge_gap_sens.py; 1.0 = 1.5 
 1. HUMAN-2 restricted to off-screen-type families (whack, bell, birds) as a gate override — only if pre-registered from a
    family list fixed outside DEV/TEST.
 2. Gold-scope check: Adam re-tags whether EXPECT-A4's extra DEV/TEST pictures are real but unlisted sounds (tool:
-   docs/review/visibility_recheck.html pattern) — decides whether "wrong" there is gold incompleteness.
+   docs/history/review/visibility_recheck.html pattern) — decides whether "wrong" there is gold incompleteness.
 3. "More hits" profile candidates: none qualify yet (EXPECT extras are cross, not visible).
 4. Larger selection set: pool DEV + held-out style labels for any detector-only rule before touching TEST.

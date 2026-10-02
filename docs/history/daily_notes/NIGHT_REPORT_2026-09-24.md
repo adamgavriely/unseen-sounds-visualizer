@@ -48,7 +48,7 @@ fix must keep is: the **setting** (a palace, a forest) stays out, but the **kind
 the sound** (a subway train, a burglar alarm) is exactly what a viewer needs.
 
 **Pictures — the plan the reviewers settled** (two rounds, three reviewers;
-`docs/picture_quality_prereg.md`, committed before any picture was drawn):
+`docs/history/preregistrations/picture_quality_prereg.md`, committed before any picture was drawn):
 
   * **Scene context, done the safe way.** The frames are now *always* asked which kind of thing is
     making the sound, and asked about the **setting and era** — because the gate already decided the
@@ -164,7 +164,7 @@ thunder. An *object-only* check may be a usable marker, but it has to be calibra
 labelled by someone else before it counts.
 
 **Result 6 — the judge, checked against Adam's labels before its verdict is used**
-(`benchmark/gold/judge_trust.py`, gates from `docs/judge_plan.md`, DEV 49 clips, rubric-capped
+(`benchmark/gold/judge_trust.py`, gates from `docs/history/plans/judge_plan.md`, DEV 49 clips, rubric-capped
 grounded judge):
 
   * **Check 1 — does the judge's score fall where Adam's labels say a clip went badly? PASS.**

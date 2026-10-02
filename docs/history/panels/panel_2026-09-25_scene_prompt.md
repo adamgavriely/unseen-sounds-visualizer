@@ -15,7 +15,7 @@ P4 (automatic evaluation), P5 (deaf and hard-of-hearing viewers). Read-only; rep
   today, significant; the generator gave +22 of it). V3 is vetoed by one false message (a Thunk drawn as a
   door). Failures: "can't tell" on sounds with no single object (whoosh, thunder, car alarm, smash, rain on a
   surface, train horn); "vague" on bird actions read as "bird"; misreadings (sheep as goat).
-* A 2-reviewer generator panel (G1, G2; `docs/panel_2026-09-25_generator.md`) signed plan **GP-2**: compute
+* A 2-reviewer generator panel (G1, G2; `docs/history/panels/panel_2026-09-25_generator.md`) signed plan **GP-2**: compute
   gate, then screen HiDream-O1-Image (MIT) / Qwen-Image-2.1 (research licence) / Mage-Flow (MIT, gated)
   against Qwen-Image-2512 on the 54, prompt arms on the winner (whole thing in frame, mid-act with its
   visible effect, one large subject; guarded LLM expansion), fixed template subjects for sounds with a
@@ -24,7 +24,7 @@ P4 (automatic evaluation), P5 (deaf and hard-of-hearing viewers). Read-only; rep
 * Automatic judges: blind "what is this?" checkers failed against Adam (GLM kappa 0.45; the per-picture
   judge said "can't tell" to 502/567). A **named yes/no verifier** ("this should show X — would a deaf
   viewer recognise it at a glance?") is being calibrated right now on Adam's 170 round-1 yes/no answers
-  (`docs/prereg_verifier.md`); if it passes, it screens generators instead of Adam.
+  (`docs/history/preregistrations/prereg_verifier.md`); if it passes, it screens generators instead of Adam.
 
 ## Why the place was removed from the picture (history the panel must weigh)
 

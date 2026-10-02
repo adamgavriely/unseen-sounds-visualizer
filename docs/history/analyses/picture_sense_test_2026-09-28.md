@@ -111,7 +111,7 @@ everything re-ran from the start. No other guard was changed.
 **By-eye protocol.** Final pictures are copied to `blind/<random id>.png` with only the sound's label shown; the key
 (`unblind.json`) is opened only after all verdicts are written to `verdicts.json`. Limits: word cards are recognisable,
 and B = A on the unseen, so B's unseen pictures are duplicates. The verdict is Claude's and provisional; Adam's own look
-at the contact sheet (`docs/picture_sense_test/index.html`) overrides it.
+at the contact sheet (`docs/history/analyses/picture_sense_test/index.html`) overrides it.
 
 ## Decision rule (fixed now)
 
@@ -128,7 +128,7 @@ any change is a new, separately declared test.
 
 Run: jobs 31330354 (prep + mining), 31330355 (A, B), 31330356 (C), all COMPLETED. 32 sounds, 0 swaps. By-eye verdicts
 were written blind (71 pictures, random ids, `verdicts.json` before `key.json`). Contact sheet:
-`docs/picture_sense_test/index.html`.
+`docs/history/analyses/picture_sense_test/index.html`.
 
 | arm | sounds | pass at try 1 | pass within 5 | word cards | by eye right | by eye wrong |
 |---|---|---|---|---|---|---|

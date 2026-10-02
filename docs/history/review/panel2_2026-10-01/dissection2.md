@@ -1,6 +1,6 @@
 # Panel 2 dissection (1 Oct 2026, 22:00 UTC) — what did we NOT try that is worth trying?
 
-Read also: docs/review/panel_2026-10-01/dissection.md (pipeline, scoring, closed rounds up to the morning), panel_2026-10-01/p*.md and round2_votes.md (this afternoon's panel), docs/review/miss_ears_ship8.md (which ear hears each miss), docs/review/kill_flags_ship8.md (which stage-4 step removes heard misses), and the END of docs/prereg_round13_detector_push.md (Rounds 46-61, every pre-registration and result).
+Read also: docs/history/review/panel_2026-10-01/dissection.md (pipeline, scoring, closed rounds up to the morning), panel_2026-10-01/p*.md and round2_votes.md (this afternoon's panel), docs/history/review/miss_ears_ship8.md (which ear hears each miss), docs/history/review/kill_flags_ship8.md (which stage-4 step removes heard misses), and the END of docs/history/preregistrations/prereg_round13_detector_push.md (Rounds 46-61, every pre-registration and result).
 
 ## Shipped now: D = ARMS["SHIP8+MD3+WW5"]
 Gap 2.5 s, GROUP (Omni same/new, 8 s), min detected span 0.3 s, Round 57 DEPICT-EVENT, Round 53 WEAK-WITNESS (a non-rescued span needs DASM >= 0.35 or both listeners naming it) + Round 60 SCENE-MARGIN (one listener + Qwen3.8 scene-credible keeps it), no picture floor.

@@ -1,3 +1,13 @@
+# slurm — cluster jobs
+
+**Final system.** `run_best.sh NAME /path/to/clips` runs stages 1–5 of the final system on a folder of clips
+(default variant `SHIP8+MD3+WW5+SL`); the report (Section 10) lists the three follow-up scripts that draw and
+compose the pictures. `job_trail_media.sh` renders the Decision Inspector videos. The other ~230 scripts are
+development runs, one per experiment, kept so that every result in `docs/history/` can be traced to the job that
+made it.
+
+---
+
 # Running this project on the BIU Slurm cluster
 
 Login: `adamg` · VPN user: `gavriea2@biu.ac.il` · reset password via

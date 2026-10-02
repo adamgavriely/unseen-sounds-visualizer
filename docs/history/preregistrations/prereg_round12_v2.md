@@ -8,7 +8,7 @@ one event and (b) using the video benchmark's time window as tolerance. Harness:
 
 ## Why a new cost, and why it is not fitted to outcomes
 Nine rounds of detector ideas failed on the held-out 415 under the old AudioSet cost C. The setup audit
-(`docs/setup_audit_2026-09-28.md`) found no bug in the audio, the time stamps or the harness, but it found that C does not
+(`docs/history/analyses/setup_audit_2026-09-28.md`) found no bug in the audio, the time stamps or the harness, but it found that C does not
 measure the task the product is judged on: (1) 10 gold labels were matched by display name, not by sound ID; (2) C used
 the "lists" label filter, but the product draws with the "depictable" filter; (3) AudioSet-Strong labels every bark as its
 own event, while our own gold rule is one row per continuous sound; (4) C had no time tolerance, while the video benchmark
@@ -36,7 +36,7 @@ Per clip, in this order:
 3. **Runs merged.** The scored events are grouped by canonical family (`src.labels.canonical`); within a family, events
    are sorted by start and an event joins the previous one when the pause (its start − the previous end) is **≤ 2.0 s**.
    Source of the rule: our DEV/TEST gold annotation rule "one row for a continuous sound … split only when it stops for
-   > 2–3 s" (`docs/HANDOFF_2026-09-21.md`, tagging rules) and its code form `config.MERGE_GAP = 2.0` ("2 s = the
+   > 2–3 s" (`docs/history/daily_notes/HANDOFF_2026-09-21.md`, tagging rules) and its code form `config.MERGE_GAP = 2.0` ("2 s = the
    annotation rule 'one row per continuous sound, split at pauses > 2 s'"). The lower end of the rule's range (2 s) is
    used, as `MERGE_GAP` does. Merging is done after the filter (step 2), because the filter reads the raw label first.
    A merged event keeps every member label (a span matches it if it matches any member).
@@ -148,11 +148,11 @@ So the AudioSet v2 cost is only a SCREEN; the main test is the video benchmark:
    new file with its own work folder (that file and `data/work/devcand/*` belong to job 31330563; they are read, never
    edited). **Ship rule:** DEV hits do not drop AND DEV wrong pictures do not rise by more than 2 × the hits gained AND DEV
    viewer cost does not rise.
-2. **Fresh set** (`R.use_set("fresh")`, 422 clips, never scored so far; `docs/prereg_fresh_confirm_set.md`): ONE final
+2. **Fresh set** (`R.use_set("fresh")`, 422 clips, never scored so far; `docs/history/preregistrations/prereg_fresh_confirm_set.md`): ONE final
    test of the single best DEV-passing candidate (the largest 415 effect among DEV passes), frozen, under v2: passes iff
    the upper 95 % CI of ΔC-overlap v2 < 0; ours and "show nothing" beside it. First: 4 cache folders × 422 `.npz` counted;
    the DASM cache for fresh is built (GPU) if the candidate needs it.
-3. **Slice B** (30 video-gold clips): the lead asked whether it could be a second video check. `docs/prereg_v4.md` shows it
+3. **Slice B** (30 video-gold clips): the lead asked whether it could be a second video check. `docs/history/preregistrations/prereg_v4.md` shows it
    was scored many times (the detector tables, the v4b4 / v4ab4 gold re-runs), and its numbers triggered the PSED
    re-comparison (2026-09-19). So it is **not clean**, and the round's brief says "nothing on slice B". It is **not run**
    in this round; at most it could be a report-only row, and only if Adam lifts the brief's line.
@@ -195,8 +195,8 @@ What this says, in plain words:
 - The time window changes little (recall 46.4 → 47.8 %; no false span is rescued by the window rule). The two parts that
   move the cost are the shipped filter (false spans 201 → 159) and the run merge (events 225 → 69).
 - **The video benchmark (DEV/TEST gold, `score_per_sound`) stays the only test of the detector.** There, the shipped
-  system does beat silence (`docs/prereg_v4.md`, v4b4 gold re-run on the 109 benchmark clips: ΔF1 vs silence +0.290
-  [+0.199, +0.377]; `docs/GOLD_RERUN_2026-09-22.md`). AudioSet clips are
+  system does beat silence (`docs/history/preregistrations/prereg_v4.md`, v4b4 gold re-run on the 109 benchmark clips: ΔF1 vs silence +0.290
+  [+0.199, +0.377]; `docs/history/analyses/GOLD_RERUN_2026-09-22.md`). AudioSet clips are
   mostly clips with few or no needed sounds and many other labelled sounds, so any shown span is more often "false" there.
 
 Not done because of the STOP (and so not claimed): the Step-2 re-score, N1–N4, the 415, DEV, fresh, any ship.

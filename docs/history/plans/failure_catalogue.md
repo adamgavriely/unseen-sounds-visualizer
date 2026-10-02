@@ -1,6 +1,6 @@
 # Failure catalogue
 
-Rule 2 of docs/plan_robustness.md: every failure seen in a video is logged here with clip,
+Rule 2 of docs/history/plans/plan_robustness.md: every failure seen in a video is logged here with clip,
 stage and confidence. A design change needs >= 3 entries of one pattern, or a metric move
 on the dev split. Entries marked FIXED were general bugs, not tuning.
 

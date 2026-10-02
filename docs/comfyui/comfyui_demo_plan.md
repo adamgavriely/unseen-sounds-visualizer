@@ -32,7 +32,7 @@ reading cached stage 1-4 outputs from a work directory, which still shows the sw
 ## Explicitly out of scope
 
   * running the benchmark through the graph;
-  * anything that changes a number already in `docs/prereg_v4.md`;
+  * anything that changes a number already in `docs/history/preregistrations/prereg_v4.md`;
   * custom nodes from the community ecosystem (no internet on compute nodes; we write our own seven).
 
 ## Not built, and why it stays that way

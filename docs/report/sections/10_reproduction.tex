@@ -2,10 +2,11 @@
 \section{Reproduction}\label{sec:repro}
 
 \subsection{Code state}
-Check out the tag \texttt{detector-frozen-2026-10-02}. \cfgv{config.use_shipped()} sets \Dp; \cfgv{config.use_scored()}
-sets the old pipeline B0r; the scoring harness names every variant in \texttt{ARMS} of
-\fp{benchmark/gold/round13_dev.py} (lineage: \texttt{TO1+F7F8} line 152 $\to$ \ldots{} $\to$ \texttt{SHIP8+MD3+WW5+SL}
-line 243). The cluster copies used for scoring are not git repositories; the frozen code was synced from the tag.
+Check out the tag \texttt{detector-frozen-2026-10-02}. \cfgv{config.use_shipped()} sets the final system and
+\cfgv{config.use_scored()} the September baseline. The scoring code names variants by short internal codes; the final
+system is the variant \texttt{SHIP8+MD3+WW5+SL} in \fp{benchmark/gold/round13_dev.py}, and this code is used in the
+commands below (Appendix~\ref{app:glossary} explains it). The cluster copies used for scoring are not git
+repositories; the frozen code was synced from the tag.
 
 \subsection{Environment and models}
 \begin{itemize}
@@ -51,13 +52,13 @@ python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL
 python benchmark/gold/inspector_trail_export.py \
    --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/24/4/15/5/2.409
 \end{verbatim}
-The last command re-runs \Dp{} with logging on every decision and fails unless the counts match exactly; it passed on
-2 Oct (0 of 159 clips differ). To compute the missing \Dp-versus-old-pipeline test, run \fp{benchmark/gold/final_test.py} (\texttt{score}) with
-the \Dp{} arm on the cluster, where both per-clip rows exist.
+The last command re-runs the final system with logging on every decision and fails unless the counts match exactly; it passed on
+2 Oct (0 of 159 clips differ). To compute the missing test of the final system against the September baseline, run \fp{benchmark/gold/final_test.py} (\texttt{score}) with
+the final variant on the cluster, where both per-clip rows exist.
 
 \subsection{The Decision Inspector}
 \fp{docs/inspector2/} is a static page over \fp{data.js} (12.8\,MB, 159 clips) that shows, for every gold sound and every
-candidate of \Dp, each step it passed or failed, the value, the bar and the model answers, next to the rendered video
+candidate of the final system, each step it passed or failed, the value, the bar and the model answers, next to the rendered video
 (\fp{docs/inspector/media/bysig/}, 350\,MB, not in git). The logging hooks (\fp{src/trail.py}) only record and never
 change a decision. Known gaps: 86 of 156 gate decisions reuse stored verdicts without the raw answers; the depict-event
 look-alike replies are not stored.
@@ -68,15 +69,15 @@ look-alike replies are not stored.
 \toprule
 file & content \\
 \midrule
-\fp{docs/prereg_round13_detector_push.md} & every pre-registration and result, rounds 13--66 \\
-\fp{docs/prereg_v4.md}, \fp{docs/prereg_round*.md} & v4 amendments 1--25, rounds 4--12 \\
-\fp{docs/review/detector_final_2026-10-02.md} & plain-language summary of \Dp{} and the last day \\
-\fp{docs/review/improvements_log_2026-09-30.md} & ship chain and rejected ideas, 30 Sept -- 1 Oct \\
-\fp{docs/review/panel*_2026-10-01/}, \fp{docs/panel_*.md} & expert panels \\
+\fp{docs/history/preregistrations/prereg_round13_detector_push.md} & every pre-registration and result, rounds 13--66 \\
+\fp{docs/history/preregistrations/prereg_v4.md}, \fp{docs/prereg_round*.md} & v4 amendments 1--25, rounds 4--12 \\
+\fp{docs/history/review/detector_final_2026-10-02.md} & plain-language summary of the final system and the last day \\
+\fp{docs/history/review/improvements_log_2026-09-30.md} & ship chain and rejected ideas, 30 Sept -- 1 Oct \\
+\fp{docs/history/review/panel*_2026-10-01/}, \fp{docs/panel_*.md} & expert panels \\
 \fp{benchmark/gold/annotations/gold_AG.json} & the gold labels \\
 \fp{benchmark/gold/ledger_*.json} & per-item misses and wrong pictures \\
 \fp{benchmark/gold/ceiling_ship7.md}, \fp{visible_weight_sweep.md} & ceiling and sensitivity analyses \\
-\fp{docs/LEDGER_2026-09-26.md} & audit ledger of the September phase \\
+\fp{docs/history/daily_notes/LEDGER_2026-09-26.md} & audit ledger of the September phase \\
 \bottomrule
 \end{tabular}
 \end{center}

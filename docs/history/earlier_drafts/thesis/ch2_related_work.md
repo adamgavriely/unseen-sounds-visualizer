@@ -1,6 +1,6 @@
 # Chapter 2 — Related work (draft, 27 Sept 2026)
 
-*This chapter places the thesis in five research areas. It reuses and updates `docs/literature_review.tex`: the
+*This chapter places the thesis in five research areas. It reuses and updates `docs/history/earlier_drafts/literature_review.tex`: the
 accessibility argument is kept; every sentence about "what we use" now follows the shipped system of Chapter 3.
 Model names in the text refer to that system (for example BEATs ∪ FlexSED as the detector, Qwen3.8-27B as the
 visibility gate, FLUX.1-schnell as the shipped generator, with Qwen-Image-2512 with the V3.1 text as the frozen final setup that is
@@ -161,7 +161,7 @@ These models answer "what does this soundtrack look like?". Two properties make 
 they condition on the sound of the whole clip, so they tend to draw the whole scene, not the one source that the
 viewer cannot see. Second, they give no direct way to forbid an object. A text prompt can carry a noun guard and a
 negative prompt; an audio embedding cannot. The project's image-generation panel reached the same view
-(`docs/panel3_topic2_rounds.md`). None of them looks at the video, so none can decide which sounds need a picture.
+(`docs/history/panels/panel3_topic2_rounds.md`). None of them looks at the video, so none can decide which sounds need a picture.
 
 ### Text-to-image generators
 
@@ -180,7 +180,7 @@ things at once, the decision (it draws everything) and the renderer (a different
 it could not be credited to the gate. The *blind* arm replaces it: the same detector, label filter and generator,
 drawing every detected sound without looking at the video. The difference between the gated and the blind arm is
 then the gate alone (Chapter 5 §5.3–5.4). This follows the image-generation panel's judgement
-(`docs/panel3_topic2_rounds.md`) and the research-question map of Chapter 1 §1.4.
+(`docs/history/panels/panel3_topic2_rounds.md`) and the research-question map of Chapter 1 §1.4.
 
 ## 2.5 Evaluating generated content, and LLM or VLM judges
 
@@ -207,7 +207,7 @@ picture recognition with people, in a short glance-naming test (§5.11), and tre
 ranking, not absolute quality".
 
 No automatic judge, and no hearing rater, can say what a DHH viewer gains. That needs a study with DHH viewers,
-which this project designed and did not run (`docs/beta_specification.md` §5).
+which this project designed and did not run (`docs/history/plans/beta_specification.md` §5).
 
 ## 2.6 The gap
 
@@ -224,4 +224,4 @@ pilot benchmark and per-sound metric (Chapter 4), and a pre-registered evaluatio
 
 ## References
 
-All works cited in this chapter are listed in the shared reference list, `docs/thesis/references.md`.
+All works cited in this chapter are listed in the shared reference list, `docs/history/earlier_drafts/thesis/references.md`.

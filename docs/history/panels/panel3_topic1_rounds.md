@@ -1,6 +1,6 @@
 # Topic 1 — Sound detection: panel rounds (27 Sept 2026)
 
-Brief: docs/panel3_topic1_*.md · context: docs/panel3_common_context.md
+Brief: docs/panel3_topic1_*.md · context: docs/history/panels/panel3_common_context.md
 
 ## T1-c — round 1 (skeptical statistician)
 

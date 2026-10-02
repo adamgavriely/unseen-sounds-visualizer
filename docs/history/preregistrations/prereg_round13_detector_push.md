@@ -10,7 +10,7 @@ More needed sounds heard and shown (hits), without more wrong pictures than the 
 
 ## Baseline
 **B0 = the scored config (PANNs veto 0.05)**, i.e. the config the frozen TEST table was scored with and the better arm on
-DEV (`docs/dev_candidates_check_2026-09-28.md`: 14 hits, 24 wrong, cost 2.78). Every round-13 candidate is built on top
+DEV (`docs/history/analyses/dev_candidates_check_2026-09-28.md`: 14 hits, 24 wrong, cost 2.78). Every round-13 candidate is built on top
 of B0, so a TEST comparison is not confounded by the veto swap. B1 (self-veto, current `use_shipped()`) is reported
 beside. Whether `use_shipped()` returns to the PANNs veto is Adam's decision (TODO), not part of this round.
 
@@ -367,7 +367,7 @@ wrong-class candidates, vs 10 vs 52 for Qwen V4 alone).**
 Arms: TIER, TIER+ONCE, TIER+ONCE+R13-1, TIER+ONCE+R13-1+XQ, and (QV4 & AF yes/no > 0)+ONCE+R13-1. Same full-pipeline DEV
 test and report. Confirmation of whichever is picked = the 100 new annotated clips.
 **Round 14 amendment F — bug fixes from the per-video trace + 3 Fable consults (written before any pipeline number of
-these arms; the per-video trace `docs/dev_heard_dropped_2026-09-29.md` and candidate screens were seen).**
+these arms; the per-video trace `docs/history/analyses/dev_heard_dropped_2026-09-29.md` and candidate screens were seen).**
 Fixes (each a mechanism fix, no new threshold):
 - **FIX-FAM (F4):** the local-winner test compares FAMILIES (canonical family; a sibling/child query such as 'Steam whistle'
   counts as the candidate's own family), not raw query names. (Whistle case.)
@@ -486,7 +486,7 @@ later batches' TEST2 clips are added to it before that single scoring, unless Ad
   number within 1 s of each other, the picture starts at their mean (clip time); if either says none, no change for
   rescued runs and no rescue for weak runs outside the TIER rule.
 Arms on top of TO1+F7F8: +J3, +J4, +J3+J4, and + the best amendment-I combination.
-**Round 14 amendment K (from the per-sound trace of TO1+F7F8, `docs/dev_heard_dropped_best_2026-09-29.md`; written before
+**Round 14 amendment K (from the per-sound trace of TO1+F7F8, `docs/history/analyses/dev_heard_dropped_best_2026-09-29.md`; written before
 any number of these arms).** On top of TO1+F7F8:
 - **K1 F8 bypass:** the DASM vote is skipped for a rescued run that BOTH Qwen V4 and Audio Flamingo V4 accept (two audio
   LLMs outvote one SED). (F8 killed Hammer 13.7 and Explosion 2.8.)
@@ -771,7 +771,7 @@ gain, cost < B0r); ties → fewer wrong. The pick is the ONE candidate for the f
   and DASM for ComfyUI: TODO. The merged TEST (scored once, end) decides whether the switch stays.
 
 **Confirmation set 1 — batch 3 (Adam, 2026-09-30; fixed and committed before any pipeline run or output on these
-clips).** 19 AudioSet-Strong eval clips (`docs/tagger_selection_rule.md`, amendments 1–4; source map
+clips).** 19 AudioSet-Strong eval clips (`docs/history/preregistrations/tagger_selection_rule.md`, amendments 1–4; source map
 `benchmark/gold/tagger_audioset_sources.json`) from Adam's export `tagger_AG_2026-09-30_0635.json` (done, not broken;
 d102, d108 broken to `_bad/`), added by `tagger_set.py`. Split tag-balanced by `tagger_split.py` (same rule as batch 2):
 **DEV2** = tg_d107, d120, d121, d125, d127, d128, d129, d133, d149 (9; 10 needed sounds); **TEST2** = tg_d101, d103,
@@ -1838,7 +1838,7 @@ only the tg_d149 loss remains.
 onset where the sound ramps up; the one late-repeat it fixes was already a dup-in-waiting next to a hit. No other SHIP7 picture has
 DASM evidence at its start that reaches back >= 1 s.
 
-### Visibility re-check (Adam, 30 Sept 23:26; blind to the old tick; tool docs/review/visibility_recheck.html)
+### Visibility re-check (Adam, 30 Sept 23:26; blind to the old tick; tool docs/history/review/visibility_recheck.html)
 14 borderline gate-side gold sounds (9 visible-wrong pictures, 5 gate-silenced needed sounds) re-judged blind:
 Q1 source on screen, Q2 obvious without sound. Rule for applying, fixed before scoring: a question answered "unsure"
 keeps its old value; seen = visible or obvious. Answers: benchmark/gold/visibility_recheck_answers.json.
@@ -2043,7 +2043,7 @@ tg_d133 Fart cannot be screened; stated, not re-run. Base (shipped majority, cac
 rule was written): seen 41 / silenced 16, needed 38 / kept 33; 54 seen-majority stretches to box.
 **Pass:** GO iff needed kept rises by >= 2 (>= 35) AND seen silenced drops by <= 1 (>= 15). Report: table (base vs BOX),
 every flipped sound with gold class, counts of none / crop-no / unparsed / unchanged-seen, the raw box replies and crops
-of every bell_miami stretch and of every flipped sound (`docs/review/box_crops/`). Script `benchmark/gold/box_gate.py`,
+of every bell_miami stretch and of every flipped sound (`docs/history/review/box_crops/`). Script `benchmark/gold/box_gate.py`,
 job `slurm/job_box_gate.sh`; nothing in `src/` or `config.py` edited. GO -> a `src/` flag is Adam's decision; STOP ->
 recorded, closed.
 
@@ -2051,7 +2051,7 @@ recorded, closed.
 Adam: a picture of a sound whose source is on screen is roughly half as bad as an unrelated one; show it as a scale.
 Secondary cost per clip = (4·miss + w·visible + 2·cross + 2·phantom) / clips, reported as a sweep w ∈ {0, 1, 2} (w = 2 is the
 primary). Weights are the owner's elicited value, not literature-derived (precedent for class-weighted errors: PSDS
-cross-trigger weight; caption-error severity metrics). Disclosure: docs/metric_per_sound.md recorded the September decision
+cross-trigger weight; caption-error severity metrics). Disclosure: docs/history/plans/metric_per_sound.md recorded the September decision
 "visible = full false alarm"; this is a partial, post-hoc reversal, so the primary stays unchanged and every past decision
 stays judged on it. Cross is not split (it includes late same-family pictures the onset rule exists to punish). Re-scored for
 the whole shipped chain on merged DEV and on TEST (aggregates already reported); sensitivity only, no new "better" claim.
@@ -2077,14 +2077,14 @@ sounds un-silenced: marrakech_3102 Motorcycle 12.7, storm_7200 Rain 0.1, as_expl
 Whip 11.2, mv_tornado Cellphone buzz 1.4 + Horse 17.1, un_driving_motorcycle_4O3bZRYO Motorcycle 16.2 — 5 of them by a
 `none` box on a source the majority vote (and the gold) sees; the model declines to box what it just said it saw.
 54 seen stretches: none 16, crop-no 6, unparsed 15 (replies "Based on the visual evidence…" prose or `<tool_call>`
-computer-use garbage — left unchanged by rule), seen kept 17. bell_miami (`docs/review/box_crops/`): stretch 1 `none`;
+computer-use garbage — left unchanged by rule), seen kept 17. bell_miami (`docs/history/review/box_crops/`): stretch 1 `none`;
 stretches 2–3 box the IHS medallion / a sign sliver on the tower (1080×1920 frame; boxes 13×30 and 33×30 on the 0–1000
 grid), crop answers "no" + a/b False → flipped, as Adam predicted — the mechanism works on the motivating clip but the box
 question is too eager to say `none` elsewhere. tg_d133 Fart not screened (no tg_* gate cache). Closed.
 
 ## Round 38 E4 CF — the gate VLM answers the gold's own two questions (written 2026-10-01 BEFORE any CF number)
 **Motivation:** the shipped gate (`reason._sound_is_visible`: name / a/b / describe, majority) asks questions that differ
-from the gold's. The gold's re-check tool (`docs/review/visibility_recheck.html`) asks Q1 "Is the thing that makes THIS
+from the gold's. The gold's re-check tool (`docs/history/review/visibility_recheck.html`) asks Q1 "Is the thing that makes THIS
 sound on screen while you hear it? A look-alike counts as no" and Q2 "With the sound off, would a viewer already know
 this sound is happening?"; gold seen = Q1 yes or Q2 yes. CF asks the same VLM the gold's questions verbatim.
 **Rule CF (one design, fixed here).** Same VLM (`Qwen/Qwen3.8-27B` via `reason._load`, greedy `reason._ask`), same 6
@@ -2892,7 +2892,7 @@ decision); STOP -> recorded, closed.
 ## Round 44 AVNAME — name the sound from audio AND the frames of that moment (written 2026-10-01 BEFORE any number)
 **Idea (Adam).** People understand a sound by combining what they hear with what they see: a generic "whack" plus golfers on screen
 means a golf strike. The shipped pipeline names sounds from audio alone (BEATs / FlexSED / listeners) and uses the video only for the
-visibility gate. This round asks whether an audio-visual NAMER fixes the wrong-family pictures of `docs/review/ledger_ship8.md`
+visibility gate. This round asks whether an audio-visual NAMER fixes the wrong-family pictures of `docs/history/review/ledger_ship8.md`
 (Steam on a train crossing, Dog on chopping, Glass on a baby cry, Hammer on a clang, Screaming on birds, Explosion on thunder, Bird
 during footsteps) without inventing new ones. Names and drops only: picture times, the gate and everything in `src/` are untouched
 (the visibility side is Round 43's ground, not repeated here).
@@ -3139,14 +3139,14 @@ is uninformative and nothing below is computed.
 corrected EXPECT-A4 TEST d cost: each (E) TEST picture rated real-unlisted is counted neutral (neither hit nor wrong), so
 d_corr = d − 2·k/88; the same for DEV (2·k/71). SHIP8's own wrongs are common to both arms and cancel in d, so (S) only gives the gold's
 general incompleteness rate. Whether EXPECT-A4 ships on the corrected view is Adam's decision after he sees the table; `src/` untouched.
-**Files:** `benchmark/gold/gold_scope_items.py` -> `benchmark/gold/gold_scope_items.json` (hidden key) + `docs/review/gold_scope_recheck.html`
-(+ clip media in `docs/review/recheck_media/`); answers -> `benchmark/gold/gold_scope_answers.json`; `gold_scope_items.py score`.
+**Files:** `benchmark/gold/gold_scope_items.py` -> `benchmark/gold/gold_scope_items.json` (hidden key) + `docs/history/review/gold_scope_recheck.html`
+(+ clip media in `docs/history/review/recheck_media/`); answers -> `benchmark/gold/gold_scope_answers.json`; `gold_scope_items.py score`.
 **Round 46 amendment 1 (written BEFORE any answer exists; the rating page is unchanged).** (a) "Real-unlisted" also needs the clip's
 gold to hold NO sound of the same family anywhere (`score_per_sound.same_family`, the scorer's own matcher). A Q1∧¬Q2∧Q3 item whose
 family the gold lists at another time is reported separately as "real, gold times it elsewhere" (a gold onset error or a late
 repeat; Adam decides per clip) and does NOT enter d_corr. Known at writing: 5 of the 11 E items are listed-elsewhere (arrest
 Footsteps, rainforest_7629 Bird, tg_d020 Rain, air_raid Bird, tg_d045 Vehicle), so at most 3 DEV / 4 TEST E items can move d_corr.
-(b) Items with onset 0.0 play 0–3.0 s (not −0.5–2.5). (c) Media are in `docs/review/gold_scope_media/`. (d) The hidden key
+(b) Items with onset 0.0 play 0–3.0 s (not −0.5–2.5). (c) Media are in `docs/history/review/gold_scope_media/`. (d) The hidden key
 `gold_scope_items.json` must not be opened before rating.
 ### Round 46 result — GOLD-SCOPE (Adam's answers 2026-10-01 04:56, 41/41 items)
 Control: Q1-yes **0/10** (bar <= 2) -> the check is informative. **(E) EXPECT-A4 extra wrongs: real-unlisted 2/11 (0.18, Wilson
@@ -3339,8 +3339,8 @@ per shipped change and only reported.
 ## Round 51 GRP-P — smart grouping from the gold's own continuity rule (written 2026-10-01 12:40 BEFORE any number of it; Adam: "a grouping limit, the number from DEV, maybe a smart grouping")
 **Why.** DEV cannot pick a picture-gap limit: every limit 3–8 s gives the same merged-DEV score (merges at 2.75 / 2.96 s; Omni
 refused the wider pairs), and needed same-family returns in the DEV gold occur at every gap (0.6, 1.4, 2.1, 2.4, 3.0, 3.2, 4.1,
-4.5, 5.9 s). The project's annotation rule is "one row per continuous sound, split at pauses > 2 s" (`docs/prereg_round12_v2.md`
-l. 40; `docs/setup_audit_2026-09-28.md` l. 18). Disclosed: revisiting grouping was prompted by today's TEST reads (the ice-cream-truck
+4.5, 5.9 s). The project's annotation rule is "one row per continuous sound, split at pauses > 2 s" (`docs/history/preregistrations/prereg_round12_v2.md`
+l. 40; `docs/history/analyses/setup_audit_2026-09-28.md` l. 18). Disclosed: revisiting grouping was prompted by today's TEST reads (the ice-cream-truck
 return); the rule's content and its 2-s value predate them and come from the annotation protocol, not from any clip.
 **Rule.** Keep GRP-A (same/new, both orders, picture-gap cap 8 s as pre-registered) and add a pause question on the same cut:
 "Does the {lab} sound stop completely for more than 2 seconds before it is heard again? Answer yes or no." (both option orders).
@@ -3396,7 +3396,7 @@ g > 2 = 0.036 (6/169); unmasked only g > 2 = 0.105 (20/190). **Bar (>= 0.75 on b
 time pauses: it answers "no pause" regardless of the gap. Step 2 not run (no DEV GRP-P score exists; the DEV pair list was only
 built to check the code path, base reproduced 29/58, 18 (6/10/2), 2.141). The picture-gap cap stays 8 s; GRP-A unchanged. No TEST.
 
-## Round 53 WEAK-WITNESS — two witnesses, DASM bar from the held-out 415 (written 2026-10-01 BEFORE any number of it; panel 1 Oct first choice, `docs/review/panel_2026-10-01/p3_wrongs.md`, `round2_votes.md`)
+## Round 53 WEAK-WITNESS — two witnesses, DASM bar from the held-out 415 (written 2026-10-01 BEFORE any number of it; panel 1 Oct first choice, `docs/history/review/panel_2026-10-01/p3_wrongs.md`, `round2_votes.md`)
 **Why.** 7 of the 12 cross/phantom pictures of SHIP8+MD3 have family DASM 0.03–0.34 at the onset (panelist 3); Round 29 DV-G used
 the same test with bar 0.575 (19/21/2.620, 5 hits lost). Here the bar comes from the held-out 415, not from DEV.
 **Rule (existing flags, no src change): shipped SHIP8+MD3 + `DASM_LOCAL_VETO` b + `DASM_LOCAL_KEEP` "both".** As the code does it
@@ -3428,7 +3428,7 @@ either part, wrong <= 18 + 2 × gain, cost < 2.141) OR fewer-pictures clause ((a
 (d) hits >= 26). Expectation (panel proxy, not selection): b <= 0.29 -> 29/15, 2.056; a bar of 0.30–0.35 risks tg_d075 / tg_d032.
 Not combinable with STRONG-KEEP (Round 52 failed anyway). TEST is not read in this round.
 
-## Round 54 SIGN — effect-centric, source-free gate vote used as ADD-seen (written 2026-10-01 BEFORE any SIGN number; panelist 2's P1, `docs/review/panel_2026-10-01/p2_visibility.md`, voted #2 in `round2_votes.md`)
+## Round 54 SIGN — effect-centric, source-free gate vote used as ADD-seen (written 2026-10-01 BEFORE any SIGN number; panelist 2's P1, `docs/history/review/panel_2026-10-01/p2_visibility.md`, voted #2 in `round2_votes.md`)
 **Why.** 18 of the 25 gate leaks name "nothing" on every stretch: every closed gate question needs a SOURCE object first, and
 thunder, air horn, fireworks, POV footsteps have none. SIGN asks for the sound's visible EFFECT instead, and can only ADD "seen".
 **Question (fixed).** Shipped gate VLM Qwen3.8-27B (config profile 5), greedy, letter answer, max_new 6, both letter orders as
@@ -3573,7 +3573,7 @@ Step 0, 10 fixed DEV stretches (positions 0, 7, …, 63 of the 72): answer pairs
 Together with Round 54 (a/b: "(a)" by position on 88 %), Qwen3.8-27B gives no usable answer to a source-free "visible sign"
 question in either format. Nothing ships; TEST not read.
 
-## Round 56 TWIN-SHORT — agreement before the minimum span (written 2026-10-01 BEFORE any 415 or DEV number of it; panelist 1's P1, `docs/review/panel_2026-10-01/p1_detection.md`, ranked 2nd-3rd in `round2_votes.md`)
+## Round 56 TWIN-SHORT — agreement before the minimum span (written 2026-10-01 BEFORE any 415 or DEV number of it; panelist 1's P1, `docs/history/review/panel_2026-10-01/p1_detection.md`, ranked 2nd-3rd in `round2_votes.md`)
 **Why.** `fuse_flexsed` gets BEATs spans already cut at AED_MIN_DUR (0.3 s, MD3) and extracts FlexSED at the same minimum, so
 two short detections of one family at one moment die separately before the twin union can join them (merged-DEV miss
 as_explosion_XJ8lc3I6 Gasp 6.7; then N2 and the DASM clip veto, DASM clip max 0.065 < 0.084).
@@ -3717,9 +3717,9 @@ no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141)
 <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row (`floor_check_arm.py`), changed pictures, and for every lost hit its
 rows' DASM and ears. Stacking with Round 56 as pre-registered in Round 53b. TEST not read.
 
-## Round 52b KIN-KEEP — a strong span is kept only when FlexSED's winner is its ontology relative (written 2026-10-01 BEFORE any number of it; from `docs/review/round52_nearmiss.md`)
+## Round 52b KIN-KEEP — a strong span is kept only when FlexSED's winner is its ontology relative (written 2026-10-01 BEFORE any number of it; from `docs/history/review/round52_nearmiss.md`)
 **Why.** Round 52 STRONG-KEEP (conf >= 0.7 skips the mirror veto and the cross-detector veto) gained tg_d029 rooster but lost
-tg_d120 Cat and added 3 wrong pictures. The near-miss diagnosis (`docs/review/round52_nearmiss.md`) found one stage-4 separator:
+tg_d120 Cat and added 3 wrong pictures. The near-miss diagnosis (`docs/history/review/round52_nearmiss.md`) found one stage-4 separator:
 the rooster's mirror competitor is FlexSED Goose 0.852, which shares the non-root ancestor Fowl with Chicken (FlexSED heard the same
 source under a sibling name; the "other family" is the canonical map Chicken -> Bird, Goose -> Goose). The new wrongs' winners are
 unrelated (Pant/Alarm, Thunder/Bicycle, Cattle/Laughter). The Cat loss came from Meow (cross veto only, no competitor >= 0.7) being
@@ -3784,7 +3784,7 @@ lost, cost 2.225 > 2.141); fewer-pictures clause fails ((a) cost not below 2.141
 listener as the Qwen ear, "either" keeps most crosses (an ear says yes to them) and still drops two hits, so the one-ear witness
 helps neither way on DEV; the four Round 53 witness variants (53, 53b, 53c, 53d) are closed. DASM_LOCAL_VETO stays None; TEST not read.
 
-## Round 57 DEPICT-EVENT + LOOK-ALIKE — drop a picture whose own depicted event is on screen AND whose seen maker sounds like it (written 2026-10-01 BEFORE any Round 57 number; panelist 2's P3 DEPICT-EVENT, `docs/review/panel_2026-10-01/p2_visibility.md`, merged with panelist 3's P2 LOOK-ALIKE, `p3_wrongs.md`, "drop only when both say yes", `round2_votes.md`)
+## Round 57 DEPICT-EVENT + LOOK-ALIKE — drop a picture whose own depicted event is on screen AND whose seen maker sounds like it (written 2026-10-01 BEFORE any Round 57 number; panelist 2's P3 DEPICT-EVENT, `docs/history/review/panel_2026-10-01/p2_visibility.md`, merged with panelist 3's P2 LOOK-ALIKE, `p3_wrongs.md`, "drop only when both say yes", `round2_votes.md`)
 **Why.** Rounds 54/54b showed Qwen3.8-27B cannot answer a source-free "visible sign of {label}" question (a/b by position; yes/no
 "no" to both polarities). DEPICT-EVENT asks about the picture's OWN depicted event (a concrete scene, "Train releases steam"), and
 LOOK-ALIKE (text only) checks that what the gate saw could be the sound's real maker; both must agree before a picture is dropped.
@@ -3929,7 +3929,7 @@ the clause would keep the WORSE group on the 415. By ears: 0 ears >= 0.5 127, 0.
 0.634. Drop set on the 415: Round 53 both-only 339 at 0.150; with the clause 319 at 0.144. Reading: the DEV pattern (2 lost hits
 high, 2 of 4 one-ear-or-no-ear wrongs low) is not borne out on the 415; Round 53 stays FAIL, DASM_LOCAL_VETO stays None. TEST not read.
 
-## Round 58 TIGHT-CUT — tight listener cut for refused band runs (written 2026-10-01 BEFORE any 415 or DEV answer of it; panelist 1's P3, `docs/review/panel_2026-10-01/p1_detection.md`)
+## Round 58 TIGHT-CUT — tight listener cut for refused band runs (written 2026-10-01 BEFORE any 415 or DEV answer of it; panelist 1's P3, `docs/history/review/panel_2026-10-01/p1_detection.md`)
 **Why.** The band rescue's listener hears the run's cut padded by 1 s each side (`[cut − 1, cut + 1]`, `dev_listener` /
 `listener_variants` `run_audio`); for a refused band run the pad can let a louder neighbour win (as_explosion Footsteps
 2.08–2.72: Qwen V4 "Explosion / Gunshot", the Explosion is at 2.84; Gasp 6.72–6.92: "Explosion / Gunshot / Screaming").
@@ -4311,7 +4311,7 @@ laundromat Train (kept), fire_alarm, tg_d075, tg_d120, tg_d128, applause; D REPL
 v-think: not run (stopped early, 61c). Nothing ships; D stays the shipped base; TEST not read.
 Correction (Round 61b result line "Q1 alone said unlikely on 27/44 incl. 17 hits"): the count is **16 hits** (recounted from `explain_screen.json` q1_unlikely classes).
 
-## Round 62 LOGIT-GATE — read P(yes) − P(no) at the first answer token instead of parsing generated text (written 2026-10-02 BEFORE any Round 62 number; Panel 2 Fable B idea 1, `docs/review/panel2_2026-10-01/fB_vision.md`, with Fable D's SIGN-3 lexicon, `fD_redteam.md`)
+## Round 62 LOGIT-GATE — read P(yes) − P(no) at the first answer token instead of parsing generated text (written 2026-10-02 BEFORE any Round 62 number; Panel 2 Fable B idea 1, `docs/history/review/panel2_2026-10-01/fB_vision.md`, with Fable D's SIGN-3 lexicon, `fD_redteam.md`)
 **Why.** Every Qwen3.8-27B gate question so far (`_ask` / `_ab` / `_sound_is_visible`, SIGN, SIGN-2, HUMAN*, SCENE_FIT, 61 Q1/Q3)
 was greedy text + first-letter / first-word parse with a 4–6-token cap. The day's VLM "failures" (letter position 88 %, the
 (no, no) habit 9/10, "Based on the" truncation) are failures of that readout. No gate round has read the margin.
@@ -4362,7 +4362,7 @@ these 6 targets (lexicon written by Fable D after seeing them), so a (b) win on 
 D's DEV specs is reported. Job `slurm/job_logit_gate.sh` (gold -> score_gold, exit 0 only on step-1 PASS -> dev -> score_dev).
 TEST is not read.
 
-## Round 63 TAG-ENS — calibrated tagger ensemble as the BEATs span source (written 2026-10-02 BEFORE any Round 63 number; Panel 2 Fable A idea 1, `docs/review/panel2_2026-10-01/fA_audio.md`, `dissection2.md`)
+## Round 63 TAG-ENS — calibrated tagger ensemble as the BEATs span source (written 2026-10-02 BEFORE any Round 63 number; Panel 2 Fable A idea 1, `docs/history/review/panel2_2026-10-01/fA_audio.md`, `dissection2.md`)
 **Idea.** Lone-model spikes make wrong BEATs spans and BEATs alone misses some onsets (nyc Vehicle 3.8, as_explosion Explosion 2.8,
 tg_d032 Thunder 7.4, rainforest_7629 Bird, Gasp). Average BEATs with other AudioSet taggers put on BEATs' score scale, then cut spans
 from the average. **Online per video:** every step uses only that video's audio plus constants frozen here from the 415 (half A).
@@ -4400,7 +4400,7 @@ live path and the harness share): with TAG_ENS set, the incoming tagger spans ar
 tagger frames are read from the cache folder or, if absent, scored live from the clip's wav and cached. `round13_dev.py`: one arm line.
 Files: `benchmark/gold/tagens.py` (cache / fit / step1 / diff), `slurm/job_tagens.sh`.
 
-## Round 64 CONCEALED-ACTION — the gate may not silence a sound whose making is hidden inside its visible source (written 2026-10-02 BEFORE any Round 64 DEV number; Panel 2 Fable C idea 1, `docs/review/panel2_2026-10-01/fC_perception.md`)
+## Round 64 CONCEALED-ACTION — the gate may not silence a sound whose making is hidden inside its visible source (written 2026-10-02 BEFORE any Round 64 DEV number; Panel 2 Fable C idea 1, `docs/history/review/panel2_2026-10-01/fC_perception.md`)
 **Principle (general, not per case).** For some sources, seeing the object is not seeing the sound being made: a bell's clapper
 is inside the bell or tower, a fart / burp / hiccup / stomach rumble is inside the body on screen. For these, "the source is on
 screen" does not tell the viewer the sound happened, so the visibility gate must not silence them. **Online, per video:** a fixed
@@ -4545,7 +4545,7 @@ DEV row is now 29/58, 15 (6/7/2), 2.056 (the 2.028 included one truncation win).
 
 ## Round 65 RETURN — PERCEPTUAL-ONSET RETURN (Fable C idea 2; written 2026-10-02 BEFORE any 415 or DEV number of this round)
 **Why.** The gold counts a same-family sound after a > 2-s pause as a NEW event (12/58 needed are such returns; D hits 3). Known
-before writing (from `docs/review/panel2_2026-10-01/dissection2.md`, D's misses with a same-family picture elsewhere): **tg_d032 Thunder
+before writing (from `docs/history/review/panel2_2026-10-01/dissection2.md`, D's misses with a same-family picture elsewhere): **tg_d032 Thunder
 7.4** (picture 13.75), **as_explosion Explosion 2.8** (pictures 5.68, 9.25), **birds_forest Bird 1.3** (picture 10.25), **tg_d120 Meow
 2.9** (Cat picture 0.56). Known risk: texture repeats (tg_d088 Rain / Thunder). 3 of the 4 targets lie BEFORE the drawn picture, so the
 gap rule is two-sided (below).
@@ -4643,7 +4643,7 @@ mv_protest Crowd −1.9, pet-shop Bird −2.5. **bell_miami Bell 0.2 (NEEDED): p
 / −6.25 (A −6.0) — the crop margin says the church is clearly NOT making the bell sound right now** (Round 50 text: no, no, no), so a
 crop-margin rule would keep bell_miami's needed bell. Nothing ships; no src / config edit; TEST not read.
 
-## Round 66 NAME-ALL — forced top-3 naming + describe phrases -> ground + crop -> null-calibrated logit crop margin, two-sided (written 2026-10-02 BEFORE any Round 66 answer; VLM panel first pick, `docs/review/vlm_panel_2026-10-01/f2_prompts.md` ideas #1 + #2)
+## Round 66 NAME-ALL — forced top-3 naming + describe phrases -> ground + crop -> null-calibrated logit crop margin, two-sided (written 2026-10-02 BEFORE any Round 66 answer; VLM panel first pick, `docs/history/review/vlm_panel_2026-10-01/f2_prompts.md` ideas #1 + #2)
 ### (A) Twin check (panel #2's 10-min CPU check; recorded BEFORE step 0; data = Round 62's cache `gate_gold/logit_Qwen38-27B/`, 145 stretches)
 Pre-stated rule (panel): corr(sQ, sN) > 0.8 AND AUROC(sQ) >= AUROC(d) -> the NOT twin subtracts signal -> use the negation-free
 affirmative twin; else keep the twin. **Result:** (a) corr(sQ, sN) = **−0.83**, per-stretch AUROC sQ 0.624 < d 0.646 (−sN alone

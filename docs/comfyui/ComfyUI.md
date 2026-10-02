@@ -7,7 +7,7 @@ Status as of 2026-09-23 evening. Paused here; this file is the handover to whoev
 ## 1. What we want
 
 The supervisor suggested ComfyUI **as a GUI and wiring layer for the pipeline**, not as an image
-generator. (An earlier note in `docs/comfyui_assessment.md` assessed it as a generator and concluded
+generator. (An earlier note in `docs/comfyui/comfyui_assessment.md` assessed it as a generator and concluded
 "not worth it" — that answered the wrong question and is superseded.)
 
 The goal is a **thesis/defence artefact**, explicitly NOT a replacement pipeline:
@@ -16,7 +16,7 @@ The goal is a **thesis/defence artefact**, explicitly NOT a replacement pipeline
 * **one switch** that turns the cross-modal gate off, so a committee can watch the wrong pictures
   appear on the same clip;
 * it must accept **any video Adam chooses**, not only clips the benchmark has already seen;
-* every number in `docs/prereg_v4.md` keeps coming from `benchmark/run_protocol.py`. The graph never
+* every number in `docs/history/preregistrations/prereg_v4.md` keeps coming from `benchmark/run_protocol.py`. The graph never
   becomes the thing that produces results.
 
 A full migration (graph replaces `pipeline.py`) is deliberately out of scope: it would have to

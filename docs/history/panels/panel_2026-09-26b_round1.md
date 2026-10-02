@@ -1,6 +1,6 @@
 # Panel 2026-09-26b — round 1 answers (six parts)
 
-Brief: docs/panel_2026-09-26b_brief.md
+Brief: docs/history/panels/panel_2026-09-26b_brief.md
 
 ## F1 — audio
 
@@ -64,4 +64,4 @@ Brief: docs/panel_2026-09-26b_brief.md
 
 Not on the page: any `rate_confirm` card, any TEST per-clip line before scoring, the 17 Sep "tie" framing.
 
-## F5 — history auditor: see docs/LEDGER_2026-09-26.md
+## F5 — history auditor: see docs/history/daily_notes/LEDGER_2026-09-26.md

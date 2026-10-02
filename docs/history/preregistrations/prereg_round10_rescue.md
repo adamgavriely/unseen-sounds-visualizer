@@ -7,7 +7,7 @@ and TEST are not touched by this part (DEV and fresh only through the conditiona
 `benchmark/detector_round10.json`, jobs `slurm/job_round10_*.sh`.*
 
 ## Why
-The audit (`docs/detector_audit_2026-09-28.md`) found that the largest group of missed needed sounds is sounds that FlexSED
+The audit (`docs/history/analyses/detector_audit_2026-09-28.md`) found that the largest group of missed needed sounds is sounds that FlexSED
 scores 0.4–0.8, below its bar 0.8: 40 / 109 misses on the 280 and 36 / 86 on the 415 (flag ii without the order: 61 / 51
 events, the "band group"). Every earlier way to let them in (a lower bar, corroboration by BEATs / PANNs / PSED / CLAP /
 Qwen-Omni, repeats, a scene prior, parent emission) also let in about 2 or more false spans per rescued event. Break-even
@@ -112,7 +112,7 @@ row; and the discriminator's own counts: candidates (or parent / lowered-bar spa
 - Each picked cell goes to the 415 alone, frozen; it **passes** iff the upper 95 % CI of ΔC-overlap < 0. **Holm** across
   all cells sent to the 415 (one-sided p, family α = 0.025, step-down) is reported with it; a cell counts as passed for the
   next steps only if it passes AND Holm rejects it.
-- Before the 415 is scored, `docs/setup_audit_2026-09-28.md` (running) is read. **If it reports a timing / alignment bug,
+- Before the 415 is scored, `docs/history/analyses/setup_audit_2026-09-28.md` (running) is read. **If it reports a timing / alignment bug,
   the 415 is not scored** and the round stops with a report.
 - **No combination** of cells is scored in this round.
 
@@ -125,7 +125,7 @@ row; and the discriminator's own counts: candidates (or parent / lowered-bar spa
    (`benchmark/gold/dev_candidates_check.py`) — reused as is, its files not edited. Scored with the official
    `score_per_sound` (onset rule, defaults), before / after, for ours ("proposed"): hits, wrong pictures (visible / cross /
    phantom), duplicates, F1, viewer cost.
-2. **Fresh set** (`R.use_set("fresh")`, 422 clips, `docs/prereg_fresh_confirm_set.md`), scored once, cell frozen, no refit;
+2. **Fresh set** (`R.use_set("fresh")`, 422 clips, `docs/history/preregistrations/prereg_fresh_confirm_set.md`), scored once, cell frozen, no refit;
    same gate (stack8 = round 5 span for span); primary: upper 95 % CI of ΔC-overlap < 0.
 3. **Ship rule:** the cell goes into `use_shipped()` only if the fresh set passes AND on DEV hits do not drop AND DEV wrong
    pictures do not rise by more than 2 × the hits gained.
@@ -180,7 +180,7 @@ What the 280 says (descriptive):
 - R6 / R7 keep round 8's rescues with far fewer false spans than I4 / I6 alone (R7: net −5 false spans, 8 events rescued).
 
 ## Note 2026-09-28 — HOLD before the 415 (lead's instruction, written before any round-10 number on the 415)
-The setup audit (`docs/setup_audit_2026-09-28.md`) found that the AudioSet cost C punishes any added span: silence beats
+The setup audit (`docs/history/analyses/setup_audit_2026-09-28.md`) found that the AudioSet cost C punishes any added span: silence beats
 the shipped stack on the 415, each bark is counted as a separate needed event, and there is no time tolerance. A corrected
 cost is being defined. **So the 415 is not scored for any cell, and DEV and fresh are not run.** The 280 step above is
 reported exactly as registered. The picks (R1, R2, R4, R5, R6, R7) will be re-evaluated under the corrected cost before

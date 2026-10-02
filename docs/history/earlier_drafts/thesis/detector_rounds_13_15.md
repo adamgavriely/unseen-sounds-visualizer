@@ -1,7 +1,7 @@
 ## Detector push: rounds 13–15 (listener rescue, filters, and negative results)
 
-*Continues §5.8. Numbers are read from `docs/prereg_round13_detector_push.md` (rounds 13–15, amendments A–O),
-`docs/dev_heard_dropped_best_2026-09-29.md` and `benchmark/gold/r13_test_final.md`. Intervals are paired clip bootstraps
+*Continues §5.8. Numbers are read from `docs/history/preregistrations/prereg_round13_detector_push.md` (rounds 13–15, amendments A–O),
+`docs/history/analyses/dev_heard_dropped_best_2026-09-29.md` and `benchmark/gold/r13_test_final.md`. Intervals are paired clip bootstraps
 (2000 draws, seed 0). All rows are **ours** (with the gate).*
 
 ### Goal and protocol
@@ -152,7 +152,7 @@ The per-sound trace of TO1+F7F8 (diagnostic only, no selection) gives each miss 
 | timing / merge | a picture exists but starts outside the hit window | 1 |
 | **total** | | **18** |
 
-*Source: `docs/dev_heard_dropped_best_2026-09-29.md`.* ONCE, F7 and the PANNs veto cause none.
+*Source: `docs/history/analyses/dev_heard_dropped_best_2026-09-29.md`.* ONCE, F7 and the PANNs veto cause none.
 
 **What it implies.** Four misses (a Hammer and two golf Whacks unheard, a Clang not drawable) are beyond any filter.
 Four sit in a weak band under every bar: two FlexSED blips of 0.08 s (0.435 and 0.42, under the rescue's 0.5), a forest

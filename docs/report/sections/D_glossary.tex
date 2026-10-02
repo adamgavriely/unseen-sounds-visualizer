@@ -1,42 +1,48 @@
 % ======================================================================
-\section{Glossary of internal names}\label{app:glossary}
+\section{Internal names used in the development record}\label{app:glossary}
+The development logs in \fp{docs/history/} and the scoring code use short codes. The main body of this report does not;
+this table maps each code to the plain name used in the report.
+
 {\small
-\begin{longtable}{L{2.8cm}L{12.0cm}}
+\begin{longtable}{L{3.2cm}L{11.4cm}}
 \toprule
-name & meaning \\
+code & plain name / meaning \\
 \midrule\endfirsthead
-\toprule name & meaning \\ \midrule\endhead
+\toprule code & plain name / meaning \\ \midrule\endhead
 \bottomrule\endfoot
-B0, B0r & the old pipeline, \cfgv{config.use_scored()} (September test table); B0r = B0 re-run in the same job as a candidate \\
-B1 & B0 with the BEATs self-veto in place of the PANNs veto (rejected) \\
-B & SHIP8+MD3: the base of the last rounds (DEV 29/18/2.141) \\
-D, \Dp & B + witness rule + scene check; \Dp{} reads the scene check by logits (frozen) \\
-DEV-49, TEST-60 & per-sound gold halves of 22 Sept \\
-DEV2, TEST2 & tagger clips added 29 Sept -- 1 Oct \\
-merged DEV / TEST & DEV-49 + DEV2 (71 clips); TEST-60 + TEST2 (88 clips) \\
-needed & a sound neither visible nor obvious, importance 2--3 \\
-hit, miss & a needed sound with / without a matching picture \\
-wrong: visible / cross / phantom & a picture of an on-screen sound / another sound / nothing \\
-cost & $(4\cdot\text{missed} + 2\cdot\text{wrong})/\text{clips}$ \\
-listener & an audio-language model asked about a candidate sound (Qwen3-Omni, Audio Flamingo Next) \\
-V4 / inventory & the listener's open list of heard sounds \\
-TIER & rescue rule: Qwen alone for strong FlexSED runs, both listeners for weak ones \\
-TO1+F7F8 & first shipped listener stack (tiered rescue, once per family, twin-max, mirror veto + listener keep, DASM vote) \\
+\multicolumn{2}{l}{\emph{Systems and versions}} \\
+D$'$, \texttt{SHIP8+MD3+WW5+SL} & the final system (\cfgv{config.use_shipped()}, tag \texttt{detector-frozen-2026-10-02}) \\
+D & the final system with the scene check read as text \\
+B, \texttt{SHIP8+MD3} & the version before the last three rules (witness rule, scene check, logit reading) \\
+B0, B0r & the September baseline (\cfgv{config.use_scored()}); B0r = B0 re-run in the same job as a candidate \\
+B1 & the September baseline with a BEATs self-veto (rejected) \\
+SHIP1--SHIP8 & successive accepted versions (Appendix~\ref{app:history}) \\
+v1, v2, v3, v4 & earlier versions of the system (August--September; Appendix~\ref{app:history}) \\
+\multicolumn{2}{l}{\emph{Data}} \\
+DEV-49, TEST-60 & the older parts of the development and test sets \\
+DEV2, TEST2 & the newer parts (tagger clips) \\
+merged DEV / TEST & the development set (71 clips) / the test set (88 clips) \\
+the 415, held-out & the screening set (415 AudioSet-Strong clips) \\
+slice B & 30 AudioSet-Strong clips with a masked sound, reported separately \\
+\multicolumn{2}{l}{\emph{Components}} \\
+TO1+F7F8, TIER & listener rescue of weak FlexSED detections (Qwen alone for strong runs, both listeners for weak) \\
+V4 & a listener's open list of heard sounds (``inventory'') \\
 N2b & masked-weak veto \\
 DR2 & DASM rescue of new families \\
 K-V4 & a listener keep must also be named in an inventory \\
 DV & DASM clip veto \\
 BTP & band-twin pull (start a late picture at an earlier weak run) \\
 CONT & continuation veto \\
-FLAP & FineLAP veto on rescued spans \\
-K4AO, K4A-D & drop a picture neither inventory names (K4A-D: unless DASM hears it) \\
-SHIP1--SHIP8 & successive shipped configurations (Table~\ref{tab:shipchain}) \\
-MD3 & shortest span 0.5 $\to$ 0.3\,s \\
-GRP / GROUP & grouping of same-family pictures by Qwen3-Omni \\
-WW, WW5 & weak-witness rule; WW5 = WW with the scene check \\
-SL & scene check read as a logit margin (Round 60L) \\
-DEPICT & depict-event drop (Round 57) \\
-415 & held-out AudioSet-Strong screening set \\
-EXPECT & idea family: name sounds expected off screen, then confirm (rejected) \\
+FLAP & FineLAP veto on rescued sounds \\
+K4AO, K4A-D & inventory keep (drop a picture neither listener lists; K4A-D: unless DASM hears it) \\
+MD3 & shortest detected sound 0.5 $\to$ 0.3\,s \\
+GRP, GROUP & same-family grouping by Qwen3-Omni \\
+WW, WW5 & witness rule; WW5 = witness rule with the scene check \\
+SL, 60L & scene check read from the yes/no logits \\
+DEPICT & depict-event drop \\
+EXPECT & ``expected sound'' rules: name sounds expected off screen, then confirm (rejected) \\
+\multicolumn{2}{l}{\emph{Process}} \\
+Round $n$, R$n$ & a numbered, pre-registered development round \\
+amendment $n$ & a numbered change to the September pre-registration (\fp{prereg_v4.md}) \\
 \end{longtable}
 }

@@ -1,6 +1,6 @@
 # Topic 2 — Image generation from audio and image data (3 reviewers × 3 rounds)
 
-Read `docs/panel3_common_context.md` first. Adam: *"the image generation using the audio and image data."*
+Read `docs/history/panels/panel3_common_context.md` first. Adam: *"the image generation using the audio and image data."*
 
 ## How pictures are made today
 - **Subject text** (stage 5b, `src/stage5_cross_modal_analysis/reason.py`): the detector's label → `choose_source` picks the
@@ -11,7 +11,7 @@ Read `docs/panel3_common_context.md` first. Adam: *"the image generation using t
 - **Picture:** FLUX.1-schnell (shipped, 4 steps); Qwen-Image-2512 (1024 px, 50 steps, true CFG 4, negative prompt) tested.
   Plain white background, one large subject. Frozen final setup adds templates for hard sounds (thunder → lightning bolt,
   rain → drops on a window, car alarm, train horn, church bell, glass shatter) and comic word cards for sounds with no
-  maker (WHOOSH, THUD, BANG, SMACK, WHACK). `docs/freeze_picture_setup_2026-09-25.md`, `benchmark/gold/gen_screen.py`.
+  maker (WHOOSH, THUD, BANG, SMACK, WHACK). `docs/history/preregistrations/freeze_picture_setup_2026-09-25.md`, `benchmark/gold/gen_screen.py`.
 - **What the audio contributes today:** only the detector's label names (and their ontology chain). The raw audio never
   reaches the picture. **What the video contributes:** only the place/kind qualifier (≤ 2 words); the frames' look (colour,
   style, the actual object's appearance) is never used.

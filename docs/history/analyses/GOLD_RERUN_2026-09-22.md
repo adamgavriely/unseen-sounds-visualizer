@@ -5,7 +5,7 @@ Adam exported his per-sound annotations at 09:23 UTC (`benchmark/gold/annotation
 only), the models that work best on our data, then the full pipeline against the baselines with a
 clear, significant win — everything documented; SOTA models tested against the older ones; every
 GPU used; no waiting for his replies. Every decision below was taken with Fable consultation
-(recorded here) or is marked "(mine)". Declared protocol: `docs/prereg_v4.md`, amendment 5.
+(recorded here) or is marked "(mine)". Declared protocol: `docs/history/preregistrations/prereg_v4.md`, amendment 5.
 
 ## 1. The gold set (read once, before anything was scored)
 
@@ -21,7 +21,7 @@ GPU used; no waiting for his replies. Every decision below was taken with Fable 
 **Corrected 15:10** (advisor review): the first counts (103/54/49/36; 132 needed) were taken
 over done clips *including* the 20 bad ones, and the scorer read only the *obvious* tick for
 "needed" (22 visible-only rows were counted as needed — the direction that hides the gate's
-effect). Both fixed before any TEST number was read; recorded in `docs/prereg_v4.md`.
+effect). Both fixed before any TEST number was read; recorded in `docs/history/preregistrations/prereg_v4.md`.
 
 - 25 free-text sound names had no ontology match → alias table `ALIASES` in
   `benchmark/gold/score_per_sound.py` (machinegun → Machine gun, tank shot → Artillery fire, keys
@@ -652,7 +652,7 @@ all the depth because the evidence put 61% of wrong pictures and 52% of misses t
 The reviewers caught four real errors before they reached a result: the taxonomy was being run on
 v4b4, which predates the adopted detector; the "wrong-family" bucket was conflating salience with
 mis-hearing; the FA budget arithmetic assumed misses were fixed; and amendment 10's selection rule
-was incoherent with its own go/no-go. All four are recorded in docs/prereg_v4.md.
+was incoherent with its own go/no-go. All four are recorded in docs/history/preregistrations/prereg_v4.md.
 
 ### The corrected bottleneck, on the adopted detector (v4b6, 109 clips)
 

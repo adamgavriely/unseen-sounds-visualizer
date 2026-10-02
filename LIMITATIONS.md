@@ -1,10 +1,10 @@
-> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/prereg_v4.md` amendment 21 (final TEST table), `docs/WEEK_PLAN_2026-09-26.md`, `docs/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
+> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/history/preregistrations/prereg_v4.md` amendment 21 (final TEST table), `docs/history/daily_notes/WEEK_PLAN_2026-09-26.md`, `docs/history/daily_notes/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
 
 # Limitations
 
 What the numbers in the report do and do not support. Seeded 2026-09-14 from
-`docs/failure_catalogue.md` and the Limitations section of `docs/project_notes.tex`; the report's Limitations section mirrors this file. Numbers like #3 are entries in
-`docs/failure_catalogue.md`. "Current rule" means the configuration v3 was scored with.
+`docs/history/plans/failure_catalogue.md` and the Limitations section of `docs/history/earlier_drafts/project_notes.tex`; the report's Limitations section mirrors this file. Numbers like #3 are entries in
+`docs/history/plans/failure_catalogue.md`. "Current rule" means the configuration v3 was scored with.
 
 **In short.** The headline score is an automatic proxy, not a study with deaf viewers; it
 was produced by one judge on 100 clips labelled by one person, and it cannot see when the
@@ -56,7 +56,7 @@ detail behind those sentences.
   artefact (microphone wind noise, video-game sound, sound effect) should not count as
   missable, and near-duplicate claims of one source should be one claim.
 - **A "with sound / without sound" reference was piloted and failed.** Pre-registered
-  (`docs/prereg_av_reference.md`, before any code): an audio-visual model lists events with the
+  (`docs/history/preregistrations/prereg_av_reference.md`, before any code): an audio-visual model lists events with the
   soundtrack and again muted, on the same frames; heard items the muted run already saw are
   removed. Dev split, 156 clips, Qwen2.5-Omni-7B (MiniCPM-o 2.6 could not load): balanced
   accuracy of the "anything missing?" decision 49.5% (bar 67.7%), κ = 0.00, placebo rate 37%
@@ -66,7 +66,7 @@ detail behind those sentences.
   the audio on picture-due clips. Not adopted (`benchmark/av_reference_pilot.json`).
 - **A "gap-closing" score was pre-registered and its sanity check failed.** The same
   audio-visual model answers four fixed questions with sound, muted, and muted with shifted
-  frames (`docs/prereg_gap_closing.md`, 60 dev clips). The answers change as much from
+  frames (`docs/history/preregistrations/prereg_gap_closing.md`, 60 dev clips). The answers change as much from
   shifting the frames as from adding the soundtrack (median 0.147 vs 0.192), and no more on
   clips with an ambient sound than without (AUROC 0.529, bar 0.75). The score cannot be
   interpreted with this model; the quiz version was not built. One flaw in the criterion is
@@ -115,7 +115,7 @@ detail behind those sentences.
   4 on 6 of 10 clips — the same as correct silence — while the declared rubric (2026-09-14)
   costs a redundant picture ~1 and a wrong silence 4; the protocol coded the silence side
   (empty panel on a no-due clip = 4) but not the other. **Judge v4 (rubric-enforced)**
-  completes the coded rule (docs/prereg_v4.md, "Judge v4"): a non-empty panel on a no-due
+  completes the coded rule (docs/history/preregistrations/prereg_v4.md, "Judge v4"): a non-empty panel on a no-due
   clip, or a caption naming a sound there, is capped at 2. Under it v3 reads gated 2.83 vs
   blind 2.73 (+0.10, CI [−0.09, +0.30]) instead of 3.17 vs 3.16; the permissive judge stays
   on every row as a second column. Stated risk: the change is declared after numbers that
@@ -161,7 +161,7 @@ detail behind those sentences.
   adopted (`benchmark/separate_detect.json`).
 
 - **A frame-level open-vocabulary model (FLAM) hears the buried sounds but cannot replace
-  the detector.** Two pre-registered attempts (`docs/prereg_flam.md`, `docs/prereg_v4.md`
+  the detector.** Two pre-registered attempts (`docs/history/preregistrations/prereg_flam.md`, `docs/history/preregistrations/prereg_v4.md`
   §4). With the 527 class names as queries: recall on the 126 DCASE events under speech or
   music 70–85% (BEATs 9.5%) but 700–2700 false spans per minute (BEATs 5.2). With 84
   descriptive phrases and a per-phrase bar calibrated on 600 DCASE training clips: masked
@@ -172,7 +172,7 @@ detail behind those sentences.
   misses are a detector problem that a language-audio model can solve for recall; precision
   needs training or a vocabulary that excludes generic impacts.
 - **The frame-level fine-tune of the same backbone (PretrainedSED BEATs-strong, ICASSP 2025)
-  cleared seven of eight pre-registered bars and failed one** (`docs/prereg_psed.md`): DCASE
+  cleared seven of eight pre-registered bars and failed one** (`docs/history/preregistrations/prereg_psed.md`): DCASE
   masked recall 34.1% (9.5%), clear 44.2% (32.6%), false spans 3.9/min (5.2), onset error
   0.19 s (0.35), 91% within 0.5 s (80%), 70 of 77 dev phantoms gone — but only 7 of 23
   labelled real dev sounds kept (bar ≥ 21). Per the pre-registration BEATs stays. Noted
@@ -184,7 +184,7 @@ detail behind those sentences.
   53.0% vs 37.9%, false spans 2.6 vs 6.8 per minute, onset error 1.14 vs 1.48 s (FLAM-v2:
   54.2%, 46.2%, 37.3/min). Because this was seen after the result, it did not change the v4
   detector; a second comparison was pre-registered with its rule fixed before any protocol
-  score (docs/prereg_v4.md, "the detector arm"), and the dev-real bar is retired for future
+  score (docs/history/preregistrations/prereg_v4.md, "the detector arm"), and the dev-real bar is retired for future
   attempts in favour of slice B's exhaustive labels.
 - **Vocabulary.** AudioSet has no "phone alert"; no model trained on it can name one
   (catalogue #3).
@@ -236,5 +236,5 @@ detail behind those sentences.
   heard -- the code now asserts on the processor's output). Each is guarded now; a single
   automatic number deserves less trust than its precision suggests.
 - **Settings were fixed once on the development split** after 2026-09-13
-  (`docs/plan_robustness.md`); the demo clips are examples only and were not used to choose
+  (`docs/history/plans/plan_robustness.md`); the demo clips are examples only and were not used to choose
   settings.

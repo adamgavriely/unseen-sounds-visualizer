@@ -1,6 +1,6 @@
 # Pre-registration: detector round 9 — local-contrast veto on BEATs-only spans
 
-*Written 2026-09-28, after round 8 (`docs/prereg_round8_ideas.md`) and before any round-9 cost was computed. Detection
+*Written 2026-09-28, after round 8 (`docs/history/preregistrations/prereg_round8_ideas.md`) and before any round-9 cost was computed. Detection
 only, on the AudioSet-Strong fit set (the 280) and the held-out set (the 415). DEV, TEST and the "fresh" set are not
 touched. Harness: `benchmark/detector_round9.py` (reuses round 8's stack, scoring and bootstrap), results in
 `benchmark/detector_round9.json`. No model is run; only the saved BEATs / FlexSED caches are read.*
@@ -8,7 +8,7 @@ touched. Harness: `benchmark/detector_round9.py` (reuses round 8's stack, scorin
 ## Why
 Round 8's I7 (drop a FlexSED-only span whose in-span score barely rises above its ±3 s surroundings) was the only
 precision idea that went the right way on both sets (ΔC-overlap −0.064 on the 280, −0.039 [−0.087, +0.005] on the 415),
-but it can only touch FlexSED-only spans. The audit (`docs/detector_audit_2026-09-28.md`) found that 80–84 % of the
+but it can only touch FlexSED-only spans. The audit (`docs/history/analyses/detector_audit_2026-09-28.md`) found that 80–84 % of the
 phantom false spans are BEATs-only. Round 9 applies the same test to BEATs-only spans.
 
 ## Fixed parts
@@ -65,7 +65,7 @@ As pre-registered, the round stops here: the fresh set is not scored.
 Decision (lead): no guard is added to J2 (a guard chosen after seeing the 415 would be post hoc). The removed true spans
 are cost-neutral on the 415 (26 false × 2 / 415 ≈ −0.125; 2 lost needed events × 4 / 415 ≈ +0.019; total −0.106).
 
-**A. Fresh set (`R.use_set("fresh")`, `docs/prereg_fresh_confirm_set.md`), scored once.** J2 exactly as registered above
+**A. Fresh set (`R.use_set("fresh")`, `docs/history/preregistrations/prereg_fresh_confirm_set.md`), scored once.** J2 exactly as registered above
 (margins 0.1 / 0.2, ±3 s flanks, no-flank spans kept), no refit. Start only when the four caches (BEATs, PANNs, PE-A-Frame
 in `benchmark/audioset_fresh_windows/`, FlexSED in `data/work/flexsed_fresh/`) each hold 422 `.npz` files; the clip list is
 `detector_round2.usable()`. Gate: the round-8 stack with no option equals round 5's stack span for span on every fresh
@@ -122,5 +122,5 @@ check (A) is still scored once, as registered, when its caches are complete.
 Stopped on the lead's instruction before any fresh-set number existed (the scoring job was never submitted; no fresh
 output was produced or read; `detector_round9.json` has no `fresh` entry). Reasons: (1) J2 already failed the DEV part of
 the ship rule (result B), so the fresh set could not change the decision; (2) the setup audit
-(`docs/setup_audit_2026-09-28.md`) found that the AudioSet cost definition must be revised, so the clean fresh set is kept
+(`docs/history/analyses/setup_audit_2026-09-28.md`) found that the AudioSet cost definition must be revised, so the clean fresh set is kept
 unread for a test under the corrected cost. The `fresh` step stays in `benchmark/detector_round9.py` but is not run.

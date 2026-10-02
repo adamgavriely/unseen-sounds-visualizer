@@ -46,3 +46,13 @@ docs/inspector/media/
 
 # Delegation package videos (downloaded clips, shared with the hired annotator; not committed)
 tagger/videos/
+
+# LaTeX build files anywhere
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+build.log
+# local archives and shortcuts
+*.zip
+*.lnk

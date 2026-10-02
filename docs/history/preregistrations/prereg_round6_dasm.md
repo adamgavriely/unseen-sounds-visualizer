@@ -142,7 +142,7 @@ BEATs-origin spans (693 vs 616) let through by the looser DASM veto (0.084); fal
 more often false (span counts by origin and true/false in the secondary section below). The training-data caveats (checkpoint chosen on the eval split; 393 /
 415 clips in the backbone's WavCaps pre-training) would have favoured DASM, so they do not explain the failure.
 
-## Note added 2026-09-28, after the primary result above and before any secondary number (lead's request after `docs/detector_audit_2026-09-28.md`)
+## Note added 2026-09-28, after the primary result above and before any secondary number (lead's request after `docs/history/analyses/detector_audit_2026-09-28.md`)
 The harness scores with `config.LABEL_FILTER = "lists"`; the shipped system uses `"depictable"` (about 20 % of the
 baseline's false spans are labels it never draws). The primary result above stays as it is and decides nothing new.
 **Secondary rows, reported only:** the same frozen cells (g 0.575, v 0.0839, b 0.1218 — no refit) re-scored with

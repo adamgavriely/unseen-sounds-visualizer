@@ -9,7 +9,7 @@
   \item \textbf{Detector floor.} About one needed sound in eleven is heard by no model, mostly under speech or music.
   \item \textbf{Gate limit.} Balanced accuracy about 0.62; presence is taken for production; ``nothing'' is used as an
         escape.
-  \item \textbf{Runtime.} The shipped pipeline is heavy: listener inputs take about 5 minutes per clip on an H200,
+  \item \textbf{Runtime.} The final pipeline is heavy: listener inputs take about 5 minutes per clip on an H200,
         a picture about 20\,s per try (up to five tries), and the gate and scene check call a 27B model many times.
         It is an offline tool, not a live captioning system.
   \item \textbf{Vocabulary.} The 527 AudioSet classes and the 215 drawable families have no word for some sounds
@@ -21,7 +21,7 @@
 \subsection{Future work}
 In order of expected value:
 \begin{enumerate}
-  \item \textbf{A study with DHH viewers}, as designed in \fp{docs/beta_specification.md}: 5--10 viewers, one
+  \item \textbf{A study with DHH viewers}, as designed in \fp{docs/history/plans/beta_specification.md}: 5--10 viewers, one
         question per clip (``helped / hurt / neither''), and an ordinal regression of the answer on misses and wrong
         pictures, which measures $\beta$ instead of assuming it.
   \item \textbf{A second annotator} for 30 clips (the packet exists), with $\kappa$ on the needed decision; below 0.4

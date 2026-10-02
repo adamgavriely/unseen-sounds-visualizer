@@ -2,7 +2,7 @@
 
 *Committed 2026-09-15, late night, before any code for it exists. Adam's idea (three
 descriptions: with sound, muted, with our panel), shaped by a four-Fable panel after the
-with-sound / without-sound REFERENCE failed (`docs/prereg_av_reference.md`). The test-set
+with-sound / without-sound REFERENCE failed (`docs/history/preregistrations/prereg_av_reference.md`). The test-set
 headline does not change whatever happens here.*
 
 ## 1. What is proposed — a score, not a reference

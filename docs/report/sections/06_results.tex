@@ -1,0 +1,162 @@
+% ======================================================================
+\section{Results}\label{sec:results}
+
+All numbers are raw counts from the scorer or values derived from those counts with Eq.~\ref{eq:cost}
+and~\ref{eq:costw}; derived values are marked. The counts of the final system are reproduced exactly by an
+independent re-export of every decision (Section~\ref{sec:repro}). Appendix~\ref{app:sources} gives the result file
+behind each number.
+
+\subsection{Main result}\label{sec:headline}
+\begin{table}[h]
+\centering\small
+\caption{Main result. Recall = hits / needed; precision = hits / (hits + wrong); ``show nothing'' costs
+$4\cdot\text{needed}/\text{clips}$ (all three derived).}
+\label{tab:headline}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrrrrr}
+\toprule
+ & \multicolumn{4}{c}{development set (71 clips, 58 needed)} & \multicolumn{4}{c}{test set (88 clips, 65 needed)} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+system & hits & wrong (v/c/p) & cost & recall / prec. & hits & wrong (v/c/p) & cost & recall / prec. \\
+\midrule
+show nothing & 0 & 0 & 3.268 & -- & 0 & 0 & 2.955 & -- \\
+September baseline & 18 & 51 (5/37/9) & 3.690 & .31 / .26 & 21 & 40 (2/31/7) & 2.909 & .32 / .34 \\
+\textbf{final system} & \textbf{29} & \textbf{15 (6/7/2)} & \textbf{2.056} & \textbf{.50 / .66} & \textbf{24} & \textbf{24 (4/15/5)} & \textbf{2.409} & \textbf{.37 / .50} \\
+\bottomrule
+\end{tabular}}
+
+\smallskip
+\footnotesize v / c / p = wrong pictures of an on-screen sound / of another sound / with nothing there.
+\end{table}
+
+\begin{itemize}
+  \item On the development set the final system finds half of the needed sounds, and two of three of its pictures are
+        right. On the test set it finds 37\,\% and half of its pictures are right.
+  \item The September baseline was \emph{worse than showing nothing} on the development set (3.690 against 3.268, and
+        still 3.521 with a longer repeat merge) and only slightly better on the test set (2.909 against 2.955). The final
+        system is clearly cheaper than showing nothing on both (2.056 and 2.409).
+  \item Against the baseline, the final system has 11 more hits and 36 fewer wrong pictures on the development set, and
+        3 more hits and 16 fewer wrong pictures on the test set (cost $-1.634$ and $-0.500$ per clip). About a third of
+        the development gain carries over to the test set; since many variants were compared on the development set,
+        part of its gain is expected to be selection luck, and the test numbers are the better estimate for new videos.
+  \item On the test set most wrong pictures belong to another sound (15 of 24); pictures of on-screen sounds are few
+        (4).
+\end{itemize}
+
+\paragraph{Significance.} The paired bootstrap of the final system against the September baseline on the test set has
+not been run: it needs per-clip rows that are stored on the cluster, and the baseline's rows were scored with a
+shorter repeat merge (2.0\,s instead of 2.5\,s), which raises its wrong-picture count. An intermediate version of the
+final system, without its last display, grouping and witness rules, was cheaper than the baseline on the test set by
+$-0.341\ [-0.636, -0.045]$ per clip (one-sided $p = 0.017$, about 0.03 two-sided); the final system has a lower cost
+than that version on both sets. Appendix~\ref{app:history} gives every intermediate comparison.
+
+\subsection{Sensitivity}\label{sec:sensitivity}
+\paragraph{On-screen weight.} With Eq.~\ref{eq:costw} the final system costs 1.887 / 1.972 / 2.056 on the development
+set and 2.318 / 2.364 / 2.409 on the test set at $w = 0 / 1 / 2$ (derived). For every accepted change from the
+baseline to the final system the cost falls at every $w$, so no decision depends on how on-screen pictures are
+weighted.
+
+\paragraph{Cost weights.} The weights 4 and 2 were fixed before the final development phase and not varied for the
+final system. On the September test table (Section~\ref{sec:sept-table}) the gated system was the cheapest of all
+systems for any wrong-picture weight $\beta$ between 0.39 and 2.56, which contains $\beta = 2$.
+
+\subsection{Where the misses come from}\label{sec:errors}
+For every missed needed sound, the logged decision trail records the step at which it was lost:
+
+\begin{table}[h]
+\centering\small
+\caption{Fate of the missed needed sounds of the final system.}
+\label{tab:misses}
+\begin{tabular}{L{4.0cm}rrL{8.4cm}}
+\toprule
+ & dev. & test & where \\
+\midrule
+misses & 29 & 41 & \\
+\quad lost at a named step & 20 & 32 & development: listener band rescue 6, on-screen gate 5, DASM vote 2, family merge 2, mirror veto 2, scene check 1, masked-weak veto 1, one rescue per family 1. Test: band rescue 6, continuation veto 5, family merge 4, gate 3, mirror veto 3, DASM vote 2, BEATs extraction 2, seven other steps 1 each \\
+\quad never heard by any detector & 6 & 6 & no span of the family near the onset \\
+\quad timing / matching & 3 & 3 & a same-family span exists but starts outside the window \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Most misses are not ``never heard'': the sound was a candidate and a later rule removed it, most often because the
+listeners did not confirm a weak detection. The on-screen gate silences few needed sounds (5 and 3), but it is also why
+the on-screen wrong pictures remain (6 and 4).
+
+\subsection{How far could this pipeline go?}\label{sec:ceiling}
+A ceiling analysis replaces one stage at a time by the gold answer on the \emph{same} detections. It was run on the
+saved pictures of an earlier version (25 of 55 needed sounds, 27 wrong, cost 2.451 on the development set; the
+final system adds display and witness rules on top), so its absolute numbers belong to that version; its proportions
+are the best available map.
+
+\begin{table}[h]
+\centering\small
+\caption{Single-stage oracles (development set, earlier version, 55 needed).}
+\label{tab:ceiling}
+\begin{tabular}{lrrrr}
+\toprule
+oracle (one stage made perfect) & hits & wrong (v/c/p) & cost & $\Delta$ \\
+\midrule
+none (version as run) & 25 & 27 (9/16/2) & 2.451 & -- \\
+perfect on-screen gate & 30 & 18 (0/16/2) & 1.915 & $-0.536$ \\
+perfect listener, filters lifted & 34 & 24 (7/15/2) & 1.859 & $-0.592$ \\
+perfect vetoes / filters & 30 & 27 (9/16/2) & 2.169 & $-0.282$ \\
+perfect timing & 26 & 20 (11/7/2) & 2.197 & $-0.254$ \\
+perfect family & 25 & 26 (14/10/2) & 2.423 & $-0.028$ \\
+\midrule
+all stages perfect (ceiling) & 43 & 3 (0/1/2) & 0.761 & $-1.690$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Applied in sequence, the gate gives the largest single step ($-0.676$). Even with every stage perfect, 12 of 55 needed
+sounds stay missed: 5 are heard by no model at all (a hammer, an explosion, a clang, two golf whacks) and 7 are too
+faint or too badly timed. This is the \emph{detector floor}: with today's detectors, no decision layer can find more than
+about four in five needed sounds.
+
+\subsection{What the on-screen gate is worth}\label{sec:sept-table}
+The value of the gate itself was measured against a \emph{blind} system (same detector and picture model, no gate) on
+the September test table (60 test clips, the baseline's detector, the same gate model and rule):
+
+\begin{table}[h]
+\centering\small
+\caption{Gated minus blind, September test table; two-sided $p$ with Holm correction.}
+\label{tab:sept}
+\begin{tabular}{lrrl}
+\toprule
+measure & gated $-$ blind & 95\,\% interval & Holm $p$ \\
+\midrule
+F1 (pre-registered primary) & $+0.059$ & $[-0.030,\ +0.144]$ & 0.18 (unadjusted, null) \\
+precision & $+0.137$ & & 0.010 \\
+wrong pictures per clip & $-0.517$ & $[-0.800,\ -0.283]$ & $<0.001$ \\
+viewer cost per clip & $-0.833$ & & 0.012 \\
+clean-clip accuracy & $+0.219$ & & 0.006 \\
+\midrule
+unseen clips: gated vs show nothing & $-3.077$ & & $<0.001$ \\
+all clips: gated vs show nothing & $-0.233$ & & 0.585 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The gate removes about half a wrong picture per clip at the price of a small loss in recall. Its value lies almost
+entirely in what it does \emph{not} show, which is why F1 -- which weighs a miss and a wrong picture equally -- does not
+move. This comparison was not repeated with the final detector.
+
+\subsection{Other measurements}\label{sec:other-results}
+\paragraph{Gate accuracy.} On the labelled development sounds the gate has balanced accuracy 0.617: it silences 16 of
+43 on-screen sounds and keeps 31 of 36 needed ones. A smaller model of the same family (Qwen2.5-VL-7B) reached 0.61.
+Shifting the sampled frames by 0.5\,s changes 6 of 79 verdicts (7.6\,\%).
+
+\paragraph{Listener agreement as evidence.} On the screening set, a detection that neither listener names is a real
+sound 22\,\% of the time, one named by one listener 37\,\%, and one named by both 62\,\%. This is the basis of the witness
+rule. A listener asked about the whole clip proposes extra sounds that are real 80\,\% of the time (74 of 92), against
+38--39\,\% for the raw detectors; they still become wrong pictures in the full pipeline, because the gate passes
+off-screen ones whose name is wrong, or because the labels list only the salient sounds.
+
+\paragraph{Onset timing.} On 255 DCASE 2025 Task 3 events, the onset method places 80\,\% of the detected events within
+0.5\,s (mean absolute error 0.35\,s). Only 26\,\% of those short-clip events reach the display bar at all, which again
+points to detection, not timing, as the limit.
+
+\paragraph{Pictures.} In a blind glance test by the author (54 sounds, 1.5\,s per picture, no name shown), Qwen-Image
+pictures were recognised 26 times against 14 for the earlier FLUX.1 pictures with the same text
+($+0.222\ [+0.074, +0.370]$). One of the 26 sent a false message (a telephone bell drawn as a desk bell).

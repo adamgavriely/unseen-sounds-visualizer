@@ -1,11 +1,11 @@
-> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/prereg_v4.md` amendment 21 (final TEST table), `docs/WEEK_PLAN_2026-09-26.md`, `docs/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
+> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/history/preregistrations/prereg_v4.md` amendment 21 (final TEST table), `docs/history/daily_notes/WEEK_PLAN_2026-09-26.md`, `docs/history/daily_notes/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
 
 # Executive summary — Visual Augmentation of Audio Semantics for Accessibility
 
 *For someone stepping into this project today (updated 2026-09-15, night). Plain
 language; every technical word is explained the first time it appears, and the recurring ones
 are collected in the glossary at the end (§13). Every number here comes from a file in the
-repository. The full record is in `docs/project_notes.tex` (the dated lab notebook),
+repository. The full record is in `docs/history/earlier_drafts/project_notes.tex` (the dated lab notebook),
 `docs/report/report.pdf` (the thesis draft, 19 pages) and `LIMITATIONS.md` (what the numbers
 do not support).*
 
@@ -187,7 +187,7 @@ came out of that:
    tree after three cleverer ideas failed.
 4. **Set thresholds once, on separate clips.** Since 2026-09-13: settings are chosen on a
    *development split* (clips not used for the final score), every failure is logged
-   (`docs/failure_catalogue.md`), and a setting is changed only after the same kind of failure appears on three clips.
+   (`docs/history/plans/failure_catalogue.md`), and a setting is changed only after the same kind of failure appears on three clips.
 5. **Evaluation code produces plausible wrong numbers.** An empty result scored 2/4; a
    similarity returned 0.0 for everything after a library update; an audio model was never
    given its audio and answered "none" 100 times. Each was found by reading logs.
@@ -236,7 +236,7 @@ result below. Whether deaf viewers feel the same 4-to-1 is unknown (§9 looks at
 - *with sound / without sound* (Adam's idea, 15 Sept evening): one audio-visual model
   describes the clip with the soundtrack and again muted, on the same frames; what it
   "hears" and did not already see is the reference. Rules and pass bar written down and
-  committed before any code (`docs/prereg_av_reference.md`); tried on the 156 dev clips
+  committed before any code (`docs/history/preregistrations/prereg_av_reference.md`); tried on the 156 dev clips
   with Qwen2.5-Omni. Its "is anything missing?" decision scored **49.5%** (chance is 50%;
   bar was 67.7%), and with the sound off it still claimed to hear something on 37% of
   clips. The model calls off-screen sources "seen and heard" (a helicopter overhead, a
@@ -246,7 +246,7 @@ result below. Whether deaf viewers feel the same 4-to-1 is unknown (§9 looks at
   answers four fixed questions (what is happening / anything dangerous / mood / anything
   out of view) with sound, muted, and muted on slightly shifted frames; a system would be
   scored by how much its panel moves the muted answers toward the hearing ones. Pre-registered
-  with a sanity check on 60 dev clips (`docs/prereg_gap_closing.md`): the answers change as
+  with a sanity check on 60 dev clips (`docs/history/preregistrations/prereg_gap_closing.md`): the answers change as
   much from shifting the frames as from adding the sound, and no more on clips with an
   ambient sound than without (AUROC 0.53, bar 0.75). **Failed**; not run on test. Same
   lesson: with today's open audio-visual models, no automatic "hearing viewer" is reliable
@@ -409,8 +409,8 @@ Run one video locally: `python main.py <video>`; settings in `config.py`.
   `audio_llm_eval.json`.
 - Cluster (BIU Slurm, VPN via F5 at access.biu.ac.il): jobs are `slurm/*.sh`. Some models require accepting a licence on Hugging Face (unrelated to our gate); the
   access token for them lives in `~/.bashrc` on the cluster.
-- Documents: `docs/report/` (thesis), `docs/project_notes.tex` (lab notebook),
-  `docs/failure_catalogue.md`, `docs/plan_robustness.md` (process rules), `LIMITATIONS.md`.
+- Documents: `docs/report/` (thesis), `docs/history/earlier_drafts/project_notes.tex` (lab notebook),
+  `docs/history/plans/failure_catalogue.md`, `docs/history/plans/plan_robustness.md` (process rules), `LIMITATIONS.md`.
 
 ## 13. Glossary
 

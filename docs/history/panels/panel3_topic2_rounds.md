@@ -1,6 +1,6 @@
 # Topic 2 — Image generation: panel rounds (27 Sept 2026)
 
-Brief: docs/panel3_topic2_*.md · context: docs/panel3_common_context.md
+Brief: docs/panel3_topic2_*.md · context: docs/history/panels/panel3_common_context.md
 
 ## T2-b — round 1 (DHH accessibility, visual communication)
 
@@ -202,7 +202,7 @@ compositing is downstream of the frozen setup; disclose it was a deliberate conf
 Gemma rows + demos saw grey cards — state, don't re-render TEST; commit after the sitting is scored. (3) Raters: amendment
 written now, raters act after Adam's file is saved and before the arm key opens; Adam-only primary; naive raters; template
 pictures reported split. (4) Annotator 2 as one of the raters (gold first if time competes). (5) Draft amendment for
-docs/freeze_picture_setup_2026-09-25.md:
+docs/history/preregistrations/freeze_picture_setup_2026-09-25.md:
 
     Amendment, 2026-09-27 (panel 3, topic 2), before any FINAL picture or answer is seen.
     1. Rule 2: a FINAL picture is a false message if it shows as the maker an object that is not the source, its chain,
@@ -265,7 +265,7 @@ future work. **Signs.** Condition: if the 1.5-s hide is not enforced, fix the pa
 
 ## T2-c — round 3
 
-**Final amendment text** (for docs/freeze_picture_setup_2026-09-25.md; template nouns from gen_screen.py TEMPLATES):
+**Final amendment text** (for docs/history/preregistrations/freeze_picture_setup_2026-09-25.md; template nouns from gen_screen.py TEMPLATES):
 
     Amendment, 2026-09-27 (panel 3, topic 2), written before any FINAL picture or answer is seen. Code unchanged (3995769).
     1. Rule 2. A FINAL picture is a false message if it shows as the maker an object that is not the source, its chain, the
