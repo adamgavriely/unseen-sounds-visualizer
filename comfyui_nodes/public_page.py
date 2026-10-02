@@ -64,11 +64,24 @@ def run(video_path):
                 msg = ws.recv(timeout=15)
             except TimeoutError:
                 msg = None
+            except Exception:                   # connection dropped (server restart, proxy timeout): ask the history
+                msg = None
+                h = requests.get(f"{COMFY}/history/{pid}", timeout=60).json().get(pid)
+                if h and h.get("status", {}).get("completed") is not None:
+                    break
+                time.sleep(15)
+                try:
+                    ws = connect(f"{COMFY.replace('http', 'ws', 1)}/ws?clientId={client}", max_size=None, open_timeout=30)
+                except Exception:
+                    pass
             if isinstance(msg, bytes) and len(msg) > 8 and struct.unpack(">I", msg[:4])[0] == 3:   # progress text
                 n = struct.unpack(">I", msg[4:8])[0]
                 step = msg[8 + n:].decode("utf-8", "replace")
             elif isinstance(msg, str):
                 d = json.loads(msg)
+                if d.get("type") == "execution_interrupted" and d["data"].get("prompt_id") == pid:
+                    yield None, "The run was stopped on the server. Please try again.", ""
+                    return
                 if d.get("type") == "execution_error" and d["data"].get("prompt_id") == pid:
                     yield None, "The pipeline stopped with an error:\n" + str(d["data"].get("exception_message", ""))[:800], ""
                     return
@@ -80,7 +93,10 @@ def run(video_path):
                 last = time.time()
                 yield None, f"Working ({(time.time() - t0) / 60:.0f} min so far): {step}", ""
     finally:
-        ws.close()
+        try:
+            ws.close()
+        except Exception:
+            pass
     h = requests.get(f"{COMFY}/history/{pid}", timeout=60).json().get(pid, {})
     outs = h.get("outputs", {})
     vids = (outs.get("3", {}).get("images") or outs.get("3", {}).get("videos") or [])

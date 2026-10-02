@@ -58,6 +58,53 @@ def _video_file(video) -> Path:
     return tmp
 
 
+def _tool(name: str) -> str:
+    """ffmpeg / ffprobe next to this Python (the project env), else on PATH."""
+    import shutil
+    here = Path(sys.executable).parent / name
+    return str(here) if here.exists() else (shutil.which(name) or name)
+
+
+def _check_and_normalize(src: Path, dst: Path) -> None:
+    """Refuse videos the pipeline cannot use, with a plain message, and give the pipeline an .mp4 it can read.
+
+    The listener harness only looks for lower-case *.mp4 files (benchmark/gold/tagger_prep.py stems_of), and stage 1
+    reads the container duration; a phone .MOV, a .webm with no duration, or an .MP4 would fail deep inside the run. So
+    every upload becomes <stem>.mp4: copied when it already is a plain .mp4, otherwise re-encoded (H.264 + AAC).
+    """
+    import json
+    probe = subprocess.run([_tool("ffprobe"), "-v", "error", "-show_entries", "stream=codec_type:format=duration",
+                            "-of", "json", str(src)], capture_output=True, text=True)
+    if probe.returncode != 0:
+        raise RuntimeError(f"This file could not be read as a video ({src.name}).")
+    info = json.loads(probe.stdout or "{}")
+    kinds = {st.get("codec_type") for st in info.get("streams", [])}
+    if "video" not in kinds:
+        raise RuntimeError("This file has no picture track. Please upload a video, not an audio file.")
+    if "audio" not in kinds:
+        raise RuntimeError("This video has no sound track, so there are no sounds to show. Please upload a video "
+                           "with sound.")
+    try:
+        dur = float(info.get("format", {}).get("duration"))
+    except (TypeError, ValueError):
+        dur = None
+    if dur is not None and dur < 1.0:
+        raise RuntimeError(f"This video is too short ({dur:.1f} s). Please upload at least 1 second.")
+    if dst.exists():
+        return
+    tmp = dst.with_name(dst.stem + ".part.mp4")
+    if src.suffix == ".mp4" and dur is not None:
+        import shutil
+        shutil.copy(src, tmp)
+    else:
+        r = subprocess.run([_tool("ffmpeg"), "-y", "-v", "error", "-i", str(src), "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                            "-c:a", "aac", "-movflags", "+faststart", str(tmp)], capture_output=True, text=True)
+        if r.returncode != 0:
+            tmp.unlink(missing_ok=True)
+            raise RuntimeError("This video could not be converted to MP4: " + (r.stderr or "")[-300:])
+    tmp.replace(dst)
+
+
 class MscAugmentVideo:
     """Video in, video out: the frozen pipeline (D', tag detector-frozen-2026-10-02) on a new video.
 
@@ -97,7 +144,6 @@ class MscAugmentVideo:
         import time
         import json
         import re
-        import shutil
         src = _video_file(video)
         h = hashlib.sha1()
         with open(src, "rb") as f:
@@ -105,10 +151,9 @@ class MscAugmentVideo:
                 h.update(chunk)
         name = re.sub(r"[^A-Za-z0-9_]+", "_", src.stem).strip("_")[:40] or "video"
         stem = f"comfy_{name}_{h.hexdigest()[:8]}"
-        inp = _ROOT / "data" / "input" / "comfy" / f"{stem}{src.suffix or '.mp4'}"
+        inp = _ROOT / "data" / "input" / "comfy" / f"{stem}.mp4"
         inp.parent.mkdir(parents=True, exist_ok=True)
-        if not inp.exists():
-            shutil.copy(src, inp)
+        _check_and_normalize(src, inp)
         summary = Path(config.WORK_DIR) / "comfy" / f"{stem}.summary.json"
         summary.parent.mkdir(parents=True, exist_ok=True)
         summary.unlink(missing_ok=True)       # never show an older run's result
