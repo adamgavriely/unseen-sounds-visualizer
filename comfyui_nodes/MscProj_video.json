@@ -26,7 +26,7 @@
       ],
       "properties": {"Node name for S&R": "MscAugmentVideo"},
       "title": "2. Add sound pictures (whole pipeline)",
-      "widgets_values": []
+      "widgets_values": ["new drawing each run"]
     },
     {
       "id": 3, "type": "SaveVideo", "pos": [840, 200], "size": [380, 420], "flags": {}, "order": 3, "mode": 0,

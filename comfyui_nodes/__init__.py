@@ -73,8 +73,17 @@ class MscAugmentVideo:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {"required": {"video": ("VIDEO", {"tooltip": "Connect the Load Video node here."})},
+        return {"required": {"video": ("VIDEO", {"tooltip": "Connect the Load Video node here."}),
+                             "pictures": (["new drawing each run", "same as the frozen run"],
+                                          {"default": "new drawing each run",
+                                           "tooltip": "The sounds and times are always the same; this only changes "
+                                                      "the random seed of the picture model."})},
                 "hidden": {"unique_id": "UNIQUE_ID"}}
+
+    @classmethod
+    def IS_CHANGED(cls, video, pictures="new drawing each run", unique_id=None):
+        # a new drawing must really run again; the frozen seed may reuse ComfyUI's cached result
+        return float("nan") if pictures.startswith("new") else pictures
 
     RETURN_TYPES = ("VIDEO", "STRING")
     RETURN_NAMES = ("video_with_pictures", "what_was_drawn")
@@ -83,7 +92,7 @@ class MscAugmentVideo:
     DESCRIPTION = ("Adds pictures of the sounds you cannot see. Runs the whole frozen pipeline on the uploaded "
                    "video (about 10-15 minutes on one H200).")
 
-    def run(self, video, unique_id=None):
+    def run(self, video, pictures="new drawing each run", unique_id=None):
         import hashlib
         import time
         import json
@@ -111,7 +120,7 @@ class MscAugmentVideo:
         except Exception:
             pass
         cmd = [sys.executable, "-u", str(_ROOT / "comfyui_nodes" / "run_frozen.py"),
-               "--input", str(inp), "--summary", str(summary)]
+               "--input", str(inp), "--summary", str(summary)] + (["--new-drawings"] if pictures.startswith("new") else [])
         env = dict(os.environ)
         for k in ("PYTHONPATH",):        # ComfyUI's own packages must not leak into the pipeline's process
             env.pop(k, None)

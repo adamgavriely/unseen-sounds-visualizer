@@ -21,6 +21,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", required=True)
     ap.add_argument("--summary", required=True)
+    ap.add_argument("--new-drawings", action="store_true",
+                    help="a new random picture seed per run (default: the frozen seed from clip name, sound and time)")
     a = ap.parse_args()
 
     import main as M                       # the project's entry point: use_shipped() + on-the-spot listener inputs
@@ -29,10 +31,23 @@ def main():
     run = pipeline.run
 
     def capture(*args, **kw):              # main() does not return the result; keep it for the summary
+        # main() has built this clip's listener inputs by now (ensure_listener_inputs raises if a step fails). A clip
+        # with no listener items (tg: FlexSED finds no band run) has legitimately empty answer files, which
+        # _require_caches reads as missing; the scored D' arm runs with LISTENER_REQUIRE_CACHES False, so does this.
+        import config
+        config.LISTENER_REQUIRE_CACHES = False
         got["r"] = run(*args, **kw)
         return got["r"]
 
     pipeline.run = capture
+
+    if a.new_drawings:                     # same sounds and times, a different drawing each run
+        import random
+        from benchmark.gold import gen_screen
+        offset = random.SystemRandom().randrange(1, 1 << 30)
+        frozen_seed = gen_screen.seed_of
+        gen_screen.seed_of = lambda item: (frozen_seed(item) + offset) & 0x7FFFFFFF
+        print(f"[run_frozen] new drawings: seed offset {offset}", flush=True)
 
     # Stage 5 exactly as the scored D' runs did it (benchmark/gold/round13_dev.py stage5: config.use_scored(), picture
     # wording flags off, KINSHIP_DIRECTED False). use_shipped() switches these on for the picture step; turned on before

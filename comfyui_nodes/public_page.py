@@ -26,7 +26,7 @@ COMFY = "http://127.0.0.1:8188"
 def _workflow(name: str) -> dict:
     return {
         "1": {"class_type": "LoadVideo", "inputs": {"file": name}},
-        "2": {"class_type": "MscAugmentVideo", "inputs": {"video": ["1", 0]}},
+        "2": {"class_type": "MscAugmentVideo", "inputs": {"video": ["1", 0], "pictures": "new drawing each run"}},
         "3": {"class_type": "SaveVideo", "inputs": {"video": ["2", 0], "filename_prefix": "video/MscProj_public",
                                                     "format": "auto", "format.codec": "auto", "codec": "auto"}},
         "4": {"class_type": "PreviewAny", "inputs": {"source": ["2", 1]}},
