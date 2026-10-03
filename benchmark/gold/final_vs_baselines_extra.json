@@ -1,0 +1,73 @@
+{
+ "arm": "SHIP8+MD3+WW5+SL",
+ "development": {
+  "f1": {
+   "proposed": 0.5686274509803921,
+   "blind_a2i": 0.5190839694656488,
+   "show_nothing": 0.0
+  },
+  "by_importance": {
+   "proposed": {
+    "importance_3": [
+     14,
+     17
+    ],
+    "importance_2": [
+     15,
+     41
+    ]
+   },
+   "blind_a2i": {
+    "importance_3": [
+     15,
+     17
+    ],
+    "importance_2": [
+     19,
+     41
+    ]
+   }
+  },
+  "f1_diff_final_vs_audio_to_image": [
+   0.049543481514743304,
+   -0.03852108235748642,
+   0.12700312166119246,
+   0.251
+  ]
+ },
+ "test": {
+  "f1": {
+   "proposed": 0.4247787610619469,
+   "blind_a2i": 0.33986928104575165,
+   "show_nothing": 0.0
+  },
+  "by_importance": {
+   "proposed": {
+    "importance_3": [
+     10,
+     13
+    ],
+    "importance_2": [
+     14,
+     52
+    ]
+   },
+   "blind_a2i": {
+    "importance_3": [
+     10,
+     13
+    ],
+    "importance_2": [
+     16,
+     52
+    ]
+   }
+  },
+  "f1_diff_final_vs_audio_to_image": [
+   0.08490948001619525,
+   0.03174312347889976,
+   0.14344442470841476,
+   0.0022
+  ]
+ }
+}

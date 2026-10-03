@@ -73,12 +73,36 @@ the direction is the same; the difference from direct audio-to-image is smaller 
 because direct audio-to-image shows fewer wrong pictures per clip on that set (39 over 71 clips, 0.55 per clip, against 62 over 88, 0.70), and partly because
 the check costs more hits there: the final system has five fewer hits than direct audio-to-image on the development
 set, but only two fewer on the test set. F1, which weighs a miss and a wrong picture equally, is also higher for the
-final system on both sets (0.57 against 0.52, and 0.43 against 0.34); no interval is computed for F1 here.
+final system on both sets: 0.57 against 0.52 on the development set ($+0.050$, $[-0.039, +0.127]$, $p = 0.25$) and
+0.43 against 0.34 on the test set ($+0.085$, $[+0.032, +0.143]$, $p = 0.002$; same paired clip bootstrap).
+
+\paragraph{Danger sounds.} The sounds that matter most to a deaf viewer are the importance-3 sounds: danger or a key
+moment, such as a siren, an alarm, glass or a baby crying (Section~\ref{sec:needed}). The final system finds most of
+them, and keeps the same share of them as direct audio-to-image while showing far fewer wrong pictures
+(Table~\ref{tab:importance}). The misses are mostly ordinary events of importance 2.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Needed sounds found, by importance level (found / needed).}
+\label{tab:importance}
+\begin{tabular}{llcc}
+\toprule
+Set & System & Importance 3 (danger, key moment) & Importance 2 (ordinary event) \\
+\midrule
+Development & Direct audio-to-image & 15 / 17 & 19 / 41 \\
+ & \textbf{Final system} & 14 / 17 (82\,\%) & 15 / 41 (37\,\%) \\
+\midrule
+Test & Direct audio-to-image & 10 / 13 & 16 / 52 \\
+ & \textbf{Final system} & 10 / 13 (77\,\%) & 14 / 52 (27\,\%) \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{What the statistical tests support}\label{sec:support}
 \begin{description}
   \item[Significant.] On the test set the final system costs less than direct audio-to-image generation and audio
-        captioning ($p < 0.001$) and less than showing nothing ($p = 0.041$). On the development set it costs less than
+        captioning ($p < 0.001$), has a higher F1 than them ($p = 0.002$), and costs less than showing nothing
+        ($p = 0.041$). On the development set it costs less than
         showing nothing ($p < 0.001$).
   \item[Not significant.] On the development set, the difference from direct audio-to-image generation ($p = 0.088$).
   \item[Multiple comparisons.] The four comparisons of the final system (two baselines, two sets) are reported without
