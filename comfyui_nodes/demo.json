@@ -85,7 +85,7 @@
     "Node name for S&R": "MscLoadVideo"
    },
    "widgets_values": [
-    "/home/dsi/adamg/MscProj/data/input/demo/un_dog_barking_3doKyrCe.mp4"
+    "/path/to/video.mp4"
    ]
   },
   {

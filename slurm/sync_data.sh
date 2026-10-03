@@ -5,7 +5,7 @@
 set -euo pipefail
 export MSYS_NO_PATHCONV=1   # stop Git Bash rewriting remote paths
 
-USER_AT=adamg@slurm-login1.lnx.biu.ac.il
+USER_AT="<user>@<login-node>"   # edit: your cluster login
 REMOTE=MscProj          # relative to the remote $HOME: a literal "~"
                         # is expanded by Git Bash into a Windows path
 LOCAL_ROOT="$(cd "$(dirname "$0")/.." && pwd)"

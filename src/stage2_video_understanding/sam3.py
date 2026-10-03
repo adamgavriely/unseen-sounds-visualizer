@@ -5,8 +5,8 @@ matching instance out with a presence score. It answers the same question OWLv2 
 ("is a named object in this frame?") with the recognised successor model; the concept
 phrases are OWLv2's (owl.DETECT_QUERY) so the two are comparable one for one. The
 score bar is SAM 3's own default (0.5, a calibrated presence probability); nothing is
-tuned on our clips. Weights are gated on the Hub (accept the licence once, token in
-~/.bashrc).
+tuned on our clips. Weights are gated on the Hub (accept the licence once, then
+export HF_TOKEN).
 """
 from __future__ import annotations
 

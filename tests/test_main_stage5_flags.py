@@ -8,6 +8,10 @@ KEYS = ("KINSHIP_DIRECTED", "PICTURE_V3", "PICTURE_FINAL", "PICTURE_MAKER")
 
 
 def test_stage5_scored_pictures_final(monkeypatch):
+    # config.use_shipped() changes module-level settings: register every setting with monkeypatch so the other
+    # tests see the defaults again afterwards
+    for k in [k for k in vars(config) if k.isupper()]:
+        monkeypatch.setattr(config, k, getattr(config, k))
     seen = {}
     for name, mod in (("plan_augmentations", pipeline), ("generate_augmentations", pipeline)):
         monkeypatch.setattr(mod, name, (lambda n: (lambda *a, **k: seen.__setitem__(n, {x: getattr(config, x) for x in KEYS})))(name))

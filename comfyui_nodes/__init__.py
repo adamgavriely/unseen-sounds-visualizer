@@ -1,19 +1,14 @@
-"""The pipeline as a ComfyUI graph — seven nodes, one per stage.
+"""ComfyUI nodes for the project: add pictures of off-screen sounds to a video.
 
-This is a DEMO artefact, not a second implementation. Every node is a thin wrapper whose body calls
-the same function `src/pipeline.py` calls; no decision, threshold or model choice lives here. The
-numbers in docs/prereg_v4.md come from `benchmark/run_protocol.py` and must keep coming from there.
+Main node: `MscAugmentVideo` ("Add sound pictures to video"). It takes a video, runs the final system
+(`config.use_shipped()`, the same code path as `main.py`) in a separate process, and returns the video with the
+picture panel and a short text list of what was drawn. The workflow file is `comfyui_nodes/MscProj_video.json`.
+The nodes under "MscProj/old setup" are an earlier per-stage version and are not the final system.
 
-What the graph buys:
-  * the seven stages visible as boxes, with the cross-modal gate as a switch the viewer can flip;
-  * only the stages downstream of a changed knob re-run, because ComfyUI caches node outputs;
-  * any video the user drops in, not only the benchmark clips.
+Install: link or copy this folder into ComfyUI/custom_nodes/, and set MSCPROJ_ROOT to the project folder if this
+folder is not inside it. Start ComfyUI with `python comfyui_nodes/comfy_start.py`.
 
-Install: symlink or copy this folder into ComfyUI/custom_nodes/ and set MSCPROJ_ROOT to the project
-root if it is not the parent of this file.
-
-Memory: each node frees its model before returning, which is how the existing pipeline already
-works (`reason.unload()`, `beats_infer.unload()`, `unload_generator()`). Peak is one model, not four.
+Caveat: one run takes about 10-15 minutes for a short clip on one 80 GB GPU. See comfyui_nodes/README.md.
 """
 from __future__ import annotations
 
@@ -106,11 +101,11 @@ def _check_and_normalize(src: Path, dst: Path) -> None:
 
 
 class MscAugmentVideo:
-    """Video in, video out: the frozen pipeline (D', tag detector-frozen-2026-10-02) on a new video.
+    """Video in, video out: the final system on a new video.
 
-    `main.py`'s code path (use_shipped + on-the-spot listener inputs), with stage 5 run under the scored D' flags
-    (picture wording and KINSHIP_DIRECTED off, as benchmark/gold/round13_dev.py) and the pictures under the shipped
-    flags, the same split as the inspector renderer (benchmark/gold/render_trail_media.py). See run_frozen.py.
+    `main.py`'s code path (use_shipped + on-the-spot listener inputs), with stage 5 run under the flags of the scored
+    runs (picture wording and KINSHIP_DIRECTED off, as benchmark/gold/round13_dev.py) and the pictures under the final
+    picture flags. See run_frozen.py.
 
     Every stage is computed on the spot for the new video (audio, what is on screen, the four listeners, sound
     detection, the cross-modal gate, Qwen-Image pictures with the picture check, grouping, the compositor). It runs in

@@ -1,34 +1,28 @@
-# Core (runs on CPU, no strong GPU needed)
-faster-whisper>=1.0.0        # Stage 3 ASR
-Pillow>=10.0.0               # Stage 6 placeholder images
-python-dotenv>=1.0.0         # optional: load API keys from .env
-# ffmpeg/ffprobe must be on PATH (Stage 1) - installed at C:\ffmpeg\bin
-
-# Stage 4 - audio event detection (PANNs CNN14 SED) [implemented]
-torch>=2.0                   # CPU build: pip install torch --index-url https://download.pytorch.org/whl/cpu
-panns-inference>=0.1.0       # auto-downloads a ~327 MB CNN14 checkpoint on first run
-librosa>=0.10                # audio loading/resampling to 32 kHz
-matplotlib>=3.7              # Stage 4 timeline plot
-soundfile>=0.12
-
-# Stage 2 - video understanding (lightweight CLIP 'not-seen' gate) [implemented, v2-a]
-transformers>=4.49.0         # CLIP ViT-B/32 (~600MB checkpoint, CPU) via transformers
-
-# --- Heavier backends: enable per stage as they are implemented ---
-
-# Stage 2 - full VLM upgrade (v2-b, university GPU)
-accelerate>=0.34.0
-qwen-vl-utils              # for Qwen2.5-VL frame handling
-
-# Stage 5 - cross-modal LLM gate
-# transformers               # local Llama-3.1 / Qwen3 (quantised)
-# (or a hosted LLM API SDK)
-
-# Stage 6 - diffusion generation (university GPU)
-# diffusers>=0.30.0          # SDXL / FLUX.1
-
-# Stage 7 - evaluation
-# open-clip-torch            # CLIP image/text relevance
-# laion-clap                 # CLAP audio/text relevance
-sentencepiece>=0.2.0        # SigLIP tokenizer
-remotezip>=0.12   # benchmark/eval_dcase_onset.py: partial fetch of DCASE audio from Zenodo
+# Third-party packages imported by main.py, src/ and benchmark/ (versions of the cluster environment, Python 3.11).
+# PyTorch with CUDA 12.1: pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
+# FFmpeg must be on the PATH. FineLAP runs in a second environment (transformers==4.51.3), see README.md.
+accelerate==1.14.0
+dasheng==0.0.9
+diffusers==0.40.0
+easyocr==1.7.2
+faster-whisper==1.2.1
+huggingface_hub==1.30.0
+librosa==0.11.0
+matplotlib==3.11.1
+numpy==1.26.4
+panns-inference==0.1.1
+pillow==12.3.0
+python-dotenv==1.2.3
+PyYAML==6.0.3
+safetensors==0.8.0
+scipy==1.17.1
+sentence-transformers==6.0.1
+sentencepiece==0.2.2
+soundfile==0.14.0
+timm==1.0.30
+torch==2.5.1
+torchaudio==2.5.1
+torchlibrosa==0.1.0
+transformers==5.16.1
+# tests (not installed in the cluster environment)
+pytest

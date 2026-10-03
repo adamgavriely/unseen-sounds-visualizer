@@ -37,6 +37,9 @@ from src.types import AudioEvent
 from src import trail as TRAIL_LOG                 # Decision Inspector: per-clip decision trail (logging only)
 
 WORK = DCC.WORK
+# the two cluster checkouts that some arms read files from (the defaults are the paths of the scored runs)
+MAIN_CHECKOUT = os.environ.get("MSCPROJ_MAIN_CHECKOUT", "/home/dsi/adamg/MscProj")
+TG_CHECKOUT = os.environ.get("MSCPROJ_TG_CHECKOUT", "/home/dsi/adamg/MscProj_tg")
 R13 = WORK / "r13"
 STAGE4, MEMO, PANNS_DIR = R13 / "stage4.json", R13 / "ask_memo.json", R13 / "panns"
 OUT = _ROOT / "benchmark" / "gold" / "round13_dev.json"
@@ -223,7 +226,7 @@ ARMS["SHIP5+RPTS"] = {**ARMS["SHIP5"], "REPEAT_NEEDS_SILENCE": 0.5}          # r
 ARMS["SHIP5+PMC"] = {**ARMS["SHIP5"], "PICTURE_MIN_CONF": 0.35}                 # round 31 PMC: floor = DISPLAY_THRESHOLD
 ARMS["SHIP5+CONT"] = {**ARMS["SHIP5"], "CONTINUATION_VETO": 0.5}             # round 31 CONT
 ARMS["SHIP5+FLAP"] = {**ARMS["SHIP5"], "FINELAP_VETO": 0.329,                   # round 31 FLAP (b), P1-calibrated bar
-                     "FINELAP_DIR": "/home/dsi/adamg/MscProj_tg/data/work/finelap_cache"}
+                     "FINELAP_DIR": TG_CHECKOUT + "/data/work/finelap_cache"}
 ARMS["SHIP6"] = {**ARMS["SHIP5+CONT"]}                 # the shipped default since round 31
 ARMS["SHIP6+K4AO"] = {**ARMS["SHIP6"], "KEEP_NEEDS_V4_ALL": "onto"}
 ARMS["SHIP6+FLAP"] = {**ARMS["SHIP6"], "FINELAP_VETO": 0.329, "FINELAP_DIR": ARMS["SHIP5+FLAP"]["FINELAP_DIR"]}
@@ -239,11 +242,11 @@ ARMS["SHIP8+MD3"] = {**ARMS["SHIP8"], "AED_MIN_DUR": 0.3, "DEPICT_EVENT": True,
 ARMS["SHIP8+MD3+SK7"] = {**ARMS["SHIP8+MD3"], "STRONG_BEATS_KEEP": 0.7}   # Round 52 STRONG-KEEP
 ARMS["SHIP8+MD3+WW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCAL_KEEP": "both"}   # Round 53 WEAK-WITNESS (b from the 415)
 ARMS["SHIP8+MD3+WW4"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "either"}   # Round 53d WEAK-WITNESS-4 (fixed standard DASM bar, either ear)
-ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": "/home/dsi/adamg/MscProj/data/work/scenemargin/videos.json"}   # Round 60 SCENE-MARGIN (one ear + F3 scene-fit yes); SHIPPED 1 Oct = the base arm for new rounds
+ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": MAIN_CHECKOUT + "/data/work/scenemargin/videos.json"}   # Round 60 SCENE-MARGIN (one ear + F3 scene-fit yes); SHIPPED 1 Oct = the base arm for new rounds
 ARMS["SHIP8+MD3+WW5+SL"] = {**ARMS["SHIP8+MD3+WW5"], "SCENE_FIT_LOGIT": True}   # Round 60L SCENE-LOGIT (D with the scene question read as the bias-cancelled logit margin)
 ARMS["SHIP8+MD3+WW5+SL_trail"] = dict(ARMS["SHIP8+MD3+WW5+SL"])   # D' re-run with the Decision Inspector hooks (identical flags; new output folders)
 ARMS["SHIP8+MD3+WW5+SL+NA"] = {**ARMS["SHIP8+MD3+WW5+SL"], "NAME_ALL": (0.4375, 6.0625)}   # Round 66 NAME-ALL (D' + two-sided crop-margin gate, t_lo / t_hi from gate-gold step 1)
-ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": "/home/dsi/adamg/MscProj/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source)
+ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": MAIN_CHECKOUT + "/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source)
 ARMS["SHIP8+MD3+WW5+CA"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell",)}; ARMS["SHIP8+MD3+WW5+CAR"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell", "Church bell", "Change ringing", "Fart", "Burping, eructation", "Hiccup", "Stomach rumble")}   # Round 64 CONCEALED-ACTION (CA ship table / CAR report-only)
 ARMS["SHIP8+MD3+WW5+RET"] = {**ARMS["SHIP8+MD3+WW5"], "PERC_RETURN": None}   # Round 65 RETURN (k from the 415 half A; set on GO)
 ARMS["SHIP8+MD3+TS"] = {**ARMS["SHIP8+MD3"], "TWIN_SHORT": 0.5}   # Round 56 TWIN-SHORT (partner = FlexSED band run >= 0.5)

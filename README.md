@@ -44,38 +44,53 @@ scored. Limits are discussed in Section 9 of the report.
 ## Installation
 
 ```
-pip install -r requirements.txt
+pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
 ```
 
-- Python 3 with PyTorch 2.5.1, transformers 5.16.1, diffusers, faster-whisper, panns-inference, easyocr and
-  sentence-transformers. FineLAP needs transformers 4.51.3 and runs in a second environment, set with the
-  `FINELAP_PYTHON` variable. FlexSED and DASM are imported from their own repositories (paths in `config.py`).
-- The models are downloaded from Hugging Face on first use.
+- Python 3.11 with PyTorch 2.5.1 and transformers 5.16.1; `requirements.txt` lists every package with the version
+  used. FFmpeg must be on the path.
 - One GPU with about 80 GB of memory (an NVIDIA H200 was used; two A100 80 GB cards also work). Qwen-Image alone
-  needs about 57 GB in bf16.
-- FFmpeg on the path.
+  needs about 57 GB in bf16. The models from Hugging Face are downloaded on first use; set `HF_TOKEN` for gated ones.
+- The final system also needs these outside repositories and environments. Their locations are read from environment
+  variables (see [`.env.example`](.env.example)); export them in the shell before running `main.py`.
+
+| what | used for | variable |
+|---|---|---|
+| FlexSED repository | second sound detector | `FLEXSED_ROOT` (default `~/FlexSED`) |
+| Transformer4SED repository ([github.com/cai525/Transformer4SED](https://github.com/cai525/Transformer4SED)) with the DASM weights and `third_parties/MGA-CLAP`, plus a local `bert-base-uncased` | DASM, the third listener | `T4SED_ROOT` (default `~/Transformer4SED`), `BERT_DIR` (default `~/bert-base-uncased`) |
+| a second Python environment with transformers 4.51.3, for FineLAP ([huggingface.co/AndreasXi/FineLAP](https://huggingface.co/AndreasXi/FineLAP)) | FineLAP veto | `FINELAP_PYTHON` (default `~/venv_flap/bin/python`) |
+
+  Only for variants that the final system does not use: PretrainedSED (`PSED_ROOT`), FLAM (the `openflam` package,
+  in its own environment) and the EAT / SSLAM taggers.
 
 ## Usage
 
 ```
-python main.py --input clip.mp4 --device cuda
+python main.py --input data/input/clip.mp4 --device cuda
 ```
 
 This writes `data/output/clip_augmented.mp4` (the video with the picture panel) and the intermediate files under
 `data/work/clip/`. The final system is the configuration `config.use_shipped()` in [`config.py`](config.py).
-On a Slurm cluster, `slurm/run_best.sh` runs the same system on a folder of clips (see
-[`slurm/README.md`](slurm/README.md)).
+Before detection, `main.py` prepares the listener inputs of the clip on the spot (FlexSED, BEATs and PANNs scores,
+the two audio-language listeners, DASM and FineLAP), with the same harness as the benchmark. This is slow (about five
+minutes per clip) and is done once per clip. On a Slurm cluster, `slurm/run_best.sh` runs the same system on a folder
+of clips (see [`slurm/README.md`](slurm/README.md)).
 
 ## Reproducing the reported numbers
 
-```
-python benchmark/gold/final_vs_baselines.py
-```
+The reported numbers are stored in the repository:
+[`benchmark/gold/final_vs_baselines.json`](benchmark/gold/final_vs_baselines.json) (final system and baselines),
+[`benchmark/gold/final_vs_baselines_extra.json`](benchmark/gold/final_vs_baselines_extra.json) (F1 intervals,
+danger sounds) and [`docs/inspector2/data_parity.json`](docs/inspector2/data_parity.json) (configuration check).
+Appendix C of the report gives the source file of every number.
 
-The scoring harness reads the human labels and the cached model outputs of each clip and replays the pipeline's own
-decision functions. The exact commands, the configuration check and the source file of every number are in
-Appendix C of the report; [`benchmark/gold/README.md`](benchmark/gold/README.md) lists the files involved. The video
-clips are not redistributed.
+Recomputing them from a clone is not possible as is. The scripts (for example
+`python benchmark/gold/final_vs_baselines.py`) read the stage-5 outputs of every benchmark clip, and these are
+built on the cluster from the video clips, which are not redistributed. The clip names are in
+`benchmark/gold/dev_stems.txt`, `dev2_stems.txt`, `test_stems.txt` and `test2_stems.txt` (split rules in
+`tagger_split.json` and `split.json`); the human labels are in `benchmark/gold/annotations/gold_AG.json`. With the
+clips in place (`data/input/tagger_set/` for the `tg_d*` clips), the steps are those of `slurm/run_best.sh` and
+[`benchmark/gold/README.md`](benchmark/gold/README.md).
 
 ## Repository layout
 
@@ -87,6 +102,7 @@ clips are not redistributed.
 | `tests/` | unit tests |
 | `docs/report/` | the technical report (LaTeX sources, figures and PDF) |
 | `docs/inspector2/` | decision trail: every decision of the final system on every clip, and its parity check |
+| decision trail viewer | open `docs/inspector2/index.html` in a browser (no server needed); the clip videos are not in the repository, so the video box stays empty, but the trails, timelines and counts all work |
 | `slurm/` | cluster job scripts for running the system on a folder of clips |
 | `comfyui_nodes/` | optional ComfyUI interface ([`comfyui_nodes/README.md`](comfyui_nodes/README.md)) |
 | `data/input/` | a small test clip |

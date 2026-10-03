@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import random
 import subprocess
 import sys
@@ -24,7 +25,7 @@ import numpy as np
 _ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 
-HOME_PROJ = Path("/home/dsi/adamg/MscProj")
+HOME_PROJ = Path(os.environ.get("MSCPROJ_MAIN_CHECKOUT", "/home/dsi/adamg/MscProj"))   # cluster checkout with the caches
 CACHE = HOME_PROJ / "data" / "work" / "tagens"
 HELDOUT = _ROOT / "benchmark" / "gold" / "audioset_heldout.json"
 BEATS_HELD = HOME_PROJ / "benchmark" / "audioset_heldout_windows" / "beats"

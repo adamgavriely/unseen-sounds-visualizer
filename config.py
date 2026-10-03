@@ -1,5 +1,8 @@
 """Central defaults for the pipeline. Override per-run via main.py CLI flags.
 
+The docs/prereg_* and docs/history/* files cited in the comments below are in release v1.2.0
+(https://github.com/adamgavriely/MscFinalProject/releases/tag/v1.2.0), not in this release.
+
 Every stage is real; the rationale for each choice is in the comment beside it.
 """
 from pathlib import Path

@@ -24,17 +24,17 @@ export PYTHONUNBUFFERED=1
 # uploads and temp files go to home: a shared node's /tmp can be full (hpc8h200-01, 2 Oct: uploads failed with ENOSPC)
 export TMPDIR="$HOME/tmp_comfy"; mkdir -p "$TMPDIR"
 export MSCPROJ_ROOT="$HOME/MscProj"
-# FLUX is gated; read the token the same way every other job does (never printed)
-if [ -z "${HF_TOKEN:-}" ] && [ -f "$HOME/.bashrc" ]; then
-    HF_TOKEN=$(sed -n 's/^[[:space:]]*export[[:space:]]*HF_TOKEN=//p' "$HOME/.bashrc" | tail -1 | tr -d "\"'") || true
-    export HF_TOKEN
+# Gated Hugging Face models need a token: export HF_TOKEN=<your token> before sbatch (Slurm passes the
+# environment on to the job). The token is never printed.
+if [ -z "${HF_TOKEN:-}" ]; then
+    echo "note: HF_TOKEN is not set; gated models will not download" >&2
 fi
 PORT="${PORT:-8188}"
 echo "=================================================================="
 echo " ComfyUI demo is starting on $(hostname), port ${PORT}"
 echo ""
 echo " From your laptop, run:"
-echo "   ssh -N -L ${PORT}:$(hostname):${PORT} adamg@slurm-login1.lnx.biu.ac.il"
+echo "   ssh -N -L ${PORT}:$(hostname):${PORT} <user>@<login-node>"
 echo " then open:  http://127.0.0.1:${PORT}"
 echo "=================================================================="
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader

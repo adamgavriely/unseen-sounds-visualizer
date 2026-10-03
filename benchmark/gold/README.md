@@ -19,13 +19,22 @@ pipeline and the harness import.
 
 ## Reproducing the numbers
 
+The reported numbers are stored here: `final_vs_baselines.json`, `final_vs_baselines_extra.json` and
+`../../docs/inspector2/data_parity.json` (configuration check). Appendix C of the report gives the source file of
+every number.
+
+The scripts that made them read the stage-5 outputs of every benchmark clip (under `data/work/`), which are not in
+the repository. They are rebuilt on the cluster from the video clips, and the clips are not redistributed: their
+names are in `dev_stems.txt`, `dev2_stems.txt`, `test_stems.txt` and `test2_stems.txt` (the `tg_d*` clips go in
+`data/input/tagger_set/`). With the clips in place, `tagger_prep.py` builds the model inputs and outputs (the order of
+the steps is in `slurm/run_best.sh`), and then:
+
 ```
 python benchmark/gold/final_vs_baselines.py                 # Table 3: final system and baselines
+python benchmark/gold/final_vs_baselines_extra.py           # F1 intervals, danger sounds
 python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL      # configuration check
 python benchmark/gold/inspector_trail_export.py \
    --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/24/4/15/5/2.409
 ```
 
-The cached outputs of the large models for the benchmark clips are not all in the repository; they are rebuilt from
-the clips with `tagger_prep.py` (see `slurm/run_best.sh` for the order of the steps). Appendix C of the report gives
-the source file of every reported number.
+From a plain clone these scripts stop at the first missing clip or output.

@@ -1,65 +1,49 @@
-# ComfyUI: video in, video out (frozen pipeline)
+# ComfyUI nodes: video in, video out
 
-Status 2026-10-02. This top part is current. The older notes in docs/ComfyUI.md (from 23 Sept) describe the eight stage nodes,
-which still use the OLD setup; they are kept only as history and sit in the menu under "MscProj/old setup".
+An optional graphical interface. You load a video in ComfyUI, press Run, and get the same video back with the
+pictures of the off-screen sounds beside it, plus a short text list of what was drawn.
 
-## What you get
+## What it does
 
-One workflow, `MscProj_video` (file `comfyui_nodes/MscProj_video.json`), with three boxes:
+The workflow `MscProj_video` (file `comfyui_nodes/MscProj_video.json`) has three boxes:
 
     1. Load your video  ->  2. Add sound pictures (whole pipeline)  ->  3. Your new video
                                          \-> What was drawn (a short text list)
 
-Box 2 is the node `MscAugmentVideo`. It runs the frozen pipeline D' (tag `detector-frozen-2026-10-02`) on the new video, through
-`main.py`'s code path: `config.use_shipped()`, the on-the-spot listener inputs (`src/listener_prep.py`, with FineLAP), all
-stages, Qwen-Image pictures with the picture check, grouping, and the compositor. It starts
-`comfyui_nodes/run_frozen.py` in a fresh process, so the ComfyUI server never holds the big models (the old nodes
-were OOM-killed).
+Box 2 is the node `MscAugmentVideo`. It runs the final system (`config.use_shipped()`) on the uploaded video through
+the same code path as `main.py`: the listener inputs are prepared on the spot, then sound detection, the on-screen
+check, the pictures and the composition. The node starts `comfyui_nodes/run_frozen.py` in a separate process, so the
+ComfyUI server never holds the large models. The only difference from `main.py`: the on-screen check runs with the
+settings of the scored runs (`benchmark/gold/round13_dev.py`, variant `SHIP8+MD3+WW5+SL`), and the final picture
+settings are used only for the drawing step.
 
-One difference from `main.py`, on purpose: stage 5 runs with the flags of the SCORED D' runs
-(`benchmark/gold/round13_dev.py`: picture wording flags PICTURE_V3/SCENE/SCENE_GUARD2/FINAL/MAKER and
-KINSHIP_DIRECTED off); the shipped picture flags are switched back on for the picture step, the same split as the
-inspector renderer (`benchmark/gold/render_trail_media.py`). `main.py` switches them on before stage 5, which changes
-the subject wording, and the duplicate-picture check reads that wording: on DEV clip tg_d088 `main.py` merged
-Explosion into Thunder, while the frozen run shows both. The copy of the video is named after its content
-(`comfy_<name>_<sha1 8>`), so per-clip answers from an older upload are never reused.
+The nodes under "MscProj/old setup" are an earlier, per-stage version of the pipeline. They are not the final system.
 
-## How to start it
+## Install
 
-    # on the cluster (needs the BIU VPN), from ~/MscProj
-    sbatch slurm/job_comfy.sh                  # H200-12h, 256G, 12 h
-    grep 'ssh -N' logs/comfy_<jobid>.out       # the node name changes every job
+1. Install ComfyUI in the same Python environment as this project (see the main `README.md`).
+2. Link or copy this folder into `ComfyUI/custom_nodes/`.
+3. If the folder is not inside the project, set `MSCPROJ_ROOT` to the project folder.
+4. Optional: set `COMFYUI_ROOT` if ComfyUI is not in `~/ComfyUI` (used by `comfy_start.py`).
 
-    # on the laptop
-    ssh -N -L 8188:<node>:8188 adamg@slurm-login1.lnx.biu.ac.il
-    # open http://127.0.0.1:8188 -> Workflows sidebar -> MscProj_video
+## Run
 
-Then: click "choose video to upload" in box 1, press Run, wait about 10-15 minutes per short clip.
-The new video is saved in ComfyUI's output folder (`~/ComfyUI/output/video/MscProj_*`) and also in
-`~/MscProj/data/output/<stem>_augmented.mp4`.
+    python comfyui_nodes/comfy_start.py --listen 0.0.0.0 --port 8188
 
-## The simple page (for other people)
+Open http://127.0.0.1:8188, load the workflow `MscProj_video` from the Workflows sidebar, choose a video in box 1
+and press Run. `comfy_start.py` starts ComfyUI with a small fix that lets it run on this project's PyTorch 2.5.1. The
+new video is saved in ComfyUI's output folder and in `data/output/<name>_augmented.mp4`.
 
-`comfyui_nodes/public_page.py` is a small Gradio page on top of ComfyUI: upload a video, press one button, get the
-new video and the list of pictures. It never shows the ComfyUI graph. One video at a time; others wait in line.
-`slurm/job_comfy.sh` starts it next to ComfyUI (port 7860) from `~/venv_gradio` (gradio, requests, websockets).
+On a Slurm cluster, `sbatch slurm/job_comfy.sh` starts the server on a GPU node and prints the `ssh -N -L ...`
+command that forwards the port to your computer. Set `HF_TOKEN` before `sbatch` if a model needs it.
 
-Public link: the BIU firewall blocks Gradio's share link (port 7000) and Cloudflare quick tunnels (port 7844).
-ngrok (port 443) gets through but needs a free account token from Adam. Until then the page is reached like
-ComfyUI: `ssh -N -L 7860:<node>:7860 adamg@slurm-login1.lnx.biu.ac.il`, then http://127.0.0.1:7860.
+`public_page.py` is a simple upload page (Gradio) on top of a running ComfyUI server: upload a video, press one
+button, get the new video. It needs `gradio`, `requests` and `websockets`:
 
-Checks (2 Oct): DEV clips tg_d088 (ComfyUI), mv_protest_scene_movie (ComfyUI) and un_driving_motorcycle_DgdHSmwA
-(through the page) give exactly the frozen inspector signatures (docs/inspector/media/bysig/DEV/*.sig.json).
+    python comfyui_nodes/public_page.py --comfy http://127.0.0.1:8188 --port 7860
 
-## Any video (2 Oct, after two Fable reviews)
+## Caveat
 
-* Every upload becomes `<stem>.mp4` (a phone .MOV, .webm or .MP4 is re-encoded to H.264 + AAC), because the listener
-  harness only finds lower-case *.mp4 files. Videos with no sound, no picture or under 1 s are refused with a plain
-  message. Tested: .MOV (end to end, 0 pictures, 7 min), .webm, muted, audio-only, 0.5 s.
-* A clip with no listener items (FlexSED finds no band run) has empty answer files; `run_frozen.py` sets
-  `LISTENER_REQUIRE_CACHES = False` after the listener prep, as the scored D' arm does.
-* Picture option on the node: "new drawing each run" (default; a random seed offset, same sounds and times) or
-  "same as the frozen run" (seed from clip name, sound and time).
-* Not fixed (frozen src, CLI only): `main.py` on non-.mp4 input, on a video without sound, and on a re-used file name
-  with new content; the depict step loads the VLM even with 0 pictures; Whisper is forced to English.
-
+One run takes about 10-15 minutes for a short clip on one 80 GB GPU (an H200 was used), because every model input
+is computed for the new video. Videos without sound, without picture or shorter than 1 s are refused; other formats
+(.mov, .webm) are converted to .mp4 first.

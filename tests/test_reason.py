@@ -5,13 +5,14 @@ source is gated, a synonym is merged, no dialogue reaches a depiction -- on a ma
 with no GPU and in under a second. It is not a test of the models; the demo job on the
 cluster is what checks those.
 
-    python tests/test_reason.py
+    python -m pytest tests/test_reason.py -q
 """ 
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src.stage5_cross_modal_analysis import reason as R
-from src.types import AugmentationSpec
+from src.types import AugmentationSpec, SpeechSegment
+import src.stage2_video_understanding as S2
 
 SCENE = "A courtroom with a judge and lawyers"
 PLACE = "a courtroom"
@@ -120,45 +121,42 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
     raise AssertionError("unexpected prompt: " + prompt[:70])
 
 
-R._load = fake_load
-R._ask = fake_ask
-import src.stage2_video_understanding as S2
-S2._sample_frames = fake_frames
-S2._sample_frames_at = fake_frames_at
-
-
 def spec(label, a, b, conf):
     return AugmentationSpec(index=0, event_label=label, start=a, end=b, augment=True,
                             confidence=conf, reason="planned", subject=label)
 
 
-specs = [spec("Gavel", 1.0, 1.5, 0.7),      # visible -> silent, even though talked about
-         spec("Laughter", 3.0, 5.0, 0.6),   # shown
-         spec("Giggle", 3.2, 4.0, 0.4),     # merged into Laughter
-         spec("Siren", 8.0, 10.0, 0.5)]     # shown
-# a faint sound the gate declined; speech about it should rescue it
-specs += [spec("Sheep", 12.0, 13.5, 0.30), spec("Baby cry, infant cry", 12.1, 13.6, 0.28)]
-faint = spec("Door", 0.8, 1.2, 0.08)
-faint.augment = False
-faint.reason = "below display threshold (0.08 < 0.12)"
-specs.append(faint)
+def test_decide_subjects_control_flow(monkeypatch):
+    monkeypatch.setattr(R, "_load", fake_load)
+    monkeypatch.setattr(R, "_ask", fake_ask)
+    monkeypatch.setattr(S2, "_sample_frames", fake_frames)
+    monkeypatch.setattr(S2, "_sample_frames_at", fake_frames_at)
+    specs = [spec("Gavel", 1.0, 1.5, 0.7),      # visible -> silent, even though talked about
+             spec("Laughter", 3.0, 5.0, 0.6),   # shown
+             spec("Giggle", 3.2, 4.0, 0.4),     # merged into Laughter
+             spec("Siren", 8.0, 10.0, 0.5)]     # shown
+    # a faint sound the gate declined; speech about it should rescue it
+    specs += [spec("Sheep", 12.0, 13.5, 0.30), spec("Baby cry, infant cry", 12.1, 13.6, 0.28)]
+    faint = spec("Door", 0.8, 1.2, 0.08)
+    faint.augment = False
+    faint.reason = "below display threshold (0.08 < 0.12)"
+    specs.append(faint)
 
-from src.types import SpeechSegment
-segs = [SpeechSegment(0, 0.5, 1.8, "order, order in the court"),
-        SpeechSegment(1, 6.0, 7.0, "your honour, objection")]
-R.decide_subjects("fake.mp4", specs, segments=segs, device="cpu")
+    segs = [SpeechSegment(0, 0.5, 1.8, "order, order in the court"),
+            SpeechSegment(1, 6.0, 7.0, "your honour, objection")]
+    R.decide_subjects("fake.mp4", specs, segments=segs, device="cpu")
 
-print()
-print("RESULT")
-for s in specs:
-    print(("  SHOW   " if s.augment else "  silent ") + s.event_label.ljust(10)
-          + "| " + (s.subject or s.reason))
-shown = [s.event_label for s in specs if s.augment]
-assert shown == ["Laughter", "Siren", "Baby cry, infant cry", "Door"], shown
-sheep = next(s for s in specs if s.event_label == "Sheep")
-assert not sheep.augment and ("frames say" in sheep.reason or "nothing backs" in sheep.reason),     "the sheep must lose: to the frames, or to having nothing behind it"
-assert faint.talked_about and faint.augment, "speech should rescue the faint door"
-gavel = next(s for s in specs if s.event_label == "Gavel")
-assert gavel.talked_about and not gavel.augment, "visibility must beat speech"
-assert all("objection" not in (s.subject or "") for s in specs)
-print("\nOK: visible gated (even when talked about), synonym merged, faint sound rescued by speech, no dialogue in any depiction")
+    print()
+    print("RESULT")
+    for s in specs:
+        print(("  SHOW   " if s.augment else "  silent ") + s.event_label.ljust(10)
+              + "| " + (s.subject or s.reason))
+    shown = [s.event_label for s in specs if s.augment]
+    assert shown == ["Laughter", "Siren", "Baby cry, infant cry", "Door"], shown
+    sheep = next(s for s in specs if s.event_label == "Sheep")
+    assert not sheep.augment and ("frames say" in sheep.reason or "nothing backs" in sheep.reason),     "the sheep must lose: to the frames, or to having nothing behind it"
+    assert faint.talked_about and faint.augment, "speech should rescue the faint door"
+    gavel = next(s for s in specs if s.event_label == "Gavel")
+    assert gavel.talked_about and not gavel.augment, "visibility must beat speech"
+    assert all("objection" not in (s.subject or "") for s in specs)
+    print("\nOK: visible gated (even when talked about), synonym merged, faint sound rescued by speech, no dialogue in any depiction")
