@@ -24,6 +24,37 @@ must work on one video at a time. For every sound this means four questions:
   \item \textbf{What should the picture show?}
 \end{enumerate}
 
+\subsection{Why it is needed}\label{sec:need}
+No existing channel gives these sounds to a viewer. Subtitles carry speech only. Hand-written sound captions are rare
+(5--7\,\% of videos), and the captioning rules focus on what the picture does not already show without any tool
+to find those sounds automatically. Sound-awareness apps for DHH users~\cite{soundwatch,homesound} alert to sounds in the room, not in
+a recorded video, and do not ask whether the viewer can already see the source. Automatic audio captioning describes
+the whole soundtrack, visible and invisible alike. A system that shows exactly the sounds the viewer cannot see, at the
+moment they happen, does not exist.
+
+\subsection{Why ready-made models are not enough}\label{sec:notplug}
+At first sight the task looks like a short chain of ready-made models: a sound tagger names the sound, a vision model
+says whether its source is on screen, an image model draws it. In practice every link of that chain fails in its own
+way, and the failures add up:
+\begin{itemize}
+  \item \textbf{Hearing.} Taggers rank \emph{Speech} or \emph{Music} above a quiet door or hammer, so the sound never
+        becomes a candidate; fewer than 40\,\% of raw detections are real sounds.
+  \item \textbf{Confirming.} An audio-language model asked ``is there a siren?'' is right only about a third of the time
+        when it alone says yes.
+  \item \textbf{Seeing.} A vision-language model answers ``is there a bell?'' when asked ``is the bell ringing?'': it takes
+        presence for production. Every extra vision tool tried (object boxes, crops, segmentation, synchrony, sound
+        localisation) traded one error for another.
+  \item \textbf{Drawing.} Audio-to-image models draw the whole soundtrack as one scene and cannot leave out the dog that is
+        already on screen.
+  \item \textbf{Scoring.} Model judges and model-written references either reward the system that wrote them or decide
+        visibility at chance, so even measuring progress needs human per-sound labels.
+\end{itemize}
+The end-to-end effect is measurable. Chaining the models and drawing every detected sound (the proposal's direct
+audio-to-image baseline) shows 62 wrong pictures for 26 right ones on the test set, and is no better than showing
+nothing. Turning the chain into a system that beats both took the rules of Sections~\ref{sec:system}
+and~\ref{sec:hard}: two detectors, three independent witnesses for weak sounds, a three-question on-screen vote, guarded
+picture prompts with a check-and-redraw loop, and a per-sound metric to decide each step.
+
 \subsection{Research questions}\label{sec:rqs}
 From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers each.
 \begin{enumerate}[label=RQ\arabic*.]
@@ -43,6 +74,8 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
   \item \textbf{A working system} built only from open models, runnable on one video (Section~\ref{sec:system}).
   \item \textbf{Results and an error analysis} that show where today's open models stop
         (Sections~\ref{sec:results}--\ref{sec:analysis}).
+  \item \textbf{A systematic study of why ready-made models fall short} on this task: more than 30 open models and more
+        than 150 full-pipeline variants, each tested against a rule written before the run (Section~\ref{sec:hard}).
   \item \textbf{A dated development record} of the ideas tried, with the acceptance rule written down before each
         run (Appendix~\ref{app:history}).
 \end{enumerate}

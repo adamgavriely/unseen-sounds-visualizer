@@ -7,7 +7,12 @@ that finds those sounds and shows a generated picture of each one beside the vid
 Nothing is trained. The system chains ready-made open models: two sound detectors find candidate sounds, two
 audio-language models (``listeners'', asked for example ``is a siren present?'') confirm weak ones, a
 vision-language model checks whether the source is visible on screen, and a text-to-image model draws the
-picture. Every rule that joins them was fixed on a development set before it was tested.
+picture. Joining them is not plug and play: each model fails in a way the next one cannot see. Detectors miss
+quiet sounds under speech, a lone listener's ``yes'' is right about one time in three, and the vision model answers
+``is the object there?'' instead of ``is it making the sound now?''. Simply chaining the models and drawing every
+detected sound shows more than twice as many wrong pictures as right ones. The final system is the result of more
+than 150 full-pipeline variants over more than 30 open models, each rule fixed on a development set before it was
+tested.
 
 Scored per sound against human labels, the final system finds 24 of 65 needed off-screen sounds on a test set of
 88 clips with 24 wrong pictures, a viewer cost of 2.409 per clip (a miss costs 4, a wrong picture 2). The baselines named

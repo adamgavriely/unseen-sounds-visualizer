@@ -5,9 +5,56 @@ A reader may expect that modern models solve this task directly: a sound tagger 
 says whether an ambulance is on screen, an image model draws it. This section explains, step by step, why that does
 not happen. ``Hard'' here means hard for open models of up to about 70\,GB, chained without training; a much larger
 vision model (Qwen3-VL-235B) was not tested, and fine-tuning was outside the design. Each subsection states what one
-might expect, what actually happens, and the evidence.
+might expect, what actually happens, and the evidence. Table~\ref{tab:naive} summarises the argument and
+Table~\ref{tab:scale} the size of the search behind it.
 
-\subsection{Hearing the sound at all}
+\begin{table}[htbp]
+\centering\small
+\caption{The obvious ready-made chain, step by step: what goes wrong, and what the final system does instead.}
+\label{tab:naive}
+\begin{tabular}{L{1.5cm}L{2.6cm}L{5.0cm}L{4.9cm}}
+\toprule
+Step & Ready-made choice & What goes wrong (evidence) & What the final system does \\
+\midrule
+Hear & one sound tagger & quiet sounds under speech or music never become candidates; under 40\,\% of raw detections
+are real (Section~\ref{sec:hard-hear}) & two complementary detectors, with every weak candidate checked \\
+Confirm & ask an audio-language model & a sound one listener names is real 37\,\% of the time
+(Figure~\ref{fig:listeners}) & a weak sound needs a witness: DASM, both listeners, or one listener plus the scene \\
+See & ask a vision-language model ``is it visible?'' & presence is taken for production (31 of 36 audited errors);
+AUROC 0.647; answers follow the question's form & three questions per 5-s stretch, asked in both orders; silenced only if
+every stretch is visible \\
+Draw & audio-to-image model & draws the whole scene, including what is on screen & label-guarded text prompt;
+the picture is checked and redrawn up to five times \\
+Score & model judge & circular or at chance on visibility (Section~\ref{sec:hard-measure}) & per-sound human labels
+and a viewer cost \\
+\midrule
+All & draw every detected sound & 62 wrong for 26 right on the test set; no better than showing nothing &
+final system: 24 wrong for 24 right; cheaper than both baselines \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Scale of the study behind the final system (details in Appendix~\ref{app:history}).}
+\label{tab:scale}
+\begin{tabular}{L{5.2cm}L{9.0cm}}
+\toprule
+What & How much \\
+\midrule
+Open models evaluated & more than 30: 14 sound detectors and taggers (e.g.\ BEATs, FlexSED, PANNs, AST, EAT, Dasheng,
+CLAP, FLAM, DASM, FineLAP), 6 audio-language listeners, 2 source separators, 8 vision models and tools (CLIP, two
+Qwen vision-language models, OWLv2, SAM 3, SigLIP, a sound localiser, Synchformer), 3 image generators (SDXL, FLUX.1,
+Qwen-Image), and several model judges \\
+Pre-registered rounds & 66 rounds, each with its rule and pass bar written before the run \\
+Full-pipeline variants scored & more than 150, plus about 90 component screens \\
+Human labels & 308 timed sounds in 159 clips, each marked visible or not and rated for importance \\
+Screening data & 415 AudioSet-Strong clips with timed labels for audio-only rules \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Hearing the sound at all}\label{sec:hard-hear}
 \emph{Expected:} a modern tagger hears a hammer or a door. \emph{Actually:} under speech or music it often does not.
 The tagger's own score for \emph{Speech} or \emph{Music} is higher than for the quiet sound, so the sound never becomes
 a candidate. In a ceiling analysis of an earlier version (each later step is made perfect using the labels, to see what the
@@ -97,7 +144,7 @@ as a scene and cannot be told to leave out the dog that is already on screen. Th
 with a guarded text prompt -- and even then a picture was named right at a glance in only 26 of 54 tries
 (Section~\ref{sec:pictures}). A richer prompt reached 32 of 54 but invented objects (a thud drawn as a door).
 
-\subsection{Measuring success is hard too}
+\subsection{Measuring success is hard too}\label{sec:hard-measure}
 The proposal planned an automatic score: one model describes the output video, another writes a reference of what
 a viewer should learn, and a third model (the judge) compares the two. \emph{Expected:} a model judge can score the
 output. \emph{Actually:} a reference written by the system's own models
