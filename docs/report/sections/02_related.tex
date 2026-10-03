@@ -4,32 +4,53 @@
 \paragraph{Non-speech sound for DHH viewers.} Captioning practice~\cite{dcmp} describes a sound only when the picture
 does not already show it; this is the visibility rule used here. Viewers want important sounds, their type and timing,
 and a choice~\cite{may2025choices,alonzo2022beyond}; captions lose emotional information~\cite{revuelta2020eeg};
-visual styling is welcome when it is readable and calm~\cite{delacerdapataca2024royale,prosodycaptions}. Sound-awareness
+visual styling is welcome when it is readable and calm~\cite{delacerdapataca2024royale,prosodycaptions}. The closest
+prior work, Alonzo et al.~\cite{alonzo2022beyond}, studied with DHH viewers how non-speech sounds in user-generated
+videos could be captioned and visualised; it asks how to present the sounds, while this report asks which sounds to
+show, and when, without a human in the loop. Sound-awareness
 tools~\cite{jain2015hmd,homesound,soundwatch,protosound} show that users want urgent sounds fast and are bothered by
-false alarms, which is why a wrong picture has a cost in the metric used here. None of this work generates pictures for ambient
-sound in recorded video, chosen automatically by what is already visible.
+false alarms, which is why a wrong picture has a cost in the metric used here. None of this work chooses the sounds of a
+recorded video automatically by what is already visible.
 
-\paragraph{Sound event detection.} Almost all sound taggers use the AudioSet label set~\cite{gemmeke2017audioset}
-(527 classes in a tree, e.g.\ \emph{Bark} under \emph{Dog} under \emph{Animal}). Clip-level taggers such as
-PANNs~\cite{kong2020panns}, AST~\cite{gong2021ast} and BEATs~\cite{chen2023beats} say \emph{what} is heard;
-text-queried detectors such as CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam} and FlexSED~\cite{hai2025flexsed}
-score a sound name frame by frame. Detection is usually scored with event-based F1 and a time tolerance
-(``collar'')~\cite{mesaros2016metrics,bilen2020psds}; the metric used here keeps the onset tolerance but reports a cost instead of
-F1, in the spirit of cost curves~\cite{drummond2006costcurves}. A known weakness matters here: a quiet sound under speech
-or music is ranked below \emph{Speech} or \emph{Music}.
+\paragraph{Sound event detection and audio captioning.} Almost all sound taggers use the AudioSet label
+set~\cite{gemmeke2017audioset} (527 classes in a tree, e.g.\ \emph{Bark} under \emph{Dog} under \emph{Animal}).
+Clip-level taggers such as PANNs~\cite{kong2020panns}, AST~\cite{gong2021ast} and BEATs~\cite{chen2023beats} say
+\emph{what} is heard; text-queried detectors such as CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam},
+FlexSED~\cite{hai2025flexsed} and DASM~\cite{cai2025dasm} score a sound name frame by frame. Detection is usually
+scored with event-based F1 and a time tolerance (``collar'')~\cite{mesaros2016metrics,bilen2020psds}; the metric used
+here keeps the onset tolerance but reports a cost instead of F1, in the spirit of cost curves~\cite{drummond2006costcurves}.
+A known weakness matters here: a quiet sound under speech or music is ranked below \emph{Speech} or \emph{Music}.
+Automated audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho} describes a whole clip in a
+sentence. Dense audio-visual event benchmarks such as UnAV-100~\cite{geng2023unav100} label events that are both heard
+and seen, the opposite of the selection needed here. Neither detection nor captioning asks whether the source of a
+sound is visible.
 
-\paragraph{Audio-language and vision-language models.} Audio-language models such as Qwen2-Audio~\cite{chu2024qwen2audio}
-and Qwen3-Omni~\cite{xu2025qwen3omni} answer questions about audio; the system uses two of them as ``listeners''.
-Vision-language models such as Qwen2.5-VL~\cite{bai2025qwen25vl} and LLaVA~\cite{liu2023llava} answer questions about
-frames and are the only tool that can decide, for any sound, whether its source is visible. Their known failures matter:
-a preference for some answer letters~\cite{zheng2024pride}, weak handling of negation~\cite{alhamoud2025negbench}, and
-treating a visible object as the one that is sounding (Section~\ref{sec:analysis}).
+\paragraph{Audio-language and vision-language models.} Audio-language models such as Qwen2-Audio~\cite{chu2024qwen2audio},
+Qwen3-Omni~\cite{xu2025qwen3omni} and Audio Flamingo Next~\cite{afnextcard} answer questions about audio; the system
+uses the last two as ``listeners''. Vision-language models such as LLaVA~\cite{liu2023llava},
+Qwen2.5-VL~\cite{bai2025qwen25vl} (used in early versions) and Qwen3.8~\cite{qwen38card} (used in the final system)
+answer questions about frames. Among the tools tried here, they are the only general tool that can decide, for any
+sound, whether its source is visible. Their known failures matter: a preference for some answer
+letters~\cite{zheng2024pride}, weak handling of negation~\cite{alhamoud2025negbench}, and treating a visible object as
+the one that is sounding (Section~\ref{sec:analysis}). No benchmark measures this last failure, which is the central
+question of this task.
 
-\paragraph{Sound-source localisation and audio-to-image generation.} Localisation
+\paragraph{On-screen sound, localisation and audio-to-image generation.} Self-supervised audio-visual
+models~\cite{owens2018multisensory,tzinis2021audioscope} learn to separate on-screen from off-screen sound; they
+separate the audio signal and do not name or depict the off-screen source. Localisation
 models~\cite{senocak2023alignment,um2025objaware} find \emph{where} in the frame a sound comes from, but barely react to
 off-screen or silent audio~\cite{juanola2025critical}, so they do not answer \emph{whether} it is visible.
 Audio-to-image models~\cite{sungbin2023sound2scene,biner2024sonicdiffusion,ge2026audiocanvas} draw a picture from a whole
 soundtrack, so they draw the scene rather than the one unseen source and cannot be told to leave a visible object out.
-A text-to-image model (Qwen-Image~\cite{wu2025qwenimage}) with a short, guarded prompt is therefore used, and the
-proposal's direct audio-to-image baseline is represented by the final system drawing every detected sound,
-without the on-screen check (Section~\ref{sec:baselines}). Model judges~\cite{zheng2023judge} were tried for evaluation and failed (Appendix~\ref{app:judge}).
+A text-to-image model (Qwen-Image~\cite{wu2025qwenimage,qwenimage2512card}) with a short, guarded prompt is therefore
+used, and the proposal's direct audio-to-image baseline is represented by the final system drawing every detected
+sound, without the on-screen check (Section~\ref{sec:baselines}). Model judges~\cite{zheng2023judge} were tried for
+evaluation and failed (Appendix~\ref{app:judge}). None of these models decides, per sound, both that it is off screen
+and what to draw for it.
+
+\paragraph{The gap.} The nearest neighbours each cover one part of the task: captioning guidelines and DHH studies
+say which sounds viewers need~\cite{dcmp,alonzo2022beyond,may2025choices}; sound event detectors and audio captioning
+name what is heard; on-screen separation and localisation models relate a sound to the frame; audio-to-image models draw
+what is heard. No prior work combines them into a system that selects, per sound and over time, only the sounds whose
+source is not visible and shows a picture for each, and none provides a per-sound benchmark and metric for that
+decision. This report contributes both.

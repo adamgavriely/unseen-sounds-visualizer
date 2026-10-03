@@ -225,8 +225,8 @@ A five-reviewer scoring panel on 19 Sept moved the primary score to per-sound ma
 
 
 \subsection{How the cost changed during development}\label{app:progression}
-Figure~\ref{fig:progression} shows the cost after each accepted change, from the system of the September test table
-(``September version'') to the final system. The development cost fell by 1.634 per clip and the test cost by 0.500;
+Figure~\ref{fig:progression} (Section~\ref{sec:hard}) shows the cost after each accepted change, from the first full
+pipeline to the final system. The development cost fell by 1.634 per clip and the test cost by 0.500;
 the gap is expected, because changes were chosen on the development set.
 
 The last step deserves a note. The witness rule was first scored with its scene question read as text, which gave 2.028
@@ -235,14 +235,6 @@ to remove a wrong picture -- an artefact of truncation, not a property of the ru
 the model's yes/no scores, which cannot be cut off; this brings the wrong picture back and gives the reported numbers 2.056
 and 2.409. The final system was accepted because it beats the version before the witness rule (2.141 on development),
 which was the pre-set bar; the text-read result is therefore not plotted as a separate step.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\linewidth]{figures/progression.pdf}
-\caption{Cost per clip after each accepted change. Decisions were made on the development set; the test set was read
-after each change and only reported. Dotted lines: showing nothing.}
-\label{fig:progression}
-\end{figure}
 
 \FloatBarrier
 \subsection{The September comparison of the on-screen check}\label{sec:sept-table}
@@ -274,7 +266,8 @@ The final development phase compared each accepted change with the version befor
 September baseline (``B0r''). Paired clip bootstrap on the test set, 2{,}000 draws; $d$ = mean per-clip cost difference;
 one-sided $p$ (a two-sided value is about twice as large); see Table~\ref{tab:versions}.
 \begin{table}[htbp]\centering\small
-\caption{Comparisons between versions (test set, one-sided).}\label{tab:versions}
+\caption{Comparisons between versions (test set, one-sided). Test-set reads made during development, uncorrected
+for multiplicity; none was used to accept a change.}\label{tab:versions}
 \resizebox{\linewidth}{!}{\begin{tabular}{lrrl}
 \toprule
 Comparison & $d$ & 95\,\% interval & One-sided $p$ \\

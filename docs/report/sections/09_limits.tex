@@ -17,10 +17,10 @@ could make the reported numbers wrong. Section~\ref{sec:hard} explains the first
         is drawn, and each picture try takes about 20\,s. The system cannot caption live television.
   \item \textbf{English speech only.} The speech transcript, used only to ask the vision model whether people are reacting to a sound,
         comes from a
-        Whisper model run for English; speech in other languages gives no useful context.
-  \item \textbf{Design choices.} No model is trained; speech and music are never drawn; one picture is shown per sound,
-        without words.
+        Whisper model~\cite{radford2023whisper} run for English; speech in other languages gives no useful context.
 \end{itemize}
+The scope of the task is set by design rather than by a limit: no model is trained, speech and music are never drawn,
+and one picture is shown per sound, without words (Section~\ref{sec:problem}).
 
 \subsection{Limits of the evaluation}
 \begin{itemize}

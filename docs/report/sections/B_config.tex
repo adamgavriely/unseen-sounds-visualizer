@@ -1,7 +1,8 @@
 % ======================================================================
 \section{System details and configuration}\label{app:config}
 This appendix gives the parts of the final system that the main text summarises: every step of the detection stage,
-the label filter, how the scored numbers relate to the live pipeline, and every configuration value.
+the label filter, how the scored numbers relate to the live pipeline, the exact definition of the direct
+audio-to-image baseline, and every configuration value.
 
 \subsection{Detection (stage 4) in full}\label{sec:stage4}
 Stage 4 is where most of the development effort went. It turns the audio into a list of timed candidate sounds,
@@ -20,15 +21,15 @@ rescued spans in \cfgv{filter_rescued}.
         query per family over the 215 \emph{depictable} families (\fp{benchmark/gold/depictable_vocab.json}), 25 frames
         per second. It hears quiet sounds under speech and music far better than BEATs.
   \item[PANNs CNN14] (sound-event version, 32 kHz) used only as a clip-level veto.
-  \item[DASM] Detect Any Sound Model (ACM MM 2025; weights \texttt{CPF2/detect\_any\_sound}), queried with ``sound of
+  \item[DASM] Detect Any Sound Model~\cite{cai2025dasm} (ACM MM 2025; weights \texttt{CPF2/detect\_any\_sound}), queried with ``sound of
         $\langle$family$\rangle$'' over the same 215 families, 50 frames per second. Used as a witness and a vote.
-  \item[Listeners] \texttt{Qwen/Qwen3-Omni-30B-A3B-Instruct} and \texttt{nvidia/audio-flamingo-next-hf}. Each is asked
+  \item[Listeners] \texttt{Qwen/Qwen3-Omni-30B-A3B-Instruct}~\cite{xu2025qwen3omni} and \texttt{nvidia/audio-flamingo-next-hf}~\cite{afnextcard}. Each is asked
         a yes/no question (``Is the sound of $\langle$family$\rangle$ present in this recording?'', scored as the logit of
         \emph{yes} minus the logit of \emph{no}) and an open inventory (``List every distinct non-speech sound you hear in
         this recording, one per line, most prominent first.''). An inventory line names a family if it matches its name,
         an AudioSet synonym, a parent or a child, or else has sentence-embedding cosine $>0.6$
         (\texttt{all-mpnet-base-v2}). The audio cut is the candidate span $\pm 1$\,s, at least 1\,s long.
-  \item[FineLAP] (\texttt{AndreasXi/FineLAP}, MIT) a frame-level audio-text model used as a last veto on rescued sounds.
+  \item[FineLAP] (\texttt{AndreasXi/FineLAP}, MIT)~\cite{finelapcard}: a frame-level audio-text model used as a last veto on rescued sounds.
 \end{description}
 
 \paragraph{Steps in execution order}
@@ -104,6 +105,16 @@ these known ways:
   \item \textbf{Pictures.} Scored runs used placeholder or FLUX.1-schnell pictures; the live system uses Qwen-Image
         with the check. Pictures are not part of the per-sound score.
 \end{itemize}
+
+\subsection{The direct audio-to-image baseline}\label{sec:baselinedetail}
+The baseline of Section~\ref{sec:baselines} is the final system with the on-screen check switched off. The steps
+that need the vision model's answers about the frames are therefore off too: the transcript question (which may rescue
+a marginal sound), the frame-based choice between two labels on one event, and the depict-event check. In the final
+runs on both sets the transcript rescue never fired and the label choice changed nothing, so in practice the baseline
+differs from the final system in the on-screen check and the depict-event check. One frame-reading step stays, the
+witness rule's scene question (Section~\ref{sec:scenecheck}), because it belongs to detection, not to the on-screen
+check. The detection stack, listeners, display rules and picture model are the same, and every surviving sound is
+drawn.
 
 \subsection{Configuration values}
 Values set by \cfgv{config.use_shipped()} (\fp{config.py}), read by running it. ``$\to$'' gives the

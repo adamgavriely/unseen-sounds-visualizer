@@ -14,7 +14,7 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
         audio-language models (the ``listeners'') and a third detector give second opinions. Two kinds of rule use
         them: a \emph{veto} drops a candidate that another audio model does not hear; a \emph{rescue} keeps a weak
         candidate that a listener names. The models are listed in Table~\ref{tab:stages}.
-  \item \textbf{Witness rule (4b).} A remaining weak candidate survives if one of three witnesses backs it: DASM clearly
+  \item \textbf{Witness rule (4b).} A remaining weak candidate survives if one of three witnesses backs it: DASM~\cite{cai2025dasm}, a third detector, clearly
         hears it at that time; or both listeners list it; or one listener lists it and the vision model says the sound
         fits the scene.
   \item \textbf{On-screen check, the gate (5).} A vision-language model (Qwen3.8-27B) looks at frames around the sound.
@@ -98,12 +98,12 @@ Table~\ref{tab:stages} lists the model and the main settings of every stage.
 \# & Stage & Model / tool & Key parameters \\
 \midrule
 1 & audio & ffmpeg & mono WAV, 16\,kHz (\cfgv{SAMPLE_RATE}) \\
-2 & frames, objects & OWLv2 object detector (\fp{owlv2-base-patch16-ensemble}) & 6 frames, threshold 0.20; context only, never silences a sound \\
-3 & speech & faster-whisper \texttt{base}, int8 & transcript used only to ask whether people react to a sound; never drawn \\
-4 & sound events & BEATs iter3+ AS2M; FlexSED; PANNs CNN14; DASM; Qwen3-Omni-30B-A3B; Audio Flamingo Next; FineLAP & 16 ordered steps, Table~\ref{tab:stage4} \\
-5 & on-screen gate & Qwen3.8-27B, greedy, thinking off & 6 frames per $\leq$5-s stretch, 3 votes, majority; silenced only if every stretch is visible \\
+2 & frames, objects & OWLv2 object detector~\cite{minderer2023owlv2} (\fp{owlv2-base-patch16-ensemble}) & 6 frames, threshold 0.20; context only, never silences a sound \\
+3 & speech & faster-whisper \texttt{base} (Whisper~\cite{radford2023whisper}), int8 & transcript used only to ask whether people react to a sound; never drawn \\
+4 & sound events & BEATs iter3+ AS2M~\cite{chen2023beats}; FlexSED~\cite{hai2025flexsed}; PANNs CNN14~\cite{kong2020panns}; DASM~\cite{cai2025dasm}; Qwen3-Omni-30B-A3B~\cite{xu2025qwen3omni}; Audio Flamingo Next~\cite{afnextcard}; FineLAP~\cite{finelapcard} & 16 ordered steps, Table~\ref{tab:stage4} \\
+5 & on-screen gate & Qwen3.8-27B~\cite{qwen38card}, greedy, thinking off & 6 frames per $\leq$5-s stretch, 3 votes, majority; silenced only if every stretch is visible \\
 5b & subject & Qwen3.8-27B + word lists & 2--6 word phrase; speech text never used \\
-6 & picture & Qwen-Image-2512 & 1024 $\times$ 1024, 50 steps, true CFG 4.0; check-and-redraw $\leq$5 tries; EasyOCR finds text, and a picture with text is redrawn \\
+6 & picture & Qwen-Image-2512~\cite{wu2025qwenimage,qwenimage2512card} & 1024 $\times$ 1024, 50 steps, true CFG 4.0; check-and-redraw $\leq$5 tries; EasyOCR~\cite{easyocrcard} finds text, and a picture with text is redrawn \\
 6b & display & Qwen3-Omni (group), Qwen3.8-27B (depict) & merge gap 2.5\,s, min.\ 1.5\,s on screen, $\leq$1\,s past the end, group $\leq$8\,s, 3 slots \\
 7 & composite & ffmpeg libx264 & 720\,px panel, 25 fps \\
 \bottomrule
@@ -143,7 +143,7 @@ qualifier words to the source's name, word lists remove people and places, and a
 draws it at 1024$\times$1024; the vision model then gets a multiple-choice question about what the picture shows, and
 a picture that fails (or contains text) is redrawn, up to five times. In a blind test, the author saw each picture for a
 moment and named the sound without being shown the label (one test, by the author only); Qwen-Image pictures were named right 26 of 54 times,
-against 14 of 54 for the earlier FLUX.1 pictures (difference $+0.22$, 95\,\% interval $[+0.07, +0.37]$).
+against 14 of 54 for the earlier FLUX.1~\cite{fluxcard} pictures (difference $+0.22$, 95\,\% interval $[+0.07, +0.37]$).
 On screen, repeats of one sound less than 2.5\,s apart become one appearance, every picture stays at least 1.5\,s and
 at most 1\,s after its sound ends, and at most three pictures are shown at once.
 

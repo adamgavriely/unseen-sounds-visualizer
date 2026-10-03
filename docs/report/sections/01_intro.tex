@@ -1,22 +1,33 @@
 % ======================================================================
 \section{Introduction}\label{sec:intro}
 
-\subsection{Motivation}
+\subsection{Motivation and the gap}\label{sec:need}
 Deaf and hard-of-hearing (DHH) viewers receive speech through subtitles. The rest of the soundtrack is mostly lost.
 Captions for the deaf may name a sound in brackets, but the DCMP Captioning Key~\cite{dcmp} tells captioners that a
 sound's source ``may be omitted if it can be clearly seen onscreen'', and a study of more than 715{,}000 YouTube videos
 found hand-written non-speech captions in only 5--7\,\% of them~\cite{may2024unspoken}. DHH users want to know about
 the sounds that carry information -- knocks, alarms, sirens, a baby crying~\cite{jain2019home,soundwatch} -- and want
-their type and timing~\cite{may2025choices}.
+their type and timing~\cite{may2025choices}. These sounds are not rare: in the benchmark of this report, 30 of the 123
+needed sounds (about a quarter) are danger sounds or key moments (importance 3, Section~\ref{sec:needed}).
 
 What a viewer loses therefore depends on whether the source is visible. A siren over a visible ambulance tells the
-viewer nothing new. A siren over a crowd looking up \emph{is} the scene. This project targets the second case.
+viewer nothing new. A siren over a crowd looking up \emph{is} the scene. This project targets the second case, and no
+existing channel covers it. Subtitles carry speech only. Hand-written sound captions are rare, and the captioning rules
+say which sounds to describe but give no tool to find them. Sound-awareness apps for DHH
+users~\cite{soundwatch,homesound} alert to sounds in the room, not in a recorded video, and do not ask whether the
+viewer can already see the source. Automatic audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho}
+describes the whole soundtrack, visible and invisible alike. A system that shows exactly the sounds the viewer cannot
+see, at the moment they happen, does not exist (Section~\ref{sec:related}).
 
 \subsection{Problem}\label{sec:problem}
 Given a video, produce the same video with a side panel that shows a picture of a sound \emph{while} the sound is
 heard and its source is \emph{not} on screen, and shows nothing otherwise. Speech and music are never drawn (speech has
-subtitles, and music is marked in ordinary captions); human sounds such as laughter, coughing or a scream are drawn. No model may be trained, and the system
-must work on one video at a time. For every sound this means four questions:
+subtitles, and music is marked in ordinary captions); human sounds such as laughter, coughing or a scream are drawn.
+The output is a picture rather than a word in brackets because a picture can be taken in at a glance, without
+reading, while the viewer is already reading subtitles; this is the design hypothesis behind RQ3
+(Section~\ref{sec:rqs}), and it is not tested with viewers here. No model may be trained: the 159 labelled clips are
+far too few to train on, and all of them are needed for evaluation. The system must work on one video at a time, as a
+captioning tool does when a video is uploaded. For every sound this means four questions:
 \begin{enumerate}
   \item \textbf{Is there a sound, and when does it start?}
   \item \textbf{What is it?} At a level a picture can show: \emph{dog bark}, not \emph{animal}.
@@ -24,21 +35,13 @@ must work on one video at a time. For every sound this means four questions:
   \item \textbf{What should the picture show?}
 \end{enumerate}
 
-\subsection{Why it is needed}\label{sec:need}
-No existing channel gives these sounds to a viewer. Subtitles carry speech only. Hand-written sound captions are rare
-(5--7\,\% of videos), and the captioning rules focus on what the picture does not already show without any tool
-to find those sounds automatically. Sound-awareness apps for DHH users~\cite{soundwatch,homesound} alert to sounds in the room, not in
-a recorded video, and do not ask whether the viewer can already see the source. Automatic audio captioning describes
-the whole soundtrack, visible and invisible alike. A system that shows exactly the sounds the viewer cannot see, at the
-moment they happen, does not exist.
-
 \subsection{Why ready-made models are not enough}\label{sec:notplug}
 At first sight the task looks like a short chain of ready-made models: a sound tagger names the sound, a vision model
 says whether its source is on screen, an image model draws it. In practice every link of that chain fails in its own
 way, and the failures add up:
 \begin{itemize}
   \item \textbf{Hearing.} Taggers rank \emph{Speech} or \emph{Music} above a quiet door or hammer, so the sound never
-        becomes a candidate; fewer than 40\,\% of raw detections are real sounds.
+        becomes a candidate; most raw detections are not real sounds.
   \item \textbf{Confirming.} An audio-language model asked ``is there a siren?'' is right only about a third of the time
         when it alone says yes.
   \item \textbf{Seeing.} A vision-language model answers ``is there a bell?'' when asked ``is the bell ringing?'': it takes
@@ -49,11 +52,12 @@ way, and the failures add up:
   \item \textbf{Scoring.} Model judges and model-written references either reward the system that wrote them or decide
         visibility at chance, so even measuring progress needs human per-sound labels.
 \end{itemize}
-The end-to-end effect is measurable. Chaining the models and drawing every detected sound (the proposal's direct
-audio-to-image baseline) shows 62 wrong pictures for 26 right ones on the test set, and is no better than showing
-nothing. Turning the chain into a system that beats both took the rules of Sections~\ref{sec:system}
-and~\ref{sec:hard}: two detectors, three independent witnesses for weak sounds, a three-question on-screen vote, guarded
-picture prompts with a check-and-redraw loop, and a per-sound metric to decide each step.
+The end-to-end effect is measurable. Even with the full detection stack of the final system, drawing every detected
+sound without reading the video (the proposal's direct audio-to-image baseline, Section~\ref{sec:baselines}) shows 62
+wrong pictures for 26 right ones on the test set, and is no better than showing nothing. Turning the chain into a
+system that beats both took the rules of Sections~\ref{sec:system} and~\ref{sec:hard}: two detectors, one of three
+independent witnesses for every weak sound, a three-question on-screen vote, guarded picture prompts with a
+check-and-redraw loop, and a per-sound metric to decide each step.
 
 \subsection{Research questions}\label{sec:rqs}
 From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers each.
@@ -67,32 +71,33 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
 
 \subsection{Contributions}
 \begin{enumerate}
-  \item \textbf{A task and a metric}: a precise rule for when a picture is needed, and a per-sound score that counts
-        found sounds, wrong pictures and their cost to a viewer (Section~\ref{sec:task}).
-  \item \textbf{A labelled benchmark}: 159 video clips with every sound timed and marked visible or not
-        (Section~\ref{sec:benchmark}).
-  \item \textbf{A working system} built only from open models, runnable on one video (Section~\ref{sec:system}).
-  \item \textbf{Results and an error analysis} that show where today's open models stop
-        (Sections~\ref{sec:results}--\ref{sec:analysis}).
-  \item \textbf{A systematic study of why ready-made models fall short} on this task: more than 30 open models and more
-        than 150 full-pipeline variants, each tested against a rule written before the run (Section~\ref{sec:hard}).
-  \item \textbf{A dated development record} of the ideas tried, with the acceptance rule written down before each
-        run (Appendix~\ref{app:history}).
+  \item \textbf{The task, a metric and a benchmark.} A precise rule for when a picture is needed, a per-sound score
+        that prices a missed sound against a wrong picture, and 159 video clips with every sound timed, marked visible
+        or not, and rated for importance (Sections~\ref{sec:task} and~\ref{sec:benchmark}).
+  \item \textbf{A system from open models, without training, that beats both baselines of the proposal.} On the test set
+        it costs less than both direct audio-to-image generation and showing nothing; it finds 10 of the 13 danger sounds
+        and shows 38 fewer wrong pictures than direct audio-to-image generation
+        (Sections~\ref{sec:system} and~\ref{sec:results}).
+  \item \textbf{Three findings on why ready-made models are not enough.} Vision-language models take presence for
+        production (31 of 36 audited errors), and every extra vision tool trades one error for another; no audio stage
+        can tell a right off-screen name from a wrong one, so each extra hit costs two to five wrong pictures; and model
+        judges and model-written references fail at the visibility question (Section~\ref{sec:hard}).
+  \item \textbf{A pre-registered method at scale.} More than 30 open models and more than 150 full-pipeline variants,
+        each accepted only by a rule written down before its run (Table~\ref{tab:scale}, Appendix~\ref{app:history}).
+  \item \textbf{An evaluation protocol} (the answer to RQ4): per-sound human labels, errors split by cause, and a cost
+        reported over a range of weights (Sections~\ref{sec:task}, \ref{sec:sensitivity} and~\ref{sec:analysis}).
 \end{enumerate}
 
-\paragraph{Results in brief.} On a test set of 88 clips the final system finds 24 of the 65 sounds a deaf viewer would
-need, and half of its pictures are right (24 right, 24 wrong). Its cost to a viewer (a miss costs 4, a wrong picture 2) is 2.409 per clip.
-The baselines of the project proposal do worse: drawing a picture for every detected sound without checking whether
-its source is on screen (direct audio-to-image generation, or audio captioning) costs 3.182, because only 30\,\% of its pictures are right, and
-showing nothing costs 2.955. Both differences are significant on their own ($p < 0.001$ and $p = 0.041$, two-sided,
-uncorrected); after a Holm correction over all four comparisons of the final system, the second becomes $p = 0.083$. Most remaining misses are
-sounds the detectors barely hear under speech or music; most remaining wrong pictures show another sound, or an object
-that is visible but is not the one making the sound.
+\paragraph{Results in brief.} On the test set (88 clips) the final system finds 24 of the 65 needed sounds, including 10
+of the 13 danger sounds, with 24 wrong pictures, and costs less than both baselines of the proposal
+(Section~\ref{sec:headline}). Most remaining misses are sounds the detectors barely hear under speech or music; most
+remaining wrong pictures show another sound, or an object that is visible but is not the one making the sound.
 
-\paragraph{How the report is organised.} Sections~\ref{sec:task}--\ref{sec:system} define the task, the data and
-the system; Section~\ref{sec:results} gives the results, Section~\ref{sec:hard} explains why the problem is hard for today's
-models and Section~\ref{sec:analysis} analyses the remaining errors;
-Section~\ref{sec:limits} lists every threat to validity and the limits. The appendices hold the prompts, the detection
-details and configuration, reproduction steps with the source of every number, a glossary of internal names, and the
-full development history. The code, labels and report sources are published as release v1.2.0 of the project repository
-(Section~\ref{sec:availability}).
+\paragraph{How the report is organised.} Section~\ref{sec:related} reviews related work.
+Sections~\ref{sec:task}--\ref{sec:system} define the task, the data and the system; Section~\ref{sec:results} gives the
+results, Section~\ref{sec:hard} explains why the problem is hard for today's models and Section~\ref{sec:analysis}
+gives the evidence on the remaining errors; Section~\ref{sec:limits} lists the limits and threats to validity. The
+appendices hold the prompts, the detection details and configuration, reproduction steps with the source of every
+number, a glossary of internal names, and the full development history. The code, labels and report sources are
+published as release v1.2.0 of the project repository (see
+\hyperref[sec:availability]{Code and data availability}).

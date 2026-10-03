@@ -69,7 +69,7 @@ ax.spines[["top", "right"]].set_visible(False)
 save(fig, "gate_tradeoff.pdf")
 
 # 3. Development progression -- benchmark/gold/visible_weight_sweep.md, improvements log, history appendix
-chain = [("Sept.\nbaseline", 3.690, 2.909), ("listener\nrescue", 3.070, 2.818), ("masked\nveto", 2.958, 2.750),
+chain = [("first full\npipeline", 3.690, 2.909), ("listener\nrescue", 3.070, 2.818), ("masked\nveto", 2.958, 2.750),
          ("DASM\nrescue", 2.901, 2.705), ("inventory\nkeep", 2.817, 2.727), ("DASM clip\nveto", 2.620, 2.682),
          ("onset\npull", 2.535, 2.659), ("continuation\nveto", 2.394, 2.591), ("FineLAP\nveto", 2.366, 2.568),
          ("inventory\n+ DASM", 2.282, 2.568), ("merge\n2.5 s", 2.254, 2.545), ("grouping", 2.197, 2.545),
@@ -81,7 +81,7 @@ chain = [("Sept.\nbaseline", 3.690, 2.909), ("listener\nrescue", 3.070, 2.818), 
 fig, ax = plt.subplots(figsize=(7.2, 3.9))
 x = range(len(chain))
 ax.plot(x, [c[1] for c in chain], "o-", color=DARK, label="development set (decisions made here)")
-ax.plot(x, [c[2] for c in chain], "s-", color=RED, label="test set (read after each change)")
+ax.plot(x, [c[2] for c in chain], "s-", color=RED, label="test set (scored after each change)")
 ax.axhline(3.268, color=DARK, ls=":", lw=1); ax.axhline(2.955, color=RED, ls=":", lw=1)
 ax.text(len(chain) - 0.6, 3.29, "show nothing (dev.)", ha="right", fontsize=7.5, color=DARK)
 ax.text(len(chain) - 0.6, 2.975, "show nothing (test)", ha="right", fontsize=7.5, color=RED)

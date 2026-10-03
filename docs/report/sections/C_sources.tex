@@ -69,8 +69,10 @@ Table~\ref{tab:sets} (set sizes, needed sounds) & \fp{benchmark/gold/annotations
 labelling rules (Section~\ref{sec:needed}) & \fp{benchmark/gold/tool_template.html}, \fp{tagger/index.html}, \fp{docs/history/plans/metric_per_sound.md} \\
 scoring rules, cost (Section~\ref{sec:task}) & \fp{benchmark/gold/score_per_sound.py} \\
 bootstrap and pass rules & \fp{benchmark/gold/dev_candidates_check.py}; \fp{benchmark/gold/holm_table.py} \\
-F1 intervals, Table~\ref{tab:importance} (danger sounds) & \fp{benchmark/gold/final_vs_baselines_extra.json}, from \fp{benchmark/gold/final_vs_baselines_extra.py} \\
+F1 intervals, Figure~\ref{fig:importance} (danger sounds) & \fp{benchmark/gold/final_vs_baselines_extra.json}, from \fp{benchmark/gold/final_vs_baselines_extra.py} \\
 final system and baselines, Table~\ref{tab:headline} & \fp{benchmark/gold/final_vs_baselines.json}; \fp{docs/history/review/detector_final_2026-10-02.md}; \fp{docs/inspector2/data_parity.json} \\
+Holm correction over five tests (Section~\ref{sec:support}) & the five $p$-values of \fp{benchmark/gold/final_vs_baselines.json} and \fp{benchmark/gold/final_vs_baselines_extra.json} \\
+intervals at each $\beta$ (Section~\ref{sec:sensitivity}) & per-clip hits and wrong pictures of \fp{docs/inspector2/data.js}, with the bootstrap of Section~\ref{sec:passrules} \\
 on-screen weight (Section~\ref{sec:sensitivity}) & derived from Table~\ref{tab:headline}; earlier versions in \fp{benchmark/gold/visible_weight_sweep.md} \\
 fate of misses (Section~\ref{sec:errors}, Figure~\ref{fig:errors}) & \fp{docs/inspector2/data.js} (field \cfgv{lost_at}), grouped into bars by \cfgv{LOST_AT_BAR} in \fp{docs/report/figures/make_analysis_figures.py}; \fp{docs/history/review/inspector_trail_ready.md} \\
 Table~\ref{tab:ceiling} (ceiling) & \fp{benchmark/gold/ceiling_ship7.md} \\
@@ -82,7 +84,7 @@ listener agreement on the screening set & \fp{docs/history/review/improvements_l
 onset timing & \fp{benchmark/eval_dcase_onset.json} \\
 DCASE visibility check & \fp{benchmark/eval_dcase_visibility.json} \\
 picture glance test & \fp{docs/history/preregistrations/picture_v3_prereg.md} \\
-speech removal on DCASE data (9.5\,\% to 4.8\,\%) & \fp{docs/history/daily_notes/LEDGER_2026-09-26.md}; \fp{docs/history/panels/fable_briefs/2026-09-16_ten_fable_panel_addendum.md} \\
+speech removal (9.5\,\% to 4.8\,\%) & \fp{docs/history/daily_notes/LEDGER_2026-09-26.md}; \fp{docs/history/panels/fable_briefs/2026-09-16_ten_fable_panel_addendum.md} \\
 earlier label agreement (78\,\%, $\kappa = 0.60$) & \fp{docs/history/daily_notes/HANDOFF_2026-09-08.md}; \fp{docs/history/earlier_drafts/thesis/ch4_benchmark.md} \\
 gate balanced accuracy 0.61 to 0.62 & \fp{docs/history/analyses/GOLD_RERUN_2026-09-22.md} \\
 independent reference at chance (55 of 100) & \fp{docs/history/daily_notes/night_report_2026-09-14.md} \\

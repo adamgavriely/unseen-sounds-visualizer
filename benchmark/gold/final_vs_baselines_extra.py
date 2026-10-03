@@ -1,6 +1,6 @@
 """Two extra views of the final system vs the proposal's baselines (same rows as final_vs_baselines.py):
 
-  * F1 per system with a paired clip-bootstrap 95 % interval of the F1 difference (10,000 draws, seed 0, two-sided p);
+  * F1 per system with a paired clip-bootstrap 95 % interval of the F1 difference (100,000 draws, seed 0, two-sided p);
   * hits by importance level (2 = an event one can say in a sentence, 3 = danger or a key moment).
 
 Show nothing has F1 = 0 and no hits. Run from the scoring checkout:
@@ -35,7 +35,7 @@ def f1(h, m, w):
     return 2 * h / (2 * h + m + w) if (2 * h + m + w) else 0.0
 
 
-def f1_boot(a, b, n=10000, seed=0):
+def f1_boot(a, b, n=100000, seed=0):
     ha, ma, wa = a[:3]; hb, mb, wb = b[:3]
     rng = np.random.default_rng(seed)
     idx = rng.integers(0, len(ha), size=(n, len(ha)))

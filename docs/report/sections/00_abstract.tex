@@ -1,29 +1,23 @@
 \begin{abstract}
-Subtitles carry speech, but a deaf or hard-of-hearing viewer still misses the other sounds of a video: a siren
-behind the camera, a dog barking in the next room. Captioning practice leaves out any sound whose source can be
-seen, so the sounds that matter most are the ones whose source is \emph{off screen}. This project builds a system
-that finds those sounds and shows a generated picture of each one beside the video while it is heard.
+Subtitles carry speech, but deaf and hard-of-hearing viewers still miss the other sounds of a video, and captioning
+practice leaves out any sound whose source can be seen. The sounds that matter most are therefore those whose source
+is \emph{off screen}: a siren behind the camera, a dog barking in the next room. This project builds a system that
+finds them and shows a generated picture of each one beside the video while it is heard.
 
-Nothing is trained. The system chains ready-made open models: two sound detectors find candidate sounds, two
-audio-language models (``listeners'', asked for example ``is a siren present?'') confirm weak ones, a
-vision-language model checks whether the source is visible on screen, and a text-to-image model draws the
-picture. Joining them is not plug and play: each model fails in a way the next one cannot see. Detectors miss
-quiet sounds under speech, a lone listener's ``yes'' is right about one time in three, and the vision model answers
-``is the object there?'' instead of ``is it making the sound now?''. Simply chaining the models and drawing every
-detected sound shows more than twice as many wrong pictures as right ones. The final system is the result of more
-than 150 full-pipeline variants over more than 30 open models, each rule fixed on a development set before it was
-tested.
+Nothing is trained: the system chains open sound detectors, audio-language ``listeners'', a vision-language model
+that checks whether the source is visible, and a text-to-image model. Joining them is not plug and play: each model
+fails in a way the next one cannot see. Detectors miss quiet sounds under speech, a lone listener's ``yes'' is right
+about one time in three, and the vision model answers ``is the object there?'' instead of ``is it making the sound
+now?''. Even with the full detection stack, drawing every detected sound without reading the video shows more than
+twice as many wrong pictures as right ones. The final system is the result of more than 150 full-pipeline variants
+over more than 30 open models.
 
-Scored per sound against human labels, the final system finds 24 of 65 needed off-screen sounds on a test set of
-88 clips with 24 wrong pictures, a viewer cost of 2.409 per clip (a miss costs 4, a wrong picture 2). The baselines named
-in the project proposal do worse: generating a picture directly from the audio for every heard sound (or captioning it)
-costs 3.182, and showing nothing costs 2.955. Both differences are significant on their own (two-sided, uncorrected): $-0.773$ per clip against direct
-audio-to-image (95\,\% interval $[-1.045, -0.500]$, $p < 0.001$) and $-0.545$ against showing nothing
-($[-1.068, -0.023]$, $p = 0.041$). After a Holm correction over the four main comparisons (two baselines, two sets) the
-second becomes $p = 0.083$. The gain comes from the steps that read the video: they keep most of the right pictures and remove most of the wrong ones.
+On a test set of 88 clips, scored per sound against human labels, the system finds 24 of 65 needed off-screen sounds,
+including 10 of the 13 danger sounds, with 24 wrong pictures. Its viewer cost (a miss costs 4, a wrong picture 2) is
+2.409 per clip, against 3.182 for direct audio-to-image generation or audio captioning and 2.955 for showing nothing
+($p < 0.001$ and $p = 0.044$; 0.087 for the second after a Holm correction over five tests).
 
-Two limits remain. In a ceiling analysis of an earlier version, about one needed sound in five could not be found even
-with perfect decisions, because the detectors barely hear it under speech or music; and the vision
-model confuses ``the object is in the frame'' with ``the object is making this sound now''. Every decision was made
-on the development set and the test set was only scored; no study with deaf viewers was run.
+Most remaining errors are sounds the detectors barely hear under speech or music, and a vision model that confuses
+``the object is in the frame'' with ``the object is making this sound now''. Every decision was made on the
+development set and the test set was only scored; no study with deaf viewers was run.
 \end{abstract}

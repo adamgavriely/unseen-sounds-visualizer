@@ -21,14 +21,14 @@ are real (Section~\ref{sec:hard-hear}) & two complementary detectors, with every
 Confirm & ask an audio-language model & a sound one listener names is real 37\,\% of the time
 (Figure~\ref{fig:listeners}) & a weak sound needs a witness: DASM, both listeners, or one listener plus the scene \\
 See & ask a vision-language model ``is it visible?'' & presence is taken for production (31 of 36 audited errors);
-AUROC 0.647; answers follow the question's form & three questions per 5-s stretch, asked in both orders; silenced only if
+AUROC 0.647; answers follow the question's form & three questions per 5-s stretch, the a/b question asked in both orders; silenced only if
 every stretch is visible \\
 Draw & audio-to-image model & draws the whole scene, including what is on screen & label-guarded text prompt;
 the picture is checked and redrawn up to five times \\
 Score & model judge & circular or at chance on visibility (Section~\ref{sec:hard-measure}) & per-sound human labels
 and a viewer cost \\
 \midrule
-All & draw every detected sound & 62 wrong for 26 right on the test set; no better than showing nothing &
+All & full detection stack, every detected sound drawn without reading the video & 62 wrong for 26 right on the test set; no better than showing nothing &
 final system: 24 wrong for 24 right; cheaper than both baselines \\
 \bottomrule
 \end{tabular}
@@ -42,10 +42,10 @@ final system: 24 wrong for 24 right; cheaper than both baselines \\
 \toprule
 What & How much \\
 \midrule
-Open models evaluated & more than 30: 14 sound detectors and taggers (e.g.\ BEATs, FlexSED, PANNs, AST, EAT, Dasheng,
-CLAP, FLAM, DASM, FineLAP), 6 audio-language listeners, 2 source separators, 8 vision models and tools (CLIP, two
-Qwen vision-language models, OWLv2, SAM 3, SigLIP, a sound localiser, Synchformer), 3 image generators (SDXL, FLUX.1,
-Qwen-Image), and several model judges \\
+Open models evaluated & more than 30: 14 sound detectors and taggers (e.g.\ BEATs~\cite{chen2023beats}, FlexSED~\cite{hai2025flexsed}, PANNs~\cite{kong2020panns}, AST~\cite{gong2021ast}, EAT, Dasheng,
+CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam}, DASM~\cite{cai2025dasm}, FineLAP~\cite{finelapcard}), 6 audio-language listeners, 2 source separators, 8 vision models and tools (CLIP~\cite{radford2021clip}, two
+Qwen vision-language models~\cite{bai2025qwen25vl,qwen38card}, OWLv2~\cite{minderer2023owlv2}, SAM 3~\cite{sam3card}, SigLIP~\cite{zhai2023siglip}, a sound localiser, Synchformer~\cite{iashin2024synchformer}), 5 image generators (SDXL~\cite{podell2024sdxl}, SDXL-Turbo~\cite{sdxlturbocard}, FLUX.1-schnell~\cite{fluxcard}, PixArt-$\Sigma$~\cite{pixartsigmacard},
+Qwen-Image~\cite{wu2025qwenimage}), and several model judges \\
 Pre-registered rounds & 66 rounds, each with its rule and pass bar written before the run \\
 Full-pipeline variants scored & more than 150, plus about 90 component screens \\
 Human labels & 308 timed sounds in 159 clips, each marked visible or not and rated for importance \\
@@ -54,28 +54,30 @@ Screening data & 415 AudioSet-Strong clips with timed labels for audio-only rule
 \end{tabular}
 \end{table}
 
-\subsection{Hearing the sound at all}\label{sec:hard-hear}
+Figure~\ref{fig:progression} shows what the search bought. Each accepted change had to pass its rule on the
+development set; the cost fell step by step from the first full pipeline, which was worse than showing nothing on the
+development set and barely better on the test set, to the final system, which is clearly better on both. No single model swap produced this: the gain
+is the sum of many small rules, each one closing a failure described in this section.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/progression.pdf}
+\caption{Cost per clip after each accepted change, from the first full pipeline to the final system. Decisions were
+made on the development set; the test set was only scored. Dotted lines: showing nothing. Each step is described in
+Appendix~\ref{app:history}.}
+\label{fig:progression}
+\end{figure}
+
+\subsection{Hearing quiet sounds}\label{sec:hard-hear}
 \emph{Expected:} a modern tagger hears a hammer or a door. \emph{Actually:} under speech or music it often does not.
 The tagger's own score for \emph{Speech} or \emph{Music} is higher than for the quiet sound, so the sound never becomes
-a candidate. In a ceiling analysis of an earlier version (each later step is made perfect using the labels, to see what the
-detectors alone allow), even with every later stage made perfect about one needed
-sound in five (12 of 55) stayed missed, because no model heard it clearly (Figure~\ref{fig:ceiling}; numbers in
-Section~\ref{sec:ceiling}). Removing the speech first with a source separation model made it worse: on DCASE data (a
-public challenge set of everyday sound events), the share of sounds found under speech
+a candidate. A ceiling analysis, in which every later stage is made perfect using the labels, shows that about one
+needed sound in five stays missed because no model hears it clearly (Section~\ref{sec:ceiling}). Removing the speech first with a source separation model made it worse: the share of sounds found under speech
 fell from 9.5\,\% to 4.8\,\%, because the
 detectors were never trained on separated audio.
 
 
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=\linewidth]{figures/ceiling_waterfall.pdf}
-\caption{Ceiling analysis on a slightly older version of the system (development set, 55 needed sounds). Each bar makes
-one more stage perfect, using the labels, on the same detections. The largest single step is the on-screen check. Even
-with every stage perfect, 12 needed sounds remain missed (right): the detectors never hear them clearly enough.}
-\label{fig:ceiling}
-\end{figure}
-
-\subsection{Knowing whether a weak detection is real}
+\subsection{Confirming weak detections}\label{sec:hard-confirm}
 \emph{Expected:} an audio-language model can confirm ``is there a siren?''. \emph{Actually:} its answers are only
 weak evidence. On the screening set, a weak detection that neither listener names is a real sound 22\,\% of the time,
 one named by one listener 37\,\%, and one named by both 62\,\% (Figure~\ref{fig:listeners}; AudioSet labels are
@@ -94,26 +96,25 @@ right off-screen name from a wrong one.
 \includegraphics[width=0.78\linewidth]{figures/listener_agreement.pdf}
 \caption{Share of detections that are real sounds, on the screening set (415 AudioSet-Strong clips with timed labels).
 Raw detections are right less than 40\,\% of the time; agreement between models helps, but a sound only one listener
-names is right just over a third of the time. The last bar is the audio chain of a rejected idea (Appendix~\ref{app:history}),
-shown for reference.}
+names is right just over a third of the time. AudioSet labels are incomplete, so all shares are lower bounds. The last
+bar is the audio chain of a rejected idea (Appendix~\ref{app:history}), shown for reference.}
 \label{fig:listeners}
 \end{figure}
 
-\subsection{``It is there'' is not ``it is making the sound now''}
+\subsection{Presence versus production}\label{sec:hard-presence}
 \emph{Expected:} a vision-language model can answer ``is this bell ringing?''. \emph{Actually:} it answers ``is there a
 bell?''. A church tower on screen silences a bell heard off screen; perched birds are taken as the source of a call
-made elsewhere. In a hand audit of 36 stretches that the gate wrongly silenced, 31 showed either the named object not making the
-sound, or a similar object (Section~\ref{sec:presence}). The opposite failure is also large: asked to name the
-source, the model answers ``nothing'' on 42\,\% of the stretches the labels call visible or obvious (a hand, the footsteps of the
-person holding the camera). The problem is old: an early image-text matching check (CLIP) was right only about half the time. Moving from a
+made elsewhere. This is the main cause of the gate's wrong silences (31 of 36 in a hand audit,
+Section~\ref{sec:presence}). The opposite failure, answering ``nothing'' when the source is small or hidden (a hand,
+the footsteps of the person holding the camera), is also large. The problem is old: an early image-text matching check (CLIP~\cite{radford2021clip}) was right only about half the time. Moving from a
 7-billion- to a 27-billion-parameter vision model raised balanced accuracy (the mean of the success rates on visible
 and on needed sounds) only from 0.61 to 0.62.
 
-\subsection{Every fix to the on-screen check trades one for one}
+\subsection{Additional vision tools trade one error for another}
 \emph{Expected:} adding an object detector, a segmentation model, a crop of the source, a model of audio-visual
 synchrony or a sound-localisation model should help. \emph{Actually:} each one silenced more on-screen sounds only by
 silencing about as many needed ones (Figure~\ref{fig:gate}). Removing two wrong pictures saves $2\times2 = 4$ cost units;
-losing one needed sound costs 4: no gain. Localisation models also react to off-screen and silent audio, so they answer
+losing one needed sound costs 4: no gain. Localisation models also react to off-screen and silent audio~\cite{juanola2025critical}, so they answer
 \emph{where} a sound comes from, not \emph{whether} its source is visible.
 
 
@@ -128,9 +129,11 @@ synchrony model, a longer human-style question chain, or a fourth vote.}
 \label{fig:gate}
 \end{figure}
 
-\subsection{Answers follow the shape of the question}
+\subsection{Answer-form biases}
 \emph{Expected:} a clear question gets a clear answer. \emph{Actually:} given options (a) and (b), the 27B model picks
-(a) 88\,\% of the time in one test; asked yes/no, it leans to ``no''; asked for free text, its answer can be cut off.
+(a) 88\,\% of the time in one test, a known letter preference of language models~\cite{zheng2024pride}; asked yes/no,
+it leans to ``no'', in line with the weak handling of negation reported for vision-language
+models~\cite{alhamoud2025negbench}; asked for free text, its answer can be cut off.
 Two workarounds are used. The scene check reads the model's preference for ``yes'' over ``no'' as a number
 instead of reading its words (minus the same for the opposite question); the on-screen check asks its a/b question in
 both orders and abstains if the answers disagree. This removes the habits but exposes the real weakness: when the
@@ -138,13 +141,13 @@ on-screen check's own a/b question is read the same way, as a score, it separate
 labelled development stretches with an AUROC of only 0.647 (the chance that a random visible stretch scores higher
 than a random needed one; 0.5 is a coin flip, 1 is perfect). The habits were hiding a weakness, not causing it.
 
-\subsection{Drawing one unseen source, not a scene}
+\subsection{Drawing one unseen source}
 \emph{Expected:} an audio-to-image model can draw what is heard. \emph{Actually:} such models draw the whole soundtrack
 as a scene and cannot be told to leave out the dog that is already on screen. The system therefore draws from the label
 with a guarded text prompt -- and even then a picture was named right at a glance in only 26 of 54 tries
 (Section~\ref{sec:pictures}). A richer prompt reached 32 of 54 but invented objects (a thud drawn as a door).
 
-\subsection{Measuring success is hard too}\label{sec:hard-measure}
+\subsection{Automatic evaluation}\label{sec:hard-measure}
 The proposal planned an automatic score: one model describes the output video, another writes a reference of what
 a viewer should learn, and a third model (the judge) compares the two. \emph{Expected:} a model judge can score the
 output. \emph{Actually:} a reference written by the system's own models
@@ -156,7 +159,7 @@ labels it is clearly better. Even full human
 labels miss some sounds: about 1 in 6 ``wrong'' pictures is a real off-screen sound, and 14 borderline development
 sounds sit one judgement away from the other class.
 
-\subsection{The data is rare}
+\subsection{Scarcity of suitable data}
 Clips in which an ambient sound is heard but its source is not seen are uncommon in public video. Four different
 sourcing routes all yielded only 15--20\,\% usable clips, which is why the benchmark has 159 evaluation clips rather than
 the planned 300, and why every comparison has wide intervals.

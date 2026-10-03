@@ -13,9 +13,10 @@
     (\emph{Bark} and \emph{Dog}), and neither is a vague label near the top of the tree such as \emph{Animal}.
   \item[Span] the time interval of one detected sound.
   \item[Stretch] a piece of a span, about 5\,s long; the on-screen check judges each stretch separately.
-  \item[Bootstrap] resampling the clips many times to see how much a difference could change by chance (for example,
-        draw 88 clips with replacement 10{,}000 times and recompute the cost difference each time).
-  \item[Holm correction] a stricter $p$-value bar used when several comparisons are made at once.
+  \item[Bootstrap] resampling the clips many times to see how much a difference could change by chance
+        (defined in Section~\ref{sec:passrules}).
+  \item[Holm correction] a stricter $p$-value bar used when several comparisons are made at once
+        (Section~\ref{sec:support}).
 \end{description}
 
 
@@ -44,7 +45,10 @@ other picture is \textbf{wrong}, of one of three kinds:
         it is a late second picture of a long sound already shown;
   \item[nothing] there is no labelled sound there at all.
 \end{description}
-``Wrong'' is therefore strict: it includes redundant pictures, not only false ones.
+``Wrong'' is therefore strict: it includes redundant pictures, not only false ones. The hit window is asymmetric on
+purpose: a picture that appears slightly before its sound is still read as that sound, while a picture that appears
+more than a second late has lost its point, because the moment has passed. The window was fixed in advance and is the
+same for every system.
 
 \subsection{Viewer cost}\label{sec:metric}
 The main score is the cost per clip,
@@ -54,8 +58,7 @@ The main score is the cost per clip,
 \end{equation}
 lower is better. A miss costs twice a wrong picture, so one right picture pays for two wrong ones, and a picture is
 worth showing when it is right at least one time in three. These weights are an assumption, not a measurement, and were fixed early in the
-project. F1 counts a miss and a wrong picture alike, so it cannot show what the on-screen check is for (removing wrong
-pictures); the cost is therefore the main score. Section~\ref{sec:sensitivity} therefore also reports other weights, including a version in which an on-screen
+project, so Section~\ref{sec:sensitivity} also reports other weights, including a version in which an on-screen
 picture costs only 1 or 0 (it is less harmful than a picture of nothing):
 \begin{equation}
   C_w \;=\; \frac{4\cdot\#\text{missed} + w\cdot\#\text{on screen} + 2\cdot\#\text{other sound} + 2\cdot\#\text{nothing}}{\#\text{clips}},
@@ -66,9 +69,15 @@ picture costs only 1 or 0 (it is less harmful than a picture of nothing):
 wrong pictures it removes. F1 is reported alongside the cost (Table~\ref{tab:headline}); the cost is primary.
 
 \subsection{How decisions were made}\label{sec:passrules}
-Comparisons are paired by clip and tested with a paired clip bootstrap. A change to the system was accepted only if
-it passed a rule written down \emph{before} its run, on the development set (the rule and its pass bar were
-committed to the repository first; this is called pre-registration). It passed if either
+Comparisons are paired by clip and tested with a paired clip bootstrap. For each clip the difference in cost between
+the two systems is computed; the clips are then drawn with replacement 100{,}000 times (random seed 0), and the mean
+difference is recomputed for each draw. The 95\,\% interval runs from the 2.5th to the 97.5th percentile of these
+means. The two-sided $p$-value is twice the share of draws in which the difference is zero or has the opposite sign;
+$p < 0.001$ means that no draw reversed the sign.
+
+With sets this small, a rule chosen after seeing its result could fit noise. A change to the system was therefore
+accepted only if it passed a rule written down \emph{before} its run, on the development set (the rule and its pass
+bar were committed to the repository first; this is called pre-registration). It passed if either
 \begin{enumerate}[label=(\alph*)]
   \item it kept or raised the hits, added at most two wrong pictures per extra hit, and lowered the cost; or
   \item it lost at most three hits and removed at least three wrong pictures per hit lost.

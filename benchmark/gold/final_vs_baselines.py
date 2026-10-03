@@ -6,7 +6,7 @@ Baselines (project proposal, Section 7 "Baseline Systems"):
   * audio captioning                  = the same decisions shown as text; per sound it is scored exactly like the
                                          audio-to-image baseline (a caption is a hit or wrong at the same moments);
   * show nothing                      = no augmentation at all (cost 4 x needed sounds per clip).
-Paired clip bootstrap, 10,000 draws, seed 0, two-sided p. Run from the scoring checkout (needs the stage-5 outputs):
+Paired clip bootstrap, 100,000 draws, seed 0, two-sided p. Run from the scoring checkout (needs the stage-5 outputs):
     python benchmark/gold/final_vs_baselines.py            -> benchmark/gold/final_vs_baselines.json
 """
 from __future__ import annotations
@@ -68,7 +68,7 @@ def test_rows():
     return {s: a[s] + b[s] for s in SYSTEMS}
 
 
-def boot2(d, n=10000, seed=0):
+def boot2(d, n=100000, seed=0):
     d = np.asarray(d, float)
     rng = np.random.default_rng(seed)
     means = d[rng.integers(0, len(d), size=(n, len(d)))].mean(axis=1)

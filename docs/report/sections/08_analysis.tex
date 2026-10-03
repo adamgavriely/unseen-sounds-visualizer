@@ -10,7 +10,19 @@ perfect on its own, leaving the rest as they are, so the two give different numb
 The analysis needs saved pictures, so it was run on a slightly older version of the system (25 hits and 27 wrong on the
 development set, 55 needed sounds); the proportions, not the exact numbers, are the point. ``Perfect timing'' moves
 each picture to the labelled start of its sound; ``perfect family'' (a step in Figure~\ref{fig:ceiling}) gives each picture the family of the labelled
-sound it overlaps.
+sound it overlaps. The waterfall applies the stages in the order timing, family, timing and family jointly, on-screen
+check, vetoes, listeners. Timing and family come first so that a picture of the right sound at the wrong moment counts
+as a timing error, not an on-screen error; the order changes how the gain is split between stages, not the final
+ceiling. Table~\ref{tab:ceiling} gives the order-free view.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/ceiling_waterfall.pdf}
+\caption{Ceiling analysis on a slightly older version of the system (development set, 55 needed sounds). Each bar makes
+one more stage perfect, using the labels, on the same detections. The largest single step is the on-screen check. Even
+with every stage perfect, 12 needed sounds remain missed (right): the detectors never hear them clearly enough.}
+\label{fig:ceiling}
+\end{figure}
 
 \begin{table}[htbp]
 \centering\small
@@ -54,6 +66,21 @@ The same labels score every system, but not equally: direct audio-to-image shows
 If one in six wrong pictures of each system were not counted, the gap between the final system and direct
 audio-to-image would shrink by about 0.14 per clip on the test set and 0.11 on the development set, and the gap to
 showing nothing would grow.
+
+\subsection{Examples}
+Figure~\ref{fig:examples} shows real outputs of the final system, three for each outcome: hits, needed sounds missed
+because a similar object was in the frame, and the two main kinds of wrong picture.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/examples.pdf}
+\caption{Outputs of the final system: each frame shows the video (left) and the picture panel (right) a moment after
+the sound starts. Row 1: hits, the source is off screen. Row 2: misses; the church, the robin and the mounted gun are in
+the frame, but they are not making the sound that is heard, and the on-screen check silences it (the panel says no
+off-screen sound). Row 3: wrong pictures whose source is on screen. Row 4: wrong pictures of a sound other than the one
+heard.}
+\label{fig:examples}
+\end{figure}
 
 \subsection{Worked example}
 A development clip filmed outside a church in Miami (clip \fp{bell_miami}) has one needed sound: a bell from 0.2 to 14.5\,s, labelled not visible. The
