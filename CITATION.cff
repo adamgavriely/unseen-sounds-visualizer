@@ -6,6 +6,7 @@ authors:
     given-names: Adam
     affiliation: "Bar-Ilan University, Department of Computer Science"
 version: 1.3.0
+license: MIT
 date-released: 2026-10-03
 repository-code: "https://github.com/adamgavriely/MscFinalProject"
 type: software

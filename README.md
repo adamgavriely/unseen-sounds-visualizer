@@ -112,3 +112,7 @@ clips in place (`data/input/tagger_set/` for the `tg_d*` clips), the steps are t
 ## Citation
 
 See [`CITATION.cff`](CITATION.cff).
+
+## License
+
+The code is released under the [MIT License](LICENSE). The vendored BEATs code in `src/stage4_audio_event_detection/beats/` keeps its own licence (see the LICENSE file there). The video clips are not part of the repository.
