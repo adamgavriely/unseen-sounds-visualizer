@@ -1,9 +1,11 @@
-"""Merged DEV (2026-09-30; docs/history/preregistrations/prereg_round13_detector_push.md "Merge of the tagger set", release v1.2.0): DEV (49 clips, gold_AG)
+"""Scores variants on the merged DEV: DEV (49 clips, gold_AG)
 + the second-batch DEV part dev2 (the tg_ lines of benchmark/gold/dev_stems.txt, gold_AG), scored as ONE set: per-clip score_clip rows of each
 arm on both parts, concatenated, paired clip bootstrap vs B0r (DCC.boot, as round13_dev). Needs the arms' stage-5 outputs
 on both parts (round13_dev on DEV; clip_prep stage4/stage5 on dev2). TEST / TEST2 gold is never read.
 
     python benchmark/gold/merged_dev.py --arms B0r B1 TO1+F7F8
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 

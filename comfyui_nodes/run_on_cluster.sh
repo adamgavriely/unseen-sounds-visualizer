@@ -25,7 +25,7 @@ conda activate msproj
 export PYTHONUNBUFFERED=1
 # uploads and temp files go to home: a shared node's /tmp can be full
 export TMPDIR="$HOME/tmp_comfy"; mkdir -p "$TMPDIR"
-export MSCPROJ_ROOT="$HOME/MscProj"
+export MSCPROJ_ROOT="$SLURM_SUBMIT_DIR"
 # Gated Hugging Face models need a token: export HF_TOKEN=<your token> before sbatch (Slurm passes the
 # environment on to the job). The token is never printed.
 if [ -z "${HF_TOKEN:-}" ]; then

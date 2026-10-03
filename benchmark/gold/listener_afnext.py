@@ -1,5 +1,5 @@
-"""Round 14 amendment C (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): Audio Flamingo Next (nvidia/audio-flamingo-next-hf) as a
-second listener, on exactly the amendment-A candidates (the items of dev_listener_v.json / test_listener_v.json: P2 peak >= 0.5,
+"""Audio Flamingo Next (nvidia/audio-flamingo-next-hf) as a second listener, on exactly the
+listener_variants candidates (the items of dev_listener_v.json / test_listener_v.json: P2 peak >= 0.5,
 PV, P1 depictable conf < 0.6), same audio cut (item["run_audio"] from the same wav16 files, at least 1 s).
   V4  open inventory: listener_variants.V4_Q, greedy, 64 new tokens; one generation per cut, shared by X and the null;
       same matching rule as listener_variants.score (match_names word match, else all-mpnet-base-v2 cosine > 0.6)
@@ -12,6 +12,8 @@ No gold is read by score (score_per_sound.load_gold raises); the DEV report read
     python benchmark/gold/listener_afnext.py score           # GPU: one model load, DEV then TEST (resumable)
     python benchmark/gold/listener_afnext.py both            # GPU: smoke, then score, one model load
     python benchmark/gold/listener_afnext.py report          # CPU: DEV V4 / AGREE counts by cached gold class, 8 misses, nulls
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 

@@ -1,7 +1,6 @@
-"""The merged TEST (2026-09-30; docs/history/preregistrations/prereg_round13_detector_push.md "Merge of the tagger set" and "Merged-DEV
-selection", release v1.2.0): old TEST (60 clips, gold_AG test_bench) + the second-batch TEST part test2 (the tg_ lines of
-benchmark/gold/test_stems.txt, annotations/gold_AG.json),
-scored ONCE as one set for the merged-DEV pick vs the old shipped config B0 (= B0r, the scored render).
+"""Scores the merged-DEV pick ONCE on the merged TEST, as one set, vs the old shipped config B0 (= B0r, the scored
+render). Merged TEST = old TEST (60 clips, gold_AG test_bench) + the second-batch TEST part test2 (the tg_ lines of
+benchmark/gold/test_stems.txt, annotations/gold_AG.json).
 
   dasm      DASM frame scores (round-6 scorer, as the DEV / dev2 / test2 caches) for the old TEST clips -> data/work/dasm_test
   stage     old TEST: stage 4 / stage 5 / gates of B0r and the pick through round13_dev (r13_test_final.setup: TEST
@@ -14,6 +13,8 @@ scored ONCE as one set for the merged-DEV pick vs the old shipped config B0 (= B
     python benchmark/gold/final_test.py dasm
     python benchmark/gold/final_test.py stage --arm TO1+F7F8
     python benchmark/gold/final_test.py score --arm TO1+F7F8
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 
@@ -129,22 +130,22 @@ def score(arm):
         r1 = [S.score_clip(gold1[st], P1[n][st]) for st in stems1]
         r2 = [S.score_clip(gold2[st], P2[n][st]) for st in stems2 if st in gold2]
         rows[n] = DCC.metrics(r1 + r2)
-        parts[n] = {"old_test": DCC.metrics(r1), "tagger_test": DCC.metrics(r2)}
+        parts[n] = {"test_60": DCC.metrics(r1), "test2": DCC.metrics(r2)}
         cost[n] = [DCC.clip_cost(r) for r in r1 + r2]
     d_ = DCC.boot(np.subtract(cost[arm], cost["B0r"]))
     v, rule = F.verdict(rows[arm], rows["B0r"], d_)
-    res = {"arm": arm, "clips": {"old_test": len(stems1), "tagger_test": len([s for s in stems2 if s in gold2])},
+    res = {"arm": arm, "clips": {"test_60": len(stems1), "test2": len([s for s in stems2 if s in gold2])},
            "rows": rows, "parts": parts, "delta_vs_B0r": d_, "verdict": v, "rule_hits_wrong": rule, "gates_old": g}
     DCC.dump(OUT, res)
     lines = [f"# Merged TEST (one exposure): {arm} vs B0r", "",
-             f"clips: old TEST {res['clips']['old_test']} + TEST2 {res['clips']['tagger_test']}", "",
+             f"clips: old TEST {res['clips']['test_60']} + TEST2 {res['clips']['test2']}", "",
              "| arm | hits | misses | wrong (v / c / p) | cost | old TEST hits / wrong | TEST2 hits / wrong |",
              "|---|---|---|---|---|---|---|"]
     for n in ("B0r", arm):
         x, p = rows[n], parts[n]
         lines.append(f"| {n} | {x['hits']} | {x['misses']} | {x['wrong']} ({x['visible']} / {x['cross']} / {x['phantom']}) | "
-                     f"{x['viewer_cost']:.3f} | {p['old_test']['hits']} / {p['old_test']['wrong']} | "
-                     f"{p['tagger_test']['hits']} / {p['tagger_test']['wrong']} |")
+                     f"{x['viewer_cost']:.3f} | {p['test_60']['hits']} / {p['test_60']['wrong']} | "
+                     f"{p['test2']['hits']} / {p['test2']['wrong']} |")
     lines += ["", f"d cost vs B0r: {d_[0]:+.3f} [{d_[1]:+.3f}, {d_[2]:+.3f}], one-sided p {d_[3]:.3f}; verdict: **{v}**"]
     MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(MD.read_text(encoding="utf-8"), flush=True)

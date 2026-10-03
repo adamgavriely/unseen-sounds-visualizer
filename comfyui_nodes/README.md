@@ -17,8 +17,6 @@ ComfyUI server never holds the large models. The only difference from `main.py`:
 settings of the scored runs (`benchmark/gold/round13_dev.py`, variant `SHIP8+MD3+WW5+SL`), and the final picture
 settings are used only for the drawing step.
 
-The nodes under "MscProj/old setup" are an earlier, per-stage version of the pipeline. They are not the final system.
-
 ## Install
 
 1. Install ComfyUI in the same Python environment as this project (see the main `README.md`).

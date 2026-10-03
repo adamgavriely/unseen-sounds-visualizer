@@ -1,4 +1,4 @@
-"""Round 13: the ONE TEST exposure (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0, "TEST decision (one exposure)").
+"""Scores one detector variant on the 60 TEST clips, once (the ONE TEST exposure).
 
 One job, 60 TEST clips (benchmark/gold/test_stems.txt), three stage-4 configs through the pipeline's own code
 (round13_dev.build -> fuse_flexsed) and the same stage-5 path as DEV (round13_dev.stage5: scored gate answers reused,
@@ -20,6 +20,8 @@ immediately before gold is read. --dry-run: stages 4/5 into data/work/r13final_d
     python benchmark/gold/r13_test_final.py --arm R13-1 stage5
     python benchmark/gold/r13_test_final.py --arm R13-1 score          # THE exposure (reads TEST gold)
     python benchmark/gold/r13_test_final.py devcheck-b1                # DEV only: fuse_flexsed B1 == devcand B1 rows
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 

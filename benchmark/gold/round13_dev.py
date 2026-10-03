@@ -1,4 +1,4 @@
-"""Round 13 detector push on DEV (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0). DEV only: no TEST, no slice-B clip.
+"""Scoring harness of the detector variants on DEV. DEV only: no TEST, no slice-B clip.
 
 Every arm runs the PIPELINE's own stage-4 code (src.stage4_audio_event_detection.fuse_flexsed / attach_breaks, flags in
 config.py, all off = the scored behaviour) on the cached detector scores of the 49 DEV clips, then the same stage-5 path
@@ -10,6 +10,8 @@ is scored with benchmark/gold/score_per_sound.py. Arms are built on top of B0r (
     python benchmark/gold/round13_dev.py stage5    # GPU: stage 5 per arm and system
     python benchmark/gold/round13_dev.py score     # CPU: gate D5, table, bootstrap vs B0r, gained/lost, appeared/disappeared
     python benchmark/gold/round13_dev.py stage4 --offline   # local check: flags off == devcand B0r rows (PANNs from trace)
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 
@@ -37,9 +39,9 @@ from src.types import AudioEvent
 from src import trail as TRAIL_LOG                 # Decision Inspector: per-clip decision trail (logging only)
 
 WORK = DCC.WORK
-# the two cluster checkouts that some arms read files from (the defaults are the paths of the scored runs)
-MAIN_CHECKOUT = os.environ.get("MSCPROJ_MAIN_CHECKOUT", "/home/dsi/adamg/MscProj")
-CACHE_CHECKOUT = os.environ.get("MSCPROJ_CACHE_CHECKOUT", "/home/dsi/adamg/MscProj_tg")
+# the scored runs used two cluster checkouts; set the variables to point at them (default: this checkout)
+MAIN_CHECKOUT = os.environ.get("MSCPROJ_MAIN_CHECKOUT", str(_ROOT))
+CACHE_CHECKOUT = os.environ.get("MSCPROJ_CACHE_CHECKOUT", str(_ROOT))
 R13 = WORK / "r13"
 STAGE4, MEMO, PANNS_DIR = R13 / "stage4.json", R13 / "ask_memo.json", R13 / "panns"
 OUT = _ROOT / "benchmark" / "gold" / "round13_dev.json"

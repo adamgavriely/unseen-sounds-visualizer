@@ -1,6 +1,6 @@
-"""Round 13, amendment A (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0, "Amendment A"): four stricter listener questions, scored in ONE
+"""Four stricter listener questions, scored in ONE
 Qwen3-Omni job on the same candidates as R13-3. Same model, yes/no score and audio cut as benchmark/gold/dev_listener.py unless
-the amendment says otherwise.
+stated below.
 
 Candidates (per split):
   P2  cached FlexSED 0.4-runs with peak >= 0.5 (dev_listener.json / test_listener.json, pool P2)
@@ -20,6 +20,8 @@ report only.
     python benchmark/gold/listener_variants.py pool     # CPU: both candidate files (no model), sizes + examples
     python benchmark/gold/listener_variants.py score    # GPU: one model load, both files (resumable)
     python benchmark/gold/listener_variants.py report   # CPU: DEV accept counts by gold class, the 8 R13-3 hits, nulls by half
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 

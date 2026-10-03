@@ -1,4 +1,4 @@
-"""The results hierarchy of docs/history/panels/panel_2026-09-26_plan.md §A (release v1.2.0), for one table (one tag, one subset).
+"""Holm-corrected p-values for one results table (one tag, one subset).
 
 Primary: per-sound dF1 ours - blind (outside every family). Family 1 (Holm): the seven secondary rows the
 scorer prints for ours - blind. Family 2 (Holm): ours - silence on F1 (all clips), viewer cost (all clips) and
@@ -9,6 +9,8 @@ used. Differences are ours - other, as the scorer prints them: a negative cost /
 
     python benchmark/gold/holm_table.py --tag dev_monocap_v31 --subset dev
     python benchmark/gold/holm_table.py --tag test_final_v33 --subset test --expect 60
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 
@@ -19,8 +21,8 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-import score_per_sound as sps  # noqa: E402
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+from benchmark.gold import score_per_sound as sps  # noqa: E402
 
 FAMILY1 = [("F0.5", "dF0.5"), ("wF1", "dwF1"), ("P", "dP"), ("R", "dR"), ("fa_per_clip", "dFA/clip"),
            ("viewer_cost", "d cost/clip"), ("clean_acc", "d clean-acc")]

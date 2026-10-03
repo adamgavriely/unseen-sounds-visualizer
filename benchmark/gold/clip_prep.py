@@ -12,14 +12,14 @@ The steps, one work folder per split:
            picture) -> data/work/protocol_{proposed,blind_a2i}_<split>_v33 (media, audio.wav, scene, segments, gate
            votes, onset_trace, augmentations): the "scored render" B0 of the split
   flexsed  FlexSED 215 families (benchmark/gold/flexsed_run.py --clip-dir, unchanged) -> data/work/flexsed_cache (shared,
-           as DEV/TEST). (The `flexx` step, the 147 extra queries of flexsed_extra.py, is in release v1.2.0.)
+           as DEV/TEST)
   wav16 / beats / panns / dasm   as r13_test_prep / dev_candidates_check -> data/work/r13<split>/wav16, j2_<split>_beats,
            r13<split>/panns, dasm_<split>
   qwen     gold-free listener caches, one Qwen3-Omni load: yes/no superset (test_listener.superset: P1/P2/P3/PV) ->
-           benchmark/gold/<split>_listener.json; amendment-A variants (listener_variants build + score) ->
+           benchmark/gold/<split>_listener.json; the stricter listener questions (listener_variants build + score) ->
            <split>_listener_v.json
   afn      Audio Flamingo Next V4 + yes/no (listener_afnext.run) -> <split>_listener_afn.json
-  stage4 / stage5 / gates   B0r, B1 (self-veto 0.1218, PANNs off) and C1 = TO1+F7F8 through round13_dev (pipeline code),
+  stage4 / stage5 / gates   B0r, B1 (BEATs self-veto instead of the PANNs veto) and C1 = TO1+F7F8 through round13_dev (pipeline code),
            caches mapped to the split's files; gates D0 (stage 4 == render trace), D5 (B0r == render), completeness,
            listener-cache coverage. Stops before scoring.
   score    dev2 only: score_per_sound on the dev2 clips of annotations/gold_AG.json (the file is filtered to the dev2
@@ -30,6 +30,7 @@ listener_afnext, flexsed_run and dev_candidates_check are imported, never edited
     python benchmark/gold/clip_prep.py links                     # CPU: split clip folders (symlinks), stem checks
     python benchmark/gold/clip_prep.py --split dev2 render       # GPU
     python benchmark/gold/clip_prep.py --split dev2 stage4 --arms B0r
+    PREP_EXTRA_SPLITS=live_x python benchmark/gold/clip_prep.py render --split live_x   # one step of src/listener_prep.py
 """
 from __future__ import annotations
 
@@ -163,7 +164,7 @@ def links():
         print(f"[links] {split}: {len(st)} clips in {d}", flush=True)
     a, b = set(stems_of("dev2")), set(stems_of("test2"))
     assert not a & b and a | b == {p.stem for p in CLIPS.glob("tg_d*.mp4")}
-    print(f"[links] DEV2 {sorted(a)}\n[links] TEST2 {sorted(b)}", flush=True)
+    print(f"[links] dev2 {sorted(a)}\n[links] test2 {sorted(b)}", flush=True)
 
 
 # ============================================================================= GPU: FlexSED, render, caches
@@ -200,7 +201,7 @@ def wav16(split):
 
 
 def beats(split):
-    """exactly j2_dev_check.beats(): the shipped infer_beats on the render's audio.wav"""
+    """BEATs frame scores (infer_beats) on the render's audio.wav"""
     DCC, R, stems = configure(split)
     from src.stage4_audio_event_detection.beats_infer import infer_beats
     DCC.BEATS_DIR.mkdir(parents=True, exist_ok=True)
@@ -220,7 +221,7 @@ def panns(split):
 
 
 def dasm(split):
-    """dev_candidates_check.dasm() (round 6's scorer and queries), redirected; run in its own process (it takes this
+    """dev_candidates_check.dasm() (DASM frame scores, dasm_infer), redirected; run in its own process (it takes this
     project off sys.path)"""
     DCC, R, stems = configure(split)
     DCC.dasm()
@@ -275,7 +276,7 @@ def _memo_qwen():
 
 
 def qwen(splits):
-    """yes/no scores (dev_listener.score) per split, then the amendment-A variants (listener_variants build + score)"""
+    """yes/no scores (dev_listener.score) per split, then the stricter listener questions (listener_variants build + score)"""
     _memo_qwen()
     from benchmark.gold import dev_listener as L
     from benchmark.gold import test_listener as TL
@@ -442,7 +443,7 @@ def main():
         raise SystemExit("--split dev2|test2")
     if a.step == "score":
         if a.split != "dev2":
-            raise SystemExit("TEST2 is sealed: never scored here")
+            raise SystemExit("score runs on dev2 only")
         return score_dev2(a.arms)
     if a.step in ("stage4", "stage5"):
         DCC, R, stems = configure(a.split)

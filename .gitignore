@@ -16,11 +16,8 @@ data/input/*
 !data/input/.gitkeep
 !data/input/clip.mp4
 
-# Large caches rebuilt by the scoring harness
-benchmark/gold/gate_gold/
-benchmark/gold/beats_fw/
-benchmark/gold/beats_cam_memo.pkl
-docs/inspector/media/
+# Per-clip inputs that main.py builds for a new video (src/listener_prep.py)
+benchmark/gold/live_*
 
 # Cluster job output
 logs/

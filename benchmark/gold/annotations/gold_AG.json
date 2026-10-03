@@ -1,7 +1,5 @@
 {
  "annotator": "AG",
- "exported": "2026-09-22T09:23:18.252Z",
- "tool_version": 2,
  "clips": [
   {
    "clip": "ambient_citywalk_nyc_1689.mp4",
@@ -3533,31 +3531,6 @@
     }
    ]
   },
-  [
-   [
-    "unseen_ambient",
-    true
-   ],
-   [
-    "mixed",
-    false
-   ],
-   [
-    "seen_ambient",
-    false
-   ],
-   [
-    "no_ambient",
-    false
-   ],
-   [
-    "audioset_strong",
-    false
-   ]
-  ],
-  true,
-  true,
-  130,
   {
    "clip": "b3_botanic_garden.mp4",
    "tag": "unseen_ambient",
@@ -9055,7 +9028,6 @@
    "_ordered": true,
    "annotator": "AG"
   },
-  false,
   {
    "clip": "mc_car_chase_scene.mp4",
    "tag": "mixed",
@@ -13431,11 +13403,6 @@
    ],
    "_ordered": true
   },
-  "all",
-  "todo",
-  "",
-  "",
-  false,
   {
    "clip": "m2_bonfire_crowd_siren.mp4",
    "tag": "mixed",
@@ -16138,7 +16105,6 @@
    "_ordered": true,
    "annotator": "AG"
   },
-  false,
   {
    "clip": "b3_bat_cave.mp4",
    "tag": "seen_ambient",
@@ -35071,8 +35037,7 @@
    "done_at": "2026-09-29T18:52:52.842Z",
    "seconds_on_clip": 300,
    "suggestions_shown_at": null,
-   "source_clip": "d001.mp4",
-   "set": "tagger"
+   "source_clip": "d001.mp4"
   },
   {
    "clip": "tg_d007.mp4",
@@ -35137,8 +35102,7 @@
    "done_at": "2026-09-29T19:46:06.901Z",
    "seconds_on_clip": 175,
    "suggestions_shown_at": "2026-09-29T19:43:11.229Z",
-   "source_clip": "d007.mp4",
-   "set": "tagger"
+   "source_clip": "d007.mp4"
   },
   {
    "clip": "tg_d009.mp4",
@@ -35154,8 +35118,7 @@
    "done_at": "2026-09-30T00:12:47.758Z",
    "seconds_on_clip": 75,
    "suggestions_shown_at": "2026-09-29T19:47:23.805Z",
-   "source_clip": "d009.mp4",
-   "set": "tagger"
+   "source_clip": "d009.mp4"
   },
   {
    "clip": "tg_d011.mp4",
@@ -35184,8 +35147,7 @@
    "done_at": "2026-09-29T18:57:07.346Z",
    "seconds_on_clip": 30,
    "suggestions_shown_at": null,
-   "source_clip": "d011.mp4",
-   "set": "tagger"
+   "source_clip": "d011.mp4"
   },
   {
    "clip": "tg_d013.mp4",
@@ -35226,8 +35188,7 @@
    "done_at": "2026-09-29T18:59:29.234Z",
    "seconds_on_clip": 60,
    "suggestions_shown_at": null,
-   "source_clip": "d013.mp4",
-   "set": "tagger"
+   "source_clip": "d013.mp4"
   },
   {
    "clip": "tg_d014.mp4",
@@ -35256,8 +35217,7 @@
    "done_at": "2026-09-30T00:13:51.014Z",
    "seconds_on_clip": 65,
    "suggestions_shown_at": "2026-09-30T00:12:50.782Z",
-   "source_clip": "d014.mp4",
-   "set": "tagger"
+   "source_clip": "d014.mp4"
   },
   {
    "clip": "tg_d016.mp4",
@@ -35286,8 +35246,7 @@
    "done_at": "2026-09-29T19:04:11.706Z",
    "seconds_on_clip": 70,
    "suggestions_shown_at": null,
-   "source_clip": "d016.mp4",
-   "set": "tagger"
+   "source_clip": "d016.mp4"
   },
   {
    "clip": "tg_d017.mp4",
@@ -35316,8 +35275,7 @@
    "done_at": "2026-09-29T19:05:31.426Z",
    "seconds_on_clip": 80,
    "suggestions_shown_at": null,
-   "source_clip": "d017.mp4",
-   "set": "tagger"
+   "source_clip": "d017.mp4"
   },
   {
    "clip": "tg_d019.mp4",
@@ -35358,8 +35316,7 @@
    "done_at": "2026-09-30T00:16:15.214Z",
    "seconds_on_clip": 195,
    "suggestions_shown_at": "2026-09-29T19:47:13.836Z",
-   "source_clip": "d019.mp4",
-   "set": "tagger"
+   "source_clip": "d019.mp4"
   },
   {
    "clip": "tg_d020.mp4",
@@ -35388,8 +35345,7 @@
    "done_at": "2026-09-29T19:07:29.763Z",
    "seconds_on_clip": 25,
    "suggestions_shown_at": null,
-   "source_clip": "d020.mp4",
-   "set": "tagger"
+   "source_clip": "d020.mp4"
   },
   {
    "clip": "tg_d022.mp4",
@@ -35454,8 +35410,7 @@
    "done_at": "2026-09-30T00:19:38.678Z",
    "seconds_on_clip": 185,
    "suggestions_shown_at": "2026-09-29T19:46:36.813Z",
-   "source_clip": "d022.mp4",
-   "set": "tagger"
+   "source_clip": "d022.mp4"
   },
   {
    "clip": "tg_d023.mp4",
@@ -35471,8 +35426,7 @@
    "done_at": "2026-09-30T00:20:24.614Z",
    "seconds_on_clip": 45,
    "suggestions_shown_at": "2026-09-30T00:19:41.766Z",
-   "source_clip": "d023.mp4",
-   "set": "tagger"
+   "source_clip": "d023.mp4"
   },
   {
    "clip": "tg_d029.mp4",
@@ -35501,8 +35455,7 @@
    "done_at": "2026-09-30T00:22:29.350Z",
    "seconds_on_clip": 85,
    "suggestions_shown_at": "2026-09-30T00:21:04.398Z",
-   "source_clip": "d029.mp4",
-   "set": "tagger"
+   "source_clip": "d029.mp4"
   },
   {
    "clip": "tg_d030.mp4",
@@ -35543,8 +35496,7 @@
    "done_at": "2026-09-30T00:24:12.374Z",
    "seconds_on_clip": 105,
    "suggestions_shown_at": "2026-09-30T00:22:32.382Z",
-   "source_clip": "d030.mp4",
-   "set": "tagger"
+   "source_clip": "d030.mp4"
   },
   {
    "clip": "tg_d031.mp4",
@@ -35609,8 +35561,7 @@
    "done_at": "2026-09-30T00:26:14.358Z",
    "seconds_on_clip": 120,
    "suggestions_shown_at": "2026-09-30T00:24:17.918Z",
-   "source_clip": "d031.mp4",
-   "set": "tagger"
+   "source_clip": "d031.mp4"
   },
   {
    "clip": "tg_d032.mp4",
@@ -35675,8 +35626,7 @@
    "done_at": "2026-09-30T00:29:25.006Z",
    "seconds_on_clip": 190,
    "suggestions_shown_at": "2026-09-30T00:26:25.590Z",
-   "source_clip": "d032.mp4",
-   "set": "tagger"
+   "source_clip": "d032.mp4"
   },
   {
    "clip": "tg_d033.mp4",
@@ -35705,8 +35655,7 @@
    "done_at": "2026-09-29T19:48:34.437Z",
    "seconds_on_clip": 35,
    "suggestions_shown_at": null,
-   "source_clip": "d033.mp4",
-   "set": "tagger"
+   "source_clip": "d033.mp4"
   },
   {
    "clip": "tg_d040.mp4",
@@ -35747,8 +35696,7 @@
    "done_at": "2026-09-29T19:24:33.228Z",
    "seconds_on_clip": 115,
    "suggestions_shown_at": "2026-09-29T19:20:24.411Z",
-   "source_clip": "d040.mp4",
-   "set": "tagger"
+   "source_clip": "d040.mp4"
   },
   {
    "clip": "tg_d045.mp4",
@@ -35789,8 +35737,7 @@
    "done_at": "2026-09-30T00:33:02.470Z",
    "seconds_on_clip": 115,
    "suggestions_shown_at": "2026-09-30T00:31:26.102Z",
-   "source_clip": "d045.mp4",
-   "set": "tagger"
+   "source_clip": "d045.mp4"
   },
   {
    "clip": "tg_d046.mp4",
@@ -35867,8 +35814,7 @@
    "done_at": "2026-09-30T00:36:09.750Z",
    "seconds_on_clip": 150,
    "suggestions_shown_at": "2026-09-30T00:33:19.070Z",
-   "source_clip": "d046.mp4",
-   "set": "tagger"
+   "source_clip": "d046.mp4"
   },
   {
    "clip": "tg_d054.mp4",
@@ -35897,8 +35843,7 @@
    "done_at": "2026-09-30T00:37:50.743Z",
    "seconds_on_clip": 20,
    "suggestions_shown_at": "2026-09-30T00:37:34.015Z",
-   "source_clip": "d054.mp4",
-   "set": "tagger"
+   "source_clip": "d054.mp4"
   },
   {
    "clip": "tg_d068.mp4",
@@ -35927,8 +35872,7 @@
    "done_at": "2026-09-30T00:39:20.695Z",
    "seconds_on_clip": 45,
    "suggestions_shown_at": "2026-09-30T00:38:40.327Z",
-   "source_clip": "d068.mp4",
-   "set": "tagger"
+   "source_clip": "d068.mp4"
   },
   {
    "clip": "tg_d075.mp4",
@@ -35993,8 +35937,7 @@
    "done_at": "2026-09-29T19:37:01.356Z",
    "seconds_on_clip": 145,
    "suggestions_shown_at": null,
-   "source_clip": "d075.mp4",
-   "set": "tagger"
+   "source_clip": "d075.mp4"
   },
   {
    "clip": "tg_d076.mp4",
@@ -36023,8 +35966,7 @@
    "done_at": "2026-09-29T19:37:40.108Z",
    "seconds_on_clip": 35,
    "suggestions_shown_at": "2026-09-29T19:37:13.012Z",
-   "source_clip": "d076.mp4",
-   "set": "tagger"
+   "source_clip": "d076.mp4"
   },
   {
    "clip": "tg_d077.mp4",
@@ -36053,8 +35995,7 @@
    "done_at": "2026-09-29T19:38:30.372Z",
    "seconds_on_clip": 50,
    "suggestions_shown_at": null,
-   "source_clip": "d077.mp4",
-   "set": "tagger"
+   "source_clip": "d077.mp4"
   },
   {
    "clip": "tg_d078.mp4",
@@ -36095,8 +36036,7 @@
    "done_at": "2026-09-29T19:25:40.932Z",
    "seconds_on_clip": 80,
    "suggestions_shown_at": "2026-09-29T19:24:41.828Z",
-   "source_clip": "d078.mp4",
-   "set": "tagger"
+   "source_clip": "d078.mp4"
   },
   {
    "clip": "tg_d079.mp4",
@@ -36125,8 +36065,7 @@
    "done_at": "2026-09-29T19:27:14.540Z",
    "seconds_on_clip": 90,
    "suggestions_shown_at": "2026-09-29T19:25:43.083Z",
-   "source_clip": "d079.mp4",
-   "set": "tagger"
+   "source_clip": "d079.mp4"
   },
   {
    "clip": "tg_d080.mp4",
@@ -36179,8 +36118,7 @@
    "done_at": "2026-09-29T19:30:39.444Z",
    "seconds_on_clip": 120,
    "suggestions_shown_at": "2026-09-29T19:27:18.148Z",
-   "source_clip": "d080.mp4",
-   "set": "tagger"
+   "source_clip": "d080.mp4"
   },
   {
    "clip": "tg_d085.mp4",
@@ -36209,8 +36147,7 @@
    "done_at": "2026-09-30T00:41:09.543Z",
    "seconds_on_clip": 25,
    "suggestions_shown_at": "2026-09-30T00:40:51.135Z",
-   "source_clip": "d085.mp4",
-   "set": "tagger"
+   "source_clip": "d085.mp4"
   },
   {
    "clip": "tg_d088.mp4",
@@ -36264,8 +36201,7 @@
    "done_at": "2026-09-29T19:41:40.308Z",
    "seconds_on_clip": 180,
    "suggestions_shown_at": "2026-09-29T19:38:48.228Z",
-   "source_clip": "d088.mp4",
-   "set": "tagger"
+   "source_clip": "d088.mp4"
   },
   {
    "clip": "tg_d095.mp4",
@@ -36342,8 +36278,7 @@
    "done_at": "2026-09-30T00:46:32.623Z",
    "seconds_on_clip": 285,
    "suggestions_shown_at": "2026-09-30T00:41:30.335Z",
-   "source_clip": "d095.mp4",
-   "set": "tagger"
+   "source_clip": "d095.mp4"
   },
   {
    "clip": "tg_d101.mp4",
@@ -36387,8 +36322,7 @@
    "seconds_on_clip": 85,
    "suggestions_shown_at": "2026-09-30T02:12:11.955Z",
    "annotators_shown_at": null,
-   "source_clip": "d101.mp4",
-   "set": "tagger"
+   "source_clip": "d101.mp4"
   },
   {
    "clip": "tg_d103.mp4",
@@ -36445,8 +36379,7 @@
    "seconds_on_clip": 505,
    "suggestions_shown_at": "2026-09-30T02:14:13.795Z",
    "annotators_shown_at": "2026-09-30T02:25:41.548Z",
-   "source_clip": "d103.mp4",
-   "set": "tagger"
+   "source_clip": "d103.mp4"
   },
   {
    "clip": "tg_d104.mp4",
@@ -36529,8 +36462,7 @@
    "seconds_on_clip": 420,
    "suggestions_shown_at": "2026-09-30T02:32:01.805Z",
    "annotators_shown_at": "2026-09-30T02:31:02.252Z",
-   "source_clip": "d104.mp4",
-   "set": "tagger"
+   "source_clip": "d104.mp4"
   },
   {
    "clip": "tg_d105.mp4",
@@ -36574,8 +36506,7 @@
    "seconds_on_clip": 135,
    "suggestions_shown_at": null,
    "annotators_shown_at": "2026-09-30T02:38:23.621Z",
-   "source_clip": "d105.mp4",
-   "set": "tagger"
+   "source_clip": "d105.mp4"
   },
   {
    "clip": "tg_d106.mp4",
@@ -36658,8 +36589,7 @@
    "seconds_on_clip": 275,
    "suggestions_shown_at": null,
    "annotators_shown_at": "2026-09-30T02:49:36.933Z",
-   "source_clip": "d106.mp4",
-   "set": "tagger"
+   "source_clip": "d106.mp4"
   },
   {
    "clip": "tg_d107.mp4",
@@ -36716,8 +36646,7 @@
    "seconds_on_clip": 155,
    "suggestions_shown_at": "2026-09-30T02:54:06.189Z",
    "annotators_shown_at": "2026-09-30T02:54:12.373Z",
-   "source_clip": "d107.mp4",
-   "set": "tagger"
+   "source_clip": "d107.mp4"
   },
   {
    "clip": "tg_d109.mp4",
@@ -36761,8 +36690,7 @@
    "seconds_on_clip": 95,
    "suggestions_shown_at": "2026-09-30T02:58:09.110Z",
    "annotators_shown_at": "2026-09-30T02:56:53.654Z",
-   "source_clip": "d109.mp4",
-   "set": "tagger"
+   "source_clip": "d109.mp4"
   },
   {
    "clip": "tg_d110.mp4",
@@ -36819,8 +36747,7 @@
    "seconds_on_clip": 115,
    "suggestions_shown_at": "2026-09-30T02:58:32.062Z",
    "annotators_shown_at": null,
-   "source_clip": "d110.mp4",
-   "set": "tagger"
+   "source_clip": "d110.mp4"
   },
   {
    "clip": "tg_d112.mp4",
@@ -36877,8 +36804,7 @@
    "seconds_on_clip": 150,
    "suggestions_shown_at": "2026-09-30T03:00:33.358Z",
    "annotators_shown_at": "2026-09-30T03:00:36.182Z",
-   "source_clip": "d112.mp4",
-   "set": "tagger"
+   "source_clip": "d112.mp4"
   },
   {
    "clip": "tg_d120.mp4",
@@ -36923,8 +36849,7 @@
    "seconds_on_clip": 35,
    "suggestions_shown_at": null,
    "annotators_shown_at": "2026-09-30T03:03:50.470Z",
-   "source_clip": "d120.mp4",
-   "set": "tagger"
+   "source_clip": "d120.mp4"
   },
   {
    "clip": "tg_d121.mp4",
@@ -36981,8 +36906,7 @@
    "seconds_on_clip": 130,
    "suggestions_shown_at": "2026-09-30T03:05:11.638Z",
    "annotators_shown_at": "2026-09-30T03:05:11.054Z",
-   "source_clip": "d121.mp4",
-   "set": "tagger"
+   "source_clip": "d121.mp4"
   },
   {
    "clip": "tg_d125.mp4",
@@ -37026,8 +36950,7 @@
    "seconds_on_clip": 145,
    "suggestions_shown_at": null,
    "annotators_shown_at": "2026-09-30T03:07:38.614Z",
-   "source_clip": "d125.mp4",
-   "set": "tagger"
+   "source_clip": "d125.mp4"
   },
   {
    "clip": "tg_d127.mp4",
@@ -37097,8 +37020,7 @@
    "seconds_on_clip": 125,
    "suggestions_shown_at": "2026-09-30T03:10:23.830Z",
    "annotators_shown_at": "2026-09-30T03:10:26.790Z",
-   "source_clip": "d127.mp4",
-   "set": "tagger"
+   "source_clip": "d127.mp4"
   },
   {
    "clip": "tg_d128.mp4",
@@ -37181,8 +37103,7 @@
    "seconds_on_clip": 290,
    "suggestions_shown_at": "2026-09-30T03:12:39.766Z",
    "annotators_shown_at": "2026-09-30T03:12:33.455Z",
-   "source_clip": "d128.mp4",
-   "set": "tagger"
+   "source_clip": "d128.mp4"
   },
   {
    "clip": "tg_d129.mp4",
@@ -37239,8 +37160,7 @@
    "seconds_on_clip": 100,
    "suggestions_shown_at": "2026-09-30T03:18:04.679Z",
    "annotators_shown_at": "2026-09-30T03:18:07.343Z",
-   "source_clip": "d129.mp4",
-   "set": "tagger"
+   "source_clip": "d129.mp4"
   },
   {
    "clip": "tg_d133.mp4",
@@ -37284,8 +37204,7 @@
    "seconds_on_clip": 135,
    "suggestions_shown_at": "2026-09-30T03:27:20.015Z",
    "annotators_shown_at": "2026-09-30T03:27:50.191Z",
-   "source_clip": "d133.mp4",
-   "set": "tagger"
+   "source_clip": "d133.mp4"
   },
   {
    "clip": "tg_d141.mp4",
@@ -37342,8 +37261,7 @@
    "seconds_on_clip": 140,
    "suggestions_shown_at": "2026-09-30T03:20:15.207Z",
    "annotators_shown_at": "2026-09-30T03:20:16.319Z",
-   "source_clip": "d141.mp4",
-   "set": "tagger"
+   "source_clip": "d141.mp4"
   },
   {
    "clip": "tg_d146.mp4",
@@ -37374,8 +37292,7 @@
    "seconds_on_clip": 40,
    "suggestions_shown_at": "2026-09-30T02:11:44.619Z",
    "annotators_shown_at": null,
-   "source_clip": "d146.mp4",
-   "set": "tagger"
+   "source_clip": "d146.mp4"
   },
   {
    "clip": "tg_d149.mp4",
@@ -37432,20 +37349,13 @@
    "seconds_on_clip": 215,
    "suggestions_shown_at": "2026-09-30T03:30:01.167Z",
    "annotators_shown_at": "2026-09-30T03:30:32.031Z",
-   "source_clip": "d149.mp4",
-   "set": "tagger"
+   "source_clip": "d149.mp4"
   }
  ],
  "sets": {
-  "tagger": {
-   "note": "second labelling batch (tg_* clips), labelled with the labelling tool of release v1.2.0",
-   "source_exports": [
-    "tagger_AG_2026-09-29_2248.json",
-    "tagger_AG_2026-09-30_0347.json",
-    "tagger_AG_2026-09-30_0635.json"
-   ],
+  "batch2": {
    "clips": 50,
-   "merged": "2026-10-01 into this file (one gold file); tg_* clips are the dev2 / test2 parts (the tg_ lines of dev_stems.txt / test_stems.txt), never in the first-batch dev/test subsets"
+   "note": "clips tg_d*; their dev / test parts are the tg_ lines of dev_stems.txt / test_stems.txt"
   }
  }
 }

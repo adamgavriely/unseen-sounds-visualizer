@@ -64,7 +64,7 @@ def ensure_listener_inputs(video: Path) -> str:
     split, stem = split_name(video), video.stem
     if ready(split, stem):
         return split
-    if ready(split, stem, flap=False):                    # built before the FineLAP step existed
+    if ready(split, stem, flap=False):                    # older inputs without the FineLAP file: add it
         finelap(split, stem)
         return split
     d = _ROOT / "data" / "input" / f"prep_{split}"

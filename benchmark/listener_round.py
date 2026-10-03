@@ -1,8 +1,9 @@
-"""Amendment 25 (docs/history/preregistrations/prereg_v4.md, release v1.2.0): the audio "listener" (Qwen3-Omni-30B-A3B-Instruct)
-asked yes/no about a candidate span. This repository keeps only what the shipped listener harness imports: the model, the
+"""The audio "listener" (Qwen3-Omni-30B-A3B-Instruct) asked yes/no about a candidate span. This repository keeps only what the shipped listener harness imports: the model, the
 question, the 215-family vocabulary and the AUROC helper (benchmark/gold/dev_listener.py, test_listener.py,
-listener_variants.py, listener_afnext.py, clip_prep.py). The amendment's own steps (pool, score, screen, fit, heldout on
+listener_variants.py, listener_afnext.py, clip_prep.py). The original study's steps (pool, score, screen, fit, heldout on
 the AudioSet-Strong sets, with benchmark/detector_round2.py and audioset_stage4_report.py) are in release v1.2.0.
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 

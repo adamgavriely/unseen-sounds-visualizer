@@ -323,7 +323,7 @@ def mine(spec, subject: str, drawn: str, target: str, model: str, device: str, s
     if ent.get("mined") and ent["mined"].get("llm") == config.VLM_MODEL:
         return ent["mined"]
     from PIL import Image
-    from benchmark.gold.gen_screen import RULES_TAIL, negative_for as screen_negative
+    from benchmark.gold.picture_templates import RULES_TAIL, negative_for as screen_negative
     from src.stage6_visual_augmentation import _diffusion_image
     d = CACHE_DIR / "mine" / model.split("/")[-1]
     d.mkdir(parents=True, exist_ok=True)

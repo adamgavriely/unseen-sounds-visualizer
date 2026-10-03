@@ -1,9 +1,10 @@
-"""Data for the first inspector page (docs/inspector/, release v1.2.0); `classify()` is imported by
-inspector_trail_export.py. Every clip, gold sound and shown picture of the scored sets, with the
-official scorer's classes, the gate's votes and the detector's events. Re-presents existing renders; decides nothing
-(docs/history/preregistrations/prereg_v4.md, release v1.2.0, 2026-09-28, TEST exposure 11: inspection).
+"""Scorer classes for the inspector pages: `classify()` is imported by inspector_trail_export.py; run as a script,
+it builds the data of the first inspector page (docs/inspector/, release v1.2.0). Every clip, gold sound and shown picture of the scored sets, with the
+official scorer's classes, the gate's votes and the detector's events. Re-presents existing renders; decides nothing.
 
     python benchmark/gold/inspector_data.py        # cluster (needs the renders) -> docs/inspector/data.json (release v1.2.0)
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 

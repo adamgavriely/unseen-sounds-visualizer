@@ -16,4 +16,4 @@ Appendix D of the report. Earlier study scripts are in release v1.2.0.
   [`gold/README.md`](gold/README.md).
 
 The benchmark clips are not in the repository. Their source collections are listed in the "Data" section of the
-report; the clip names are in `gold/*_stems.txt`.
+report; the clip names are in `gold/dev_stems.txt` and `gold/test_stems.txt`.

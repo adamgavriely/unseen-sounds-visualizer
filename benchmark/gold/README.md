@@ -9,12 +9,12 @@ v1.2.0.
 
 | purpose | files |
 |---|---|
-| **Labels** | `annotations/gold_AG.json` (every per-sound label), `dev_stems.txt`, `test_stems.txt` (clip names of the two sets; the `tg_d*` lines are the second batch, parts dev2 / test2), `judge100.txt` (the development-set rule), `audioset_slice.json` (the AudioSet-Strong clips); `tool_template.html` is the annotation page whose `category()` rule the scorer applies |
+| **Labels** | `annotations/gold_AG.json` (every per-sound label), `dev_stems.txt`, `test_stems.txt` (clip names of the two sets; the `tg_d*` lines are the second batch, parts dev2 / test2), `judge100.txt` (the development-set rule), `audioset_slice.json` (the AudioSet-Strong clips) |
 | **Scorer** | `score_per_sound.py` (matching rules, cost, clip subsets), `dev_candidates_check.py` (stage-4/5 replay helpers, bootstrap, DASM step), `holm_table.py` (Holm correction) |
 | **Report tables** | `final_vs_baselines.py` → `final_vs_baselines.json` (final system and baselines); `final_vs_baselines_extra.py` → `final_vs_baselines_extra.json` (F1 intervals, danger sounds) |
 | **Scoring harness** | `round13_dev.py` (variants, stage 4/5 through the pipeline code), `merged_dev.py`, `r13_test_prep.py`, `r13_test_final.py` → `r13_test_final.{json,md}`, `final_test.py` → `final_test.json`, `parity_check.py` |
 | **Per-clip inputs** | `clip_prep.py`, `flexsed_run.py`, `dev_listener.py`, `test_listener.py`, `listener_variants.py`, `listener_afnext.py`, `dasm_rescue.py`, `listener_p1v4.py`, `finelap_screen.py` (order below) |
-| **Picture prompts** | `gen_screen.py` (picture templates and seeds; imported by `src/stage6_visual_augmentation/` and `comfyui_nodes/run_frozen.py`) |
+| **Picture prompts** | `picture_templates.py` (picture templates and seeds; imported by `src/stage6_visual_augmentation/` and `comfyui_nodes/run_frozen.py`) |
 | **Decision trail** | `inspector_trail_export.py`, `inspector_data.py` → `docs/inspector2/` |
 | **Model inputs and analyses cited in the report** | `depictable_vocab.json` (the 215 sound families), `flexsed_extra_queries.json` (extra FlexSED queries of the `FLEXSED_EXTRA` option), `ceiling_ship7.md`, `visible_weight_sweep.md`, `holm_test_final_v33_test_bench.json`, `logit_gate_gold.json` |
 
@@ -34,7 +34,7 @@ prepared answers it runs, each as its own process, on a one-clip split named `li
 4. `listener_p1v4.py`: Qwen V4 on the P1 cuts.
 5. `finelap_screen.py split`: FineLAP frame scores, in the FineLAP Python environment (`FINELAP_PYTHON`).
 
-The answers land in `benchmark/gold/live_<clip>_listener*.json` and `data/work/` and are read by stage 4.
+The answers land in `benchmark/gold/live_<clip>_listener*.json` (ignored by git) and `data/work/` and are read by stage 4.
 
 ## Reproducing the numbers
 

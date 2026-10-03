@@ -1,4 +1,4 @@
-"""Round 13 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): PREPARATION for the one TEST exposure. No gold is read, nothing is scored.
+"""PREPARATION for the one TEST exposure. No gold is read, nothing is scored.
 
 Builds, for the 60 TEST clips (benchmark/gold/test_stems.txt), the same feature caches the DEV harness
 (benchmark/gold/round13_dev.py, dev_candidates_check.py, dev_listener.py) has for DEV, into parallel folders, and runs the
@@ -19,6 +19,8 @@ score_per_sound.load_gold is replaced by a function that raises, so no step here
     python benchmark/gold/r13_test_prep.py stage5   # GPU: stage 5 for B0r, both systems -> data/work/r13test/B0r_<system>
     python benchmark/gold/r13_test_prep.py d5       # CPU: gate D5 (structural), writes data/work/r13test/gates.json
 An arm's TEST run later uses the same redirect: `python benchmark/gold/r13_test_prep.py stage4 --arms B0r R13-1` etc.
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 

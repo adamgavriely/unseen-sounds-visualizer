@@ -1,5 +1,5 @@
-"""Parity check (1 Oct): the shipped config (config.use_shipped) must equal the scored base arm on every non-cache key.
-Exit code 1 and a list when they differ.      python benchmark/gold/parity_check.py [arm]   (default SHIP8+MD3)"""
+"""Parity check: config.use_shipped() must equal the scored arm on every non-cache key.
+python benchmark/gold/parity_check.py [arm] (default SHIP8+MD3+WW5+SL); exit 1 and a list when they differ."""
 import sys
 from pathlib import Path
 _ROOT = Path(__file__).resolve().parent.parent.parent

@@ -1,13 +1,7 @@
-"""Pipeline orchestrator: video -> audio/scene/speech/events -> gate -> images -> composited mp4.
-
-v1 prototype (detect-all, no gating): stages 1 (ffmpeg), 3 (whisper) and 4 (PANNs)
-are real; Stage 5 passes through every distinct non-speech sound; Stage 6 retrieves
-a CC image per sound (Openverse) and composites it alongside the original video.
-Stage 2 (video understanding) is still a stub -> the seen/not-seen gate is v2.
-
-Writes inspectable artifacts under ``data/work/<stem>/`` (audio.wav, *.json,
-events_plot.png, augmentations/aug_*.png, credits.json) and the final
-``data/output/<stem>_augmented.mp4``.
+"""Pipeline orchestrator: video → audio, scene, speech, sound events → on-screen check → pictures → composited mp4
+(stages 1–6; config.use_shipped() = final system). Writes data/work/<stem>/ (audio.wav; media, scene, segments,
+events, augmentations, gate_votes and onset_trace json; events_plot.png; trail.json; augmentations/) and
+data/output/<stem>_augmented.mp4.
 """
 from __future__ import annotations
 

@@ -447,8 +447,8 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
     a sound with a canonical maker, otherwise the V3.1 subject; the rules tail; the template's extra negative words;
     seed_of + 1 as in the screening arms; one redraw when the picture is nearly blank (ink < 0.05)."""
     from PIL import Image
-    from benchmark.gold.gen_screen import (TEMPLATES, TEMPLATE_NEG, CARDS, RULES_TAIL, burst_card, ink, seed_of,
-                                           negative_for as screen_negative)
+    from benchmark.gold.picture_templates import (TEMPLATES, TEMPLATE_NEG, CARDS, RULES_TAIL, burst_card, ink,
+                                                  seed_of, negative_for as screen_negative)
     source = getattr(spec, "source", "") or spec.event_label
     word = CARDS.get(source) or CARDS.get(spec.event_label)
     if word:

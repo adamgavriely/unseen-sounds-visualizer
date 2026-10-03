@@ -1,5 +1,5 @@
-"""Round 13 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): the audio-LLM listener cache for the 60 TEST clips, gold-free, a SUPERSET
-of dev_listener.py's pools so it serves any R13-3 arm. PREPARATION only: no TEST gold is read, nothing is scored against gold.
+"""The audio-LLM listener cache for the 60 TEST clips, gold-free, a SUPERSET of dev_listener.py's pools so it
+serves any R13-3 arm. PREPARATION only: no TEST gold is read, nothing is scored against gold.
 
 Same model, question, yes/no token ids, score and audio cut as benchmark/gold/dev_listener.py (its score() is reused
 unchanged); audio = data/work/r13test/wav16/<clip>.wav. Pools per clip:
@@ -17,6 +17,8 @@ No "gold" field. Item keys as dev_listener.json, so src.stage4_audio_event_detec
     python benchmark/gold/test_listener.py pool       # CPU: TEST pool -> benchmark/gold/test_listener.json
     python benchmark/gold/test_listener.py score      # GPU: dev_listener.score() on the TEST file (resumable)
     python benchmark/gold/test_listener.py report     # CPU: sizes, yes-rates per pool, null yes-rate (no gold)
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 

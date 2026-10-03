@@ -1,8 +1,8 @@
-"""Run the frozen pipeline (the final system, tag detector-frozen-2026-10-02) on one video, exactly as `main.py` does, and write a
+"""Run the frozen pipeline (the final system) on one video, exactly as `main.py` does, and write a
 short summary of what the viewer will see.
 
 The ComfyUI node starts this in a fresh process: every model is loaded and freed here, so the ComfyUI server never
-holds Qwen3.8-27B or Qwen-Image itself (the old in-server nodes were OOM-killed), and the code path is main.py's own.
+holds Qwen3.8-27B or Qwen-Image itself, and the code path is main.py's own.
 
     python comfyui_nodes/run_frozen.py --input VIDEO --summary OUT.json
 """
@@ -32,7 +32,7 @@ def main():
 
     def capture(*args, **kw):              # main() does not return the result; keep it for the summary
         # main() has built this clip's listener inputs by now (ensure_listener_inputs raises if a step fails). A clip
-        # with no listener items (tg: FlexSED finds no band run) has legitimately empty answer files, which
+        # with no listener items (a clip where FlexSED finds no candidate) has legitimately empty answer files, which
         # _require_caches reads as missing; the scored final arm runs with LISTENER_REQUIRE_CACHES False, so does this.
         import config
         config.LISTENER_REQUIRE_CACHES = False
@@ -43,10 +43,10 @@ def main():
 
     if a.new_drawings:                     # same sounds and times, a different drawing each run
         import random
-        from benchmark.gold import gen_screen
+        from benchmark.gold import picture_templates
         offset = random.SystemRandom().randrange(1, 1 << 30)
-        frozen_seed = gen_screen.seed_of
-        gen_screen.seed_of = lambda item: (frozen_seed(item) + offset) & 0x7FFFFFFF
+        frozen_seed = picture_templates.seed_of
+        picture_templates.seed_of = lambda item: (frozen_seed(item) + offset) & 0x7FFFFFFF
         print(f"[run_frozen] new drawings: seed offset {offset}", flush=True)
 
     # Stage 5 exactly as the scored final runs did it (benchmark/gold/round13_dev.py stage5: config.use_scored(), picture
@@ -83,7 +83,7 @@ def main():
     pipeline.plan_augmentations = wrap(pipeline.plan_augmentations, to_scored, lambda: None)
     reason.decide_subjects = wrap(reason.decide_subjects, lambda: None, to_shipped)
     pipeline.generate_augmentations = wrap(pipeline.generate_augmentations, to_shipped, lambda: None)
-    # the GPU flags of slurm/job_main_demo.sh (release v1.2.0; config.DEVICE defaults to "cpu")
+    # the GPU flags of the scored runs (config.DEVICE defaults to "cpu")
     sys.argv = ["main.py", "--input", a.input, "--device", "cuda", "--generator", "diffusion"]
     M.main()
 

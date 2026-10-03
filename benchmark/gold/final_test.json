@@ -1,8 +1,8 @@
 {
  "arm": "TO1+F7F8",
  "clips": {
-  "old_test": 60,
-  "tagger_test": 28
+  "test_60": 60,
+  "test2": 28
  },
  "rows": {
   "B0r": {
@@ -36,7 +36,7 @@
  },
  "parts": {
   "B0r": {
-   "old_test": {
+   "test_60": {
     "hits": 16,
     "misses": 27,
     "visible": 1,
@@ -50,7 +50,7 @@
     "coverage": 0.3215599210592389,
     "wrong": 25
    },
-   "tagger_test": {
+   "test2": {
     "hits": 5,
     "misses": 17,
     "visible": 1,
@@ -66,7 +66,7 @@
    }
   },
   "TO1+F7F8": {
-   "old_test": {
+   "test_60": {
     "hits": 16,
     "misses": 27,
     "visible": 1,
@@ -80,7 +80,7 @@
     "coverage": 0.3221934926397719,
     "wrong": 25
    },
-   "tagger_test": {
+   "test2": {
     "hits": 6,
     "misses": 16,
     "visible": 1,

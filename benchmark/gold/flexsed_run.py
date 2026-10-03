@@ -1,4 +1,4 @@
-"""FlexSED on the gold clips (amendment 7, 2026-09-22): an open-vocabulary detector as a second
+"""FlexSED frame scores on the benchmark clips: an open-vocabulary detector as a second
 opinion where BEATs is blind.
 
 Why this one. At all nine onsets where BEATs scored the needed sound below 0.05, its top labels are
@@ -12,6 +12,8 @@ It is queried with the project's own depictable family vocabulary (benchmark/gol
 at the gold labels. Frame probabilities are cached per clip; nothing is decided here.
 
     python benchmark/gold/flexsed_run.py --out data/work/flexsed_cache     # GPU, one pass
+
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 

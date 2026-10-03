@@ -346,7 +346,12 @@ def paired_ci(rows_a, rows_b, key="F1", n=2000, seed=0):
 
 
 def category(sounds) -> str:
-    """the tool's clip category from the ticks (benchmark/gold/tool_template.html category())"""
+    """the clip category from the ticks (the labelling tool's category() rule, release v1.2.0).
+
+    The tool's rule: no sound -> no_ambient; no needed sound (all visible or obvious) -> seen; a needed sound of
+    importance >= 2 AND a visible/obvious sound of importance >= 2 -> mixed; only a visible/obvious sound of
+    importance >= 2 -> seen; otherwise unseen. Importance is read as rated (default 2). This function follows it
+    except the "only a visible/obvious sound >= 2" case, which it counts as unseen."""
     if not sounds:
         return "no_ambient"
     needed = [s for s in sounds if s["needed"]]

@@ -1,17 +1,12 @@
-"""DEV check of the best detector candidates (report only; plan: docs/history/analyses/dev_candidates_check_2026-09-28.md, release v1.2.0). DEV only.
+"""Replay helpers for the scoring harness: the scored render's folders, DASM scores (dasm()), stage-4/5 replay, metrics,
+boot, holm. The earlier detector-candidate arms (EATR, I4, R6, R7) need modules in release v1.2.0.
 
-Candidates (unchanged, values frozen on the 280): EAT-R (round 5), DASM D1 (round 6), I4 parent emission, I6 VLM scene prior,
-I7 FlexSED local-contrast veto (round 8). Baselines: B0 = the scored DEV render (dev_monocap_v31, PANNs veto 0.05);
-B1 = the shipped stack on DEV (the same config with the BEATs self-veto 0.1218, PANNs off) = primary.
-
-    python benchmark/gold/dev_candidates_check.py dasm     # GPU: DASM frame scores (round-6 queries), 10-s pieces
+    python benchmark/gold/dev_candidates_check.py dasm     # GPU: DASM frame scores, 10-s pieces
     python benchmark/gold/dev_candidates_check.py stage4   # GPU (occlusion onsets of new spans only): gate D0, spans of every arm
     python benchmark/gold/dev_candidates_check.py stage5   # GPU: stage 5 per arm and system, gate answers reused
     python benchmark/gold/dev_candidates_check.py score    # CPU: gate D5, the table, bootstrap, Holm, ship rule
 
-This repository keeps the module for its shared helpers (the pipeline-parity stage-4/5 code, scoring, bootstrap) and the
-DASM step, which the listener harness uses. The `eat`, `vlm` and `paralist` cache steps and the arms that need the detector
-round modules (EATR, I4, R6, R7) are in release v1.2.0 with benchmark/detector_round5/8/10.py.
+(design record: release v1.2.0)
 """
 from __future__ import annotations
 
@@ -45,7 +40,7 @@ OUT = _ROOT / "benchmark" / "gold" / "dev_candidates_check.json"
 PLACEHOLDER = str(_ROOT / "README.md")          # any existing file: a shown picture, as a placeholder counts in the scored run
 TOL = 0.01
 ARMS = ["B0r", "B1", "EATR", "D1", "I4", "I6"]   # arms that go through stage 5 (job 31330563)
-EXTRA = ["R1", "R6", "R7"]                       # amendment 1: round 10's rescue cells (job_devcand_extra.sh)
+EXTRA = ["R1", "R6", "R7"]                       # amendment 1: round 10's rescue cells (job_devcand_extra.sh, release v1.2.0)
 CANDS = ["EATR", "D1", "I4", "I6", "I7"] + EXTRA
 RELEASE_ONLY = ("EATR", "I4", "R6", "R7")       # arms that import benchmark/detector_round5/8.py (release v1.2.0)
 PARA_DIR, WAV16 = DC / "para", DC / "wav16"
@@ -221,8 +216,10 @@ def _win(fr, t0, t1):
 
 
 def _cols(labs, label, match):
-    from benchmark import detector_round8 as M
-    return M.fam_cols(labs, label) if match else [i for i, l in enumerate(labs) if canonical(l) == canonical(label)]
+    if match:                                        # family matching: detector_round8 (release v1.2.0)
+        from benchmark import detector_round8 as M
+        return M.fam_cols(labs, label)
+    return [i for i, l in enumerate(labs) if canonical(l) == canonical(label)]
 
 
 def r1(C, e, match=False):
