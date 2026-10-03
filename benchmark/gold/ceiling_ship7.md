@@ -1,6 +1,6 @@
 # Ceiling analysis of SHIP7 on merged DEV — why can't we do better?
 
-Script: `benchmark/gold/ceiling_ship7.py` → `ceiling_ship7.json` (CPU, on the saved SHIP7 pictures, arm `SHIP6+FLAP|proposed`;
+Script: `benchmark/gold/ceiling_ship7.py` (release v1.2.0) → `ceiling_ship7.json` (CPU, on the saved SHIP7 pictures, arm `SHIP6+FLAP|proposed`;
 base reproduced 25/55 hits, 27 wrong (9 visible / 16 cross / 2 phantom), cost 2.451 on 71 clips; ledger = `ship7_errors.json`).
 An **oracle** fixes ONE stage perfectly with the gold and leaves every other stage as shipped. Cost = (4 × misses + 2 × wrong) / 71,
 so one wrong picture = 0.028, one miss = 0.056.

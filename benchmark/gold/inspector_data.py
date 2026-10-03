@@ -1,8 +1,8 @@
 """Data for the inspector page (docs/inspector/): every clip, gold sound and shown picture of the scored sets, with the
 official scorer's classes, the gate's votes and the detector's events. Re-presents existing renders; decides nothing
-(docs/prereg_v4.md, 2026-09-28, TEST exposure 11: inspection).
+(docs/history/preregistrations/prereg_v4.md, release v1.2.0, 2026-09-28, TEST exposure 11: inspection).
 
-    python benchmark/gold/inspector_data.py        # cluster (needs the renders) -> docs/inspector/data.json
+    python benchmark/gold/inspector_data.py        # cluster (needs the renders) -> docs/inspector/data.json (release v1.2.0)
 """
 from __future__ import annotations
 

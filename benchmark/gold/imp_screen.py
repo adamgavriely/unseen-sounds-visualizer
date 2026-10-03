@@ -1,4 +1,4 @@
-"""Round 36 IMP step 1 (docs/prereg_round13_detector_push.md "Round 36 IMP"), CPU only, candidate level: peaks of DASM's
+"""Round 36 IMP step 1 (docs/history/preregistrations/prereg_round13_detector_push.md "Round 36 IMP", release v1.2.0), CPU only, candidate level: peaks of DASM's
 impact-type labels (union column = max over the 5 exact-name columns, >= 0.575, runs merged over gaps <= LISTEN_RUN_GAP) on
 merged DEV, each peak put in ONE bucket (first that applies) by the scorer's picture-start window [g.start - 0.5, g.start + 1.0]:
 (a) SHIP8 ledger miss, (b) needed importance >= 2 sound SHIP8 already hits, (c) needed importance-1, (d) seen sound, (e) nothing.

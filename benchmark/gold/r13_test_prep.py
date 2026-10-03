@@ -1,4 +1,4 @@
-"""Round 13 (docs/prereg_round13_detector_push.md): PREPARATION for the one TEST exposure. No gold is read, nothing is scored.
+"""Round 13 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): PREPARATION for the one TEST exposure. No gold is read, nothing is scored.
 
 Builds, for the 60 TEST clips (benchmark/gold/test_stems.txt), the same feature caches the DEV harness
 (benchmark/gold/round13_dev.py, dev_candidates_check.py, dev_listener.py) has for DEV, into parallel folders, and runs the

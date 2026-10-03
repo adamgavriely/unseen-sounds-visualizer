@@ -1,6 +1,6 @@
 """Decide, per sound: is its source already on screen, and if not, what to depict.
 
-The rule, in Adam's words: the video should CONTRIBUTE to the audio classification, not
+The design rule: the video should CONTRIBUTE to the audio classification, not
 replace it. What the system depicts is always the sound that was detected; the video's
 only job is to make that depiction specific to this place, and to say when the sound
 needs no picture because the viewer can already see what is making it.
@@ -71,7 +71,7 @@ VISIBLE_PROMPT = (
 
 # The one thing the frames ARE asked about the sound itself, and the bounds on it. The
 # detector said Crowd; the picture was "people cheering" because the model guessed,
-# while the frames plainly showed a crowd chanting with torches. Adam: "why not try to
+# while the frames plainly showed a crowd chanting with torches. Design review: "why not try to
 # understand from the video?" So the frames are asked what KIND of the detected sound
 # this is -- and only that. The label is fixed in the question, the answer is a
 # qualifier that goes into the depiction prompt as the specific kind, and "unknown" is
@@ -88,7 +88,7 @@ KIND_PROMPT = (
 )
 
 
-# v2 (2026-09-24, panel of three, two rounds). The v1 question -- do the frames SHOW what kind it
+# v2 (2026-09-24, design review, two rounds). The v1 question -- do the frames SHOW what kind it
 # is -- is nearly always "no" for the sounds this pipeline draws, because the gate has already
 # decided the source is off screen. What the frames do show is the setting, and the setting is
 # what separates a steam locomotive from a subway train. The first clause keeps the partly visible
@@ -132,7 +132,7 @@ def _kind_from_frames(label: str, frames, mdl, proc, seen_only: bool = False) ->
 # the event. AudioSet names things -- Glass, Crowd, Dog, Vehicle -- but what a deaf viewer
 # needs to see is glass BREAKING, a crowd APPLAUDING, a dog BARKING. Asked for "a picture
 # showing Glass", the model described a window pane, the generator drew a window pane,
-# and Adam, correctly: "pictures of glass alone, which means nothing if it should be glass
+# and the review, correctly: "pictures of glass alone, which means nothing if it should be glass
 # breaking". So the question is now what is HAPPENING to make the sound, at the moment it
 # happens. The detector's most specific sub-label goes in too when there is one, because
 # it often IS the event: Shatter under Glass, Applause under Crowd, Bark under Dog.
@@ -159,7 +159,7 @@ DEPICT_PROMPT = (
     "Do not name the place in your answer unless the sound cannot be drawn without it. "
     "Do not add any object that is not the source of the sound."
 )
-# v2 (2026-09-24, docs/NIGHT_REPORT_2026-09-24.md). Of the 33 DEV pictures, 2 were blank ("Sky
+# v2 (2026-09-24, docs/history/daily_notes/NIGHT_REPORT_2026-09-24.md, release v1.2.0). Of the 33 DEV pictures, 2 were blank ("Sky
 # rumbles"), 1 was the mythological Siren ("Siren spinning"), 2 left out the object ("Fingers strike
 # keyboard", "Man shaves face") and 3 were the wrong kind for the scene. The v1 prompt asks for the
 # ACTION and bans adjectives, and between them the object that makes the sound -- and the one word
@@ -188,10 +188,10 @@ DEPICT_PROMPT_V2 = (
     "not the source of the sound."
 )
 
-# v3 (2026-09-24, picture panel of five, two rounds; Adam's blind ratings). v2's "name FIRST the
+# v3 (2026-09-24, picture design review, two rounds; blind human ratings). v2's "name FIRST the
 # solid object... do not add any object that is not the source" drew PARTS: an engine block for a car,
 # a wheelset for a train, two pairs of hands for a clapping crowd, a desk bell for a fire alarm -- 4 of
-# the 5 pictures Adam rated worse. What he rewarded was the whole recognisable source caught in the act
+# the 5 pictures rated worse. What the ratings rewarded was the whole recognisable source caught in the act
 # (a rooster with its beak open yes, roosters with beaks closed no). v3 is given the SPECIFIC sound the
 # detector heard (labels.choose_source) with its ontology chain, and never the place: the place is what
 # painted palaces and streets into the pictures, and what the strip functions then had to scrub.
@@ -218,7 +218,7 @@ DEPICT_V3_RESTATE = ("Your answer must name the thing that makes the sound, whic
 
 # No example sentences, on purpose. They were there to teach a 7B model the format, but
 # an example carries content as well as format and the content leaks: "a police car
-# with its siren on" was copied over the detector's own "Civil defense siren". Adam's
+# with its siren on" was copied over the detector's own "Civil defense siren". The
 # rule: the prompt is built from the detector, the audio and the video, not from
 # anything written here in advance.
 
@@ -248,7 +248,7 @@ RETRY_PROMPT = (
 # confidence was marginal, because confidence measures loudness and people reacting to a
 # quiet sound is better evidence that it matters than the decibel level is.
 #
-# It does NOT override visibility. Adam's rule: if the siren is on screen, the viewer can
+# It does NOT override visibility. The design rule: if the siren is on screen, the viewer can
 # see it, and it does not matter that they are also talking about it.
 SPEECH_PROMPT = (
     "A sound of {label} was heard in a video. Around that moment, someone said:"
@@ -464,7 +464,7 @@ def _reads_as(phrase: str, label: str, others, mdl, proc) -> bool:
 def _still_the_sound(phrase, label, others, mdl, proc) -> bool:
     """Is this still a picture of the sound, or has it become a picture of the scene?
 
-    Adam's rule made mechanical: the scene may shape the depiction, but the moment the
+    The design rule made mechanical: the scene may shape the depiction, but the moment the
     scene IS the depiction, the video has replaced the audio instead of contributing to
     it.
 
@@ -559,7 +559,7 @@ VOTE_LOG: list = []          # every (sound, stretch) verdict of the current cli
 def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     """Can the viewer SEE this sound happening? Three questions, combined.
 
-    Adam: "combine both questions, a/b and an open question, to help determine in case
+    Design review: "combine both questions, a/b and an open question, to help determine in case
     of disagreement." So:
 
       open    name the thing making the sound (or "nothing")
@@ -626,13 +626,13 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     raw["desc"] = desc
     LAST_RAW = raw
     votes = [by_name, by_ab, by_desc]
-    # exposed for benchmark/gate_dev_sweep.py, which re-decides from the raw votes;
+    # exposed for benchmark/gate_dev_sweep.py (release v1.2.0), which re-decides from the raw votes;
     # nothing on the inference path reads it
     global LAST_VOTES
     LAST_VOTES = {"name": by_name, "ab": by_ab, "desc": by_desc, "named": named}
     yes = sum(1 for v in votes if v is True)
     no = sum(1 for v in votes if v is False)
-    # the rule is set once on the dev split (benchmark/gate_dev_sweep.py): majority (v3)
+    # the rule is set once on the dev split (benchmark/gate_dev_sweep.py, release v1.2.0): majority (v3)
     # or unanimous -- config.VISIBILITY_RULE
     verdict = (yes == 3) if getattr(config, "VISIBILITY_RULE", "majority") == "unanimous" else yes > no
     how = ("name=" + ("yes:" + named if by_name else "no") + " a/b="
@@ -744,7 +744,7 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
                 #   Bird / Owl  -- two sounds in one family ("Bird chirping", "Owl
                 #                  hoots"): the member keeps its bursts, the family keeps
                 #                  whatever is left after subtracting them
-                # Adam: "bird is bird and owl is owl; one is hooting and one is chirping."
+                # Design review: "bird is bird and owl is owl; one is hooting and one is chirping."
                 from src.labels import is_descendant
                 fam, mem = ((spec, order[j]) if is_descendant(order[j].event_label, spec.event_label)
                             else (order[j], spec))
@@ -801,7 +801,7 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
               + order[dup].event_label + " (" + why + ")", flush=True)
 
 
-# Cross-modal disambiguation among the DETECTOR'S OWN candidates -- Adam's original
+# Cross-modal disambiguation among the DETECTOR'S OWN candidates -- the original design
 # example, "fire crackling can sound like water if you don't consider the video", in
 # the one form that keeps the rule that the video contributes and never replaces.
 #
@@ -925,7 +925,7 @@ def _depict_v3(spec, place: str, mdl, proc) -> str:
     return phrase
 
 
-# V3.1, PICTURE_SCENE (2026-09-25, panel of five, two rounds). V3's subjects on 50 never-annotated clips,
+# V3.1, PICTURE_SCENE (2026-09-25, design review, two rounds). V3's subjects on 50 never-annotated clips,
 # read before any picture was drawn, showed two failures. It INVENTED what the audio never established
 # (a Whoosh became "a person swinging a sword", a bare Siren "a police car", a Thunk "a heavy door") and
 # it LOST what the scene had established (a Vehicle on a farm had been a tractor, now "a car driving
@@ -1055,7 +1055,7 @@ def _depict_v31(spec, place: str, frames, fired, mdl, proc) -> str:
     return phrase or thing
 
 
-# PICTURE_MAKER (Adam, 28 Sept 2026): "If the sound is already an object (ambulance, bird, frog, car) it is easy. If it
+# PICTURE_MAKER (28 Sept 2026): "If the sound is already an object (ambulance, bird, frog, car) it is easy. If it
 # is an action (honk, chirp, knock, bang...), the picture must show the OBJECT that makes the sound. If several objects
 # could make it, use context from the video to choose." Audit of the 82 shipped pictures: 5 subjects named only the
 # action ("laughter" x2, "applause", "run", "typing"). Cause: every guard in _depict_v31 that empties the phrase falls
@@ -1199,7 +1199,7 @@ def _drawn(m) -> str:
     return maker_name(m[0]) if m[0] else m[1][0]
 
 
-# GP-4 two-step prompt (five-panel, 2026-09-25): the frames choose the thing (RESOLVE, above); a TEXT-ONLY
+# GP-4 two-step prompt (design review, 2026-09-25): the frames choose the thing (RESOLVE, above); a TEXT-ONLY
 # rewrite may then lengthen the prompt to the 40-80 words these generators were trained on, describing only
 # HOW the thing looks at the moment it makes the sound. It never sees the frames and never chooses the noun;
 # a mechanical word check refuses any other sound source, person or place, and on any refusal the short
@@ -1288,7 +1288,7 @@ def _without_place(phrase: str, place: str, keep: str = "") -> str:
 
     The prompt says not to name the place unless the sound cannot be drawn without it,
     and the model names it anyway: "Palace window cracks", "a palace window breaks".
-    Adam: the palace is an assumption. A deterministic strip is the only thing a 7B
+    Design review: the palace is an assumption. A deterministic strip is the only thing a 7B
     model reliably obeys. Kept whole if stripping would leave fewer than two words --
     "a stream in a forest" for Water in a forest is a place the sound needs.
     """
@@ -1313,7 +1313,7 @@ def _without_place(phrase: str, place: str, keep: str = "") -> str:
 # The place may veto a sound that does not belong in it -- with two bounds.
 #
 # This is an assumption, made at run time from the frames rather than from a list, and
-# Adam asked for no assumptions. It went in anyway because of what the random demo set
+# The design asked for no assumptions. It went in anyway because of what the random demo set
 # showed: a Horse at 0.84 in a quarry-blast clip, an Ice cream truck at 0.63 on a train
 # platform, a Train at a construction site. Confident detector errors cannot be caught by
 # any threshold, and the only information that separates them from a real surprising
@@ -1493,8 +1493,8 @@ def _talked_about(label: str, speech: str, mdl, proc, flip: bool = False) -> boo
     return verdict
 
 
-# Round 38 BOX-2 arm (docs/prereg_round13_detector_push.md), config.GATE_BOX_CHECK, off by default. A copy of the
-# screened rule in benchmark/gold/box_gate.py (BOX_Q, re-asked once with REPROMPT_Q if unparsed; crop with 20 % margin,
+# Round 38 BOX-2 arm (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0), config.GATE_BOX_CHECK, off by default. A copy of the
+# screened rule in benchmark/gold/box_gate.py (release v1.2.0; BOX_Q, re-asked once with REPROMPT_Q if unparsed; crop with 20 % margin,
 # short side >= 224 px; two label-free crop questions). Only a parsed box whose crop is "no" twice turns seen -> not seen.
 BOX_OBJECT_OF = {
     "Bird": "a bird", "Water": "water (a river, the sea, waves or a tap)", "Rain": "rain falling", "Drum": "a drum",
@@ -1682,7 +1682,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
             for a, b in pieces:
                 # a second before to a second after each stretch, six frames: a short
                 # sound is not one frame, and the cause is often legible from what
-                # changed. Adam: "make sure he sees enough frames."
+                # changed. Design review: "make sure the model sees enough frames."
                 n = max(frames_per_sound, 6)
                 lo, hi = a - 1.0, b + 1.0
                 times = [lo + (hi - lo) * t / (n - 1) for t in range(n)]
@@ -1758,7 +1758,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 print("       [stage5] silent: " + spec.event_label + " is visible ("
                       + named_any + ")", flush=True)
             elif len(kept) < len(pieces):
-                # Adam: one continuous sound, one continuous picture. Cutting the
+                # Design review: one continuous sound, one continuous picture. Cutting the
                 # picture for the stretches where the source is in frame produced a
                 # siren that appeared, vanished and reappeared for a sound that never
                 # stopped -- the flicker the panel exists to avoid, and a false claim
@@ -1779,7 +1779,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 # Amendment 3 (2026-09-21, bug fix): the kinship test alone was time-blind --
                 # a Vehicle seen at 0-4 s silenced a horn at 20 s whose own check said "not
                 # visible". Same source means same family AND the same moment (_dedup's test).
-                # Direction (Adam, 28 Sept 2026; bug found in mc_bridge_scene): a visible label may silence only
+                # Direction (28 Sept 2026; bug found in mc_bridge_scene): a visible label may silence only
                 # the same label or a MORE GENERAL one (a visible "Chink, clink" silences "Glass"). A visible general
                 # label never silences a specific one whose own check said "not visible" ("cars" seen -> Vehicle
                 # visible must not silence Helicopter). Off with KINSHIP_DIRECTED = False (the scored runs).

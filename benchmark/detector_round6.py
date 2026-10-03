@@ -1,4 +1,4 @@
-"""Detector round 6 (docs/prereg_round6_dasm.md, 2026-09-28): DASM (Detect Any Sound Model, ACM MM 2025) in place of
+"""Detector round 6 (docs/history/preregistrations/prereg_round6_dasm.md, release v1.2.0, 2026-09-28): DASM (Detect Any Sound Model, ACM MM 2025) in place of
 FlexSED (D1) or next to it (D2) in the shipped stage-4 stack (BEATs + FlexSED 0.8 + FlexSED clip veto 0.3 + BEATs
 self-veto b 0.1218, PANNs off). Cost C, clip sets and bootstrap as amendment 24 (detector_round2.py).
 
@@ -150,7 +150,7 @@ class _Dasm:
         _foreign(T4)
         import torch._dynamo  # noqa: F401  (probes find_spec("pandas") at import time; a stub has no __spec__)
         import timm, torchaudio, torchlibrosa  # noqa: F401,E401
-        _stub("pandas")                                        # src/codec/encoder.py imports it; not used for inference
+        _stub("pandas")                                        # DASM's own encoder module imports it; not used for inference
         from src.models.detect_any_sound.detect_any_sound_htast import DASM_HTSAT
         from src.codec.encoder import Encoder
         from src.preprocess.feats_extraction import pad_wav, to_mono

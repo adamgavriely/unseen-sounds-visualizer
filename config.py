@@ -1,6 +1,6 @@
 """Central defaults for the pipeline. Override per-run via main.py CLI flags.
 
-The docs/prereg_* and docs/history/* files cited in the comments below are in release v1.2.0
+The docs/history/* files and other paths marked "release v1.2.0" in the comments below are in release v1.2.0
 (https://github.com/adamgavriely/MscFinalProject/releases/tag/v1.2.0), not in this release.
 
 Every stage is real; the rationale for each choice is in the comment beside it.
@@ -34,7 +34,7 @@ SIGLIP_THRESHOLD = -7.5   # raw logit, not a probability (see stage2/siglip.py)
 OWL_MODEL = "google/owlv2-base-patch16-ensemble"
 OWL_THRESHOLD = 0.20
 VLM_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"      # used when VIDEO_BACKEND == "vlm"
-VLM_THINKING = False          # Qwen3.x: reason before answering (docs/prereg_qwen38_visibility.md); slower
+VLM_THINKING = False          # Qwen3.x: reason before answering (docs/history/preregistrations/prereg_qwen38_visibility.md, release v1.2.0); slower
 VLM_THINKING_TOKENS = 1024    # generation budget when thinking is on
 NUM_FRAMES = 6              # frames sampled from the clip for scene analysis
 VISIBILITY_THRESHOLD = 0.30  # CLIP prob for a source to count as "visible on screen"
@@ -79,7 +79,7 @@ AED_MODEL = "beats"
 # 80 ms for abrupt sounds. (A CAM on BEATs' tokens was tried first and cannot work: the
 # model was trained only through the token mean, so its tokens are not local.)
 ONSET_CAM = True
-# 2026-09-24, docs/onset_timing.md. Adam watched the rendered clips and found the picture out of
+# 2026-09-24, docs/history/analyses/onset_timing.md (release v1.2.0). The rendered clips showed the picture out of
 # step with its sound; the render and the panel are exact, so the error is the onset. Every stage
 # that can move a span moves it EARLIER and none ever moves one later, while the metric forgives
 # late twice as much as early. The rule all three reviewers signed: a later stage may sharpen an
@@ -99,7 +99,7 @@ AED_RELEASE_GAP = 1.0
 # Hysteresis: a sound must reach DISPLAY_THRESHOLD to count, and then extends through any
 # contiguous stretch above this fraction of it. Standard SED post-processing; it is what
 # lets an approaching helicopter start when the ear hears it, not when it gets loud.
-# Amendment 3 (2026-09-21, bug fix, docs/prereg_v4.md): the code halved AED_THRESHOLD (0.05) instead
+# Amendment 3 (2026-09-21, bug fix, docs/history/preregistrations/prereg_v4.md, release v1.2.0): the code halved AED_THRESHOLD (0.05) instead
 # of DISPLAY_THRESHOLD, so spans grew from a 0.025 noise floor, started near 0 s and were then
 # cut by the 8-s cap before the loud part. Now one pass at DISPLAY_THRESHOLD/2: a span is every
 # stretch >= 0.175 (its confidence = its peak); peaks >= DISPLAY_THRESHOLD are shown, peaks in
@@ -121,7 +121,7 @@ GATE_ENABLED = True          # v2-(a): gate on the CLIP seen/not-seen check (Sta
 # 0.39 on the hard set: real sounds and phantoms overlap in 0.30-0.42 and no bar is clean.
 # 0.35, erring towards showing, since a missed real sound is the worse error for a deaf
 # viewer. Sound-level gold labels are what would settle this properly. The sweep over the 256 tagged clips
-# (job 28902699, benchmark/eval_results_owlv2_beats.json) puts the rule-only gate's F1 on
+# (job 28902699, benchmark/eval_results_owlv2_beats.json, release v1.2.0) puts the rule-only gate's F1 on
 # a plateau from 0.30 to 0.35 (44.3-45.8%); recall falls off above 0.35 (77% -> 64% at
 # 0.40). Note the sweep scores Stage 2's concept list, not the per-sound VLM check, so
 # its precision (31%) is the concept list's blindness, which the VLM step exists to fix.
@@ -158,17 +158,17 @@ RENDER_MODE = "full"
 DEPICTION_REASONING = True
 SHOW_LABELS = False
 # Pictures fade with detector confidence (alpha 0.45-1.0). use_shipped() switches it off: every shown picture is
-# drawn at full opacity, as the glance test rated it (panel 3, topic 2).
+# drawn at full opacity, as the glance test rated it (design review).
 CONFIDENCE_FADE = True
 # Show a picture only if its detector confidence is >= this (None = off). 0.40 chosen on DEV and confirmed on the held-out
-# 415 AudioSet-Strong clips (docs/prereg_v4.md, 2026-09-28); use_shipped() switches it on.
+# 415 AudioSet-Strong clips (docs/history/preregistrations/prereg_v4.md, release v1.2.0, 2026-09-28); use_shipped() switches it on.
 PICTURE_MIN_CONF = None
 # A picture may stay on screen at most this long after its sound's real end (the 1.5-s minimum only lengthens short
 # sounds, and never by more than this). None = off. use_shipped() sets 1.0 s and joins repeats if the gap <= 1.5 s
-# (Adam, 28 Sept 2026).
+# (28 Sept 2026).
 MAX_AFTER_END = None
 # Stage 5 family rule: a visible sound silences a related one only in the right direction (see reason.py). The scored
-# runs had it off; use_shipped() switches it on (Adam, 28 Sept 2026).
+# runs had it off; use_shipped() switches it on (28 Sept 2026).
 KINSHIP_DIRECTED = False
 # Print the generator's prompt under each picture. Debugging only -- it is how a bad
 # picture gets traced to the words that produced it. Off for anything a viewer sees.
@@ -191,20 +191,20 @@ VLM_VISIBILITY = True
 # screen once it arrives.
 VISIBILITY_STRETCH = 5.0
 # How the three visibility votes per stretch combine: "majority" (v3) or "unanimous".
-# Set once on the dev split by benchmark/gate_dev_sweep.py, never on test.
+# Set once on the dev split by benchmark/gate_dev_sweep.py (release v1.2.0), never on test.
 VISIBILITY_RULE = "majority"
 # When the detector gives no sub-label, the frames from the sound's own moment are asked
 # what KIND of that sound it is -- a crowd chanting, not a crowd cheering -- with the
 # label fixed in the question and "unknown" as an answer. The answer must still name the
 # sound or it is discarded, so the frames can qualify a label but never replace it.
 KIND_FROM_FRAMES = True
-# 2026-09-24 picture quality (docs/NIGHT_REPORT_2026-09-24.md). Both off = as shipped.
+# 2026-09-24 picture quality (docs/history/daily_notes/NIGHT_REPORT_2026-09-24.md, release v1.2.0). Both off = as shipped.
 # KIND_ALWAYS: ask the frames which KIND of source it is even when the detector gave a sub-label.
 # DEPICT_V2: the object that makes the sound first, never an abstract subject, homonyms qualified,
 # and the kind word read from the frames is not stripped as if it were the place.
 KIND_ALWAYS = False
 DEPICT_V2 = False
-# PICTURE_V3 (2026-09-24, picture panel of five, docs/picture_panel_round2.md). Draw the most specific
+# PICTURE_V3 (2026-09-24, picture design review, docs/history/panels/picture_panel_round2.md, release v1.2.0). Draw the most specific
 # sound the detector really heard (labels.choose_source), with a depiction prompt that asks for the
 # whole recognisable source caught making THAT sound, no place in it, and a negative prompt for the
 # generator. The gate is untouched. The two numbers are fixed a priori, never tuned on the 33 bench
@@ -213,38 +213,38 @@ DEPICT_V2 = False
 PICTURE_V3 = False
 SOURCE_REL_FLOOR = 0.5
 SOURCE_TIE_MARGIN = 0.8
-# V3.1 (docs/panel_2026-09-25_round2.md): the scene may add up to two qualifier words to the heard
+# V3.1 (docs/history/panels/panel_2026-09-25_round2.md, release v1.2.0): the scene may add up to two qualifier words to the heard
 # source ("car door", "farm vehicle"), never a new noun; a list guard refuses kinds the audio never
 # established. Needs PICTURE_V3. Off until rated on a fresh set.
 PICTURE_SCENE = False
 # GP-4 3(b): refuse a scene qualifier that names a maker from another ontology branch, and a depiction that
 # drops the heard head word (slice B, prereg amendment 2b). Screened on picture-DEV; off until frozen.
 PICTURE_SCENE_GUARD2 = False
-# Week plan C.1 (docs/WEEK_PLAN_2026-09-26.md): the frozen final picture setup inside stage 6 (templates, burst cards,
+# Week plan C.1 (docs/history/daily_notes/WEEK_PLAN_2026-09-26.md, release v1.2.0): the frozen final picture setup inside stage 6 (templates, burst cards,
 # rules tail, blank guard). Display only, for demo videos; never a scored row. See use_final_pictures().
 PICTURE_FINAL = False
 # 2026-09-28: check each final picture before it is shown (src/stage6_visual_augmentation/verify.py): a shuffled
 # multiple-choice question to VLM_MODEL (the intended thing vs its known look-alikes) and an OCR text check; up to
 # PICTURE_VERIFY_TRIES draws (new seed each, a clearer fixed rewrite from try 3), then a word card. Needs
 # PICTURE_FINAL, and the VLM next to the generator (one H200, or two cards). Off by default; use_shipped() switches
-# it on (Adam, 28 Sept 2026, after validation).
+# it on (28 Sept 2026, after validation).
 PICTURE_VERIFY = False
-PICTURE_VERIFY_TRIES = 5      # Adam, 28 Sept: 5 tries, each refined by the last refusal, then a word card
-# 2026-09-28 (Adam's rule, docs/freeze_picture_setup_2026-09-25.md, amendment "after the sitting was cancelled"): an
+PICTURE_VERIFY_TRIES = 5      # 28 Sept: 5 tries, each refined by the last refusal, then a word card
+# 2026-09-28 (design rule, docs/history/preregistrations/freeze_picture_setup_2026-09-25.md, release v1.2.0, amendment "after the sitting was cancelled"): an
 # action sound (laughter, applause, run, typing, honk) is drawn as the OBJECT that makes it; several possible makers ->
 # the VLM picks from the sound's frames, else the maker the subject names, else a fixed default (reason.MAKERS).
 PICTURE_MAKER = False
-# 2026-09-28 (Adam: the hand-written rewrite wording is "too specific"): the clearer wording used by the redraw loop is
+# 2026-09-28 (Design review: the hand-written rewrite wording is "too specific"): the clearer wording used by the redraw loop is
 # written by the VLM (text only) from the maker object and the sound, with list guards; fallback the plain subject
 # (verify.describe). Off = the hand-written AMBIGUOUS rewrites.
 PICTURE_LOOK_VLM = False
 # the checker's look-alike options for the AMBIGUOUS entries written by the VLM too (verify.lookalikes); adopted only if
-# scripts/verify_validate.py still meets the four validation targets
+# scripts/verify_validate.py (release v1.2.0) still meets the four validation targets
 PICTURE_LOOKALIKE_VLM = False
-# 2026-09-28 (Adam: a GENERIC method instead of the per-word table): PICTURE_SENSE draws from a 4-slot form the VLM fills
+# 2026-09-28 (Design review: a GENERIC method instead of the per-word table): PICTURE_SENSE draws from a 4-slot form the VLM fills
 # from the label, its ontology path and its official AudioSet description, adds negative words mined from 4 test
 # pictures of the plain subject, and checks with the mined look-alikes (src/stage6_visual_augmentation/sense.py; the
-# AMBIGUOUS table is not used). Off until docs/picture_sense_test_2026-09-28.md decides.
+# AMBIGUOUS table is not used). Off until docs/history/analyses/picture_sense_test_2026-09-28.md (release v1.2.0) decides.
 PICTURE_SENSE = False
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
@@ -254,7 +254,7 @@ PICTURE_SENSE = False
 # OFF (2026-09-13). Measured on the demo sets it fired four times: horse at a quarry and
 # ice-cream truck at a station (right), a dog in a parking lot and an aircraft over a
 # railway (wrong) -- a rule that deletes a real sound half the time it fires is worse
-# than the phantoms it catches. Adam's original "no assumptions" stands; the code stays
+# than the phantoms it catches. The original "no assumptions" rule stands; the code stays
 # for the ablation.
 PLAUSIBILITY_CHECK = False
 # A corroboration band (0.35-0.45, shown only with a second signal) was tried and cut
@@ -291,9 +291,9 @@ DEDUP_REPORT = 0.45
 MIN_DWELL = 1.5
 MERGE_GAP = 2.0   # amendment 3 (2026-09-21): measured from the sound's real end (was the stretched end,
                   # so barks 2.2 s apart chained into one picture); 2 s = the annotation rule
-                  # "one row per continuous sound, split at pauses > 2 s" (docs/metric_per_sound.md)
+                  # "one row per continuous sound, split at pauses > 2 s" (docs/history/plans/metric_per_sound.md, release v1.2.0)
 GROUP_ASK = False      # Round 47 GROUP: Qwen3-Omni decides whether two close same-family pictures are one sound
-GROUP_MAX_GAP = 8.0    # Round 47 as pre-registered and selected on DEV (the 4.0 limit was set after a TEST read; reverted 1 Oct, Adam: never tune on TEST)
+GROUP_MAX_GAP = 8.0    # Round 47 as pre-registered and selected on DEV (the 4.0 limit was set after a TEST read; reverted 1 Oct: never tune on TEST)
 GROUP_CACHE = None     # json {clip: {"label|start": [answer, answer]}}; None -> WORK_DIR/group_answers.json when live
 GROUP_CLIP = None      # set by pipeline.run to the clip stem
 DEPICT_EVENT = False   # Round 57: drop a picture whose depicted event is visibly happening AND the gate's named maker could sound like it
@@ -303,7 +303,7 @@ GROUP_LIVE = False     # True: pipeline.run loads Qwen3-Omni itself; default the
 # never overlap share one full-size cell in turn rather than splitting the panel into
 # thin strips that are empty most of the time.
 MAX_SLOTS = 3
-# Chosen from a 3-model x 4-prompt grid (scripts/icon_grid.py; sheets in
+# Chosen from a 3-model x 4-prompt grid (scripts/icon_grid.py, release v1.2.0; sheets in
 # data/output/icon_grid). SDXL base was the WORST of the three for this job: asked
 # for a pictogram of a dog it returned paw-print wallpaper and a 12-panel contact
 # sheet; for a fire engine, a garage door. Turbo returned a clean readable subject
@@ -312,7 +312,7 @@ MAX_SLOTS = 3
 # sounds (6/6 vs 6/6-with-3-losses vs 3/6): it was the only one that showed the ACTION
 # -- an open beak for chirping -- and FLUX returned a blank white image for "rain
 # falling". Ungated, and ~10x faster than FLUX, which needs CPU offload on a 23 GB card.
-# FLUX.1-schnell ships (Adam, 2026-09-13: "in general flux is better than pixart"), after
+# FLUX.1-schnell ships (2026-09-13, design review: FLUX looked better than PixArt), after
 # a side-by-side on video: a real red alarm bell where PixArt drew a red box, a police
 # car with a lightbar where PixArt drew a dark sedan, a legible clock face. It is the
 # proposal's named model. PixArt-Sigma stays selectable for the ablation.
@@ -328,13 +328,13 @@ FPS = 25
 # The judge MUST be a different model from the describing VLM: a model scoring its
 # own descriptions measures self-consistency, not quality. Mistral-7B-Instruct is a
 # different family from Qwen2.5-VL, text-only, and fits alongside it on one GPU.
-# 2026-09-24: Gemma-4-31B is the only judge that passes both trust checks against Adam's labels
-# (tracks his viewer cost AND separates clips with a known-wrong picture, 139 clips); Mistral-7B fails
-# the second even on 139 (docs/NIGHT_REPORT_2026-09-24.md, Result 7). Adam: "if Gemma is stronger use it".
+# 2026-09-24: Gemma-4-31B is the only judge that passes both trust checks against the human labels
+# (tracks the viewer cost AND separates clips with a known-wrong picture, 139 clips); Mistral-7B fails
+# the second even on 139 (docs/history/daily_notes/NIGHT_REPORT_2026-09-24.md, release v1.2.0, Result 7). Design decision: use the stronger judge.
 JUDGE_MODEL = "google/gemma-4-31B-it"
 
 # ---------------------------------------------------------------------------------------
-# v4 (docs/prereg_v4.md): the SOTA configuration, applied one stage at a time so that each
+# v4 (docs/history/preregistrations/prereg_v4.md, release v1.2.0): the SOTA configuration, applied one stage at a time so that each
 # swap is attributable. Nothing above changes -- v3 stays reproducible from the defaults;
 # a job calls config.use_v4("4"), ("45"), ("456") or ("23456") before running.
 SAM3_MODEL = "facebook/sam3"
@@ -342,29 +342,29 @@ SAM3_THRESHOLD = 0.5          # SAM 3's own default presence bar; not tuned on o
 V4 = {
     "2": {"VIDEO_BACKEND": "sam3"},
     "3": {"WHISPER_MODEL": "ibm-granite/granite-speech-4.1-2b"},
-    # no stage-4 swap has passed its bars (FLAM x2: docs/prereg_v4.md; PretrainedSED:
-    # docs/prereg_psed.md), so "4" is not part of the cumulative rows; kept for a future pass
+    # no stage-4 swap has passed its bars (FLAM x2: docs/history/preregistrations/prereg_v4.md, release v1.2.0; PretrainedSED:
+    # docs/history/preregistrations/prereg_psed.md (release v1.2.0)), so "4" is not part of the cumulative rows; kept for a future pass
     "4": {"AED_MODEL": "psed", "ONSET_CAM": False, "PSED_BAR": 0.15},   # frame-level already; bar from the AudioSet-Strong calibration
-    # thinking off: the DCASE check (docs/prereg_qwen38_visibility.md) shows the thinking arm
+    # thinking off: the DCASE check (docs/history/preregistrations/prereg_qwen38_visibility.md, release v1.2.0) shows the thinking arm
     # no better on visibility and ~3x slower; the pre-registered rule keeps the faster arm
     "5": {"VLM_MODEL": "Qwen/Qwen3.8-27B", "VLM_THINKING": False},
     "6": {"GEN_MODEL": "Qwen/Qwen-Image-2512", "RESOLUTION": (1024, 1024)},
     "7": {"JUDGE_MODEL": "google/gemma-4-31B-it"},
     # "8": the detector-neutral label filter (src/labels.py) and PSED's own operating point
-    # (span-level F1 on the AudioSet-Strong calibration set, benchmark/psed_f1_bar.json), for
-    # the fair re-test v4ab2 / v4b2 (docs/prereg_v4.md)
+    # (span-level F1 on the AudioSet-Strong calibration set, benchmark/psed_f1_bar.json, release v1.2.0), for
+    # the fair re-test v4ab2 / v4b2 (docs/history/preregistrations/prereg_v4.md, release v1.2.0)
     "8": {"LABEL_FILTER": "branch"},
     # "9": the depictable allow-list by ontology branch + an 8-s picture cap (v4ab3 / v4b3, the
-    # ten-Fable panel's decisive test, docs/prereg_v4.md)
+    # the design review's decisive test, docs/history/preregistrations/prereg_v4.md (release v1.2.0))
     "9": {"LABEL_FILTER": "depictable", "MAX_SPAN": 8.0},
     # "0": the BEATs union with FlexSED (amendment 8), the adopted detector of row v4b6
     "0": {"FLEXSED_BAR": 0.8},
-    # "1": PICTURE_V3 (2026-09-24, docs/picture_v3_prereg.md) -- the specific source, the v3 depiction
+    # "1": PICTURE_V3 (2026-09-24, docs/history/preregistrations/picture_v3_prereg.md, release v1.2.0) -- the specific source, the v3 depiction
     # prompt and the scenery negative. Changes what is drawn, never whether (checked on DEV).
     "1": {"PICTURE_V3": True},
 }
 # Amendment 8 (2026-09-22): the second, open-vocabulary detector. 0 = off (every row up to v4b5);
-# the adopted union row v4b6 sets 0.8, chosen on Adam's DEV half (onset-recall 0.45 -> 0.59 at
+# the adopted union row v4b6 sets 0.8, chosen on the DEV half (onset-recall 0.45 -> 0.59 at
 # 1.58 false labels per clip, where BEATs alone needs 3.05 to reach 0.57).
 FLEXSED_BAR = 0.0
 FLEXSED_FAMILY_BARS = None    # amendment 11: path to the per-family bars fitted on the AudioSet calibration set
@@ -375,7 +375,7 @@ FLEXSED_CORROB = None         # amendment 22: (beats_min, panns_min, window_s) -
 UNION_WEAK_TWIN = "absorb"      # amendment 22 cell F: "ignore" = a sub-display BEATs twin no longer swallows a FlexSED span
 BEATS_LOWBAND_CORROB = None   # amendment 22 tier 3: (flexsed_min, panns_min, window_s) -- weak BEATs spans promoted when corroborated
 MAX_SPAN = None               # seconds; None = no cap (v4ab3/v4b3 use 8.0)
-# Round 13 detector push (docs/prereg_round13_detector_push.md; DEV-developed, all OFF = the scored/shipped behaviour).
+# Round 13 detector push (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0; DEV-developed, all OFF = the scored/shipped behaviour).
 TWIN_MAX = False              # R13-1: a BEATs span that absorbed a same-family FlexSED span keeps the stronger side's
                               # bar-normalised evidence (displayable if BEATs >= 0.35 OR FlexSED >= its 0.8 bar)
 MIRROR_VETO = None            # R13-2: b; drop a BEATs-only span where FlexSED's top query is another family >= b ...
@@ -415,7 +415,7 @@ FLEXSED_EXTRA_DIR = None      #   <dir>/<clip>.npz (fw [Q, frames], labels, fps)
 FLEXSED_EXTRA_QUERIES = None  #   benchmark/gold/flexsed_extra_queries.json (bucket "a_folded" is used)
 LISTENER_ONCE = False         # Round 14 amendment E (F1b): one rescued span per family per clip, the earliest
 PANNS_VETO_SKIP_ABOVE = None  # Round 14 amendment G5: FlexSED-only spans with peak >= this skip the PANNs clip veto (0.9)
-# Round 16 night arms (docs/prereg_round13_detector_push.md), all off by default: N1 scene-fit question for every drawn sound,
+# Round 16 night arms (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0), all off by default: N1 scene-fit question for every drawn sound,
 # N2 drop weak BEATs-only spans under speech/music unless FlexSED or the listener backs them, N4 DASM vote by rank (top-k)
 SCENE_FIT_ALL = False
 MASKED_WEAK_VETO = False
@@ -488,7 +488,7 @@ def use_v4(stages: str = "23456") -> dict:
 
 
 def use_scored() -> dict:
-    """Exactly what the final TEST table (amendment 21, tag test_final_v33) ran with: slurm/job_protocol.sh
+    """Exactly what the final TEST table (amendment 21, tag test_final_v33) ran with: slurm/job_protocol.sh (release v1.2.0)
     sets VIDEO_BACKEND owlv2, then V4=590, FBAR=0.8, VETO=0.3, PVETO=0.05, MONO=1, MAXSPAN=none. Stage "9"
     sets MAX_SPAN 8.0, so the cap is switched off AFTER use_v4; ONSET_CAM stays on (the onset clamp needs the
     refinement step). Pictures FLUX.1-schnell, as rendered in every scored row (the per-sound metric does not look at
@@ -504,7 +504,7 @@ def use_scored() -> dict:
 
 
 def use_shipped() -> dict:
-    """The shipped system (Adam, 28 Sept 2026: Qwen-Image is the picture model; FLUX is retired): the scored stack
+    """The shipped system (28 Sept 2026: Qwen-Image is the picture model; FLUX is retired): the scored stack
     (use_scored) with the frozen final picture setup -- Qwen-Image-2512, V3.1 subject with guard 2, templates, cards,
     rules tail -- and pictures shown at full opacity (CONFIDENCE_FADE off: the glance test rated full-opacity pictures)."""
     import sys
@@ -517,35 +517,35 @@ def use_shipped() -> dict:
     changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), None)
     setattr(me, "PICTURE_MIN_CONF", None)
     # veto: the scored PANNs clip veto 0.05 (from use_scored) is kept; the BEATs self-veto (0.1218, PANNs off) was worse
-    # on DEV (3.10 vs 2.78) and TEST (2.83 vs 2.63, p 0.043), reverted 30 Sept 2026 (TODO "Waiting on Adam", Fable yes)
+    # on DEV (3.10 vs 2.78) and TEST (2.83 vs 2.63, p 0.043), reverted 30 Sept 2026 (after design review)
     for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3), ("DEPICT_EVENT", True), ("DASM_LOCAL_VETO", 0.35), ("DASM_LOCAL_KEEP", "both"),
                  ("DASM_LOCAL_SCENE", str(WORK_DIR / "scene_videos.json")),
                  ("SCENE_FIT_LOGIT", True),   # Round 60L SCENE-LOGIT (2 Oct): scene check read as the bias-cancelled logit margin; DEV 29/15/2.056, passes vs B (29/18/2.141)
                  # Round 53+60 WEAK-WITNESS + SCENE-MARGIN (1 Oct): DEV 29/14/2.028 (was 29/18/2.141); see prereg doc ("DEPICT_CACHE", str(WORK_DIR / "depict_answers.json")),
-                 # DEPICT_EVENT (Round 57, Adam OK 1 Oct 15:34): DEV 29/17/2.113 (was 29/18/2.141); fires rarely (event "no" on 42/43)
+                 # DEPICT_EVENT (Round 57, design review 1 Oct): DEV 29/17/2.113 (was 29/18/2.141); fires rarely (event "no" on 42/43)
                  # AED_MIN_DUR 0.3 (Round 48 MD3, 1 Oct): merged DEV 29/58, 18, 2.141 (was 28/18/2.197); TEST 23/65, 28, 2.545 (same)
-                 # GROUP (Round 47, Adam 1 Oct): Qwen3-Omni same/new on repeats <= 4 s apart (src/stage6_visual_augmentation/group.py)
-                 # MERGE_GAP 2.5 (Adam, 1 Oct, proposed before any 2.5 number): merged DEV 28/20/2.254, TEST 23/28/2.545
-                 # (2.0: 28/21/2.282, 23/29/2.568; 3.0 joins two dog barks 3 s apart); benchmark/gold/merge_gap_items.py
-                 # picture check-and-redraw (Adam, 28 Sept: on after validation; round 1: 7/7 named bad, 32/33 wrong,
+                 # GROUP (Round 47, 1 Oct): Qwen3-Omni same/new on repeats <= 4 s apart (src/stage6_visual_augmentation/group.py)
+                 # MERGE_GAP 2.5 (1 Oct, proposed before any 2.5 number): merged DEV 28/20/2.254, TEST 23/28/2.545
+                 # (2.0: 28/21/2.282, 23/29/2.568; 3.0 joins two dog barks 3 s apart); benchmark/gold/merge_gap_items.py (release v1.2.0)
+                 # picture check-and-redraw (28 Sept: on after validation; round 1: 7/7 named bad, 32/33 wrong,
                  # 2/68 good rejected, 115/115 same on reshuffle; round 2, all generic options + trumpet-horn confusion
                  # + umbrella rain template: 7/7, 33/33, 3/68, 113/115; src/stage6_visual_augmentation/verify.py).
                  # Needs the VLM next to the generator (one H200).
                  ("PICTURE_VERIFY", True),
-                 # Adam's maker rule (28 Sept, after the sitting was cancelled): an action sound is drawn as the object
+                 # The maker rule (28 Sept, after the sitting was cancelled): an action sound is drawn as the object
                  # that makes it. Redraw of the 5 changed inspector pictures: all pass try 1, all fine by eye.
                  # PICTURE_LOOK_VLM stays off: its redraws were worse by eye (2 fire alarms + steam fell to word cards).
                  ("PICTURE_MAKER", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
-    # the best DEV detector TO1+F7F8 (docs/prereg_round13_detector_push.md, Adam 30 Sept: ship the best): confidence-tiered
+    # the best DEV detector TO1+F7F8 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0, 30 Sept: ship the best): confidence-tiered
     # audio-LLM rescue of FlexSED 0.5-0.8 runs (Qwen3-Omni open list; below peak 0.6 also Audio Flamingo Next), earliest
     # rescue per family, twin-max, listener-confirmed mirror veto, DASM third vote. Its listener answers and DASM scores are
     # per-clip inputs (set_listener_split / slurm/run_best.sh); without them stage 4 stops (LISTENER_REQUIRE_CACHES).
     for k, v in (("LISTENER_RESCUE", True), ("LISTENER_RULE", "TIER"), ("LISTENER_LO", 0.5), ("LISTENER_ONCE", True),
                  ("TWIN_MAX", True), ("MIRROR_VETO", 0.7), ("LISTENER_CONFIRMED_MIRROR", True),
                  ("LISTENER_DASM_VOTE", True), ("LISTENER_DASM_BAR", 0.575), ("LISTENER_REQUIRE_CACHES", True),
-                 # round 18 N2b (Adam 30 Sept: every new best is merged): a weak BEATs-only span under speech or music needs
+                 # round 18 N2b (30 Sept: every new best is merged): a weak BEATs-only span under speech or music needs
                  # FlexSED, Qwen or Audio Flamingo to confirm it. Merged DEV 23 hits / 44 wrong vs 23 / 48; DEV only (TEST spent)
                  ("MASKED_WEAK_VETO", True), ("MASKED_WEAK_AF", True),
                  # round 20 DR2 (new DEV best 30 Sept): DASM as a third ear for sound types nothing else found in the clip,

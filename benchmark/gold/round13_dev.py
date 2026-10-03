@@ -1,4 +1,4 @@
-"""Round 13 detector push on DEV (docs/prereg_round13_detector_push.md). DEV only: no TEST, no slice-B clip.
+"""Round 13 detector push on DEV (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0). DEV only: no TEST, no slice-B clip.
 
 Every arm runs the PIPELINE's own stage-4 code (src.stage4_audio_event_detection.fuse_flexsed / attach_breaks, flags in
 config.py, all off = the scored behaviour) on the cached detector scores of the 49 DEV clips, then the same stage-5 path
@@ -173,12 +173,12 @@ for _n in ("K1", "K2", "K3", "K1K2", "K1K2K3"):
         if _k in _n:
             _c.update(_K[_k])
     ARMS[f"TO1F7F8+{_n}"] = _c
-# K2 with the supplementary listener answers of the 27 newly offered runs (benchmark/gold/listener_k2.py)
+# K2 with the supplementary listener answers of the 27 newly offered runs (benchmark/gold/listener_k2.py, release v1.2.0)
 _K2X = {"LISTENER_VCACHE": str(VCACHE) + ";" + str(_ROOT / "benchmark" / "gold" / "dev_listener_k2.json"),
         "LISTENER_AFCACHE": str(AFCACHE) + ";" + str(_ROOT / "benchmark" / "gold" / "dev_listener_k2_afn.json")}
 ARMS["TO1F7F8+K2x"] = {**ARMS["TO1F7F8+K2"], **_K2X}
 ARMS["TO1F7F8+K2K3x"] = {**ARMS["TO1F7F8+K2"], **_K["K3"], **_K2X}
-# round 15 amendment O: F8's third vote from Whisper-AT (benchmark/gold/wat_cache.py): family in the top 3 classes at some
+# round 15 amendment O: F8's third vote from Whisper-AT (benchmark/gold/wat_cache.py, release v1.2.0): family in the top 3 classes at some
 # 0.4-s step of the span +- 0.5 s (cache value = 1 / rank, bar 0.33)
 ARMS["TO1F7F8+O"] = {**ARMS["TO1+F7F8"], "LISTENER_DASM_DIR": str(WORK / "wat_cache" / "dev"), "LISTENER_DASM_BAR": 0.33}
 # round 16 night arms (N1 scene fit on all pictures, N2 masked weak BEATs, N4 DASM rank readout)
@@ -235,7 +235,7 @@ ARMS["SHIP7+K4AO"] = {**ARMS["SHIP7"], "KEEP_NEEDS_V4_ALL": "onto"}
 ARMS["SHIP7+K4AD"] = {**ARMS["SHIP7+K4AO"], "KEEP_NEEDS_V4_ALL_DASM_KEEP": True}   # round 35 K4A-D
 ARMS["SHIP7+DBR"] = {**ARMS["SHIP7"], "REPEAT_DASM_BRIDGE": 0.575}              # round 35 DBR
 ARMS["SHIP8"] = {**ARMS["SHIP7+K4AD"], "MERGE_GAP": 2.5, "GROUP_ASK": True, "GROUP_MAX_GAP": 8.0,
-                 "GROUP_CACHE": str(_ROOT / "data" / "work" / "group_answers.json")}   # = use_shipped; holds bench + live answers  # shipped since round 35 K4A-D; display gap 2.5 since 1 Oct (Adam)
+                 "GROUP_CACHE": str(_ROOT / "data" / "work" / "group_answers.json")}   # = use_shipped; holds bench + live answers  # shipped since round 35 K4A-D; display gap 2.5 since 1 Oct
 # (TEST renders are named SHIP7+K4AD and read at 2.0 by final_test.py; read them at 2.5 with merge_gap_sens.py test --gap 2.5)
 ARMS["SHIP8+MD3"] = {**ARMS["SHIP8"], "AED_MIN_DUR": 0.3, "DEPICT_EVENT": True,
                      "DEPICT_CACHE": str(_ROOT / "data" / "work" / "depict_answers.json")}     # Round 48 MD3 (kill_flags: restores tg_d107 Laughter, +3 rows)
@@ -244,8 +244,8 @@ ARMS["SHIP8+MD3+WW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCA
 ARMS["SHIP8+MD3+WW4"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "either"}   # Round 53d WEAK-WITNESS-4 (fixed standard DASM bar, either ear)
 ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": MAIN_CHECKOUT + "/data/work/scenemargin/videos.json"}   # Round 60 SCENE-MARGIN (one ear + F3 scene-fit yes); SHIPPED 1 Oct = the base arm for new rounds
 ARMS["SHIP8+MD3+WW5+SL"] = {**ARMS["SHIP8+MD3+WW5"], "SCENE_FIT_LOGIT": True}   # Round 60L SCENE-LOGIT (D with the scene question read as the bias-cancelled logit margin)
-ARMS["SHIP8+MD3+WW5+SL_trail"] = dict(ARMS["SHIP8+MD3+WW5+SL"])   # D' re-run with the Decision Inspector hooks (identical flags; new output folders)
-ARMS["SHIP8+MD3+WW5+SL+NA"] = {**ARMS["SHIP8+MD3+WW5+SL"], "NAME_ALL": (0.4375, 6.0625)}   # Round 66 NAME-ALL (D' + two-sided crop-margin gate, t_lo / t_hi from gate-gold step 1)
+ARMS["SHIP8+MD3+WW5+SL_trail"] = dict(ARMS["SHIP8+MD3+WW5+SL"])   # Final-system re-run with the Decision Inspector hooks (identical flags; new output folders)
+ARMS["SHIP8+MD3+WW5+SL+NA"] = {**ARMS["SHIP8+MD3+WW5+SL"], "NAME_ALL": (0.4375, 6.0625)}   # Round 66 NAME-ALL (final system + two-sided crop-margin gate, t_lo / t_hi from gate-gold step 1)
 ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": MAIN_CHECKOUT + "/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source)
 ARMS["SHIP8+MD3+WW5+CA"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell",)}; ARMS["SHIP8+MD3+WW5+CAR"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell", "Church bell", "Change ringing", "Fart", "Burping, eructation", "Hiccup", "Stomach rumble")}   # Round 64 CONCEALED-ACTION (CA ship table / CAR report-only)
 ARMS["SHIP8+MD3+WW5+RET"] = {**ARMS["SHIP8+MD3+WW5"], "PERC_RETURN": None}   # Round 65 RETURN (k from the 415 half A; set on GO)

@@ -1,6 +1,6 @@
 """FlexSED (open-vocabulary SED) as a second detector, read from a cache.
 
-Why it is here (measured 2026-09-22 on Adam's gold set): at every onset where BEATs scored a needed
+Why it is here (measured 2026-09-22 on the human gold set): at every onset where BEATs scored a needed
 sound below 0.05, BEATs' own top labels were Speech 0.58-0.81 or Music 0.48-0.58 -- the sound was
 masked, not out of vocabulary. FlexSED is queried one label at a time (Dasheng SSL encoder + CLAP
 text encoder, trained on AudioSet-Strong), so a loud voice cannot out-vote a quiet hammer. On the

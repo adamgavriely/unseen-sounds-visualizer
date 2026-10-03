@@ -1,15 +1,7 @@
-# Stage 4 — Audio Event Detection
+# Stage 4 - Audio event detection
 
-**Role:** Detect and classify **non-speech** sounds (ambient, environmental, acoustic events) with
-time boundaries. This is the core signal the whole system augments.
-
-**Input:** `audio.wav` from Stage 1.
-**Output:** list of `{label, confidence, start, end}` events over the AudioSet ontology (527 classes).
-
-**Candidate models:** PANNs / CNN14 (fast, light, good first implementation) → BEATs tagger
-(quality) → CRNN/frame-level (ATST-Frame-style) only if precise onset/offset timing is needed.
-
-**Status:** Stub wired into the pipeline — `detect_events()` returns `[]`; PANNs/BEATs is TODO.
-New component — no legacy code.
-**TODO (Adam):** check licences of specific checkpoints — some BEATs/DCASE checkpoints are
-research-only.
+Finds non-speech sound events with start and end times over the AudioSet labels (`detect_events()` in `__init__.py`).
+The final system uses BEATs (`beats_infer.py`, vendored model code in `beats/`, MIT) with FlexSED (`flexsed_infer.py`),
+a PANNs clip veto, and the listener answers prepared by `src/listener_prep.py` (Qwen3-Omni, Audio Flamingo Next, DASM,
+FineLAP). `psed_infer.py`, `flam_infer.py` and `sslam_infer.py` are detector variants that were tested and are not
+part of the final system; `clap_check.py` is an earlier CLAP second-opinion check that nothing imports now.

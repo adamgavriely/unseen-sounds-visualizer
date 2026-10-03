@@ -1,4 +1,4 @@
-"""Detector round 10 (docs/prereg_round10_rescue.md, 2026-09-28): a discriminator for sounds FlexSED hears at 0.4-0.8.
+"""Detector round 10 (docs/history/preregistrations/prereg_round10_rescue.md, release v1.2.0, 2026-09-28): a discriminator for sounds FlexSED hears at 0.4-0.8.
 
 Band candidates (label-free): FlexSED spans at 0.4 (low 0.4) with peak < 0.8, no BEATs 0.175 twin within 1 s (discarded,
 not merged), BEATs self-veto b 0.1218. Cells (admitted candidates are added to the shipped stack's shown spans):
@@ -12,7 +12,7 @@ not merged), BEATs self-veto b 0.1218. Cells (admitted candidates are added to t
 
     python benchmark/detector_round10.py paraphrases                 # writes benchmark/round10_paraphrases.json (once)
     python benchmark/detector_round10.py prep --set calib|heldout    # CPU: candidates, 16-kHz wavs, views, GPU work list
-    (GPU) python benchmark/round10_flexsed.py --work <list> --shard i --of n
+    (GPU) python benchmark/round10_flexsed.py --work <list> --shard i --of n   # script in release v1.2.0
     python benchmark/detector_round10.py check                       # caches complete and aligned (both sets)
     python benchmark/detector_round10.py fit                         # gate 0 / 0b on the 280, R0-R7, picks
     python benchmark/detector_round10.py heldout                     # the picks on the 415 + Holm (read the setup audit first)

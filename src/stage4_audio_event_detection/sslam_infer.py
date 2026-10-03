@@ -1,6 +1,6 @@
 """SSLAM (ICLR 2025; ta012/SSLAM_AS2M_Finetuned, MIT) as a long-window tagger: a ViT-B trained
 on audio MIXTURES, fine-tuned on AudioSet-2M (527 classes, mAP 50.2). Used in the last
-detector attempt (docs/prereg_detector_v5.md) only to confirm long candidates that PSED
+detector attempt (docs/history/preregistrations/prereg_detector_v5.md, release v1.2.0) only to confirm long candidates that PSED
 proposed; it never adds sounds. Scores per 10-s window, hop HOP; times = window centres.
 
     from src.stage4_audio_event_detection.sslam_infer import cache_clips

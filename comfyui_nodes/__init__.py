@@ -8,7 +8,8 @@ The nodes under "MscProj/old setup" are an earlier per-stage version and are not
 Install: link or copy this folder into ComfyUI/custom_nodes/, and set MSCPROJ_ROOT to the project folder if this
 folder is not inside it. Start ComfyUI with `python comfyui_nodes/comfy_start.py`.
 
-Caveat: one run takes about 10-15 minutes for a short clip on one 80 GB GPU. See comfyui_nodes/README.md.
+Run time: about five minutes of GPU time (one NVIDIA H200) to prepare the listener inputs of a 15-s clip, plus the
+picture step (about 20 s per picture try, up to five tries per picture). See comfyui_nodes/README.md.
 """
 from __future__ import annotations
 
@@ -41,7 +42,7 @@ def _free():
         pass
 
 
-# --------------------------------------------------------------------------- the one-click node (frozen D')
+# --------------------------------------------------------------------------- the one-click node (frozen final system)
 def _video_file(video) -> Path:
     """The uploaded video as a file on disk (ComfyUI's VIDEO is usually a path, sometimes bytes)."""
     import tempfile
@@ -252,7 +253,7 @@ class MscSystem:
 
     def run(self, gate_enabled):
         on = bool(gate_enabled)
-        config.use_v4("590")                 # the shipping row (docs/prereg_v4.md)
+        config.use_v4("590")                 # the shipping row (docs/history/preregistrations/prereg_v4.md, release v1.2.0)
         config.GATE_ENABLED = on
         config.DEPICTION_REASONING = on
         config.VLM_VISIBILITY = on

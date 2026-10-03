@@ -1,15 +1,6 @@
-# Stage 3 — Speech Recognition
+# Stage 3 - Speech recognition
 
-**Role:** Transcribe any spoken language in the audio. Speech is now a *secondary* signal (the star
-is non-speech sound), used for context in cross-modal analysis and to avoid augmenting content the
-subtitles already cover.
-
-**Input:** `audio.wav` from Stage 1.
-**Output:** timestamped transcript segments.
-
-**Candidate models:** Whisper Large V3 (quality) / faster-whisper small–medium (local); Qwen2-Audio
-as an alternative that also covers Stage 4 (see LALM note in `docs/project_notes.tex`).
-
-**Status:** Implemented (skeleton) — `transcribe()` returns `SpeechSegment`s via faster-whisper
-(salvaged from `archive/legacy_speech_pipeline/asr.py`); degrades gracefully to `[]` if the package
-is missing.
+Transcribes speech into timestamped segments with faster-whisper (`transcribe()` in `__init__.py`); returns an empty
+list if faster-whisper is not installed. The transcript is context only (the on-screen check asks whether people react
+to a sound); it never becomes a picture. `granite.py` is an alternative transcriber (Granite Speech) not used by the
+final system.

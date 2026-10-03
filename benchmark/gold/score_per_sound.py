@@ -1,11 +1,11 @@
-"""Per-sound scoring against the human gold set (docs/metric_per_sound.md, Adam's rules of
+"""Per-sound scoring against the human gold set (docs/history/plans/metric_per_sound.md, release v1.2.0, the labelling rules of
 19 Sept 2026): every picture a system shows is matched to the gold sound it depicts, then
 counted as hit / visible-picture / cross-trigger / phantom / duplicate; every needed sound
 as hit / miss. Precision, recall, F1 (strict: visible pictures are false alarms), the
 phantom-only F1 for comparison, importance-weighted versions, F0.5 / F2, clip bootstrap CI,
 median lateness, clean-clip accuracy. One rule for every system.
 
-    python benchmark/gold/score_per_sound.py --annotations benchmark/gold/annotations/adam.json \
+    python benchmark/gold/score_per_sound.py --annotations benchmark/gold/annotations/gold_AG.json \
         --tag v4ab --systems proposed blind_a2i audio_caption
     python benchmark/gold/score_per_sound.py --annotations ... --tag v4ab --late 0.5 2 5   # sensitivity
 
@@ -27,8 +27,8 @@ sys.path.insert(0, str(_ROOT))
 import config
 from src.labels import canonical, is_descendant, ancestors, is_salient_nonspeech, is_music, FAMILY
 
-EARLY, LATE = 0.5, 1.0          # a picture may start 0.5 s before and at most 1.0 s after the sound (Adam)
-# Importance rule (2026-09-22, Adam + two Fables x two rounds, declared before the re-run): importance is a
+EARLY, LATE = 0.5, 1.0          # a picture may start 0.5 s before and at most 1.0 s after the sound
+# Importance rule (2026-09-22, design review, two rounds, declared before the re-run): importance is a
 # property of the sound, not of the screen (1 = steady noise of the place, no start/end; 2 = an event you can
 # say in one sentence; 3 = danger or a key story moment). A level-1 NEEDED sound has no onset, so the onset
 # rule cannot judge it: it is "don't care" (no hit, no miss; a same-family picture on it is absorbed, not a
@@ -133,7 +133,7 @@ def load_gold(paths):
                              # needed = the source is neither on screen (visible) nor assumed by a viewer with no
                              # sound (obvious): amendment 4 / metric doc. Until 2026-09-22 15:00 only the obvious
                              # tick was read (22 visible-only rows counted as needed) -- corrected before any
-                             # TEST number was read (docs/GOLD_RERUN_2026-09-22.md).
+                             # TEST number was read (docs/history/analyses/GOLD_RERUN_2026-09-22.md, release v1.2.0).
                              "needed": not (bool(s.get("obvious", False)) or bool(s.get("visible", False))),
                              "importance": int(s.get("importance") or 2),
                              # kept apart for the per-picture judge's counts (PP-1); nothing here reads them
@@ -250,7 +250,7 @@ def score_clip(gold, pics, early=EARLY, late=LATE):
         if g["needed"] and scored(g) and i not in matched_needed:
             out["miss"] += 1; out["w_miss"] += g["importance"]
     # coverage (secondary, no new annotation): share of each needed sound's seconds that had a
-    # same-family picture up; misses count 0. Onset stays the hit criterion (docs/metric_per_sound.md).
+    # same-family picture up; misses count 0. Onset stays the hit criterion (docs/history/plans/metric_per_sound.md, release v1.2.0).
     for i, g in enumerate(gold):
         if not g["needed"] or not scored(g) or g["end"] <= g["start"]:
             continue
@@ -300,9 +300,9 @@ def aggregate(rows):
             "clean_acc": clean_ok / clean_n if clean_n else None, "clips": len(rows)}
 
 
-# Viewer cost (Adam, 2026-09-22, approved after seeing that equal-weight F1 cannot separate the
+# Viewer cost (2026-09-22, approved after seeing that equal-weight F1 cannot separate the
 # systems). It is NOT a new weighting invented for this result: the two numbers are the ones this
-# project declared in September for the gate sweep (benchmark/gate_dev_sweep.py, COST_MISS = 4,
+# project declared in September for the gate sweep (benchmark/gate_dev_sweep.py, release v1.2.0, COST_MISS = 4,
 # COST_REDUNDANT = 2), read off the judging rubric -- a needed picture withheld scores 0 where it
 # could have scored 4, and a picture shown where none is due is capped at 2 where silence scores 4.
 # cost = 4 x (needed sounds rated >= 2 with no picture) + 2 x (pictures that are false alarms);
@@ -331,7 +331,7 @@ def paired_ci(rows_a, rows_b, key="F1", n=2000, seed=0):
     """(difference, lo, hi, P(d>0)) of any aggregate key; raises TypeError when the key is None
     for these rows (clean_acc on a subset with no clean clip)"""
     """clip bootstrap of the DIFFERENCE a - b: the same resampled clips for both systems
-    (amendment 5, docs/prereg_v4.md); rows_a and rows_b are aligned lists (same clips, same order)"""
+    (amendment 5, docs/history/preregistrations/prereg_v4.md, release v1.2.0); rows_a and rows_b are aligned lists (same clips, same order)"""
     rng = np.random.default_rng(seed)
     m = len(rows_a)
     if aggregate(rows_a)[key] is None or aggregate(rows_b)[key] is None:

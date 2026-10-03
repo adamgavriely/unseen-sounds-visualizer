@@ -72,9 +72,10 @@ python main.py --input data/input/clip.mp4 --device cuda
 This writes `data/output/clip_augmented.mp4` (the video with the picture panel) and the intermediate files under
 `data/work/clip/`. The final system is the configuration `config.use_shipped()` in [`config.py`](config.py).
 Before detection, `main.py` prepares the listener inputs of the clip on the spot (FlexSED, BEATs and PANNs scores,
-the two audio-language listeners, DASM and FineLAP), with the same harness as the benchmark. This is slow (about five
-minutes per clip) and is done once per clip. On a Slurm cluster, `slurm/run_best.sh` runs the same system on a folder
-of clips (see [`slurm/README.md`](slurm/README.md)).
+the two audio-language listeners, DASM and FineLAP), with the same harness as the benchmark, once per clip.
+Run time: about five minutes of GPU time (one NVIDIA H200) to prepare the listener inputs of a 15-s clip, plus the
+picture step (about 20 s per picture try, up to five tries per picture). On a Slurm cluster, `slurm/run_best.sh`
+runs the same system on a folder of clips (see [`slurm/README.md`](slurm/README.md)).
 
 ## Reproducing the reported numbers
 
@@ -86,7 +87,8 @@ Appendix C of the report gives the source file of every number.
 
 Recomputing them from a clone is not possible as is. The scripts (for example
 `python benchmark/gold/final_vs_baselines.py`) read the stage-5 outputs of every benchmark clip, and these are
-built on the cluster from the video clips, which are not redistributed. The clip names are in
+built on the cluster from the video clips, which are not redistributed (their source collections are listed in
+the "Data" section (Section 4) and the "Code and data availability" note of the report). The clip names are in
 `benchmark/gold/dev_stems.txt`, `dev2_stems.txt`, `test_stems.txt` and `test2_stems.txt` (split rules in
 `tagger_split.json` and `split.json`); the human labels are in `benchmark/gold/annotations/gold_AG.json`. With the
 clips in place (`data/input/tagger_set/` for the `tg_d*` clips), the steps are those of `slurm/run_best.sh` and

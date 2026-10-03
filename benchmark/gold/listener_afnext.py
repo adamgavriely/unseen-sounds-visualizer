@@ -1,4 +1,4 @@
-"""Round 14 amendment C (docs/prereg_round13_detector_push.md): Audio Flamingo Next (nvidia/audio-flamingo-next-hf) as a
+"""Round 14 amendment C (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): Audio Flamingo Next (nvidia/audio-flamingo-next-hf) as a
 second listener, on exactly the amendment-A candidates (the items of dev_listener_v.json / test_listener_v.json: P2 peak >= 0.5,
 PV, P1 depictable conf < 0.6), same audio cut (item["run_audio"] from the same wav16 files, at least 1 s).
   V4  open inventory: listener_variants.V4_Q, greedy, 64 new tokens; one generation per cut, shared by X and the null;

@@ -1,4 +1,4 @@
-"""Stage-4 dry run on the per-sound gold (amendment 5, docs/prereg_v4.md): the BLIND system's
+"""Stage-4 dry run on the per-sound gold (amendment 5, docs/history/preregistrations/prereg_v4.md, release v1.2.0): the BLIND system's
 shown set (detector -> label filter -> families -> display timeline, no gate, no pictures) for
 BEATs and PretrainedSED at display bars 0.25-0.40, scored with the per-sound rules of
 benchmark/gold/score_per_sound.py. A diagnostic of what each detector finds and fires, on
@@ -116,7 +116,7 @@ def events_for(stem: str, det: str, bar: float, wav: Path):
         fw, times, labels = PI.infer_psed(wav, "cpu")
         bar = 0.35
     if det == "corr":
-        # two-detector corroboration (Fables C+D, 2026-09-22): a BEATs event is kept only if
+        # two-detector corroboration (design review, 2026-09-22): a BEATs event is kept only if
         # PretrainedSED fires the same family overlapping it; audio only, applied to both systems
         be = events_for(stem, "beats", bar, wav)
         ps = events_for(stem, "psed", 0.15, wav)     # PSED at its declared calibration

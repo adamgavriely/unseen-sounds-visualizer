@@ -1,4 +1,4 @@
-"""Detector round 5 (docs/prereg_v4.md, 2026-09-28): does a newer AudioSet tagger beat BEATs as the stage-4 framewise tagger?
+"""Detector round 5 (docs/history/preregistrations/prereg_v4.md, release v1.2.0, 2026-09-28): does a newer AudioSet tagger beat BEATs as the stage-4 framewise tagger?
 
   A  EAT-large fine-tuned on AS2M      HF worstchan/EAT-large_epoch20_finetune_AS2M (github.com/cwx-worst-one/EAT)
   B  Dasheng-base AudioSet fine-tuned  Zenodo dasheng_audioset_mAP497.pt (github.com/RicherMans/Dasheng)

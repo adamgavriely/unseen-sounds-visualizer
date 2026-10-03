@@ -28,7 +28,7 @@ draining. So the run is split so that only one model is resident at a time:
 The split also makes judge reliability cheap to measure: a second judge re-scores the
 same cached descriptions with no vision work at all --
     python -m benchmark.run_protocol --phase judge --judge Qwen/Qwen3-8B --tag judge2
-which is exactly the Day-6 experiment in docs/PLAN.md.
+which is exactly the Day-6 experiment in docs/history/plans/PLAN.md (release v1.2.0).
 
 Usage:
     python -m benchmark.run_protocol --limit 12          # small end-to-end pass

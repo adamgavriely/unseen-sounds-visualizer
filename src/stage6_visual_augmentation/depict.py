@@ -1,9 +1,9 @@
-"""Round 57 DEPICT-EVENT (panel 1 Oct 2026; shipped with Adam's OK 1 Oct 15:34).
+"""Round 57 DEPICT-EVENT (design review and shipped, 1 Oct 2026).
 
 A drawn picture is dropped when (a) its depicted event (the spec's `subject`) is visibly happening at the picture start
 +-1 s (VLM: E1 "yes" AND the opposite twin E2 "no") AND (b) text only, the visibility gate's own named maker B "could be
 mistaken for" the picture's sound A in both orders. The viewer already sees the thing that makes this sound. Prompts,
-frames and model are those of benchmark/gold/depict_screen.py (the DEV screen: 29/58, 17, 2.113 vs 29/58, 18, 2.141).
+frames and model are those of benchmark/gold/depict_screen.py (release v1.2.0; the DEV screen: 29/58, 17, 2.113 vs 29/58, 18, 2.141).
 Honest reading: the event question said "no" on 42 of 43 DEV pictures; the rule rarely fires.
 
 Answers are asked once per clip by a separate step (one model on the GPU at a time) and cached; `_display_spans` reads the

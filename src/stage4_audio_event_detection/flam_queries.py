@@ -1,10 +1,10 @@
-"""The FLAM query vocabulary (docs/prereg_v4.md §4). Fixed before the run; not edited after.
+"""The FLAM query vocabulary (docs/history/preregistrations/prereg_v4.md §4, release v1.2.0). Fixed before the run; not edited after.
 
 FLAM was trained on descriptive captions, so each query is a short phrase, and each maps
 to ONE AudioSet label so that everything downstream of the detector -- src/labels
 families, the gate, dedup, depiction -- is unchanged. Written from the ontology and the
 pipeline's families; the five entries marked "dev" were added so that every real labelled
-detection on the dev split (benchmark/dev_phantoms.json) has a query. Labels the pipeline never shows (speech-like, scene-level) are left out.
+detection on the dev split (benchmark/dev_phantoms.json, release v1.2.0) has a query. Labels the pipeline never shows (speech-like, scene-level) are left out.
 """
 
 QUERIES = [

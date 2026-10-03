@@ -1,4 +1,4 @@
-"""Detector round 8 (docs/prereg_round8_ideas.md, 2026-09-28): new ideas for sounds a detector hears but the stack drops.
+"""Detector round 8 (docs/history/preregistrations/prereg_round8_ideas.md, release v1.2.0, 2026-09-28): new ideas for sounds a detector hears but the stack drops.
 
 Cells (all a priori; see the prereg): I2 repetition-conditioned FlexSED bar (6 cells), I3 per-clip normalised BEATs,
 I4 ontology parent emission, I6 VLM scene prior, I7 FlexSED local-contrast veto, I9 ontology-matched vetoes,

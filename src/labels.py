@@ -1,7 +1,7 @@
 """Shared AudioSet-label helpers: which sounds we visualize, and how we merge
 the label families PANNs emits for a single real-world source.
 
-Used by the pipeline (Stage 5) and by benchmark/curate.py so the two stay in
+Used by the pipeline (Stage 5) and by benchmark/curate.py (release v1.2.0) so the two stay in
 sync (the "one entry per real source" + "music non-salient for now" conventions).
 """
 from __future__ import annotations
@@ -18,7 +18,7 @@ SPEECH_LABELS = {
     "Whispering",
 }
 # Non-word vocal events: no words for a caption to carry, real scene events (a scream off
-# screen). Drawn like Laughter. Moved out of SPEECH_LABELS on 2026-09-21 (Adam + Fable panel:
+# screen). Drawn like Laughter. Moved out of SPEECH_LABELS on 2026-09-21 (design review:
 # SDH always tags [screaming], [shouting]).
 VOCAL_EVENTS = {"Shout", "Yell", "Children shouting", "Screaming"}
 # Steady textures with no event and no drawable source: never drawn, whatever family they map
@@ -100,15 +100,15 @@ def is_salient_nonspeech(label: str) -> bool:
     Two rules, chosen by config.LABEL_FILTER:
       "lists" (v1-v4ab): hand lists SPEECH / SCENE / GENERIC written around BEATs' 527 names
               -- a detector with other names (PSED's AudioSet-Strong set) slips past them
-              (docs/prereg_v4.md, v4ab diagnosis);
+              (docs/history/preregistrations/prereg_v4.md, release v1.2.0, v4ab diagnosis);
       "branch" (v4ab2 on): only speech, music and the ontology branch "Channel, environment
-              and background" are kept off screen (Adam, 20 Sept 2026); everything else may
+              and background" are kept off screen (20 Sept 2026); everything else may
               be drawn, whatever the detector calls it. Detector-neutral by construction.
     """
     import config
     mode = getattr(config, "LABEL_FILTER", "lists")
     if mode == "depictable":
-        # v4ab3 / v4b3 (docs/prereg_v4.md) with amendment 2 (2026-09-21, Adam + Fable panel,
+        # v4ab3 / v4b3 (docs/history/preregistrations/prereg_v4.md, release v1.2.0) with amendment 2 (2026-09-21, design review,
         # declared before the re-run): draw a label only if a captioner would write it as a
         # bracket tag AND it names a source one can picture. Order: (1) steady textures are out
         # on the raw name (Wind subtree, Breathing, Rumble, Hum ...); (2) the label is mapped to
@@ -372,7 +372,7 @@ def merge_by_label(events: List[AudioEvent], gap: float = 1.0, raw_labels: dict 
                 bursts[-1][1] = max(bursts[-1][1], e.end)
                 # a burst starts where its STRONGEST firing starts, not where its earliest one
                 # does: chaining firings a second apart made the Gunshot burst start at 8.25 for a
-                # shot the annotator marked at 10.10 (docs/onset_timing.md). Off by default.
+                # shot the annotator marked at 10.10 (docs/history/analyses/onset_timing.md, release v1.2.0). Off by default.
                 if _start_rule() == "strongest" and e.confidence > bursts[-1][2]:
                     bursts[-1][0] = e.start
                 bursts[-1][2] = max(bursts[-1][2], e.confidence)
@@ -404,10 +404,10 @@ def _common_parent(a: str, b: str) -> str:
 def choose_source(raw: List[AudioEvent], fam: str, burst: Tuple[float, float], explain: bool = False):
     """The most specific sound the detector really heard in one burst of a family (PICTURE_V3).
 
-    Adam, 2026-09-24: pictures were drawn from the family tag -- a bus drawn as a car, a horn drawn
+    2026-09-24: pictures were drawn from the family tag -- a bus drawn as a car, a horn drawn
     as a train. The detector usually DID hear the specific sound; it was lost because only children
     above the display bar could become ``detail``, and the most confident member was often an
-    ontology ancestor ("Rail transport") rather than a child. Panel of five, two rounds:
+    ontology ancestor ("Rail transport") rather than a child. Design review, two rounds:
 
       * candidates: every raw firing of this family at or above the detector's own bar
         (AED_THRESHOLD) that overlaps the burst, and at least SOURCE_REL_FLOOR x the family's peak
@@ -655,7 +655,7 @@ def depiction_query(label: str, detail: str = "") -> str:
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# SENSE ANCHOR (Adam, 28 Sept 2026): a label word is read in its ONTOLOGY sense, never its plain-English one. "Honk"
+# SENSE ANCHOR (28 Sept 2026): a label word is read in its ONTOLOGY sense, never its plain-English one. "Honk"
 # is the goose's call (Honk > Goose > Fowl), not a car horn; "Tap" is a knock on a door (Tap > Door), not a water tap;
 # "Bark" is a dog (Bark > Dog), not tree bark. For an ACTION label (a sound word that names no thing) the maker is the
 # nearest ancestor that is a THING. Two fixed lists, read off the 346 drawable labels (benchmark/gold/

@@ -1,7 +1,10 @@
 #!/bin/bash
-# One-time environment build on the BIU cluster login node.
+# One-time environment build on a Slurm cluster login node.
 #   bash slurm/setup_env.sh
-# Creates conda env "msproj" with CUDA torch + the GPU backends (diffusers, Qwen2.5-VL).
+# Creates conda env "msproj" with FFmpeg, CUDA PyTorch and requirements.txt, for the models of the final system:
+# BEATs, PANNs, OWLv2, faster-whisper, Qwen3.8-27B, Qwen3-Omni, Audio Flamingo Next and Qwen-Image-2512.
+# FlexSED and DASM come from their own repositories (FLEXSED_ROOT, T4SED_ROOT) and FineLAP needs a second
+# environment (FINELAP_PYTHON); see README.md and .env.example. The models download on first use.
 set -euo pipefail
 
 ENV_NAME=msproj

@@ -186,18 +186,18 @@ const CLIPS = /*__CLIPS__*/[];
   function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; const v = view(); v.forEach(i => { const c = CLIPS[i], a = data[c.id]; const o = document.createElement("option"); o.value = i;
       o.textContent = (i+1) + " · " + c.id + " [" + (SHORT[c.tag] || c.tag || "") + (c.split === "dev" ? ", dev" : (c.split === "extra" ? (c.wave === 8 ? ", wave 8 (bodycam / doc / stream / pets / TV)" : c.wave === 7 ? ", trailer cut" : c.wave === 6 ? ", wave 6 real footage" + (c.vlm ? " · VLM: " + c.vlm : "") : c.wave === 5 ? ", movie scene" + (c.vlm ? " · VLM: " + c.vlm : "") : c.wave === 4 ? ", mixed wave 4" : c.wave === 3 ? ", mixed wave 3 (genre)" : c.wave === 2 ? ", mixed wave 2" + (c.vlm ? " · VLM: " + c.vlm : "") : ", new mixed") : "")) + (c.parked ? ", parked" : "") + "]" + (a && a.bad ? " ✗ bad" : (a && a.done ? " ✓" : "")); s.appendChild(o); });
     s.value = idx; $("fCount").textContent = v.length + " of " + CLIPS.length + " clips"; }
-  // tagging goals per clip type (docs/metric_per_sound.md): enough needed sounds for recall, enough
+  // tagging goals per clip type (docs/history/plans/metric_per_sound.md, release v1.2.0): enough needed sounds for recall, enough
   // empty clips for precision, enough covered sounds for the hard case
   const GOALS = {unseen_ambient:[25,"unseen"], mixed:[25,"mixed"], seen_ambient:[25,"seen"], no_ambient:[25,"no-ambient"], audioset_strong:[30,"slice B"]};
-  // the category comes from YOUR tags, not from the old clip-level tag (benchmark/README.md):
+  // the category comes from YOUR tags, not from the old clip-level tag (benchmark/README.md, release v1.2.0):
   // no sounds -> no-ambient; needed sounds only (not visible, not obvious) -> unseen; needed sounds
   // next to seen/obvious ones -> mixed (some sources visible, some not); all seen/obvious -> seen.
   // Slice B clips are their own category and never count toward the four.
-  // Importance-aware (Fable, 21 Sept 2026): visible importance-1 sounds (a door you watch closing)
+  // Importance-aware (design review, 21 Sept 2026): visible importance-1 sounds (a door you watch closing)
   // never change the category; mixed needs a needed sound of importance >= 2 AND a visible/obvious
   // sound of importance >= 2 (a source the system must hold back on while drawing the other).
   // (A label-based "real event" test for the seen side was tried on 22 Sept and reverted the same
-  // night: Adam wants the category to follow his numbers only.)
+  // night: the category follows the importance numbers only.)
   function category(a){ const snds = a.sounds || []; if(!snds.length) return "no_ambient";
     const need = snds.filter(s => !s.obvious && !s.visible); if(!need.length) return "seen_ambient";
     const needBig = need.some(s => imp(s.importance) >= 2), seenBig = snds.some(s => (s.obvious || s.visible) && imp(s.importance) >= 2);

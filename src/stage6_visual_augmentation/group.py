@@ -1,4 +1,4 @@
-"""Smart grouping of repeated pictures (Round 47 GROUP, Adam's idea, shipped 1 Oct 2026).
+"""Smart grouping of repeated pictures (Round 47 GROUP, design review, shipped 1 Oct 2026).
 
 Two pictures of the same sound family that are close in time (picture gap in (0, GROUP_MAX_GAP] s) may be one sound
 with a pause (an alarm, a shaver) or two events (two barks). Qwen3-Omni hears the stretch between them and answers "same"
@@ -110,7 +110,7 @@ def _trail(a, b, pa, pb, rep, merged):
 
 def ask(wav, sr: int, spans, gen, max_gap: float = None):
     """answers for every candidate pair of one clip: {key: [answer order 1, answer order 2]}.
-    `gen(content, audio)` is a Qwen3-Omni thinker call (greedy, 4 new tokens), as benchmark/gold/grp_screen.py."""
+    `gen(content, audio)` is a Qwen3-Omni thinker call (greedy, 4 new tokens), as benchmark/gold/grp_screen.py (release v1.2.0)."""
     max_gap = float(getattr(config, "GROUP_MAX_GAP", 4.0)) if max_gap is None else max_gap
     res = {}
     for a, b in pairs(spans, max_gap):

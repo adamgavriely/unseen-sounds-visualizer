@@ -1,5 +1,5 @@
-"""The merged TEST (Adam, 2026-09-30; docs/prereg_round13_detector_push.md "Merge of the tagger set" and "Merged-DEV
-selection"): old TEST (60 clips, gold_AG test_bench) + the tagger TEST part (benchmark/gold/test2_stems.txt, tagger_AG),
+"""The merged TEST (2026-09-30; docs/history/preregistrations/prereg_round13_detector_push.md "Merge of the tagger set" and "Merged-DEV
+selection", release v1.2.0): old TEST (60 clips, gold_AG test_bench) + the tagger TEST part (benchmark/gold/test2_stems.txt, tagger_AG),
 scored ONCE as one set for the merged-DEV pick vs the old shipped config B0 (= B0r, the scored render).
 
   dasm      DASM frame scores (round-6 scorer, as the DEV / tagger caches) for the old TEST clips -> data/work/dasm_test
@@ -35,7 +35,7 @@ OUT, STARTED, MD = G / "final_test.json", G / "final_test.json.started", G / "fi
 
 
 def set_tag(tag):
-    """a later, separately recorded TEST read (Adam 30 Sept 07:50: every new DEV best is also reported on TEST)"""
+    """a later, separately recorded TEST read (30 Sept 07:50: every new DEV best is also reported on TEST)"""
     global OUT, STARTED, MD
     if tag:
         OUT, STARTED, MD = G / f"final_test_{tag}.json", G / f"final_test_{tag}.json.started", G / f"final_test_{tag}.md"

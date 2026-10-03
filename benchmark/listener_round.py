@@ -1,4 +1,4 @@
-"""Amendment 25 (docs/prereg_v4.md): an audio "listener" (Qwen3-Omni-30B-A3B-Instruct) asked yes/no about each candidate span
+"""Amendment 25 (docs/history/preregistrations/prereg_v4.md, release v1.2.0): an audio "listener" (Qwen3-Omni-30B-A3B-Instruct) asked yes/no about each candidate span
 that cell E (or E-AND) adds over the shipped stack. Stage-4 logic and cost C from benchmark/detector_round2.py.
 
     python benchmark/listener_round.py pool   [--set calib|heldout]   # candidate spans + hit/false/neutral labels (CPU)

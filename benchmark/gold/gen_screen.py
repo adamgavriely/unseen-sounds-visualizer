@@ -1,5 +1,5 @@
 """GP-4 screening: draw the picture-DEV sounds with each candidate generator, same text, same seed rule
-(docs/panel_2026-09-25_scene_prompt.md, docs/panel_2026-09-25_generator.md). Runs in ~/venvs/gen
+(docs/history/panels/panel_2026-09-25_scene_prompt.md and panel_2026-09-25_generator.md, release v1.2.0). Runs in ~/venvs/gen
 (torch 2.7, diffusers from main), not in msproj, so it imports nothing from the pipeline.
 
     gate:   python benchmark/gold/gen_screen.py --model q21 --gate
@@ -24,7 +24,7 @@ NEGATIVE_V3 = ["scenery", "landscape", "background scene", "room interior", "str
 # GP-4 3(b) image-prompt rules (G2): the whole thing, mid-act with its visible effect, one large subject
 RULES_TAIL = (", the whole thing fully in frame, caught at the moment it makes the sound with its visible "
               "effect, one large subject filling the picture, plain white background")
-# group (b): sounds with a canonical maker get a fixed subject per label (G2, G1; five-panel GP-4)
+# group (b): sounds with a canonical maker get a fixed subject per label (G2, G1; design review GP-4)
 TEMPLATES = {
     "Thunder": "one large lightning bolt striking down from a dark storm cloud",
     "Thunderstorm": "one large lightning bolt striking down from a dark storm cloud",
@@ -59,7 +59,7 @@ MODELS = {
 }
 
 
-def seed_of(item) -> int:                                   # benchmark/gold/picture_bench.py, unchanged
+def seed_of(item) -> int:                                   # benchmark/gold/picture_bench.py (release v1.2.0), unchanged
     return zlib.crc32(f"{item['clip']}|{item['label']}|{item['start']:.2f}".encode()) & 0x7FFFFFFF
 
 

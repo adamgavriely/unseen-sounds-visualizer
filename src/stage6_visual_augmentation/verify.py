@@ -43,10 +43,10 @@ AMBIGUOUS = [
      "rewrite": None, "neg": ""},
     {"name": "smoke_alarm", "labels": {"Smoke detector, smoke alarm"}, "subject": ["smoke detector", "smoke alarm"],
      "intended": "a smoke detector", "maker": "smoke detector", "noise": "alarm",
-     # 28 Sept (Adam): + dome / CCTV camera -- round 3 passed a dome security camera wreathed in smoke
+     # 28 Sept: + dome / CCTV camera -- round 3 passed a dome security camera wreathed in smoke
      "confusions": ["a security camera", "a ceiling lamp", "a dome security camera", "a CCTV camera"],
      "rewrite": "a round white smoke detector on a ceiling, sounding its alarm", "neg": "camera, lens",
-     # 28 Sept (Adam): the rewrite from try 1 -- the checker passes a dome camera as a smoke detector, and only the
+     # 28 Sept: the rewrite from try 1 -- the checker passes a dome camera as a smoke detector, and only the
      # rewrite drew a real one (round 2, try 3)
      "rewrite_first": True},
     {"name": "alarm_bell", "labels": {"Alarm", "Fire alarm"}, "subject": ["alarm bell", "fire alarm"],
@@ -63,8 +63,8 @@ AMBIGUOUS = [
                     "a trumpet or musical horn",
                     # 28 Sept: the sliceB Honk redraw passed with a trumpet-shaped horn stuck in a car's grille
                     "a vehicle with a large trumpet-shaped horn stuck on it"],
-     # Adam, 28 Sept (an image is always preferred over a word card): the wording that passed 4/4 on the sliceB Honk
-     # clip and the 97ao horn clip (scripts/horn_trials.py); the steering-wheel wording passed 0/4
+     # 28 Sept (an image is always preferred over a word card): the wording that passed 4/4 on the sliceB Honk
+     # clip and the 97ao horn clip (scripts/horn_trials.py, release v1.2.0); the steering-wheel wording passed 0/4
      "rewrite": "a {veh} seen from the front with curved sound-wave lines coming out of its front grille",
      "neg": "megaphone, loudspeaker, bullhorn, trumpet, horn-shaped object, speaker cone"},
     {"name": "steam", "labels": {"Steam"}, "subject": ["steam"],
@@ -80,7 +80,7 @@ AMBIGUOUS = [
      "intended": "hands typing on a keyboard", "maker": "computer keyboard", "noise": "typing",
      "confusions": ["a person's face", "a computer screen"],
      "rewrite": "two hands typing on a computer keyboard, seen from above", "neg": "face, head, mouth"},
-    # 28 Sept (Adam): the sliceB rattle passed on try 3 as a ball of yarn. The instrument only: AudioSet's plain
+    # 28 Sept: the sliceB rattle passed on try 3 as a ball of yarn. The instrument only: AudioSet's plain
     # "Rattle" is a rattling noise (a loose part, a vehicle), not a thing to draw as a toy.
     {"name": "rattle", "labels": {"Rattle (instrument)", "Maraca"},
      "subject": ["rattle instrument", "baby rattle", "maraca"],
@@ -143,7 +143,7 @@ _FILLER = {"a", "an", "the", "or", "and", "of", "on", "in", "with", "it", "its",
 
 
 def feedback_negative(picked: str, intended: str, subject: str, spec) -> str:
-    """Refinement for the next try (Adam, 28 Sept): the wrong thing the VLM saw goes into the negative prompt. Words that
+    """Refinement for the next try (28 Sept): the wrong thing the VLM saw goes into the negative prompt. Words that
     name the source itself (subject, intended option, the sound's names) are never negated."""
     if not picked or picked == SOMETHING_ELSE or picked == intended:
         return ""
@@ -342,7 +342,7 @@ def rewrite_for(spec, subject: str) -> Optional[dict]:
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# PICTURE_LOOK_VLM / PICTURE_LOOKALIKE_VLM (Adam, 28 Sept 2026: the hand-written rewrite wording is "too specific").
+# PICTURE_LOOK_VLM / PICTURE_LOOKALIKE_VLM (28 Sept 2026: the hand-written rewrite wording is "too specific").
 # The pipeline VLM, text only, greedy, one answer per (maker, sound) cached for the run.
 DESCRIBE_PROMPT = ("In one short sentence for an image generator, describe what a typical {maker} looks like while it "
                    "makes its {noise} sound. Name only that object and its visible parts; no other objects, {people}"

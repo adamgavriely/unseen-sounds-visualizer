@@ -1,4 +1,4 @@
-"""Round 39 DETACHED-ADD screen (docs/prereg_round13_detector_push.md "Round 39 DETACHED-ADD"), CPU only, on the saved SHIP8
+"""Round 39 DETACHED-ADD screen (docs/history/preregistrations/prereg_round13_detector_push.md "Round 39 DETACHED-ADD", release v1.2.0), CPU only, on the saved SHIP8
 proposed pictures of merged DEV, scored on gold_AG.json. For every family a clip already draws with a NON-rescued picture, find
 runs of that family (max over same-family columns) in any of the three frame caches at the WEAK bars (BEATs >= AED_THRESHOLD
 0.175, FlexSED >= FLEXSED_VETO 0.3, DASM >= LISTENER_DASM_BAR 0.575; _runs over LISTEN_RUN_GAP; length >= 0.24 s) whose onset is

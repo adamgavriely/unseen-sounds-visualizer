@@ -1,4 +1,4 @@
-"""The results hierarchy of docs/panel_2026-09-26_plan.md §A, for one table (one tag, one subset).
+"""The results hierarchy of docs/history/panels/panel_2026-09-26_plan.md §A (release v1.2.0), for one table (one tag, one subset).
 
 Primary: per-sound dF1 ours - blind (outside every family). Family 1 (Holm): the seven secondary rows the
 scorer prints for ours - blind. Family 2 (Holm): ours - silence on F1 (all clips), viewer cost (all clips) and

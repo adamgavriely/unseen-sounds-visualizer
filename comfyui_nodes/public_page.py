@@ -6,7 +6,7 @@ the node sends, and shows the finished video and the list of pictures. One video
 
     ~/venv_gradio/bin/python comfyui_nodes/public_page.py [--comfy http://127.0.0.1:8188] [--port 7860] [--share]
 
-With --share, Gradio prints a public https://....gradio.live link (works without the BIU VPN, only while the job runs).
+With --share, Gradio prints a public https://....gradio.live link (works from outside the cluster network, only while the job runs).
 """
 from __future__ import annotations
 
@@ -102,7 +102,7 @@ def run(video_path):
     vids = (outs.get("3", {}).get("images") or outs.get("3", {}).get("videos") or [])
     text = "\n".join(outs.get("4", {}).get("text", []))
     if not vids:
-        yield None, "Finished, but no video came back. Ask Adam to check the ComfyUI log.", text
+        yield None, "Finished, but no video came back. Check the ComfyUI log.", text
         return
     v = vids[0]
     out = Path(f"/tmp/mscproj_public_{pid}.mp4") if not Path.home().joinpath("tmp_comfy").exists() else \

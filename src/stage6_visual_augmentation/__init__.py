@@ -7,7 +7,7 @@ needs nothing.
 
 Compositing shows the augmentation image for the currently-active sound event
 *alongside* the original video (side-by-side), time-aligned, with the original
-audio kept. See docs/project_notes.tex sec:placement for the placement rationale.
+audio kept. See docs/history/earlier_drafts/project_notes.tex sec:placement (release v1.2.0) for the placement rationale.
 """
 from __future__ import annotations
 
@@ -87,7 +87,7 @@ def _caption(img: Image.Image, text: str) -> Image.Image:
 
 def _prompt_caption(img: Image.Image, label: str, prompt: str) -> Image.Image:
     """The generator's prompt, printed under the picture. A debugging aid, not a
-    viewer feature: it is how Adam sees WHY a picture looks the way it does."""
+    viewer feature: it is how a developer sees WHY a picture looks the way it does."""
     if not prompt:
         return img
     d = ImageDraw.Draw(img, "RGBA")
@@ -136,7 +136,7 @@ def _sound_glyph(img: Image.Image, strength: float = 1.0) -> Image.Image:
 
     A photograph of a fire engine says "there is a fire engine"; it does not say "you
     are HEARING one". The viewer has to infer that the panel is about sound at all,
-    which is exactly the decoding step Adam asked to remove -- and the DHH
+    which is exactly the decoding step the design review asked to remove -- and the DHH
     visualization literature is consistent that the cue should be immediate rather than
     interpreted (sec:litreview). So the source and the fact-of-sound are combined in one
     simple picture: the retrieved photograph of the source, plus the standard radiating
@@ -149,7 +149,7 @@ def _sound_glyph(img: Image.Image, strength: float = 1.0) -> Image.Image:
     w, h = img.size
     r = max(7, int(min(w, h) * 0.038))
     # Put the mark against the thing that is making the sound -- beside the bird, not
-    # parked in the corner of the frame. Adam's example was sound drawn at the bird's
+    # parked in the corner of the frame. The design review's example was sound drawn at the bird's
     # mouth; the subject's silhouette is findable on a plain ground, so the arcs go just
     # outside its upper edge. Photographs fill the frame and fall back to the corner.
     box = _subject_bbox(img)
@@ -324,7 +324,7 @@ def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
         import torch
         from diffusers import AutoPipelineForText2Image
         is_flux = "flux" in model.lower()
-        # Qwen-Image-2512 (v4, docs/prereg_v4.md): 20B MMDiT + a Qwen2.5-VL text encoder,
+        # Qwen-Image-2512 (v4, docs/history/preregistrations/prereg_v4.md, release v1.2.0): 20B MMDiT + a Qwen2.5-VL text encoder,
         # ~57 GB in bf16 -- an A100-80 / RTX Pro 6000 job, no offload. Its guidance is
         # "true" classifier-free guidance (true_cfg_scale), the card's recommended 50/4.0.
         is_qwen = "qwen-image" in model.lower()
@@ -469,7 +469,7 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
     learned, saw_text = [], False               # refinement carried from each refused try to the next
     if verify:
         from src.stage6_visual_augmentation.verify import rewrite_first
-    # PICTURE_SENSE (src/stage6_visual_augmentation/sense.py, 28 Sept, test docs/picture_sense_test_2026-09-28.md): the
+    # PICTURE_SENSE (src/stage6_visual_augmentation/sense.py, 28 Sept, test docs/history/analyses/picture_sense_test_2026-09-28.md, release v1.2.0): the
     # generic method instead of the AMBIGUOUS table -- the slot sentence and the mined negatives from try 1, sense.check;
     # templates are left as they are
     sense = bool(verify and getattr(config, "PICTURE_SENSE", False))
@@ -482,14 +482,14 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
     for t in range(tries):
         # PICTURE_VERIFY (src/stage6_visual_augmentation/verify.py): try 1 is exactly the shipped picture (same seed);
         # each later try a new seed (stride 1000, clear of the blank guard's +1); from try 3 the clearer fixed rewrite
-        # for an ambiguous word, "no text" in the prompt and text words in the negative. Refined each time (Adam,
-        # 28 Sept): every refused try adds what the VLM saw instead (verify.feedback_negative) to the next negative, and
+        # for an ambiguous word, "no text" in the prompt and text words in the negative. Refined each time
+        # (28 Sept): every refused try adds what the VLM saw instead (verify.feedback_negative) to the next negative, and
         # text found by OCR switches "no text" on from the next try
         subj_t, prompt_t, neg_t, seed_t = subject, prompt, neg, seed + 1000 * t
         if sp:
             subj_t, prompt_t = sp["subject"], sp["subject"] + RULES_TAIL
             neg_t = ", ".join(x for x in (screen_negative(subj_t), sp["neg"]) if x) or " "
-        # an entry flagged rewrite_first (smoke detector, Adam 28 Sept) uses its clearer fixed wording from try 1: the
+        # an entry flagged rewrite_first (smoke detector, 28 Sept) uses its clearer fixed wording from try 1: the
         # checker cannot tell its look-alike (a dome camera) from it, so only the wording keeps the look-alike out
         if t >= 2 or saw_text or first:
             from src.stage6_visual_augmentation.verify import rewrite_for
@@ -585,7 +585,7 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
                 spec.image_path = str(path)
                 spec.backend = "placeholder"
         elif backend == "diffusion" and getattr(config, "PICTURE_FINAL", False):
-            # The frozen final picture setup (docs/freeze_picture_setup_2026-09-25.md), for demo videos only
+            # The frozen final picture setup (docs/history/preregistrations/freeze_picture_setup_2026-09-25.md, release v1.2.0), for demo videos only
             # (week plan C.1, level 2: switched on only if the blind confirmation passes). One source of truth:
             # the templates, cards, rules tail and blank guard are imported from the screening code as frozen.
             _final_picture(spec, path, work_dir, query, size, model, device)
@@ -711,14 +711,14 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
                 cur = [label, a, b, s]; raw_end = b0
                 spans.append(cur)
             cur_raw[id(cur)] = raw_end
-    for sp in spans:                                 # MAX_AFTER_END (Adam, 28 Sept): at most this long past the real end
+    for sp in spans:                                 # MAX_AFTER_END (28 Sept): at most this long past the real end
         sp[2] = min(float(duration), max(sp[2], sp[1] + dwell))
         if cap:
             sp[2] = min(sp[2], sp[1] + float(cap))
         if after is not None:
             sp[2] = min(sp[2], max(cur_raw[id(sp)], sp[1]) + float(after))
     _trail_windows(spans, dwell, after, gap)
-    if getattr(config, "GROUP_ASK", False):          # Round 47 GROUP (Adam, 1 Oct): Omni-confirmed repeats -> one picture
+    if getattr(config, "GROUP_ASK", False):          # Round 47 GROUP (1 Oct): Omni-confirmed repeats -> one picture
         from src.stage6_visual_augmentation.group import apply as _group
         spans = _group(spans, clip)
     return [tuple(sp) for sp in sorted(spans, key=lambda sp: sp[1])]
@@ -917,7 +917,7 @@ def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
                  specs: List[AugmentationSpec], top: int = 8, placed=None) -> None:
     """Every raw detection active at time t, loudest first, with the gate's verdict.
 
-    Diagnosis, not presentation. Adam: "every sound recognized should be written, so I
+    Diagnosis, not presentation. Design review: "every sound recognized should be written, so I
     can see in the video what is heard and what it decided." When a picture is wrong
     this strip says whether the detector heard the wrong thing or the gate did the
     wrong thing with the right one -- which are different repairs."""
@@ -926,7 +926,7 @@ def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
     d.rectangle(box, fill=(10, 11, 15))
     d.line([x0, y0, x1, y0], fill=(60, 64, 80))
     # Speech and music are never candidates, and on a talky clip they took two of the six
-    # rows while a half-second bark went unlisted. Adam: leave them out.
+    # rows while a half-second bark went unlisted. Design review: leave them out.
     from src.labels import is_salient_nonspeech, canonical
     gate = float(getattr(config, "DISPLAY_THRESHOLD", 0.0))
     # One row per FAMILY, like the panel: four siren sub-labels (police, fire engine,

@@ -1,5 +1,5 @@
 """Detectors on gold slice B (AudioSet-Strong eval clips with a consequential sound buried
-under speech/music; benchmark/gold/audioset_slice.py). Declared in docs/prereg_v4.md before
+under speech/music; benchmark/gold/audioset_slice.py (release v1.2.0)). Declared in docs/history/preregistrations/prereg_v4.md (release v1.2.0) before
 any number was seen: no pass bar, one table -- BEATs (v3), PretrainedSED BEATs-strong (v4
 candidate) and FLAM-v2 (calibrated, failed attempt) on the same clips, same span rule.
 
@@ -51,7 +51,7 @@ def use_set(name: str):
         VIDEOS = _ROOT / "data" / "input" / "audioset_calib"
         WIN = _ROOT / "benchmark" / "audioset_calib_windows"
         OUT = _ROOT / "benchmark" / "audioset_calib_eval.json"
-    elif name == "fresh":             # docs/prereg_fresh_confirm_set.md: read only after a candidate passes the 415
+    elif name == "fresh":             # docs/history/preregistrations/prereg_fresh_confirm_set.md (release v1.2.0): read only after a candidate passes the 415
         SLICE = _ROOT / "benchmark" / "gold" / "audioset_fresh.json"
         VIDEOS = _ROOT / "data" / "input" / "audioset_fresh"
         WIN = _ROOT / "benchmark" / "audioset_fresh_windows"

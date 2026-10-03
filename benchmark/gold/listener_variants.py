@@ -1,4 +1,4 @@
-"""Round 13, amendment A (docs/prereg_round13_detector_push.md, "Amendment A"): four stricter listener questions, scored in ONE
+"""Round 13, amendment A (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0, "Amendment A"): four stricter listener questions, scored in ONE
 Qwen3-Omni job on the same candidates as R13-3. Same model, yes/no score and audio cut as benchmark/gold/dev_listener.py unless
 the amendment says otherwise.
 

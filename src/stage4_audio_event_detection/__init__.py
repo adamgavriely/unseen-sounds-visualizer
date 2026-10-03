@@ -10,7 +10,7 @@ Real implementation. Requires: torch, panns-inference, librosa, matplotlib, and
 the CNN14 SED checkpoint at ~/panns_data/ (auto-fetched once, ~327 MB). Degrades
 gracefully to [] if any of that is missing so the skeleton still runs.
 
-See docs/project_notes.tex sec:models (PANNs executive summary).
+See docs/history/earlier_drafts/project_notes.tex sec:models (release v1.2.0; PANNs executive summary).
 """
 from __future__ import annotations
 
@@ -167,7 +167,7 @@ def _extract_events(framewise, times, labels, threshold, top_k, min_dur,
                 i = j
                 continue
             start, end = float(times[i]), float(times[j - 1] + dt)
-            # Release (2026-09-24, docs/onset_timing.md): the span ends where the score falls
+            # Release (2026-09-24, docs/history/analyses/onset_timing.md, release v1.2.0): the span ends where the score falls
             # below `low`, but a sustained sound dips below it and keeps going -- measured on the
             # rendered panel the picture leaves 2.30 s before the sound stops. With AED_RELEASE
             # set, the end extends through any following stretch above that absolute score,
@@ -272,13 +272,13 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                   plot_path: Path = None, plot_top_k: int = 15) -> List[AudioEvent]:
     # "beats" (default, see config.AED_MODEL) or anything else for PANNs. Same 527
     # labels either way, so nothing downstream cares which one ran.
-    # "flam" (v4, docs/prereg_v4.md): frame-level language-audio model over a fixed
+    # "flam" (v4, docs/history/preregistrations/prereg_v4.md, release v1.2.0): frame-level language-audio model over a fixed
     # descriptive vocabulary, one query per AudioSet label, per-query calibration.
     m = (model or "").lower()
     backend = "PSED" if "psed" in m else "FLAM" if "flam" in m else "BEATs" if "beats" in m else "PANNs"
     try:
         if backend == "PSED":
-            # v4: PretrainedSED BEATs-strong, frame-level (docs/prereg_psed.md)
+            # v4: PretrainedSED BEATs-strong, frame-level (docs/history/preregistrations/prereg_psed.md, release v1.2.0)
             from src.stage4_audio_event_detection.psed_infer import infer_psed
             framewise, times, labels = infer_psed(Path(wav_path), device)
         elif backend == "FLAM":
@@ -303,7 +303,7 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
     ffw = ftimes = flabels = None
     # amendment 8 (2026-09-22): the open-vocabulary second detector, added as a UNION with its own
     # bar -- BEATs is deaf to sounds that speech or music masks, FlexSED is asked one label at a
-    # time and hears them (docs/GOLD_RERUN_2026-09-22.md sec 10). Both bars are set on Adam's DEV
+    # time and hears them (docs/history/analyses/GOLD_RERUN_2026-09-22.md sec 10, release v1.2.0). Both bars are set on the human DEV
     # half; a clip with no cache falls back to BEATs alone.
     fbar = float(getattr(config, "FLEXSED_BAR", 0) or 0)
     if fbar > 0:
@@ -333,7 +333,7 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                                     skip_ids=flex_ids)
         trace("refine", events, "after occlusion onset refinement")
         _tr(lambda: [log_refine(a, b) for a, b in zip(_pre, events)])
-    cap = getattr(config, "MAX_SPAN", None)      # v4ab3/v4b3: a picture never stays longer than this (docs/prereg_v4.md)
+    cap = getattr(config, "MAX_SPAN", None)      # v4ab3/v4b3: a picture never stays longer than this (docs/history/preregistrations/prereg_v4.md, release v1.2.0)
     if cap:
         for e in events:
             e.end = min(e.end, e.start + float(cap))
@@ -609,7 +609,7 @@ def _impulse_cols(flabels) -> list:
 
 
 def _mirror_veto(events, keep_ids, ffw, ftimes, flabels, bar: float, own_max: float):
-    """R13-2 (round 13, docs/prereg_round13_detector_push.md): a BEATs-only span (no same-family FlexSED twin) is dropped
+    """R13-2 (round 13, docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): a BEATs-only span (no same-family FlexSED twin) is dropped
     when FlexSED's top query in the span's time window is a DIFFERENT (canonical) family scoring >= `bar` while the
     span's own family scores < `own_max` there. A family FlexSED has no query for is never touched (as the veto above)."""
     from src.labels import canonical
@@ -690,7 +690,7 @@ def attach_breaks(events, framewise, times, labels, ffw, ftimes, flabels) -> Non
         e.breaks = list(memo[fam])
 
 
-# Round 65 RETURN (config.PERC_RETURN = k; docs/prereg_round13_detector_push.md "Round 65 RETURN")
+# Round 65 RETURN (config.PERC_RETURN = k; docs/history/preregistrations/prereg_round13_detector_push.md "Round 65 RETURN", release v1.2.0)
 RET_GAP, RET_WIN, RET_LEN, RET_TAG_LOW, RET_FLEX_LOW, RET_SR = 2.0, 0.3, 0.5, 0.2, 0.5, 16000
 
 
@@ -764,7 +764,7 @@ def perceptual_returns(events, framewise, times, labels, ffw, ftimes, flabels, a
 
 
 def twin_short(framewise, times, labels, ffw, ftimes, flabels, min_dur, fbar, band, twin_max=True, disp=0.35):
-    """Round 56 TWIN-SHORT (docs/prereg_round13_detector_push.md): agreement before the minimum span.
+    """Round 56 TWIN-SHORT (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): agreement before the minimum span.
 
     Case 1: a BEATs span shorter than min_dur (AED_THRESHOLD, hysteresis low, min span 0) with a same-family FlexSED run
     >= `band` (any length) within the twin tolerance (b.start - 1 <= f.end and f.start - 1 <= b.end) becomes the hull of
@@ -841,7 +841,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
     ids of the spans FlexSED raised alone and ffw the (possibly per-family rescaled) FlexSED scores. `listener` (R13-3,
     config.LISTENER_RESCUE) is a lookup(label, start, end, contain=False) -> the cached listener item or None."""
     from src.labels import canonical
-    # Round 63 TAG-ENS (docs/prereg_round13_detector_push.md): the tagger spans are re-cut from the mean of BEATs and the
+    # Round 63 TAG-ENS (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): the tagger spans are re-cut from the mean of BEATs and the
     # quantile-calibrated EAT / SSLAM frames on BEATs' grid; every veto below keeps reading the raw BEATs `framewise`.
     if getattr(config, "TAG_ENS", None) and backend == "BEATs":
         fw_e = tag_ens_frames(framewise, times, labels, getattr(config, "_CURRENT_CLIP", None),
@@ -889,7 +889,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
         print(f"       [stage4] per-family bars applied to {n} of {len(flabels)} queries", flush=True)
     fev = _extract_events(ffw, ftimes, flabels, fbar, None, min_dur,
                           low=fbar * float(getattr(config, "AED_HYSTERESIS", 1.0)), step="flexsed_extract")
-    # Round 13, R13-5 (docs/prereg_round13_detector_push.md): an impulsive sound (gunshot, gasp, hammer, explosion,
+    # Round 13, R13-5 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): an impulsive sound (gunshot, gasp, hammer, explosion,
     # knock) is short by physics, so the 0.5-s minimum span cuts it; for those FlexSED queries the minimum is
     # IMPULSE_MIN_SPAN instead (same bar, same vetoes). None = off.
     imp = getattr(config, "IMPULSE_MIN_SPAN", None)
@@ -932,7 +932,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
         if str(getattr(config, "UNION_WEAK_TWIN", "absorb")) == "ignore":
             twin = [b for b in twin if b.confidence >= float(getattr(config, "DISPLAY_THRESHOLD", 0.35))]
         if twin:
-            # UNION_START (2026-09-24, docs/NIGHT_REPORT_2026-09-24.md): the trace shows this
+            # UNION_START (2026-09-24, docs/history/daily_notes/NIGHT_REPORT_2026-09-24.md, release v1.2.0): the trace shows this
             # step moving 77 starts earlier on DEV by a median of 4 s, the worst by 14 s -- a long
             # FlexSED span pulling a BEATs start to near the clip's beginning. "min" is as shipped;
             # "bounded" lets a twin pull the start at most as far as the twin tolerance itself
@@ -960,7 +960,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                                   origin="flexsed"))
     if ts_f:
         fresh = [e for e in fresh if id(e) not in ts_f]          # R56: a case-2 short FlexSED span that did not twin
-    # Detector round 2026-09-27 (docs/prereg_v4.md amendment 22): at a LOWER FlexSED bar, a span FlexSED
+    # Detector round 2026-09-27 (docs/history/preregistrations/prereg_v4.md amendment 22, release v1.2.0): at a LOWER FlexSED bar, a span FlexSED
     # raised alone is admitted only if another detector rises for the same family near it in time --
     # BEATs >= b or PANNs >= p within `win` seconds of the span. Off unless FLEXSED_CORROB = (b, p, win).
     corr = getattr(config, "FLEXSED_CORROB", None)
@@ -1336,7 +1336,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
     # differently, scores median 0.424 where FlexSED is right and 0.026 where it is wrong.
     # The guard is the same as before -- a span BOTH detectors raised is never touched -- so
     # this can only remove spans that rest on one model's word alone.
-    # Round 4 (docs/prereg_v4.md, 2026-09-28): BEATs' own clip-max for the family settles FlexSED-only spans
+    # Round 4 (docs/history/preregistrations/prereg_v4.md, release v1.2.0, 2026-09-28): BEATs' own clip-max for the family settles FlexSED-only spans
     # in place of PANNs -- the bar b keeps the same share PANNs kept on the 280; held-out 415 dC +0.005
     # [-0.048, +0.067], recall 49.7 vs 49.1 %. Same identity guard as the PANNs veto below.
     bveto = float(getattr(config, "BEATS_SELF_VETO", 0) or 0)
@@ -1393,7 +1393,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                   f"dropped {before2 - len(events)} span(s)", flush=True)
         except Exception as e2:
             print(f"       [stage4] PANNs veto unavailable ({type(e2).__name__}: {e2}); skipped", flush=True)
-    # Amendment 22, tier 3 (Adam, 2026-09-27: "take all sounds above X, then for sounds below X try Y"):
+    # Amendment 22, tier 3 (2026-09-27: "take all sounds above X, then for sounds below X try Y"):
     # a BEATs span whose peak is in the band [AED_THRESHOLD, DISPLAY_THRESHOLD) -- heard, but too weak to be
     # shown -- is promoted to the display bar when FlexSED (>= f) or PANNs (>= p) rises for the same family
     # within `win` seconds of it. Off unless BEATS_LOWBAND_CORROB = (f, p, win).
@@ -1769,7 +1769,7 @@ def _af_p1_accepts(e) -> bool:
 
 
 def post_rules(events, ffw, ftimes, flabels, clip: str, origin=None, listener_p1=None):
-    """Round 17 (docs/prereg_round13_detector_push.md), after the rescue filters; both flags default off.
+    """Round 17 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0), after the rescue filters; both flags default off.
     R3 CO_ONSET_ARB: two display-level spans of different families starting within +-0.3 s -> keep the one with the higher
       FlexSED family peak inside its own span, unless the listener (listener_p1, F7's rule) accepts both.
     R1 RELABEL_2L: a display-level tagger-origin, non-rescued span whose P1 cut neither open-inventory listener (Qwen V4 and
@@ -1840,7 +1840,7 @@ def _ctx_bypass(e) -> bool:
 
 
 def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
-    """Round 14 precision filters on RESCUED spans only (docs/prereg_round13_detector_push.md, Round 14 + addendum), run
+    """Round 14 precision filters on RESCUED spans only (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0, Round 14 + addendum), run
     after onset refinement so the B0 onsets are final. Order: F4, F6, F5, F8, then F1 (F1 picks among the survivors).
     F4 LISTENER_LOCAL_WINNER: at the rescued span's peak frame (its own FlexSED query's highest frame inside the span), its
       family must be the top-scoring depictable FlexSED query.

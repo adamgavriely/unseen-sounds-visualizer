@@ -1,6 +1,6 @@
 """Classify the SETTING of a clip, independently of which objects are visible.
 
-Adam's point, and it is the project's own thesis applied where it had not been: the
+A design-review point, and it is the project's own thesis applied where it had not been: the
 video constrains what an unseen sound plausibly is. A crackle indoors in a living room
 is a fire; the same crackle beside a forest stream is water. PANNs confuses the two
 routinely -- they are spectrally similar -- and nothing in the pipeline corrected it,

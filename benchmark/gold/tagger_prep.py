@@ -1,4 +1,4 @@
-"""Confirmation set 1, REVISED (docs/prereg_round13_detector_push.md): features for Adam's 16 tagger-set clips, split by
+"""Confirmation set 1, REVISED (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): features for the 16 tagger-set clips, split by
 sha256(stem) % 2 into DEV2 (benchmark/gold/dev2_stems.txt, 6 clips) and TEST2 (test2_stems.txt, 10 clips, SEALED).
 
 Everything the DEV/TEST harness has, built the same way, one folder per split:
@@ -57,7 +57,7 @@ WORK = _ROOT / "data" / "work"
 CLIPS = _ROOT / "data" / "input" / "tagger_set"
 TAGGER_GOLD = GOLDD / "annotations" / "gold_AG.json"
 SPLITS = ("dev2", "test2")
-# extra, gold-free splits for running a version on any folder of clips (scripts/run_best.sh): TG_EXTRA_SPLITS="name ...";
+# extra, gold-free splits for running a version on any folder of clips (slurm/run_best.sh): TG_EXTRA_SPLITS="name ...";
 # clips in data/input/tagger_<name>, stems in benchmark/gold/<name>_stems.txt; never scored here
 EXTRA = tuple(x for x in os.environ.get("TG_EXTRA_SPLITS", "").split() if x and x not in SPLITS)
 C1 = "TO1+F7F8"
@@ -126,7 +126,7 @@ def configure(split):
             "dev_listener_kimi.json": lcache(split, "_kimi"), "dev_listener_p1v4.json": lcache(split, "_p1v4"),
             "dev_listener_p4.json": lcache(split, "_p4"), "dev_listener_v4b.json": lcache(split, "_v4b"),
             "flexsed_extra_dev": WORK / f"flexsed_extra_{split}", "finelap_cache": WORK / f"finelap_{split}"}
-    # extra DEV arms for the merged DEV (Adam 30 Sept): TG_ARMS="arm1 arm2" remaps them the same way
+    # extra DEV arms for the merged DEV (30 Sept): TG_ARMS="arm1 arm2" remaps them the same way
     for arm in ("B0r", "B1", C1, *[x for x in os.environ.get("TG_ARMS", "").split() if x in R.ARMS]):
         _ORIG.setdefault(arm, dict(R.ARMS[arm]))       # map from the DEV originals, whatever split came before
         if True:

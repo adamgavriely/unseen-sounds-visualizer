@@ -2,7 +2,7 @@
 
 Decide, per detected sound event: (1) is it salient? (2) is its source/meaning
 already visible in the scene -> if so, STAY SILENT (the gate); (3) if augmenting,
-what to depict. See docs/project_notes.tex sec:stage5 for the full design.
+what to depict. See docs/history/earlier_drafts/project_notes.tex sec:stage5 (release v1.2.0) for the full design.
 
 The rule-based gate here is the cheap first pass (salience, Stage-2 concept list);
 the per-sound decisions -- visibility from the frames, what kind of sound, what to

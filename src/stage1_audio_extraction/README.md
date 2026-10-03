@@ -1,11 +1,4 @@
-# Stage 1 — Audio Extraction
+# Stage 1 - Audio extraction
 
-**Role:** Extract the audio track from the input clip and standardize it (mono, fixed sample rate, WAV) for all downstream audio stages.
-
-**Input:** video clip (`.mp4`/`.webm`/…) with an audio stream.
-**Output:** standardized `audio.wav` (+ probe metadata: duration, sample rate).
-
-**Tooling:** FFmpeg (already installed at `C:\ffmpeg\bin`).
-
-**Status:** Implemented (skeleton) — `extract_audio()` returns a `MediaInfo`; salvaged from
-`archive/legacy_speech_pipeline/audio.py`. Runs with only ffmpeg on PATH.
+Extracts the audio track of the input video with FFmpeg as a mono WAV at the configured sample rate
+(`extract_audio()`) and reads the clip duration (`media_duration()`). Main module: `__init__.py`. Needs only FFmpeg.

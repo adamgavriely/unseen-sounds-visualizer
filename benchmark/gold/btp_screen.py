@@ -1,4 +1,4 @@
-"""Round 30 BTP screen (band-twin pull; docs/prereg_round13_detector_push.md "Round 30"), CPU only, on the saved SHIP3+DV
+"""Round 30 BTP screen (band-twin pull; docs/history/preregistrations/prereg_round13_detector_push.md "Round 30", release v1.2.0), CPU only, on the saved SHIP3+DV
 (= SHIP4) proposed pictures of merged DEV. A drawn non-rescued picture whose family has a FlexSED run (frame score >= BAR,
 runs merged over LISTEN_RUN_GAP as the pipeline's _runs) ending <= 1.0 s before the picture's start and starting <= 1.5 s
 before it gets its start pulled to that run's start (the latest such run). Rescored with score_per_sound; nothing in

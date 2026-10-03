@@ -5,9 +5,9 @@ the bar it was compared with, and, when a model was asked, the exact question an
 per clip and written next to onset_trace.json as trail.json. Logging only: nothing here changes a decision, so the
 scores must stay identical (parity check: benchmark/gold/inspector_trail_export.py --expect).
 
-Step ids are those of docs/inspector2/sample_data.py STEPS (+ a few display-only ids, see
-benchmark/gold/inspector_trail_export.py STEPS_EXTRA). Hook sites: docs/inspector2/HOOKS.md (branch
-claude/project-thread-4rwrnp), put in on main at the detector freeze (tag detector-frozen-2026-10-02).
+Step ids are those of the inspector's step catalogue (+ a few display-only ids, see
+benchmark/gold/inspector_trail_export.py STEPS_EXTRA). The hooks were put in at the detector freeze
+(tag detector-frozen-2026-10-02).
 
 Keying: a record's span is (label, start, end) BEFORE the decision; a move / relabel / merge / rescue / pass with
 `new_span` links it to the span it became (the exporter follows these links). A record with extra burst=... is about one

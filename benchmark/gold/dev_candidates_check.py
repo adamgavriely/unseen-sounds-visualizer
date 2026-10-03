@@ -1,4 +1,4 @@
-"""DEV check of the best detector candidates (report only; plan: docs/dev_candidates_check_2026-09-28.md). DEV only.
+"""DEV check of the best detector candidates (report only; plan: docs/history/analyses/dev_candidates_check_2026-09-28.md, release v1.2.0). DEV only.
 
 Candidates (unchanged, values frozen on the 280): EAT-R (round 5), DASM D1 (round 6), I4 parent emission, I6 VLM scene prior,
 I7 FlexSED local-contrast veto (round 8). Baselines: B0 = the scored DEV render (dev_monocap_v31, PANNs veto 0.05);
@@ -196,7 +196,7 @@ def vlm():
 
 
 def paralist():
-    """amendment 1 (R2): DEV work list for round 10's own FlexSED worker (benchmark/round10_flexsed.py, unchanged):
+    """amendment 1 (R2): DEV work list for round 10's own FlexSED worker (benchmark/round10_flexsed.py, release v1.2.0, unchanged):
     16-kHz wav = ffmpeg of the clip's mp4 (as flexsed_run.py), the DEV FlexSED cache for its c1 check, paraphrase outputs"""
     import subprocess
     from benchmark import detector_round10 as R10
@@ -564,7 +564,7 @@ def stage5(arms):
         for arm in arms:
             for k, v in base.items():
                 setattr(config, k, v)
-            if arm == "EATR":                           # the BAR= path of slurm/job_protocol.sh
+            if arm == "EATR":                           # the BAR= path of slurm/job_protocol.sh (release v1.2.0)
                 config.DISPLAY_THRESHOLD = config.AUGMENT_THRESHOLD = F["EAT_DISP"]; config.AED_THRESHOLD = F["EAT_AED"]
             root = DC / f"{arm}_{sysn}"
             logp = root / "_stage5_log.json"

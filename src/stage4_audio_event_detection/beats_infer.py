@@ -1,6 +1,6 @@
 """BEATs as the Stage 4 detector: the same 527 AudioSet labels as PANNs, better at them.
 
-Why this exists. Adam went through eight demo clips and eleven of his fourteen
+Why this exists. A review of eight demo clips found that eleven of its fourteen
 complaints were the detector: a siren labelled "truck horn", a car squeak "dog", a
 stutter "hiccup", an engine rotor "printer", a fire alarm "whistle", a crying baby
 "sheep", and a glass shatter missed outright. Stage 5 then drew the wrong label
@@ -100,7 +100,7 @@ def infer_beats(wav_path: Path, device: str = "cpu",
     framewise = np.concatenate(probs, axis=0)           # (windows, 527)
     # Stamped at the window END, not its centre. A score for [s, s+2] says the sound
     # is somewhere in those two seconds; stamping it at s+1 put a sound from the last
-    # half of the window on screen up to a second before it happened, and Adam saw the
+    # half of the window on screen up to a second before it happened, and the viewer saw the
     # glass shatter before he heard it in three of five clips. Stamped at s+2 the onset
     # is never early -- at worst it is late by one hop -- and the tail lingers by up to
     # a window, which the display's minimum dwell was going to do anyway.
@@ -116,7 +116,7 @@ def infer_beats(wav_path: Path, device: str = "cpu",
 # the reason is worth keeping: BEATs was fine-tuned only through the MEAN of its tokens,
 # so nothing ever asked a token to be local, and after 12 full-attention layers every
 # token carries roughly the clip logit. On three clips the CAM moved every onset by
-# exactly 0 or exactly -1.5 s -- the fingerprint of a flat curve. (Fable, second opinion,
+# exactly 0 or exactly -1.5 s -- the fingerprint of a flat curve. (design review,
 # 2026-09-14, on reading the code.)
 #
 # Occlusion is model-agnostic and immune to that. Take the first 2 s window that fired
@@ -182,7 +182,7 @@ def occlusion_onset(audio, sr, window_start: float, class_idx: int, device: str 
         # The evidence is already gone at the first cut, which means the sound fills the window --
         # the window cannot say where inside it the sound began. Returning `window_start` (the
         # anchor minus 1.5 s) asserted an onset a second and a half before anything was heard, and
-        # that is the single largest timing error on the DEV clips (docs/onset_timing.md).
+        # that is the single largest timing error on the DEV clips (docs/history/analyses/onset_timing.md, release v1.2.0).
         if bool(getattr(_CFG, "ONSET_MONOTONE", False)):
             return (None, False, L) if debug else (None, False)
     onset = window_start if i <= 1 else window_start + (i - 0.5) * CUT

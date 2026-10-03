@@ -1,5 +1,5 @@
-"""Week plan B.4 / D6 (docs/WEEK_PLAN_2026-09-26.md): the shipped stage-4 stack on the 280-clip AudioSet-Strong
-calibration set. DESCRIPTIVE, NO SELECTION: every bar is the shipped one (set on Adam's DEV gold); the per-family
+"""Week plan B.4 / D6 (docs/history/daily_notes/WEEK_PLAN_2026-09-26.md, release v1.2.0): the shipped stage-4 stack on the 280-clip AudioSet-Strong
+calibration set. DESCRIPTIVE, NO SELECTION: every bar is the shipped one (set on the human DEV gold); the per-family
 FlexSED bars fitted on this set were never adopted, so the set is out of sample for the shipped configuration.
 
 Five rows, built from the cached frame scores with stage 4's own rules (src/stage4_audio_event_detection/__init__.py:
@@ -36,7 +36,7 @@ FLEX = PANNS = PEF = None
 
 def use_set(name: str):
     """all cache paths follow the set: 'calib' (the 280), 'heldout' (amendment 24) or 'fresh' (the confirmation set,
-    docs/prereg_fresh_confirm_set.md: caches only until a candidate passes the 415)"""
+    docs/history/preregistrations/prereg_fresh_confirm_set.md (release v1.2.0): caches only until a candidate passes the 415)"""
     global FLEX, PANNS, PEF
     E.use_set(name)
     FLEX = _ROOT / "data" / "work" / f"flexsed_{name}"

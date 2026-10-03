@@ -164,7 +164,7 @@ def run(which: str, batch: int = 24):
 RUN_BAR, RUN_GAP = 0.4, 0.24           # the pipeline's FlexSED run rule (stage 4 _runs: LISTEN_RUN_BAR / LISTEN_RUN_GAP)
 BARS = (0.4, 0.5, 0.8)
 EARLY, LATE = 0.5, 1.0                 # score_per_sound's onset window
-# the four DEV misses no detector hears (docs/dev_miss_table_2026-09-28.md bucket (a))
+# the four DEV misses no detector hears (docs/history/analyses/dev_miss_table_2026-09-28.md bucket (a), release v1.2.0)
 UNHEARD = [("ambient_citywalk_nyc_1689", "Hammer", 8.1), ("ambient_citywalk_nyc_2627", "Clang", 3.8),
            ("b3_golf_course", "Whack, thwack", 6.5), ("b3_golf_course", "Whack, thwack", 24.4)]
 # existing queries shown next to the new ones at those onsets

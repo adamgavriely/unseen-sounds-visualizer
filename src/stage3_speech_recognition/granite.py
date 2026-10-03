@@ -1,4 +1,4 @@
-"""Granite Speech 4.1-2B as the Stage 3 transcriber (v4, docs/prereg_v4.md).
+"""Granite Speech 4.1-2B as the Stage 3 transcriber (v4, docs/history/preregistrations/prereg_v4.md, release v1.2.0).
 
 IBM, April 2026, Apache-2.0; first on the Open ASR leaderboard (mean WER 5.33 vs Whisper
 large-v3's 6.43). A speech-language model: a Conformer encoder feeding a Granite LLM, so it

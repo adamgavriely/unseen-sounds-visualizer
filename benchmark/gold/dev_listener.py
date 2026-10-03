@@ -1,4 +1,4 @@
-"""Round 13 (docs/prereg_round13_detector_push.md): a cache of audio-LLM "listener" scores for candidate sound spans on the
+"""Round 13 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): a cache of audio-LLM "listener" scores for candidate sound spans on the
 49 DEV clips. Same model, question, scoring and audio cut as amendment 25 (benchmark/listener_round.py): Qwen3-Omni-30B-A3B-
 Instruct, "Is the sound of {family} present in this recording? Answer yes or no.", score = logit(yes) - logit(no), audio =
 the clip's 16-kHz mono from start - 1 s to end + 1 s (at least 1 s). DEV only.

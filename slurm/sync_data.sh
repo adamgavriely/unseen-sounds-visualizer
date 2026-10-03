@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run from your LOCAL PC (Git Bash), with the BIU VPN connected.
+# Run from your LOCAL PC (Git Bash), with cluster access.
 # Uploads the benchmark clips + tags (gitignored, so not in the repo clone).
 #   bash slurm/sync_data.sh
 set -euo pipefail
@@ -27,7 +27,7 @@ echo "uploading code..."
 if command -v rsync >/dev/null 2>&1; then
     rsync -az --delete         --include="*/"         --include="*.py" --include="*.sh" --include="*.json" --include="*.md"         --include="*.txt" --include="*.bat"         --exclude="*"         --exclude=".git/" --exclude="data/" --exclude="__pycache__/"         "$LOCAL_ROOT/" "$USER_AT:$REMOTE/"
 else
-    tar -C "$LOCAL_ROOT" --exclude=.git --exclude=data --exclude=__pycache__         -czf - src benchmark scripts slurm config.py main.py requirements.txt         | ssh "$USER_AT" "tar -C $REMOTE -xzf - && sed -i 's/\r$//' $REMOTE/slurm/*.sh"
+    tar -C "$LOCAL_ROOT" --exclude=.git --exclude=data --exclude=__pycache__         -czf - src benchmark slurm config.py main.py requirements.txt         | ssh "$USER_AT" "tar -C $REMOTE -xzf - && sed -i 's/\r$//' $REMOTE/slurm/*.sh"
     # the working tree is CRLF on Windows and Slurm reads the scripts with bash: strip
     # the CR on the remote side every time, or a job's next step dies with "$\'\r\':
     # command not found" (the ref_v2 judge step, 2026-09-14, after a mid-run sync)
@@ -39,8 +39,7 @@ elif command -v rsync >/dev/null 2>&1; then
     echo "rsync benchmark clips (resumable, skips unchanged)..."
     rsync -avz --partial --progress \
         "$LOCAL_ROOT/data/input/benchmark/" "$USER_AT:$REMOTE/data/input/benchmark/"
-    rsync -avz "$LOCAL_ROOT/benchmark/tags.json" \
-        "$LOCAL_ROOT/benchmark/suggestions.json" "$USER_AT:$REMOTE/benchmark/"
+    rsync -avz "$LOCAL_ROOT/benchmark/tags.json" "$USER_AT:$REMOTE/benchmark/"
 else
     echo "rsync not found -- falling back to a tarball over ssh..."
     tar -C "$LOCAL_ROOT" -czf - data/input/benchmark benchmark/tags.json \

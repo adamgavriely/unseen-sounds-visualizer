@@ -1,4 +1,4 @@
-"""Round 13: the ONE TEST exposure (docs/prereg_round13_detector_push.md, "TEST decision (one exposure)").
+"""Round 13: the ONE TEST exposure (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0, "TEST decision (one exposure)").
 
 One job, 60 TEST clips (benchmark/gold/test_stems.txt), three stage-4 configs through the pipeline's own code
 (round13_dev.build -> fuse_flexsed) and the same stage-5 path as DEV (round13_dev.stage5: scored gate answers reused,

@@ -1,16 +1,6 @@
-# Stage 2 — Video Understanding
+# Stage 2 - Video understanding
 
-**Role:** Analyze the *visual* stream to determine what is already visible to the viewer. This is the
-input to cross-modal gating (Stage 5): we only augment sound whose source/meaning is **not** already
-on screen.
-
-**Input:** video clip (sampled frames).
-**Output:** structured scene description — visible objects/agents, setting, on-screen actions, and
-(ideally) whether likely sound sources are visible.
-
-**Candidate models:** Qwen2.5-VL (7B quality / 3B local), InternVL3, LLaVA.
-
-**Status:** Stub wired into the pipeline — `analyze_video()` returns an empty `SceneContext`; the
-VLM call is TODO. New component — no legacy code.
-**Note:** the same VLM family is reused as the *describer* in Stage 7 evaluation — use separate
-prompts/instances so a model never grades its own output.
+Samples frames and reports which candidate sound sources are visible, as a `SceneContext` (`analyze()` in
+`__init__.py`). The final system uses the OWLv2 detector (`owl.py`); CLIP, SigLIP (`siglip.py`), SAM 3 (`sam3.py`) and
+Qwen2.5-VL (`vlm.py`) are alternative backends, and `scene.py` classifies the setting. The final on-screen decision per
+sound is made later by the vision-language model in `stage5_cross_modal_analysis/reason.py`.

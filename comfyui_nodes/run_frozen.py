@@ -1,4 +1,4 @@
-"""Run the frozen pipeline (D', tag detector-frozen-2026-10-02) on one video, exactly as `main.py` does, and write a
+"""Run the frozen pipeline (the final system, tag detector-frozen-2026-10-02) on one video, exactly as `main.py` does, and write a
 short summary of what the viewer will see.
 
 The ComfyUI node starts this in a fresh process: every model is loaded and freed here, so the ComfyUI server never
@@ -33,7 +33,7 @@ def main():
     def capture(*args, **kw):              # main() does not return the result; keep it for the summary
         # main() has built this clip's listener inputs by now (ensure_listener_inputs raises if a step fails). A clip
         # with no listener items (tg: FlexSED finds no band run) has legitimately empty answer files, which
-        # _require_caches reads as missing; the scored D' arm runs with LISTENER_REQUIRE_CACHES False, so does this.
+        # _require_caches reads as missing; the scored final arm runs with LISTENER_REQUIRE_CACHES False, so does this.
         import config
         config.LISTENER_REQUIRE_CACHES = False
         got["r"] = run(*args, **kw)
@@ -49,11 +49,11 @@ def main():
         gen_screen.seed_of = lambda item: (frozen_seed(item) + offset) & 0x7FFFFFFF
         print(f"[run_frozen] new drawings: seed offset {offset}", flush=True)
 
-    # Stage 5 exactly as the scored D' runs did it (benchmark/gold/round13_dev.py stage5: config.use_scored(), picture
+    # Stage 5 exactly as the scored final runs did it (benchmark/gold/round13_dev.py stage5: config.use_scored(), picture
     # wording flags off, KINSHIP_DIRECTED False). use_shipped() switches these on for the picture step; turned on before
     # stage 5 they change the subject wording, and the duplicate-picture check reads that wording (tg_d088: Explosion
     # merged into Thunder). So they are off from the plan to the end of decide_subjects, and back on for the pictures,
-    # the same split the inspector renderer used (benchmark/gold/render_trail_media.py).
+    # the same split the inspector renderer used (benchmark/gold/render_trail_media.py, release v1.2.0).
     import config
     from src.stage5_cross_modal_analysis import reason
     scored = {"KINSHIP_DIRECTED": False, "PICTURE_V3": False, "PICTURE_SCENE": False, "PICTURE_SCENE_GUARD2": False,
@@ -83,7 +83,7 @@ def main():
     pipeline.plan_augmentations = wrap(pipeline.plan_augmentations, to_scored, lambda: None)
     reason.decide_subjects = wrap(reason.decide_subjects, lambda: None, to_shipped)
     pipeline.generate_augmentations = wrap(pipeline.generate_augmentations, to_shipped, lambda: None)
-    # the GPU flags of slurm/job_main_demo.sh (config.DEVICE defaults to "cpu")
+    # the GPU flags of slurm/job_main_demo.sh (release v1.2.0; config.DEVICE defaults to "cpu")
     sys.argv = ["main.py", "--input", a.input, "--device", "cuda", "--generator", "diffusion"]
     M.main()
 

@@ -56,7 +56,7 @@ class AudioEvent:
     """Stage 4 output: one detected non-speech sound with a time span.
 
     ``source_on_screen`` / ``on_screen_prob`` are filled by the optional
-    on/off-screen localization signal (see docs/project_notes.tex sec:stage5);
+    on/off-screen localization signal (see docs/history/earlier_drafts/project_notes.tex sec:stage5, release v1.2.0);
     left as None when that signal is not used.
     """
     label: str

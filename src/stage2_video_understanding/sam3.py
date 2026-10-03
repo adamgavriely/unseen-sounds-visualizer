@@ -1,4 +1,4 @@
-"""Stage 2 backend: SAM 3 concept detection (v4, docs/prereg_v4.md).
+"""Stage 2 backend: SAM 3 concept detection (v4, docs/history/preregistrations/prereg_v4.md, release v1.2.0).
 
 Meta, November 2025: Promptable Concept Segmentation -- a short noun phrase in, every
 matching instance out with a presence score. It answers the same question OWLv2 did

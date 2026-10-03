@@ -1,4 +1,4 @@
-"""Ontology-sense traps (Adam, 28 Sept 2026): a label word is read in its AudioSet ontology sense, never its plain-English
+"""Ontology-sense traps (28 Sept 2026): a label word is read in its AudioSet ontology sense, never its plain-English
 one. "Honk" is a goose's call (Honk > Goose > Fowl), not a car horn. No GPU, no model: the maker rule is run with no
 frames (the "unsure" path) and the checker's table lookup is pure.
 

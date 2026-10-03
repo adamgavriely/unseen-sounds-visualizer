@@ -1,4 +1,4 @@
-"""PretrainedSED "BEATs-strong" as the Stage 4 detector (v4, docs/prereg_psed.md).
+"""PretrainedSED "BEATs-strong" as the Stage 4 detector (v4, docs/history/preregistrations/prereg_psed.md, release v1.2.0).
 
 Schmid et al., "Effective Pre-Training of Audio Transformers for Sound Event Detection"
 (CP-JKU, ICASSP 2025): the same BEATs backbone we ship, fine-tuned FRAME BY FRAME on
@@ -35,7 +35,7 @@ PSED_ROOT = Path(os.environ.get("PSED_ROOT", Path.home() / "PretrainedSED"))
 CHECKPOINT = "BEATs_strong_1"
 CACHE_DIR = config.WORK_DIR / "psed_cache"
 # the five backbones of the paper, all fine-tuned the same way on AudioSet-Strong; the
-# paper's best number is their average (docs/prereg_psed_ensemble.md)
+# paper's best number is their average (docs/history/preregistrations/prereg_psed_ensemble.md, release v1.2.0)
 BACKBONES = {"BEATs": ("models.beats.BEATs_wrapper", "BEATsWrapper", "BEATs_strong_1"),
              "ATST-F": ("models.atstframe.ATSTF_wrapper", "ATSTWrapper", "ATST-F_strong_1"),
              "fpasst": ("models.frame_passt.fpasst_wrapper", "FPaSSTWrapper", "fpasst_strong_1"),

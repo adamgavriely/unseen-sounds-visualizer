@@ -1,4 +1,4 @@
-"""Round 31 cross-group listing (Fable; docs/prereg_round13_detector_push.md "Round 31"). CPU only, on the saved
+"""Round 31 cross-group listing (design review; docs/history/preregistrations/prereg_round13_detector_push.md "Round 31", release v1.2.0). CPU only, on the saved
 SHIP5 (= SHIP4+BTP) proposed pictures of merged DEV: every wrong picture is classed per picture with the scorer's own
 greedy loop (score_per_sound.score_clip), and each CROSS picture gets its cause: the gold sounds at its moment, its own
 family's gold in the clip (late / early / repeat), its stage-4 rows (origin, confidence, rescued), the listeners' answers

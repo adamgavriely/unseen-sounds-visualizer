@@ -1,4 +1,4 @@
-"""Round 37 IMP-V (docs/prereg_round13_detector_push.md "Round 37 IMP-V"): at every Round 36 DASM impact peak that is not
+"""Round 37 IMP-V (docs/history/preregistrations/prereg_round13_detector_push.md "Round 37 IMP-V", release v1.2.0): at every Round 36 DASM impact peak that is not
 inside an existing SHIP8 impact-type picture, the shipped gate VLM (Qwen3.8-27B) is asked ONE closed question on the gate's
 own 6 frames (peak +- 1 s), in both option orders: which impact family made the sound. Both orders must agree on a family;
 then the shipped visibility gate (reason._sound_is_visible, majority) decides on the same frames: seen -> no picture, else a

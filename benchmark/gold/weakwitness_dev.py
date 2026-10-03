@@ -1,4 +1,4 @@
-"""Round 53 WEAK-WITNESS (docs/prereg_round13_detector_push.md "Round 53 WEAK-WITNESS"), merged DEV helpers. Run from ~/MscProj_tg.
+"""Round 53 WEAK-WITNESS (docs/history/preregistrations/prereg_round13_detector_push.md "Round 53 WEAK-WITNESS", release v1.2.0), merged DEV helpers. Run from ~/MscProj_tg.
 
   python benchmark/gold/weakwitness_dev.py step0            # mechanism check: every SHIP8+MD3 hit picture -> its stage-4 row(s):
                                                             # origin, rescued, DASM max over [pre_start-0.5, end+0.5], Qwen V4 /

@@ -1,4 +1,4 @@
-"""Detector round 4 (docs/prereg_v4.md, 2026-09-28): two fixed questions from the saved caches (no model run).
+"""Detector round 4 (docs/history/preregistrations/prereg_v4.md, release v1.2.0, 2026-09-28): two fixed questions from the saved caches (no model run).
 
   Test 1  end-trim: a BEATs-origin shown span ends at the last FlexSED frame inside it whose same-family score is
           >= 0.5 x FlexSED's in-span peak (never extend, cut <= 1.5 s, never before start + 0.5 s).

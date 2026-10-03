@@ -1,4 +1,4 @@
-"""Round 17 R1 (docs/prereg_round13_detector_push.md): Qwen3-Omni V4 open inventory on the P1 cuts (the drawn BEATs spans),
+"""Round 17 R1 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): Qwen3-Omni V4 open inventory on the P1 cuts (the drawn BEATs spans),
 same prompt, decoding and cut as listener_variants.score's V4, plus the family parse of both listeners' V4 answers (Qwen and
 Audio Flamingo Next): for every depictable family, the V4 matcher (word match on match_names, or mpnet cosine > COS). No gold.
 

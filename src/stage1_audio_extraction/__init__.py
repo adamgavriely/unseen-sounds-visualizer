@@ -2,7 +2,7 @@
 
 Extract a standardized mono WAV from the input video via ffmpeg, and probe basic
 media facts. Real implementation (salvaged from the legacy pipeline) - no models
-required, only ffmpeg on PATH (or at C:\\ffmpeg\\bin).
+required, only ffmpeg on PATH.
 """
 from __future__ import annotations
 

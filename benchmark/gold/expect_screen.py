@@ -1,4 +1,4 @@
-"""Round 40 EXPECT screen (docs/prereg_round13_detector_push.md "Round 40 EXPECT"): the scene VLM proposes families one would
+"""Round 40 EXPECT screen (docs/history/preregistrations/prereg_round13_detector_push.md "Round 40 EXPECT", release v1.2.0): the scene VLM proposes families one would
 expect to HEAR off-screen in this place, the open-inventory listener (Qwen3-Omni, whole clip, unchanged V4 question) must name
 the same family, the family must not already be drawn by SHIP8 in the clip, its onset is the earliest weak-bar run in any frame
 cache, and the shipped visibility gate at that onset decides. Added pictures are 2 s. Scored dbr_screen-style on gold_AG.json vs

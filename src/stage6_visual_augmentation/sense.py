@@ -14,7 +14,7 @@ Two parts, both per label, both cached per (label, picture model):
       wrong answers become negative-prompt words and checker look-alike options for that label.
 
 Hooks: stage6._final_picture (PICTURE_SENSE: plan() before the tries, check() instead of verify.check, no AMBIGUOUS
-rewrite). Test: scripts/picture_sense_test.py, plan docs/picture_sense_test_2026-09-28.md.
+rewrite). Test: scripts/picture_sense_test.py (release v1.2.0), plan docs/history/analyses/picture_sense_test_2026-09-28.md (release v1.2.0).
 """
 from __future__ import annotations
 

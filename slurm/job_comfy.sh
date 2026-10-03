@@ -8,7 +8,7 @@
 #SBATCH --mem=256G
 #SBATCH --time=12:00:00
 #
-# The ComfyUI server (docs/ComfyUI.md). H200: the frozen pipeline needs the VLM next to Qwen-Image on one card.
+# The ComfyUI server (comfyui_nodes/README.md). H200: the frozen pipeline needs the VLM next to Qwen-Image on one card.
 #
 # It runs on a GPU node because triton, which ComfyUI pulls in, refuses to initialise without a
 # CUDA driver -- the login node has none. The job prints the one command a viewer needs to reach
@@ -21,7 +21,7 @@ mkdir -p logs
 source "$HOME/miniconda3/etc/profile.d/conda.sh"
 conda activate msproj
 export PYTHONUNBUFFERED=1
-# uploads and temp files go to home: a shared node's /tmp can be full (hpc8h200-01, 2 Oct: uploads failed with ENOSPC)
+# uploads and temp files go to home: a shared node's /tmp can be full
 export TMPDIR="$HOME/tmp_comfy"; mkdir -p "$TMPDIR"
 export MSCPROJ_ROOT="$HOME/MscProj"
 # Gated Hugging Face models need a token: export HF_TOKEN=<your token> before sbatch (Slurm passes the
@@ -41,9 +41,11 @@ nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 python comfyui_nodes/comfy_start.py --listen 0.0.0.0 --port "$PORT" --disable-auto-launch --disable-cuda-malloc &
 COMFY_PID=$!
 # the simple public page (comfyui_nodes/public_page.py): its https://....gradio.live link is printed in
-# logs/comfy_<jobid>.err ("Running on public URL"). PUBLIC=0 skips it.
-if [ "${PUBLIC:-1}" = "1" ] && [ -x "$HOME/venv_gradio/bin/python" ]; then
+# logs/comfy_<jobid>.err ("Running on public URL"). PUBLIC=0 skips it. GRADIO_PYTHON is the Python of an
+# environment with gradio, requests and websockets.
+GRADIO_PYTHON="${GRADIO_PYTHON:-$HOME/venv_gradio/bin/python}"
+if [ "${PUBLIC:-1}" = "1" ] && [ -x "$GRADIO_PYTHON" ]; then
     until curl -s -o /dev/null "http://127.0.0.1:${PORT}/object_info/MscAugmentVideo"; do sleep 10; done
-    "$HOME/venv_gradio/bin/python" comfyui_nodes/public_page.py --comfy "http://127.0.0.1:${PORT}" --share &
+    "$GRADIO_PYTHON" comfyui_nodes/public_page.py --comfy "http://127.0.0.1:${PORT}" --share &
 fi
 wait "$COMFY_PID"

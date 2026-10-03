@@ -1,4 +1,4 @@
-"""Round 31 FLAP screen (docs/prereg_round13_detector_push.md, "Round 31 FLAP"): FineLAP (ACL 2026) frame-level text-audio
+"""Round 31 FLAP screen (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0, "Round 31 FLAP"): FineLAP (ACL 2026) frame-level text-audio
 scores as a vote on the listener-rescue candidates (P2 / PV) of merged DEV. The bar is calibrated only on P1 hit_needed
 items (FineLAP >= bar keeps 90 %). (a) new accept path: TIER false AND FineLAP >= bar AND (Qwen V4 OR AF V4);
 GO iff needed added >= 2 and other added <= needed added. (b) veto: TIER true AND FineLAP < bar; GO iff other removed

@@ -69,7 +69,7 @@ def main():
     # package (ours, with __init__.py) always wins over the repo's namespace package whatever the
     # path order -- so the project root is taken off sys.path for the import
     vocab = json.loads(VOCAB.read_text(encoding="utf-8"))["families"]
-    # prompt ensemble (Fables, 2026-09-22): CLAP text embeddings are prompt-sensitive, so each family
+    # prompt ensemble (design review, 2026-09-22): CLAP text embeddings are prompt-sensitive, so each family
     # is asked in three ways and the frame score is the max. The three templates are applied to every
     # family uniformly -- no per-family wording, so nothing is tuned on the gold set. api.run_inference
     # wraps each string as "The sound of {x}".

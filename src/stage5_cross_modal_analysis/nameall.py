@@ -1,9 +1,9 @@
-"""Round 66 NAME-ALL (docs/prereg_round13_detector_push.md): per gate stretch, name 3 candidate makers (no "nothing" escape) plus
+"""Round 66 NAME-ALL (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): per gate stretch, name 3 candidate makers (no "nothing" escape) plus
 noun phrases of the gate's describe answer, ground each (Round 50 prompt), crop it, and read the crop question as a
 null-calibrated logit margin m = [s(Q+) - s0(Q+)] - [s(Q-) - s0(Q-)] (Q- = the NOT twin; s0 = the same prompts on a grey crop with
 phrase "this thing", per label). Where nothing grounds, one ViCrop relative-attention crop of the middle frame. The stretch margin
 is the max over its crops. Used only when config.NAME_ALL = (t_lo, t_hi) (default None); see reason.decide_subjects.
-Benchmark twin: benchmark/gold/nameall.py (same prompts and parsing, gate-gold).
+Benchmark twin: benchmark/gold/nameall.py (release v1.2.0; same prompts and parsing, gate-gold).
 """
 from __future__ import annotations
 

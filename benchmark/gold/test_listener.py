@@ -1,4 +1,4 @@
-"""Round 13 (docs/prereg_round13_detector_push.md): the audio-LLM listener cache for the 60 TEST clips, gold-free, a SUPERSET
+"""Round 13 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): the audio-LLM listener cache for the 60 TEST clips, gold-free, a SUPERSET
 of dev_listener.py's pools so it serves any R13-3 arm. PREPARATION only: no TEST gold is read, nothing is scored against gold.
 
 Same model, question, yes/no token ids, score and audio cut as benchmark/gold/dev_listener.py (its score() is reused

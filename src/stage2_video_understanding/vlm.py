@@ -111,7 +111,7 @@ def analyze_video_vlm(video_path: Path, num_frames: int = 6,
     return SceneContext(
         summary=f"VLM visibility over {len(frames)} frames",
         visible_entities=visible, frames_analyzed=len(frames),
-        # "scores" is the key the threshold-free evaluation reads (benchmark/auroc.py).
+        # "scores" is the key the threshold-free evaluation reads (benchmark/auroc.py, release v1.2.0).
         # The VLM has no continuous confidence, but the fraction of sampled frames in
         # which it named the concept is a genuine ordinal score, so expose that.
         raw={"backend": "qwen2.5-vl", "model": model, "votes": votes,

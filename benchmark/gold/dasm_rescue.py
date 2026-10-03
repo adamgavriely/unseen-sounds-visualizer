@@ -1,4 +1,4 @@
-"""Round 19 DR (docs/prereg_round13_detector_push.md): DASM as a third ear. P4 pool = DASM runs (family >= 0.575, gaps
+"""Round 19 DR (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): DASM as a third ear. P4 pool = DASM runs (family >= 0.575, gaps
 <= 0.5 s merged) that no B0r stage-4 span of the same family touches within +-0.5 s; both open-inventory listeners (Qwen3-Omni
 V4, Audio Flamingo Next V4; same prompt / decoding / matcher) answer each run's cut. No gold is read.
 

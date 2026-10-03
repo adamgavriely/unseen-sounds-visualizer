@@ -71,7 +71,7 @@ DESCRIBE_PROMPT = (
     "Do not describe artistic style."
 )
 
-# Amendment 3 (2026-09-21, bug fix, docs/prereg_v4.md): the prompt used to receive Stage 2's
+# Amendment 3 (2026-09-21, bug fix, docs/history/preregistrations/prereg_v4.md, release v1.2.0): the prompt used to receive Stage 2's
 # whole-clip list of visible things and to offer the sentinel "nothing beyond the picture"
 # when the sounds added nothing to it. The gate uses that same Stage-2 list, so the gate was
 # graded against its own input: on 9 of the 50 clips the annotator tagged as needing a
@@ -365,7 +365,7 @@ def judge(reference: str, candidate: str, backends: Backends) -> tuple[int, str]
     the source is already visible) is actually measured rather than blurred.
     """
     if is_empty_candidate(candidate):
-        # exact match, as scripts/rubric_enforce.py tests it (amendment 3: a substring test
+        # exact match, as scripts/rubric_enforce.py (release v1.2.0) tests it (amendment 3: a substring test
         # let a longer sentence containing the words score silence 4 but escape the cap)
         if reference.strip().lower().rstrip(".") == NOTHING_MISSING:
             return 4, "nothing was missing and the system correctly showed nothing"

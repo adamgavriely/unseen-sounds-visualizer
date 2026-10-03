@@ -42,8 +42,13 @@ button, get the new video. It needs `gradio`, `requests` and `websockets`:
 
     python comfyui_nodes/public_page.py --comfy http://127.0.0.1:8188 --port 7860
 
+`slurm/job_comfy.sh` starts this page too, with the Python given in `GRADIO_PYTHON` (default
+`~/venv_gradio/bin/python`; set `PUBLIC=0` to skip it). With `--share` the page gets a temporary public
+gradio.live link that works from outside the cluster network while the job runs.
+
 ## Caveat
 
-One run takes about 10-15 minutes for a short clip on one 80 GB GPU (an H200 was used), because every model input
-is computed for the new video. Videos without sound, without picture or shorter than 1 s are refused; other formats
+Run time, as for `main.py`: about five minutes of GPU time (one NVIDIA H200) to prepare the listener inputs of a
+15-s clip, plus the picture step (about 20 s per picture try, up to five tries per picture), because every model
+input is computed for the new video. Videos without sound, without picture or shorter than 1 s are refused; other formats
 (.mov, .webm) are converted to .mp4 first.

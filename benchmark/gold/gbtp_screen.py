@@ -1,4 +1,4 @@
-"""Round 38 E5 GBTP screen (generalised band-twin pull; docs/prereg_round13_detector_push.md "Round 38 E5 GBTP"), CPU only,
+"""Round 38 E5 GBTP screen (generalised band-twin pull; docs/history/preregistrations/prereg_round13_detector_push.md "Round 38 E5 GBTP", release v1.2.0), CPU only,
 on the saved SHIP8 proposed pictures of merged DEV, scored on gold_AG.json. For every placed NON-rescued picture, the EARLIEST
 onset s within the 3.0 s before its start a (a - 3.0 <= s < a) of a same-family run in any of the three frame-score caches
 (FlexSED >= 0.5, BEATs >= 0.35, DASM >= 0.575; runs = the pipeline's _runs over LISTEN_RUN_GAP) that continues up to the

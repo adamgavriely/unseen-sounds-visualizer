@@ -1,4 +1,4 @@
-"""Amendment 24 (docs/prereg_v4.md): detector round 2 -- PE-A-Frame screen, cells on the 280 (fit set) scored by the cost
+"""Amendment 24 (docs/history/preregistrations/prereg_v4.md, release v1.2.0): detector round 2 -- PE-A-Frame screen, cells on the 280 (fit set) scored by the cost
 C, one pick, and the held-out test of that pick. Stage-4 logic from cached frame scores, as detector_round_stage0.py.
 
     python benchmark/detector_round2.py screen              # PE percentile grid + E-delta pool screen (280)

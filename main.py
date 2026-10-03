@@ -3,8 +3,9 @@
     python main.py --input clip.mp4 --device cuda
 
 Writes data/output/<stem>_augmented.mp4 (the video with the picture panel) and the intermediate files under
-data/work/<stem>/. Without --listener-split, the per-clip listener inputs are computed first (about 5 minutes on an
-H200). See docs/report/report.pdf, Section 5 and Appendix C.
+data/work/<stem>/. Without --listener-split, the per-clip listener inputs are computed first.
+Run time: about five minutes of GPU time (one NVIDIA H200) to prepare the listener inputs of a 15-s clip, plus the
+picture step (about 20 s per picture try, up to five tries per picture). See docs/report/report.pdf, Section 5 and Appendix C.
 """
 from __future__ import annotations
 
@@ -18,7 +19,7 @@ from src import pipeline
 # the picture step runs with the final picture flags. use_shipped() turns the picture-wording flags on for the whole
 # run; switched on before stage 5 they change the subject wording that the duplicate check reads, so a few clips then
 # show different pictures from the scored run (e.g. tg_d088 lost its Explosion picture). This is the split the scored
-# picture renderer (benchmark/gold/render_trail_media.py) uses.
+# picture renderer (benchmark/gold/render_trail_media.py, release v1.2.0) uses.
 _SCORED_STAGE5 = {"KINSHIP_DIRECTED": False, "PICTURE_V3": False, "PICTURE_SCENE": False,
                   "PICTURE_SCENE_GUARD2": False, "PICTURE_FINAL": False, "PICTURE_MAKER": False}
 

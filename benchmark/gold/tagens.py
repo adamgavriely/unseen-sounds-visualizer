@@ -1,4 +1,4 @@
-"""Round 63 TAG-ENS (docs/prereg_round13_detector_push.md "Round 63 TAG-ENS"): EAT-large + SSLAM on BEATs' 2-s / 0.25-s
+"""Round 63 TAG-ENS (docs/history/preregistrations/prereg_round13_detector_push.md "Round 63 TAG-ENS", release v1.2.0): EAT-large + SSLAM on BEATs' 2-s / 0.25-s
 windows, per-label quantile matching onto BEATs' scale on 415 half A (label-free), span source = mean(BEATs, calibrated).
 
     python benchmark/gold/tagens.py manifest --set heldout|dev|dev2   # CPU, msproj; dev from ~/MscProj_r13, dev2 from ~/MscProj_tg

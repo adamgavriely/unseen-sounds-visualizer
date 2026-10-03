@@ -1,5 +1,5 @@
-"""FLAM as the Stage 4 detector (docs/prereg_v4.md §4; the first attempt is
-docs/prereg_flam.md and benchmark/flam_detector.py).
+"""FLAM as the Stage 4 detector (docs/history/preregistrations/prereg_v4.md §4, release v1.2.0; the first attempt is
+docs/history/preregistrations/prereg_flam.md (release v1.2.0) and benchmark/flam_detector.py (release v1.2.0)).
 
 FLAM (Adobe, ICML 2025; ``openflam`` v1-base) scores any text query per audio frame. It
 is run with the fixed descriptive vocabulary in flam_queries.py, one query per AudioSet
@@ -7,7 +7,7 @@ label, so the output has the same shape as BEATs' -- framewise[frames, Q], times
 -- and ``_extract_events`` works unchanged.
 
 Calibration. FLAM's scores are not on BEATs' scale and differ per query, so each query
-has its own bar, chosen once on DCASE dev-train audio (benchmark/flam_v2.py) and stored
+has its own bar, chosen once on DCASE dev-train audio (benchmark/flam_v2.py, release v1.2.0) and stored
 in benchmark/flam_calibration.json. Scores are rescaled piecewise-linearly so that the
 query's bar lands on config.DISPLAY_THRESHOLD and 1 stays 1; the shipping hysteresis rule
 (bar, half the bar, 0.5 s) then runs on the rescaled scores.

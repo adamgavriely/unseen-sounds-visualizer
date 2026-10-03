@@ -1,18 +1,7 @@
-# Stage 7 — Evaluation
+# Stage 7 - Evaluation
 
-**Role:** Measure whether the generated augmentations communicate the intended audio semantics.
-
-**Automatic protocol:** generate augmentation → VLM *describes* the augmented scene → compare against
-a semantic reference derived from the original multimodal input (LLM) → independent **LLM judge**
-scores semantic consistency. Complement with CLIP/CLAP relevance and a **gating-accuracy** metric
-(did we correctly withhold augmentation when the sound was already visible, and add it when not?).
-
-**Baselines:** (1) direct audio→image (Sound2Scene); (2) audio captioning only; (3) proposed method.
-
-**Input:** benchmark clips + system outputs.
-**Output:** per-clip scores, aggregate tables, baseline comparison.
-
-**Status:** Partial — `gating_accuracy()` (the core gate metric) is implemented; the automatic
-VLM-describe → LLM-judge protocol is TODO. New component — no legacy code.
-**TODO (Adam):** decide whether to run the optional human study; if yes, check department
-ethics/IRB requirements and timeline early.
+Not part of the per-video pipeline; runs over the benchmark. `protocol.py` is the automatic protocol of the project
+proposal (a vision model describes the output, a separate judge model scores it against a reference), driven by
+`benchmark/run_protocol.py`; `independent_reference.py` builds that reference without the evaluated system's outputs.
+`gating_accuracy()` in `__init__.py` scores the on-screen gate. The per-sound scorer used for the reported results is
+`benchmark/gold/score_per_sound.py`.

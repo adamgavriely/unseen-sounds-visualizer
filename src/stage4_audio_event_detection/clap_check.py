@@ -15,9 +15,9 @@ family: 'Vehicle', 'Car' and 'Motor vehicle (road)' are one competitor, not thre
 the detection survives only if its own family (or one in its ontology subtree) is among CLAP's top-k
 families for that window. k is set once on DCASE 2025 gold events as the smallest value
 that keeps 95 % of gold recall, and must be at most 30 of the 328 families or the check
-is declared useless (benchmark/calibrate_clap_k.py) -- the constant comes from gold, never from
+is declared useless (benchmark/calibrate_clap_k.py, release v1.2.0) -- the constant comes from gold, never from
 the phantoms -- and then frozen (config.CLAP_TOP_K). A dropped detection does not exist
-downstream: it is neither shown nor gated. (Design reviewed by Fable, 2026-09-14.)
+downstream: it is neither shown nor gated. (Design review, 2026-09-14.)
 """
 from __future__ import annotations
 

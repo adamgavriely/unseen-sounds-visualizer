@@ -1,7 +1,7 @@
 """Stage 2 backend: OWLv2 open-vocabulary DETECTION (v2-c).
 
 Why this exists. Swapping CLIP for SigLIP barely moved gating accuracy (49.3% ->
-50.2%), and the confusion matrix showed why: of 103 clips Adam tagged seen_ambient,
+50.2%), and the confusion matrix showed why: of 103 clips tagged seen_ambient,
 67 were predicted unseen or mixed. The failure is not the embedding model, it is the
 QUESTION. CLIP and SigLIP embed a whole frame, so "is the source of this sound in
 shot?" gets answered by overall scene gist -- and a small ambulance at the end of a
@@ -9,11 +9,11 @@ street, a dog at the edge of frame, or sheep across a field are swamped.
 
 OWLv2 is an open-vocabulary detector: it localises a named object and returns a
 score for that object. That is precisely the gate's question. Spot checks on the
-clips Adam reported as misjudged: sheep 0.77, dog 0.67, sea 0.54 -- all correctly ON
+clips reported as misjudged: sheep 0.77, dog 0.67, sea 0.54 -- all correctly ON
 screen, where both CLIP and SigLIP had called them off-screen.
 
 Cost: ~12 s per frame on CPU, so this backend is intended for the GPU, where it is
-roughly real-time. The same model is used by scripts/prescreen_owl.py to filter the
+roughly real-time. The same model is used by scripts/prescreen_owl.py (release v1.2.0) to filter the
 tagging queue.
 """
 from __future__ import annotations

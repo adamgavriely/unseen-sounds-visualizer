@@ -6,7 +6,7 @@ release than the one this project is validated on, so it raises
 
     ValueError: Parameter stride has unsupported type list[int]
 
-The project's torch is NOT upgraded to fix this -- every number in docs/prereg_v4.md was produced on
+The project's torch is NOT upgraded to fix this -- every number in docs/history/preregistrations/prereg_v4.md (release v1.2.0) was produced on
 it, and the demo must not be the reason it changes. Instead the schema inference is taught the
 builtin spellings, which are the same types under different names: `list[int]` IS `typing.List[int]`.
 Nothing about how the operators execute is touched, and no project code is affected -- the patch

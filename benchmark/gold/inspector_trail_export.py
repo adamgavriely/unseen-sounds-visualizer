@@ -1,7 +1,7 @@
 """Decision Inspector export (docs/inspector2, data contract in its README): the per-clip decision trails of the shipped arm
-D' on merged DEV and merged TEST -> data.js, with a parity check against the frozen run.
+The final system on merged DEV and merged TEST -> data.js, with a parity check against the frozen run.
 
-Compatible with docs/inspector2/export.py (branch claude/project-thread-4rwrnp), with these differences:
+Compatible with the earlier inspector exporter (not in the repository), with these differences:
   * stage 6 is not in trail.json in the harness (the scorer draws the pictures), so the export resets src/trail.py, reads
     the pictures with S.load_pictures under the arm's display flags (exactly as merged_dev.py / test_vs_ship8.py do) and
     appends those display records; the full trail is written next to trail.json as trail_full.json;
@@ -46,7 +46,7 @@ def load_gold_all():
 from benchmark.gold.inspector_data import classify          # noqa: E402
 from src import trail as TRAIL_LOG                           # noqa: E402
 
-# the step catalogue of docs/inspector2/sample_data.py (branch claude/project-thread-4rwrnp), pipeline order
+# the step catalogue of the earlier inspector sample data (not in the repository), pipeline order
 LISTEN = "List every distinct non-speech sound you hear in this recording, one per line, most prominent first."
 STEPS = [
  # stage 4: hearing
