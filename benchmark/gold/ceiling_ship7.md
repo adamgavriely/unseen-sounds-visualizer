@@ -1,7 +1,7 @@
 # Ceiling analysis of SHIP7 on merged DEV — why can't we do better?
 
 Script: `benchmark/gold/ceiling_ship7.py` (release v1.2.0) → `ceiling_ship7.json` (CPU, on the saved SHIP7 pictures, arm `SHIP6+FLAP|proposed`;
-base reproduced 25/55 hits, 27 wrong (9 visible / 16 cross / 2 phantom), cost 2.451 on 71 clips; ledger = `ship7_errors.json`).
+base reproduced 25/55 hits, 27 wrong (9 visible / 16 cross / 2 phantom), cost 2.451 on 71 clips; ledger = `ship7_errors.json`, release v1.2.0).
 (labels as of that run; the final label file has 58 needed sounds)
 An **oracle** fixes ONE stage perfectly with the gold and leaves every other stage as shipped. Cost = (4 × misses + 2 × wrong) / 71,
 so one wrong picture = 0.028, one miss = 0.056.
@@ -77,7 +77,7 @@ decision layer tops out at 43 / 55 hits on this data.
 
 ## TEST
 
-`final_test_ship7.json` holds only the aggregate rows (SHIP7 24 hits / 41 misses, 31 wrong (5/21/5), cost 2.568 vs B0r 21 / 40 / 2.909 on 88
+`final_test_ship7.json` (release v1.2.0) holds only the aggregate rows (SHIP7 24 hits / 41 misses, 31 wrong (5/21/5), cost 2.568 vs B0r 21 / 40 / 2.909 on 88
 clips). No per-item TEST data is stored and TEST gold was not read, so the TEST breakdown is skipped.
 
 ## Notes on method

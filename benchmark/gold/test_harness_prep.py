@@ -121,7 +121,7 @@ def check():
 
 
 def beats():
-    """exactly benchmark/gold/j2_dev_check.beats(), on the scored TEST render's audio.wav"""
+    """exactly benchmark/gold/j2_dev_check.beats() (release v1.2.0), on the scored TEST render's audio.wav"""
     from src.stage4_audio_event_detection.beats_infer import infer_beats
     BEATS_TEST.mkdir(parents=True, exist_ok=True)
     for st in STEMS:

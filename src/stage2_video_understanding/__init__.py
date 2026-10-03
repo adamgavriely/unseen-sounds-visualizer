@@ -197,7 +197,7 @@ def analyze_video(video_path: Path, num_frames: int = 6,
 def _analyze_visibility(video_path, backend: str = "clip", **kw) -> SceneContext:
     """Backend dispatcher: 'siglip' (default), 'clip' (baseline) or 'vlm' (GPU).
 
-    Keeps callers (pipeline, benchmark/evaluate) agnostic of which gate is in use
+    Keeps callers (pipeline, benchmark scripts) agnostic of which gate is in use
     so the two can be compared by flipping one config flag.
     """
     if backend == "siglip":

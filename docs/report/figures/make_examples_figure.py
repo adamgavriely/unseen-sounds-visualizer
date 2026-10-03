@@ -3,7 +3,7 @@
 Frames are taken from the rendered output videos of the final system (the decision inspector's media, which are not
 tracked in git because of their size). Each frame shows the input video on the left and the picture panel on the right.
 Run from the repository root, pointing MEDIA at the folder that holds media/bysig/{DEV,TEST}:
-    python docs/report/figures/make_examples_figure.py P:/MscProj/docs/inspector
+    python docs/report/figures/make_examples_figure.py <media folder>
 """
 import json
 import os

@@ -238,7 +238,7 @@ ARMS["SHIP7+K4AD"] = {**ARMS["SHIP7+K4AO"], "KEEP_NEEDS_V4_ALL_DASM_KEEP": True}
 ARMS["SHIP7+DBR"] = {**ARMS["SHIP7"], "REPEAT_DASM_BRIDGE": 0.575}              # round 35 DBR
 ARMS["SHIP8"] = {**ARMS["SHIP7+K4AD"], "MERGE_GAP": 2.5, "GROUP_ASK": True, "GROUP_MAX_GAP": 8.0,
                  "GROUP_CACHE": str(_ROOT / "data" / "work" / "group_answers.json")}   # = use_shipped; holds bench + live answers  # shipped since round 35 K4A-D; display gap 2.5 since 1 Oct
-# (TEST renders are named SHIP7+K4AD and read at 2.0 by final_test.py; read them at 2.5 with merge_gap_sens.py test --gap 2.5)
+# (TEST renders are named SHIP7+K4AD and read at 2.0 by final_test.py; read them at 2.5 with merge_gap_sens.py test --gap 2.5, release v1.2.0)
 ARMS["SHIP8+MD3"] = {**ARMS["SHIP8"], "AED_MIN_DUR": 0.3, "DEPICT_EVENT": True,
                      "DEPICT_CACHE": str(_ROOT / "data" / "work" / "depict_answers.json")}     # Round 48 MD3 (kill_flags: restores tg_d107 Laughter, +3 rows)
 ARMS["SHIP8+MD3+SK7"] = {**ARMS["SHIP8+MD3"], "STRONG_BEATS_KEEP": 0.7}   # Round 52 STRONG-KEEP
@@ -513,7 +513,7 @@ def ret_rows(rows, arm, C, ffw, st):
 
 def stage4(arms, offline=False):
     if offline:
-        loc = Path(os.environ["R13_LOCAL"])
+        loc = Path(os.environ["HARNESS_LOCAL"])
         DCC.WORK = loc
         DCC.BEATS_DIR = loc / "j2_dev_beats"
     else:
@@ -585,7 +585,7 @@ def stage4(arms, offline=False):
     live = {k: sum(1 for rr in v.values() for r in rr if r["refine"] == "live") for k, v in res["arms"].items()}
     print(f"[live refinements] {live}", flush=True)
     if offline:
-        DCC.dump(Path(os.environ["R13_LOCAL"]) / "stage4_offline.json", res)
+        DCC.dump(Path(os.environ["HARNESS_LOCAL"]) / "stage4_offline.json", res)
     else:
         DCC.dump(STAGE4, res)
 
@@ -626,7 +626,7 @@ def stage5(arms):
         shutil.copy(DCC.DC / "ask_memo.json", MEMO)      # a copy: devcand's memo is not written
     DCC.MEMO = MEMO
     _g, stems = DCC.dev_stems()
-    shard = os.environ.get("R13_SHARD")             # Round 66: "i/n" -> this process does stems i, i+n, ...; own memo + log copies
+    shard = os.environ.get("HARNESS_SHARD")             # Round 66: "i/n" -> this process does stems i, i+n, ...; own memo + log copies
     if shard:
         si, sn = (int(x) for x in shard.split("/"))
         stems = [s for j, s in enumerate(stems) if j % sn == si]

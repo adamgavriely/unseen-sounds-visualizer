@@ -26,3 +26,6 @@ torchlibrosa==0.1.0
 transformers==5.16.1
 # tests (not installed in the cluster environment)
 pytest
+
+# optional, only for comfyui_nodes/public_page.py (upload page, separate environment):
+# gradio requests websockets

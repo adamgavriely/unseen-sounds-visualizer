@@ -1525,7 +1525,7 @@ def _box_object_of(label: str) -> str:
 
 
 def _box_parse(reply: str, n_frames: int, strict: bool = False):
-    """-> ("none"|"null"|"unparsed", None) | ("box", (k, [x1,y1,x2,y2] on 0-1000)); as box_gate.parse_box/_reprompt"""
+    """-> ("none"|"null"|"unparsed", None) | ("box", (k, [x1,y1,x2,y2] on 0-1000)); as box_gate.parse_box/_reprompt (release v1.2.0)"""
     import json as _json
     import re as _re
     t = (reply or "").strip()
