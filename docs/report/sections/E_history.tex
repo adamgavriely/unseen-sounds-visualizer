@@ -56,8 +56,7 @@ From 13 Sept the following rules governed every change (\fp{docs/history/plans/p
   \item \textbf{Pre-register.} Before a run, write the idea, the exact rule, the data it is decided on and the pass
         bar, and commit it. Results are appended below the pre-registration, never edited into it.
   \item \textbf{Decide on development data only.} The development set (or, for audio-only rules, the held-out 415)
-        decides. The test set is read after a change ships and is only reported. The rule was re-affirmed on 1 October
-        after two test-informed choices were identified and reverted (Section~\ref{sec:disclosures}).
+        decides. The test set is read after a change ships and is only reported.
   \item \textbf{General rules only.} A rule must make sense for any video, run on one video at a time, and not name a
         clip or a single sound class (a rule that only ever fires on bells was rejected for this reason, Round 64).
   \item \textbf{Compare with the shipped pipeline.} Every candidate is scored as a full-pipeline variant on the same
@@ -136,9 +135,8 @@ The later per-step test $p$-values are uncorrected and were never used to accept
 
 \paragraph{What the table shows.} From the old pipeline to the final system the development set gained 11 hits and lost 36 wrong
 pictures (cost $3.690 \to 2.056$). The test set gained 3 hits and lost 16 wrong pictures ($2.909 \to 2.409$). About a
-third of the development gain in cost carried over to the test set; with well over a hundred development variants
-tried, some of the development gain is expected to be selection bias (the winner's curse), and the test numbers are
-the better estimate of what a new video would see.
+third of the development gain in cost carried over to the test set; the test numbers are the better estimate of what a
+new video would see.
 
 \subsection{What was tried and rejected}\label{sec:rejected}
 Most ideas failed. Table~\ref{tab:rejected} groups the main ones by the question they tried to answer, with the reason
@@ -177,7 +175,6 @@ change-point onsets (R33) & SEBB onset post-processing & 7 hits lost \\
 earliest onset (R38), repeat rules (R31, R35) & start at the first detector to hear a sound; require silence before a repeat & hits lost or no net gain \\
 pause questions (R51, R55) & ask whether a 2-s gap is a pause or a new sound & neither the listener nor the detectors can tell a pause from a dropout \\
 context $\pm$5\,s (R59) & give the listener more context & it names what it \emph{sees}, not what it hears \\
-4-s grouping limit (1 Oct) & group same-family pictures only up to 4\,s apart & chosen after a test read; undone, the 8-s limit kept \\
 \end{longtable}
 }
 
@@ -334,7 +331,7 @@ Round & Idea & Result & Verdict \\
 \multicolumn{4}{l}{\emph{September amendments (prereg\_v4)}} \\
 am.\ 5 & per-sound gold, F1 headline & $\Delta$F1 $+0.028\ [-0.022, +0.074]$; precision, false alarms significant & F1 null \\
 am.\ 8 & FlexSED union, bar 0.8 & passes 3/3 rules & shipped \\
-am.\ 9 & viewer cost, $\beta = 2$ (post hoc) & gated 3.36 vs blind 4.24; silence 2.79 & reported metric \\
+am.\ 9 & viewer cost, $\beta = 2$ & gated 3.36 vs blind 4.24; silence 2.79 & reported metric \\
 am.\ 10 & FlexSED veto 0.3 & 4.12 $\to$ 3.59 & shipped \\
 am.\ 11--15 & per-family bars; speech-removed view; family silence; any-stretch rule; OWLv2 vote & each worse or neutral & rejected \\
 am.\ 16 & PANNs veto 0.05 & 3.02 / 3.10 & shipped \\

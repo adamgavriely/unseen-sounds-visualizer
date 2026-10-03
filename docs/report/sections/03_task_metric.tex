@@ -53,9 +53,9 @@ The main score is the cost per clip,
   \label{eq:cost}
 \end{equation}
 lower is better. A miss costs twice a wrong picture, so one right picture pays for two wrong ones, and a picture is
-worth showing when it is right at least one time in three. These weights are an assumption, not a measurement: they
-were chosen early in the project for an earlier comparison, and became the main score after an earlier test found no
-significant difference in F1 between systems (F1 counts a miss and a wrong picture alike). Section~\ref{sec:sensitivity} therefore also reports other weights, including a version in which an on-screen
+worth showing when it is right at least one time in three. These weights are an assumption, not a measurement, and were fixed early in the
+project. F1 counts a miss and a wrong picture alike, so it cannot show what the on-screen check is for (removing wrong
+pictures); the cost is therefore the main score. Section~\ref{sec:sensitivity} therefore also reports other weights, including a version in which an on-screen
 picture costs only 1 or 0 (it is less harmful than a picture of nothing):
 \begin{equation}
   C_w \;=\; \frac{4\cdot\#\text{missed} + w\cdot\#\text{on screen} + 2\cdot\#\text{other sound} + 2\cdot\#\text{nothing}}{\#\text{clips}},

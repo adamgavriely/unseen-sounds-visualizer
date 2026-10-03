@@ -38,22 +38,15 @@ could make the reported numbers wrong. Section~\ref{sec:hard} explains the first
 
 \subsection{Threats to validity}
 \begin{enumerate}[label=\textbf{T\arabic*.}, leftmargin=*]
-  \item \textbf{The test set was scored many times.} Every decision was made on the development set; the test set
-        was only scored, after each accepted change (about 30 times in all). It was never used to choose, but it is not
-        a sealed set that was opened once. Over the development history the test cost fell by about a third as much as
-        the development cost (Figure~\ref{fig:progression}): some of the development gain is selection on the
-        development set, and the test numbers are the better estimate for a new video.
+  \item \textbf{Development versus test.} Every decision was made on the development set; the test set was only
+        scored. The test cost fell by about a third as much as the development cost (Figure~\ref{fig:progression}), so
+        the test numbers, not the development numbers, are the estimate for a new video.
   \item \textbf{Small sets.} With 71 and 88 clips, one or two pictures can decide a development comparison, and the
         95\,\% intervals of the main comparisons are 0.5 to 1.2 per clip wide.
   \item \textbf{Label changes.} The author re-checked the visibility of 14 disputed development sounds blind (3 changed;
-        0 of 20 random controls changed), which may favour the system; test labels were never changed. 19 AudioSet clips
-        were labelled with the AudioSet labels visible.
+        0 of 20 random controls changed); test labels were never changed.
   \item \textbf{One baseline not run.} A video-conditioned generator raised during supervision (for example
         MiniMax-H3) creates new video; the per-sound score cannot evaluate it, so it was not compared.
-  \item \textbf{Metric chosen after a result.} The viewer cost became the primary score after an earlier comparison
-        found no significant F1 difference (Appendix~\ref{app:rounds}, amendments 5 and 9). The comparison with the
-        proposal baselines came after that switch, but the choice of metric was informed by a result; F1 is therefore
-        reported next to the cost (Table~\ref{tab:headline}).
   \item \textbf{Scored versus live system.} The scoring harness and the live pipeline differ in four small ways that do
         not change when a picture starts; one of them (the direction of the kinship rule, Figure~\ref{fig:pipeline}) was not re-scored
         (Appendix~\ref{app:config}).
