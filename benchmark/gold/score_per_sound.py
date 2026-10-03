@@ -358,9 +358,22 @@ def category(sounds) -> str:
     return "unseen"
 
 
+# clip_path and JUDGE100: from benchmark/gold/detector_dry.py (release v1.2.0), unchanged
+JUDGE100 = _ROOT / "benchmark" / "gold" / "judge100.txt"  # the 100 frozen judge clips (stems)
+
+
+def clip_path(name: str):
+    for d in ("mixed", "seen_ambient", "unseen_ambient", "no_ambient", "unsorted", "_dropped"):
+        p = _ROOT / "data" / "input" / "benchmark" / d / name
+        if p.exists():
+            return p
+    for p in (_ROOT / "data" / "input" / "audioset_strong").glob(name + ".*"):
+        return p
+    return None
+
+
 def subsets_of(gold):
     """named clip subsets declared in amendment 5: population, dev/test, category, pre-screened"""
-    from benchmark.gold.detector_dry import clip_path, JUDGE100
     judge = set(JUDGE100.read_text().split()) if JUDGE100.exists() else set()
     slice_file = _ROOT / "benchmark" / "gold" / "audioset_slice.json"
     ids = {c["id"] for c in json.loads(slice_file.read_text(encoding="utf-8"))["clips"]} if slice_file.exists() else set()

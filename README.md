@@ -72,7 +72,9 @@ python main.py --input data/input/clip.mp4 --device cuda
 This writes `data/output/clip_augmented.mp4` (the video with the picture panel) and the intermediate files under
 `data/work/clip/`. The final system is the configuration `config.use_shipped()` in [`config.py`](config.py).
 Before detection, `main.py` prepares the listener inputs of the clip on the spot (FlexSED, BEATs and PANNs scores,
-the two audio-language listeners, DASM and FineLAP), with the same harness as the benchmark, once per clip.
+the two audio-language listeners, DASM and FineLAP), with the same harness as the benchmark, once per clip
+(the chain is listed in [`benchmark/gold/README.md`](benchmark/gold/README.md)). On first use it also computes DASM's
+text queries once (`src/stage4_audio_event_detection/dasm_infer.py` → `data/work/dasm_text_queries.pt`).
 Run time: about five minutes of GPU time (one NVIDIA H200) to prepare the listener inputs of a 15-s clip, plus the
 picture step (about 20 s per picture try, up to five tries per picture). On a Slurm cluster, `slurm/run_best.sh`
 runs the same system on a folder of clips (see [`slurm/README.md`](slurm/README.md)).
@@ -86,7 +88,8 @@ danger sounds) and [`docs/inspector2/data_parity.json`](docs/inspector2/data_par
 Appendix C of the report gives the source file of every number.
 
 Recomputing them from a clone is not possible as is. The scripts (for example
-`python benchmark/gold/final_vs_baselines.py`) read the stage-5 outputs of every benchmark clip, and these are
+`python benchmark/gold/final_vs_baselines.py`) read the stage-5 outputs of every benchmark clip and the cached
+model answers of the DEV/TEST splits. The cached answers are in release v1.2.0 (the cluster caches); the outputs are
 built on the cluster from the video clips, which are not redistributed (their source collections are listed in
 the "Data" section (Section 4) and the "Code and data availability" note of the report). The clip names are in
 `benchmark/gold/dev_stems.txt`, `dev2_stems.txt`, `test_stems.txt` and `test2_stems.txt` (split rules in
@@ -100,7 +103,7 @@ clips in place (`data/input/tagger_set/` for the `tg_d*` clips), the steps are t
 |---|---|
 | `main.py`, `config.py` | entry point and configuration (`use_shipped()` = final system) |
 | `src/` | the pipeline, one package per stage (`stage1_…` to `stage7_…`) |
-| `benchmark/` | human labels, per-sound scorer, scoring harness and cached model answers |
+| `benchmark/` | human labels, per-sound scorer, scoring harness and the listener harness (research rounds and DEV/TEST caches: release v1.2.0) |
 | `tests/` | unit tests |
 | `docs/report/` | the technical report (LaTeX sources, figures and PDF) |
 | `docs/inspector2/` | decision trail: every decision of the final system on every clip, and its parity check |

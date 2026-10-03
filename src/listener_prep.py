@@ -47,6 +47,17 @@ def finelap(split: str, stem: str) -> None:
                    check=True, cwd=str(_ROOT), env=env)
 
 
+def dasm_queries(env=None) -> None:
+    """once per machine: DASM's MGA-CLAP text embeddings of the 215 families (data/work/dasm_text_queries.pt), which the
+    `dasm` step reads. Run in its own process: the embedder takes this project off the import path."""
+    from src.stage4_audio_event_detection.dasm_infer import QFILE
+    if QFILE.exists():
+        return
+    print("       [listener-prep] DASM text queries (once)", flush=True)
+    subprocess.run([sys.executable, str(_ROOT / "src" / "stage4_audio_event_detection" / "dasm_infer.py")],
+                   check=True, cwd=str(_ROOT), env=env)
+
+
 def ensure_listener_inputs(video: Path) -> str:
     """build (once) the listener answers, DASM and FineLAP scores of this clip; returns the split name for set_listener_split"""
     video = Path(video).resolve()
@@ -67,6 +78,7 @@ def ensure_listener_inputs(video: Path) -> str:
             shutil.copy2(video, link)
     (_ROOT / "benchmark" / "gold" / f"{split}_stems.txt").write_text(stem + "\n", encoding="utf-8")
     env = {**os.environ, "TG_EXTRA_SPLITS": split}
+    dasm_queries(env)
     prep = str(_ROOT / "benchmark" / "gold" / "tagger_prep.py")
     for step in STEPS:
         cmd = [sys.executable, prep, step, "--split", split] + (["--arms", "B0r"] if step in ("stage4", "stage5") else [])

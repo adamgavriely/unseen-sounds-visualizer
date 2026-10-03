@@ -279,10 +279,16 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
     try:
         if backend == "PSED":
             # v4: PretrainedSED BEATs-strong, frame-level (docs/history/preregistrations/prereg_psed.md, release v1.2.0)
-            from src.stage4_audio_event_detection.psed_infer import infer_psed
+            try:
+                from src.stage4_audio_event_detection.psed_infer import infer_psed
+            except ImportError as e:
+                raise ImportError("psed_infer.py (tested variant, not shipped) is in release v1.2.0") from e
             framewise, times, labels = infer_psed(Path(wav_path), device)
         elif backend == "FLAM":
-            from src.stage4_audio_event_detection.flam_infer import infer_flam
+            try:
+                from src.stage4_audio_event_detection.flam_infer import infer_flam
+            except ImportError as e:
+                raise ImportError("flam_infer.py (tested variant, not shipped) is in release v1.2.0") from e
             framewise, times, labels = infer_flam(Path(wav_path), device)
         elif backend == "BEATs":
             from src.stage4_audio_event_detection.beats_infer import infer_beats
@@ -821,7 +827,11 @@ def tag_ens_frames(framewise, times, labels, clip, wav=None):
         if not p.exists():
             if not wav:
                 raise FileNotFoundError(f"TAG_ENS: no {m} frames for {clip} at {p} and no wav to score")
-            from benchmark.gold import tagens as _TE      # live: one pass of the tagger over BEATs' windows
+            try:
+                from benchmark.gold import tagens as _TE  # live: one pass of the tagger over BEATs' windows
+            except ImportError as e:
+                raise ImportError("TAG_ENS live scoring needs benchmark/gold/tagens.py, which is in release v1.2.0 "
+                                  "(round 63, not shipped); not in this repository") from e
             _TE.score_to(m, Path(wav), np.asarray(times), p)
         z = np.load(p)
         fw = z["fw"].astype(np.float32)

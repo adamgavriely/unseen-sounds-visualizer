@@ -408,7 +408,7 @@ LISTENER_EDGE_S = 0.3
 LISTENER_CONFIRMED_MIRROR = False  # Round 14 amendment B, F7: the MIRROR_VETO keeps a span the listener accepts (V4/V12/yes-no>3)
 LISTENER_DASM_VOTE = False    # Round 14 amendment B, F8: a rescued run needs DASM >= LISTENER_DASM_BAR within the run +- 0.5 s
 LISTENER_DASM_DIR = None      #   DASM frame scores per clip (<dir>/<clip>.npz: fw [T, Q], times, labels)
-LISTENER_DASM_BAR = 0.575     #   round 6 / devcand D1 span bar (benchmark/detector_round6.json bars.g)
+LISTENER_DASM_BAR = 0.575     #   round 6 / devcand D1 span bar (detector_round6.json bars.g, release v1.2.0)
 LISTENER_DASM_PAD = 0.5
 FLEXSED_EXTRA = False         # Round 14 amendment D: the group-a extra FlexSED queries (folded labels) as more columns
 FLEXSED_EXTRA_DIR = None      #   <dir>/<clip>.npz (fw [Q, frames], labels, fps); DEV data/work/flexsed_extra_dev

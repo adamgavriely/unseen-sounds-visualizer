@@ -35,6 +35,7 @@ python $P --split $NAME stage5 --arms B0r
 python $P --split $NAME lpool
 python $P --split $NAME qwen
 python $P --split $NAME afn
+[ -f data/work/dasm_text_queries.pt ] || python src/stage4_audio_event_detection/dasm_infer.py   # DASM text queries, once
 python $P --split $NAME dasm
 # shipped-arm inputs (as src/listener_prep.py): DR2 DASM-rescue pool + listeners, K-V4 P1 inventory, FineLAP per clip
 G=benchmark/gold; W=data/work

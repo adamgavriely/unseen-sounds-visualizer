@@ -6,8 +6,7 @@ Everything the DEV/TEST harness has, built the same way, one folder per split:
            picture) -> data/work/protocol_{proposed,blind_a2i}_<split>_v33 (media, audio.wav, scene, segments, gate
            votes, onset_trace, augmentations): the "scored render" B0 of the split
   flexsed  FlexSED 215 families (benchmark/gold/flexsed_run.py --clip-dir, unchanged) -> data/work/flexsed_cache (shared,
-           as DEV/TEST); flexx: the 147 extra queries (flexsed_extra.run, unchanged but for the stem list) ->
-           data/work/flexsed_extra_<split>
+           as DEV/TEST). (The `flexx` step, the 147 extra queries of flexsed_extra.py, is in release v1.2.0.)
   wav16 / beats / panns / dasm   as r13_test_prep / dev_candidates_check -> data/work/r13<split>/wav16, j2_<split>_beats,
            r13<split>/panns, dasm_<split>
   qwen     gold-free listener caches, one Qwen3-Omni load: yes/no superset (test_listener.superset: P1/P2/P3/PV) ->
@@ -20,7 +19,7 @@ Everything the DEV/TEST harness has, built the same way, one folder per split:
   score    DEV2 ONLY: score_per_sound on the DEV2 clips of tagger_AG.json (the file is filtered to DEV2 stems on parse);
            refuses split test2.
 score_per_sound.load_gold raises in every other step. New code only: round13_dev, dev_listener, test_listener,
-listener_variants, listener_afnext, flexsed_run, flexsed_extra, dev_candidates_check are imported, never edited.
+listener_variants, listener_afnext, flexsed_run, dev_candidates_check are imported, never edited.
 
     python benchmark/gold/tagger_prep.py links                     # CPU: split clip folders (symlinks), stem checks
     python benchmark/gold/tagger_prep.py --split dev2 render       # GPU
@@ -30,7 +29,6 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import inspect
 import json
 import os
 import subprocess
@@ -165,19 +163,6 @@ def flexsed(split):
     """benchmark/gold/flexsed_run.py, unchanged, on the split's clip folder (same code/settings as the cache)"""
     subprocess.run([sys.executable, str(GOLDD / "flexsed_run.py"), "--clip-dir", str(clip_dir(split)),
                     "--out", str(WORK / "flexsed_cache")], check=True)
-
-
-def flexx(split):
-    """flexsed_extra.run, unchanged except the stem list (its DEV/TEST count assert is the only line replaced)"""
-    from benchmark.gold import flexsed_extra as FX
-    src = inspect.getsource(FX.run)
-    line = '    assert len(stems) == {"dev": 49, "test": 60}[which], len(stems)\n'
-    assert src.count(line) == 1, "flexsed_extra.run changed"
-    src = src.replace(line, f"    assert len(stems) == {len(stems_of(split))}, len(stems)\n")
-    FX.STEMS[split] = GOLDD / f"{split}_stems.txt"
-    ns = FX.__dict__
-    exec(compile(src, FX.__file__, "exec"), ns)
-    ns["run"](split, 24)
 
 
 def render(split):
@@ -434,7 +419,7 @@ def check():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=("links", "check", "flexsed", "flexx", "render", "wav16", "beats", "panns", "dasm",
+    ap.add_argument("step", choices=("links", "check", "flexsed", "render", "wav16", "beats", "panns", "dasm",
                                      "lpool", "qwen", "afn", "stage4", "stage5", "gates", "score"))
     ap.add_argument("--split", choices=SPLITS + EXTRA)
     ap.add_argument("--arms", nargs="+", default=["B0r"])
@@ -468,7 +453,7 @@ def main():
         return (R.stage4 if a.step == "stage4" else R.stage5)(a.arms)
     if a.step == "gates":
         return gates(a.split, a.arms)
-    {"flexsed": flexsed, "flexx": flexx, "render": render, "wav16": wav16, "beats": beats, "panns": panns, "dasm": dasm,
+    {"flexsed": flexsed, "render": render, "wav16": wav16, "beats": beats, "panns": panns, "dasm": dasm,
      "lpool": lpool}[a.step](a.split)
 
 

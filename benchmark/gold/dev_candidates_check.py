@@ -4,12 +4,14 @@ Candidates (unchanged, values frozen on the 280): EAT-R (round 5), DASM D1 (roun
 I7 FlexSED local-contrast veto (round 8). Baselines: B0 = the scored DEV render (dev_monocap_v31, PANNs veto 0.05);
 B1 = the shipped stack on DEV (the same config with the BEATs self-veto 0.1218, PANNs off) = primary.
 
-    python benchmark/gold/dev_candidates_check.py eat      # GPU: EAT-large frame scores on each DEV audio.wav (BEATs windows)
     python benchmark/gold/dev_candidates_check.py dasm     # GPU: DASM frame scores (round-6 queries), 10-s pieces
-    python benchmark/gold/dev_candidates_check.py vlm      # GPU: I6 scene prior answers (Qwen3.8-27B, round-8 prompt)
     python benchmark/gold/dev_candidates_check.py stage4   # GPU (occlusion onsets of new spans only): gate D0, spans of every arm
     python benchmark/gold/dev_candidates_check.py stage5   # GPU: stage 5 per arm and system, gate answers reused
     python benchmark/gold/dev_candidates_check.py score    # CPU: gate D5, the table, bootstrap, Holm, ship rule
+
+This repository keeps the module for its shared helpers (the pipeline-parity stage-4/5 code, scoring, bootstrap) and the
+DASM step, which the listener harness uses. The `eat`, `vlm` and `paralist` cache steps and the arms that need the detector
+round modules (EATR, I4, R6, R7) are in release v1.2.0 with benchmark/detector_round5/8/10.py.
 """
 from __future__ import annotations
 
@@ -45,6 +47,7 @@ TOL = 0.01
 ARMS = ["B0r", "B1", "EATR", "D1", "I4", "I6"]   # arms that go through stage 5 (job 31330563)
 EXTRA = ["R1", "R6", "R7"]                       # amendment 1: round 10's rescue cells (job_devcand_extra.sh)
 CANDS = ["EATR", "D1", "I4", "I6", "I7"] + EXTRA
+RELEASE_ONLY = ("EATR", "I4", "R6", "R7")       # arms that import benchmark/detector_round5/8.py (release v1.2.0)
 PARA_DIR, WAV16 = DC / "para", DC / "wav16"
 NAMES = {"B0": "B0 scored render (PANNs veto)", "B0r": "B0 repro (this code)", "B1": "B1 shipped stack (self-veto)",
          "EATR": "EAT-R", "D1": "DASM D1", "I4": "I4 parent emission", "I6": "I6 VLM scene prior", "I7": "I7 contrast veto",
@@ -53,14 +56,12 @@ FLANK, I7_MARGIN = 3.0, 0.2
 
 
 def frozen():
-    """the candidates' values, read from the rounds' own result files (not retyped)"""
-    r5 = json.loads((_ROOT / "benchmark" / "detector_round5.json").read_text(encoding="utf-8"))["fit"]["EAT-R"]
-    r6 = json.loads((_ROOT / "benchmark" / "detector_round6.json").read_text(encoding="utf-8"))["bars"]
-    from benchmark import detector_round10 as R10
-    return {"BAND": R10.BAND, "R1_BAR": R10.DASM_BAR, "R1_PAD": R10.R1_PAD, "R2_ADMIT": R10.ADMIT,
+    """the candidates' values. Originally read from the rounds' own result files (benchmark/detector_round5.json fit EAT-R,
+    detector_round6.json bars, detector_round10.py; release v1.2.0); this is that dict, printed and pasted unchanged."""
+    return {"BAND": 0.4, "R1_BAR": 0.35937499999999994, "R1_PAD": 0.5, "R2_ADMIT": 0.5,
             "AED": 0.175, "DISP": 0.35, "FBAR": 0.8, "FVETO": 0.3, "B_SELF": 0.1218,
-            "EAT_AED": float(r5["aed"]), "EAT_DISP": float(r5["disp"]), "EAT_B": float(r5["b"]),
-            "DASM_G": float(r6["g"]), "DASM_V": float(r6["v"]), "I6_BAR": 0.5, "I7_MARGIN": I7_MARGIN, "FLANK": FLANK}
+            "EAT_AED": 0.2575, "EAT_DISP": 0.515, "EAT_B": 0.1658935546875,
+            "DASM_G": 0.575, "DASM_V": 0.08392333984375, "I6_BAR": 0.5, "I7_MARGIN": 0.2, "FLANK": 3.0}
 
 
 F = frozen()
@@ -92,33 +93,11 @@ def dump(p, obj):
 
 
 # ============================================================================= caches (GPU)
-def eat():
-    import librosa
-    from benchmark import detector_round5 as R5
-    _g, stems = dev_stems()
-    EAT_DIR.mkdir(parents=True, exist_ok=True)
-    score, info = R5.eat_model("cuda")
-    _m, names = R5.label_names()
-    print(f"[eat] {info}", flush=True)
-    for st in stems:
-        dst = EAT_DIR / f"{st}.npz"
-        if dst.exists():
-            continue
-        audio, _ = librosa.load(str(wav_of(st)), sr=R5.SR, mono=True)       # as infer_beats reads audio.wav
-        chunks, times = R5.windows(audio)
-        zb = np.load(BEATS_DIR / f"{st}.npz")
-        assert len(zb["times"]) == len(times) and np.allclose(zb["times"], times, atol=1e-4), f"window mismatch {st}"
-        assert sorted(str(x) for x in zb["labels"]) == sorted(names), "EAT names differ from BEATs names"
-        fw = np.concatenate([score(chunks[i:i + 64]) for i in range(0, len(chunks), 64)], axis=0)
-        np.savez_compressed(dst, fw=fw.astype(np.float32), times=np.asarray(times, np.float64), labels=np.array(names))
-        print(f"[eat] {st} {fw.shape}", flush=True)
-
-
 def dasm():
     """round 6's scorer and queries; 10-s pieces, the last piece = the clip's final 10 s (no zero-padded piece)"""
     import librosa
     import torch
-    from benchmark import detector_round6 as R6
+    from src.stage4_audio_event_detection import dasm_infer as R6     # round 6's DASM block (detector_round6.py, v1.2.0)
     _g, stems = dev_stems()
     DASM_DIR.mkdir(parents=True, exist_ok=True)
     wavs = {st: str(wav_of(st).resolve()) for st in stems}
@@ -158,63 +137,6 @@ def dasm():
         log["clips"][st] = {"seconds": L / SR, "frames": int(fw.shape[0])}
         print(f"[dasm] {st} {L / SR:.2f} s -> {fw.shape}", flush=True)
     (out / "_log.json").write_text(json.dumps(log, indent=1), encoding="utf-8")
-
-
-def vlm():
-    import torch
-    from transformers import AutoProcessor, AutoModelForImageTextToText
-    from benchmark import detector_round8 as R8
-    from src.stage2_video_understanding.vlm import _frames
-    _g, stems = dev_stems()
-    fams = json.loads(R8.VOCAB.read_text(encoding="utf-8"))["families"]
-    assert len(fams) == 215
-    prompt = R8.VLM_PROMPT + "\n".join(f"{i}. {f}" for i, f in enumerate(fams, 1)) + R8.VLM_FORMAT
-    proc = AutoProcessor.from_pretrained(R8.VLM_MODEL)
-    mdl = AutoModelForImageTextToText.from_pretrained(R8.VLM_MODEL, dtype=torch.bfloat16, device_map="auto").eval()
-    out = json.loads(VLM_JSON.read_text(encoding="utf-8")) if VLM_JSON.exists() else {}
-    out.setdefault("_meta", {"model": R8.VLM_MODEL, "prompt": prompt, "max_new": R8.VLM_MAX_NEW, "thinking": False, "frames": 4})
-    for st in [s for s in stems if s not in out]:
-        video = json.loads((scored_dir("proposed") / st / "media.json").read_text(encoding="utf-8"))["video_path"]
-        imgs = _frames(Path(video), 4)
-        content = [{"type": "image"} for _ in imgs] + [{"type": "text", "text": prompt}]
-        try:
-            text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False, add_generation_prompt=True,
-                                            enable_thinking=False)
-        except TypeError:
-            text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False, add_generation_prompt=True)
-        inputs = proc(text=[text], images=imgs, return_tensors="pt").to(mdl.device)
-        with torch.no_grad():
-            g = mdl.generate(**inputs, max_new_tokens=R8.VLM_MAX_NEW, do_sample=False)
-        new = g[:, inputs["input_ids"].shape[1]:]
-        ans = proc.batch_decode(new, skip_special_tokens=True)[0].strip()
-        nums = sorted({int(x) for x in re.findall(r"\d+", ans) if 1 <= int(x) <= 215})
-        out[st] = {"answer": ans, "n_frames": len(imgs), "cut": bool(new.shape[1] >= R8.VLM_MAX_NEW),
-                   "families": [fams[k - 1] for k in nums]}
-        print(f"[vlm] {st}: {len(nums)} families, cut {out[st]['cut']}", flush=True)
-        dump(VLM_JSON, out)
-    dump(VLM_JSON, out)
-
-
-def paralist():
-    """amendment 1 (R2): DEV work list for round 10's own FlexSED worker (benchmark/round10_flexsed.py, release v1.2.0, unchanged):
-    16-kHz wav = ffmpeg of the clip's mp4 (as flexsed_run.py), the DEV FlexSED cache for its c1 check, paraphrase outputs"""
-    import subprocess
-    from benchmark import detector_round10 as R10
-    _g, stems = dev_stems()
-    fams = json.loads((_ROOT / "benchmark" / "gold" / "depictable_vocab.json").read_text(encoding="utf-8"))["families"]
-    para = json.loads(R10.PARA.read_text(encoding="utf-8"))["families"]
-    WAV16.mkdir(parents=True, exist_ok=True); PARA_DIR.mkdir(parents=True, exist_ok=True)
-    clips = []
-    for st in stems:
-        video = json.loads((scored_dir("proposed") / st / "media.json").read_text(encoding="utf-8"))["video_path"]
-        wav = WAV16 / f"{st}.wav"
-        if not wav.exists():
-            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", video, "-ac", "1", "-ar", "16000", str(wav)], check=True)
-        clips.append({"id": st, "wav": str(wav.resolve()), "flex_cache": str((FLEX_DIR / f"{st}.npz").resolve()),
-                      "para_out": str((PARA_DIR / f"{st}.npz").resolve())})
-    dump(DC / "para_work_dev.json", {"set": "dev", "families": fams, "paraphrases": para, "clips": clips,
-                                     "log_dir": str(DC.resolve())})
-    print(f"[paralist] {len(clips)} clips -> {DC / 'para_work_dev.json'}", flush=True)
 
 
 # ============================================================================= stage 4
@@ -424,6 +346,10 @@ def build(st, sysn, arm, C, vlm_ans, d0, stat=None):
 
 def stage4(arms=None):
     arms = arms or ARMS
+    old = [a for a in arms if a in RELEASE_ONLY]
+    if old:
+        raise SystemExit(f"[stage4] arms {old} need benchmark/detector_round5.py / detector_round8.py, which are in release "
+                         f"v1.2.0 (not in this repository); run them from that release or pass --arms without them")
     from src.stage4_audio_event_detection import _refine_onsets_cam
     from src.stage4_audio_event_detection import beats_infer as B
     config.ONSET_MONOTONE = True                            # the scored run's MONO=1
@@ -847,10 +773,10 @@ def score():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=("eat", "dasm", "vlm", "paralist", "stage4", "stage5", "score"))
+    ap.add_argument("step", choices=("dasm", "stage4", "stage5", "score"))
     ap.add_argument("--arms", nargs="+", default=ARMS)
     a = ap.parse_args()
-    {"eat": eat, "dasm": dasm, "vlm": vlm, "paralist": paralist, "stage4": lambda: stage4(a.arms),
+    {"dasm": dasm, "stage4": lambda: stage4(a.arms),
      "score": score}.get(a.step, lambda: stage5(a.arms))()
 
 
