@@ -2,9 +2,8 @@
 \section{Conclusion}\label{sec:conclusion}
 
 A deaf viewer misses the sounds whose source is not on screen, and no existing channel supplies them automatically.
-The task looks like a short chain of ready-made models, but every link fails in its own way: detectors miss quiet
-sounds, a lone listener's ``yes'' is often wrong, the vision model takes presence for production, and audio-to-image
-models draw the visible scene. This project built a system that works despite these failures, from open models with no
+The task looks like a short chain of ready-made models, but every link fails in its own way
+(Section~\ref{sec:hard}; the missing capabilities are listed in Section~\ref{sec:missing}). This project built a system that works despite these failures, from open models with no
 training, after more than 150 full-pipeline variants (Table~\ref{tab:scale}), together with a labelled benchmark and a
 metric that prices what a viewer loses. On the test set the final system finds 37\,\% of the needed sounds, half of its
 pictures are right, and its cost is lower than both baselines of the proposal: clearly against direct audio-to-image
@@ -18,7 +17,8 @@ music, and a vision model that takes ``the object is there'' for ``the object is
   \item[RQ1 -- which audio information matters most?] Danger sounds and key moments whose source is off screen:
         sirens, alarms, a baby crying, glass. They are about a quarter of the needed sounds (30 of 123), and they are
         the sounds the system serves best: it finds 82\,\% of them on the development set and 77\,\% on the test set,
-        against 37\,\% and 27\,\% of ordinary events (Figure~\ref{fig:importance}). More broadly, the information that
+        against 37\,\% and 27\,\% of ordinary events, and the on-screen check loses none of them on the test set and one on
+        the development set, at a fraction of the baseline's wrong pictures (Figure~\ref{fig:importance}). More broadly, the information that
         matters is discrete, sourced events (a bell, a knock), which the benchmark's importance rule (an event one can
         say in a sentence, or danger) captures; steady place noise (wind, traffic hum) is excluded by design, and it is
         also where detectors, gate and labels disagree most. Whether DHH viewers rank sounds the same way is untested.
@@ -45,5 +45,5 @@ music, and a vision model that takes ``the object is there'' for ``the object is
 
 \section*{Code and data availability}\phantomsection\addcontentsline{toc}{section}{Code and data availability}\label{sec:availability}
 The code, the per-sound labels, the scoring harness, the logged decisions of the final system and the sources of this
-report are published as release v1.2.0 of \url{https://github.com/adamgavriely/MscFinalProject}~\cite{gavriely2026code}.
+report are published as release v1.3.0 of \url{https://github.com/adamgavriely/MscFinalProject}~\cite{gavriely2026code}.
 The video clips are not redistributed; Appendix~\ref{app:sources} explains how to reproduce every number.

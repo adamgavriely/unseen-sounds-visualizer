@@ -19,15 +19,16 @@ ceiling. Table~\ref{tab:ceiling} gives the order-free view.
 \centering
 \includegraphics[width=\linewidth]{figures/ceiling_waterfall.pdf}
 \caption{Ceiling analysis on a slightly older version of the system (development set, 55 needed sounds). Each bar makes
-one more stage perfect, using the labels, on the same detections. The largest single step is the on-screen check. Even
+one more stage perfect, using the labels, on the same detections. The 2.056 after the joint timing and family step
+equals the final system's development cost only by coincidence. The largest single step is the on-screen check. Even
 with every stage perfect, 12 needed sounds remain missed (right): the detectors never hear them clearly enough.}
 \label{fig:ceiling}
 \end{figure}
 
 \begin{table}[htbp]
 \centering\small
-\caption{One stage made perfect at a time (development set, older version with 25 hits, 27 wrong and cost 2.451 on
-earlier labels with 55 needed sounds; 2.451 equals the development cost of direct audio-to-image only by coincidence).}
+\caption{One stage made perfect at a time (development set; an older version of the system with 25 hits, 27 wrong
+and cost 2.451, scored on earlier labels with 55 needed sounds).}
 \label{tab:ceiling}
 \begin{tabular}{lrrr}
 \toprule
@@ -51,7 +52,7 @@ and seven are too faint or too badly timed.
 A hand audit of the stretches the gate silenced wrongly (36 stretches on the gate-labelled clips: 16 development,
 20 test; the audit tallies the same development stretches at sound level as 43 on-screen and 36 needed sounds, against
 the 41 and 38 of Figure~\ref{fig:gate}) found two kinds of
-error. In 31 of the 36 the gate took \emph{presence for production}: either the named object was in the frame but not
+error. These are stretches, not sounds: a sound is silenced only if every one of its stretches is called visible. In 31 of the 36 the gate took \emph{presence for production}: either the named object was in the frame but not
 making the sound (14, such as a church tower for a ringing bell), or another thing of the same kind was (17, such as a
 perched bird for a call made elsewhere). This follows from
 how the vote is built. Two of the three questions effectively test presence -- naming an object, and asking whether that
@@ -59,7 +60,7 @@ object \emph{could} make the sound -- and only the a/b question asks whether the
 majority tests presence too. The second error is the opposite: the name question answers ``nothing'' on 42\,\% of the
 stretches the labels call visible or obvious, when the source is small, hidden, or its action is fine.
 
-\subsection{Label strictness}
+\subsection{Label strictness}\label{sec:strict}
 In two blind checks, about 1 in 6 pictures counted as wrong was a real, wanted, off-screen sound that the labels do not
 list, and several others were real sounds with the source on screen. Absolute costs are therefore somewhat pessimistic.
 The same labels score every system, but not equally: direct audio-to-image shows more wrong pictures, so it gains more.
@@ -75,9 +76,9 @@ because a similar object was in the frame, and the two main kinds of wrong pictu
 \centering
 \includegraphics[width=\linewidth]{figures/examples.pdf}
 \caption{Outputs of the final system: each frame shows the video (left) and the picture panel (right) a moment after
-the sound starts. Row 1: hits, the source is off screen. Row 2: misses; the church, the robin and the mounted gun are in
-the frame, but they are not making the sound that is heard, and the on-screen check silences it (the panel says no
-off-screen sound). Row 3: wrong pictures whose source is on screen. Row 4: wrong pictures of a sound other than the one
+the sound starts. Row 1: hits, the source is off screen. Row 2: misses; the church, the robin and the bus the camera rides in are in
+the frame, but none is seen making the sound that is heard (a bell, a call made by another bird, a horn), and the
+on-screen check silences it (the panel says no off-screen sound). Row 3: wrong pictures whose source is on screen. Row 4: wrong pictures of a sound other than the one
 heard.}
 \label{fig:examples}
 \end{figure}

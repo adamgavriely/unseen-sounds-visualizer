@@ -60,3 +60,60 @@ for ax, (key, title) in zip(axes, SETS):
 axes[0].set_ylabel("needed sounds found (%)")
 axes[1].legend(frameon=False, fontsize=7.5, loc="upper right")
 fig.tight_layout(); fig.savefig(os.path.join(ROOT, "importance_bars.pdf")); plt.close(fig); print("importance_bars.pdf")
+
+# 3. Wrong pictures by kind: direct audio-to-image against the final system
+KINDS = (("visible", "on screen"), ("cross", "other sound"), ("phantom", "nothing"))
+fig, axes = plt.subplots(1, 2, figsize=(7.4, 2.7), sharey=True)
+for ax, (key, title) in zip(axes, SETS):
+    r = B[key]["rows"]
+    for j, (s, name, col) in enumerate((("blind_a2i", "direct audio-to-image", GREY), ("proposed", "final system", DARK))):
+        for g, (k, lab) in enumerate(KINDS):
+            x = g + (j - 0.5) * 0.36
+            ax.bar(x, r[s][k], 0.34, color=col, label=name if g == 0 else None)
+            ax.text(x, r[s][k] + 0.6, str(r[s][k]), ha="center", fontsize=7.5)
+    for g, (k, lab) in enumerate(KINDS):
+        gone = r["blind_a2i"][k] - r["proposed"][k]
+        ax.text(g, max(r["blind_a2i"][k], r["proposed"][k]) + 4.2, f"$-${gone}", ha="center", fontsize=7.5, color=GREEN)
+    ax.set_xticks(range(3)); ax.set_xticklabels([k[1] for k in KINDS], fontsize=8)
+    ax.set_title(title, fontsize=9); ax.set_ylim(0, 40)
+    ax.spines[["top", "right"]].set_visible(False)
+axes[0].set_ylabel("wrong pictures")
+axes[0].legend(frameon=False, fontsize=7.5, loc="upper right")
+fig.tight_layout(); fig.savefig(os.path.join(ROOT, "wrong_by_kind.pdf")); plt.close(fig); print("wrong_by_kind.pdf")
+
+# 4. Needed sounds found by the final system, by gold label (labels with at least 2 needed sounds in that set).
+# Per-sound outcomes of the final system from docs/inspector2/data.js; needed = needed and importance >= 2.
+# data.js holds no per-sound outcomes of direct audio-to-image, so only the final system is shown.
+_s = open(os.path.join(ROOT, "..", "..", "inspector2", "data.js"), encoding="utf-8").read()
+D = json.loads(_s[_s.index("{"):_s.rstrip().rstrip(";").rindex("}") + 1])
+SHORT = {"Vehicle horn, car horn, honking": "Vehicle horn", "Gunshot, gunfire": "Gunshot", "Whack, thwack": "Whack",
+         "Ice cream truck, ice cream van": "Ice cream truck"}
+rows_by_set = {}
+for split in ("DEV", "TEST"):
+    need, found = {}, {}
+    for c in D["clips"]:
+        if c["split"] != split:
+            continue
+        for g in c["gold"]:
+            if g["needed"] and g["importance"] >= 2:
+                need[g["label"]] = need.get(g["label"], 0) + 1
+                found[g["label"]] = found.get(g["label"], 0) + (g["outcome"] == "hit")
+    assert sum(need.values()) == (58 if split == "DEV" else 65)
+    rows_by_set[split] = sorted(((SHORT.get(k, k), found[k], n) for k, n in need.items() if n >= 2),
+                                key=lambda t: (-t[2], -t[1], t[0]))
+nmax = max(len(v) for v in rows_by_set.values())
+fig, axes = plt.subplots(1, 2, figsize=(7.4, 0.24 * nmax + 0.9))
+for ax, split, (key, title) in zip(axes, ("DEV", "TEST"), SETS):
+    rows = rows_by_set[split]
+    y = list(range(len(rows)))[::-1]
+    ax.barh(y, [n for _, _, n in rows], 0.62, color=LIGHT, label="needed")
+    ax.barh(y, [f for _, f, _ in rows], 0.62, color=DARK, label="found by the final system")
+    for yy, (lab, f, n) in zip(y, rows):
+        ax.text(n + 0.12, yy, f"{f}/{n}", va="center", fontsize=7.5)
+    ax.set_yticks(y); ax.set_yticklabels([r[0] for r in rows], fontsize=7.5)
+    ax.set_ylim(-0.6, len(rows) - 0.4)
+    ax.set_xlim(0, 6.6); ax.set_xlabel("needed sounds", fontsize=8)
+    ax.set_title(title, fontsize=9)
+    ax.spines[["top", "right"]].set_visible(False)
+axes[1].legend(frameon=False, fontsize=7.5, loc="lower right")
+fig.tight_layout(); fig.savefig(os.path.join(ROOT, "found_by_label.pdf")); plt.close(fig); print("found_by_label.pdf")

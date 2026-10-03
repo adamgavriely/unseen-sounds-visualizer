@@ -2,8 +2,7 @@
 \section{Results}\label{sec:results}
 
 \subsection{Baselines}\label{sec:baselines}
-The project proposal's section on baseline systems names the systems the method is compared against. All are run
-on exactly the same clips and scored with exactly the same rules:
+The proposal names three baselines. All are run on exactly the same clips and scored with exactly the same rules:
 \begin{description}
   \item[Direct audio-to-image generation] is the final system with the on-screen check switched off: the same
         detection stack, listeners, display rules and picture model, with a picture for every surviving sound. The
@@ -58,23 +57,39 @@ Test & Show nothing & 0 / 65 & 0 & 0.00 & 2.955 & $-0.545\ [-1.091, -0.023]$ & $
 
 \smallskip
 \footnotesize $^{a}$ The final system without the on-screen check; audio captioning has the same score (same decisions,
-shown as text).
+shown as text). With the Holm correction over five tests (Section~\ref{sec:support}) the four $p$-values of the
+Difference column become, top to bottom, $< 0.001$, $0.087$, $0.087$ and $< 0.001$.
 \end{table}
 
 On the test set the final system finds 24 of 65 needed sounds, and half of its pictures are right. Drawing every heard
-sound finds 26, but only 30\,\% of its pictures are right, and on the test set it is not significantly better than
-showing nothing ($+0.227$ per clip, $[-0.409, +0.841]$, $p = 0.49$, uncorrected); on the development set it is
-($-0.817$, $[-1.578, -0.085]$, $p = 0.032$). The final system is cheaper than both: by 0.773 per clip than direct
+sound finds 26, but only 30\,\% of its pictures are right, and on the test set it is no better than showing nothing:
+it costs 0.227 more per clip ($[-0.409, +0.841]$, $p = 0.49$, uncorrected). On the development set it costs less than
+showing nothing ($-0.817$, $[-1.577, -0.085]$, $p = 0.032$, uncorrected). The final system is cheaper than both: by 0.773 per clip than direct
 audio-to-image generation ($p < 0.001$), which is 24\,\% of that baseline's cost, and by 0.545 than showing nothing
 ($p = 0.044$), 18\,\% of its cost.
+
+On the development set the direction is the same, but the difference from direct audio-to-image is smaller ($-0.394$,
+$p = 0.085$). Two things differ between the sets. Direct audio-to-image shows fewer wrong pictures per clip on the
+development set (39 over 71 clips, 0.55 per clip, against 62 over 88, 0.70), mostly because it shows fewer other-sound
+pictures there (14 against 32). And the check costs more hits there: five fewer than direct audio-to-image on the
+development set, but only two fewer on the test set.
 
 The win over direct audio-to-image generation comes from giving up a few hits to remove many wrong pictures. On the
 test set the final system has 2 fewer hits and 38 fewer wrong pictures: $(2\cdot 38 - 4\cdot 2)/88 = 0.773$ per clip,
 or 19 wrong pictures removed per hit lost. On the development set it has 5 fewer hits and 24 fewer wrong pictures:
 $(2\cdot 24 - 4\cdot 5)/71 = 0.394$, about 5 per hit lost. Of the 38 wrong pictures removed on the test set, 12 are
-on-screen pictures; the rest show another sound or nothing. Silencing a sound also removes its late repeat pictures,
-and the depict-event check, which is off in the baseline, removes some more. Figure~\ref{fig:breakdown} shows the
-two effects on the cost.
+on-screen pictures, 17 show another sound and 9 show nothing; on the development set the 24 removed are 14, 7 and 3
+(Figure~\ref{fig:wrongkind}). Silencing a sound also removes its late repeat pictures, and the depict-event check,
+which is off in the baseline, removes some more. Figure~\ref{fig:breakdown} shows the two effects on the cost.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/wrong_by_kind.pdf}
+\caption{Wrong pictures by kind (Section~\ref{sec:matching}), direct audio-to-image generation against the final
+system. Green: the number removed. The on-screen check removes on-screen pictures directly; silencing a sound also
+removes its late repeats (other sound), and the depict-event check removes some more.}
+\label{fig:wrongkind}
+\end{figure}
 
 \begin{figure}[htbp]
 \centering
@@ -86,29 +101,25 @@ nothing.}
 \label{fig:breakdown}
 \end{figure}
 
-On the development set the direction is the same, but the difference from direct audio-to-image is smaller ($-0.394$,
-$p = 0.085$). Two things differ between the sets. Direct audio-to-image shows fewer wrong pictures per clip on the
-development set (39 over 71 clips, 0.55 per clip, against 62 over 88, 0.70), mostly because it shows fewer other-sound
-pictures there (14 against 32). And the check costs more hits there: five fewer than direct audio-to-image on the
-development set, but only two fewer on the test set.
-
 F1, which weighs a miss and a wrong picture equally, is also higher for the final system on both sets: 0.57 against
-0.52 on the development set ($+0.050$, $[-0.039, +0.128]$, $p = 0.25$) and 0.43 against 0.34 on the test set
-($+0.085$, $[+0.032, +0.142]$, $p = 0.002$; same paired clip bootstrap). F1 favours the final system even though it
+0.52 on the development set ($+0.050$, $[-0.039, +0.128]$) and 0.43 against 0.34 on the test set
+($+0.085$, $[+0.032, +0.142]$, $p = 0.002$). The intervals use the same clip resampling, with F1 recomputed from the
+resampled counts on each draw. F1 favours the final system even though it
 values a removed wrong picture no more than a lost hit.
 
 \paragraph{Danger sounds.} The sounds that matter most to a deaf viewer are the importance-3 sounds: danger or a key
-moment, such as a siren, an alarm, glass or a baby crying (Section~\ref{sec:needed}). The final system finds 10 of the
-13 on the test set, the same number as direct audio-to-image, and 14 of the 17 on the development set, one fewer, while
-showing far fewer wrong pictures (Figure~\ref{fig:importance}). The misses are mostly ordinary events of importance 2.
+moment, such as a siren, an alarm, glass or a baby crying (Section~\ref{sec:needed}). On the test set the final system
+keeps every danger sound that drawing every sound finds (10 of 13) while showing 38 fewer wrong pictures; on the
+development set it finds 14 of the 17, one fewer (Figure~\ref{fig:importance}). The misses are mostly ordinary events of importance 2.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/importance_bars.pdf}
 \caption{Needed sounds found, by importance level (bars: share found; labels: found / needed). Importance 3: danger or
 a key moment, such as a siren, an alarm, glass or a baby crying; importance 2: an ordinary event one can say in a
-sentence. The final system finds most danger sounds, as many as drawing every sound on the test set, while showing
-far fewer wrong pictures (Figure~\ref{fig:results}).}
+sentence. The final system finds 82\,\% (development) and 77\,\% (test) of the danger sounds and 37\,\% and 27\,\% of the
+ordinary events; direct audio-to-image finds 88\,\% and 77\,\%, and 46\,\% and 31\,\%, with far more wrong pictures
+(Figure~\ref{fig:results}).}
 \label{fig:importance}
 \end{figure}
 
@@ -116,20 +127,18 @@ far fewer wrong pictures (Figure~\ref{fig:results}).}
 \begin{description}
   \item[Significant.] On the test set the final system costs less than direct audio-to-image generation and audio
         captioning ($p < 0.001$), has a higher F1 than them ($p = 0.002$), and costs less than showing nothing
-        ($p = 0.044$). On the development set it costs less than
+        ($p = 0.044$ uncorrected; 0.087 after the Holm correction below). On the development set it costs less than
         showing nothing ($p < 0.001$).
   \item[Not significant.] On the development set, the difference from direct audio-to-image generation ($p = 0.085$).
-  \item[Multiple comparisons.] The family is the five tests that carry the report's claims: the cost of the final
-        system against each baseline on each set, and its F1 against direct audio-to-image generation on the test set.
-        The two tests of one baseline against the other are descriptive. With a Holm correction over the five, the
+  \item[Multiple comparisons.] The family is every comparison of the final system against a baseline for which a
+        $p$-value is reported: cost against each baseline on each set, and F1 against direct audio-to-image generation
+        on the test set. The two tests of one baseline against the other are descriptive. With a Holm correction over the five, the
         test-set cost difference from direct audio-to-image generation and the development-set difference from showing
         nothing stay at $p < 0.001$, the test-set F1 difference becomes $p = 0.007$, the test-set difference from
         showing nothing becomes $p = 0.087$, and the development-set difference from direct audio-to-image generation
         becomes $p = 0.087$.
   \item[Reproduced.] Every count was reproduced by two independent routes, the scoring harness and the logged
         decision trail, with no difference on any of the 159 clips (Appendix~\ref{sec:parity}).
-  \item[Test set.] Every decision was made on the development set. The test set was scored after each accepted
-        change but never used to choose (Section~\ref{sec:limits}).
 \end{description}
 
 \subsection{Sensitivity to the cost of a wrong picture}\label{sec:sensitivity}
@@ -142,7 +151,9 @@ assumes $\beta = 2$. Figure~\ref{fig:beta} shows how the conclusions change if $
 \includegraphics[width=\linewidth]{figures/beta_sensitivity.pdf}
 \caption{Cost per clip as the cost of a wrong picture ($\beta$) varies, with a missed sound fixed at 4 (point estimates).
 Dots mark where a system breaks even with showing nothing: the final system at $\beta = 4.0$ (test) and $7.7$
-(development, off the chart), direct audio-to-image generation at $\beta = 1.7$ (test) and $3.5$ (development).}
+(development, off the chart), direct audio-to-image generation at $\beta = 1.7$ (test) and $3.5$ (development). With
+95\,\% bootstrap intervals, the final system is cheaper than showing nothing up to about $\beta = 2.05$ (test) and
+$\beta = 4.4$ (development).}
 \label{fig:beta}
 \end{figure}
 
@@ -150,7 +161,7 @@ On point estimates, the final system is cheaper than showing nothing for every $
 is, until a wrong picture hurts as much as a missed sound, and cheaper than direct audio-to-image generation for every
 $\beta$ above 0.2 (test) or 0.8 (development). With intervals, recomputed by the same bootstrap at each $\beta$, the
 95\,\% interval of the test-set difference from showing nothing excludes zero up to about $\beta = 2.05$; on the
-development set it excludes zero for every $\beta$ up to 4. Drawing every sound is therefore only preferable if wrong
+development set it excludes zero up to about $\beta = 4.4$. Drawing every sound is therefore only preferable if wrong
 pictures are almost free. A second check weighs only on-screen pictures less
 (Equation~\ref{eq:costw}). With $w = 1$ the final system costs 1.972 (development) and 2.364 (test), against 2.169 and 3.000
 for direct audio-to-image; with $w = 0$ it costs 1.887 and 2.318, against 1.887 and 2.818. So if an on-screen picture
@@ -164,8 +175,10 @@ shares. Each of these rules was accepted because, overall, it removed more wrong
 pictures than real ones; the sounds it removes are the price. Six needed sounds in each set were heard by no detector.
 (These counts are for the final system, with 58 and 65 needed sounds; the ceiling analysis of
 Section~\ref{sec:ceiling} used an older run with 55.)
-Most wrong pictures on the test set show another sound (15 of 24). Section~\ref{sec:hard} explains why these errors are
-hard to remove.
+Most wrong pictures on the test set show another sound (15 of 24). Figure~\ref{fig:bylabel} shows the needed sounds
+found per gold label: on the development set none of the four needed bird calls is found, two of them lost at the
+on-screen check, where perched birds are taken as the source (Section~\ref{sec:presence}). Section~\ref{sec:hard}
+explains why these errors are hard to remove.
 
 \begin{figure}[htbp]
 \centering
@@ -177,4 +190,13 @@ models that confirm or add weak sounds; ``timing, length and grouping'' covers p
 sounds too short to show, and sounds merged into a neighbour. The mapping from logged step to bar is given in
 Appendix~\ref{app:sources}.}
 \label{fig:errors}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.92\linewidth]{figures/found_by_label.pdf}
+\caption{Needed sounds found by the final system, by gold label, for every label with at least two needed sounds in
+that set (bars: needed; dark part: found). Per-sound outcomes from the logged decision trail
+(\fp{docs/inspector2/data.js}).}
+\label{fig:bylabel}
 \end{figure}

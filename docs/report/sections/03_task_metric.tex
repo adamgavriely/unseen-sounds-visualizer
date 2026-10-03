@@ -3,7 +3,7 @@
 
 \subsection{Terminology}\label{sec:terms}
 \begin{description}[itemsep=1pt]
-  \item[Final system] the system described in this report (release v1.2.0 of the code).
+  \item[Final system] the system described in this report (release v1.3.0 of the code).
   \item[Direct audio-to-image] the baseline that draws every detected sound without checking whether its source is on
     screen (Section~\ref{sec:baselines}).
   \item[Show nothing] a system that never shows a picture.
@@ -65,22 +65,26 @@ picture costs only 1 or 0 (it is less harmful than a picture of nothing):
   \qquad w\in\{0,1,2\}.
   \label{eq:costw}
 \end{equation}
-\emph{Why not F1?} F1 counts a miss and a wrong picture the same, while the gate's value lies almost entirely in the
-wrong pictures it removes. F1 is reported alongside the cost (Table~\ref{tab:headline}); the cost is primary.
+\emph{Why not F1?} Event-based F1 is the usual detection score~\cite{mesaros2016metrics,bilen2020psds}, but it counts a
+miss and a wrong picture the same, while the gate's value lies almost entirely in the
+wrong pictures it removes. A cost with explicit error prices, as in cost curves~\cite{drummond2006costcurves}, makes that trade-off visible. F1 is
+reported alongside the cost (Table~\ref{tab:headline}); the cost is primary.
 
-\subsection{How decisions were made}\label{sec:passrules}
-Comparisons are paired by clip and tested with a paired clip bootstrap. For each clip the difference in cost between
+\subsection{Statistical tests and decision rules}\label{sec:passrules}
+\paragraph{Paired bootstrap.} Comparisons are paired by clip and tested with a paired clip bootstrap. For each clip the difference in cost between
 the two systems is computed; the clips are then drawn with replacement 100{,}000 times (random seed 0), and the mean
 difference is recomputed for each draw. The 95\,\% interval runs from the 2.5th to the 97.5th percentile of these
 means. The two-sided $p$-value is twice the share of draws in which the difference is zero or has the opposite sign;
-$p < 0.001$ means that no draw reversed the sign.
+$p < 0.001$ is printed when fewer than 1 draw in 2{,}000 did so; in both cases reported here, no draw did.
+The bootstrap is used for the comparisons reported in Section~\ref{sec:results}.
 
-With sets this small, a rule chosen after seeing its result could fit noise. A change to the system was therefore
+\paragraph{Pre-registration.} With sets this small, a rule chosen after seeing its result could fit noise. A change to the system was therefore
 accepted only if it passed a rule written down \emph{before} its run, on the development set (the rule and its pass
 bar were committed to the repository first; this is called pre-registration). It passed if either
 \begin{enumerate}[label=(\alph*)]
   \item it kept or raised the hits, added at most two wrong pictures per extra hit, and lowered the cost; or
   \item it lost at most three hits and removed at least three wrong pictures per hit lost.
 \end{enumerate}
+These pass rules are count rules on the development set, not significance tests.
 Rules about the audio alone could first be screened on the screening set (Section~\ref{sec:benchmark}). The test set
 was scored only after a change was accepted, and only reported; no decision in the final system used it. The 95\,\% intervals of the main comparisons are 0.5 to 1.2 per clip wide on both sets, so small single changes could only be judged on the development rules.

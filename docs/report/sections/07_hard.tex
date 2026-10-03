@@ -5,8 +5,9 @@ A reader may expect that modern models solve this task directly: a sound tagger 
 says whether an ambulance is on screen, an image model draws it. This section explains, step by step, why that does
 not happen. ``Hard'' here means hard for open models of up to about 70\,GB, chained without training; a much larger
 vision model (Qwen3-VL-235B) was not tested, and fine-tuning was outside the design. Each subsection states what one
-might expect, what actually happens, and the evidence. Table~\ref{tab:naive} summarises the argument and
-Table~\ref{tab:scale} the size of the search behind it.
+might expect, what actually happens, and the evidence. Table~\ref{tab:naive} summarises the argument,
+Section~\ref{sec:scale} gives the size of the search behind it, and Table~\ref{tab:rejected} (Appendix~\ref{app:history})
+lists the main ideas that failed.
 
 \begin{table}[htbp]
 \centering\small
@@ -34,6 +35,9 @@ final system: 24 wrong for 24 right; cheaper than both baselines \\
 \end{tabular}
 \end{table}
 
+\subsection{The scale of the search}\label{sec:scale}
+Table~\ref{tab:scale} gives the size of the study behind the final system.
+
 \begin{table}[htbp]
 \centering\small
 \caption{Scale of the study behind the final system (details in Appendix~\ref{app:history}).}
@@ -42,10 +46,10 @@ final system: 24 wrong for 24 right; cheaper than both baselines \\
 \toprule
 What & How much \\
 \midrule
-Open models evaluated & more than 30: 14 sound detectors and taggers (e.g.\ BEATs~\cite{chen2023beats}, FlexSED~\cite{hai2025flexsed}, PANNs~\cite{kong2020panns}, AST~\cite{gong2021ast}, EAT, Dasheng,
-CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam}, DASM~\cite{cai2025dasm}, FineLAP~\cite{finelapcard}), 6 audio-language listeners, 2 source separators, 8 vision models and tools (CLIP~\cite{radford2021clip}, two
-Qwen vision-language models~\cite{bai2025qwen25vl,qwen38card}, OWLv2~\cite{minderer2023owlv2}, SAM 3~\cite{sam3card}, SigLIP~\cite{zhai2023siglip}, a sound localiser, Synchformer~\cite{iashin2024synchformer}), 5 image generators (SDXL~\cite{podell2024sdxl}, SDXL-Turbo~\cite{sdxlturbocard}, FLUX.1-schnell~\cite{fluxcard}, PixArt-$\Sigma$~\cite{pixartsigmacard},
-Qwen-Image~\cite{wu2025qwenimage}), and several model judges \\
+Open models evaluated & more than 30: 14 sound detectors and taggers (e.g.\ BEATs~\cite{chen2023beats}, FlexSED~\cite{hai2025flexsed}, PANNs~\cite{kong2020panns}, AST~\cite{gong2021ast}, EAT~\cite{chen2024eat}, Dasheng~\cite{dinkel2024dasheng},
+CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam}, DASM~\cite{cai2025dasm}, FineLAP~\cite{finelapcard}); 6 audio-language listeners (Qwen3-Omni~\cite{xu2025qwen3omni}, Audio Flamingo Next~\cite{afnextcard}, MOSS-Audio, SpotSound, Kimi-Audio, Step-Audio); 2 source separators (Demucs, SAM-Audio); 8 vision models and tools (CLIP~\cite{radford2021clip}, two
+Qwen vision-language models~\cite{bai2025qwen25vl,qwen38card}, OWLv2~\cite{minderer2023owlv2}, SAM 3~\cite{sam3card}, SigLIP~\cite{zhai2023siglip}, the sound localiser SSL-SaN, Synchformer~\cite{iashin2024synchformer}); 5 image generators (SDXL~\cite{podell2024sdxl}, SDXL-Turbo~\cite{sdxlturbocard}, FLUX.1-schnell~\cite{fluxcard}, PixArt-$\Sigma$~\cite{pixartsigmacard},
+Qwen-Image~\cite{wu2025qwenimage}); and 3 model judges (including Mistral-7B and Gemma-4-31B) \\
 Pre-registered rounds & 66 rounds, each with its rule and pass bar written before the run \\
 Full-pipeline variants scored & more than 150, plus about 90 component screens \\
 Human labels & 308 timed sounds in 159 clips, each marked visible or not and rated for importance \\
@@ -62,9 +66,9 @@ is the sum of many small rules, each one closing a failure described in this sec
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/progression.pdf}
-\caption{Cost per clip after each accepted change, from the first full pipeline to the final system. Decisions were
-made on the development set; the test set was only scored. Dotted lines: showing nothing. Each step is described in
-Appendix~\ref{app:history}.}
+\caption{Cost per clip after each accepted change, from the first full pipeline to the final system: development
+3.690 $\to$ 2.056, test 2.909 $\to$ 2.409. Decisions were made on the development set; the test set was only scored.
+Dotted lines: showing nothing. Each step is a row of Table~\ref{tab:shipchain} (Appendix~\ref{app:history}).}
 \label{fig:progression}
 \end{figure}
 
@@ -106,16 +110,16 @@ bar is the audio chain of a rejected idea (Appendix~\ref{app:history}), shown fo
 bell?''. A church tower on screen silences a bell heard off screen; perched birds are taken as the source of a call
 made elsewhere. This is the main cause of the gate's wrong silences (31 of 36 in a hand audit,
 Section~\ref{sec:presence}). The opposite failure, answering ``nothing'' when the source is small or hidden (a hand,
-the footsteps of the person holding the camera), is also large. The problem is old: an early image-text matching check (CLIP~\cite{radford2021clip}) was right only about half the time. Moving from a
-7-billion- to a 27-billion-parameter vision model raised balanced accuracy (the mean of the success rates on visible
-and on needed sounds) only from 0.61 to 0.62.
+the footsteps of the person holding the camera), is also large. The failure is not specific to one model: an early image-text matching check (CLIP~\cite{radford2021clip}) was right
+only about half the time, and moving from a 7-billion- to a 27-billion-parameter vision model raised balanced accuracy
+(the mean of the success rates on visible and on needed sounds) only from 0.61 to 0.62.
 
 \subsection{Additional vision tools trade one error for another}
 \emph{Expected:} adding an object detector, a segmentation model, a crop of the source, a model of audio-visual
 synchrony or a sound-localisation model should help. \emph{Actually:} each one silenced more on-screen sounds only by
 silencing about as many needed ones (Figure~\ref{fig:gate}). Removing two wrong pictures saves $2\times2 = 4$ cost units;
-losing one needed sound costs 4: no gain. Localisation models also react to off-screen and silent audio~\cite{juanola2025critical}, so they answer
-\emph{where} a sound comes from, not \emph{whether} its source is visible.
+losing one needed sound costs 4: no gain. Localisation maps change little when the audio is silent or off-screen, so these models still point at a visible
+object~\cite{juanola2025critical}: they answer \emph{where} a sound comes from, not \emph{whether} its source is visible.
 
 
 \begin{figure}[htbp]
@@ -132,8 +136,7 @@ synchrony model, a longer human-style question chain, or a fourth vote.}
 \subsection{Answer-form biases}
 \emph{Expected:} a clear question gets a clear answer. \emph{Actually:} given options (a) and (b), the 27B model picks
 (a) 88\,\% of the time in one test, a known letter preference of language models~\cite{zheng2024pride}; asked yes/no,
-it leans to ``no'', in line with the weak handling of negation reported for vision-language
-models~\cite{alhamoud2025negbench}; asked for free text, its answer can be cut off.
+it leans to ``no''; asked for free text, its answer can be cut off.
 Two workarounds are used. The scene check reads the model's preference for ``yes'' over ``no'' as a number
 instead of reading its words (minus the same for the opposite question); the on-screen check asks its a/b question in
 both orders and abstains if the answers disagree. This removes the habits but exposes the real weakness: when the
@@ -156,8 +159,8 @@ rewards the system; one written by independent models agreed with the human ``no
 Existing labels do not help either: AudioSet names only a few sounds per clip, so on an AudioSet calibration set an
 earlier version of the system looked worse than showing nothing (1.650 against 0.986 per clip), although on full
 labels it is clearly better. Even full human
-labels miss some sounds: about 1 in 6 ``wrong'' pictures is a real off-screen sound, and 14 borderline development
-sounds sit one judgement away from the other class.
+labels miss some sounds (Section~\ref{sec:strict}), and 14 borderline development sounds sit one judgement away from
+the other class.
 
 \subsection{Scarcity of suitable data}
 Clips in which an ambient sound is heard but its source is not seen are uncommon in public video. Four different
@@ -165,22 +168,22 @@ sourcing routes all yielded only 15--20\,\% usable clips, which is why the bench
 the planned 300, and why every comparison has wide intervals.
 
 \subsection{What today's models are missing}\label{sec:missing}
-The failures above point to six capabilities that current open models lack. Each one is a direction in which a better
-model, not a better rule, is needed.
+The failures above, and the rejected ideas of Table~\ref{tab:rejected}, point to six capabilities that current open
+models lack. Each one is a direction in which a better model, not a better rule, is needed.
 \begin{enumerate}
   \item \textbf{Hearing a quiet event under speech or music.} Taggers are trained to name the dominant sound of a clip, so a
         door under a conversation loses to \emph{Speech}. Separating the speech first does not help, because the
         detectors have never heard separated audio (Section~\ref{sec:hard-hear}). What is missing is detection trained on
         mixtures in which the event of interest is the quiet one.
   \item \textbf{Knowing when not to say yes.} A listener asked ``is there a siren?'' tends to agree, and a sound one listener
-        names is real only 37\,\% of the time. What is missing is a calibrated answer: a confidence that means the same
+        names is often not there (Section~\ref{sec:hard-confirm}). What is missing is a calibrated answer: a confidence that means the same
         thing from one question to the next, or the option to answer ``not sure''.
   \item \textbf{Linking an object to the sound it is making now.} Vision-language models answer ``is there a bell?'' when asked
-        ``is the bell ringing?'' (31 of 36 audited gate errors). They see objects, not actions that produce sound, and
+        ``is the bell ringing?'' (Section~\ref{sec:hard-presence}). They see objects, not actions that produce sound, and
         they do not use the audio. What is missing is audio-visual grounding of \emph{production}: does this object's
         motion match this sound at this moment?
-  \item \textbf{Saying that a source is off screen.} Sound-source localisation models always point somewhere in the
-        frame, even for off-screen or silent audio~\cite{juanola2025critical}. What is missing is an explicit
+  \item \textbf{Saying that a source is off screen.} Localisation maps change little when the audio is silent or
+        off-screen, so these models still point at a visible object~\cite{juanola2025critical}. What is missing is an explicit
         ``not in the frame'' answer, which is exactly the decision this task needs.
   \item \textbf{Drawing one source and leaving out the rest.} Audio-to-image models draw the whole soundtrack as one scene.
         What is missing is a generator that takes a negative condition from the video (``a dog, but not the dog that is

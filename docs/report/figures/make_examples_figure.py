@@ -30,7 +30,7 @@ ROWS = [
     ("Missed: object in frame but not making the sound", [
         ("bell_miami", "gold", "Bell", 0.2),
         ("b3_pet_shop", "gold", "Bird", 0.1),
-        ("m5_doc_restrepo_138b", "gold", "Machine gun", 2.4)]),
+        ("tg_d078", "gold", "Vehicle horn", 5.2)]),
     ("Wrong: source is on screen", [
         ("london_protest_01", "pic", "Vehicle", 0.25),
         ("un_driving_motorcycle_DgdHSmwA", "pic", "Explosion", 13.52),
@@ -48,9 +48,20 @@ def letterbox(path):
     im = Image.open(path).convert("RGB")
     w, h = im.size
     W, H = (w, round(w / RATIO)) if w / h > RATIO else (round(h * RATIO), h)
-    canvas = Image.new("RGB", (W, H), (255, 255, 255))
-    canvas.paste(im, ((W - w) // 2, (H - h) // 2))
-    return np.asarray(canvas)
+    a = np.asarray(im)
+    # pad with the tile's own colour, not white: side bars take the picture panel's colour (right edge)
+    if W > w:
+        c1 = c2 = np.median(a[:, -4:].reshape(-1, 3), 0)
+    else:
+        c1, c2 = np.median(a[:4].reshape(-1, 3), 0), np.median(a[-4:].reshape(-1, 3), 0)
+    canvas = np.empty((H, W, 3), np.uint8)
+    x0, y0 = (W - w) // 2, (H - h) // 2
+    if W > w:
+        canvas[:, :x0 + 1] = c1; canvas[:, x0:] = c2
+    else:
+        canvas[:y0 + 1] = c1; canvas[y0:] = c2
+    canvas[y0:y0 + h, x0:x0 + w] = a
+    return canvas
 
 
 def clips():

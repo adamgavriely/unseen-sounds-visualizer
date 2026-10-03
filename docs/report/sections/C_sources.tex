@@ -1,8 +1,9 @@
 % ======================================================================
 \section{Reproducibility and sources of the numbers}\label{app:sources}
 \subsection{Reproduction}\label{sec:repro}
+The development record (pre-registrations, daily notes, reviews, the labelling tool) is not part of the current release, which holds only the code, the labels, the scoring and this report. It is kept in full in release v1.2.0 (\url{https://github.com/adamgavriely/MscFinalProject/releases/tag/v1.2.0}); every path below that starts with \fp{docs/history/}, \fp{docs/README.md} or \fp{tagger/} refers to that release.
 
-\paragraph{Code.} Release v1.2.0 of the repository. The final system is the configuration \cfgv{config.use_shipped()}
+\paragraph{Code.} Release v1.3.0 of the repository. The final system is the configuration \cfgv{config.use_shipped()}
 in \fp{config.py}; in the scoring harness it is the variant \texttt{SHIP8+MD3+WW5+SL} (Appendix~\ref{app:glossary}).
 
 \paragraph{Environment.} Python 3 with PyTorch 2.5.1, transformers 5.16.1, diffusers, faster-whisper, panns-inference,
@@ -81,8 +82,8 @@ gate accuracy, failure modes (31 of 36 wrong silences: 14 of class i, 17 of clas
 AudioSet calibration set (1.650 against 0.986) & \fp{docs/history/preregistrations/prereg_round12_v2.md} \\
 AUROC 0.647 of the a/b question read as a score & \fp{benchmark/gold/logit_gate_gold.json}; round 62 in \fp{docs/history/preregistrations/prereg_round13_detector_push.md} \\
 listener agreement on the screening set & \fp{docs/history/review/improvements_log_2026-09-30.md}; \fp{docs/history/preregistrations/prereg_round13_detector_push.md} \\
-onset timing & \fp{benchmark/eval_dcase_onset.json} \\
-DCASE visibility check & \fp{benchmark/eval_dcase_visibility.json} \\
+onset timing of an early version (file name historical) & \fp{benchmark/eval_dcase_onset.json} \\
+visibility check of an early version (file name historical) & \fp{benchmark/eval_dcase_visibility.json} \\
 picture glance test & \fp{docs/history/preregistrations/picture_v3_prereg.md} \\
 speech removal (9.5\,\% to 4.8\,\%) & \fp{docs/history/daily_notes/LEDGER_2026-09-26.md}; \fp{docs/history/panels/fable_briefs/2026-09-16_ten_fable_panel_addendum.md} \\
 earlier label agreement (78\,\%, $\kappa = 0.60$) & \fp{docs/history/daily_notes/HANDOFF_2026-09-08.md}; \fp{docs/history/earlier_drafts/thesis/ch4_benchmark.md} \\

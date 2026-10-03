@@ -55,7 +55,7 @@ way, and the failures add up:
 The end-to-end effect is measurable. Even with the full detection stack of the final system, drawing every detected
 sound without reading the video (the proposal's direct audio-to-image baseline, Section~\ref{sec:baselines}) shows 62
 wrong pictures for 26 right ones on the test set, and is no better than showing nothing. Turning the chain into a
-system that beats both took the rules of Sections~\ref{sec:system} and~\ref{sec:hard}: two detectors, one of three
+system that costs less than both took the rules of Sections~\ref{sec:system} and~\ref{sec:hard}: two detectors, one of three
 independent witnesses for every weak sound, a three-question on-screen vote, guarded picture prompts with a
 check-and-redraw loop, and a per-sound metric to decide each step.
 
@@ -74,24 +74,24 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
   \item \textbf{The task, a metric and a benchmark.} A precise rule for when a picture is needed, a per-sound score
         that prices a missed sound against a wrong picture, and 159 video clips with every sound timed, marked visible
         or not, and rated for importance (Sections~\ref{sec:task} and~\ref{sec:benchmark}).
-  \item \textbf{A system from open models, without training, that beats both baselines of the proposal.} On the test set
-        it costs less than both direct audio-to-image generation and showing nothing; it finds 10 of the 13 danger sounds
-        and shows 38 fewer wrong pictures than direct audio-to-image generation
-        (Sections~\ref{sec:system} and~\ref{sec:results}).
+  \item \textbf{A system from open models, without training, that costs less than both baselines of the proposal.} On
+        the test set it costs less than both direct audio-to-image generation ($p < 0.001$) and showing nothing
+        ($p = 0.044$, 0.087 after Holm): clearly against direct audio-to-image generation, at the margin against
+        showing nothing. It keeps every danger sound that drawing every sound finds (10 of 13) while showing 38 fewer
+        wrong pictures (Sections~\ref{sec:system} and~\ref{sec:results}).
   \item \textbf{Three findings on why ready-made models are not enough.} Vision-language models take presence for
-        production (31 of 36 audited errors), and every extra vision tool trades one error for another; no audio stage
-        can tell a right off-screen name from a wrong one, so each extra hit costs two to five wrong pictures; and model
-        judges and model-written references fail at the visibility question (Section~\ref{sec:hard}).
-  \item \textbf{A pre-registered method at scale.} More than 30 open models and more than 150 full-pipeline variants,
-        each accepted only by a rule written down before its run (Table~\ref{tab:scale}, Appendix~\ref{app:history}).
+        production, and every extra vision tool trades one error for another; no audio stage tried here separates a
+        right off-screen name from a wrong one well enough to add hits without two to five wrong pictures each; and
+        model judges and model-written references fail at the visibility question (Section~\ref{sec:hard}, with the
+        capabilities today's models lack in Section~\ref{sec:missing}).
+  \item \textbf{A pre-registered method at scale.} 66 pre-registered rounds, each accepting a change only by a rule
+        written down before its run, over more than 150 full-pipeline variants and more than 30 open models
+        (Section~\ref{sec:scale}, Appendix~\ref{app:history}).
   \item \textbf{An evaluation protocol} (the answer to RQ4): per-sound human labels, errors split by cause, and a cost
-        reported over a range of weights (Sections~\ref{sec:task}, \ref{sec:sensitivity} and~\ref{sec:analysis}).
+        reported over a range of weights (Sections~\ref{sec:task}, \ref{sec:sensitivity} and~\ref{sec:analysis});
+        model-written references and model judges were tried and fail at the visibility question
+        (Section~\ref{sec:hard-measure}).
 \end{enumerate}
-
-\paragraph{Results in brief.} On the test set (88 clips) the final system finds 24 of the 65 needed sounds, including 10
-of the 13 danger sounds, with 24 wrong pictures, and costs less than both baselines of the proposal
-(Section~\ref{sec:headline}). Most remaining misses are sounds the detectors barely hear under speech or music; most
-remaining wrong pictures show another sound, or an object that is visible but is not the one making the sound.
 
 \paragraph{How the report is organised.} Section~\ref{sec:related} reviews related work.
 Sections~\ref{sec:task}--\ref{sec:system} define the task, the data and the system; Section~\ref{sec:results} gives the
@@ -99,5 +99,5 @@ results, Section~\ref{sec:hard} explains why the problem is hard for today's mod
 gives the evidence on the remaining errors; Section~\ref{sec:limits} lists the limits and threats to validity. The
 appendices hold the prompts, the detection details and configuration, reproduction steps with the source of every
 number, a glossary of internal names, and the full development history. The code, labels and report sources are
-published as release v1.2.0 of the project repository (see
+published as release v1.3.0 of the project repository (see
 \hyperref[sec:availability]{Code and data availability}).

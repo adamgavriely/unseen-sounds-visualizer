@@ -19,12 +19,12 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
         fits the scene.
   \item \textbf{On-screen check, the gate (5).} A vision-language model (Qwen3.8-27B) looks at frames around the sound.
         If the thing making the sound is visibly making it, no picture is shown.
+  \item \textbf{Draw (6).} A short, guarded prompt is written for each remaining sound; Qwen-Image draws it; the vision
+        model checks that the picture shows the intended thing and it is redrawn up to five times.
   \item \textbf{Clean the display (6b).} Repeats less than 2.5\,s apart become one picture. A listener decides
         whether two same-family pictures up to 8\,s apart are one continuing sound. A picture is also dropped when the
         vision model says the drawn event itself (``a door slamming'') is visibly happening; this second check asks
         about the event, not its source.
-  \item \textbf{Draw (6).} A short, guarded prompt is written for each remaining sound; Qwen-Image draws it; the vision
-        model checks that the picture shows the intended thing and it is redrawn up to five times.
   \item \textbf{Compose (7).} Pictures appear in up to three fixed slots beside the video while their sound plays (at least
         1.5\,s).
 \end{itemize}
@@ -99,7 +99,7 @@ Table~\ref{tab:stages} lists the model and the main settings of every stage.
 \midrule
 1 & audio & ffmpeg & mono WAV, 16\,kHz (\cfgv{SAMPLE_RATE}) \\
 2 & frames, objects & OWLv2 object detector~\cite{minderer2023owlv2} (\fp{owlv2-base-patch16-ensemble}) & 6 frames, threshold 0.20; context only, never silences a sound \\
-3 & speech & faster-whisper \texttt{base} (Whisper~\cite{radford2023whisper}), int8 & transcript used only to ask whether people react to a sound; never drawn \\
+3 & speech & faster-whisper~\cite{fasterwhispercard} \texttt{base} (Whisper~\cite{radford2023whisper}), int8 & transcript used only to ask whether people react to a sound; never drawn \\
 4 & sound events & BEATs iter3+ AS2M~\cite{chen2023beats}; FlexSED~\cite{hai2025flexsed}; PANNs CNN14~\cite{kong2020panns}; DASM~\cite{cai2025dasm}; Qwen3-Omni-30B-A3B~\cite{xu2025qwen3omni}; Audio Flamingo Next~\cite{afnextcard}; FineLAP~\cite{finelapcard} & 16 ordered steps, Table~\ref{tab:stage4} \\
 5 & on-screen gate & Qwen3.8-27B~\cite{qwen38card}, greedy, thinking off & 6 frames per $\leq$5-s stretch, 3 votes, majority; silenced only if every stretch is visible \\
 5b & subject & Qwen3.8-27B + word lists & 2--6 word phrase; speech text never used \\

@@ -1,7 +1,7 @@
 \begin{abstract}
-Subtitles carry speech, but deaf and hard-of-hearing viewers still miss the other sounds of a video, and captioning
-practice leaves out any sound whose source can be seen. The sounds that matter most are therefore those whose source
-is \emph{off screen}: a siren behind the camera, a dog barking in the next room. This project builds a system that
+Subtitles carry speech, but deaf and hard-of-hearing viewers still miss the other sounds of a video. Captioning
+practice describes a sound only when the picture does not already show it. The sounds a deaf viewer loses are
+therefore those whose source is \emph{off screen}: a siren behind the camera, a dog barking in the next room. This project builds a system that
 finds them and shows a generated picture of each one beside the video while it is heard.
 
 Nothing is trained: the system chains open sound detectors, audio-language ``listeners'', a vision-language model
@@ -9,11 +9,11 @@ that checks whether the source is visible, and a text-to-image model. Joining th
 fails in a way the next one cannot see. Detectors miss quiet sounds under speech, a lone listener's ``yes'' is right
 about one time in three, and the vision model answers ``is the object there?'' instead of ``is it making the sound
 now?''. Even with the full detection stack, drawing every detected sound without reading the video shows more than
-twice as many wrong pictures as right ones. The final system is the result of more than 150 full-pipeline variants
+twice as many wrong pictures as right ones on the test set. The final system is the result of more than 150 full-pipeline variants
 over more than 30 open models.
 
 On a test set of 88 clips, scored per sound against human labels, the system finds 24 of 65 needed off-screen sounds,
-including 10 of the 13 danger sounds, with 24 wrong pictures. Its viewer cost (a miss costs 4, a wrong picture 2) is
+keeping 10 of the 13 danger sounds, with 24 wrong pictures. Its viewer cost (a miss costs 4, a wrong picture 2) is
 2.409 per clip, against 3.182 for direct audio-to-image generation or audio captioning and 2.955 for showing nothing
 ($p < 0.001$ and $p = 0.044$; 0.087 for the second after a Holm correction over five tests).
 
