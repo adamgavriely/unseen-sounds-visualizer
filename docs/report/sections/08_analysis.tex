@@ -20,7 +20,8 @@ ceiling. Table~\ref{tab:ceiling} gives the order-free view.
 \includegraphics[width=\linewidth]{figures/ceiling_waterfall.pdf}
 \caption{Ceiling analysis on a slightly older version of the system (development set, 55 needed sounds). Each bar makes
 one more stage perfect, using the labels, on the same detections. The 2.056 after the joint timing and family step
-equals the final system's development cost only by coincidence. The largest single step is the on-screen check. Even
+equals the final system's development cost only by coincidence. The largest single step, the on-screen check, is
+shown in red. Even
 with every stage perfect, 12 needed sounds remain missed (right): the detectors never hear them clearly enough.}
 \label{fig:ceiling}
 \end{figure}
@@ -28,7 +29,7 @@ with every stage perfect, 12 needed sounds remain missed (right): the detectors 
 \begin{table}[htbp]
 \centering\small
 \caption{One stage made perfect at a time (development set; an older version of the system with 25 hits, 27 wrong
-and cost 2.451, scored on earlier labels with 55 needed sounds). Rows in the order of Figure~\ref{fig:ceiling}.}
+and cost 2.451, by coincidence the same number as the baseline's development cost in Table~\ref{tab:headline}, scored on earlier labels with 55 needed sounds). Rows in the order of Figure~\ref{fig:ceiling}.}
 \label{tab:ceiling}
 \begin{tabular}{lrrr}
 \toprule
@@ -71,20 +72,20 @@ If one in six wrong pictures of each system were not counted, the gap between th
 audio-to-image would shrink by about 0.14 per clip on the test set and 0.11 on the development set (a point calculation from two
 blind checks), and the gap to showing nothing would grow.
 
-\subsection{Examples}
+\subsection{Examples and a worked case}
 Figure~\ref{fig:examples} shows real outputs of the final system, three for each outcome: hits, needed sounds missed
 because a similar object was in the frame, and the two main kinds of wrong picture.
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.88\linewidth]{figures/examples.pdf}
+\includegraphics[width=\linewidth]{figures/examples.pdf}
 \caption{Outputs of the final system: each frame shows the video (left) and the picture panel (right) a moment after
 the sound starts; a dark slot in the panel is empty. Row 1: hits, the source is off screen. Row 2: misses; the church,
 the robin and the bus the camera rides in are in the frame, but none is seen making the sound that is heard (a bell, a
 call made by another bird, a horn), and the on-screen check silences it (the panel says no off-screen sound). Row 3:
-wrong pictures whose source is on screen: a truck horn at a march (detected as \emph{Vehicle} and drawn as a train), a laughing child, an ambulance
-siren with the ambulance in view. Row 4: wrong pictures of a sound other than the one heard: a gunshot drawn while
-only footsteps are heard (the shooting starts about 2\,s later), a gull's cry detected as \emph{Honk} and drawn as a
+wrong pictures whose source is on screen: a truck horn at a march (detected as \emph{Vehicle} and drawn as a train), laughter from people on screen, and
+an ambulance siren whose source is visible in the clip (the ambulance behind the dash-cam car). Row 4: wrong pictures of a sound other than the one heard: a glass picture drawn
+while a baby cries, a gull's cry detected as \emph{Honk} and drawn as a
 car horn, and a gunshot drawn over the sound of a fire.}
 \label{fig:examples}
 \end{figure}

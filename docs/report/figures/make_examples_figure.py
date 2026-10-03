@@ -37,7 +37,7 @@ ROWS = [
         ("tg_d128", "pic", "Laughter", 3.08, 0.8),
         ("w8_dashcam_ambulance_behind_1a", "pic", "Siren", 0.22)]),
     ("Wrong: another sound is heard", [
-        ("as_explosion_XJ8lc3I6", "pic", "Gunshot", 8.25, 0.35),   # before the next (right) picture appears at 9.25 s
+        ("mv_protest_scene_movie", "pic", "Glass", 4.75, 0.75),    # a baby cries (visible); no glass is heard
         ("tg_d001", "pic", "Honk", 5.12),
         ("m4_live_fire_26a", "pic", "Gunshot", 2.5)]),
 ]

@@ -5,7 +5,7 @@
 clearly seen on screen; this is the visibility rule used here. Viewers want important sounds, their type and timing,
 and a choice~\cite{may2025choices,alonzo2022beyond}; captions lose emotional information~\cite{revuelta2020eeg};
 visual styling is welcome when it is readable and calm~\cite{delacerdapataca2024royale,prosodycaptions}. The closest
-prior work, Alonzo et al.~\cite{alonzo2022beyond}, studied with DHH viewers how non-speech sounds in user-generated
+prior work on the viewer side, Alonzo et al.~\cite{alonzo2022beyond}, studied with DHH viewers how non-speech sounds in user-generated
 videos could be captioned and visualised; it asks how to present the sounds, while this report asks which sounds to
 show, and when, without a human in the loop. Sound-awareness
 tools~\cite{jain2015hmd,jain2019home,homesound,soundwatch,protosound} show that users want urgent sounds fast and are bothered by
@@ -24,15 +24,15 @@ A known weakness matters here: a quiet sound under speech or music is ranked bel
 Automated audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho} describes a whole clip in a
 sentence, without asking whether a source is visible. Dense audio-visual event benchmarks such as
 UnAV-100~\cite{geng2023unav100} label events that are both heard and seen, the opposite of the selection needed here.
-Audio-visual video parsing~\cite{tian2020avvp} (the LLP dataset) comes closest: it labels each segment of a video as
+Audio-visual video parsing~\cite{tian2020avvp} (the LLP dataset) is the closest technical neighbour: it labels each segment of a video as
 audible, visible or both. But ``visible'' there means that the object appears in the frame, not that it is seen
 producing the sound, which is the distinction this task turns on.
 
 \paragraph{Audio-language and vision-language models.} Audio-language models such as Qwen2-Audio~\cite{chu2024qwen2audio},
 Qwen3-Omni~\cite{xu2025qwen3omni} and Audio Flamingo Next~\cite{afnextcard} answer questions about audio; they name sounds in
-free text but give no calibrated confidence (Section~\ref{sec:missing}). Vision-language models such as LLaVA~\cite{liu2023llava} (not used here),
-Qwen2.5-VL~\cite{bai2025qwen25vl} (used in early versions) and Qwen3.8~\cite{qwen38card} (used in the final system)
-answer questions about frames. Among the tools tried here, vision-language models were the only general means of
+free text but give no calibrated confidence (Section~\ref{sec:missing}). Vision-language models, from LLaVA~\cite{liu2023llava}, which set the instruction-tuning recipe,
+to Qwen2.5-VL~\cite{bai2025qwen25vl} (used in early versions) and Qwen3.8-27B~\cite{qwen38card} (used in the final
+system), answer questions about frames. Among the tools tried here, vision-language models were the only general means of
 deciding, for any sound, whether its source is visible. Their known failures matter: a preference for some answer
 letters~\cite{zheng2024pride}, weak handling of negation~\cite{alhamoud2025negbench}, and treating a visible object as
 the one that is sounding (Section~\ref{sec:analysis}), a failure no benchmark measures although it is the central
@@ -61,6 +61,6 @@ localisation models relate a sound to the frame; audio-to-image models draw what
 needed-sound rule as a per-sound, timed, scorable decision. The principle is the captioning guideline's, but no work
 reviewed here defines ``seen making it now'' as the test, adds the obvious and importance tests, or scores a system
 sound by sound against it, with a viewer cost that prices a miss against a wrong picture; the benchmark of this report
-does all three. What is new in combination is the system: existing open detectors, listeners, a vision-language model
+does each of these. What is new in combination is the system: existing open detectors, listeners, a vision-language model
 and an image model, chained so that each one checks the failure of the one before, with every weak sound needing an
 independent witness and every stretch a vote on whether the source is seen making the sound.

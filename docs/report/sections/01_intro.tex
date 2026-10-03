@@ -11,13 +11,13 @@ their type and timing~\cite{may2025choices}. Among the needed sounds of the benc
 a quarter) are danger sounds or key moments (importance 3, Section~\ref{sec:needed}).
 
 What a viewer loses therefore depends on whether the source is visible. A siren over a visible ambulance tells the
-viewer nothing new. A siren over a crowd looking up \emph{is} the scene. This project targets the second case, and no
-existing channel covers it. Subtitles carry speech only. Hand-written sound captions are rare, and the captioning rules
+viewer nothing new. A siren over a crowd looking up \emph{is} the scene. This project targets the second case, which
+none of the existing channels covers: Subtitles carry speech only. Hand-written sound captions are rare, and the captioning rules
 say which sounds to describe but give no tool to find them. Sound-awareness apps for DHH
 users~\cite{soundwatch,homesound} alert to sounds in the room, not in a recorded video, and do not ask whether the
 viewer can already see the source. Automatic audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho}
-describes the whole soundtrack, visible and invisible alike. A system that shows exactly the sounds the viewer cannot
-see, at the moment they happen, does not exist (Section~\ref{sec:related}).
+describes the whole soundtrack, visible and invisible alike. No system found in the literature reviewed in
+Section~\ref{sec:related} shows exactly the sounds the viewer cannot see, at the moment they happen.
 
 \subsection{Problem}\label{sec:problem}
 Given a video, produce the same video with a side panel that shows a picture of a sound \emph{while} the sound is
@@ -73,9 +73,10 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
 \subsection{Contributions}
 \begin{enumerate}
   \item \textbf{The task, a metric and a benchmark.} A precise rule for when a picture is needed, a per-sound score
-        that prices a missed sound against a wrong picture, and 159 video clips with every sound timed, marked visible
-        or not, and rated for importance (Sections~\ref{sec:task} and~\ref{sec:benchmark}).
-  \item \textbf{A system from open models, without training, that costs less than every baseline of the proposal.} On
+        that prices a missed sound against a wrong picture, and a benchmark of 308 timed sounds in 159 video clips,
+        each sound marked visible or not, obvious or not, and rated for importance (Sections~\ref{sec:task}
+        and~\ref{sec:benchmark}).
+  \item \textbf{A system from open models, without training, that costs less than every baseline of the proposal on both sets.} On
         the test set it costs less than both direct audio-to-image generation ($p < 0.001$) and showing nothing
         ($p = 0.044$, 0.087 after Holm): clearly against direct audio-to-image generation, at the margin against
         showing nothing. Audio captioning scores as direct audio-to-image generation under the per-sound metric. The

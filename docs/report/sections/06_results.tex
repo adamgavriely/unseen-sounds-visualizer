@@ -27,7 +27,7 @@ Figure~\ref{fig:results} and Table~\ref{tab:headline} give the main result.
 \centering
 \includegraphics[width=\linewidth]{figures/results_bars.pdf}
 \caption{Hits (right pictures of needed sounds) and wrong pictures for each system, with the cost per clip above each
-group (lower is better). Drawing every detected sound finds a few more needed sounds but shows two to three times as many
+group (lower is better). Drawing every detected sound finds a few more needed sounds but shows about two and a half times as many
 wrong pictures; the final system keeps most of the hits and removes most of the wrong pictures.}
 \label{fig:results}
 \end{figure}
@@ -58,15 +58,16 @@ Test & Show nothing & 0 / 65 & 0 & 0.00 & 2.955 & $-0.545\ [-1.091, -0.023]$ & $
 \smallskip
 \footnotesize $^{a}$ The final system without the on-screen check; audio captioning has the same score (same decisions,
 shown as text). With the Holm correction over five tests (Section~\ref{sec:support}) the four $p$-values of the
-Difference column become, top to bottom, $< 0.001$, $0.087$, $0.087$ and $< 0.001$.
+Difference column become, top to bottom, $< 0.001$, $0.087$, $0.087$ and $< 0.001$. The development-set F1
+difference is not tested; the family of five tests is fixed in Section~\ref{sec:support}.
 \end{table}
 
 On the test set the final system finds 24 of 65 needed sounds, and half of its pictures are right. Drawing every detected
 sound finds 26, but only 30\,\% of its pictures are right, and on the test set it is no better than showing nothing:
 it costs 0.227 more per clip ($[-0.409, +0.841]$, $p = 0.49$, uncorrected). On the development set it costs less than
-showing nothing ($-0.817$, $[-1.577, -0.085]$, $p = 0.032$, uncorrected). The final system is cheaper than both: by 0.773 per clip than direct
-audio-to-image generation ($p < 0.001$), which is 24\,\% of that baseline's cost, and by 0.545 than showing nothing
-($p = 0.044$), 18\,\% of its cost.
+showing nothing ($-0.817$, $[-1.577, -0.085]$, $p = 0.032$, uncorrected). The final system is cheaper than both: by 0.773 per clip against direct
+audio-to-image generation (24\,\% of that baseline's cost, $p < 0.001$) and by 0.545 against showing nothing
+(18\,\%, $p = 0.044$).
 
 On the development set the direction is the same, but the difference from direct audio-to-image is smaller ($-0.394$,
 $p = 0.085$; 0.087 after Holm). Two things differ between the sets. Direct audio-to-image shows fewer wrong pictures per clip on the
@@ -174,7 +175,7 @@ Figure~\ref{fig:errors} breaks down the misses of the final system by the step w
 decision trail.
 Most misses are sounds that were heard as candidates and then removed by a later rule -- on the development set most often because
 the listeners did not confirm a weak detection; on the test set listeners, vetoes and timing account for about equal
-shares. Each of these rules was accepted because, overall, it removed more wrong
+shares (12, 10 and 10 of 41). Each of these rules was accepted because, overall, it removed more wrong
 pictures than real ones; the sounds it removes are the price. Six needed sounds in each set were heard by no detector.
 (These counts are for the final system, with 58 and 65 needed sounds; the ceiling analysis of
 Section~\ref{sec:ceiling} used an older run with 55.)
@@ -182,7 +183,7 @@ Most wrong pictures on the test set show another sound (15 of 24; Figure~\ref{fi
 shows the needed sounds found per gold label, with each miss coloured by the step where it was lost: on the development
 set none of the four needed bird calls is found, two of them lost at the on-screen check, where perched birds are
 taken as the source (Section~\ref{sec:presence}). The two largest families of the test set, machine gun and vehicle
-horn, are each found 0 of 5 times, for different reasons. Three of the horns are in one clip with continuous traffic:
+horn, are each found 0 of 5 times, for different reasons. Three of the horns are in one clip with a continuous vehicle sound:
 the continuation veto reads each repeated honk as a later piece of the traffic sound already going on; one more horn
 is lost to timing and one at the on-screen check. Of the machine guns, two are silenced at the on-screen check, one
 falls to the mirror veto (a helicopter scored higher at that moment), one is lost to timing, and one is merged into a

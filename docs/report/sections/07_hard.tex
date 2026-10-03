@@ -49,9 +49,9 @@ Table~\ref{tab:scale} gives the size of the study behind the final system.
 What & How much \\
 \midrule
 Open models evaluated & more than 30: 14 sound detectors and taggers (e.g.\ BEATs~\cite{chen2023beats}, FlexSED~\cite{hai2025flexsed}, PANNs~\cite{kong2020panns}, AST~\cite{gong2021ast}, EAT~\cite{chen2024eat}, Dasheng~\cite{dinkel2024dasheng},
-CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam}, DASM~\cite{cai2025dasm}, FineLAP~\cite{finelapcard}); 6 audio-language listeners (Qwen3-Omni~\cite{xu2025qwen3omni}, Audio Flamingo Next~\cite{afnextcard}, MOSS-Audio~\cite{mossaudiocard}, SpotSound~\cite{spotsoundcard}, Kimi-Audio~\cite{kimiaudio2025}, Step-Audio~2~\cite{stepaudio2}); 2 source separators (HT-Demucs~\cite{rouard2023htdemucs}, SAM-Audio~\cite{samaudiocard}); 8 vision models and tools (CLIP~\cite{radford2021clip}, two
+CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam}, DASM~\cite{cai2025dasm}, FineLAP~\cite{finelapcard}); 6 audio-language listeners (Qwen3-Omni~\cite{xu2025qwen3omni}, Audio Flamingo Next~\cite{afnextcard}, MOSS-Audio~\cite{mossaudiocard}, SpotSound~\cite{spotsoundcard} (on Audio Flamingo 3~\cite{goel2025af3}), Kimi-Audio~\cite{kimiaudio2025}, Step-Audio~2~\cite{stepaudio2}); 2 source separators (HT-Demucs~\cite{rouard2023htdemucs}, SAM-Audio~\cite{samaudiocard}); 8 vision models and tools (CLIP~\cite{radford2021clip}, two
 Qwen vision-language models~\cite{bai2025qwen25vl,qwen38card}, OWLv2~\cite{minderer2023owlv2}, SAM 3~\cite{sam3card}, SigLIP~\cite{zhai2023siglip}, the sound localiser SSL-SaN~\cite{sslsancode}, Synchformer~\cite{iashin2024synchformer}); 5 image generators (SDXL~\cite{podell2024sdxl}, SDXL-Turbo~\cite{sdxlturbocard}, FLUX.1-schnell~\cite{fluxcard}, PixArt-$\Sigma$~\cite{pixartsigmacard},
-Qwen-Image~\cite{wu2025qwenimage}); and 3 model judges~\cite{zheng2023judge} (Mistral-7B~\cite{jiang2023mistral}, Qwen3-8B and Gemma-4-31B~\cite{gemma4card}) \\
+Qwen-Image~\cite{wu2025qwenimage}); and 3 model judges~\cite{zheng2023judge} (Mistral-7B~\cite{jiang2023mistral}, Qwen3-8B~\cite{yang2025qwen3} and Gemma-4-31B~\cite{gemma4card}) \\
 Pre-registered rounds & 66 rounds, each with its rule and pass bar written before the run \\
 Full-pipeline variants scored & more than 150, plus about 90 component screens \\
 Human labels & 308 timed sounds in 159 clips, each marked visible or not and rated for importance \\
@@ -116,7 +116,10 @@ made elsewhere. This is the main cause of the gate's wrong silences (31 of 36 in
 Section~\ref{sec:presence}). The opposite failure, answering ``nothing'' when the source is small or hidden (a hand,
 the footsteps of the person holding the camera), is also large. The failure is not specific to one model: an early image-text matching check (CLIP~\cite{radford2021clip}) was right
 only about half the time, and moving from a 7-billion- to a 27-billion-parameter vision model raised balanced accuracy
-(the mean of the success rates on visible and on needed sounds) only from 0.61 to 0.62.
+(the mean of the success rates on visible and on needed sounds) only from 0.61 to 0.62. One model that hears and
+sees at once does not close the gap either: Qwen3-Omni, given the audio and eight frames around each picture's start
+and asked what makes the sound, mostly named the loudest or most visible thing in the window, and renaming the
+pictures by its answer kept 15 of 28 development hits (round 44, Appendix~\ref{app:history}).
 
 \subsection{Additional vision tools trade one error for another}
 \emph{Expected:} adding an object detector, a segmentation model, a crop of the source, a model of audio-visual
