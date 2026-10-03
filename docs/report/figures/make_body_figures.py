@@ -88,32 +88,58 @@ _s = open(os.path.join(ROOT, "..", "..", "inspector2", "data.js"), encoding="utf
 D = json.loads(_s[_s.index("{"):_s.rstrip().rstrip(";").rindex("}") + 1])
 SHORT = {"Vehicle horn, car horn, honking": "Vehicle horn", "Gunshot, gunfire": "Gunshot", "Whack, thwack": "Whack",
          "Ice cream truck, ice cream van": "Ice cream truck"}
+# The unfound part of each bar is stacked by the step where the sound was lost ("lost_at"), grouped and coloured as in
+# the error breakdown figure (LOST_AT_BAR and its colours in make_analysis_figures.py).
+LOST_AT_BAR = {
+    "never_heard": "never heard",
+    "band_rescue": "listeners and their filters", "dasm_vote": "listeners and their filters",
+    "dasm_rescue": "listeners and their filters", "rescue_once": "listeners and their filters",
+    "scene_margin": "listeners and their filters", "k4a_inventory": "listeners and their filters",
+    "dasm_local_veto": "listeners and their filters",
+    "gate": "on-screen check",
+    "mirror_veto": "vetoes", "masked_weak": "vetoes", "finelap_veto": "vetoes", "continuation_veto": "vetoes",
+    "scorer": "timing, length and grouping", "family_merge": "timing, length and grouping",
+    "group": "timing, length and grouping", "beats_extract": "timing, length and grouping",
+}
+LOST = (("never heard", "#555555"), ("listeners and their filters", "#2a6f97"), ("on-screen check", "#e07a5f"),
+        ("vetoes", "#9ec5dd"), ("timing, length and grouping", "#c9b18a"))
 rows_by_set = {}
 for split in ("DEV", "TEST"):
-    need, found = {}, {}
+    need, found, lost = {}, {}, {}
     for c in D["clips"]:
         if c["split"] != split:
             continue
         for g in c["gold"]:
             if g["needed"] and g["importance"] >= 2:
-                need[g["label"]] = need.get(g["label"], 0) + 1
-                found[g["label"]] = found.get(g["label"], 0) + (g["outcome"] == "hit")
+                lab = g["label"]
+                need[lab] = need.get(lab, 0) + 1
+                found[lab] = found.get(lab, 0) + (g["outcome"] == "hit")
+                if g["outcome"] != "hit":
+                    lost.setdefault(lab, {}).setdefault(LOST_AT_BAR[g["lost_at"]], 0)
+                    lost[lab][LOST_AT_BAR[g["lost_at"]]] += 1
     assert sum(need.values()) == (58 if split == "DEV" else 65)
-    rows_by_set[split] = sorted(((SHORT.get(k, k), found[k], n) for k, n in need.items() if n >= 2),
+    rows_by_set[split] = sorted(((SHORT.get(k, k), found[k], n, lost.get(k, {})) for k, n in need.items() if n >= 2),
                                 key=lambda t: (-t[2], -t[1], t[0]))
 nmax = max(len(v) for v in rows_by_set.values())
-fig, axes = plt.subplots(1, 2, figsize=(7.4, 0.24 * nmax + 0.9))
+fig, axes = plt.subplots(1, 2, figsize=(7.4, 0.24 * nmax + 1.5))
 for ax, split, (key, title) in zip(axes, ("DEV", "TEST"), SETS):
     rows = rows_by_set[split]
     y = list(range(len(rows)))[::-1]
-    ax.barh(y, [n for _, _, n in rows], 0.62, color=LIGHT, label="needed")
-    ax.barh(y, [f for _, f, _ in rows], 0.62, color=DARK, label="found by the final system")
-    for yy, (lab, f, n) in zip(y, rows):
+    ax.barh(y, [f for _, f, _, _ in rows], 0.62, color=GREEN, label="found by the final system")
+    left = [f for _, f, _, _ in rows]
+    for name, col in LOST:
+        w = [l.get(name, 0) for _, _, _, l in rows]
+        ax.barh(y, w, 0.62, left=left, color=col, label=f"lost: {name}")
+        left = [a + b for a, b in zip(left, w)]
+    assert left == [n for _, _, n, _ in rows]
+    for yy, (lab, f, n, _) in zip(y, rows):
         ax.text(n + 0.12, yy, f"{f}/{n}", va="center", fontsize=7.5)
     ax.set_yticks(y); ax.set_yticklabels([r[0] for r in rows], fontsize=7.5)
     ax.set_ylim(-0.6, len(rows) - 0.4)
     ax.set_xlim(0, 6.6); ax.set_xlabel("needed sounds", fontsize=8)
     ax.set_title(title, fontsize=9)
     ax.spines[["top", "right"]].set_visible(False)
-axes[1].legend(frameon=False, fontsize=7.5, loc="lower right")
-fig.tight_layout(); fig.savefig(os.path.join(ROOT, "found_by_label.pdf")); plt.close(fig); print("found_by_label.pdf")
+h, l = axes[0].get_legend_handles_labels()
+fig.legend(h, l, frameon=False, fontsize=7.5, loc="lower center", ncol=3)
+fig.tight_layout(rect=(0, 0.13, 1, 1))
+fig.savefig(os.path.join(ROOT, "found_by_label.pdf")); plt.close(fig); print("found_by_label.pdf")

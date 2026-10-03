@@ -21,7 +21,8 @@ MEDIA = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "..", "..", "in
 DATA = os.path.join(ROOT, "..", "..", "inspector2", "data.js")
 TMP = os.path.join(ROOT, "_frames")
 
-# (row title, [(clip, kind, label, time of the picture or of the sound)], frame offset after that time)
+# (row title, [(clip, kind, label, time of the picture or of the sound[, frame offset])]); the frame is taken OFFSET
+# seconds after that time unless the item gives its own offset
 ROWS = [
     ("Hit: right picture, source off screen", [
         ("ly_ambulance_(siren)_-yPSgCn", "pic", "Siren", 0.0),
@@ -33,10 +34,10 @@ ROWS = [
         ("tg_d078", "gold", "Vehicle horn", 5.2)]),
     ("Wrong: source is on screen", [
         ("london_protest_01", "pic", "Vehicle", 0.25),
-        ("un_driving_motorcycle_DgdHSmwA", "pic", "Explosion", 13.52),
+        ("tg_d128", "pic", "Laughter", 3.08, 0.8),
         ("w8_dashcam_ambulance_behind_1a", "pic", "Siren", 0.22)]),
     ("Wrong: another sound is heard", [
-        ("b3_golf_course", "pic", "Bird", 3.8),
+        ("as_explosion_XJ8lc3I6", "pic", "Gunshot", 8.25, 0.35),   # before the next (right) picture appears at 9.25 s
         ("tg_d001", "pic", "Honk", 5.12),
         ("m4_live_fire_26a", "pic", "Gunshot", 2.5)]),
 ]
@@ -46,6 +47,8 @@ RATIO = 2000 / 720          # most output videos are 2000 x 720; others are padd
 
 def letterbox(path):
     im = Image.open(path).convert("RGB")
+    if im.size[1] == 720 and 2000 < im.size[0] <= 2004:   # a few videos are 2002 x 720: crop, do not pad
+        im = im.crop((0, 0, 2000, 720))
     w, h = im.size
     W, H = (w, round(w / RATIO)) if w / h > RATIO else (round(h * RATIO), h)
     a = np.asarray(im)
@@ -80,11 +83,13 @@ def main():
     os.makedirs(TMP, exist_ok=True)
     fig, axes = plt.subplots(len(ROWS), 3, figsize=(10.5, 1.75 * len(ROWS)))
     for r, (title, items) in enumerate(ROWS):
-        for k, (clip, kind, label, t) in enumerate(items):
+        for k, item in enumerate(items):
+            clip, kind, label, t = item[:4]
+            off = item[4] if len(item) > 4 else OFFSET
             c = C[clip]
             video = os.path.join(MEDIA, c["video"].replace("../inspector/", ""))
             out = os.path.join(TMP, f"{r}_{k}.jpg")
-            frame(video, t + OFFSET, out)
+            frame(video, t + off, out)
             ax = axes[r][k]
             ax.imshow(letterbox(out))
             ax.set_xticks([]); ax.set_yticks([])

@@ -28,16 +28,16 @@ with every stage perfect, 12 needed sounds remain missed (right): the detectors 
 \begin{table}[htbp]
 \centering\small
 \caption{One stage made perfect at a time (development set; an older version of the system with 25 hits, 27 wrong
-and cost 2.451, scored on earlier labels with 55 needed sounds).}
+and cost 2.451, scored on earlier labels with 55 needed sounds). Rows in the order of Figure~\ref{fig:ceiling}.}
 \label{tab:ceiling}
 \begin{tabular}{lrrr}
 \toprule
 Stage made perfect & Hits & Wrong & Cost \\
 \midrule
-On-screen check & 30 & 18 & 1.915 \\
-Listeners and their filters & 34 & 24 & 1.859 \\
-Vetoes and filters & 30 & 27 & 2.169 \\
 Timing & 26 & 20 & 2.197 \\
+On-screen check & 30 & 18 & 1.915 \\
+Vetoes and filters & 30 & 27 & 2.169 \\
+Listeners and their filters & 34 & 24 & 1.859 \\
 \midrule
 All stages perfect & 43 & 3 & 0.761 \\
 \bottomrule
@@ -59,14 +59,17 @@ how the vote is built. Two of the three questions effectively test presence -- n
 object \emph{could} make the sound -- and only the a/b question asks whether the sound is visibly happening, so the
 majority tests presence too. The second error is the opposite: the name question answers ``nothing'' on 42\,\% of the
 stretches the labels call visible or obvious, when the source is small, hidden, or its action is fine.
+The final system's decision trail shows the same at sound level: of the 8 needed sounds lost at the on-screen check
+(5 development, 3 test), 6 were silenced although the a/b question said ``not visibly happening'' in every stretch;
+the two presence votes outvoted it.
 
 \subsection{Label strictness}\label{sec:strict}
 In two blind checks, about 1 in 6 pictures counted as wrong was a real, wanted, off-screen sound that the labels do not
 list, and several others were real sounds with the source on screen. Absolute costs are therefore somewhat pessimistic.
 The same labels score every system, but not equally: direct audio-to-image shows more wrong pictures, so it gains more.
 If one in six wrong pictures of each system were not counted, the gap between the final system and direct
-audio-to-image would shrink by about 0.14 per clip on the test set and 0.11 on the development set, and the gap to
-showing nothing would grow.
+audio-to-image would shrink by about 0.14 per clip on the test set and 0.11 on the development set (a point calculation from two
+blind checks), and the gap to showing nothing would grow.
 
 \subsection{Examples}
 Figure~\ref{fig:examples} shows real outputs of the final system, three for each outcome: hits, needed sounds missed
@@ -74,17 +77,20 @@ because a similar object was in the frame, and the two main kinds of wrong pictu
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{figures/examples.pdf}
+\includegraphics[width=0.88\linewidth]{figures/examples.pdf}
 \caption{Outputs of the final system: each frame shows the video (left) and the picture panel (right) a moment after
-the sound starts. Row 1: hits, the source is off screen. Row 2: misses; the church, the robin and the bus the camera rides in are in
-the frame, but none is seen making the sound that is heard (a bell, a call made by another bird, a horn), and the
-on-screen check silences it (the panel says no off-screen sound). Row 3: wrong pictures whose source is on screen. Row 4: wrong pictures of a sound other than the one
-heard.}
+the sound starts; a dark slot in the panel is empty. Row 1: hits, the source is off screen. Row 2: misses; the church,
+the robin and the bus the camera rides in are in the frame, but none is seen making the sound that is heard (a bell, a
+call made by another bird, a horn), and the on-screen check silences it (the panel says no off-screen sound). Row 3:
+wrong pictures whose source is on screen: a truck horn at a march (detected as \emph{Vehicle} and drawn as a train), a laughing child, an ambulance
+siren with the ambulance in view. Row 4: wrong pictures of a sound other than the one heard: a gunshot drawn while
+only footsteps are heard (the shooting starts about 2\,s later), a gull's cry detected as \emph{Honk} and drawn as a
+car horn, and a gunshot drawn over the sound of a fire.}
 \label{fig:examples}
 \end{figure}
 
-\subsection{Worked example}
-A development clip filmed outside a church in Miami (clip \fp{bell_miami}) has one needed sound: a bell from 0.2 to 14.5\,s, labelled not visible. The
+As a worked case, take a development clip filmed outside a church in Miami (clip \fp{bell_miami}, row 2 of
+Figure~\ref{fig:examples}). It has one needed sound: a bell from 0.2 to 14.5\,s, labelled not visible. The
 detectors find it. The gate cuts the 14-s sound into three stretches. In each, the name question answers ``church
 bell'' (it shares the word \emph{bell}, so this vote says visible), the a/b question says not visibly happening, and the
 description vote says visible. Two of three votes in every stretch: the sound is silenced and the needed bell is missed.

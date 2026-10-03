@@ -27,7 +27,7 @@ Figure~\ref{fig:results} and Table~\ref{tab:headline} give the main result.
 \centering
 \includegraphics[width=\linewidth]{figures/results_bars.pdf}
 \caption{Hits (right pictures of needed sounds) and wrong pictures for each system, with the cost per clip above each
-group (lower is better). Drawing every heard sound finds a few more needed sounds but shows two to three times as many
+group (lower is better). Drawing every detected sound finds a few more needed sounds but shows two to three times as many
 wrong pictures; the final system keeps most of the hits and removes most of the wrong pictures.}
 \label{fig:results}
 \end{figure}
@@ -51,7 +51,7 @@ Development & Show nothing & 0 / 58 & 0 & 0.00 & 3.268 & $-1.211\ [-1.831, -0.62
 \midrule
 Test & Show nothing & 0 / 65 & 0 & 0.00 & 2.955 & $-0.545\ [-1.091, -0.023]$ & $0.044$ \\
 (88 clips) & Direct audio-to-image$^{a}$ & 26 / 65 & 62 (16/32/14) & 0.34 & 3.182 & $-0.773\ [-1.045, -0.500]$ & $< 0.001$ \\
- & \textbf{Final system} & 24 / 65 & 24 (4/15/5) & 0.43 & 2.409 & & \\
+ & \textbf{Final system} & 24 / 65 & 24 (4/15/5) & 0.42 & 2.409 & & \\
 \bottomrule
 \end{tabular}}
 
@@ -61,7 +61,7 @@ shown as text). With the Holm correction over five tests (Section~\ref{sec:suppo
 Difference column become, top to bottom, $< 0.001$, $0.087$, $0.087$ and $< 0.001$.
 \end{table}
 
-On the test set the final system finds 24 of 65 needed sounds, and half of its pictures are right. Drawing every heard
+On the test set the final system finds 24 of 65 needed sounds, and half of its pictures are right. Drawing every detected
 sound finds 26, but only 30\,\% of its pictures are right, and on the test set it is no better than showing nothing:
 it costs 0.227 more per clip ($[-0.409, +0.841]$, $p = 0.49$, uncorrected). On the development set it costs less than
 showing nothing ($-0.817$, $[-1.577, -0.085]$, $p = 0.032$, uncorrected). The final system is cheaper than both: by 0.773 per clip than direct
@@ -69,7 +69,7 @@ audio-to-image generation ($p < 0.001$), which is 24\,\% of that baseline's cost
 ($p = 0.044$), 18\,\% of its cost.
 
 On the development set the direction is the same, but the difference from direct audio-to-image is smaller ($-0.394$,
-$p = 0.085$). Two things differ between the sets. Direct audio-to-image shows fewer wrong pictures per clip on the
+$p = 0.085$; 0.087 after Holm). Two things differ between the sets. Direct audio-to-image shows fewer wrong pictures per clip on the
 development set (39 over 71 clips, 0.55 per clip, against 62 over 88, 0.70), mostly because it shows fewer other-sound
 pictures there (14 against 32). And the check costs more hits there: five fewer than direct audio-to-image on the
 development set, but only two fewer on the test set.
@@ -77,7 +77,7 @@ development set, but only two fewer on the test set.
 The win over direct audio-to-image generation comes from giving up a few hits to remove many wrong pictures. On the
 test set the final system has 2 fewer hits and 38 fewer wrong pictures: $(2\cdot 38 - 4\cdot 2)/88 = 0.773$ per clip,
 or 19 wrong pictures removed per hit lost. On the development set it has 5 fewer hits and 24 fewer wrong pictures:
-$(2\cdot 24 - 4\cdot 5)/71 = 0.394$, about 5 per hit lost. Of the 38 wrong pictures removed on the test set, 12 are
+$(2\cdot 24 - 4\cdot 5)/71 = 0.394$, or 4.8 per hit lost. Of the 38 wrong pictures removed on the test set, 12 are
 on-screen pictures, 17 show another sound and 9 show nothing; on the development set the 24 removed are 14, 7 and 3
 (Figure~\ref{fig:wrongkind}). Silencing a sound also removes its late repeat pictures, and the depict-event check,
 which is off in the baseline, removes some more. Figure~\ref{fig:breakdown} shows the two effects on the cost.
@@ -86,8 +86,10 @@ which is off in the baseline, removes some more. Figure~\ref{fig:breakdown} show
 \centering
 \includegraphics[width=0.92\linewidth]{figures/wrong_by_kind.pdf}
 \caption{Wrong pictures by kind (Section~\ref{sec:matching}), direct audio-to-image generation against the final
-system. Green: the number removed. The on-screen check removes on-screen pictures directly; silencing a sound also
-removes its late repeats (other sound), and the depict-event check removes some more.}
+system. Green: the number removed. Totals: 39 $\to$ 15 (development), 62 $\to$ 24 (test). The on-screen check
+removes on-screen pictures directly; silencing a sound also removes its late repeats (other sound), and the
+depict-event check removes some more. On the test set 17 of the 38 removed pictures are of another sound and 9 of
+nothing.}
 \label{fig:wrongkind}
 \end{figure}
 
@@ -102,7 +104,7 @@ nothing.}
 \end{figure}
 
 F1, which weighs a miss and a wrong picture equally, is also higher for the final system on both sets: 0.57 against
-0.52 on the development set ($+0.050$, $[-0.039, +0.128]$) and 0.43 against 0.34 on the test set
+0.52 on the development set ($+0.050$, $[-0.039, +0.128]$) and 0.42 against 0.34 on the test set
 ($+0.085$, $[+0.032, +0.142]$, $p = 0.002$). The intervals use the same clip resampling, with F1 recomputed from the
 resampled counts on each draw. F1 favours the final system even though it
 values a removed wrong picture no more than a lost hit.
@@ -168,23 +170,29 @@ for direct audio-to-image; with $w = 0$ it costs 1.887 and 2.318, against 1.887 
 is judged harmless, the two systems tie on the development set, and the final system still wins on the test set.
 
 \subsection{Where the errors come from}\label{sec:errors}
-Figure~\ref{fig:errors} breaks down the misses and wrong pictures of the final system, from its logged decision trail.
+Figure~\ref{fig:errors} breaks down the misses of the final system by the step where each was lost, from its logged
+decision trail.
 Most misses are sounds that were heard as candidates and then removed by a later rule -- on the development set most often because
 the listeners did not confirm a weak detection; on the test set listeners, vetoes and timing account for about equal
 shares. Each of these rules was accepted because, overall, it removed more wrong
 pictures than real ones; the sounds it removes are the price. Six needed sounds in each set were heard by no detector.
 (These counts are for the final system, with 58 and 65 needed sounds; the ceiling analysis of
 Section~\ref{sec:ceiling} used an older run with 55.)
-Most wrong pictures on the test set show another sound (15 of 24). Figure~\ref{fig:bylabel} shows the needed sounds
-found per gold label: on the development set none of the four needed bird calls is found, two of them lost at the
-on-screen check, where perched birds are taken as the source (Section~\ref{sec:presence}). Section~\ref{sec:hard}
-explains why these errors are hard to remove.
+Most wrong pictures on the test set show another sound (15 of 24; Figure~\ref{fig:wrongkind}). Figure~\ref{fig:bylabel}
+shows the needed sounds found per gold label, with each miss coloured by the step where it was lost: on the development
+set none of the four needed bird calls is found, two of them lost at the on-screen check, where perched birds are
+taken as the source (Section~\ref{sec:presence}). The two largest families of the test set, machine gun and vehicle
+horn, are each found 0 of 5 times, for different reasons. Three of the horns are in one clip with continuous traffic:
+the continuation veto reads each repeated honk as a later piece of the traffic sound already going on; one more horn
+is lost to timing and one at the on-screen check. Of the machine guns, two are silenced at the on-screen check, one
+falls to the mirror veto (a helicopter scored higher at that moment), one is lost to timing, and one is merged into a
+stronger gunshot of the same family. Section~\ref{sec:hard} explains why these errors are hard to remove.
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/error_breakdown.pdf}
-\caption{Misses of the final system by the step where the sound was lost (left), and wrong pictures by kind (right).
-Vetoes are rules that drop a candidate because another audio model does not hear it, or because it is a later piece
+\caption{Misses of the final system by the step where the sound was lost (wrong pictures by kind are in
+Figure~\ref{fig:wrongkind}). Vetoes are rules that drop a candidate because another audio model does not hear it, or because it is a later piece
 of a sound already going on (the continuation veto); listeners are the audio-language
 models that confirm or add weak sounds; ``timing, length and grouping'' covers pictures that start too early or late,
 sounds too short to show, and sounds merged into a neighbour. The mapping from logged step to bar is given in
@@ -196,7 +204,7 @@ Appendix~\ref{app:sources}.}
 \centering
 \includegraphics[width=0.92\linewidth]{figures/found_by_label.pdf}
 \caption{Needed sounds found by the final system, by gold label, for every label with at least two needed sounds in
-that set (bars: needed; dark part: found). Per-sound outcomes from the logged decision trail
-(\fp{docs/inspector2/data.js}).}
+that set. Green: found; the rest of each bar is stacked by the step where the sound was lost, in the colours of
+Figure~\ref{fig:errors}. Per-sound outcomes from the logged decision trail (\fp{docs/inspector2/data.js}).}
 \label{fig:bylabel}
 \end{figure}

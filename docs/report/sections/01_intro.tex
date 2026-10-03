@@ -7,8 +7,8 @@ Captions for the deaf may name a sound in brackets, but the DCMP Captioning Key~
 sound's source ``may be omitted if it can be clearly seen onscreen'', and a study of more than 715{,}000 YouTube videos
 found hand-written non-speech captions in only 5--7\,\% of them~\cite{may2024unspoken}. DHH users want to know about
 the sounds that carry information -- knocks, alarms, sirens, a baby crying~\cite{jain2019home,soundwatch} -- and want
-their type and timing~\cite{may2025choices}. These sounds are not rare: in the benchmark of this report, 30 of the 123
-needed sounds (about a quarter) are danger sounds or key moments (importance 3, Section~\ref{sec:needed}).
+their type and timing~\cite{may2025choices}. Among the needed sounds of the benchmark of this report, 30 of 123 (about
+a quarter) are danger sounds or key moments (importance 3, Section~\ref{sec:needed}).
 
 What a viewer loses therefore depends on whether the source is visible. A siren over a visible ambulance tells the
 viewer nothing new. A siren over a crowd looking up \emph{is} the scene. This project targets the second case, and no
@@ -53,11 +53,12 @@ way, and the failures add up:
         visibility at chance, so even measuring progress needs human per-sound labels.
 \end{itemize}
 The end-to-end effect is measurable. Even with the full detection stack of the final system, drawing every detected
-sound without reading the video (the proposal's direct audio-to-image baseline, Section~\ref{sec:baselines}) shows 62
-wrong pictures for 26 right ones on the test set, and is no better than showing nothing. Turning the chain into a
-system that costs less than both took the rules of Sections~\ref{sec:system} and~\ref{sec:hard}: two detectors, one of three
-independent witnesses for every weak sound, a three-question on-screen vote, guarded picture prompts with a
-check-and-redraw loop, and a per-sound metric to decide each step.
+sound without reading the video (the proposal's direct audio-to-image baseline, Section~\ref{sec:baselines}) finds 26 needed
+sounds but shows 62 wrong pictures on the test set, and is no better than showing nothing. Turning the chain into a
+system that costs less than every baseline took the rules of Section~\ref{sec:system}, each one answering a failure described in
+Section~\ref{sec:hard}: two detectors, one of three independent witnesses for every weak sound, a three-question
+on-screen vote, guarded picture prompts with a check-and-redraw loop, and a per-sound metric to decide each step, found
+after more than 150 scored variants.
 
 \subsection{Research questions}\label{sec:rqs}
 From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers each.
@@ -74,19 +75,21 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
   \item \textbf{The task, a metric and a benchmark.} A precise rule for when a picture is needed, a per-sound score
         that prices a missed sound against a wrong picture, and 159 video clips with every sound timed, marked visible
         or not, and rated for importance (Sections~\ref{sec:task} and~\ref{sec:benchmark}).
-  \item \textbf{A system from open models, without training, that costs less than both baselines of the proposal.} On
+  \item \textbf{A system from open models, without training, that costs less than every baseline of the proposal.} On
         the test set it costs less than both direct audio-to-image generation ($p < 0.001$) and showing nothing
         ($p = 0.044$, 0.087 after Holm): clearly against direct audio-to-image generation, at the margin against
-        showing nothing. It keeps every danger sound that drawing every sound finds (10 of 13) while showing 38 fewer
-        wrong pictures (Sections~\ref{sec:system} and~\ref{sec:results}).
-  \item \textbf{Three findings on why ready-made models are not enough.} Vision-language models take presence for
-        production, and every extra vision tool trades one error for another; no audio stage tried here separates a
-        right off-screen name from a wrong one well enough to add hits without two to five wrong pictures each; and
-        model judges and model-written references fail at the visibility question (Section~\ref{sec:hard}, with the
-        capabilities today's models lack in Section~\ref{sec:missing}).
+        showing nothing. Audio captioning scores as direct audio-to-image generation under the per-sound metric. The
+        system keeps every danger sound that drawing every sound finds (10 of 13) while showing 38 fewer wrong pictures
+        (Sections~\ref{sec:system} and~\ref{sec:results}).
+  \item \textbf{Two findings on why ready-made models are not enough.} Vision-language models take presence for
+        production, and every extra vision tool trades one error for another; and no audio stage tried here separates
+        a right off-screen name from a wrong one well enough to add hits without two to five wrong pictures each
+        (Section~\ref{sec:hard}, with the capabilities today's models lack in Section~\ref{sec:missing}).
   \item \textbf{A pre-registered method at scale.} 66 pre-registered rounds, each accepting a change only by a rule
         written down before its run, over more than 150 full-pipeline variants and more than 30 open models
-        (Section~\ref{sec:scale}, Appendix~\ref{app:history}).
+        (Section~\ref{sec:scale}, Appendix~\ref{app:history}), with a record of every rejected idea and why it failed
+        (Table~\ref{tab:rejected}), so the next attempt need not repeat them. No single model swap produced the gain;
+        it is the sum of small rules, each closing one failure.
   \item \textbf{An evaluation protocol} (the answer to RQ4): per-sound human labels, errors split by cause, and a cost
         reported over a range of weights (Sections~\ref{sec:task}, \ref{sec:sensitivity} and~\ref{sec:analysis});
         model-written references and model judges were tried and fail at the visibility question

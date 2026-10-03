@@ -4,8 +4,9 @@
 A reader may expect that modern models solve this task directly: a sound tagger hears the siren, a vision model
 says whether an ambulance is on screen, an image model draws it. This section explains, step by step, why that does
 not happen. ``Hard'' here means hard for open models of up to about 70\,GB, chained without training; a much larger
-vision model (Qwen3-VL-235B) was not tested, and fine-tuning was outside the design. Each subsection states what one
-might expect, what actually happens, and the evidence. Table~\ref{tab:naive} summarises the argument,
+vision model (Qwen3-VL-235B) was not tested, and fine-tuning was outside the design.
+Sections~\ref{sec:hard-hear}--\ref{sec:hard-measure} each state what one might expect, what actually happens, and the
+evidence. Table~\ref{tab:naive} summarises the argument,
 Section~\ref{sec:scale} gives the size of the search behind it, and Table~\ref{tab:rejected} (Appendix~\ref{app:history})
 lists the main ideas that failed.
 
@@ -29,8 +30,9 @@ the picture is checked and redrawn up to five times \\
 Score & model judge & circular or at chance on visibility (Section~\ref{sec:hard-measure}) & per-sound human labels
 and a viewer cost \\
 \midrule
-All & full detection stack, every detected sound drawn without reading the video & 62 wrong for 26 right on the test set; no better than showing nothing &
-final system: 24 wrong for 24 right; cheaper than both baselines \\
+All & full detection stack, every detected sound drawn without reading the video & 26 sounds found, 62 wrong pictures
+on the test set; no better than showing nothing & final system: 24 sounds found, 24 wrong pictures; cheaper than every
+baseline of the proposal \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -47,9 +49,9 @@ Table~\ref{tab:scale} gives the size of the study behind the final system.
 What & How much \\
 \midrule
 Open models evaluated & more than 30: 14 sound detectors and taggers (e.g.\ BEATs~\cite{chen2023beats}, FlexSED~\cite{hai2025flexsed}, PANNs~\cite{kong2020panns}, AST~\cite{gong2021ast}, EAT~\cite{chen2024eat}, Dasheng~\cite{dinkel2024dasheng},
-CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam}, DASM~\cite{cai2025dasm}, FineLAP~\cite{finelapcard}); 6 audio-language listeners (Qwen3-Omni~\cite{xu2025qwen3omni}, Audio Flamingo Next~\cite{afnextcard}, MOSS-Audio, SpotSound, Kimi-Audio, Step-Audio); 2 source separators (Demucs, SAM-Audio); 8 vision models and tools (CLIP~\cite{radford2021clip}, two
-Qwen vision-language models~\cite{bai2025qwen25vl,qwen38card}, OWLv2~\cite{minderer2023owlv2}, SAM 3~\cite{sam3card}, SigLIP~\cite{zhai2023siglip}, the sound localiser SSL-SaN, Synchformer~\cite{iashin2024synchformer}); 5 image generators (SDXL~\cite{podell2024sdxl}, SDXL-Turbo~\cite{sdxlturbocard}, FLUX.1-schnell~\cite{fluxcard}, PixArt-$\Sigma$~\cite{pixartsigmacard},
-Qwen-Image~\cite{wu2025qwenimage}); and 3 model judges (including Mistral-7B and Gemma-4-31B) \\
+CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam}, DASM~\cite{cai2025dasm}, FineLAP~\cite{finelapcard}); 6 audio-language listeners (Qwen3-Omni~\cite{xu2025qwen3omni}, Audio Flamingo Next~\cite{afnextcard}, MOSS-Audio~\cite{mossaudiocard}, SpotSound~\cite{spotsoundcard}, Kimi-Audio~\cite{kimiaudio2025}, Step-Audio~2~\cite{stepaudio2}); 2 source separators (HT-Demucs~\cite{rouard2023htdemucs}, SAM-Audio~\cite{samaudiocard}); 8 vision models and tools (CLIP~\cite{radford2021clip}, two
+Qwen vision-language models~\cite{bai2025qwen25vl,qwen38card}, OWLv2~\cite{minderer2023owlv2}, SAM 3~\cite{sam3card}, SigLIP~\cite{zhai2023siglip}, the sound localiser SSL-SaN~\cite{sslsancode}, Synchformer~\cite{iashin2024synchformer}); 5 image generators (SDXL~\cite{podell2024sdxl}, SDXL-Turbo~\cite{sdxlturbocard}, FLUX.1-schnell~\cite{fluxcard}, PixArt-$\Sigma$~\cite{pixartsigmacard},
+Qwen-Image~\cite{wu2025qwenimage}); and 3 model judges~\cite{zheng2023judge} (Mistral-7B~\cite{jiang2023mistral}, Qwen3-8B and Gemma-4-31B~\cite{gemma4card}) \\
 Pre-registered rounds & 66 rounds, each with its rule and pass bar written before the run \\
 Full-pipeline variants scored & more than 150, plus about 90 component screens \\
 Human labels & 308 timed sounds in 159 clips, each marked visible or not and rated for importance \\
@@ -68,7 +70,9 @@ is the sum of many small rules, each one closing a failure described in this sec
 \includegraphics[width=\linewidth]{figures/progression.pdf}
 \caption{Cost per clip after each accepted change, from the first full pipeline to the final system: development
 3.690 $\to$ 2.056, test 2.909 $\to$ 2.409. Decisions were made on the development set; the test set was only scored.
-Dotted lines: showing nothing. Each step is a row of Table~\ref{tab:shipchain} (Appendix~\ref{app:history}).}
+Dotted lines: showing nothing. Each step is a row of Table~\ref{tab:shipchain} (Appendix~\ref{app:history}), except
+three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there; the step names are short
+forms of the internal names explained in Appendix~\ref{app:glossary}.}
 \label{fig:progression}
 \end{figure}
 
@@ -76,8 +80,8 @@ Dotted lines: showing nothing. Each step is a row of Table~\ref{tab:shipchain} (
 \emph{Expected:} a modern tagger hears a hammer or a door. \emph{Actually:} under speech or music it often does not.
 The tagger's own score for \emph{Speech} or \emph{Music} is higher than for the quiet sound, so the sound never becomes
 a candidate. A ceiling analysis, in which every later stage is made perfect using the labels, shows that about one
-needed sound in five stays missed because no model hears it clearly (Section~\ref{sec:ceiling}). Removing the speech first with a source separation model made it worse: the share of sounds found under speech
-fell from 9.5\,\% to 4.8\,\%, because the
+needed sound in five stays missed because no model hears it clearly (Section~\ref{sec:ceiling}). Removing the speech first with a source separation model (HT-Demucs~\cite{rouard2023htdemucs}, keeping its non-vocal
+``other'' stem) made it worse: the share of sounds found under speech fell from 9.5\,\% to 4.8\,\%, because the
 detectors were never trained on separated audio.
 
 
@@ -91,8 +95,8 @@ that survive the chain. Every way to add more
 sounds found real ones but paid two to five wrong pictures per new hit. The best such rule found two more hits than the
 final system on the development set, at about five extra wrong pictures each (31 hits and 26 wrong, against 29 and 15),
 so it failed the development rule; its test result, reported only, was no better (25 hits and 35 wrong, against 24 and
-24). Nothing later in the chain can tell a
-right off-screen name from a wrong one.
+24). No audio stage tried here separates a right off-screen name from a wrong one well enough to add hits without
+two to five wrong pictures each.
 
 
 \begin{figure}[htbp]

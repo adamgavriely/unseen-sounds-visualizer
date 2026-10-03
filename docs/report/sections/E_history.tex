@@ -57,7 +57,7 @@ From 13 Sept the following rules governed every change (\fp{docs/history/plans/p
   \item \textbf{Pre-register.} Before a run, write the idea, the exact rule, the data it is decided on and the pass
         bar, and commit it. Results are appended below the pre-registration, never edited into it.
   \item \textbf{Decide on development data only.} The development set (or, for audio-only rules, the held-out 415)
-        decides. The test set is read after a change ships and is only reported.
+        decides. The test set is scored after a change ships and is only reported.
   \item \textbf{General rules only.} A rule must make sense for any video, run on one video at a time, and not name a
         clip or a single sound class (a rule that only ever fires on bells was rejected for this reason, Round 64).
   \item \textbf{Compare with the shipped pipeline.} Every candidate is scored as a full-pipeline variant on the same
@@ -153,7 +153,7 @@ Idea (round) & What it did & Why it failed \\
 \bottomrule\endfoot
 \multicolumn{3}{l}{\emph{Hear more sounds}} \\
 other detectors (Sept, rounds 1--8) & FLAM, PretrainedSED (5 backbones), AST, CED, SSLAM, EAT, Dasheng, PE-A-Frame, CLAP verifier, tagger ensembles & recall rose only with many more false spans; PretrainedSED lost three times; ensembles mis-scaled \\
-source separation (Sept, R7) & Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
+source separation (Sept, R7) & HT-Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: with HT-Demucs, recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
 listener as verifier (R13) & ask Qwen3-Omni yes/no, multiple choice, open list on every weak candidate & finds 5--8 dropped real sounds but adds about 3 wrong pictures per hit \\
 newer listeners (R31--34) & MOSS-Audio, SpotSound, Kimi, Step-Audio & 3--10 wrong per extra hit; SpotSound answered yes to every query \\
 EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & best DEV 31/26/2.254 (+3 hits), but TEST 25/35/2.614 (worse); the gate cannot refuse a wrong off-screen name \\
@@ -265,7 +265,8 @@ price of a few hits, which F1, weighing both equally, does not reward.
 \subsection{Comparisons between versions}\label{app:versions}
 The final development phase compared each accepted change with the version before it and, early on, with the
 September baseline (``B0r''). Paired clip bootstrap on the test set, 2{,}000 draws; $d$ = mean per-clip cost difference;
-one-sided $p$ (a two-sided value is about twice as large); see Table~\ref{tab:versions}.
+one-sided $p$ (a two-sided value is about twice as large); see Table~\ref{tab:versions}. These use 2{,}000 draws and
+one-sided $p$-values; the body uses 100{,}000 draws and two-sided $p$-values, so the two are not directly comparable.
 \begin{table}[htbp]\centering\small
 \caption{Comparisons between versions (test set, one-sided). Test-set reads made during development, uncorrected
 for multiplicity; none was used to accept a change.}\label{tab:versions}

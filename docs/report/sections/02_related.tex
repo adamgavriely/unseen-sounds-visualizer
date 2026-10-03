@@ -1,14 +1,14 @@
 % ======================================================================
 \section{Related work}\label{sec:related}
 
-\paragraph{Non-speech sound for DHH viewers.} Captioning practice~\cite{dcmp} describes a sound only when the picture
-does not already show it; this is the visibility rule used here. Viewers want important sounds, their type and timing,
+\paragraph{Non-speech sound for DHH viewers.} Captioning practice~\cite{dcmp} need not describe a sound whose source is
+clearly seen on screen; this is the visibility rule used here. Viewers want important sounds, their type and timing,
 and a choice~\cite{may2025choices,alonzo2022beyond}; captions lose emotional information~\cite{revuelta2020eeg};
 visual styling is welcome when it is readable and calm~\cite{delacerdapataca2024royale,prosodycaptions}. The closest
 prior work, Alonzo et al.~\cite{alonzo2022beyond}, studied with DHH viewers how non-speech sounds in user-generated
 videos could be captioned and visualised; it asks how to present the sounds, while this report asks which sounds to
 show, and when, without a human in the loop. Sound-awareness
-tools~\cite{jain2015hmd,homesound,soundwatch,protosound} show that users want urgent sounds fast and are bothered by
+tools~\cite{jain2015hmd,jain2019home,homesound,soundwatch,protosound} show that users want urgent sounds fast and are bothered by
 false alarms, which is why a wrong picture has a cost in the metric used here, but none of it selects the sounds of a
 recorded video by what is already visible.
 
@@ -24,10 +24,13 @@ A known weakness matters here: a quiet sound under speech or music is ranked bel
 Automated audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho} describes a whole clip in a
 sentence, without asking whether a source is visible. Dense audio-visual event benchmarks such as
 UnAV-100~\cite{geng2023unav100} label events that are both heard and seen, the opposite of the selection needed here.
+Audio-visual video parsing~\cite{tian2020avvp} (the LLP dataset) comes closest: it labels each segment of a video as
+audible, visible or both. But ``visible'' there means that the object appears in the frame, not that it is seen
+producing the sound, which is the distinction this task turns on.
 
 \paragraph{Audio-language and vision-language models.} Audio-language models such as Qwen2-Audio~\cite{chu2024qwen2audio},
 Qwen3-Omni~\cite{xu2025qwen3omni} and Audio Flamingo Next~\cite{afnextcard} answer questions about audio; they name sounds in
-free text but give no calibrated confidence (Section~\ref{sec:missing}). Vision-language models such as LLaVA~\cite{liu2023llava},
+free text but give no calibrated confidence (Section~\ref{sec:missing}). Vision-language models such as LLaVA~\cite{liu2023llava} (not used here),
 Qwen2.5-VL~\cite{bai2025qwen25vl} (used in early versions) and Qwen3.8~\cite{qwen38card} (used in the final system)
 answer questions about frames. Among the tools tried here, vision-language models were the only general means of
 deciding, for any sound, whether its source is visible. Their known failures matter: a preference for some answer
@@ -45,16 +48,19 @@ as Synchformer~\cite{iashin2024synchformer} estimate whether the soundtrack and 
 source is in view and do not say whether it is.
 Audio-to-image models~\cite{sungbin2023sound2scene,biner2024sonicdiffusion,ge2026audiocanvas} draw a picture from a whole
 soundtrack, so they draw the scene rather than the one unseen source and cannot be told to leave a visible object out.
+For the same reason they cannot serve as a per-sound baseline: their output has no start time and no single sound
+that could be matched to a labelled one (Section~\ref{sec:baselines}).
 A text-to-image model (Qwen-Image~\cite{wu2025qwenimage,qwenimage2512card}) with a short, guarded prompt is therefore
 used, and the proposal's direct audio-to-image baseline is represented by the final system drawing every detected
-sound, without the on-screen check (Section~\ref{sec:baselines}). Model judges~\cite{zheng2023judge} were tried for
-evaluation and failed (Appendix~\ref{app:judge}).
+sound, without the on-screen check (Section~\ref{sec:baselines}).
 
 \paragraph{The gap.} The nearest neighbours each cover one part of the task: captioning guidelines and DHH studies
 say which sounds viewers need~\cite{dcmp,alonzo2022beyond,may2025choices}; sound event detectors and audio captioning
-name what is heard; on-screen separation and localisation models relate a sound to the frame; audio-to-image models draw
-what is heard. Two things are new in kind: the needed-sound rule (a sound is shown only when it matters and its source
-is not seen making it), with a per-sound benchmark and a viewer cost that prices a miss against a wrong picture; no
-prior work defines or measures this decision. What is new in combination is the system: existing open detectors,
-listeners, a vision-language model and an image model, chained so that each one checks the failure of the one before,
-selecting per sound and over time only the sounds whose source is not visible and showing a picture for each.
+name what is heard; audio-visual parsing marks a segment visible when the object appears; on-screen separation and
+localisation models relate a sound to the frame; audio-to-image models draw what is heard. What is new in kind is the
+needed-sound rule as a per-sound, timed, scorable decision. The principle is the captioning guideline's, but no work
+reviewed here defines ``seen making it now'' as the test, adds the obvious and importance tests, or scores a system
+sound by sound against it, with a viewer cost that prices a miss against a wrong picture; the benchmark of this report
+does all three. What is new in combination is the system: existing open detectors, listeners, a vision-language model
+and an image model, chained so that each one checks the failure of the one before, with every weak sound needing an
+independent witness and every stretch a vote on whether the source is seen making the sound.

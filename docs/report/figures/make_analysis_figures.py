@@ -136,22 +136,21 @@ def miss_counts(path=os.path.join(OUT, "..", "..", "inspector2", "data.js")):
 
 
 miss = miss_counts()
-wrong = {"DEV": {"other sound": 7, "on screen": 6, "nothing": 2}, "TEST": {"other sound": 15, "on screen": 4, "nothing": 5}}
-cols_m = ["#555555", "#2a6f97", "#e07a5f", "#9ec5dd", "#c9b18a"]
-cols_w = ["#e07a5f", "#9ec5dd", "#555555"]
-fig, axes = plt.subplots(1, 2, figsize=(7.4, 2.9))
-for ax, data, cols, title in ((axes[0], miss, cols_m, "missed needed sounds, by where they were lost"),
-                              (axes[1], wrong, cols_w, "wrong pictures, by kind")):
-    for row, sp in enumerate(("TEST", "DEV")):
-        left = 0
-        for (k, v), c in zip(data[sp].items(), cols):
-            ax.barh(row, v, left=left, color=c, label=k if row == 0 else None, height=0.55)
-            if v >= 2:
-                ax.text(left + v / 2, row, str(v), ha="center", va="center", fontsize=7.5, color="white")
-            left += v
-    ax.set_yticks([0, 1]); ax.set_yticklabels(["test", "development"])
-    ax.set_title(title, fontsize=9); ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(frameon=False, fontsize=7.5, loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=2)
+# wrong pictures by kind are in wrong_by_kind.pdf (make_body_figures.py); this figure shows the misses only
+cols_m = ["#555555", "#2a6f97", "#e07a5f", "#9ec5dd", "#c9b18a"]   # same colours in found_by_label.pdf
+fig, ax = plt.subplots(figsize=(7.4, 2.5))
+for row, sp in enumerate(("TEST", "DEV")):
+    left = 0
+    for (k, v), c in zip(miss[sp].items(), cols_m):
+        ax.barh(row, v, left=left, color=c, label=k if row == 0 else None, height=0.55)
+        if v >= 2:
+            ax.text(left + v / 2, row, str(v), ha="center", va="center", fontsize=7.5, color="white")
+        left += v
+ax.set_yticks([0, 1]); ax.set_yticklabels(["test", "development"])
+ax.set_xlabel("missed needed sounds")
+ax.set_title("missed needed sounds, by the step where they were lost", fontsize=9)
+ax.spines[["top", "right"]].set_visible(False)
+ax.legend(frameon=False, fontsize=7.5, loc="upper center", bbox_to_anchor=(0.5, -0.32), ncol=3)
 save(fig, "error_breakdown.pdf")
 
 # 5. Listener agreement -- improvements log (held-out AudioSet-Strong screening set, 415 clips)

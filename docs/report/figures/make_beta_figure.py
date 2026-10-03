@@ -39,7 +39,10 @@ for ax, (title, d) in zip(axes, SETS.items()):
     ax.spines[["top", "right"]].set_visible(False)
     ax.set_xlim(0, 6); ax.set_ylim(0, 6.5)
 axes[0].set_ylabel("cost per clip (lower is better)", fontsize=9)
-axes[0].legend(frameon=False, fontsize=8.5, loc="upper left")
+h, l = axes[0].get_legend_handles_labels()
+order = [l.index("final system"), l.index("direct audio-to-image"), l.index("show nothing")]
+leg = axes[0].legend([h[i] for i in order], [l[i] for i in order], frameon=False, fontsize=8.5, loc="upper left")
+leg.get_texts()[0].set_fontweight("bold")   # the final system first and bold, as in the other figures
 fig.tight_layout()
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "beta_sensitivity.pdf")
 fig.savefig(out); print(out)

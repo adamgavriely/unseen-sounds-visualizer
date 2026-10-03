@@ -4,10 +4,12 @@
 A deaf viewer misses the sounds whose source is not on screen, and no existing channel supplies them automatically.
 The task looks like a short chain of ready-made models, but every link fails in its own way
 (Section~\ref{sec:hard}; the missing capabilities are listed in Section~\ref{sec:missing}). This project built a system that works despite these failures, from open models with no
-training, after more than 150 full-pipeline variants (Table~\ref{tab:scale}), together with a labelled benchmark and a
-metric that prices what a viewer loses. On the test set the final system finds 37\,\% of the needed sounds, half of its
-pictures are right, and its cost is lower than both baselines of the proposal: clearly against direct audio-to-image
-generation ($p < 0.001$) and at the margin against showing nothing ($p = 0.044$ uncorrected, 0.087 after a Holm
+training, after more than 150 full-pipeline variants (Table~\ref{tab:scale}). What is new in kind is the decision
+itself made measurable: a per-sound benchmark that marks each sound as seen making it or not, obvious or not, and
+important or not, and a viewer cost that prices a miss against a wrong picture for this decision. On the test set the final system
+finds 37\,\% of the needed sounds, half of its pictures are right, and its cost is lower than all three baselines of the
+proposal (audio captioning scores as direct audio-to-image generation under the per-sound metric): clearly against
+direct audio-to-image generation ($p < 0.001$) and at the margin against showing nothing ($p = 0.044$ uncorrected, 0.087 after a Holm
 correction over five tests, on a test set used only for reporting). Its F1 is also higher than that of direct
 audio-to-image generation on the test set ($p = 0.002$; 0.007 after the same correction). The remaining errors sit where today's open models stop: sounds the detectors barely hear under speech and
 music, and a vision model that takes ``the object is there'' for ``the object is making the sound''.
@@ -30,7 +32,7 @@ music, and a vision model that takes ``the object is there'' for ``the object is
         table; on seven known cases only, the table was right 7 times and the vision model's own wording 3 times.
   \item[RQ3 -- can generated augmentations improve accessibility beyond subtitles?] Not shown. What is shown is that
         the system adds information no subtitle carries (off-screen sounds) at a modelled cost below showing nothing,
-        and that its pictures are recognised at a glance about half the time. A study with viewers is the necessary next
+        and that its pictures are recognised at a glance about half the time (26 of 54, Section~\ref{sec:pictures}). A study with viewers is the necessary next
         step.
   \item[RQ4 -- how to evaluate?] Per sound, against human labels, with the error split by cause and a cost that prices
         a miss against a wrong picture, reported over a range of weights; decisions pre-registered on a development set.

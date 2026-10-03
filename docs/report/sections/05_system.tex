@@ -17,8 +17,14 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
   \item \textbf{Witness rule (4b).} A remaining weak candidate survives if one of three witnesses backs it: DASM~\cite{cai2025dasm}, a third detector, clearly
         hears it at that time; or both listeners list it; or one listener lists it and the vision model says the sound
         fits the scene.
+  \item \textbf{Refine (4c).} The start of each BEATs sound is moved to where its evidence begins (never earlier than
+        detected), and rescued sounds pass three last filters: FineLAP and DASM must hear them, and only one rescue
+        per family is kept.
   \item \textbf{On-screen check, the gate (5).} A vision-language model (Qwen3.8-27B) looks at frames around the sound.
         If the thing making the sound is visibly making it, no picture is shown.
+  \item \textbf{Choose the subject (5b).} A sound is also silenced when a more specific sound of its family is visible
+        (kinship). For each remaining sound the vision model chooses the subject phrase, 2--6 words saying what to
+        draw.
   \item \textbf{Draw (6).} A short, guarded prompt is written for each remaining sound; Qwen-Image draws it; the vision
         model checks that the picture shows the intended thing and it is redrawn up to five times.
   \item \textbf{Clean the display (6b).} Repeats less than 2.5\,s apart become one picture. A listener decides

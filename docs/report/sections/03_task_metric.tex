@@ -40,15 +40,19 @@ Pictures are scored as they are shown on screen. A picture \textbf{hits} a neede
 and \emph{starts} between 0.5\,s before and 1\,s after the sound starts; each sound takes at most one picture. Every
 other picture is \textbf{wrong}, of one of three kinds:
 \begin{description}
-  \item[on screen] it shows a sound whose source is visible (the viewer could see it);
-  \item[other sound] it shows the wrong sound -- something else is heard there (a gunshot picture over footsteps), or
-        it is a late second picture of a long sound already shown;
+  \item[on screen] it shows a sound whose source is visible or obvious (the viewer could see it or already knows it);
+  \item[other sound] it shows the wrong sound -- something else is heard there (a gunshot picture over footsteps),
+        including a steady background sound of importance 1, or it is a late second picture of a long sound already
+        shown;
   \item[nothing] there is no labelled sound there at all.
 \end{description}
 ``Wrong'' is therefore strict: it includes redundant pictures, not only false ones. The hit window is asymmetric on
 purpose: a picture that appears slightly before its sound is still read as that sound, while a picture that appears
 more than a second late has lost its point, because the moment has passed. The window was fixed in advance and is the
-same for every system.
+same for every system. Three edge rules complete the scoring. A picture of an off-screen sound of importance 1,
+starting in its window, is neither a hit nor wrong. A picture that matches both a visible and a needed sound of its
+family is a hit. One picture may hit several overlapping sounds of the same family. Each of these cases occurs once in
+the final system.
 
 \subsection{Viewer cost}\label{sec:metric}
 The main score is the cost per clip,
@@ -76,7 +80,8 @@ the two systems is computed; the clips are then drawn with replacement 100{,}000
 difference is recomputed for each draw. The 95\,\% interval runs from the 2.5th to the 97.5th percentile of these
 means. The two-sided $p$-value is twice the share of draws in which the difference is zero or has the opposite sign;
 $p < 0.001$ is printed when fewer than 1 draw in 2{,}000 did so; in both cases reported here, no draw did.
-The bootstrap is used for the comparisons reported in Section~\ref{sec:results}.
+The bootstrap is used for the comparisons reported in Section~\ref{sec:results}. Differences are always final minus
+baseline, so a negative cost difference favours the final system.
 
 \paragraph{Pre-registration.} With sets this small, a rule chosen after seeing its result could fit noise. A change to the system was therefore
 accepted only if it passed a rule written down \emph{before} its run, on the development set (the rule and its pass

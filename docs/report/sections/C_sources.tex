@@ -6,10 +6,11 @@ The development record (pre-registrations, daily notes, reviews, the labelling t
 \paragraph{Code.} Release v1.3.0 of the repository. The final system is the configuration \cfgv{config.use_shipped()}
 in \fp{config.py}; in the scoring harness it is the variant \texttt{SHIP8+MD3+WW5+SL} (Appendix~\ref{app:glossary}).
 
-\paragraph{Environment.} Python 3 with PyTorch 2.5.1, transformers 5.16.1, diffusers, faster-whisper, panns-inference,
+\paragraph{Environment.} Python 3.11 with PyTorch 2.5.1, transformers 5.16.1, diffusers, faster-whisper, panns-inference,
 easyocr and sentence-transformers. FineLAP needs transformers 4.51.3 and runs in a second environment, called as a
-subprocess (variable \texttt{FINELAP\_PYTHON}). FlexSED and DASM are imported from their own repositories (paths in
-\fp{config.py}). Models (Hugging Face identifiers): \fp{Qwen/Qwen3.8-27B}, \fp{Qwen/Qwen3-Omni-30B-A3B-Instruct},
+subprocess (variable \texttt{FINELAP\_PYTHON}). FlexSED and DASM are imported from their own repositories, located through the
+environment variables \texttt{FLEXSED\_ROOT}, \texttt{T4SED\_ROOT} and \texttt{BERT\_DIR} (see the README); the DASM
+weights are loaded from the local DASM repository. Models (Hugging Face identifiers): \fp{Qwen/Qwen3.8-27B}, \fp{Qwen/Qwen3-Omni-30B-A3B-Instruct},
 \fp{nvidia/audio-flamingo-next-hf}, \fp{AndreasXi/FineLAP} (revision b419aa2), \fp{CPF2/detect_any_sound},
 \fp{Qwen/Qwen-Image-2512}, \fp{google/owlv2-base-patch16-ensemble}, BEATs iter3+ AS2M cpt2 and PANNs CNN14. Revisions
 other than FineLAP are not pinned.
@@ -38,9 +39,16 @@ python benchmark/gold/final_vs_baselines.py
 python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL
 python benchmark/gold/inspector_trail_export.py \
    --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/24/4/15/5/2.409
+# figures of the report
+python docs/report/figures/make_results_figure.py
+python docs/report/figures/make_beta_figure.py
+python docs/report/figures/make_body_figures.py
+python docs/report/figures/make_analysis_figures.py
+python docs/report/figures/make_examples_figure.py <folder with media/bysig>
 \end{verbatim}
 The last command re-runs the final system with every decision logged and stops unless the counts match exactly; it
-reproduces all 159 clips. The cached model outputs of the benchmark clips are not part of the repository (they are
+reproduces all 159 clips. The figure scripts read the result files above and \fp{docs/inspector2/data.js}; the
+example figure also needs the rendered output videos, which are not in the repository. The cached model outputs of the benchmark clips are not part of the repository (they are
 large); they are rebuilt from the clips with \fp{benchmark/gold/tagger_prep.py}.
 
 \paragraph{Decision trail.} \fp{docs/inspector2/} is a static page over \fp{data.js} (159 clips) that shows, for every
@@ -75,7 +83,7 @@ final system and baselines, Table~\ref{tab:headline} & \fp{benchmark/gold/final_
 Holm correction over five tests (Section~\ref{sec:support}) & the five $p$-values of \fp{benchmark/gold/final_vs_baselines.json} and \fp{benchmark/gold/final_vs_baselines_extra.json} \\
 intervals at each $\beta$ (Section~\ref{sec:sensitivity}) & per-clip hits and wrong pictures of \fp{docs/inspector2/data.js}, with the bootstrap of Section~\ref{sec:passrules} \\
 on-screen weight (Section~\ref{sec:sensitivity}) & derived from Table~\ref{tab:headline}; earlier versions in \fp{benchmark/gold/visible_weight_sweep.md} \\
-fate of misses (Section~\ref{sec:errors}, Figure~\ref{fig:errors}) & \fp{docs/inspector2/data.js} (field \cfgv{lost_at}), grouped into bars by \cfgv{LOST_AT_BAR} in \fp{docs/report/figures/make_analysis_figures.py}; \fp{docs/history/review/inspector_trail_ready.md} \\
+fate of misses (Section~\ref{sec:errors}, Figures~\ref{fig:errors} and~\ref{fig:bylabel}; the 8 needed sounds lost at the on-screen check, Section~\ref{sec:presence}) & \fp{docs/inspector2/data.js} (field \cfgv{lost_at}), grouped into bars by \cfgv{LOST_AT_BAR} in \fp{docs/report/figures/make_analysis_figures.py}; \fp{docs/history/review/inspector_trail_ready.md} \\
 Table~\ref{tab:ceiling} (ceiling) & \fp{benchmark/gold/ceiling_ship7.md} \\
 September gate comparison (Appendix~\ref{app:history}) & \fp{benchmark/gold/holm_test_final_v33_test_bench.json} \\
 gate accuracy, failure modes (31 of 36 wrong silences: 14 of class i, 17 of class ii; 42\,\% ``nothing'') & \fp{docs/history/review/vlm_panel_2026-10-01/f1_audit.md}, sections 4--7 \\
