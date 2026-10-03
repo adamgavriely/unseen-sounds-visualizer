@@ -1,9 +1,9 @@
-"""On-the-spot inputs for the shipped listener rescue (TO1+F7F8) on a clip that has no precomputed answers.
+"""Model inputs for one new clip (listener answers, DASM and FineLAP scores), built by the same steps as the benchmark
+(benchmark/gold/clip_prep.py).
 
 The shipped stage 4 reads, per clip, the audio-LLM answers (Qwen3-Omni yes/no + variants, Audio Flamingo Next) and the DASM
-scores. On the benchmark these were built by benchmark/gold/tagger_prep.py; `slurm/run_best.sh` runs that harness on any
-folder. This module runs the SAME harness, step by step, for one new clip (a one-clip split named after it), so the
-answers are identical to the benchmark's by construction (checked: shipcheck, 5 DEV clips, identical pictures). It is
+scores. This module runs clip_prep.py step by step for one new clip (a one-clip split named after it), so the
+answers are built exactly as the benchmark's. It is
 slow (a scored render of the clip, then two audio LLMs and DASM, one model at a time), but needs no manual step.
 
     from src.listener_prep import ensure_listener_inputs
@@ -34,7 +34,7 @@ def ready(split: str, stem: str, flap: bool = True) -> bool:
 
 
 def finelap(split: str, stem: str) -> None:
-    """round 31 FLAP: FineLAP frame scores of the clip's rescue families (benchmark/gold/finelap_screen.py, the same
+    """FineLAP frame scores of the clip's rescue families (benchmark/gold/finelap_screen.py, the same
     rule as DEV/TEST). FineLAP needs transformers 4.51 -> its own venv (FINELAP_PYTHON, default ~/venv_flap)."""
     if (_ROOT / "data" / "work" / f"finelap_{split}" / f"{stem}.npz").exists():
         return
@@ -67,7 +67,7 @@ def ensure_listener_inputs(video: Path) -> str:
     if ready(split, stem, flap=False):                    # built before the FineLAP step existed
         finelap(split, stem)
         return split
-    d = _ROOT / "data" / "input" / f"tagger_{split}"
+    d = _ROOT / "data" / "input" / f"prep_{split}"
     d.mkdir(parents=True, exist_ok=True)
     link = d / video.name
     if not link.exists():
@@ -77,14 +77,14 @@ def ensure_listener_inputs(video: Path) -> str:
             import shutil
             shutil.copy2(video, link)
     (_ROOT / "benchmark" / "gold" / f"{split}_stems.txt").write_text(stem + "\n", encoding="utf-8")
-    env = {**os.environ, "TG_EXTRA_SPLITS": split}
+    env = {**os.environ, "PREP_EXTRA_SPLITS": split}
     dasm_queries(env)
-    prep = str(_ROOT / "benchmark" / "gold" / "tagger_prep.py")
+    prep = str(_ROOT / "benchmark" / "gold" / "clip_prep.py")
     for step in STEPS:
         cmd = [sys.executable, prep, step, "--split", split] + (["--arms", "B0r"] if step in ("stage4", "stage5") else [])
         print(f"       [listener-prep] {split}: {step}", flush=True)
         subprocess.run(cmd, check=True, cwd=str(_ROOT), env=env)
-    # round 20 DR2: DASM-only runs (P4) and both listeners' answers on them
+    # DASM-only spans (P4) and both listeners' answers on them
     w = _ROOT / "data" / "work"
     p4 = _ROOT / "benchmark" / "gold" / f"{split}_listener_p4.json"
     dr = str(_ROOT / "benchmark" / "gold" / "dasm_rescue.py")
@@ -92,7 +92,7 @@ def ensure_listener_inputs(video: Path) -> str:
     subprocess.run([sys.executable, dr, "pool", split, str(w / f"r13{split}" / "stage4.json"), str(w / f"dasm_{split}"),
                     str(w / f"r13{split}" / "wav16"), str(p4)], check=True, cwd=str(_ROOT), env=env)
     subprocess.run([sys.executable, dr, "listen", str(p4)], check=True, cwd=str(_ROOT), env=env)
-    # round 21 K-V4: Qwen V4 on the P1 cuts + both listeners' family lists
+    # open listener inventory: Qwen V4 on the P1 cuts + both listeners' family lists
     gd = _ROOT / "benchmark" / "gold"
     print(f"       [listener-prep] {split}: P1 open inventory", flush=True)
     subprocess.run([sys.executable, str(gd / "listener_p1v4.py"),

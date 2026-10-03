@@ -64,7 +64,7 @@ def _tool(name: str) -> str:
 def _check_and_normalize(src: Path, dst: Path) -> None:
     """Refuse videos the pipeline cannot use, with a plain message, and give the pipeline an .mp4 it can read.
 
-    The listener harness only looks for lower-case *.mp4 files (benchmark/gold/tagger_prep.py stems_of), and stage 1
+    The per-clip input builder only looks for lower-case *.mp4 files (benchmark/gold/clip_prep.py stems_of), and stage 1
     reads the container duration; a phone .MOV, a .webm with no duration, or an .MP4 would fail deep inside the run. So
     every upload becomes <stem>.mp4: copied when it already is a plain .mp4, otherwise re-encoded (H.264 + AAC).
     """

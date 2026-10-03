@@ -39,7 +39,7 @@ from src import trail as TRAIL_LOG                 # Decision Inspector: per-cli
 WORK = DCC.WORK
 # the two cluster checkouts that some arms read files from (the defaults are the paths of the scored runs)
 MAIN_CHECKOUT = os.environ.get("MSCPROJ_MAIN_CHECKOUT", "/home/dsi/adamg/MscProj")
-TG_CHECKOUT = os.environ.get("MSCPROJ_TG_CHECKOUT", "/home/dsi/adamg/MscProj_tg")
+CACHE_CHECKOUT = os.environ.get("MSCPROJ_CACHE_CHECKOUT", "/home/dsi/adamg/MscProj_tg")
 R13 = WORK / "r13"
 STAGE4, MEMO, PANNS_DIR = R13 / "stage4.json", R13 / "ask_memo.json", R13 / "panns"
 OUT = _ROOT / "benchmark" / "gold" / "round13_dev.json"
@@ -226,7 +226,7 @@ ARMS["SHIP5+RPTS"] = {**ARMS["SHIP5"], "REPEAT_NEEDS_SILENCE": 0.5}          # r
 ARMS["SHIP5+PMC"] = {**ARMS["SHIP5"], "PICTURE_MIN_CONF": 0.35}                 # round 31 PMC: floor = DISPLAY_THRESHOLD
 ARMS["SHIP5+CONT"] = {**ARMS["SHIP5"], "CONTINUATION_VETO": 0.5}             # round 31 CONT
 ARMS["SHIP5+FLAP"] = {**ARMS["SHIP5"], "FINELAP_VETO": 0.329,                   # round 31 FLAP (b), P1-calibrated bar
-                     "FINELAP_DIR": TG_CHECKOUT + "/data/work/finelap_cache"}
+                     "FINELAP_DIR": CACHE_CHECKOUT + "/data/work/finelap_cache"}
 ARMS["SHIP6"] = {**ARMS["SHIP5+CONT"]}                 # the shipped default since round 31
 ARMS["SHIP6+K4AO"] = {**ARMS["SHIP6"], "KEEP_NEEDS_V4_ALL": "onto"}
 ARMS["SHIP6+FLAP"] = {**ARMS["SHIP6"], "FINELAP_VETO": 0.329, "FINELAP_DIR": ARMS["SHIP5+FLAP"]["FINELAP_DIR"]}

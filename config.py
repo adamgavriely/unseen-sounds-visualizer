@@ -3,7 +3,7 @@
 The docs/history/* files and other paths marked "release v1.2.0" in the comments below are in release v1.2.0
 (https://github.com/adamgavriely/MscFinalProject/releases/tag/v1.2.0), not in this release.
 
-Every stage is real; the rationale for each choice is in the comment beside it.
+The rationale for each choice is in the comment beside it.
 """
 from pathlib import Path
 
@@ -541,7 +541,7 @@ def use_shipped() -> dict:
     # the best DEV detector TO1+F7F8 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0, 30 Sept: ship the best): confidence-tiered
     # audio-LLM rescue of FlexSED 0.5-0.8 runs (Qwen3-Omni open list; below peak 0.6 also Audio Flamingo Next), earliest
     # rescue per family, twin-max, listener-confirmed mirror veto, DASM third vote. Its listener answers and DASM scores are
-    # per-clip inputs (set_listener_split / slurm/run_best.sh); without them stage 4 stops (LISTENER_REQUIRE_CACHES).
+    # per-clip inputs (set_listener_split / src/listener_prep.py, run by main.py); without them stage 4 stops (LISTENER_REQUIRE_CACHES).
     for k, v in (("LISTENER_RESCUE", True), ("LISTENER_RULE", "TIER"), ("LISTENER_LO", 0.5), ("LISTENER_ONCE", True),
                  ("TWIN_MAX", True), ("MIRROR_VETO", 0.7), ("LISTENER_CONFIRMED_MIRROR", True),
                  ("LISTENER_DASM_VOTE", True), ("LISTENER_DASM_BAR", 0.575), ("LISTENER_REQUIRE_CACHES", True),
@@ -588,7 +588,7 @@ def use_n2b() -> dict:
 
 
 def set_listener_split(name: str) -> dict:
-    """point the shipped listener rescue at the answers slurm/run_best.sh built for split <name>:
+    """point the shipped listener rescue at the answers src/listener_prep.py built for split <name>:
     benchmark/gold/<name>_listener{,_v,_afn}.json and data/work/dasm_<name>/"""
     import sys
     from pathlib import Path

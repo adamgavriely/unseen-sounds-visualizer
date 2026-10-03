@@ -33,11 +33,11 @@ def _part(R, out_dir, gold, stems, sysn):
     return [S.score_clip(gold[st], P[st]) for st in stems if st in gold]
 
 
-def _tagger(split, sysns):
-    from benchmark.gold import tagger_prep as T
+def _batch2(split, sysns):
+    from benchmark.gold import clip_prep as T
     DCC2, R2, stems = T.configure(split)
     keep = set(stems)
-    d = json.loads(T.TAGGER_GOLD.read_text(encoding="utf-8"))
+    d = json.loads(T.GOLD.read_text(encoding="utf-8"))
     d["clips"] = [c for c in d.get("clips", []) if isinstance(c, dict) and Path(str(c.get("clip", ""))).stem in keep]
     tmp = T.out(split) / f"{split}_gold_only.json"
     DCC2.dump(tmp, d)
@@ -49,22 +49,22 @@ def dev_rows():
     from benchmark.gold import round13_dev as R
     gold, stems = DCC.dev_stems()
     a = {s: _part(R, R.R13, gold, stems, s) for s in SYSTEMS}
-    b = _tagger("dev2", SYSTEMS)
+    b = _batch2("dev2", SYSTEMS)
     return {s: a[s] + b[s] for s in SYSTEMS}
 
 
 def test_rows():
     from benchmark.gold import final_test as FT
     F, T, R, _a, fin = FT.old_setup(ARM)
-    from benchmark.gold import tagger_prep as TP0
-    gold1 = TP0._REAL_LOAD_GOLD([F.GOLD])     # the real loader (tagger_prep blocks S.load_gold in its own steps)
+    from benchmark.gold import clip_prep as TP0
+    gold1 = TP0._REAL_LOAD_GOLD([F.GOLD])     # the real loader (clip_prep blocks S.load_gold in its own steps)
     stems1 = list(T.STEMS)
     a = {s: _part(R, fin, gold1, stems1, s) for s in SYSTEMS}
-    from benchmark.gold import tagger_prep as TP
+    from benchmark.gold import clip_prep as TP
     for k, v in FT._ARMS0.items():
         R.ARMS[k] = dict(v)
     TP._ORIG.clear()
-    b = _tagger("test2", SYSTEMS)
+    b = _batch2("test2", SYSTEMS)
     return {s: a[s] + b[s] for s in SYSTEMS}
 
 

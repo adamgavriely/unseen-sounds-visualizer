@@ -1,9 +1,9 @@
-"""Decision Inspector export (docs/inspector2, data contract in its README): the per-clip decision trails of the shipped arm
+"""Decision Inspector export (docs/inspector2, read by docs/inspector2/app.js): the per-clip decision trails of the shipped arm
 The final system on merged DEV and merged TEST -> data.js, with a parity check against the frozen run.
 
 Compatible with the earlier inspector exporter (not in the repository), with these differences:
   * stage 6 is not in trail.json in the harness (the scorer draws the pictures), so the export resets src/trail.py, reads
-    the pictures with S.load_pictures under the arm's display flags (exactly as merged_dev.py / test_vs_ship8.py do) and
+    the pictures with S.load_pictures under the arm's display flags (exactly as merged_dev.py / test_vs_ship8.py (release v1.2.0) do) and
     appends those display records; the full trail is written next to trail.json as trail_full.json;
   * candidates are joined, not overwritten: many firings become one stage-5 sound (family merge), and each candidate
     inherits the later records of the sound it joined;
@@ -13,7 +13,7 @@ Compatible with the earlier inspector exporter (not in the repository), with the
     frozen arm's (--frozen); the parity result is written to <out>_parity.json, and the per-clip picture signatures used as
     video keys to <out>_media_sigs.json.
 
-    # cluster, from ~/MscProj_tg (as merged_dev.py and test_vs_ship8.py), after the _trail arm ran on all four parts:
+    # cluster, from the checkout of the scored runs (as merged_dev.py and test_vs_ship8.py, release v1.2.0), after the _trail arm ran on all four parts:
     python benchmark/gold/inspector_trail_export.py --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/24/4/15/5/2.409
 
 Decides nothing; reads gold only to classify (merged TEST is a reporting re-run of the frozen arm).
@@ -39,7 +39,7 @@ GOLD_ALL: dict = {}
 
 
 def load_gold_all():
-    """the one gold file (old DEV / old TEST / tagger parts), read with the real loader"""
+    """the one gold file (DEV / TEST and their dev2 / test2 parts), read with the real loader"""
     if not GOLD_ALL:
         GOLD_ALL.update(_REAL_LOAD_GOLD([GOLD_FILE]))
     return GOLD_ALL
@@ -339,15 +339,15 @@ def lost(g, near, pics, sidx, order):
 
 # ============================================================================= the four parts of merged DEV / merged TEST
 def parts(arm):
-    """(split, part, arm folder parent, stems) in the order merged_dev.py / test_vs_ship8.py read them"""
+    """(split, part, arm folder parent, stems) in the order merged_dev.py / test_vs_ship8.py (release v1.2.0) read them"""
     from benchmark.gold import dev_candidates_check as DCC
     load_gold_all()
     subsets = S.subsets_of(GOLD_ALL)
     out = [("DEV", "dev", Path(os.environ.get("TRAIL_DEV_ROOT") or (DCC.WORK / "r13")), sorted(subsets["dev"]))]
-    from benchmark.gold import tagger_prep as TP           # (installs its gold stub; GOLD_ALL is already read)
+    from benchmark.gold import clip_prep as TP             # (installs its gold stub; GOLD_ALL is already read)
     out.append(("DEV", "dev2", TP.out("dev2"), [s for s in TP.stems_of("dev2") if s in GOLD_ALL]))
     st1 = sorted(x.strip() for x in (_ROOT / "benchmark" / "gold" / "test_stems.txt").read_text(encoding="utf-8").splitlines()
-                 if x.strip())
+                 if x.strip() and not x.strip().startswith("tg_"))     # test2 (tg_) is the fourth part
     assert sorted(subsets["test_bench"]) == st1
     out.append(("TEST", "test", DCC.WORK / "r16final", st1))
     out.append(("TEST", "test2", TP.out("test2"), [s for s in TP.stems_of("test2") if s in GOLD_ALL]))

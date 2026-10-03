@@ -1,7 +1,7 @@
 % ======================================================================
 \section{Reproducibility and sources of the numbers}\label{app:sources}
 \subsection{Reproduction}\label{sec:repro}
-The development record (pre-registrations, daily notes, reviews, the labelling tool) is not part of the current release, which holds only the code, the labels, the scoring and this report. It is kept in full in release v1.2.0 (\url{https://github.com/adamgavriely/MscFinalProject/releases/tag/v1.2.0}); every path below that starts with \fp{docs/history/}, \fp{docs/README.md} or \fp{tagger/} refers to that release.
+The development record (pre-registrations, daily notes, reviews, the labelling tool) is not part of the current release, which holds only the code, the labels, the scoring and this report. It is kept in full in release v1.2.0 (\url{https://github.com/adamgavriely/MscFinalProject/releases/tag/v1.2.0}); every path below that starts with \fp{docs/history/} or \fp{docs/README.md} refers to that release.
 
 \paragraph{Code.} Release v1.3.1 of the repository. The final system is the configuration \cfgv{config.use_shipped()}
 in \fp{config.py}; in the scoring harness it is the variant \texttt{SHIP8+MD3+WW5+SL} (Appendix~\ref{app:glossary}).
@@ -49,7 +49,7 @@ python docs/report/figures/make_examples_figure.py <folder with media/bysig>
 The last command re-runs the final system with every decision logged and stops unless the counts match exactly; it
 reproduces all 159 clips. The figure scripts read the result files above and \fp{docs/inspector2/data.js}; the
 example figure also needs the rendered output videos, which are not in the repository. The cached model outputs of the benchmark clips are not part of the repository (they are
-large); they are rebuilt from the clips with \fp{benchmark/gold/tagger_prep.py}.
+large); they are rebuilt from the clips with \fp{benchmark/gold/clip_prep.py}.
 
 \paragraph{Decision trail.} \fp{docs/inspector2/} is a static page over \fp{data.js} (159 clips) that shows, for every
 labelled sound and every candidate of the final system, each step it passed or failed, the value, the threshold and the
@@ -75,7 +75,7 @@ Numbers & File \\
 \toprule Numbers & File \\ \midrule\endhead
 \bottomrule\endfoot
 Table~\ref{tab:sets} (set sizes, needed sounds) & \fp{benchmark/gold/annotations/gold_AG.json}, counted with \fp{benchmark/gold/score_per_sound.py} \\
-labelling rules (Section~\ref{sec:needed}) & \fp{benchmark/gold/tool_template.html}, \fp{tagger/index.html}, \fp{docs/history/plans/metric_per_sound.md} \\
+labelling rules (Section~\ref{sec:needed}) & \fp{benchmark/gold/tool_template.html}, the labelling tool (release v1.2.0), \fp{docs/history/plans/metric_per_sound.md} \\
 scoring rules, cost (Section~\ref{sec:task}) & \fp{benchmark/gold/score_per_sound.py} \\
 bootstrap and pass rules & \fp{benchmark/gold/dev_candidates_check.py}; \fp{benchmark/gold/holm_table.py} \\
 F1 intervals, Figure~\ref{fig:importance} (danger sounds) & \fp{benchmark/gold/final_vs_baselines_extra.json}, from \fp{benchmark/gold/final_vs_baselines_extra.py} \\

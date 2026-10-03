@@ -34,15 +34,20 @@ Open http://127.0.0.1:8188, load the workflow `MscProj_video` from the Workflows
 and press Run. `comfy_start.py` starts ComfyUI with a small fix that lets it run on this project's PyTorch 2.5.1. The
 new video is saved in ComfyUI's output folder and in `data/output/<name>_augmented.mp4`.
 
-On a Slurm cluster, `sbatch slurm/job_comfy.sh` starts the server on a GPU node and prints the `ssh -N -L ...`
-command that forwards the port to your computer. Set `HF_TOKEN` before `sbatch` if a model needs it.
+On a Slurm cluster, `sbatch comfyui_nodes/run_on_cluster.sh` starts the server on a GPU node (it activates a
+conda environment named `msproj` with the project's packages; edit the script if yours differs) and prints the
+command that forwards the port to your computer:
+
+    ssh -N -L 8188:<gpu node>:8188 <user>@<login node>
+
+then open http://127.0.0.1:8188. Set `HF_TOKEN` before `sbatch` if a model needs it.
 
 `public_page.py` is a simple upload page (Gradio) on top of a running ComfyUI server: upload a video, press one
 button, get the new video. It needs `gradio`, `requests` and `websockets`:
 
     python comfyui_nodes/public_page.py --comfy http://127.0.0.1:8188 --port 7860
 
-`slurm/job_comfy.sh` starts this page too, with the Python given in `GRADIO_PYTHON` (default
+`run_on_cluster.sh` starts this page too, with the Python given in `GRADIO_PYTHON` (default
 `~/venv_gradio/bin/python`; set `PUBLIC=0` to skip it). With `--share` the page gets a temporary public
 gradio.live link that works from outside the cluster network while the job runs.
 

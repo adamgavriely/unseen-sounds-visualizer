@@ -59,7 +59,7 @@ from src.stage7_evaluation.protocol import (Backends, describe_clip, judge_recor
 BENCH = _ROOT / "data" / "input" / "benchmark"
 DESCRIPTIONS = _ROOT / "benchmark" / "protocol_descriptions.json"
 OUT = _ROOT / "benchmark" / "protocol_results.json"
-TAGS = _ROOT / "benchmark" / "tags.json"
+TAGS = _ROOT / "benchmark" / "scene_tags.json"
 SYSTEMS = ("proposed", "blind_a2i", "audio_caption")
 # proposal sec 5.1 scenarios, so results can be reported per scenario
 SCENARIO_OF = {"unseen_ambient": "acoustic_event_or_ambient",

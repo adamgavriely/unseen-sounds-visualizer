@@ -100,7 +100,7 @@ def main() -> None:
     ap.add_argument("--fewer-false", action="store_true",
                     help="N2b (already in the final system; kept for old command lines)")
     ap.add_argument("--listener-split", default=None,
-                    help="name given to slurm/run_best.sh for this clip's folder: where the audio-LLM answers and DASM "
+                    help="split name src/listener_prep.py gave this clip (live_<clip>): where the audio-LLM answers and DASM "
                          "scores of the final detector are (without them stage 4 stops)")
     ap.add_argument("--whisper-model", default=None, help="tiny|base|small|medium|large-v3")
     ap.add_argument("--device", default=None, help="cpu|cuda")

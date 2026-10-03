@@ -1,7 +1,7 @@
 """Merged DEV (2026-09-30; docs/history/preregistrations/prereg_round13_detector_push.md "Merge of the tagger set", release v1.2.0): DEV (49 clips, gold_AG)
-+ the tagger-set DEV part (tagger_AG, benchmark/gold/dev2_stems.txt), scored as ONE set: per-clip score_clip rows of each
++ the second-batch DEV part dev2 (the tg_ lines of benchmark/gold/dev_stems.txt, gold_AG), scored as ONE set: per-clip score_clip rows of each
 arm on both parts, concatenated, paired clip bootstrap vs B0r (DCC.boot, as round13_dev). Needs the arms' stage-5 outputs
-on both parts (round13_dev on DEV; tagger_prep stage4/stage5 on dev2). TEST / TEST2 gold is never read.
+on both parts (round13_dev on DEV; clip_prep stage4/stage5 on dev2). TEST / TEST2 gold is never read.
 
     python benchmark/gold/merged_dev.py --arms B0r B1 TO1+F7F8
 """
@@ -38,10 +38,10 @@ def rows_dev(arms):
 
 
 def rows_dev2(arms):
-    from benchmark.gold import tagger_prep as T
+    from benchmark.gold import clip_prep as T
     DCC2, R2, stems = T.configure("dev2")
     keep = set(stems)
-    d = json.loads(T.TAGGER_GOLD.read_text(encoding="utf-8"))
+    d = json.loads(T.GOLD.read_text(encoding="utf-8"))
     d["clips"] = [c for c in d.get("clips", []) if isinstance(c, dict) and Path(str(c.get("clip", ""))).stem in keep]
     tmp = T.out("dev2") / "dev2_gold_only.json"
     DCC2.dump(tmp, d)

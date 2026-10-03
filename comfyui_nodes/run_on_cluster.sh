@@ -14,7 +14,9 @@
 # CUDA driver -- the login node has none. The job prints the one command a viewer needs to reach
 # the GUI from a laptop, then serves the graph until the walltime runs out.
 #
-#   sbatch slurm/job_comfy.sh          then read logs/comfy_<jobid>.out for the tunnel command
+#   sbatch comfyui_nodes/run_on_cluster.sh   then read logs/comfy_<jobid>.out for the tunnel command
+# It activates a conda environment named `msproj` that holds the project's packages (main README.md,
+# Installation); edit the two `conda` lines if yours has another name or place.
 set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"
 mkdir -p logs

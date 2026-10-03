@@ -1,8 +1,8 @@
-/* Decision Inspector. Data: window.INSPECTOR2 from data.js (made by export.py). No network; opens by double-click. */
+/* Decision Inspector. Data: window.INSPECTOR2 from data.js (made by benchmark/gold/inspector_trail_export.py). No network; opens by double-click. */
 (function () {
   'use strict';
   var D = window.INSPECTOR2, app = document.getElementById('app');
-  if (!D) { app.innerHTML = '<div class="banner"><b>data.js is missing.</b> Run <code>python docs/inspector2/export.py</code>, then reload.</div>'; return; }
+  if (!D) { app.innerHTML = '<div class="banner"><b>data.js is missing.</b> Run <code>python benchmark/gold/inspector_trail_export.py</code>, then reload.</div>'; return; }
 
   // ---------------------------------------------------------------- helpers
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }

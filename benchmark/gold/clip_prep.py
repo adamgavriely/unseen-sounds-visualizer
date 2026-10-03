@@ -1,7 +1,13 @@
-"""Confirmation set 1, REVISED (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0): features for the 16 tagger-set clips, split by
-sha256(stem) % 2 into DEV2 (benchmark/gold/dev2_stems.txt, 6 clips) and TEST2 (test2_stems.txt, 10 clips, SEALED).
+"""Per-clip model inputs for the final system: for every clip of a split, the scored render (stages 1-6,
+config.use_scored()), FlexSED, 16-kHz audio, BEATs, PANNs and DASM scores, the Qwen3-Omni and Audio Flamingo Next
+answers, then stage 4/5 of the chosen variants. src/listener_prep.py runs these steps for one new clip. No gold label is
+read except in `score`.
 
-Everything the DEV/TEST harness has, built the same way, one folder per split:
+Splits: dev2 / test2 are the second batch of benchmark clips (tg_d*; their names are the tg_ lines of
+benchmark/gold/dev_stems.txt and test_stems.txt; clips in data/input/batch2/); any other split name comes from
+PREP_EXTRA_SPLITS (one folder of clips, never scored here).
+
+The steps, one work folder per split:
   render   stages 1-6 of the pipeline with config.use_scored() (placeholder pictures: the per-sound score never looks at a
            picture) -> data/work/protocol_{proposed,blind_a2i}_<split>_v33 (media, audio.wav, scene, segments, gate
            votes, onset_trace, augmentations): the "scored render" B0 of the split
@@ -16,14 +22,14 @@ Everything the DEV/TEST harness has, built the same way, one folder per split:
   stage4 / stage5 / gates   B0r, B1 (self-veto 0.1218, PANNs off) and C1 = TO1+F7F8 through round13_dev (pipeline code),
            caches mapped to the split's files; gates D0 (stage 4 == render trace), D5 (B0r == render), completeness,
            listener-cache coverage. Stops before scoring.
-  score    DEV2 ONLY: score_per_sound on the DEV2 clips of tagger_AG.json (the file is filtered to DEV2 stems on parse);
-           refuses split test2.
-score_per_sound.load_gold raises in every other step. New code only: round13_dev, dev_listener, test_listener,
-listener_variants, listener_afnext, flexsed_run, dev_candidates_check are imported, never edited.
+  score    dev2 only: score_per_sound on the dev2 clips of annotations/gold_AG.json (the file is filtered to the dev2
+           stems on parse); refuses split test2.
+score_per_sound.load_gold raises in every other step. round13_dev, dev_listener, test_listener, listener_variants,
+listener_afnext, flexsed_run and dev_candidates_check are imported, never edited.
 
-    python benchmark/gold/tagger_prep.py links                     # CPU: split clip folders (symlinks), stem checks
-    python benchmark/gold/tagger_prep.py --split dev2 render       # GPU
-    python benchmark/gold/tagger_prep.py --split dev2 stage4 --arms B0r
+    python benchmark/gold/clip_prep.py links                     # CPU: split clip folders (symlinks), stem checks
+    python benchmark/gold/clip_prep.py --split dev2 render       # GPU
+    python benchmark/gold/clip_prep.py --split dev2 stage4 --arms B0r
 """
 from __future__ import annotations
 
@@ -45,19 +51,20 @@ _REAL_LOAD_GOLD = S.load_gold
 
 
 def _no_gold(*a, **k):
-    raise RuntimeError("tagger_prep: gold must not be read in this step")
+    raise RuntimeError("clip_prep: gold must not be read in this step")
 
 
 S.load_gold = _no_gold
 
 GOLDD = _ROOT / "benchmark" / "gold"
 WORK = _ROOT / "data" / "work"
-CLIPS = _ROOT / "data" / "input" / "tagger_set"
-TAGGER_GOLD = GOLDD / "annotations" / "gold_AG.json"
+CLIPS = _ROOT / "data" / "input" / "batch2"
+GOLD = GOLDD / "annotations" / "gold_AG.json"
 SPLITS = ("dev2", "test2")
-# extra, gold-free splits for running a version on any folder of clips (slurm/run_best.sh): TG_EXTRA_SPLITS="name ...";
-# clips in data/input/tagger_<name>, stems in benchmark/gold/<name>_stems.txt; never scored here
-EXTRA = tuple(x for x in os.environ.get("TG_EXTRA_SPLITS", "").split() if x and x not in SPLITS)
+SET_FILE = {"dev2": "dev", "test2": "test"}            # dev2 / test2 = the tg_ lines of dev_stems.txt / test_stems.txt
+# extra, gold-free splits for running the system on any folder of clips (src/listener_prep.py): PREP_EXTRA_SPLITS="name ...";
+# clips in data/input/prep_<name>, stems in benchmark/gold/<name>_stems.txt; never scored here
+EXTRA = tuple(x for x in os.environ.get("PREP_EXTRA_SPLITS", "").split() if x and x not in SPLITS)
 C1 = "TO1+F7F8"
 B1_FLAGS = {"BEATS_SELF_VETO": 0.1218, "PANNS_VETO": 0.0}
 SYSTEMS = ("proposed", "blind_a2i")
@@ -68,22 +75,23 @@ def parity(stem):
 
 
 def stems_of(split):
-    st = sorted(x.strip() for x in (GOLDD / f"{split}_stems.txt").read_text(encoding="utf-8").split() if x.strip())
     if split in EXTRA:
+        st = sorted(x.strip() for x in (GOLDD / f"{split}_stems.txt").read_text(encoding="utf-8").split() if x.strip())
         have = {p.stem for p in clip_dir(split).glob("*.mp4")}
         assert st and set(st) <= have, sorted(set(st) - have)
         return st
-    # batch 1 by sha256 parity, batch 2 by the tag-balanced split; membership = benchmark/gold/tagger_split.json
-    sp = json.loads((GOLDD / "tagger_split.json").read_text(encoding="utf-8"))["batches"]
-    want = sorted(x for b in sp.values() for x in b[split])
-    assert st and st == want, (split, st, want)
+    if split not in SET_FILE:
+        raise KeyError(split)
+    st = sorted(x.strip() for x in (GOLDD / f"{SET_FILE[split]}_stems.txt").read_text(encoding="utf-8").split()
+                if x.strip().startswith("tg_"))
+    assert st, split
     have = {p.stem for p in CLIPS.glob("tg_d*.mp4")}
     assert set(st) <= have, sorted(set(st) - have)
     return st
 
 
 def clip_dir(split):
-    return _ROOT / "data" / "input" / f"tagger_{split}"
+    return _ROOT / "data" / "input" / f"prep_{split}"
 
 
 def tag(split):
@@ -124,8 +132,8 @@ def configure(split):
             "dev_listener_kimi.json": lcache(split, "_kimi"), "dev_listener_p1v4.json": lcache(split, "_p1v4"),
             "dev_listener_p4.json": lcache(split, "_p4"), "dev_listener_v4b.json": lcache(split, "_v4b"),
             "flexsed_extra_dev": WORK / f"flexsed_extra_{split}", "finelap_cache": WORK / f"finelap_{split}"}
-    # extra DEV arms for the merged DEV (30 Sept): TG_ARMS="arm1 arm2" remaps them the same way
-    for arm in ("B0r", "B1", C1, *[x for x in os.environ.get("TG_ARMS", "").split() if x in R.ARMS]):
+    # further variants: PREP_ARMS="arm1 arm2" remaps them the same way
+    for arm in ("B0r", "B1", C1, *[x for x in os.environ.get("PREP_ARMS", "").split() if x in R.ARMS]):
         _ORIG.setdefault(arm, dict(R.ARMS[arm]))       # map from the DEV originals, whatever split came before
         if True:
             new = {}
@@ -240,7 +248,7 @@ def lpool(split):
     if p.exists() and any("score" in x for x in json.loads(p.read_text(encoding="utf-8"))["items"]):
         print(f"[lpool] {p} already scored; kept", flush=True)
         return
-    meta = {"split": f"{split} (tagger set, {len(stems)} clips, benchmark/gold/{split}_stems.txt); gold-free",
+    meta = {"split": f"{split} ({len(stems)} clips, benchmark/gold/{split}_stems.txt); gold-free",
             "model": MODEL, "question": QUESTION, "construction": "test_listener.superset (P1 B0r both systems, P2/P3 no "
             "coverage filter, PV from the render's trace), unchanged", "audio": f"{DCC.WAV16}/<clip>.wav",
             "pv_not_contained_in_P2": miss, "clips": len(stems)}
@@ -343,7 +351,7 @@ def gates(split, arms):
 def score_dev2(arms):
     DCC, R, stems = configure("dev2")
     keep = set(stems)
-    d = json.loads(TAGGER_GOLD.read_text(encoding="utf-8"))
+    d = json.loads(GOLD.read_text(encoding="utf-8"))
     d["clips"] = [c for c in d.get("clips", []) if isinstance(c, dict) and Path(str(c.get("clip", ""))).stem in keep]
     tmp = out("dev2") / "dev2_gold_only.json"
     DCC.dump(tmp, d)

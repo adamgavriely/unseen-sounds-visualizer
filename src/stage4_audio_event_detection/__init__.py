@@ -373,7 +373,7 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
 
 def _require_caches(wav_path):
     """LISTENER_REQUIRE_CACHES (set by use_shipped when the listener rescue ships): a clip with no listener answers or no
-    DASM scores must not quietly fall back to the plain detector -- stop instead. The answers come from slurm/run_best.sh."""
+    DASM scores must not quietly fall back to the plain detector -- stop instead. The answers come from src/listener_prep.py (run by main.py)."""
     if not getattr(config, "LISTENER_REQUIRE_CACHES", False):
         return
     clip = Path(wav_path).parent.name
@@ -398,7 +398,7 @@ def _require_caches(wav_path):
         miss.append("FINELAP_DIR (no <clip>.npz)")
     if miss:
         raise RuntimeError(f"[stage4] {clip}: the shipped listener rescue needs precomputed answers "
-                           f"(run slurm/run_best.sh on this clip first): missing {miss}")
+                           f"(run python main.py on this clip, which builds them): missing {miss}")
 
 
 def _pipeline_listener(wav_path):

@@ -4,11 +4,11 @@ items (FineLAP >= bar keeps 90 %). (a) new accept path: TIER false AND FineLAP >
 GO iff needed added >= 2 and other added <= needed added. (b) veto: TIER true AND FineLAP < bar; GO iff other removed
 >= 3 x needed lost (and >= 1).
 
-    # from ~/MscProj_tg on the cluster
+    # on the cluster, from the checkout of the scored runs
     python benchmark/gold/finelap_screen.py run     # GPU, ~/venv_flap (transformers 4.51.3), HF offline
     python benchmark/gold/finelap_screen.py score   # CPU, msproj env
     python benchmark/gold/finelap_screen.py run test test2   # TEST frame caches -> data/work/finelap_test{,2}/
-    python benchmark/gold/finelap_screen.py split live_x     # any tagger_prep split -> data/work/finelap_live_x/
+    python benchmark/gold/finelap_screen.py split live_x     # any clip_prep split -> data/work/finelap_live_x/
 """
 from __future__ import annotations
 
@@ -102,7 +102,7 @@ def frame_scores(model, wav, phrases, device):
 
 
 def split_part(name, out=None):
-    """any split built by tagger_prep (e.g. a one-clip live_<clip> split of src/listener_prep.py): same files, same rule"""
+    """any split built by clip_prep (e.g. a one-clip live_<clip> split of src/listener_prep.py): same files, same rule"""
     return {"p1": G / f"{name}_listener.json", "v": G / f"{name}_listener_v.json",
             "wav": _ROOT / "data" / "work" / f"r13{name}" / "wav16",
             "out": Path(out) if out else _ROOT / "data" / "work" / f"finelap_{name}"}

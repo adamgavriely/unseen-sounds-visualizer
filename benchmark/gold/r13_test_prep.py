@@ -47,6 +47,7 @@ from benchmark.gold import round13_dev as R              # noqa: E402
 WORK = DCC.WORK
 TEST_TAG = "test_final_v33"                              # the scored TEST render (amendment 21 table, config.use_scored)
 STEMS = sorted(x.strip() for x in (_ROOT / "benchmark" / "gold" / "test_stems.txt").read_text(encoding="utf-8").splitlines()
+               if not x.strip().startswith("tg_")                # the 60 first-batch clips (tg_ = test2, clip_prep.py)
                if x.strip())
 assert len(STEMS) == 60, len(STEMS)
 OUT = WORK / "r13test"

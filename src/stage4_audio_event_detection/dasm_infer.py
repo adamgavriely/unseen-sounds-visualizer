@@ -1,7 +1,7 @@
 """DASM (Detect Any Sound Model, ACM MM 2025) frame scorer with MGA-CLAP text queries: the scorer block of detector
 round 6 (benchmark/detector_round6.py, release v1.2.0), moved here unchanged except the depth of _ROOT.
 
-Used by benchmark/gold/dev_candidates_check.dasm() (and so by tagger_prep.py's `dasm` step and src/listener_prep.py).
+Used by benchmark/gold/dev_candidates_check.dasm() (and so by clip_prep.py's `dasm` step and src/listener_prep.py).
 The text embeddings of the 215 depictable families are computed once (GPU) into QFILE:
 
     python src/stage4_audio_event_detection/dasm_infer.py      # -> data/work/dasm_text_queries.pt

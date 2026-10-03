@@ -1,11 +1,12 @@
 """The merged TEST (2026-09-30; docs/history/preregistrations/prereg_round13_detector_push.md "Merge of the tagger set" and "Merged-DEV
-selection", release v1.2.0): old TEST (60 clips, gold_AG test_bench) + the tagger TEST part (benchmark/gold/test2_stems.txt, tagger_AG),
+selection", release v1.2.0): old TEST (60 clips, gold_AG test_bench) + the second-batch TEST part test2 (the tg_ lines of
+benchmark/gold/test_stems.txt, annotations/gold_AG.json),
 scored ONCE as one set for the merged-DEV pick vs the old shipped config B0 (= B0r, the scored render).
 
-  dasm      DASM frame scores (round-6 scorer, as the DEV / tagger caches) for the old TEST clips -> data/work/dasm_test
+  dasm      DASM frame scores (round-6 scorer, as the DEV / dev2 / test2 caches) for the old TEST clips -> data/work/dasm_test
   stage     old TEST: stage 4 / stage 5 / gates of B0r and the pick through round13_dev (r13_test_final.setup: TEST
             redirects, gold stubbed), outputs in data/work/r16final (r13final, the round-13 exposure, is left untouched)
-  score     THE exposure (both parts; the tagger TEST part must have been run by tagger_prep stage4/stage5 first).
+  score     THE exposure (both parts; the test2 part must have been run by clip_prep stage4/stage5 first).
             Refuses if benchmark/gold/final_test.json or its .started marker exists. Rule (prereg, primary = proposed):
             better iff hits do not drop AND wrong rises by <= 2 x hits gained AND d cost < 0 with one-sided p < 0.05;
             worse iff d cost > 0 with lower bound > 0 or the hits/wrong rule fails; same otherwise.
@@ -100,9 +101,9 @@ def score(arm):
     P1 = {"B0r": {st: S.load_pictures(fin / f"B0r_proposed", st, "proposed") or [] for st in stems1}}
     with R.flags({k: R.arm_cfg(arm)[k] for k in R.DISPLAY_KEYS}):
         P1[arm] = {st: S.load_pictures(fin / f"{arm}_proposed", st, "proposed") or [] for st in stems1}
-    # tagger TEST part (tagger_prep's own outputs; its configure() re-points round13_dev, so pictures are read first)
-    from benchmark.gold import tagger_prep as TP
-    for k, v in _ARMS0.items():                               # tagger_prep maps from the DEV originals too
+    # test2 part (clip_prep's own outputs; its configure() re-points round13_dev, so pictures are read first)
+    from benchmark.gold import clip_prep as TP
+    for k, v in _ARMS0.items():                               # clip_prep maps from the DEV originals too
         R.ARMS[k] = dict(v)
     TP._ORIG.clear()
     _D2, R2, stems2 = TP.configure("test2")
@@ -112,12 +113,12 @@ def score(arm):
         P2[arm] = {st: S.load_pictures(o2 / f"{arm}_proposed", st, "proposed") or [] for st in stems2}
     miss = [st for st in stems2 if not (o2 / f"{arm}_proposed" / st / "augmentations.json").exists()]
     if miss:
-        raise SystemExit(f"tagger TEST part incomplete for {arm}: {miss}; gold NOT read")
+        raise SystemExit(f"test2 part incomplete for {arm}: {miss}; gold NOT read")
     STARTED.write_text(json.dumps({"arm": arm, "time": datetime.now().isoformat()}), encoding="utf-8")
     S.load_gold = _REAL_LOAD_GOLD
     gold1 = S.load_gold([F.GOLD])
     assert sorted(S.subsets_of(gold1)["test_bench"]) == sorted(stems1)
-    d = json.loads(TP.TAGGER_GOLD.read_text(encoding="utf-8"))
+    d = json.loads(TP.GOLD.read_text(encoding="utf-8"))
     keep = set(stems2)
     d["clips"] = [c for c in d.get("clips", []) if isinstance(c, dict) and Path(str(c.get("clip", ""))).stem in keep]
     tmp = o2 / "test2_gold_only.json"
@@ -136,8 +137,8 @@ def score(arm):
            "rows": rows, "parts": parts, "delta_vs_B0r": d_, "verdict": v, "rule_hits_wrong": rule, "gates_old": g}
     DCC.dump(OUT, res)
     lines = [f"# Merged TEST (one exposure): {arm} vs B0r", "",
-             f"clips: old TEST {res['clips']['old_test']} + tagger TEST {res['clips']['tagger_test']}", "",
-             "| arm | hits | misses | wrong (v / c / p) | cost | old TEST hits / wrong | tagger TEST hits / wrong |",
+             f"clips: old TEST {res['clips']['old_test']} + TEST2 {res['clips']['tagger_test']}", "",
+             "| arm | hits | misses | wrong (v / c / p) | cost | old TEST hits / wrong | TEST2 hits / wrong |",
              "|---|---|---|---|---|---|---|"]
     for n in ("B0r", arm):
         x, p = rows[n], parts[n]

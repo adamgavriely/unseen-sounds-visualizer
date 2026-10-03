@@ -378,9 +378,9 @@ def subsets_of(gold):
     slice_file = _ROOT / "benchmark" / "gold" / "audioset_slice.json"
     ids = {c["id"] for c in json.loads(slice_file.read_text(encoding="utf-8"))["clips"]} if slice_file.exists() else set()
     sliceb = {st for st in gold if st in ids}                       # slice B = the AudioSet-Strong gold clips
-    tagger = {st for st in gold if st.startswith("tg_")}           # the tagger set (merged into gold_AG 1 Oct): own DEV/TEST lists
-    base = set(gold) - tagger
-    subs = {"all": base, "bench": base - sliceb, "sliceB": sliceb, "tagger": tagger,
+    batch2 = {st for st in gold if st.startswith("tg_")}           # the second batch (tg_d*): its own dev2 / test2 parts
+    base = set(gold) - batch2
+    subs = {"all": base, "bench": base - sliceb, "sliceB": sliceb, "batch2": batch2,
             "dev": base & judge, "test": base - judge,
             "test_bench": (base - judge) - sliceb,
             "prescreened": {st for st in base if st.startswith(("m5_", "t1_", "w8_"))}}
