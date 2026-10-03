@@ -2,7 +2,7 @@
 same prompt, decoding and cut as listener_variants.score's V4, plus the family parse of both listeners' V4 answers (Qwen and
 Audio Flamingo Next): for every depictable family, the V4 matcher (word match on match_names, or mpnet cosine > COS). No gold.
 
-    python benchmark/gold/listener_p1v4.py SPLIT:VCACHE:AFCACHE:WAVDIR:OUT [...]
+    python benchmark/gold/listener_open_inventory.py SPLIT:VCACHE:AFCACHE:WAVDIR:OUT [...]
 
 (design record: release v1.2.0)
 """

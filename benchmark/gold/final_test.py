@@ -1,11 +1,11 @@
 """Scores the merged-DEV pick ONCE on the merged TEST, as one set, vs the old shipped config B0 (= B0r, the scored
-render). Merged TEST = old TEST (60 clips, gold_AG test_bench) + the second-batch TEST part test2 (the tg_ lines of
-benchmark/gold/test_stems.txt, annotations/gold_AG.json).
+render). Test set (88 clips) = the first-batch test clips (60, gold_AG test_bench) + the second batch (the `tg_d*`
+lines of benchmark/gold/test_stems.txt, 28 clips, annotations/gold_AG.json; split name `test2` in clip_prep.py).
 
-  dasm      DASM frame scores (round-6 scorer, as the DEV / dev2 / test2 caches) for the old TEST clips -> data/work/dasm_test
-  stage     old TEST: stage 4 / stage 5 / gates of B0r and the pick through round13_dev (r13_test_final.setup: TEST
+  dasm      DASM frame scores (round-6 scorer, as the other DASM caches) for the first-batch test clips -> data/work/dasm_test
+  stage     first-batch test clips: stage 4 / stage 5 / gates of B0r and the pick through dev_harness (test_harness.setup: TEST
             redirects, gold stubbed), outputs in data/work/r16final (r13final, the round-13 exposure, is left untouched)
-  score     THE exposure (both parts; the test2 part must have been run by clip_prep stage4/stage5 first).
+  score     THE exposure (both parts; the second batch must have been run by clip_prep stage4/stage5 first).
             Refuses if benchmark/gold/final_test.json or its .started marker exists. Rule (prereg, primary = proposed):
             better iff hits do not drop AND wrong rises by <= 2 x hits gained AND d cost < 0 with one-sided p < 0.05;
             worse iff d cost > 0 with lower bound > 0 or the hits/wrong rule fails; same otherwise.
@@ -45,7 +45,7 @@ WORKD = _ROOT / "data" / "work"
 DASM_TEST = WORKD / "dasm_test"
 CMAP = [f"dev_listener_v.json={G / 'test_listener_v.json'}", f"dev_listener_afn.json={G / 'test_listener_afn.json'}",
         f"dev_listener_kimi.json={G / 'test_listener_kimi.json'}", f"dasm_cache={DASM_TEST}",
-        f"dev_listener_p4.json={G / 'test_listener_p4.json'}", f"dev_listener_p1v4.json={G / 'test_listener_p1v4.json'}",
+        f"dev_listener_p4.json={G / 'test_listener_p4.json'}", f"dev_listener_open_inventory.json={G / 'test_listener_open_inventory.json'}",
         f"dev_listener_v4b.json={G / 'test_listener_v4b.json'}", f"finelap_cache={WORKD / 'finelap_test'}"]
 
 
@@ -59,12 +59,12 @@ _ARMS0 = {}
 
 
 def old_setup(arm):
-    from benchmark.gold import round13_dev as R0
+    from benchmark.gold import dev_harness as R0
     for k in ("B0r", "B1", arm):                              # every setup starts from the DEV originals
         if k in R0.ARMS:
             _ARMS0.setdefault(k, dict(R0.ARMS[k]))
             R0.ARMS[k] = dict(_ARMS0[k])
-    from benchmark.gold import r13_test_final as F
+    from benchmark.gold import test_harness as F
     a = argparse.Namespace(arm=arm, flags=None, cache_map=CMAP, stage5_keys=None, dry_run=False)
     T, R, arms, fin = F.setup(a)
     fin = WORKD / "r16final"                                  # leave r13final (the round-13 exposure) as it is
@@ -77,7 +77,7 @@ def old_setup(arm):
 
 
 def dasm():
-    from benchmark.gold import r13_test_prep as T              # TEST redirects of dev_candidates_check (gold stubbed)
+    from benchmark.gold import test_harness_prep as T              # TEST redirects of dev_candidates_check (gold stubbed)
     from benchmark.gold import dev_candidates_check as DCC
     DCC.DASM_DIR = DASM_TEST
     DCC.dasm()
@@ -102,7 +102,7 @@ def score(arm):
     P1 = {"B0r": {st: S.load_pictures(fin / f"B0r_proposed", st, "proposed") or [] for st in stems1}}
     with R.flags({k: R.arm_cfg(arm)[k] for k in R.DISPLAY_KEYS}):
         P1[arm] = {st: S.load_pictures(fin / f"{arm}_proposed", st, "proposed") or [] for st in stems1}
-    # test2 part (clip_prep's own outputs; its configure() re-points round13_dev, so pictures are read first)
+    # test2 part (clip_prep's own outputs; its configure() re-points dev_harness, so pictures are read first)
     from benchmark.gold import clip_prep as TP
     for k, v in _ARMS0.items():                               # clip_prep maps from the DEV originals too
         R.ARMS[k] = dict(v)

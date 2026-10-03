@@ -1,7 +1,7 @@
-"""Scores variants on the merged DEV: DEV (49 clips, gold_AG)
-+ the second-batch DEV part dev2 (the tg_ lines of benchmark/gold/dev_stems.txt, gold_AG), scored as ONE set: per-clip score_clip rows of each
-arm on both parts, concatenated, paired clip bootstrap vs B0r (DCC.boot, as round13_dev). Needs the arms' stage-5 outputs
-on both parts (round13_dev on DEV; clip_prep stage4/stage5 on dev2). TEST / TEST2 gold is never read.
+"""Scores variants on the development set (71 clips, gold_AG) as ONE set: the first-batch clips (49) + the second batch
+(the `tg_d*` lines of benchmark/gold/dev_stems.txt, 22 clips; split name `dev2` in clip_prep.py). Per-clip score_clip rows
+of each arm on both parts, concatenated, paired clip bootstrap vs B0r (DCC.boot, as dev_harness). Needs the arms' stage-5
+outputs on both parts (dev_harness on the first batch; clip_prep stage4/stage5 on the second). Test-set gold is never read.
 
     python benchmark/gold/merged_dev.py --arms B0r B1 TO1+F7F8
 
@@ -19,7 +19,7 @@ import numpy as np
 _ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 from benchmark.gold import dev_candidates_check as DCC
-from benchmark.gold import round13_dev as R
+from benchmark.gold import dev_harness as R
 from benchmark.gold import score_per_sound as S
 
 OUT = _ROOT / "benchmark" / "gold" / "merged_dev.json"
@@ -30,7 +30,7 @@ def rows_dev(arms):
     gold, stems = DCC.dev_stems()
     out = {}
     for a in arms:
-        if a == "B1":                                   # B1 ran in the devcand harness on DEV (round13_dev scores it the same way)
+        if a == "B1":                                   # B1 ran in the devcand harness on DEV (dev_harness scores it the same way)
             P = {st: S.load_pictures(DCC.DC / f"B1_{SYS}", st, SYS) or [] for st in stems}
         else:
             with R.flags({k: R.arm_cfg(a)[k] for k in R.DISPLAY_KEYS}):

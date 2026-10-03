@@ -5,11 +5,11 @@ config.py, all off = the scored behaviour) on the cached detector scores of the 
 as benchmark/gold/dev_candidates_check.py (gate answers of the scored run reused, every other question memoised), and
 is scored with benchmark/gold/score_per_sound.py. Arms are built on top of B0r (the scored config, PANNs veto 0.05).
 
-    python benchmark/gold/round13_dev.py panns     # GPU: PANNs CNN14 clip peaks on each DEV audio.wav (the veto input)
-    python benchmark/gold/round13_dev.py stage4    # GPU only for occlusion onsets of new/changed BEATs spans; gates D0
-    python benchmark/gold/round13_dev.py stage5    # GPU: stage 5 per arm and system
-    python benchmark/gold/round13_dev.py score     # CPU: gate D5, table, bootstrap vs B0r, gained/lost, appeared/disappeared
-    python benchmark/gold/round13_dev.py stage4 --offline   # local check: flags off == devcand B0r rows (PANNs from trace)
+    python benchmark/gold/dev_harness.py panns     # GPU: PANNs CNN14 clip peaks on each DEV audio.wav (the veto input)
+    python benchmark/gold/dev_harness.py stage4    # GPU only for occlusion onsets of new/changed BEATs spans; gates D0
+    python benchmark/gold/dev_harness.py stage5    # GPU: stage 5 per arm and system
+    python benchmark/gold/dev_harness.py score     # CPU: gate D5, table, bootstrap vs B0r, gained/lost, appeared/disappeared
+    python benchmark/gold/dev_harness.py stage4 --offline   # local check: flags off == devcand B0r rows (PANNs from trace)
 
 (design record: release v1.2.0)
 """
@@ -44,7 +44,7 @@ MAIN_CHECKOUT = os.environ.get("MSCPROJ_MAIN_CHECKOUT", str(_ROOT))
 CACHE_CHECKOUT = os.environ.get("MSCPROJ_CACHE_CHECKOUT", str(_ROOT))
 R13 = WORK / "r13"
 STAGE4, MEMO, PANNS_DIR = R13 / "stage4.json", R13 / "ask_memo.json", R13 / "panns"
-OUT = _ROOT / "benchmark" / "gold" / "round13_dev.json"
+OUT = _ROOT / "benchmark" / "gold" / "dev_harness.json"
 LISTENER = _ROOT / "benchmark" / "gold" / "dev_listener.json"
 SYSTEMS = DCC.SYSTEMS
 
@@ -200,7 +200,7 @@ ARMS["SHIP2+N2e"] = {**ARMS["SHIP2"], "MASKED_WEAK_NEED_MASK": False, "MASKED_WE
 ARMS["SHIP2+N2cD"] = {**ARMS["SHIP2"], "MASKED_WEAK_NEED_MASK": False, "MASKED_WEAK_MISSING_KEEP": True,
                       "MASKED_WEAK_DASM_KEEP": True}
 ARMS["SHIP2+KV4"] = {**ARMS["SHIP2"], "KEEP_NEEDS_V4": True,
-                     "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}
+                     "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_open_inventory.json")}
 ARMS["SHIP3"] = {**ARMS["SHIP2+KV4"]}                  # the shipped default since round 21
 ARMS["SHIP3+TD"] = {**ARMS["SHIP3"], "TIER_2OF3_DASM": True}
 ARMS["SHIP3+ONCEG"] = {**ARMS["SHIP3"], "ONCE_GAP": 2.0}
@@ -248,7 +248,7 @@ ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": MAIN_CHECKO
 ARMS["SHIP8+MD3+WW5+SL"] = {**ARMS["SHIP8+MD3+WW5"], "SCENE_FIT_LOGIT": True}   # Round 60L SCENE-LOGIT (D with the scene question read as the bias-cancelled logit margin)
 ARMS["SHIP8+MD3+WW5+SL_trail"] = dict(ARMS["SHIP8+MD3+WW5+SL"])   # Final-system re-run with the Decision Inspector hooks (identical flags; new output folders)
 ARMS["SHIP8+MD3+WW5+SL+NA"] = {**ARMS["SHIP8+MD3+WW5+SL"], "NAME_ALL": (0.4375, 6.0625)}   # Round 66 NAME-ALL (final system + two-sided crop-margin gate, t_lo / t_hi from gate-gold step 1)
-ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": MAIN_CHECKOUT + "/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source)
+ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": MAIN_CHECKOUT + "/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source; tagens_calib.json: release v1.2.0)
 ARMS["SHIP8+MD3+WW5+CA"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell",)}; ARMS["SHIP8+MD3+WW5+CAR"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell", "Church bell", "Change ringing", "Fart", "Burping, eructation", "Hiccup", "Stomach rumble")}   # Round 64 CONCEALED-ACTION (CA ship table / CAR report-only)
 ARMS["SHIP8+MD3+WW5+RET"] = {**ARMS["SHIP8+MD3+WW5"], "PERC_RETURN": None}   # Round 65 RETURN (k from the 415 half A; set on GO)
 ARMS["SHIP8+MD3+TS"] = {**ARMS["SHIP8+MD3"], "TWIN_SHORT": 0.5}   # Round 56 TWIN-SHORT (partner = FlexSED band run >= 0.5)
@@ -258,7 +258,7 @@ ARMS["SHIP8+DBR"] = {**ARMS["SHIP8"], "REPEAT_DASM_BRIDGE": 0.575}
 ARMS["SHIP8+BOX2"] = {**ARMS["SHIP8"], "GATE_BOX_CHECK": True}    # round 38 BOX-2 arm (gate box + crop check)
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
-                      "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}
+                      "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_open_inventory.json")}
 ARMS["TO1F7F8+N3"] = {**ARMS["TO1+F7F8"], "LISTENER_RULE": "TIER3",
                       "LISTENER_KCACHE": str(_ROOT / "benchmark" / "gold" / "dev_listener_kimi.json")}
 # amendment G: one shipped rule loosened at a time, on B0r and on the amendment-F / H bases ("<base>~G<k>"); G2 (the
@@ -711,7 +711,7 @@ def score():
     s4 = json.loads(STAGE4.read_text(encoding="utf-8"))
     dc4 = json.loads((DCC.DC / "stage4.json").read_text(encoding="utf-8"))
     arms = [a for a in ARMS if all(DCC.complete(R13 / f"{a}_{s}", stems) for s in SYSTEMS)]
-    res = {"plan": "docs/prereg_round13_detector_push.md", "base": BASE, "arms": {a: ARMS[a] for a in arms},
+    res = {"plan": "docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0", "base": BASE, "arms": {a: ARMS[a] for a in arms},
            "d0": {}, "conf_eq": {}, "d5": {}, "rows": {}, "heard": {}, "delta_vs_B0r": {}, "delta_vs_B1": {},
            "eligible": {}, "needed_changes": {}, "picture_changes": {}, "stage5": {}, "mirror_dropped": s4.get("mirror", {}),
            "twin_blast": {}, "breaks": {}, "listener": {}}

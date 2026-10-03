@@ -660,7 +660,7 @@ def score():
     arms = [a for a in ARMS + EXTRA if all(complete(DC / f"{a}_{s}", stems) for s in SYSTEMS)
             and all(f"{a}|{s}" in s4["arms"] for s in SYSTEMS)]
     cands = [c for c in CANDS if c in arms or c == "I7"]
-    res = {"plan": "docs/dev_candidates_check_2026-09-28.md (amendment 1: confirmatory)", "frozen": F, "clips": len(stems),
+    res = {"plan": "docs/history/analyses/dev_candidates_check_2026-09-28.md (amendment 1: confirmatory; release v1.2.0)", "frozen": F, "clips": len(stems),
            "arms_scored": arms, "candidates": cands, "needed": None, "d0": {}, "d5": {}, "stage5": {}, "rows": {},
            "delta_vs_B1": {}, "delta_vs_B0": {}, "holm_vs_B1": {}, "ship_rule": {}, "verdict": {}, "changes_vs_B1": {},
            "i7": {}, "heard_stage4": {}, "hbd": {}, "filter": s4.get("filter", {})}

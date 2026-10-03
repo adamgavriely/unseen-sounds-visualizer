@@ -21,7 +21,7 @@ not co-fit on a 24 GB card, and the cluster's large-memory partitions are freque
 draining. So the run is split so that only one model is resident at a time:
 
   --phase describe   render, then build the reference and the description for every
-                     clip, cache to benchmark/protocol_descriptions.json, free the VLM
+                     clip, cache to benchmark/protocol_descriptions.json (created by this phase), free the VLM
   --phase judge      load the judge alone and score the cached pairs
   --phase all        (default) both, sequentially, unloading in between
 

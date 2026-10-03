@@ -1,4 +1,4 @@
-"""Decision Inspector export (docs/inspector2, read by docs/inspector2/app.js): the per-clip decision trails of the shipped arm
+"""Decision Inspector export (docs/decision_trail, read by docs/decision_trail/app.js): the per-clip decision trails of the shipped arm
 The final system on merged DEV and merged TEST -> data.js, with a parity check against the frozen run.
 
 Compatible with the earlier inspector exporter (not in the repository), with these differences:
@@ -356,7 +356,7 @@ def parts(arm):
 
 def run(arm, frozen, out, expect, media_prefix, splits):
     from benchmark.gold import dev_candidates_check as DCC
-    from benchmark.gold import round13_dev as R
+    from benchmark.gold import dev_harness as R
     disp = {k: R.arm_cfg(arm)[k] for k in R.DISPLAY_KEYS}
     dispf = {k: R.arm_cfg(frozen)[k] for k in R.DISPLAY_KEYS} if frozen else None
     steps = steps_catalogue()
@@ -427,7 +427,7 @@ def run(arm, frozen, out, expect, media_prefix, splits):
                      "window": [-S.EARLY, S.LATE], "cost": "(4·miss + 2·wrong)/clips",
                      "clips_without_trail": sum(1 for c in clips if not c["has_trail"]),
                      "parity": {k: ("exact" if not parity.get(k) else f"{len(parity[k])} clips differ") for k in out_sets},
-                     "note": "Trails from the DEV / TEST harness (benchmark/gold/round13_dev.py), stage 6 from the scorer's own "
+                     "note": "Trails from the DEV / TEST harness (benchmark/gold/dev_harness.py), stage 6 from the scorer's own "
                              "display step. Gate stretches whose verdict was reused from the stored gate run carry the votes "
                              "but not the raw answers."},
             "sets": out_sets, "steps": steps, "clips": clips}
@@ -444,7 +444,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--arm", default="SHIP8+MD3+WW5+SL_trail")
     ap.add_argument("--frozen", default="SHIP8+MD3+WW5+SL", help="the frozen arm whose pictures must be identical ('' = skip)")
-    ap.add_argument("--out", default=str(_ROOT / "docs" / "inspector2" / "data.js"))
+    ap.add_argument("--out", default=str(_ROOT / "docs" / "decision_trail" / "data.js"))
     ap.add_argument("--media-prefix", default="../inspector/media/bysig")
     ap.add_argument("--splits", nargs="*", default=[])
     ap.add_argument("--expect", action="append", default=[],

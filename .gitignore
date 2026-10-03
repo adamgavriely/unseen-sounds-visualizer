@@ -24,6 +24,9 @@ logs/
 *.out
 *.err
 
+# Scratch frames written by docs/report/figures/make_examples_figure.py
+docs/report/figures/_frames/
+
 # LaTeX build files
 *.aux
 *.bbl

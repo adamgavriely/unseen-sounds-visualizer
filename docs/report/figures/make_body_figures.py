@@ -82,9 +82,9 @@ axes[0].legend(frameon=False, fontsize=7.5, loc="upper right")
 fig.tight_layout(); fig.savefig(os.path.join(ROOT, "wrong_by_kind.pdf")); plt.close(fig); print("wrong_by_kind.pdf")
 
 # 4. Needed sounds found by the final system, by gold label (labels with at least 2 needed sounds in that set).
-# Per-sound outcomes of the final system from docs/inspector2/data.js; needed = needed and importance >= 2.
+# Per-sound outcomes of the final system from docs/decision_trail/data.js; needed = needed and importance >= 2.
 # data.js holds no per-sound outcomes of direct audio-to-image, so only the final system is shown.
-_s = open(os.path.join(ROOT, "..", "..", "inspector2", "data.js"), encoding="utf-8").read()
+_s = open(os.path.join(ROOT, "..", "..", "decision_trail", "data.js"), encoding="utf-8").read()
 D = json.loads(_s[_s.index("{"):_s.rstrip().rstrip(";").rindex("}") + 1])
 SHORT = {"Vehicle horn, car horn, honking": "Vehicle horn", "Gunshot, gunfire": "Gunshot", "Whack, thwack": "Whack",
          "Ice cream truck, ice cream van": "Ice cream truck"}

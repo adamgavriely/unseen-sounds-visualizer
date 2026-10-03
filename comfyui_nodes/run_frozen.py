@@ -49,7 +49,7 @@ def main():
         picture_templates.seed_of = lambda item: (frozen_seed(item) + offset) & 0x7FFFFFFF
         print(f"[run_frozen] new drawings: seed offset {offset}", flush=True)
 
-    # Stage 5 exactly as the scored final runs did it (benchmark/gold/round13_dev.py stage5: config.use_scored(), picture
+    # Stage 5 exactly as the scored final runs did it (benchmark/gold/dev_harness.py stage5: config.use_scored(), picture
     # wording flags off, KINSHIP_DIRECTED False). use_shipped() switches these on for the picture step; turned on before
     # stage 5 they change the subject wording, and the duplicate-picture check reads that wording (tg_d088: Explosion
     # merged into Thunder). So they are off from the plan to the end of decide_subjects, and back on for the pictures,

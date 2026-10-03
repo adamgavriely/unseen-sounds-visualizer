@@ -90,7 +90,7 @@ ax.set_ylabel("cost per clip"); ax.legend(frameon=False, fontsize=8, loc="lower 
 ax.spines[["top", "right"]].set_visible(False)
 save(fig, "progression.pdf")
 
-# 4. Error breakdown of the final system -- docs/inspector2/data.js (lost_at of each miss; verdict of each picture)
+# 4. Error breakdown of the final system -- docs/decision_trail/data.js (lost_at of each miss; verdict of each picture)
 # Each logged step where a needed sound was lost (its "lost_at" value) is put in one bar:
 LOST_AT_BAR = {
     "never_heard": "never heard",
@@ -109,7 +109,7 @@ LOST_AT_BAR = {
 BARS = ["never heard", "listeners and their filters", "on-screen check", "vetoes", "timing, length and grouping"]
 
 
-def miss_counts(path=os.path.join(OUT, "..", "..", "inspector2", "data.js")):
+def miss_counts(path=os.path.join(OUT, "..", "..", "decision_trail", "data.js")):
     """Recount the misses per bar from the decision trail (falls back to the stored counts if it is absent)."""
     stored = {"DEV": [6, 10, 5, 3, 5], "TEST": [6, 12, 3, 10, 10]}
     if not os.path.exists(path):

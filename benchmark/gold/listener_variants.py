@@ -251,7 +251,7 @@ def build(split):
         for tag, fam in (("x", it["family"]), ("null", it["null_family"])):
             it[f"v2_{tag}_ctrl"], it[f"v2_{tag}_flex_col"] = control(flex[it["clip"]], fam, it, dur)
         it["v3_cut"] = [max(0.0, it["run_start"] - 3.0), min(dur, it["run_end"] + 3.0)]
-    meta = {"amendment": "A (docs/prereg_round13_detector_push.md)", "split": split, "model": MODEL, "source_cache": str(cfg["cache"]),
+    meta = {"amendment": "A (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0)", "split": split, "model": MODEL, "source_cache": str(cfg["cache"]),
             "V1": V1_Q, "V2": QUESTION + f" on the run cut minus the same on the control cut (FlexSED(X) max < {CTRL_BAR}, same "
             "length, nearest, not overlapping the run cut)", "V3": V3_Q, "V4": V4_Q,
             "rules": {"V1": "p(X) > 0.5 and p(X) > 2 x max(other)", "V2": "s_run > 3 and s_run - s_ctrl > 2",

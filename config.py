@@ -393,7 +393,7 @@ RETRIGGER_RAW = False         # R13-6 (Crowd mechanism): consolidate_families do
 LISTENER_RESCUE = False       # R13-3: a Qwen3-Omni listener (cached per span, LISTENER_CACHE) rescues (a) FlexSED 0.4-runs
                               # with peak in [LISTENER_LO, FLEXSED_BAR) and (b) FlexSED spans the PANNs clip veto drops,
                               # when its yes-no logit > LISTENER_TH; a span with no cached score is not rescued
-LISTENER_CACHE = None         # path of the listener cache (benchmark/gold/dev_listener.json format)
+LISTENER_CACHE = None         # path of the listener cache (format of benchmark/gold/dev_listener.json, release v1.2.0)
 LISTENER_LO = 0.4
 LISTENER_TH = 0.0
 LISTENER_RULE = None          # amendment A: "V1" | "V2" | "V3" | "V4" | "V12" -- (a) and (b) use that rule's accept flag from
@@ -452,7 +452,7 @@ TIER_SPLIT = 0.6                  # the TIER rule's peak split (amendment E; rou
 DASM_P4_CACHE = None              # round 19 DR: benchmark/gold/<split>_listener_p4.json
 MASKED_WEAK_NEED_MASK = True      # round 18 N2c: False = every weak BEATs-only span needs FlexSED or a listener
 RELABEL_2L = False                # round 17 R1
-RELABEL_P1V4 = None               # round 17 R1: benchmark/gold/<split>_listener_p1v4.json
+RELABEL_P1V4 = None               # round 17 R1: benchmark/gold/<split>_listener_open_inventory.json
 LISTENER_REQUIRE_CACHES = False   # use_shipped sets True: stage 4 stops on a clip without listener answers / DASM scores
 ONSET_RELOC = False           # Round 14 amendment I1: picture start at the steepest rise of the family's evidence; split at dips
 TIER_SPECIFIC = False         # Round 14 amendment I5: TIER peak includes the specific (folded) child queries (evidence only)
@@ -575,18 +575,6 @@ def use_shipped() -> dict:
     return changed
 
 
-def use_n2b() -> dict:
-    """Round 18 N2b (now part of use_shipped; kept so `--fewer-false` still works): weak BEATs-only spans heard under speech
-    or music need FlexSED or a listener (Qwen or Audio Flamingo) to be drawn."""
-    import sys
-    me = sys.modules[__name__]
-    changed = {}
-    for k, v in (("MASKED_WEAK_VETO", True), ("MASKED_WEAK_AF", True)):
-        changed[k] = (getattr(me, k, None), v)
-        setattr(me, k, v)
-    return changed
-
-
 def set_listener_split(name: str) -> dict:
     """point the shipped listener rescue at the answers src/listener_prep.py built for split <name>:
     benchmark/gold/<name>_listener{,_v,_afn}.json and data/work/dasm_<name>/"""
@@ -599,7 +587,7 @@ def set_listener_split(name: str) -> dict:
             "LISTENER_AFCACHE": str(g / f"{name}_listener_afn.json"),
             "LISTENER_DASM_DIR": str(root / "data" / "work" / f"dasm_{name}"),
             "DASM_P4_CACHE": str(g / f"{name}_listener_p4.json"),
-            "RELABEL_P1V4": str(g / f"{name}_listener_p1v4.json"),
+            "RELABEL_P1V4": str(g / f"{name}_listener_open_inventory.json"),
             "FINELAP_DIR": str(root / "data" / "work" / f"finelap_{name}")}
     for k, v in vals.items():
         setattr(me, k, v)

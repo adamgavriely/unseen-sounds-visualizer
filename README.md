@@ -33,7 +33,7 @@ scored. Limits are discussed in Section 9 of the report.
 
 ## How it works
 
-1. **Audio and context**: extract the audio track, sample frames, detect visible objects and transcribe speech.
+1. **Audio and context**: extract the audio track, sample frames, detect visible objects (OWLv2) and transcribe speech.
 2. **Sound detection**: BEATs and FlexSED propose sound events; the Qwen3-Omni and Audio Flamingo Next listeners,
    DASM and FineLAP confirm or reject them.
 3. **On-screen check**: Qwen3.8-27B looks at the frames and decides whether each sound's source is visible.
@@ -84,7 +84,7 @@ once per clip.
 The reported numbers are stored in the repository:
 [`benchmark/gold/final_vs_baselines.json`](benchmark/gold/final_vs_baselines.json) (final system and baselines),
 [`benchmark/gold/final_vs_baselines_extra.json`](benchmark/gold/final_vs_baselines_extra.json) (F1 intervals,
-danger sounds) and [`docs/inspector2/data_parity.json`](docs/inspector2/data_parity.json) (configuration check).
+danger sounds) and [`docs/decision_trail/data_parity.json`](docs/decision_trail/data_parity.json) (configuration check).
 Appendix C of the report gives the source file of every number.
 
 Recomputing them from a clone is not possible as is. The scripts (for example
@@ -95,6 +95,8 @@ report). The clip names are in `benchmark/gold/dev_stems.txt` (71) and `test_ste
 in `benchmark/gold/annotations/gold_AG.json`. With the clips in their input folders (paths in
 `benchmark/gold/clip_prep.py` and `benchmark/run_protocol.py`), `benchmark/gold/clip_prep.py` builds the model
 inputs (step order in [`benchmark/gold/README.md`](benchmark/gold/README.md)), then the scripts above run.
+Some files were renamed after release v1.2.0; the old-to-new name table is in
+[`benchmark/gold/README.md`](benchmark/gold/README.md) ("Names in release v1.2.0").
 
 ## Repository layout
 
@@ -105,8 +107,8 @@ inputs (step order in [`benchmark/gold/README.md`](benchmark/gold/README.md)), t
 | `benchmark/` | human labels, per-sound scorer, scoring harness and the per-clip input builder (research rounds and DEV/TEST caches: release v1.2.0) |
 | `tests/` | unit tests |
 | `docs/report/` | the technical report (LaTeX sources, figures and PDF) |
-| `docs/inspector2/` | decision trail: every decision of the final system on every clip, and its parity check |
-| decision trail viewer | open `docs/inspector2/index.html` in a browser (no server needed); the clip videos are not in the repository, so the video box stays empty, but the trails, timelines and counts all work |
+| `docs/decision_trail/` | decision trail: every decision of the final system on every clip, and its parity check |
+| decision trail viewer | open `docs/decision_trail/index.html` in a browser (no server needed); the clip videos are not in the repository, so the video box stays empty, but the trails, timelines and counts all work |
 | `comfyui_nodes/` | optional ComfyUI interface ([`comfyui_nodes/README.md`](comfyui_nodes/README.md)) |
 | `data/input/` | a small test clip |
 

@@ -7,7 +7,7 @@ Appendix D of the report. Earlier study scripts are in release v1.2.0.
 
 | file | what it is | read or imported by |
 |---|---|---|
-| `run_protocol.py` | runs the system variants on the benchmark clips (render phase) and the earlier model-judge protocol (stage 7) | `gold/clip_prep.py`, `gold/round13_dev.py`, `gold/dev_candidates_check.py`, `comfyui_nodes/__init__.py` |
+| `run_protocol.py` | runs the system variants on the benchmark clips (render phase) and the earlier model-judge protocol (stage 7) | `gold/clip_prep.py`, `gold/dev_harness.py`, `gold/dev_candidates_check.py` |
 | `scene_tags.json` | clip-level on-screen / off-screen labels of the first benchmark | `run_protocol.py` |
 | `listener_round.py` | the audio listener's model, yes/no question, 215-family vocabulary and AUROC helper (Qwen3-Omni) | `gold/clip_prep.py`, `gold/dev_listener.py`, `gold/test_listener.py`, `gold/listener_variants.py`, `gold/listener_afnext.py` |
 | `eval_dcase_onset.json`, `eval_dcase_visibility.json` | onset-timing and on-screen-check results on DCASE clips (cited in Appendix C of the report; the scripts that made them are in release v1.2.0) | none |

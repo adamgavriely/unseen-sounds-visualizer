@@ -1,24 +1,24 @@
 """PREPARATION for the one TEST exposure. No gold is read, nothing is scored.
 
 Builds, for the 60 TEST clips (benchmark/gold/test_stems.txt), the same feature caches the DEV harness
-(benchmark/gold/round13_dev.py, dev_candidates_check.py, dev_listener.py) has for DEV, into parallel folders, and runs the
+(benchmark/gold/dev_harness.py, dev_candidates_check.py, dev_listener.py) has for DEV, into parallel folders, and runs the
 two plumbing gates on B0r (flags off = the scored config) against the scored TEST render (tag test_final_v33, the one the
 frozen amendment-21 TEST table used; config.use_scored()):
   D0  stage 4 rebuilt by the pipeline's own code (extract, flexsed_raw, union, veto) == the scored onset_trace, per clip
   D5  stage 5 rebuilt (gate answers reused, other questions asked live and memoised) == the scored augmentations.json and
       on-screen spans (label, start, end), per clip and system. Structural equality only: no picture is opened.
 
-It is a thin wrapper: round13_dev / dev_candidates_check are imported unchanged and their module globals are redirected.
+It is a thin wrapper: dev_harness / dev_candidates_check are imported unchanged and their module globals are redirected.
 score_per_sound.load_gold is replaced by a function that raises, so no step here can touch gold.
 
-    python benchmark/gold/r13_test_prep.py check    # CPU: what exists for TEST; trace / FlexSED format preflight
-    python benchmark/gold/r13_test_prep.py beats    # GPU: BEATs framewise (shipped infer_beats) -> data/work/j2_test_beats
-    python benchmark/gold/r13_test_prep.py wav16    # CPU: ffmpeg of each mp4, 16 kHz mono -> data/work/r13test/wav16
-    python benchmark/gold/r13_test_prep.py panns    # GPU: PANNs CNN14 clip peaks (the veto input) -> data/work/r13test/panns
-    python benchmark/gold/r13_test_prep.py stage4   # GPU only for live onsets: B0r spans, gate D0 -> data/work/r13test/stage4.json
-    python benchmark/gold/r13_test_prep.py stage5   # GPU: stage 5 for B0r, both systems -> data/work/r13test/B0r_<system>
-    python benchmark/gold/r13_test_prep.py d5       # CPU: gate D5 (structural), writes data/work/r13test/gates.json
-An arm's TEST run later uses the same redirect: `python benchmark/gold/r13_test_prep.py stage4 --arms B0r R13-1` etc.
+    python benchmark/gold/test_harness_prep.py check    # CPU: what exists for TEST; trace / FlexSED format preflight
+    python benchmark/gold/test_harness_prep.py beats    # GPU: BEATs framewise (shipped infer_beats) -> data/work/j2_test_beats
+    python benchmark/gold/test_harness_prep.py wav16    # CPU: ffmpeg of each mp4, 16 kHz mono -> data/work/r13test/wav16
+    python benchmark/gold/test_harness_prep.py panns    # GPU: PANNs CNN14 clip peaks (the veto input) -> data/work/r13test/panns
+    python benchmark/gold/test_harness_prep.py stage4   # GPU only for live onsets: B0r spans, gate D0 -> data/work/r13test/stage4.json
+    python benchmark/gold/test_harness_prep.py stage5   # GPU: stage 5 for B0r, both systems -> data/work/r13test/B0r_<system>
+    python benchmark/gold/test_harness_prep.py d5       # CPU: gate D5 (structural), writes data/work/r13test/gates.json
+An arm's TEST run later uses the same redirect: `python benchmark/gold/test_harness_prep.py stage4 --arms B0r R13-1` etc.
 
 (design record: release v1.2.0)
 """
@@ -38,13 +38,13 @@ from benchmark.gold import score_per_sound as S
 
 
 def _no_gold(*a, **k):
-    raise RuntimeError("r13_test_prep: gold must not be read (TEST preparation only)")
+    raise RuntimeError("test_harness_prep: gold must not be read (TEST preparation only)")
 
 
 S.load_gold = _no_gold                                   # hard guard, before anything else imports it by name
 
 from benchmark.gold import dev_candidates_check as DCC   # noqa: E402
-from benchmark.gold import round13_dev as R              # noqa: E402
+from benchmark.gold import dev_harness as R              # noqa: E402
 
 WORK = DCC.WORK
 TEST_TAG = "test_final_v33"                              # the scored TEST render (amendment 21 table, config.use_scored)
@@ -85,7 +85,7 @@ def check():
         for fn in ("audio.wav", "onset_trace.json", "media.json", "scene.json", "segments.json", "augmentations.json",
                    "gate_votes.json"):
             rep["exists"][f"{sysn}/{fn}"] = sum((d / s / fn).exists() for s in STEMS)
-    # preflight: every trace has the five steps used by D0 and len(veto) == len(refine) (round13_dev asserts it)
+    # preflight: every trace has the five steps used by D0 and len(veto) == len(refine) (dev_harness asserts it)
     bad = []
     for sysn in DCC.SYSTEMS:
         for s in STEMS:
@@ -147,7 +147,7 @@ def wav16():
 
 
 def d5():
-    """gate D5 only (round13_dev.score's `bad` line): rebuilt B0r vs the scored render, structural, no gold"""
+    """gate D5 only (dev_harness.score's `bad` line): rebuilt B0r vs the scored render, structural, no gold"""
     g = json.loads(GATES.read_text(encoding="utf-8")) if GATES.exists() else {}
     s4 = json.loads(R.STAGE4.read_text(encoding="utf-8"))
     d0 = s4["d0"]

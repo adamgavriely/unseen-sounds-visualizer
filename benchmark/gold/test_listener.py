@@ -121,7 +121,7 @@ def _vetoed(trace_path):
 
 
 def pool():
-    from benchmark.gold import r13_test_prep as T      # gold guard + TEST redirects (TAG, BEATS_DIR, WAV16)
+    from benchmark.gold import test_harness_prep as T      # gold guard + TEST redirects (TAG, BEATS_DIR, WAV16)
     C, L, S, canonical = _mods()
     s4 = json.loads(T.R.STAGE4.read_text(encoding="utf-8"))["arms"]
     p1 = {}
@@ -178,7 +178,7 @@ def report():
 
 
 def score():
-    from benchmark.gold import r13_test_prep as T      # noqa: F401  gold guard; C.WAV16 -> data/work/r13test/wav16
+    from benchmark.gold import test_harness_prep as T      # noqa: F401  gold guard; C.WAV16 -> data/work/r13test/wav16
     C, L, S, canonical = _mods()
     assert C.WAV16 == T.OUT / "wav16", C.WAV16
     L.OUT = OUT

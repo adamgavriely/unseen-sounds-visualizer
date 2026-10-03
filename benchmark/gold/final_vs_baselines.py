@@ -46,7 +46,7 @@ def _batch2(split, sysns):
 
 
 def dev_rows():
-    from benchmark.gold import round13_dev as R
+    from benchmark.gold import dev_harness as R
     gold, stems = DCC.dev_stems()
     a = {s: _part(R, R.R13, gold, stems, s) for s in SYSTEMS}
     b = _batch2("dev2", SYSTEMS)

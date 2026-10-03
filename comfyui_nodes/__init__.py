@@ -87,7 +87,7 @@ class MscAugmentVideo:
     """Video in, video out: the final system on a new video.
 
     `main.py`'s code path (use_shipped + on-the-spot listener inputs), with stage 5 run under the flags of the scored
-    runs (picture wording and KINSHIP_DIRECTED off, as benchmark/gold/round13_dev.py) and the pictures under the final
+    runs (picture wording and KINSHIP_DIRECTED off, as benchmark/gold/dev_harness.py) and the pictures under the final
     picture flags. See run_frozen.py.
 
     Every stage is computed on the spot for the new video (audio, what is on screen, the four listeners, sound

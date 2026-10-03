@@ -13,18 +13,18 @@ The steps, one work folder per split:
            votes, onset_trace, augmentations): the "scored render" B0 of the split
   flexsed  FlexSED 215 families (benchmark/gold/flexsed_run.py --clip-dir, unchanged) -> data/work/flexsed_cache (shared,
            as DEV/TEST)
-  wav16 / beats / panns / dasm   as r13_test_prep / dev_candidates_check -> data/work/r13<split>/wav16, j2_<split>_beats,
+  wav16 / beats / panns / dasm   as test_harness_prep / dev_candidates_check -> data/work/r13<split>/wav16, j2_<split>_beats,
            r13<split>/panns, dasm_<split>
   qwen     gold-free listener caches, one Qwen3-Omni load: yes/no superset (test_listener.superset: P1/P2/P3/PV) ->
            benchmark/gold/<split>_listener.json; the stricter listener questions (listener_variants build + score) ->
            <split>_listener_v.json
   afn      Audio Flamingo Next V4 + yes/no (listener_afnext.run) -> <split>_listener_afn.json
-  stage4 / stage5 / gates   B0r, B1 (BEATs self-veto instead of the PANNs veto) and C1 = TO1+F7F8 through round13_dev (pipeline code),
+  stage4 / stage5 / gates   B0r, B1 (BEATs self-veto instead of the PANNs veto) and C1 = TO1+F7F8 through dev_harness (pipeline code),
            caches mapped to the split's files; gates D0 (stage 4 == render trace), D5 (B0r == render), completeness,
            listener-cache coverage. Stops before scoring.
   score    dev2 only: score_per_sound on the dev2 clips of annotations/gold_AG.json (the file is filtered to the dev2
            stems on parse); refuses split test2.
-score_per_sound.load_gold raises in every other step. round13_dev, dev_listener, test_listener, listener_variants,
+score_per_sound.load_gold raises in every other step. dev_harness, dev_listener, test_listener, listener_variants,
 listener_afnext, flexsed_run and dev_candidates_check are imported, never edited.
 
     python benchmark/gold/clip_prep.py links                     # CPU: split clip folders (symlinks), stem checks
@@ -113,7 +113,7 @@ _ORIG: dict = {}
 
 def configure(split):
     from benchmark.gold import dev_candidates_check as DCC
-    from benchmark.gold import round13_dev as R
+    from benchmark.gold import dev_harness as R
     stems = stems_of(split)
     o = out(split)
     DCC.dev_stems = lambda: (None, list(stems))
@@ -130,7 +130,7 @@ def configure(split):
     # C1's DEV files -> this split's files (by file / folder name); anything still pointing at DEV/TEST is refused
     cmap = {"dev_listener.json": lcache(split), "dev_listener_v.json": lcache(split, "_v"),
             "dev_listener_afn.json": lcache(split, "_afn"), "dasm_cache": DCC.DASM_DIR,
-            "dev_listener_kimi.json": lcache(split, "_kimi"), "dev_listener_p1v4.json": lcache(split, "_p1v4"),
+            "dev_listener_kimi.json": lcache(split, "_kimi"), "dev_listener_open_inventory.json": lcache(split, "_open_inventory"),
             "dev_listener_p4.json": lcache(split, "_p4"), "dev_listener_v4b.json": lcache(split, "_v4b"),
             "flexsed_extra_dev": WORK / f"flexsed_extra_{split}", "finelap_cache": WORK / f"finelap_{split}"}
     # further variants: PREP_ARMS="arm1 arm2" remaps them the same way

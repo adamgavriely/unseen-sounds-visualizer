@@ -9,13 +9,13 @@ v1.2.0.
 
 | purpose | files |
 |---|---|
-| **Labels** | `annotations/gold_AG.json` (every per-sound label), `dev_stems.txt`, `test_stems.txt` (clip names of the two sets; the `tg_d*` lines are the second batch, parts dev2 / test2), `judge100.txt` (the development-set rule), `audioset_slice.json` (the AudioSet-Strong clips) |
+| **Labels** | `annotations/gold_AG.json` (every per-sound label), `dev_stems.txt`, `test_stems.txt` (clip names of the two sets; the `tg_d*` lines are the second batch), `judge100.txt` (the development-set rule), `audioset_slice.json` (the AudioSet-Strong clips) |
 | **Scorer** | `score_per_sound.py` (matching rules, cost, clip subsets), `dev_candidates_check.py` (stage-4/5 replay helpers, bootstrap, DASM step), `holm_table.py` (Holm correction) |
 | **Report tables** | `final_vs_baselines.py` → `final_vs_baselines.json` (final system and baselines); `final_vs_baselines_extra.py` → `final_vs_baselines_extra.json` (F1 intervals, danger sounds) |
-| **Scoring harness** | `round13_dev.py` (variants, stage 4/5 through the pipeline code), `merged_dev.py`, `r13_test_prep.py`, `r13_test_final.py` → `r13_test_final.{json,md}`, `final_test.py` → `final_test.json`, `parity_check.py` |
-| **Per-clip inputs** | `clip_prep.py`, `flexsed_run.py`, `dev_listener.py`, `test_listener.py`, `listener_variants.py`, `listener_afnext.py`, `dasm_rescue.py`, `listener_p1v4.py`, `finelap_screen.py` (order below) |
+| **Scoring harness** | `dev_harness.py` (variants, stage 4/5 through the pipeline code), `merged_dev.py`, `test_harness_prep.py`, `test_harness.py` → `test_harness.{json,md}`, `final_test.py` → `final_test.json`, `parity_check.py` |
+| **Per-clip inputs** | `clip_prep.py`, `flexsed_run.py`, `dev_listener.py`, `test_listener.py`, `listener_variants.py`, `listener_afnext.py`, `dasm_rescue.py`, `listener_open_inventory.py`, `finelap_screen.py` (order below) |
 | **Picture prompts** | `picture_templates.py` (picture templates and seeds; imported by `src/stage6_visual_augmentation/` and `comfyui_nodes/run_frozen.py`) |
-| **Decision trail** | `inspector_trail_export.py`, `inspector_data.py` → `docs/inspector2/` |
+| **Decision trail** | `inspector_trail_export.py`, `inspector_data.py` → `docs/decision_trail/` |
 | **Model inputs and analyses cited in the report** | `depictable_vocab.json` (the 215 sound families), `flexsed_extra_queries.json` (extra FlexSED queries of the `FLEXSED_EXTRA` option), `ceiling_ship7.md`, `visible_weight_sweep.md`, `holm_test_final_v33_test_bench.json`, `logit_gate_gold.json` |
 
 ## Per-clip inputs: what runs for a new clip
@@ -26,12 +26,12 @@ prepared answers it runs, each as its own process, on a one-clip split named `li
 1. `src/stage4_audio_event_detection/dasm_infer.py`, once per machine: DASM's MGA-CLAP text embeddings of the 215
    families → `data/work/dasm_text_queries.pt` (skipped when the file exists).
 2. `clip_prep.py` steps `flexsed` (`flexsed_run.py`), `render` (`../run_protocol.py`, stages 1–6 with
-   `config.use_scored()`), `wav16`, `beats`, `panns`, `stage4` and `stage5` with arm `B0r` (`round13_dev.py`),
+   `config.use_scored()`), `wav16`, `beats`, `panns`, `stage4` and `stage5` with arm `B0r` (`dev_harness.py`),
    `lpool` (`test_listener.py`, `dev_listener.py`), `qwen` (Qwen3-Omni yes/no and variants: `dev_listener.py`,
    `test_listener.py`, `listener_variants.py`), `afn` (Audio Flamingo Next: `listener_afnext.py`) and `dasm`
    (`dev_candidates_check.dasm()` with `dasm_infer.py`).
 3. `dasm_rescue.py pool` and `dasm_rescue.py listen`: DASM-only spans and both listeners' answers on them.
-4. `listener_p1v4.py`: Qwen V4 on the P1 cuts.
+4. `listener_open_inventory.py`: Qwen V4 on the P1 cuts.
 5. `finelap_screen.py split`: FineLAP frame scores, in the FineLAP Python environment (`FINELAP_PYTHON`).
 
 The answers land in `benchmark/gold/live_<clip>_listener*.json` (ignored by git) and `data/work/` and are read by stage 4.
@@ -39,7 +39,7 @@ The answers land in `benchmark/gold/live_<clip>_listener*.json` (ignored by git)
 ## Reproducing the numbers
 
 The reported numbers are stored here: `final_vs_baselines.json`, `final_vs_baselines_extra.json` and
-`../../docs/inspector2/data_parity.json` (configuration check). Appendix C of the report gives the source file of
+`../../docs/decision_trail/data_parity.json` (configuration check). Appendix C of the report gives the source file of
 every number.
 
 The scripts that made them read the stage-5 outputs of every benchmark clip (under `data/work/`) and the cached model
@@ -58,3 +58,21 @@ python benchmark/gold/inspector_trail_export.py \
 ```
 
 From a plain clone these scripts stop at the first missing clip or output.
+
+### Names in release v1.2.0
+
+The caches and outputs in release v1.2.0 use the names of that release. Rename them (or read them under the new name)
+as follows before running the scripts here:
+
+| release v1.2.0 | this release |
+|---|---|
+| `benchmark/gold/tagger_prep.py` | `benchmark/gold/clip_prep.py` |
+| `benchmark/tags.json` | `benchmark/scene_tags.json` |
+| `benchmark/gold/dev2_stems.txt`, `test2_stems.txt` | the `tg_d*` lines of `dev_stems.txt`, `test_stems.txt` |
+| `benchmark/gold/gen_screen.py` | `benchmark/gold/picture_templates.py` |
+| `benchmark/gold/round13_dev.py`, `round13_dev.json` | `benchmark/gold/dev_harness.py`, `dev_harness.json` |
+| `benchmark/gold/r13_test_prep.py` | `benchmark/gold/test_harness_prep.py` |
+| `benchmark/gold/r13_test_final.py`, `.json`, `.md` | `benchmark/gold/test_harness.py`, `.json`, `.md` |
+| `benchmark/gold/listener_p1v4.py` | `benchmark/gold/listener_open_inventory.py` |
+| `benchmark/gold/{dev,test,dev2,test2}_listener_p1v4.json` | `benchmark/gold/{dev,test,dev2,test2}_listener_open_inventory.json` |
+| `docs/inspector2/` | `docs/decision_trail/` |

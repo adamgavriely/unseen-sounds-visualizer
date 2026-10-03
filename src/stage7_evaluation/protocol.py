@@ -42,7 +42,7 @@ GPU memory at the same time (Qwen2.5-VL ~16 GB + Mistral ~15 GB will not co-fit 
 24 GB card):
 
   pass 1 "describe"  load the VLM, produce the reference and the description for every
-                     clip, write them to benchmark/protocol_descriptions.json, then
+                     clip, write them to benchmark/protocol_descriptions.json (a cache this pass creates), then
                      free the weights;
   pass 2 "judge"     load the judge alone and score the cached pairs.
 

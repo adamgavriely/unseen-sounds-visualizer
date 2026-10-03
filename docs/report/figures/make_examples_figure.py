@@ -18,7 +18,7 @@ from PIL import Image
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 MEDIA = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "..", "..", "inspector")
-DATA = os.path.join(ROOT, "..", "..", "inspector2", "data.js")
+DATA = os.path.join(ROOT, "..", "..", "decision_trail", "data.js")
 TMP = os.path.join(ROOT, "_frames")
 
 # (row title, [(clip, kind, label, time of the picture or of the sound[, frame offset])]); the frame is taken OFFSET

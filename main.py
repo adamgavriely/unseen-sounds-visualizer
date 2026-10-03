@@ -97,8 +97,6 @@ def main() -> None:
                     help="where to write intermediate artifacts")
     ap.add_argument("--raw-config", action="store_true",
                     help="use the bare config.py defaults instead of the final system (config.use_shipped())")
-    ap.add_argument("--fewer-false", action="store_true",
-                    help="N2b (already in the final system; kept for old command lines)")
     ap.add_argument("--listener-split", default=None,
                     help="split name src/listener_prep.py gave this clip (live_<clip>): where the audio-LLM answers and DASM "
                          "scores of the final detector are (without them stage 4 stops)")
@@ -111,6 +109,11 @@ def main() -> None:
     ap.add_argument("--debug-panel", action="store_true",
                     help="print the phrase and every raw detection with the gate's verdict under the panel")
     args = ap.parse_args()
+    try:
+        from dotenv import load_dotenv
+        load_dotenv()  # optional: .env values (paths, API keys) are in place before the listener inputs are built
+    except ImportError:
+        pass
 
     video = Path(args.input)
     if not args.listener_split:             # precomputed splits are keyed by the original file name: use it as is
@@ -121,8 +124,6 @@ def main() -> None:
     if not args.raw_config:
         config.use_shipped()
         _run_stage5_as_scored()
-        if args.fewer_false:
-            config.use_n2b()
         if args.listener_split:
             config.set_listener_split(args.listener_split)
         else:
@@ -139,12 +140,6 @@ def main() -> None:
     if args.debug_panel:
         config.SHOW_PROMPT = True
         config.SHOW_DEBUG_SOUNDS = True
-
-    try:
-        from dotenv import load_dotenv
-        load_dotenv()  # optional: makes any API keys in .env available to stages
-    except ImportError:
-        pass
 
     pipeline.run(video, work_root=Path(args.work_dir))
 

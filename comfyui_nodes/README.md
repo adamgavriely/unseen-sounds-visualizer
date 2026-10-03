@@ -14,7 +14,7 @@ Box 2 is the node `MscAugmentVideo`. It runs the final system (`config.use_shipp
 the same code path as `main.py`: the listener inputs are prepared on the spot, then sound detection, the on-screen
 check, the pictures and the composition. The node starts `comfyui_nodes/run_frozen.py` in a separate process, so the
 ComfyUI server never holds the large models. The only difference from `main.py`: the on-screen check runs with the
-settings of the scored runs (`benchmark/gold/round13_dev.py`, variant `SHIP8+MD3+WW5+SL`), and the final picture
+settings of the scored runs (`benchmark/gold/dev_harness.py`, variant `SHIP8+MD3+WW5+SL`), and the final picture
 settings are used only for the drawing step.
 
 ## Install

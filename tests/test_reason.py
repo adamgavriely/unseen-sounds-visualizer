@@ -2,8 +2,8 @@
 
 Every model call is answered by a table, so this checks the CONTROL FLOW -- a visible
 source is gated, a synonym is merged, no dialogue reaches a depiction -- on a machine
-with no GPU and in under a second. It is not a test of the models; the demo job on the
-cluster is what checks those.
+with no GPU and in under a second. It is not a test of the models; a GPU run of `main.py`
+is what checks those.
 
     python -m pytest tests/test_reason.py -q
 """ 

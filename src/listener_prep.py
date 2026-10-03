@@ -29,7 +29,7 @@ def ready(split: str, stem: str, flap: bool = True) -> bool:
     g = _ROOT / "benchmark" / "gold"
     need = [g / f"{split}_listener.json", g / f"{split}_listener_v.json", g / f"{split}_listener_afn.json",
             _ROOT / "data" / "work" / f"dasm_{split}" / f"{stem}.npz", g / f"{split}_listener_p4.json",
-            g / f"{split}_listener_p1v4.json"] + ([_ROOT / "data" / "work" / f"finelap_{split}" / f"{stem}.npz"] if flap else [])
+            g / f"{split}_listener_open_inventory.json"] + ([_ROOT / "data" / "work" / f"finelap_{split}" / f"{stem}.npz"] if flap else [])
     return all(p.exists() for p in need)
 
 
@@ -95,9 +95,9 @@ def ensure_listener_inputs(video: Path) -> str:
     # open listener inventory: Qwen V4 on the P1 cuts + both listeners' family lists
     gd = _ROOT / "benchmark" / "gold"
     print(f"       [listener-prep] {split}: P1 open inventory", flush=True)
-    subprocess.run([sys.executable, str(gd / "listener_p1v4.py"),
+    subprocess.run([sys.executable, str(gd / "listener_open_inventory.py"),
                     f"{split}:{gd / f'{split}_listener_v.json'}:{gd / f'{split}_listener_afn.json'}:{w / f'r13{split}' / 'wav16'}:"
-                    f"{gd / f'{split}_listener_p1v4.json'}"], check=True, cwd=str(_ROOT), env=env)
+                    f"{gd / f'{split}_listener_open_inventory.json'}"], check=True, cwd=str(_ROOT), env=env)
     finelap(split, stem)
     if not ready(split, stem):
         raise RuntimeError(f"[listener-prep] {split}: inputs still missing after the harness ran")

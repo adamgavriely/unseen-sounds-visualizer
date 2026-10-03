@@ -1,4 +1,4 @@
-"""Decision trail: one record per (candidate span, decision step), for the Decision Inspector (docs/inspector2).
+"""Decision trail: one record per (candidate span, decision step), for the Decision Inspector (docs/decision_trail).
 
 Every decision point of the shipped pipeline calls `decide(...)` with the span it judged, the result, the measured value,
 the bar it was compared with, and, when a model was asked, the exact question and the exact answer. The trail is reset

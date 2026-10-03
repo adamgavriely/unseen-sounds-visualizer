@@ -9,7 +9,7 @@ import config
 ARM = sys.argv[1] if len(sys.argv) > 1 else "SHIP8+MD3+WW5+SL"
 SKIP = ("CACHE", "DIR", "_W", "PATH", "RELABEL_P1V4", "DASM_LOCAL_SCENE")      # per-split file locations, not behaviour
 config.use_shipped()
-from benchmark.gold import round13_dev as R
+from benchmark.gold import dev_harness as R
 bad = []
 for k, v in sorted(R.arm_cfg(ARM).items()):
     if any(s in k for s in SKIP):

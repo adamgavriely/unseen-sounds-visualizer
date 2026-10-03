@@ -162,7 +162,7 @@ def run(M, items, split, outp, meta, every=100):
 
 
 def make_meta(M, split):
-    return {"amendment": "round 14 C (docs/prereg_round13_detector_push.md)", "split": split,
+    return {"amendment": "round 14 C (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0)", "split": split,
             "candidates": str(LV.SPLITS[split]["out"]) + " (all items: P2 peak >= 0.5, PV, P1 depictable conf < 0.6)",
             "audio": "item run_audio = [cut_start - 1, cut_end + 1] clipped, >= 1 s, from " + str(LV.SPLITS[split]["wav"]),
             "V4": LV.V4_Q, "V4_decoding": f"greedy (do_sample=False), max_new_tokens {LV.V4_NEW}, no repetition_penalty "

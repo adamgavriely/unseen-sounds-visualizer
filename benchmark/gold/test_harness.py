@@ -1,25 +1,25 @@
 """Scores one detector variant on the 60 TEST clips, once (the ONE TEST exposure).
 
 One job, 60 TEST clips (benchmark/gold/test_stems.txt), three stage-4 configs through the pipeline's own code
-(round13_dev.build -> fuse_flexsed) and the same stage-5 path as DEV (round13_dev.stage5: scored gate answers reused,
+(dev_harness.build -> fuse_flexsed) and the same stage-5 path as DEV (dev_harness.stage5: scored gate answers reused,
 other questions memoised; the memo starts from data/work/r13test/ask_memo.json, B0r's TEST prep run):
   B0r  the scored config (PANNs veto 0.05), flags off; gate D0 (stage 4 == scored trace) and D5 (== scored render)
   B1   the shipped stage 4: BEATs self-veto 0.1218, PANNs veto off
-  ARM  the one candidate picked by the DEV selection rule (--arm NAME from round13_dev.ARMS, or --flags JSON)
+  ARM  the one candidate picked by the DEV selection rule (--arm NAME from dev_harness.ARMS, or --flags JSON)
 A listener arm reads the gold-free TEST cache (benchmark/gold/test_listener.json) in place of dev_listener.json.
-Then (only then) TEST gold is loaded and all three are scored with score_per_sound, both systems, as round13_dev.score:
+Then (only then) TEST gold is loaded and all three are scored with score_per_sound, both systems, as dev_harness.score:
 heard by stage 4, hits, misses, wrong (visible / cross / phantom), cost; paired clip bootstrap 2000, seed 0, of the
 per-clip cost difference vs B0r and vs B1; one-sided p = share of draws >= 0. Verdict (prereg), primary = proposed:
   better iff hits do not drop AND wrong rises by <= 2 x hits gained AND d cost < 0 with one-sided p < 0.05
   worse  iff d cost > 0 with lower 95 % bound > 0, OR the hits/wrong rule fails
   same   otherwise
-ONE EXPOSURE: refuses to run if benchmark/gold/r13_test_final.json or its .started marker exists; the marker is written
+ONE EXPOSURE: refuses to run if benchmark/gold/test_harness.json or its .started marker exists; the marker is written
 immediately before gold is read. --dry-run: stages 4/5 into data/work/r13final_dry, gold loading stubbed to raise.
 
-    python benchmark/gold/r13_test_final.py --arm R13-1 stage4
-    python benchmark/gold/r13_test_final.py --arm R13-1 stage5
-    python benchmark/gold/r13_test_final.py --arm R13-1 score          # THE exposure (reads TEST gold)
-    python benchmark/gold/r13_test_final.py devcheck-b1                # DEV only: fuse_flexsed B1 == devcand B1 rows
+    python benchmark/gold/test_harness.py --arm R13-1 stage4
+    python benchmark/gold/test_harness.py --arm R13-1 stage5
+    python benchmark/gold/test_harness.py --arm R13-1 score          # THE exposure (reads TEST gold)
+    python benchmark/gold/test_harness.py devcheck-b1                # DEV only: fuse_flexsed B1 == devcand B1 rows
 
 (design record: release v1.2.0)
 """
@@ -38,10 +38,10 @@ _ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 from benchmark.gold import score_per_sound as S
 
-_REAL_LOAD_GOLD = S.load_gold                             # kept before r13_test_prep installs its raise-stub
+_REAL_LOAD_GOLD = S.load_gold                             # kept before test_harness_prep installs its raise-stub
 
-OUT = _ROOT / "benchmark" / "gold" / "r13_test_final.json"
-MD = _ROOT / "benchmark" / "gold" / "r13_test_final.md"
+OUT = _ROOT / "benchmark" / "gold" / "test_harness.json"
+MD = _ROOT / "benchmark" / "gold" / "test_harness.md"
 STARTED = OUT.with_suffix(".started")
 GOLD = _ROOT / "benchmark" / "gold" / "annotations" / "gold_AG.json"
 TEST_CACHE = _ROOT / "benchmark" / "gold" / "test_listener.json"
@@ -58,8 +58,8 @@ def guard():
 
 # ============================================================================= set-up (TEST redirects + arms)
 def setup(a):
-    from benchmark.gold import r13_test_prep as T        # TEST redirects + gold stub (restored only in score, real run)
-    from benchmark.gold import round13_dev as R
+    from benchmark.gold import test_harness_prep as T        # TEST redirects + gold stub (restored only in score, real run)
+    from benchmark.gold import dev_harness as R
     fin = T.WORK / ("r13final_dry" if a.dry_run else "r13final")
     R.R13 = fin
     R.STAGE4, R.MEMO = fin / "stage4.json", fin / "ask_memo.json"      # R.PANNS_DIR stays data/work/r13test/panns
@@ -150,7 +150,7 @@ def score(a, T, R, arms, fin):
         raise SystemExit(f"gates failed ({g}); gold NOT read, nothing scored")
     if a.dry_run:
         try:
-            S.load_gold([GOLD])                          # still r13_test_prep's stub
+            S.load_gold([GOLD])                          # still test_harness_prep's stub
         except RuntimeError as e:
             print(f"[dry-run] stages 4/5 complete, gates pass; gold stub raised as expected ({e}); nothing scored", flush=True)
             return
@@ -164,7 +164,7 @@ def score(a, T, R, arms, fin):
     assert test == sorted(stems), "gold test_bench subset != test_stems.txt"
     s4 = json.loads(R.STAGE4.read_text(encoding="utf-8"))
     names = ["B0", "B0r", "B1", a.arm] if a.arm not in ("B0r", "B1") else ["B0", "B0r", "B1"]
-    res = {"plan": "docs/prereg_round13_detector_push.md (TEST decision, one exposure)", "arm": a.arm,
+    res = {"plan": "docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0 (TEST decision, one exposure)", "arm": a.arm,
            "flags": R.ARMS[a.arm], "b1_flags": R.ARMS["B1"], "base": R.BASE, "clips": len(stems), "gates": g,
            "rows": {}, "heard": {}, "delta_vs_B0r": {}, "delta_vs_B1": {}, "verdict": {}, "rule_hits_wrong": {},
            "needed_changes": {}, "picture_changes": {}, "primary_system": SYS_PRIMARY}
@@ -228,9 +228,9 @@ def markdown(res, names):
 
 # ============================================================================= DEV check of the B1 path (no TEST)
 def devcheck_b1():
-    """B1 through round13_dev.build (fuse_flexsed, BEATS_SELF_VETO 0.1218, PANNs 0) == devcand's B1 stage-4 rows on DEV"""
+    """B1 through dev_harness.build (fuse_flexsed, BEATS_SELF_VETO 0.1218, PANNs 0) == devcand's B1 stage-4 rows on DEV"""
     from benchmark.gold import dev_candidates_check as DCC
-    from benchmark.gold import round13_dev as R
+    from benchmark.gold import dev_harness as R
     R.ARMS.setdefault("B1", dict(B1_FLAGS))
     ref = json.loads((DCC.DC / "stage4.json").read_text(encoding="utf-8"))["arms"]
     stems = sorted(ref["B1|proposed"])
@@ -253,7 +253,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("step", choices=("stage4", "stage5", "score", "gates", "devcheck-b1"))
     ap.add_argument("--arm", default="R13-1")
-    ap.add_argument("--flags", default=None, help="JSON flags for an arm not in round13_dev.ARMS (or to override one)")
+    ap.add_argument("--flags", default=None, help="JSON flags for an arm not in dev_harness.ARMS (or to override one)")
     ap.add_argument("--cache-map", nargs="*", help="DEVFILENAME=TESTPATH for a listener-variant cache")
     ap.add_argument("--stage5-keys", nargs="*", help="extra arm flags read after stage 4")
     ap.add_argument("--dry-run", action="store_true")
