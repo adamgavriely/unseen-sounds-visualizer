@@ -1,8 +1,0 @@
-{
- "part": "dev",
- "clip": "b3_laundromat",
- "seconds": 28.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Train\nMusic\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant"
-}

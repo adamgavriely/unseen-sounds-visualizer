@@ -1,8 +1,0 @@
-{
- "part": "dev2",
- "clip": "tg_d075",
- "seconds": 19.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Shattering glass\nRustling\nThud\nSqueak\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com"
-}

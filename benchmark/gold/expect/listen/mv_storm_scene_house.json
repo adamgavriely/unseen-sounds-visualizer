@@ -1,8 +1,0 @@
-{
- "part": "dev",
- "clip": "mv_storm_scene_house",
- "seconds": 24.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Siren\nExplosion\nCrashing\nWhoosh\nwise\nSiren\nExplosion\nCrashing\nWhoosh\nwise\nSiren\nExplosion\nCrashing\nWhoosh\nwise\nSiren\nExplosion\nCrashing\nWhoosh"
-}

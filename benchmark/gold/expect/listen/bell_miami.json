@@ -1,8 +1,0 @@
-{
- "part": "dev",
- "clip": "bell_miami",
- "seconds": 15.59,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Church bell\nCar\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson"
-}

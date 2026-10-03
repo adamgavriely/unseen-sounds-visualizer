@@ -1,2 +1,0 @@
-e9fb39e54ca1f8690d05833cc2d80a063f55c1ebb4124977feb8f9ab060454ba  benchmark/gold/pictures/check_confirm_v32__FINAL+A0.json
-130b195d534bcbec45026d25fd05f5ab18cc6ccba9bf293e7ab353c18438d188  data/work/rate_confirm_ARM_KEY_do_not_open_until_scored.json

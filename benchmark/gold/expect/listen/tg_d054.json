@@ -1,8 +1,0 @@
-{
- "part": "dev2",
- "clip": "tg_d054",
- "seconds": 16.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Engine knocking\nEngine\nAssistant\nEngine knocking\nEngine\nAssistant\nEngine knocking\nEngine\nAssistant\nEngine knocking\nEngine\nAssistant\nEngine knocking\nEngine\nAssistant\nEngine knocking\nEngine\nAssistant\nEngine knocking\nEngine"
-}

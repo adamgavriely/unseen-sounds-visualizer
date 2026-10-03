@@ -1,8 +1,0 @@
-{
- "part": "dev",
- "clip": "helicopter_ossetia",
- "seconds": 18.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Music\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com"
-}

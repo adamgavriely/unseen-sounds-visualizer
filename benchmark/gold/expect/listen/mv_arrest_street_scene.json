@@ -1,8 +1,0 @@
-{
- "part": "dev",
- "clip": "mv_arrest_street_scene",
- "seconds": 24.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Shattering glass\nFootsteps\nThud\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com"
-}

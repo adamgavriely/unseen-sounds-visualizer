@@ -1,8 +1,0 @@
-{
- "part": "dev",
- "clip": "un_driving_motorcycle_DgdHSmwA",
- "seconds": 17.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Gunshot\nCrowd noise\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant"
-}

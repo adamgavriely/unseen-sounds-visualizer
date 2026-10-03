@@ -1,8 +1,0 @@
-{
- "part": "dev2",
- "clip": "tg_d029",
- "seconds": 16.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Goose honking\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com"
-}

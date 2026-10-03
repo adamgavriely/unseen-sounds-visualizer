@@ -1,8 +1,0 @@
-{
- "part": "dev",
- "clip": "ly_helicopter_-v62cK1",
- "seconds": 18.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Helicopter\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson"
-}

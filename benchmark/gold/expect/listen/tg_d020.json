@@ -1,8 +1,0 @@
-{
- "part": "dev2",
- "clip": "tg_d020",
- "seconds": 17.0,
- "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
- "max_new": 64,
- "v4_text": "Rain\nAssistant\nRain\nAssistant\nRain\nAssistant\nRain\n\nAssistant\nRain\n\nAssistant\nRain\n\nAssistant\nRain\n\nAssistant\nRain\n\nAssistant\nRain\n\nAssistant\nRain"
-}

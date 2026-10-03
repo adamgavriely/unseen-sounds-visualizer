@@ -1,8 +1,0 @@
-[gold] 139 annotated clips, 283 sounds, 120 needed
---- subset bench: 109 clips in the gold (late <= 1.0 s); each system on the clips it has rendered
-[proposed     ] clips 109 needed  86 | P 0.27 R 0.35 F1 0.31 [0.20,0.40] F0.5 0.29 F2 0.33 | F1-ph 0.32 | wF1 0.41 (n3=23) dc 0 coll 0 | cov 0.26 | hit 30 miss 56 vis 10 cross 47 ph 23 dup 0 | late-med 0.05 | clean 0.55
-[blind_a2i    ] clips 109 needed  86 | P 0.21 R 0.43 F1 0.28 [0.19,0.37] F0.5 0.23 F2 0.36 | F1-ph 0.32 | wF1 0.41 (n3=23) dc 0 coll 0 | cov 0.3 | hit 37 miss 49 vis 31 cross 75 ph 34 dup 6 | late-med 0.05 | clean 0.38
-[silence      ] clips 109 needed  86 | P 0.00 R 0.00 F1 0.00 [0.00,0.00] F0.5 0.00 F2 0.00 | F1-ph 0.00 | wF1 0.00 (n3=23) dc 0 coll 0 | cov 0.0 | hit 0 miss 86 vis 0 cross 0 ph 0 dup 0 | late-med None | clean 1.0
-   dF1 proposed - blind_a2i     = +0.025 [-0.024, +0.073]  P(d>0)=0.827  (paired on 109 clips)
-   dF1 proposed - silence       = +0.306 [+0.204, +0.404]  P(d>0)=1.000  (paired on 109 clips)
--> benchmark\gold\per_sound_v4b4_oldrule.json
