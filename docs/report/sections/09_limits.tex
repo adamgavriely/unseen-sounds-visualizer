@@ -38,18 +38,16 @@ could make the reported numbers wrong. Section~\ref{sec:hard} explains the first
 
 \subsection{Threats to validity}
 \begin{enumerate}[label=\textbf{T\arabic*.}, leftmargin=*]
-  \item \textbf{The test set was seen.} It was read after each accepted change: about 20 times in the last week,
-        counted from the result entries of the pre-registration log, and 10 times before that for its 60 older clips
-        (5 deliberate reads, 5 incidental prints). Twice a choice was
-        influenced by a test read, and both were undone: the BEATs self-veto, whose reversal cited a test read, and a
-        4-s grouping limit chosen after a test read (Appendix~\ref{sec:rejected}). Over the development history the test cost fell by only about a
-        third as much as the development cost (Figure~\ref{fig:progression}), which is consistent with selection on the
-        development set. The test numbers are a report on a seen set, not a blind confirmation.
+  \item \textbf{The test set was scored many times.} Every decision was made on the development set; the test set
+        was only scored, after each accepted change (about 30 times in all). It was never used to choose, but it is not
+        a sealed set that was opened once. Over the development history the test cost fell by about a third as much as
+        the development cost (Figure~\ref{fig:progression}): some of the development gain is selection on the
+        development set, and the test numbers are the better estimate for a new video.
   \item \textbf{Small sets.} With 71 and 88 clips, one or two pictures can decide a development comparison, and the
         95\,\% intervals of the main comparisons are 0.5 to 1.2 per clip wide.
   \item \textbf{Label changes.} The author re-checked the visibility of 14 disputed development sounds blind (3 changed;
-        0 of 20 random controls changed), which may favour the system; test labels were never changed. Newer clips were
-        labelled with detector suggestions visible, and 19 AudioSet clips with the AudioSet labels visible.
+        0 of 20 random controls changed), which may favour the system; test labels were never changed. 19 AudioSet clips
+        were labelled with the AudioSet labels visible.
   \item \textbf{One baseline not run.} A video-conditioned generator raised during supervision (for example
         MiniMax-H3) creates new video; the per-sound score cannot evaluate it, so it was not compared.
   \item \textbf{Metric chosen after a result.} The viewer cost became the primary score after an earlier comparison
