@@ -160,3 +160,32 @@ sounds sit one judgement away from the other class.
 Clips in which an ambient sound is heard but its source is not seen are uncommon in public video. Four different
 sourcing routes all yielded only 15--20\,\% usable clips, which is why the benchmark has 159 evaluation clips rather than
 the planned 300, and why every comparison has wide intervals.
+
+\subsection{What today's models are missing}\label{sec:missing}
+The failures above point to six capabilities that current open models lack. Each one is a direction in which a better
+model, not a better rule, is needed.
+\begin{enumerate}
+  \item \textbf{Hearing a quiet event under speech or music.} Taggers are trained to name the dominant sound of a clip, so a
+        door under a conversation loses to \emph{Speech}. Separating the speech first does not help, because the
+        detectors have never heard separated audio (Section~\ref{sec:hard-hear}). What is missing is detection trained on
+        mixtures in which the event of interest is the quiet one.
+  \item \textbf{Knowing when not to say yes.} A listener asked ``is there a siren?'' tends to agree, and a sound one listener
+        names is real only 37\,\% of the time. What is missing is a calibrated answer: a confidence that means the same
+        thing from one question to the next, or the option to answer ``not sure''.
+  \item \textbf{Linking an object to the sound it is making now.} Vision-language models answer ``is there a bell?'' when asked
+        ``is the bell ringing?'' (31 of 36 audited gate errors). They see objects, not actions that produce sound, and
+        they do not use the audio. What is missing is audio-visual grounding of \emph{production}: does this object's
+        motion match this sound at this moment?
+  \item \textbf{Saying that a source is off screen.} Sound-source localisation models always point somewhere in the
+        frame, even for off-screen or silent audio~\cite{juanola2025critical}. What is missing is an explicit
+        ``not in the frame'' answer, which is exactly the decision this task needs.
+  \item \textbf{Drawing one source and leaving out the rest.} Audio-to-image models draw the whole soundtrack as one scene.
+        What is missing is a generator that takes a negative condition from the video (``a dog, but not the dog that is
+        already visible'') and draws one clear object for a glance.
+  \item \textbf{Judging per sound.} Model judges score a whole clip and cannot tell whether a picture matches a specific
+        sound at a specific time, or whether that sound was visible. What is missing is an evaluator that works at the
+        level of single timed sounds; until then, human per-sound labels are required.
+\end{enumerate}
+The system in this report works around each gap with rules: two detectors, independent witnesses, a three-question
+vote, guarded prompts with a check-and-redraw loop, and human labels. A model that closed any one of these gaps would
+remove a whole family of rules.
