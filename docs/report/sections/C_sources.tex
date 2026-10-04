@@ -7,8 +7,13 @@ The development record (pre-registrations, daily notes, reviews, the labelling t
 in \fp{config.py}; in the scoring harness it is the variant \texttt{SHIP8+MD3+WW5+SL} (Appendix~\ref{app:glossary}).
 
 \paragraph{Environment.} Python 3.11 with PyTorch 2.5.1, transformers 5.16.1, diffusers, faster-whisper, panns-inference,
-easyocr and sentence-transformers. FineLAP needs transformers 4.51.3 and runs in a second environment, called as a
-subprocess (variable \texttt{FINELAP\_PYTHON}). FlexSED and DASM are imported from their own repositories, located through the
+easyocr and sentence-transformers (\fp{requirements.txt}). FineLAP needs transformers 4.51.3 and runs in a second
+environment, called as a subprocess (variable \texttt{FINELAP\_PYTHON}); \fp{requirements_finelap.txt} pins all its
+packages and is installed without dependency resolution (\texttt{pip install --no-deps}), because a resolving install
+upgrades PyTorch and breaks torchaudio. \fp{download_models.py} downloads every model the final system loads (about
+200\,GB), including those the detectors load internally (CLAP for FlexSED, RoBERTa for FineLAP, BERT for DASM), and
+applies two cache fixes the README describes. With these steps, \fp{main.py} with the shipped configuration reproduced
+the shipped pictures of a development clip exactly on a fresh GPU machine. FlexSED and DASM are imported from their own repositories, located through the
 environment variables \texttt{FLEXSED\_ROOT}, \texttt{T4SED\_ROOT} and \texttt{BERT\_DIR} (see the README); the DASM
 weights are loaded from the local DASM repository. Models (Hugging Face identifiers): \fp{Qwen/Qwen3.8-27B}, \fp{Qwen/Qwen3-Omni-30B-A3B-Instruct},
 \fp{nvidia/audio-flamingo-next-hf}, \fp{AndreasXi/FineLAP} (revision b419aa2), \fp{CPF2/detect_any_sound},
