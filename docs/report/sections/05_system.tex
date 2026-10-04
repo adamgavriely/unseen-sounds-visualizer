@@ -145,38 +145,41 @@ This leans toward showing: a source that leaves the frame for one stretch keeps 
 \subsection{Pictures and display}\label{sec:pictures}
 The picture prompt is built from the detected label, not from free text: the vision model may add at most two
 qualifier words to the source's name, word lists remove people and places, and an action is drawn with its maker (a
-\emph{bark} becomes a barking dog).
-
-\paragraph{Why the picture never names a kind the detector did not hear.} An earlier version let the vision model
-name the source freely from the frames. On 50 unlabelled clips used only to design the pictures, it invented things the
-audio had never established: a whoosh became a person swinging a sword (twice), a plain siren a police car, a thud a
-heavy door, and a smash a person smashing a glass. The reason is structural. A sound often does not say which kind of
-thing made it: a siren sounds the same on an ambulance, a fire engine and a police car. The frames rarely help, because
-the sources this system draws are by definition off screen, so the model guesses from the place (a city street suggests
-a police car). And when the source \emph{is} on screen, no picture is needed at all. The detectors are not reliable at
-the fine level either: in 13 of the 53 correct pictures of the final system the detector named a more general label
-than the human annotator (\emph{Alarm} for a siren, a telephone and a fire alarm; \emph{Vehicle} for a motorcycle), so
-a picture can safely show what was heard but not a kind that was guessed. A wrong specific picture misleads a viewer
-more than a general one: an ambulance drawn for a police siren sends the viewer the wrong message. The final wording
-therefore lets the frames add at most two qualifier words (``farm vehicle'', ``car door''), never a new noun, and a
-word list refuses any kind the detector did not report; a kind is drawn when the detector itself heard it (a detected
-\emph{Ambulance (siren)} is drawn as an ambulance). This version was then checked on 30 fresh clips that its rules
-were not written from. A fixed tail asks for one large subject on a plain white background. Qwen-Image-2512
+\emph{bark} becomes a barking dog). A fixed tail asks for one large subject on a plain white background. Qwen-Image-2512
 draws it at 1024$\times$1024; the vision model then gets a multiple-choice question about what the picture shows, and
 a picture that fails (or contains text) is redrawn, up to five times. In a blind test, the author saw each picture for a
 moment and named the sound without being shown the label (one test, by the author only); Qwen-Image pictures were named right 26 of 54 times,
 against 14 of 54 for the earlier FLUX.1~\cite{fluxcard} pictures (difference $+0.22$, 95\,\% interval $[+0.07, +0.37]$).
+
+\paragraph{As specific as what was heard, never a guess.} The picture is as specific as the detected sound: when the
+detector hears a specific kind, that kind is drawn (a detected \emph{Ambulance (siren)} is drawn as an ambulance, a
+detected \emph{Motorcycle} as a motorcycle). What the picture does not do is go \emph{beyond} what was heard by guessing a kind
+from the frames. An earlier version let the vision model name the source freely from the frames, and on 50 unlabelled
+clips used only to design the pictures it invented things the audio had never established: a whoosh became a person
+swinging a sword (twice), a plain siren a police car, a thud a heavy door, and a smash a person smashing a glass. The
+reason is structural. Often the sound alone does not tell the kind: a siren sounds the same on an ambulance, a fire
+engine and a police car. The frames rarely settle it, because the sources this system draws are by definition off
+screen, so the model guesses from the place (a city street suggests a police car); and when the source \emph{is} on
+screen, no picture is needed at all. The detectors themselves often report the family rather than the kind: in 13 of
+the 53 correct pictures of the final system the detector's label was more general than the human annotator's
+(\emph{Alarm} for a siren, a telephone and a fire alarm; \emph{Vehicle} for a motorcycle). A wrongly guessed kind
+misleads a viewer more than a general picture of the right family: an ambulance drawn for a police siren sends the
+wrong message. The frames may therefore add at most two qualifier words (``farm vehicle'', ``car door''), never a new
+noun, and a word list refuses a kind the detector did not report. This version was checked on 30 fresh clips that its
+rules were not written from.
+
 \paragraph{Alarm-type sounds.} One family of sounds needs its own step: everything under the AudioSet node
 \emph{Alarm} (26 labels, among them siren, fire alarm, smoke detector, alarm clock, doorbell, horns, whistles and
 telephones). For these sounds the name of the source is a small signalling device, and the image model draws the main
 word large: a siren became a lone red beacon and an alarm became a bell, so a viewer could not tell what was heard. The
 general wording already asks for ``the whole thing, never one part'', which works for engines, cameras or gears.
-Under \emph{Alarm} it cannot: the larger things a device belongs to are themselves the more specific kinds of the sound
-(a siren belongs to a police car, an ambulance or a fire engine), and naming one of them is exactly the guess shown
-above to be unreliable. With the larger thing ruled out, the picture collapsed to the bare device. \emph{Alarm} is the one
+Under \emph{Alarm} it cannot: when the detector hears only \emph{Siren}, the larger things a siren belongs to are
+themselves kinds of siren that were not heard (a police car, an ambulance, a fire engine), so naming one of them is
+exactly the guess described above. Without a larger thing, the picture collapsed to the bare device. \emph{Alarm} is the one
 part of the sound list where these two requirements meet. The picture step therefore asks the vision model (text only) whether the device is part of a larger thing or
 a whole object. If it is a part, the picture shows the larger thing in a form general enough to cover all its kinds
-(``an emergency vehicle'', never ``an ambulance'') with the device going off; if it is a whole object, it is drawn
+(``an emergency vehicle'' rather than a guessed ``ambulance''; a detected \emph{Ambulance (siren)} is still drawn
+as an ambulance) with the device going off; if it is a whole object, it is drawn
 where a person sees it (a fire alarm on a wall, a smoke detector on a ceiling), with what a person sees when it goes
 off (flashing lights, shaking). The same word-list guards as above still apply, and every sound outside the family keeps
 its prompt, negative prompt and random seed unchanged. The rule was chosen over a per-sound fix because it is defined by
