@@ -182,7 +182,7 @@ def ambiguous_entry(spec, subject: str) -> Optional[dict]:
     for e in AMBIGUOUS:
         # the sound is matched on its ontology LABEL, never on a loose word of it ("honk" is the label of a goose's
         # call); the subject on words, and only when it also names the entry's kind of maker where one is required
-        by_label = bool(labels & e["labels"])
+        by_label = bool(labels & e["labels"]) and not getattr(spec, "_host", False)
         by_subject = any(re.search(r"\b" + re.escape(p), subj) for p in e["subject"]) and (
             not e.get("subject_requires") or any(re.search(r"\b" + re.escape(w) + r"s?\b", subj)
                                                  for w in e["subject_requires"]))

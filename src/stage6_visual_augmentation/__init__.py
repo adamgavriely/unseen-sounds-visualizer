@@ -494,6 +494,10 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
         from src.stage6_visual_augmentation.sense import plan as sense_plan
         sp = sense_plan(spec, subject, model, device, size)
         log["sense"] = sp
+    if host_log:
+        # the host rule wrote this subject: the check judges the picture against it, not against a label-wide table
+        # entry ("Alarm" = fire-alarm bell rejected a shaking alarm clock and redrew a bell), see verify.ambiguous_entry
+        spec._host = True
     first = bool(verify and not sense and rewrite_first(spec, subject))
     for t in range(tries):
         # PICTURE_VERIFY (src/stage6_visual_augmentation/verify.py): try 1 is exactly the shipped picture (same seed);
@@ -509,7 +513,7 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
         # checker cannot tell its look-alike (a dome camera) from it, so only the wording keeps the look-alike out
         if t >= 2 or saw_text or first:
             from src.stage6_visual_augmentation.verify import rewrite_for
-            rw = None if sense else rewrite_for(spec, subject)
+            rw = None if (sense or (host_log and not first)) else rewrite_for(spec, subject)
             if rw:
                 subj_t = rw["subject"]
                 neg_t = ", ".join(x for x in (screen_negative(subj_t), TEMPLATE_NEG.get(key or "", ""), rw["neg"])
