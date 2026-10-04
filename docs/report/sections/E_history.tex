@@ -48,7 +48,11 @@ a correction. Every system was re-scored on each version; the test labels were n
 timed AudioSet labels. Round 12 showed that under a corrected version of that cost the detector of the time was worse
 than showing nothing (1.650 vs 0.986 per clip), because AudioSet labels only a few sounds per clip; the set was retired
 as a decision test. The screening set of 415 clips was then used only for single audio rules, and a fresh set of 422
-clips was scored once, after the system was final, as the side-by-side in Appendix~\ref{app:fresh}.
+clips (340 scored; the last two parts dropped for time before any score was read) was scored once after the system
+was final, with nothing tuned on it: 12 hits of 65 labelled sounds and 31 pictures outside the labels for the final
+system, 21 and 62 for direct audio-to-image (cost 0.806 vs 0.882, $p$ 0.14, paired clip bootstrap); as round 12 found,
+this labelling does not separate any system from showing nothing (0.765). Script and results:
+\fp{benchmark/gold/fresh_side_by_side.py}, \fp{benchmark/gold/fresh_side_by_side.json}.
 
 \subsection{Working rules}\label{sec:rules}
 From 13 Sept the following rules governed every change (\fp{docs/history/plans/plan_robustness.md},

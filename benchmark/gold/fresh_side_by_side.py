@@ -11,7 +11,7 @@ Paired clip bootstrap, 100,000 draws, seed 0, two-sided p (final_vs_baselines.bo
 
     PREP_EXTRA_SPLITS="freshf00 ... freshf10" PREP_ARMS="SHIP8+MD3+WW5+SL" python benchmark/gold/fresh_side_by_side.py
 
-The report (Appendix F) uses the report's rule, in which a dup is not wrong: rows[*].cost_no_dup and
+The report (Appendix E) uses the report's rule, in which a dup is not wrong: rows[*].cost_no_dup and
 diff_report_rule in the JSON. benchmark/detector_round12.py and benchmark/gold/audioset_fresh.json are in release
 v1.2.0 (the full record); copy them in to re-run this script.
 """
