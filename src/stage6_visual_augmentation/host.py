@@ -1,5 +1,4 @@
-"""PICTURE_HOST (4 Oct 2026; Adam: "a siren was a red thingy instead of an ambulance with its siren lights"; three-Fable
-panel, three blind rounds, blind rounds on DEV only).
+"""PICTURE_HOST: pictures for alarm-type sounds (report Section 5.5; three blind review rounds on development clips).
 
 For every sound under the AudioSet "Alarm" node (siren, fire alarm, smoke detector, alarm clock, doorbell, horns,
 whistles, telephone ...; by ANY parent, the ontology is a DAG) the shipped subject's head noun is a signalling DEVICE,
@@ -47,7 +46,7 @@ FAMILY_NEG = ["close-up of a single device", "lone beacon", "bell", "church bell
               "explosion", "starburst", "comic burst", "sparks", "fire", "flames"]
 AUDIO = {"sound", "sounds", "noise", "loud", "waves", "emits", "rings", "ringing", "ring", "beeps", "beeping",
          "blares", "horn", "claps", "chimes", "tone", "tones"}
-MOTION = ", shaking with motion blur"         # the cue Adam picked (round-2 alarm clock) when no visible sign is left
+MOTION = ", shaking with motion blur"         # visible cue used when no visible sign is left
 GENERIC = {"device", "object", "machine", "thing", "equipment", "system", "appliance", "unit", "item"}
 VERBS = {"ringing", "rings", "ring", "sounding", "sounds", "blaring", "beeping", "buzzing", "going", "off", "goes",
          "wailing", "spinning", "honking", "a", "an", "the"}

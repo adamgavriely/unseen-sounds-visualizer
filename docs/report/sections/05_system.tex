@@ -150,6 +150,25 @@ draws it at 1024$\times$1024; the vision model then gets a multiple-choice quest
 a picture that fails (or contains text) is redrawn, up to five times. In a blind test, the author saw each picture for a
 moment and named the sound without being shown the label (one test, by the author only); Qwen-Image pictures were named right 26 of 54 times,
 against 14 of 54 for the earlier FLUX.1~\cite{fluxcard} pictures (difference $+0.22$, 95\,\% interval $[+0.07, +0.37]$).
+\paragraph{Alarm-type sounds.} One family of sounds needs its own step: everything under the AudioSet node
+\emph{Alarm} (26 labels, among them siren, fire alarm, smoke detector, alarm clock, doorbell, horns, whistles and
+telephones). For these sounds the name of the source is a small signalling device, and the image model draws the main
+word large: a siren became a lone red beacon and an alarm became a bell, so a viewer could not tell what was heard. The
+usual answer, drawing the larger thing the device belongs to, is blocked by another rule of the system: a picture
+may never name a more specific kind than the detector heard, and under \emph{Alarm} the larger things \emph{are} the
+more specific kinds (a siren belongs to a police car, an ambulance or a fire engine). The two rules collide only in this
+family. The picture step therefore asks the vision model (text only) whether the device is part of a larger thing or
+a whole object. If it is a part, the picture shows the larger thing in a form general enough to cover all its kinds
+(``an emergency vehicle'', never ``an ambulance'') with the device going off; if it is a whole object, it is drawn
+where a person sees it (a fire alarm on a wall, a smoke detector on a ceiling), with what a person sees when it goes
+off (flashing lights, shaking). The same word-list guards as above still apply, and every sound outside the family keeps
+its prompt, negative prompt and random seed unchanged. The rule was chosen over a per-sound fix because it is defined by
+one node of the ontology, not by the two labels that failed. Three independent model reviewers, judging the pictures
+blind on development clips, named 9 of 11 earlier pictures correctly (the two misses were the siren and the alarm);
+with the rule, all five changed development pictures and 16 further pictures of the family were read correctly or partly
+correctly, with none wrong (prompt in Appendix~\ref{app:prompts}). The rule changes only the wording of a picture,
+never which sound is shown or when, so the detection and scoring numbers of Section~\ref{sec:results} are unchanged.
+
 On screen, repeats of one sound less than 2.5\,s apart become one appearance, every picture stays at least 1.5\,s and
 at most 1\,s after its sound ends, and at most three pictures are shown at once.
 

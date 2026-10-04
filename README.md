@@ -37,7 +37,7 @@ scored. Limits are discussed in Section 9 of the report.
 2. **Sound detection**: BEATs and FlexSED propose sound events; the Qwen3-Omni and Audio Flamingo Next listeners,
    DASM and FineLAP confirm or reject them.
 3. **On-screen check**: Qwen3.8-27B looks at the frames and decides whether each sound's source is visible.
-4. **Pictures**: Qwen-Image-2512 draws each off-screen sound; a vision model checks the picture and it is redrawn
+4. **Pictures**: Qwen-Image-2512 draws each off-screen sound (alarm-type sounds such as a siren are drawn on the larger thing they belong to, e.g. an emergency vehicle with its siren going off); a vision model checks the picture and it is redrawn
    up to five times.
 5. **Composition**: the pictures are shown beside the video while their sound plays.
 

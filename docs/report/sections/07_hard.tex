@@ -155,7 +155,9 @@ than a random needed one; 0.5 is a coin flip, 1 is perfect). The habits were hid
 \emph{Expected:} an audio-to-image model can draw what is heard. \emph{Actually:} such models draw the whole soundtrack
 as a scene and cannot be told to leave out the dog that is already on screen. The system therefore draws from the label
 with a guarded text prompt -- and even then a picture was named right at a glance in only 26 of 54 tries
-(Section~\ref{sec:pictures}). A richer prompt reached 32 of 54 but invented objects (a thud drawn as a door).
+(Section~\ref{sec:pictures}). A richer prompt reached 32 of 54 but invented objects (a thud drawn as a door). The model also draws the main
+word of a prompt large: for alarm-type sounds that word is a small device, so a siren came out as a lone beacon until a
+rule for that family was added (Section~\ref{sec:pictures}).
 
 \subsection{Automatic evaluation}\label{sec:hard-measure}
 The proposal planned an automatic score: one model describes the output video, another writes a reference of what
