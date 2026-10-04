@@ -60,6 +60,9 @@ python download_models.py
   (the listener answers). After it, `main.py` runs offline (`HF_HUB_OFFLINE=1`). It also makes two cache fixes that
   PyTorch 2.5.1 needs: transformers 5.x refuses `.bin` weights with PyTorch older than 2.6, so CLAP is loaded from its
   safetensors conversion (same weights), and FineLAP's `roberta-base` is made available under that old name.
+  If CLAP's tokenizer files or its safetensors weights are missing, FlexSED does not stop with an error: it gives
+  about 0.006 for every sound and detects nothing. A run in which all FlexSED scores are the same means the CLAP
+  download is incomplete.
 - FineLAP runs in its own environment with transformers 4.51.3 (`requirements_finelap.txt`, every package pinned).
   Install it with `--no-deps`: letting pip resolve upgrades torch and breaks torchaudio and cuDNN in that environment.
 - The final system also needs these outside repositories and environments. Their locations are read from environment

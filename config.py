@@ -237,6 +237,7 @@ PICTURE_MAKER = False
 # PICTURE_HOST (4 Oct 2026, three blind rounds on DEV, src/stage6_visual_augmentation/host.py): a sound under the
 # AudioSet Alarm node (siren, fire alarm, alarm clock, horns ...) draws the whole thing its device is part of, or the
 # device on its mount, instead of the lone device (a Siren drew a red beacon, an Alarm a bell). Other sounds unchanged.
+# The picture check judges these pictures against the host subject (verify.ambiguous_entry).
 PICTURE_HOST = False
 # 2026-09-28 (Design review: the hand-written rewrite wording is "too specific"): the clearer wording used by the redraw loop is
 # written by the VLM (text only) from the maker object and the sound, with list guards; fallback the plain subject

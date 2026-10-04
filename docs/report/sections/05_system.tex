@@ -145,7 +145,9 @@ This leans toward showing: a source that leaves the frame for one stretch keeps 
 \subsection{Pictures and display}\label{sec:pictures}
 The picture prompt is built from the detected label, not from free text: the vision model may add at most two
 qualifier words to the source's name, word lists remove people and places, and an action is drawn with its maker (a
-\emph{bark} becomes a barking dog). A fixed tail asks for one large subject on a plain white background. Qwen-Image-2512
+\emph{bark} becomes a barking dog). A fixed tail asks for the whole thing, caught at the moment it makes the sound with its visible effect, as one large
+subject on a plain white background (Appendix~\ref{app:prompts}). The lights, mist or smoke seen in some pictures are
+the image model's way of drawing that visible effect; the prompt does not name them. Qwen-Image-2512
 draws it at 1024$\times$1024; the vision model then gets a multiple-choice question about what the picture shows, and
 a picture that fails (or contains text) is redrawn, up to five times. In a blind test, the author saw each picture for a
 moment and named the sound without being shown the label (one test, by the author only); Qwen-Image pictures were named right 26 of 54 times,

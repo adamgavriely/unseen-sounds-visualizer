@@ -12,7 +12,9 @@ Two checks, both on the finished picture:
     crowd?") is answered yes far too easily; a choice between the intended thing and its known look-alikes is not.
       - intended thing and confusions for known ambiguous words come from a small fixed table (AMBIGUOUS), matched
         on the SOUND (label / source) first and the subject second -- the V3.1 subject itself can carry the error
-        ("Steam rising from a kettle"), so the subject cannot be the judge of itself;
+        ("Steam rising from a kettle"), so the subject cannot be the judge of itself; when PICTURE_HOST wrote the
+        subject (spec._host, alarm-type sounds), the table is matched on the subject's words only, because the host
+        subject itself is what was meant to be drawn;
       - otherwise the intended thing is the subject that was drawn, and the confusions are generic ones (a person,
         an animal, a vehicle, a building or landscape, text or a sign) minus any category the sound belongs to
         ("a person" is never offered against laughter).
@@ -176,7 +178,9 @@ def _vehicle(spec, subject: str) -> str:
 
 
 def ambiguous_entry(spec, subject: str) -> Optional[dict]:
-    """The AMBIGUOUS entry that applies to this sound, with {veh} filled in; None for an ordinary sound."""
+    """The AMBIGUOUS entry that applies to this sound, with {veh} filled in; None for an ordinary sound.
+
+    A host subject (spec._host, PICTURE_HOST) is matched on its words only, never on the sound label."""
     labels = {getattr(spec, "source", "") or "", spec.event_label or ""} - {""}
     subj = (subject or "").lower()
     for e in AMBIGUOUS:

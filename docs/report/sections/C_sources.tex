@@ -12,8 +12,12 @@ environment, called as a subprocess (variable \texttt{FINELAP\_PYTHON}); \fp{req
 packages and is installed without dependency resolution (\texttt{pip install --no-deps}), because a resolving install
 upgrades PyTorch and breaks torchaudio. \fp{download_models.py} downloads every model the final system loads (about
 200\,GB), including those the detectors load internally (CLAP for FlexSED, RoBERTa for FineLAP, BERT for DASM), and
-applies two cache fixes the README describes. With these steps, \fp{main.py} with the shipped configuration reproduced
-the shipped pictures of a development clip exactly on a fresh GPU machine. FlexSED and DASM are imported from their own repositories, located through the
+applies two cache fixes the README describes. If CLAP's tokenizer files or its safetensors weights are missing,
+FlexSED does not stop with an error: it gives about 0.006 for every sound and detects nothing, so a run in which all
+FlexSED scores are the same means the CLAP download is incomplete. DASM's text queries are computed once with
+MGA-CLAP (\texttt{T4SED\_ROOT/third\_parties/MGA-CLAP}) and cached in \fp{data/work/dasm_text_queries.pt}. With these
+steps, \fp{main.py} with the shipped configuration reproduced the shipped result of development clip tg\_d088 exactly
+on a fresh GPU machine (the same two pictures, times and subjects; both picture checks passed on the first try). FlexSED and DASM are imported from their own repositories, located through the
 environment variables \texttt{FLEXSED\_ROOT}, \texttt{T4SED\_ROOT} and \texttt{BERT\_DIR} (see the README); the DASM
 weights are loaded from the local DASM repository. Models (Hugging Face identifiers): \fp{Qwen/Qwen3.8-27B}, \fp{Qwen/Qwen3-Omni-30B-A3B-Instruct},
 \fp{nvidia/audio-flamingo-next-hf}, \fp{AndreasXi/FineLAP} (revision b419aa2), \fp{CPF2/detect_any_sound},
@@ -100,7 +104,7 @@ visibility check of an early version (file name historical) & \fp{benchmark/eval
 picture glance test & \fp{docs/history/preregistrations/picture_v3_prereg.md} \\
 invented kinds of the free-wording version (Section~\ref{sec:pictures}) & \fp{docs/history/daily_notes/NIGHT_REPORT_2026-09-25.md}, section 3 \\
 13 of 53 correct pictures with a more general detected label & \fp{docs/decision_trail/data.js} (picture label against the label of the sound it hits) \\
-alarm-type pictures, blind review rounds & \fp{src/stage6_visual_augmentation/host.py} (the rule and its review record in the module docstring) \\
+alarm-type pictures, blind review rounds & \fp{src/stage6_visual_augmentation/host.py} (the rule); review rounds in Section~\ref{sec:pictures} and the \cfgv{PICTURE_HOST} comment in \fp{config.py} \\
 speech removal (9.5\,\% to 4.8\,\%) & \fp{docs/history/daily_notes/LEDGER_2026-09-26.md}; \fp{docs/history/panels/fable_briefs/2026-09-16_ten_fable_panel_addendum.md} \\
 earlier label agreement (78\,\%, $\kappa = 0.60$) & \fp{docs/history/daily_notes/HANDOFF_2026-09-08.md}; \fp{docs/history/earlier_drafts/thesis/ch4_benchmark.md} \\
 gate balanced accuracy 0.61 to 0.62 & \fp{docs/history/analyses/GOLD_RERUN_2026-09-22.md} \\
