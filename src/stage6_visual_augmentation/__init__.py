@@ -459,12 +459,28 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
     subject = TEMPLATES[key] if key else (spec.subject or query)
     prompt = subject + RULES_TAIL
     neg = ", ".join(x for x in (screen_negative(subject), TEMPLATE_NEG.get(key or "", "")) if x) or " "
+    host_log = None
+    if getattr(config, "PICTURE_HOST", False) and not key:
+        # PICTURE_HOST (src/stage6_visual_augmentation/host.py): a sound under the Alarm node draws the whole thing
+        # its device is part of, or the device on its mount -- not the lone device; every other sound is unchanged
+        from src.stage6_visual_augmentation.host import host_subject, in_family
+        if in_family(source):
+            from src.stage5_cross_modal_analysis import reason as R
+            from src.stage6_visual_augmentation.verify import _vlm
+            mdl, proc = _vlm()
+            hs = host_subject(source, subject, lambda p: R._ask(mdl, proc, p, max_new=48))
+            subject, host_log = hs["subject"], hs["log"]
+            prompt = subject + RULES_TAIL
+            neg = ", ".join(x for x in (screen_negative(subject), hs["neg"]) if x) or " "
+            print("       [stage6] host: " + source + " -> " + subject, flush=True)
     seed = seed_of({"clip": work_dir.name, "label": spec.event_label, "start": float(spec.start)}) + 1
     import shutil
     verify = bool(getattr(config, "PICTURE_VERIFY", False))
     tries = int(getattr(config, "PICTURE_VERIFY_TRIES", 5)) if verify else 1
     log = {"clip": work_dir.name, "index": spec.index, "label": spec.event_label, "source": source,
            "subject": subject, "tries": []}
+    if host_log:
+        log["host"] = host_log
     ok = False
     learned, saw_text = [], False               # refinement carried from each refused try to the next
     if verify:

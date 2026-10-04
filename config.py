@@ -234,6 +234,10 @@ PICTURE_VERIFY_TRIES = 5      # 28 Sept: 5 tries, each refined by the last refus
 # action sound (laughter, applause, run, typing, honk) is drawn as the OBJECT that makes it; several possible makers ->
 # the VLM picks from the sound's frames, else the maker the subject names, else a fixed default (reason.MAKERS).
 PICTURE_MAKER = False
+# PICTURE_HOST (4 Oct 2026, three blind rounds on DEV, src/stage6_visual_augmentation/host.py): a sound under the
+# AudioSet Alarm node (siren, fire alarm, alarm clock, horns ...) draws the whole thing its device is part of, or the
+# device on its mount, instead of the lone device (a Siren drew a red beacon, an Alarm a bell). Other sounds unchanged.
+PICTURE_HOST = False
 # 2026-09-28 (Design review: the hand-written rewrite wording is "too specific"): the clearer wording used by the redraw loop is
 # written by the VLM (text only) from the maker object and the sound, with list guards; fallback the plain subject
 # (verify.describe). Off = the hand-written AMBIGUOUS rewrites.
@@ -535,7 +539,8 @@ def use_shipped() -> dict:
                  # The maker rule (28 Sept, after the sitting was cancelled): an action sound is drawn as the object
                  # that makes it. Redraw of the 5 changed inspector pictures: all pass try 1, all fine by eye.
                  # PICTURE_LOOK_VLM stays off: its redraws were worse by eye (2 fire alarms + steam fell to word cards).
-                 ("PICTURE_MAKER", True)):
+                 ("PICTURE_MAKER", True),
+                 ("PICTURE_HOST", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     # the best DEV detector TO1+F7F8 (docs/history/preregistrations/prereg_round13_detector_push.md, release v1.2.0, 30 Sept: ship the best): confidence-tiered
