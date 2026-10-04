@@ -88,6 +88,10 @@ def main():
             off = item[4] if len(item) > 4 else OFFSET
             c = C[clip]
             video = os.path.join(MEDIA, c["video"].replace("../inspector/", ""))
+            host = video.replace(os.path.join("media", "bysig"), os.path.join("media", "bysig_host")).replace(
+                "media/bysig/", "media/bysig_host/")
+            if os.path.exists(host):           # re-rendered with the alarm-type picture rule (same display spans)
+                video = host
             out = os.path.join(TMP, f"{r}_{k}.jpg")
             frame(video, t + off, out)
             ax = axes[r][k]

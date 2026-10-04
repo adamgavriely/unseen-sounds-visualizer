@@ -178,8 +178,10 @@ themselves kinds of siren that were not heard (a police car, an ambulance, a fir
 exactly the guess described above. Without a larger thing, the picture collapsed to the bare device. \emph{Alarm} is the one
 part of the sound list where these two requirements meet. The picture step therefore asks the vision model (text only) whether the device is part of a larger thing or
 a whole object. If it is a part, the picture shows the larger thing in a form general enough to cover all its kinds
-(``an emergency vehicle'' rather than a guessed ``ambulance''; a detected \emph{Ambulance (siren)} is still drawn
-as an ambulance) with the device going off; if it is a whole object, it is drawn
+(the prompt says ``an emergency vehicle'' rather than a guessed ``ambulance''; a detected \emph{Ambulance (siren)}
+is still drawn as an ambulance) with the device going off. The image model still has to draw one vehicle, and draws a
+fire engine or a police car with lights and siren; what matters for the viewer is that it reads at a glance as an
+emergency vehicle sounding its siren, which the lone beacon did not; if it is a whole object, it is drawn
 where a person sees it (a fire alarm on a wall, a smoke detector on a ceiling), with what a person sees when it goes
 off (flashing lights, shaking). The same word-list guards as above still apply, and every sound outside the family keeps
 its prompt, negative prompt and random seed unchanged. The rule was chosen over a per-sound fix because it is defined by
