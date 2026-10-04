@@ -36,6 +36,37 @@ and one picture is shown per sound, without words (Section~\ref{sec:problem}).
         automatic picture check was validated on known cases, not against a human rater.
 \end{itemize}
 
+\subsection{Side check on fresh AudioSet clips}\label{sec:fresh}
+After the system was frozen, the final system and direct audio-to-image generation were run once, unchanged, on 340 of
+the 422 fresh AudioSet-Strong clips (Appendix~\ref{app:datahistory}); the other 82 were left out to save GPU time,
+before any score was read. No rule was set on these clips. AudioSet has no needed or on-screen marks, so the scoring
+rule was fixed before the run: a needed sound is a labelled sound of the 33 consequential classes of the AudioSet
+rounds (alarms, sirens, horns, dogs, glass, gunshots, explosions and similar), with runs of one family less than 2\,s
+apart joined; a picture of any other labelled non-speech sound is neither a hit nor wrong; hits use the window of
+Section~\ref{sec:matching}, and a second picture of the same sound counts as wrong. Table~\ref{tab:fresh} gives the
+result (\fp{benchmark/gold/fresh_side_by_side.json}). AudioSet labels only some sounds of a clip and does not mark
+what is on screen, so right pictures of unlabelled sounds count as wrong and visible sounds count as needed; the table
+is a rough side-by-side, not a main result.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Fresh AudioSet-Strong clips (340 clips, 65 needed sounds), scored once after the system was frozen. Wrong:
+other sound / nothing / repeat. Cost: (4 $\times$ misses + 2 $\times$ wrong) / clips, lower is better. Difference:
+the final system's cost minus this system's, per clip, with a 95\,\% interval from a paired clip bootstrap
+(100{,}000 draws) and a two-sided $p$-value.}
+\label{tab:fresh}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrll}
+\toprule
+System & Hits & Wrong & F1 & Cost & Difference (final $-$ this) [95\,\% CI] & $p$ \\
+\midrule
+Show nothing & 0 / 65 & 0 & 0.00 & 0.765 & $+0.041\ [-0.065, +0.141]$ & $0.45$ \\
+Direct audio-to-image & 21 / 65 & 70 (43/19/8) & 0.27 & 0.929 & $-0.124\ [-0.224, -0.018]$ & $0.025$ \\
+\textbf{Final system} & 12 / 65 & 31 (19/12/0) & 0.22 & 0.806 & & \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
 \subsection{Threats to validity}
 \begin{enumerate}[label=\textbf{T\arabic*.}, leftmargin=*]
   \item \textbf{Development versus test.} Every decision was made on the development set; the test set was only
@@ -60,5 +91,5 @@ Each item addresses one of the limits above.
   \item \textbf{A second annotator} for 30 clips (the packet exists), to measure label agreement.
   \item \textbf{The presence-versus-production question}: a much larger vision model, a comparison of the frame at the
         sound's onset with a frame just before it, or an external box around the named object.
-  \item \textbf{A detector that hears sounds under speech and music}, tested on a fresh set of 422 AudioSet clips that no rule in this report has seen.
+  \item \textbf{A detector that hears sounds under speech and music}, tested on fresh AudioSet clips such as those of Table~\ref{tab:fresh}, on which no rule in this report was set.
 \end{enumerate}
