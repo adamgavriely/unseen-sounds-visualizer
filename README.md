@@ -45,12 +45,23 @@ scored. Limits are discussed in Section 9 of the report.
 
 ```
 pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
+python3.11 -m venv ~/venv_flap
+~/venv_flap/bin/pip install --no-deps -r requirements_finelap.txt --extra-index-url https://download.pytorch.org/whl/cu121
+python download_models.py
 ```
 
 - Python 3.11 with PyTorch 2.5.1 and transformers 5.16.1; `requirements.txt` lists every package with the version
   used. FFmpeg must be on the path.
 - One GPU with about 80 GB of memory (an NVIDIA H200 was used; two A100 80 GB cards also work). Qwen-Image alone
-  needs about 57 GB in bf16. The models from Hugging Face are downloaded on first use; set `HF_TOKEN` for gated ones.
+  needs about 57 GB in bf16.
+- `download_models.py` downloads every Hugging Face model the final system loads (about 200 GB), including the ones
+  the detectors load inside their own code: CLAP (`laion/clap-htsat-unfused`, FlexSED), `roberta-base` (FineLAP),
+  `bert-base-uncased` (DASM; point `BERT_DIR` at its snapshot folder) and `sentence-transformers/all-mpnet-base-v2`
+  (the listener answers). After it, `main.py` runs offline (`HF_HUB_OFFLINE=1`). It also makes two cache fixes that
+  PyTorch 2.5.1 needs: transformers 5.x refuses `.bin` weights with PyTorch older than 2.6, so CLAP is loaded from its
+  safetensors conversion (same weights), and FineLAP's `roberta-base` is made available under that old name.
+- FineLAP runs in its own environment with transformers 4.51.3 (`requirements_finelap.txt`, every package pinned).
+  Install it with `--no-deps`: letting pip resolve upgrades torch and breaks torchaudio and cuDNN in that environment.
 - The final system also needs these outside repositories and environments. Their locations are read from environment
   variables (see [`.env.example`](.env.example)); export them in the shell before running `main.py`.
 
@@ -103,6 +114,7 @@ Some files were renamed after release v1.2.0; the old-to-new name table is in
 | path | content |
 |---|---|
 | `main.py`, `config.py` | entry point and configuration (`use_shipped()` = final system) |
+| `requirements.txt`, `requirements_finelap.txt`, `download_models.py` | the two environments and the model download (see Installation) |
 | `src/` | the pipeline, one package per stage (`stage1_…` to `stage7_…`) |
 | `benchmark/` | human labels, per-sound scorer, scoring harness and the per-clip input builder (research rounds and DEV/TEST caches: release v1.2.0) |
 | `tests/` | unit tests |
