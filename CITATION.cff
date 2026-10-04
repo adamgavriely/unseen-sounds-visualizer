@@ -5,8 +5,8 @@ authors:
   - family-names: Gavriely
     given-names: Adam
     affiliation: "Bar-Ilan University, Department of Computer Science"
-version: 1.3.4
+version: 1.3.5
 license: MIT
-date-released: 2026-10-04
+date-released: 2026-10-05
 repository-code: "https://github.com/adamgavriely/MscFinalProject"
 type: software
