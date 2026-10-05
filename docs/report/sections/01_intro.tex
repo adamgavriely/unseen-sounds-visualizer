@@ -42,8 +42,8 @@ way, and the failures add up:
 \begin{itemize}
   \item \textbf{Hearing.} Taggers rank \emph{Speech} or \emph{Music} above a quiet door or hammer, so the sound never
         becomes a candidate; most raw detections are not real sounds.
-  \item \textbf{Confirming.} An audio-language model asked ``is there a siren?'' is right only about a third of the time
-        when it alone says yes.
+  \item \textbf{Confirming.} A sound that only one audio-language model names in its list of heard sounds is real only
+        about a third of the time.
   \item \textbf{Seeing.} A vision-language model answers ``is there a bell?'' when asked ``is the bell ringing?'': it takes
         presence for production. Every extra vision tool tried (object boxes, crops, segmentation, synchrony, sound
         localisation) traded one error for another.
