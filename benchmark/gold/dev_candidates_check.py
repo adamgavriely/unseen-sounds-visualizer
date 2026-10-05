@@ -487,7 +487,7 @@ def stage5(arms):
         for arm in arms:
             for k, v in base.items():
                 setattr(config, k, v)
-            if arm == "EATR":                           # the BAR= path of slurm/job_protocol.sh (release v1.2.0)
+            if arm == "EATR":                           # the BAR= path of the release v1.2.0 job script
                 config.DISPLAY_THRESHOLD = config.AUGMENT_THRESHOLD = F["EAT_DISP"]; config.AED_THRESHOLD = F["EAT_AED"]
             root = DC / f"{arm}_{sysn}"
             logp = root / "_stage5_log.json"

@@ -21,7 +21,6 @@ benchmark/gold/live_*
 
 # Scratch frames written by docs/report/figures/make_examples_figure.py
 docs/report/figures/_frames/
-docs/report/figures/examples.png
 
 # LaTeX build files
 *.aux

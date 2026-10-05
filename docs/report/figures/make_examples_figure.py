@@ -101,7 +101,6 @@ def main():
         axes[r][0].set_title(title, loc="left", fontsize=8.5, fontweight="bold")
     fig.tight_layout(w_pad=0.4, h_pad=0.6)
     fig.savefig(os.path.join(ROOT, "examples.pdf"), dpi=200)
-    fig.savefig(os.path.join(ROOT, "examples.png"), dpi=110)
     print("examples.pdf")
 
 

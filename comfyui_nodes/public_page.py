@@ -1,12 +1,11 @@
 """A simple public page on top of ComfyUI: upload a video, press the button, get the video with the sound pictures.
 
-People never see the ComfyUI graph. The page sends the video to the ComfyUI server that runs next to it (same
-cluster job, comfyui_nodes/run_on_cluster.sh), queues the same three boxes as the MscProj_video workflow, follows the step text
+People never see the ComfyUI graph. The page sends the video to a running ComfyUI server (started with comfyui_nodes/comfy_start.py), queues the same three boxes as the MscProj_video workflow, follows the step text
 the node sends, and shows the finished video and the list of pictures. One video at a time; others wait in line.
 
-    ~/venv_gradio/bin/python comfyui_nodes/public_page.py [--comfy http://127.0.0.1:8188] [--port 7860] [--share]
+    python comfyui_nodes/public_page.py [--comfy http://127.0.0.1:8188] [--port 7860] [--share]
 
-With --share, Gradio prints a public https://....gradio.live link (works from outside the cluster network, only while the job runs).
+With --share, Gradio prints a public https://....gradio.live link (works only while the page runs).
 """
 from __future__ import annotations
 

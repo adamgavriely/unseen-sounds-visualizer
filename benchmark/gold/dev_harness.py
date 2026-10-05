@@ -39,9 +39,8 @@ from src.types import AudioEvent
 from src import trail as TRAIL_LOG                 # Decision Inspector: per-clip decision trail (logging only)
 
 WORK = DCC.WORK
-# the scored runs used two cluster checkouts; set the variables to point at them (default: this checkout)
-MAIN_CHECKOUT = os.environ.get("MSCPROJ_MAIN_CHECKOUT", str(_ROOT))
-CACHE_CHECKOUT = os.environ.get("MSCPROJ_CACHE_CHECKOUT", str(_ROOT))
+# outputs and caches are read from this checkout
+MAIN_CHECKOUT = CACHE_CHECKOUT = str(_ROOT)
 R13 = WORK / "r13"
 STAGE4, MEMO, PANNS_DIR = R13 / "stage4.json", R13 / "ask_memo.json", R13 / "panns"
 OUT = _ROOT / "benchmark" / "gold" / "dev_harness.json"

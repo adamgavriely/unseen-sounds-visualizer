@@ -122,8 +122,8 @@ pictures by its answer kept 15 of 28 development hits (round 44, Appendix~\ref{a
 
 \subsection{Additional vision tools trade one error for another}
 \emph{Expected:} adding an object detector, a segmentation model, a crop of the source, a model of audio-visual
-synchrony or a sound-localisation model should help. \emph{Actually:} most silenced more on-screen sounds only by
-silencing about as many needed ones, and the two that did better on the labelled stretches gave no gain in the full pipeline (Figure~\ref{fig:gate}). Removing two wrong pictures saves $2\times2 = 4$ cost units;
+synchrony or a sound-localisation model should help. \emph{Actually:} most silenced two more on-screen sounds only by
+silencing about one more needed sound, and the two that did better on the labelled stretches gave no gain in the full pipeline (Figure~\ref{fig:gate}). Removing two wrong pictures saves $2\times2 = 4$ cost units;
 losing one needed sound costs 4: no gain. Localisation maps change little when the audio is silent or off-screen, so these models still point at a visible
 object~\cite{juanola2025critical}: they answer \emph{where} a sound comes from, not \emph{whether} its source is visible.
 
@@ -134,7 +134,7 @@ object~\cite{juanola2025critical}: they answer \emph{where} a sound comes from, 
 \caption{Every variant of the on-screen check that was tried, scored on the subset of development sounds that reach
 the check and whose stretches the author labelled (41 on-screen sounds, 38 needed sounds). The dashed line has the same cost as the final system: silencing two more
 on-screen sounds is worth losing one needed sound. All variants lie near this line. Two reached the pass region
-fixed before the tests, but neither passed in the full pipeline: the synchrony vote changed no picture, and
+fixed in advance, but neither passed in the full pipeline: the synchrony vote changed no picture, and
 name-all + crop lost three hits (Appendix~\ref{app:history}). Labels name the extra tool tried: an object box, a crop around the named object, an audio-visual
 synchrony model, a longer human-style question chain, or a fourth vote.}
 \label{fig:gate}
