@@ -166,6 +166,10 @@ def main():
             assert len(keep_i) == TEST_SET, len(keep_i)
         out[name] = compare(rows, base[name])
         out[name]["parity_with_final_vs_baselines"] = parity
+        kept = [c for c in clips if name != "test" or c[0] not in DROP]
+        out[name]["per_clip"] = [{"clip": st, **{s: {"cost": float(DCC.clip_cost(rows[s][i])),
+                                                     **{k: int(rows[s][i][k]) for k in ("hit", "miss", "visible", "cross", "phantom", "dup")}}
+                                                 for s in rows}} for i, (st, _) in enumerate(kept)]
     if MODEL.startswith("qwen"):
         out["reply_lines_dropped_unknown_name"] = _Q["dropped"]
     dst = HERE / f"result_{MODEL}.json"
