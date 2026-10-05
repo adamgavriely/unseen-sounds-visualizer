@@ -11,7 +11,8 @@ Appendix~\ref{app:sources}); Appendix~\ref{app:glossary} maps them to plain name
 \paragraph{Clip-level benchmark (August--September).} 274 short clips (10--20\,s) were labelled by the author into four
 scenarios: unseen ambient (48 clips), mixed (25), seen ambient (132) and no ambient (69). Four sourcing strategies
 (keyword scraping, AudioSet strong segments, curated film scenes, UnAV-100 overlap moments) and an automatic filter
-all landed at 15--20\,\% usable clips, which is why the set stopped at 274 rather than the planned 300. A test set of
+all landed at 15--20\,\% usable clips; with the resources of this project and no existing data that fits the task,
+gathering enough correctly labelled footage was too hard, which is why the set stopped at 274 rather than the planned 300. A test set of
 100 clips (25 per scenario) was used by the early systems and the model judge (Appendix~\ref{app:judge}).
 
 \paragraph{Per-sound labels (22 September).} After the judge-based evaluation was abandoned, clips were labelled per
@@ -340,7 +341,7 @@ am.\ 18--20 & visibility signals (video, SAM 3, synchrony) & all at break-even 2
 am.\ 21 & final September TEST table & Section~\ref{sec:sept-table} & reported \\
 am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUROC 0.53; AUROC 0.661 & rejected \\
 \multicolumn{4}{l}{\emph{Rounds 4--12 (AudioSet harness, 28 Sept)}} \\
-4 & BEATs self-veto replaces PANNs veto & 415 neutral; later worse on DEV and TEST (2.83 vs 2.63, $p$ 0.043) & reverted 30 Sept \\
+4 & BEATs self-veto replaces PANNs veto & 415 neutral; later worse on DEV (13/30/3.10 vs 14/24/2.78 with the PANNs veto) & reverted 30 Sept \\
 5 & EAT, Dasheng & 415 $+0.087$ & fail \\
 6 & DASM as detector & 415 $+0.294\ [+0.111, +0.511]$ & fail (kept as witness) \\
 7, 7b & SAM-Audio separation & quality check failed & stop \\
@@ -350,7 +351,7 @@ am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUR
 11 & masker tests & all worse & no pick \\
 12 & cost v2 on AudioSet & shipped 1.650 vs nothing 0.986 & harness retired \\
 \multicolumn{4}{l}{\emph{Rounds 13--28 (29--30 Sept)}} \\
-13 & listener rescue, many question forms; R13-1 twin-max & ${\sim}3$ wrong per extra hit; R13-1 TEST = B0r & R13-1 kept inside TO1 \\
+13 & listener rescue, many question forms; R13-1 twin-max & ${\sim}3$ wrong per extra hit & R13-1 kept inside TO1 \\
 14 & TO1+F7F8 & old DEV 18/24/2.45 vs 2.78; merged 23/48/3.155; TEST 22/38/2.818 ($p = 0.13$) & shipped (SHIP1) \\
 16 & N2b masked-weak veto & 23/44/3.042; TEST 22/35/2.750 & shipped \\
 19--20 & DR2 DASM rescue & 24/44/2.986 & shipped (SHIP2) \\
@@ -373,14 +374,14 @@ re-check & visibility re-check (gold) & 3/14 flips; control 0/20 & gold change \
 36--37 & DASM impact peaks + VLM naming; BOX gate & +2 cross; $-7$ seen silenced & rejected \\
 38 & CF, BOX-2, GBTP, SHIP8+BOX2, SYNC, SYNC-2 & best BOX-2 arm 29/26/2.366 & rejected \\
 39 & DETACHED-ADD, CONTRAST, MAKER-VIS, RELABEL-GATE & +7 wrong; +142 other; $-9$ hits; hit lost & rejected \\
-40--40e & EXPECT chain & A4: DEV 31/26/2.254, TEST 25/35/2.614 & not shipped \\
+40--40e & EXPECT chain & A4: DEV 31/26/2.254 vs 28/21/2.282; failed the more-hits rule, gain only on the second development batch & not shipped \\
 41 & AGREE, NAMED-VETO, PRIOR415 & below bar; hits lost; no change & rejected \\
 \multicolumn{4}{l}{\emph{Rounds 42--57 (1 Oct)}} \\
 42 & held-out check of EXPECT-A4 audio chain & 74/92 = 0.80 precise vs 0.38--0.39 raw & diagnostic \\
-42b & EXPECT-A5 (7 vouched families) & DEV 30/21/2.169; TEST 23/31/2.614 & not shipped \\
+42b & EXPECT-A5 (7 vouched families) & DEV 30/21/2.169; the family list kept only the two development hits it was checked on & not shipped \\
 43--43c, 50 & gate gold-set variants (HUMAN, HUMAN-2, HUMAN-ADD) & one sound short of the bar at best & rejected \\
-44 & AVNAME (eyes + ears name the sound) & rename 15/34/3.380 (13 of 28 hits lost); drop 27/17/2.225, TEST no change & rejected \\
-45 & AGREE-EARS (second listener family) & DEV 31/24/2.197; 415 0.833 $<$ 0.85; TEST 2.659 & rejected \\
+44 & AVNAME (eyes + ears name the sound) & rename 15/34/3.380 (13 of 28 hits lost); drop 27/17/2.225 & rejected \\
+45 & AGREE-EARS (second listener family) & DEV 31/24/2.197; 415 0.833 $<$ 0.85 & rejected \\
 46, 46b & gold scope (blind rating of wrong pictures) & $\approx$1 in 6 is a real unlisted sound & no gold edit \\
 -- & merge gap 2.5\,s & 28/20/2.254 & shipped \\
 47 & GRP-A grouping by Qwen3-Omni, $\leq$8\,s & 28/18/2.197 & shipped \\
