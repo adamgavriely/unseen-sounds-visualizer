@@ -41,7 +41,7 @@ says whether its source is on screen, an image model draws it. In practice every
 way, and the failures add up:
 \begin{itemize}
   \item \textbf{Hearing.} Taggers rank \emph{Speech} or \emph{Music} above a quiet door or hammer, so the sound never
-        becomes a candidate; most raw detections are not real sounds.
+        becomes a candidate; only about 40\,\% of raw detections can be confirmed as real sounds.
   \item \textbf{Confirming.} A sound that only one audio-language model names in its list of heard sounds is real only
         about a third of the time.
   \item \textbf{Seeing.} A vision-language model answers ``is there a bell?'' when asked ``is the bell ringing?'': it takes
@@ -88,7 +88,7 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
         (Section~\ref{sec:hard}, with the capabilities today's models lack in Section~\ref{sec:missing}).
   \item \textbf{A pre-registered method at scale.} 66 pre-registered rounds, each accepting a change only by a rule
         written down before its run, over more than 150 full-pipeline variants and more than 30 open models
-        (Section~\ref{sec:scale}, Appendix~\ref{app:history}), with a record of every rejected idea and why it failed
+        (Section~\ref{sec:scale}, Appendix~\ref{app:history}), with a record of every round (Table~\ref{tab:rounds}) and the main rejected ideas
         (Table~\ref{tab:rejected}), so the next attempt need not repeat them. No single model swap produced the gain;
         it is the sum of small rules, each closing one failure.
   \item \textbf{An evaluation protocol} (the answer to RQ4): per-sound human labels, errors split by cause, and a cost

@@ -18,8 +18,8 @@ lists the main ideas that failed.
 \toprule
 Step & Ready-made choice & What goes wrong (evidence) & What the final system does \\
 \midrule
-Hear & one sound tagger & quiet sounds under speech or music never become candidates; under 40\,\% of raw detections
-are real (Section~\ref{sec:hard-confirm}, Figure~\ref{fig:listeners}) & two complementary detectors, with every weak candidate checked \\
+Hear & one sound tagger & quiet sounds under speech or music never become candidates; only about 40\,\% of raw detections
+are confirmed real (Section~\ref{sec:hard-confirm}, Figure~\ref{fig:listeners}) & two complementary detectors, with every weak candidate checked \\
 Confirm & ask an audio-language model & a sound one listener names is real 37\,\% of the time
 (Figure~\ref{fig:listeners}) & a weak sound needs a witness: DASM, both listeners, or one listener plus the scene \\
 See & ask a vision-language model ``is it visible?'' & presence is taken for production (31 of 36 audited errors);
@@ -89,13 +89,11 @@ detectors were never trained on separated audio.
 \emph{Expected:} an audio-language model can confirm ``is there a siren?''. \emph{Actually:} its answers are only
 weak evidence. On the screening set, a weak detection that neither listener names is a real sound 22\,\% of the time,
 one named by one listener 37\,\%, and one named by both 62\,\% (Figure~\ref{fig:listeners}; AudioSet labels are
-incomplete, so these shares are lower bounds, and the ordering, not the level, is the evidence). Raw detections are right
-under 40\,\% of the time. A full chain of listener, timing and DASM checks reaches 80\,\%, but only for the few sounds
+incomplete, so these shares are lower bounds, and the ordering, not the level, is the evidence). Only about 40\,\% of raw
+detections can be confirmed as real. A full chain of listener, timing and DASM checks reaches 80\,\%, but only for the few sounds
 that survive the chain. Every way to add more
-sounds found real ones but paid two or more wrong pictures per new hit. The best such rule found two more hits than the
-final system on the development set, at about five extra wrong pictures each (31 hits and 26 wrong, against 29 and 15),
-so it failed the development rule; its test result, reported only, was no better (25 hits and 35 wrong, against 24 and
-24). No audio stage tried here separates a right off-screen name from a wrong one well enough to add hits without
+sounds found real ones but paid two or more wrong pictures per new hit. The best such rule added three hits for five wrong pictures on the
+development set (31 hits and 26 wrong, against 28 and 21 for its base) and was not shipped (Table~\ref{tab:rejected}). No audio stage tried here separates a right off-screen name from a wrong one well enough to add hits without
 two or more wrong pictures each.
 
 

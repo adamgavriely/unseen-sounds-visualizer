@@ -60,8 +60,8 @@ From 13 Sept the following rules governed every change (\fp{docs/history/plans/p
 \begin{enumerate}
   \item \textbf{Pre-register.} Before a run, write the idea, the exact rule, the data it is decided on and the pass
         bar, and commit it. Results are appended below the pre-registration, never edited into it.
-  \item \textbf{Decide on development data only.} The development set (or, for audio-only rules, the held-out 415)
-        decides. The test set is scored after a change ships and is only reported.
+  \item \textbf{Decide on development data only.} The development set decides; audio-only rules may first be
+        screened, and stopped, on the held-out 415. The test set is scored after a change ships and is only reported.
   \item \textbf{General rules only.} A rule must make sense for any video, run on one video at a time, and not name a
         clip or a single sound class (a rule that only ever fires on bells was rejected for this reason, Round 64).
   \item \textbf{Compare with the shipped pipeline.} Every candidate is scored as a full-pipeline variant on the same
@@ -160,7 +160,7 @@ other detectors (Sept, rounds 1--8) & FLAM, PretrainedSED (5 backbones), AST, CE
 source separation (Sept, R7) & HT-Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: with HT-Demucs, recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
 listener as verifier (R13) & ask Qwen3-Omni yes/no, multiple choice, open list on every weak candidate & finds 5--8 dropped real sounds but adds about 3 wrong pictures per hit \\
 newer listeners (R31--34) & MOSS-Audio, SpotSound, Kimi, Step-Audio & 3--10 wrong per extra hit; SpotSound answered yes to every query \\
-EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & best DEV 31/26/2.254: 2 more hits than the final system for 11 more wrong pictures (fails pass rule (a)); the gate cannot refuse a wrong off-screen name \\
+EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & best DEV 31/26/2.254 against its base SHIP8 28/21/2.282: +3 hits for +5 wrong; failed the pre-set ``more hits'' rule (wrong pictures of other sounds rose 13 $\to$ 17), not shipped; the gate cannot refuse a wrong off-screen name \\
 short twins, band lists (R49, R56) & add weak or short detections both models half-hear & BANDLIST 0 hits, +6 wrong; TWIN-SHORT 27/36/2.761 \\
 tagger ensemble (R63) & calibrated EAT/SSLAM ensemble on BEATs windows & on the 415: 33\,\% fewer spans but recall 0.152 vs 0.197 \\
 \multicolumn{3}{l}{\emph{Remove wrong pictures}} \\

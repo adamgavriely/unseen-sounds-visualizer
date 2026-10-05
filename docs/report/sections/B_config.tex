@@ -64,7 +64,7 @@ listener after the detectors missed it; a \emph{twinned} span is one both detect
 }
 
 The DASM thresholds 0.0839 and 0.575 and the FineLAP bar 0.329 were calibrated during development
-(Appendix~\ref{app:history}); every other threshold was set once and not tuned on the test set. Steps 4--8 and 12--16 depend on listener answers that are computed from a first pass
+(Appendix~\ref{app:history}); every other threshold was set once. No threshold used the test set. Steps 4--8 and 12--16 depend on listener answers that are computed from a first pass
 with an earlier configuration (\cfgv{use_scored()}; the saved lists of candidate sounds, called pools), so the final detector cannot run without that pass
 (Section~\ref{sec:repro}).
 
