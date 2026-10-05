@@ -19,13 +19,9 @@ data/input/*
 # Per-clip inputs that main.py builds for a new video (src/listener_prep.py)
 benchmark/gold/live_*
 
-# Cluster job output
-logs/
-*.out
-*.err
-
 # Scratch frames written by docs/report/figures/make_examples_figure.py
 docs/report/figures/_frames/
+docs/report/figures/examples.png
 
 # LaTeX build files
 *.aux
@@ -36,8 +32,5 @@ docs/report/figures/_frames/
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.out
 
-# Local archive of removed material, archives and shortcuts
-archive/
-*.zip
-*.lnk

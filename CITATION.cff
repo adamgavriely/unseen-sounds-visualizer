@@ -10,3 +10,13 @@ license: MIT
 date-released: 2026-10-05
 repository-code: "https://github.com/adamgavriely/MscFinalProject"
 type: software
+preferred-citation:
+  type: report
+  title: "Visual Augmentation of Audio Semantics for Accessibility"
+  authors:
+    - family-names: Gavriely
+      given-names: Adam
+  institution:
+    name: "Bar-Ilan University"
+  year: 2026
+  url: "https://github.com/adamgavriely/MscFinalProject/blob/main/docs/report/report.pdf"

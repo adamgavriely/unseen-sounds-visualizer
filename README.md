@@ -44,10 +44,15 @@ scored. Limits are discussed in Section 9 of the report.
 ## Installation
 
 ```
+python3.11 -m venv ~/venv_ms && source ~/venv_ms/bin/activate
 pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
+git clone https://github.com/JHU-LCAP/FlexSED ~/FlexSED
+git clone https://github.com/cai525/Transformer4SED ~/Transformer4SED
 python3.11 -m venv ~/venv_flap
 ~/venv_flap/bin/pip install --no-deps -r requirements_finelap.txt --extra-index-url https://download.pytorch.org/whl/cu121
+cp .env.example .env        # then set the paths and HF_TOKEN
 python download_models.py
+python -m pytest tests      # 11 tests, CPU only
 ```
 
 - Python 3.11 with PyTorch 2.5.1 and transformers 5.16.1; `requirements.txt` lists every package with the version
@@ -57,7 +62,10 @@ python download_models.py
 - `download_models.py` downloads every Hugging Face model the final system loads (about 200 GB), including the ones
   the detectors load inside their own code: CLAP (`laion/clap-htsat-unfused`, FlexSED), `roberta-base` (FineLAP),
   `bert-base-uncased` (DASM; point `BERT_DIR` at its snapshot folder) and `sentence-transformers/all-mpnet-base-v2`
-  (the listener answers). After it, `main.py` runs offline (`HF_HUB_OFFLINE=1`). It also makes two cache fixes that
+  (the listener answers). PANNs downloads its CNN14 checkpoint to `~/panns_data/` on first use, so run `main.py`
+  once online or place `Cnn14_DecisionLevelMax.pth` there; after that, `main.py` runs offline (`HF_HUB_OFFLINE=1`).
+  DASM reads its weights from the Transformer4SED folder: put the files of `CPF2/detect_any_sound` in
+  `$T4SED_ROOT/pretrained_model/detect_any_sound/text_query/` (`as_full_text_query_best_model.pt`, `config.yaml`). It also makes two cache fixes that
   PyTorch 2.5.1 needs: transformers 5.x refuses `.bin` weights with PyTorch older than 2.6, so CLAP is loaded from its
   safetensors conversion (same weights), and FineLAP's `roberta-base` is made available under that old name.
   If CLAP's tokenizer files or its safetensors weights are missing, FlexSED does not stop with an error: it gives

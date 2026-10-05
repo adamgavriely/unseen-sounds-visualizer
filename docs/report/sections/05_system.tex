@@ -125,8 +125,8 @@ precision for speed. CFG: how strongly the picture follows the prompt.
 The two detectors complement each other: BEATs is strong on clear sounds, FlexSED hears quiet sounds under speech and
 music far better. Most of the development effort went into deciding which weak candidates to keep. The listeners are
 asked about each weak candidate in two ways -- a yes/no question (``Is the sound of a siren present in this
-recording?'') and an open list (``List every distinct non-speech sound you hear''). The witness rule rests on how often the listeners agree (Section~\ref{sec:hard}). Speech and music are never drawn; human sounds and all other sound
-families with a clear source are (Appendix~\ref{app:config}).
+recording?'') and an open list (``List every distinct non-speech sound you hear''). The witness rule rests on how often the listeners agree (Section~\ref{sec:hard}). Speech and music are never drawn; all other sounds with a clear source,
+human sounds included, can be drawn (Appendix~\ref{app:config}).
 
 \subsection{The on-screen check}\label{sec:gate}
 For every detected sound, the gate cuts its time span into stretches of about 5\,s, shows the vision model six frames
@@ -183,7 +183,7 @@ a whole object. If it is a part, the picture shows the larger thing in a form ge
 (the prompt says ``an emergency vehicle'' rather than a guessed ``ambulance''; a detected \emph{Ambulance (siren)}
 is still drawn as an ambulance) with the device going off. For a siren heard only as \emph{Siren}, the image model
 still has to draw one vehicle and drew a fire engine with lights and siren; what matters for the viewer is that it reads
-at a glance as an emergency vehicle sounding its siren, which the lone beacon did not; if it is a whole object, it is drawn
+at a glance as an emergency vehicle sounding its siren, which the lone beacon did not. If the device is a whole object, it is drawn
 where a person sees it (a fire alarm on a wall, a smoke detector on a ceiling), with what a person sees when it goes
 off (flashing lights, shaking). The same word-list guards as above still apply, and every sound outside the family keeps
 its prompt, negative prompt and random seed unchanged. The rule was chosen over a per-sound fix because it is defined by
@@ -192,11 +192,11 @@ also considered and rejected, because it would change pictures that were already
 blind on development clips, named 9 of 11 earlier pictures correctly (the two misses were the siren and the alarm);
 with the rule, they read all five changed development pictures correctly or partly correctly (prompt in
 Appendix~\ref{app:prompts}). In the final system the rule changes the pictures of 14 clips; all 16 of their pictures
-passed the picture check, 15 on the first try, with no word cards. The rule changes only the wording of a picture,
+passed the picture check, 15 on the first try. The rule changes only the wording of a picture,
 never which sound is shown or when, so the detection and scoring numbers of Section~\ref{sec:results} are unchanged.
 
-On screen, repeats of one sound less than 2.5\,s apart become one appearance, every picture stays at least 1.5\,s and
-at most 1\,s after its sound ends, and at most three pictures are shown at once.
+On screen, repeats of one sound less than 2.5\,s apart become one appearance, every picture stays on screen for at least
+1.5\,s and ends at most 1\,s after its sound ends, and at most three pictures are shown at once.
 
 The scored numbers come from a scoring program (the ``harness'') that re-runs the pipeline's own decision functions
 on saved model outputs; an

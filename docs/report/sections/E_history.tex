@@ -67,10 +67,10 @@ From 13 Sept the following rules governed every change (\fp{docs/history/plans/p
   \item \textbf{Compare with the shipped pipeline.} Every candidate is scored as a full-pipeline variant on the same
         clips as the current shipped system, not on a proxy; a component screen may stop an idea early but cannot
         ship it.
-  \item \textbf{Hits first.} Losing a few hits is acceptable only if many wrong pictures go (the fewer-pictures
-        clause, Section~\ref{sec:passrules}).
+  \item \textbf{Hits first.} Losing a few hits is acceptable only if many wrong pictures go (pass rule (b),
+        Section~\ref{sec:passrules}).
   \item \textbf{Consult and record.} Major choices were reviewed by panels of large-language-model reviewers (Claude, with assigned roles, two to five per panel, one to four rounds), whose reports are in
-        \fp{docs/history/review/} and \fp{docs/panel_*.md}; every decision and its reason is in a dated log.
+        \fp{docs/history/review/} and \fp{docs/history/panels/}; every decision and its reason is in a dated log.
 \end{enumerate}
 
 \subsection{Phases}
@@ -185,7 +185,7 @@ context $\pm$5\,s (R59) & give the listener more context & it names what it \emp
 
 \paragraph{The main lesson.} Two patterns recur in this table. First, the missing sounds can often be found -- a
 listener asked about the whole clip names the hammer, the train, the bell -- but every way of adding them brings two
-to four wrong pictures per hit, because nothing downstream can tell a right off-screen name from a wrong one. Second,
+to five wrong pictures per hit, because nothing downstream can tell a right off-screen name from a wrong one. Second,
 every change to the gate moves along the same trade-off line: it silences more on-screen sounds only by silencing
 about as many needed ones. Section~\ref{sec:analysis} measures both.
 
@@ -269,8 +269,7 @@ price of a few hits, which F1, weighing both equally, does not reward.
 \subsection{Comparisons between versions}\label{app:versions}
 The final development phase compared each accepted change with the version before it and, early on, with the
 September baseline (``B0r''). Paired clip bootstrap on the test set, 2{,}000 draws; $d$ = mean per-clip cost difference;
-one-sided $p$ (a two-sided value is about twice as large); see Table~\ref{tab:versions}. These use 2{,}000 draws and
-one-sided $p$-values; the body uses 100{,}000 draws and two-sided $p$-values, so the two are not directly comparable.
+one-sided $p$ (a two-sided value is about twice as large); see Table~\ref{tab:versions}. The body uses 100{,}000 draws and two-sided $p$-values, so the two are not directly comparable.
 \begin{table}[htbp]\centering\small
 \caption{Comparisons between versions (test set, one-sided). Test-set reads made during development, uncorrected
 for multiplicity; none was used to accept a change.}\label{tab:versions}
@@ -314,7 +313,7 @@ screening set; hold = parked; no-op = changed no picture.
 
 One row per round or main arm, in order. Results are hits / wrong / cost on merged DEV (55 or 58 needed, see
 Appendix~\ref{app:datahistory}) unless marked; ``415'' = held-out AudioSet-Strong screen; ``old DEV'' = DEV-49. Full text,
-bars and line numbers: \fp{docs/history/preregistrations/prereg_v4.md} (amendments), \fp{docs/prereg_round4..12*.md},
+bars and line numbers: \fp{docs/history/preregistrations/prereg_v4.md} (amendments), \fp{docs/history/preregistrations/prereg_round*.md},
 \fp{docs/history/preregistrations/prereg_round13_detector_push.md} (rounds 13--66). Counted from that file: rounds 13--28 ran 129 new
 full-pipeline variants (106 on DEV-49 alone), rounds 29--41 ran 21 more and 42 component screens, rounds 42--57 ran 5
 full variants and about 30 screens, rounds 58--66 four full variants and 15 screens.

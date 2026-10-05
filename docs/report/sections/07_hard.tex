@@ -23,7 +23,7 @@ are real (Section~\ref{sec:hard-hear}) & two complementary detectors, with every
 Confirm & ask an audio-language model & a sound one listener names is real 37\,\% of the time
 (Figure~\ref{fig:listeners}) & a weak sound needs a witness: DASM, both listeners, or one listener plus the scene \\
 See & ask a vision-language model ``is it visible?'' & presence is taken for production (31 of 36 audited errors);
-AUROC 0.647; answers follow the question's form & three questions per 5-s stretch, the a/b question asked in both orders; silenced only if
+AUROC 0.647 (Section~\ref{sec:hard-bias}); answers follow the question's form & three questions per 5-s stretch, the a/b question asked in both orders; silenced only if
 every stretch is visible \\
 Draw & audio-to-image model & draws the whole scene, including what is on screen & label-guarded text prompt;
 the picture is checked and redrawn up to five times \\
@@ -140,7 +140,7 @@ synchrony model, a longer human-style question chain, or a fourth vote.}
 \label{fig:gate}
 \end{figure}
 
-\subsection{Answer-form biases}
+\subsection{Answer-form biases}\label{sec:hard-bias}
 \emph{Expected:} a clear question gets a clear answer. \emph{Actually:} given options (a) and (b), the 27B model picks
 (a) 88\,\% of the time in one test, a known letter preference of language models~\cite{zheng2024pride}; asked yes/no,
 it leans to ``no''; asked for free text, its answer can be cut off.

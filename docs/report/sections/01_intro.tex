@@ -12,7 +12,7 @@ a quarter) are danger sounds or key moments (importance 3, Section~\ref{sec:need
 
 What a viewer loses therefore depends on whether the source is visible. A siren over a visible ambulance tells the
 viewer nothing new. A siren over a crowd looking up \emph{is} the scene. This project targets the second case, which
-none of the existing channels covers: Subtitles carry speech only. Hand-written sound captions are rare, and the captioning rules
+none of the existing channels covers. Subtitles carry speech only. Hand-written sound captions are rare, and the captioning rules
 say which sounds to describe but give no tool to find them. Sound-awareness apps for DHH
 users~\cite{soundwatch,homesound} alert to sounds in the room, not in a recorded video, and do not ask whether the
 viewer can already see the source. Automatic audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho}
@@ -79,8 +79,8 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
   \item \textbf{A system from open models, without training, that costs less than every baseline of the proposal on both sets.} On
         the test set it costs less than both direct audio-to-image generation ($p < 0.001$) and showing nothing
         ($p = 0.044$, 0.087 after Holm): clearly against direct audio-to-image generation, at the margin against
-        showing nothing. Audio captioning scores as direct audio-to-image generation under the per-sound metric. The
-        system keeps every danger sound that drawing every sound finds (10 of 13) while showing 38 fewer wrong pictures
+        showing nothing. Audio captioning scores as direct audio-to-image generation under the per-sound metric. On the
+        test set the system keeps every danger sound that drawing every sound finds (10 of 13) while showing 38 fewer wrong pictures
         (Sections~\ref{sec:system} and~\ref{sec:results}).
   \item \textbf{Two findings on why ready-made models are not enough.} Vision-language models take presence for
         production, and every extra vision tool trades one error for another; and no audio stage tried here separates

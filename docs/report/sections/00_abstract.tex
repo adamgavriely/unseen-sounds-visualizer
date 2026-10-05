@@ -1,10 +1,10 @@
 \begin{abstract}
 Subtitles carry speech, but deaf and hard-of-hearing viewers still miss the other sounds of a video. Captioning
-practice need not describe a sound whose source is clearly seen on screen. The sounds a deaf viewer loses are
+guidelines allow a caption to leave out a sound whose source is clearly seen on screen. The sounds a deaf viewer loses are
 therefore those whose source is \emph{off screen}: a siren behind the camera, a dog barking in the next room. This project builds a system that
 finds them and shows a generated picture of each one beside the video while it is heard. It also defines the
-decision as a scorable task: a per-sound benchmark of 308 timed sounds, each marked seen making it or not, obvious or
-not, and important or not, with a viewer cost that prices a miss against a wrong picture.
+decision as a scorable task: a per-sound benchmark of 308 timed sounds, each marked by whether its source is seen
+making it, whether it is obvious and whether it is important, with a viewer cost that prices a miss against a wrong picture.
 
 Nothing is trained: the system chains open sound detectors, audio-language ``listeners'', a vision-language model
 that checks whether the source is visible, and a text-to-image model. Joining them is not plug and play: each model
@@ -17,7 +17,8 @@ more than 30 open models.
 
 On a test set of 88 clips, scored per sound against human labels, the system finds 24 of 65 needed off-screen sounds,
 keeping 10 of the 13 danger sounds, with 24 wrong pictures. Its viewer cost (a miss costs 4, a wrong picture 2) is
-2.409 per clip, against 3.182 for direct audio-to-image generation or audio captioning and 2.955 for showing nothing
+2.409 per clip, against 3.182 for direct audio-to-image generation (audio captioning, the same decisions shown as text, scores the
+same) and 2.955 for showing nothing
 ($p < 0.001$ and $p = 0.044$; 0.087 for the second after a Holm correction over five tests).
 
 Most remaining errors are sounds the detectors barely hear under speech or music, and a vision model that confuses

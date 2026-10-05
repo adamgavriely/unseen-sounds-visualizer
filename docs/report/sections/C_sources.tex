@@ -9,7 +9,7 @@ in \fp{config.py}; in the scoring harness it is the variant \texttt{SHIP8+MD3+WW
 \paragraph{Environment.} Python 3.11 with PyTorch 2.5.1, transformers 5.16.1, diffusers, faster-whisper, panns-inference,
 easyocr and sentence-transformers (\fp{requirements.txt}). FineLAP needs transformers 4.51.3 and runs in a second
 environment, called as a subprocess (variable \texttt{FINELAP\_PYTHON}); \fp{requirements_finelap.txt} pins all its
-packages and is installed without dependency resolution (\texttt{pip install --no-deps}), because a resolving install
+packages and is installed without dependency resolution (\texttt{pip install -{}-no-deps}), because a resolving install
 upgrades PyTorch and breaks torchaudio. \fp{download_models.py} downloads every model the final system loads (about
 200\,GB), including those the detectors load internally (CLAP for FlexSED, RoBERTa for FineLAP, BERT for DASM), and
 applies two cache fixes the README describes. If CLAP's tokenizer files or its safetensors weights are missing,
@@ -44,6 +44,7 @@ each clip and replays the pipeline's own decision functions:
 \begin{verbatim}
 # Table 3: final system and baselines
 python benchmark/gold/final_vs_baselines.py
+python benchmark/gold/final_vs_baselines_extra.py   # F1 intervals, danger sounds
 # configuration check
 python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL
 python benchmark/gold/inspector_trail_export.py \
@@ -55,10 +56,10 @@ python docs/report/figures/make_body_figures.py
 python docs/report/figures/make_analysis_figures.py
 python docs/report/figures/make_examples_figure.py <folder with media/bysig>
 \end{verbatim}
-The last command re-runs the final system with every decision logged and stops unless the counts match exactly; it
+The \fp{inspector_trail_export.py} command re-runs the final system with every decision logged and stops unless the counts match exactly; it
 reproduces all 159 clips. The figure scripts read the result files above and \fp{docs/decision_trail/data.js}; the
-example figure also needs the rendered output videos, which are not in the repository. The cached model outputs of the benchmark clips are not part of the repository (they are
-large); they are rebuilt from the clips with \fp{benchmark/gold/clip_prep.py}.
+example figure also needs the rendered output videos, which are not in the repository. The cached model outputs of the benchmark clips are not part of the current release (they are
+large); they are in release v1.2.0, or can be rebuilt from the clips with \fp{benchmark/gold/clip_prep.py}.
 
 \paragraph{Decision trail.} \fp{docs/decision_trail/} is a static page over \fp{data.js} (159 clips) that shows, for every
 labelled sound and every candidate of the final system, each step it passed or failed, the value, the threshold and the
