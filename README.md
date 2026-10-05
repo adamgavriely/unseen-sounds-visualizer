@@ -3,6 +3,7 @@
 **Visual Augmentation of Audio Semantics for Accessibility**: visualises off-screen sounds in video as generated images, for deaf and hard-of-hearing viewers.
 
 MSc final project, Bar-Ilan University (Department of Computer Science), Adam Gavriely, 2026.
+Supervisor: Dr Idan Schwartz. Examiner: Dr Oren Glickman.
 
 Subtitles carry speech, but a deaf or hard-of-hearing viewer still misses the other sounds of a video: a siren
 behind the camera, a dog barking in the next room, glass breaking off screen. This system watches a video, detects
@@ -39,8 +40,8 @@ scored. Limits are discussed in Section 9 of the report.
 2. **Sound detection**: BEATs and FlexSED propose sound events; the Qwen3-Omni and Audio Flamingo Next listeners,
    DASM and FineLAP confirm or reject them.
 3. **On-screen check**: Qwen3.8-27B looks at the frames and decides whether each sound's source is visible.
-4. **Pictures**: Qwen-Image-2512 draws each off-screen sound (alarm-type sounds such as a siren are drawn on the larger thing they belong to, e.g. an emergency vehicle with its siren going off); a vision model checks the picture and it is redrawn
-   up to five times.
+4. **Pictures**: Qwen-Image-2512 draws each off-screen sound; a vision model checks the picture and it is redrawn up to five
+   times. An alarm-type sound is drawn on the thing it belongs to (a siren as an emergency vehicle with its siren going off).
 5. **Composition**: the pictures are shown beside the video while their sound plays.
 
 ## Installation
@@ -55,7 +56,7 @@ python3.11 -m venv ~/venv_flap
 ~/venv_flap/bin/pip install --no-deps -r requirements_finelap.txt --extra-index-url https://download.pytorch.org/whl/cu121
 cp .env.example .env        # then set the paths and HF_TOKEN
 python download_models.py
-python -m pytest tests      # 11 tests, CPU only
+python -m pytest            # 11 tests, CPU only
 ```
 
 - Python 3.11 with PyTorch 2.5.1 and transformers 5.16.1; `requirements.txt` lists every package with the version
@@ -106,15 +107,22 @@ once per clip.
 
 ## Reproducing the reported numbers
 
-The reported numbers are stored in the repository:
+This is release v1.3.9, the version the report cites. The reported numbers are stored in the repository:
 [`benchmark/gold/final_vs_baselines.json`](benchmark/gold/final_vs_baselines.json) (final system and baselines),
 [`benchmark/gold/final_vs_baselines_extra.json`](benchmark/gold/final_vs_baselines_extra.json) (F1 intervals,
 danger sounds) and [`docs/decision_trail/data_parity.json`](docs/decision_trail/data_parity.json) (configuration check).
 Appendix C of the report gives the source file of every number.
 
+Checks that run from a plain clone, on CPU, in under a minute: `python -m pytest` (11 tests);
+`python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL` (the shipped configuration equals the scored variant);
+`python docs/report/figures/make_results_figure.py` (rebuilds the results figure from `final_vs_baselines.json`).
+
 Recomputing them from a clone is not possible as is. The scripts (for example
-`python benchmark/gold/final_vs_baselines.py`) read the stage-5 outputs of every benchmark clip and the cached
-model answers of the development and test sets. Both are in release v1.2.0; the clips are not redistributed (their
+`python benchmark/gold/final_vs_baselines.py`) read the stage-5 outputs of every benchmark clip (under `data/work/`)
+and the cached model answers of the development and test sets. The listener and grouping answers
+(`benchmark/gold/*_listener*.json`, `benchmark/gold/grp/`) are in the source tree of release v1.2.0
+(`git fetch --tags && git checkout v1.2.0 -- benchmark/gold`); the stage outputs under `data/work/` are not
+redistributed and are rebuilt from the clips with `benchmark/gold/clip_prep.py`. The clips are not redistributed either (their
 source collections are listed in the "Data" section (Section 4) and the "Code and data availability" note of the
 report). The clip names are in `benchmark/gold/dev_stems.txt` (71) and `test_stems.txt` (87); the human labels are
 in `benchmark/gold/annotations/gold_AG.json`. With the clips in their input folders (paths in
@@ -130,13 +138,15 @@ Some files were renamed after release v1.2.0; the old-to-new name table is in
 | `main.py`, `config.py` | entry point and configuration (`use_shipped()` = final system) |
 | `requirements.txt`, `requirements_finelap.txt`, `download_models.py` | the two environments and the model download (see Installation) |
 | `src/` | the pipeline, one package per stage (`stage1_…` to `stage7_…`) |
-| `benchmark/` | human labels, per-sound scorer, scoring harness and the per-clip input builder (research rounds and DEV/TEST caches: release v1.2.0) |
+| `benchmark/` | human labels, per-sound scorer, scoring harness and the per-clip input builder (research rounds and listener answers: release v1.2.0) |
 | `tests/` | unit tests |
 | `docs/report/` | the technical report (LaTeX sources, figures and PDF) |
 | `docs/decision_trail/` | decision trail: every decision of the final system on every clip, and its parity check |
-| decision trail viewer | open `docs/decision_trail/index.html` in a browser (no server needed); the clip videos are not in the repository, so the video box stays empty, but the trails, timelines and counts all work |
 | `comfyui_nodes/` | optional ComfyUI interface ([`comfyui_nodes/README.md`](comfyui_nodes/README.md)) |
 | `data/input/` | a small synthetic test clip (plain frame, generated soundtrack) for the quick-start command |
+
+To browse the decision trail, open `docs/decision_trail/index.html` in a browser (no server needed); the clip videos
+are not in the repository, so the video box stays empty, but the trails, timelines and counts all work.
 
 ## Citation
 

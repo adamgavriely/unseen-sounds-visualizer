@@ -24,7 +24,7 @@ VOCAL_EVENTS = {"Shout", "Yell", "Children shouting", "Screaming"}
 # Steady textures with no event and no drawable source: never drawn, whatever family they map
 # to (Rumble -> Thunder is kept for merging real thunder, not for drawing a bare rumble).
 TEXTURE_LABELS = {"Breathing", "Rumble", "Hum", "Whir", "Rustle", "Rustling"}
-# Musical instruments / score elements — treat as music (non-salient for now, A6),
+# Musical instruments / score elements: treated as music (not drawn),
 # so film/trailer soundtracks aren't mistaken for real ambient sound.
 INSTRUMENTS = {
     "Piano", "Electric piano", "Organ", "Keyboard (musical)", "Synthesizer", "Sampler",
@@ -53,7 +53,7 @@ SCENE_LABELS = {
     # false augmentations. Treated as ambience. See notes sec:annotation.
     "Wind", "Rustling leaves", "Howl (wind)",
 }
-# Music: flagged; non-salient for now (decision: handle diegetic music later, task A6).
+# Music: flagged and not drawn (music is never drawn by design; report Section 1).
 MUSIC_LABELS = {
     "Music", "Scary music", "Background music", "Musical instrument", "Soundtrack music",
     "Theme music", "Sad music", "Happy music", "Exciting music",

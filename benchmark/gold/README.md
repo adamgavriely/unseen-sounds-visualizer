@@ -12,7 +12,7 @@ v1.2.0.
 | **Labels** | `annotations/gold_AG.json` (every per-sound label), `dev_stems.txt`, `test_stems.txt` (clip names of the two sets; the `tg_d*` lines are the second batch), `judge100.txt` (the rule for which development clips were scored), `audioset_slice.json` (the AudioSet-Strong clips) |
 | **Scorer** | `score_per_sound.py` (matching rules, cost, clip subsets), `dev_candidates_check.py` (stage-4/5 replay helpers, bootstrap, DASM step), `holm_table.py` (Holm correction) |
 | **Report tables** | `final_vs_baselines.py` → `final_vs_baselines.json` (final system and baselines); `final_vs_baselines_extra.py` → `final_vs_baselines_extra.json` (F1 intervals, danger sounds) |
-| **Scoring harness** | `dev_harness.py` (variants, stage 4/5 through the pipeline code; first 49 development clips) and `merged_dev.py` (all 71); `test_harness_prep.py`, `test_harness.py` (first 59 test clips) and `final_test.py` → `final_test.json` (all 87), `parity_check.py`. The 49- and 59-clip harnesses ran on the first batch of clips; `merged_dev.py` and `final_test.py` give the reported 71/87 results |
+| **Scoring harness** | `dev_harness.py` (variants, stage 4/5 through the pipeline code; first 49 development clips) and `merged_dev.py` (all 71); `test_harness_prep.py`, `test_harness.py` (first 59 test clips) and `final_test.py` → `final_test.json` (all 87), `parity_check.py`. The 49- and 59-clip harnesses ran on the first batch of clips and their result files are in release v1.2.0; `merged_dev.py` and `final_test.py` give the reported 71/87 results |
 | **Per-clip inputs** | `clip_prep.py`, `flexsed_run.py`, `dev_listener.py`, `test_listener.py`, `listener_variants.py`, `listener_afnext.py`, `dasm_rescue.py`, `listener_open_inventory.py`, `finelap_screen.py` (order below) |
 | **Picture prompts** | `picture_templates.py` (picture templates and seeds; imported by `src/stage6_visual_augmentation/` and `comfyui_nodes/run_frozen.py`) |
 | **Decision trail** | `inspector_trail_export.py`, `inspector_data.py` → `docs/decision_trail/` |
@@ -27,12 +27,13 @@ prepared answers it runs, each as its own process, on a one-clip split named `li
 1. `src/stage4_audio_event_detection/dasm_infer.py`, once per machine: DASM's MGA-CLAP text embeddings of the 215
    families → `data/work/dasm_text_queries.pt` (skipped when the file exists).
 2. `clip_prep.py` steps `flexsed` (`flexsed_run.py`), `render` (`../run_protocol.py`, stages 1–6 with
-   `config.use_scored()`), `wav16`, `beats`, `panns`, `stage4` and `stage5` with arm `B0r` (`dev_harness.py`),
+   `config.use_scored()`), `wav16`, `beats`, `panns`, `stage4` and `stage5` with arm `B0r` (the scored base configuration, PANNs veto 0.05; `dev_harness.py`),
    `lpool` (`test_listener.py`, `dev_listener.py`), `qwen` (Qwen3-Omni yes/no and variants: `dev_listener.py`,
    `test_listener.py`, `listener_variants.py`), `afn` (Audio Flamingo Next: `listener_afnext.py`) and `dasm`
    (`dev_candidates_check.dasm()` with `dasm_infer.py`).
 3. `dasm_rescue.py pool` and `dasm_rescue.py listen`: DASM-only spans and both listeners' answers on them.
-4. `listener_open_inventory.py`: Qwen V4 on the P1 cuts.
+4. `listener_open_inventory.py`: the open-inventory question ("which sounds are in this cut?") to Qwen3-Omni on
+   the BEATs spans, and the family parse of both listeners' answers (Qwen3-Omni and Audio Flamingo Next).
 5. `finelap_screen.py split`: FineLAP frame scores, in the FineLAP Python environment (`FINELAP_PYTHON`).
 
 The answers land in `benchmark/gold/live_<clip>_listener*.json` (ignored by git) and `data/work/` and are read by stage 4.
@@ -44,8 +45,10 @@ The reported numbers are stored here: `final_vs_baselines.json`, `final_vs_basel
 every number.
 
 The scripts that made them read the stage-5 outputs of every benchmark clip (under `data/work/`) and the cached model
-answers of the development and test sets (listener answers, PANNs frame scores, grouping answers). Both are in
-release v1.2.0; the clips are not redistributed (sources: report Section 4). Clip names: `dev_stems.txt` (71) and
+answers of the development and test sets. The listener and grouping answers (`*_listener*.json`, `grp/`) are in the
+source tree of release v1.2.0 (`git checkout v1.2.0 -- benchmark/gold`); the outputs under `data/work/` (stage-4/5
+outputs, PANNs frame scores, DASM and FineLAP caches) are not redistributed and are rebuilt from the clips with
+`clip_prep.py`. The clips are not redistributed either (sources: report Section 4). Clip names: `dev_stems.txt` (71) and
 `test_stems.txt` (87); labels: `annotations/gold_AG.json`. With the clips in their input folders (the `tg_d*` clips
 in `data/input/batch2/`; the other paths in `clip_prep.py` and `../run_protocol.py`) and the release caches in place,
 `clip_prep.py` builds the model inputs and outputs (the step order is listed above), and then:

@@ -79,7 +79,9 @@ def stems_of(split):
     if split in EXTRA:
         st = sorted(x.strip() for x in (GOLDD / f"{split}_stems.txt").read_text(encoding="utf-8").split() if x.strip())
         have = {p.stem for p in clip_dir(split).glob("*.mp4")}
-        assert st and set(st) <= have, sorted(set(st) - have)
+        if not st or not set(st) <= have:
+            raise SystemExit(f"{len(set(st) - have)} clips of split {split!r} are not in {clip_dir(split)} "
+                             "(the clips are not redistributed; see benchmark/gold/README.md)")
         return st
     if split not in SET_FILE:
         raise KeyError(split)
@@ -87,7 +89,9 @@ def stems_of(split):
                 if x.strip().startswith("tg_"))
     assert st, split
     have = {p.stem for p in CLIPS.glob("tg_d*.mp4")}
-    assert set(st) <= have, sorted(set(st) - have)
+    if not set(st) <= have:
+        raise SystemExit(f"{len(set(st) - have)} clips of split {split!r} are not in {CLIPS} "
+                         "(the clips are not redistributed; see benchmark/gold/README.md)")
     return st
 
 

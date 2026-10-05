@@ -1,7 +1,7 @@
 # Ceiling analysis of the FINAL system (D' = SHIP8+MD3+WW5+SL) on merged DEV
 
-Viva prep only. Method = report Section 8.1 (`ceiling_ship7.py`, tag v1.2.0), re-run on the final arm's saved DEV pictures.
-Scripts: `ceiling_final/ledger_final.py` -> `ledger_final.json`, `ceiling_final/ceiling_final.py` -> `ceiling_final.json` (logs `*.log`).
+Method = report Section 8.1 (`ceiling_ship7.py`, release v1.2.0), re-run on the final arm's saved DEV pictures.
+Scripts: `ceiling_final/ledger_final.py` -> `ledger_final.json`, `ceiling_final/ceiling_final.py` -> `ceiling_final.json`.
 Base reproduced exactly: **29 / 58 hits, 15 wrong (6 on screen / 7 other sound / 2 nothing), cost 2.056** on 71 clips.
 Cost = (4 x misses + 2 x wrong) / 71: one wrong = 0.028, one miss = 0.056.
 

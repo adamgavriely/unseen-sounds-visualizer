@@ -10,7 +10,7 @@ from that mismatch:
     that is entirely sea below a fixed threshold -- "water not seen");
   * concepts stole probability from each other ("people walking" scored 0.67 on open
     sea, outranking Water);
-  * we had to compensate with a relative threshold, which is a hack, not a fix.
+  * we had to compensate with a relative threshold, which is a workaround, not a fix.
 
 SigLIP is trained with a pairwise SIGMOID loss instead, so every image-text pair is
 scored on its own. Adding a concept cannot dilute the others, and an absolute
