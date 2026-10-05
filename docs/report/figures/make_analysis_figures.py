@@ -43,7 +43,7 @@ pts = [("final system", 16, 33), ("synchrony veto", 11, 36), ("synchrony add", 1
        ("annotator's questions", 15, 32), ("human-style chain", 0, 38), ("human-style, alone", 5, 38),
        ("human-style, 4th vote", 18, 32), ("box and crop", 9, 35), ("box and crop v2", 13, 35),
        ("both must agree", 15, 34), ("name-all + crop", 21, 33)]
-OFFS = {"synchrony veto": (-4, 4), "synchrony both": (4, 4), "synchrony add": (4, 6), "name-all + crop": (-4, -11),
+OFFS = {"synchrony veto": (-4, 4), "synchrony both": (4, 4), "synchrony add": (0, 7), "name-all + crop": (0, -12),
         "annotator's questions": (-4, -9), "human-style, 4th vote": (4, -9), "final system": (-5, -10),
         "box and crop": (-4, 4), "box and crop v2": (4, -10), "both must agree": (4, 3), "human-style chain": (4, 4),
         "human-style, alone": (4, -9)}
@@ -61,7 +61,7 @@ for name, x, y in pts:
     ax.plot(x, y, "o", color=DARK if final else RED, ms=7 if final else 5)
     off = OFFS.get(name, (4, 3))
     ax.annotate(name, (x, y), textcoords="offset points", xytext=off, fontsize=7, color=DARK if final else "#555555",
-                ha="right" if off[0] < 0 else "left")
+                ha="center" if off[0] == 0 else ("right" if off[0] < 0 else "left"))
 ax.set_xlabel("on-screen sounds correctly silenced (of 41)")
 ax.set_ylabel("needed sounds correctly kept (of 38)")
 ax.set_xlim(-1, 23); ax.set_ylim(30, 41)

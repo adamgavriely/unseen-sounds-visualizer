@@ -71,7 +71,7 @@ is the sum of many small rules, each one closing a failure described in this sec
 \caption{Cost per clip after each accepted change, from the first full pipeline to the final system: development
 3.690 $\to$ 2.056, test 2.909 $\to$ 2.409. Decisions were made on the development set; the test set was only scored.
 Dotted lines: showing nothing. Each step is a row of Table~\ref{tab:shipchain} (Appendix~\ref{app:history}), except
-three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there, and the depict-event row, whose net effect on the development counts was zero, is not plotted; the step names are short
+three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there. The depict-event row, whose net effect on the development counts was zero, is not plotted. The step names are short
 forms of the internal names explained in Appendix~\ref{app:glossary}.}
 \label{fig:progression}
 \end{figure}
@@ -92,11 +92,11 @@ one named by one listener 37\,\%, and one named by both 62\,\% (Figure~\ref{fig:
 incomplete, so these shares are lower bounds, and the ordering, not the level, is the evidence). Raw detections are right
 under 40\,\% of the time. A full chain of listener, timing and DASM checks reaches 80\,\%, but only for the few sounds
 that survive the chain. Every way to add more
-sounds found real ones but paid two to five wrong pictures per new hit. The best such rule found two more hits than the
+sounds found real ones but paid two or more wrong pictures per new hit. The best such rule found two more hits than the
 final system on the development set, at about five extra wrong pictures each (31 hits and 26 wrong, against 29 and 15),
 so it failed the development rule; its test result, reported only, was no better (25 hits and 35 wrong, against 24 and
 24). No audio stage tried here separates a right off-screen name from a wrong one well enough to add hits without
-two to five wrong pictures each.
+two or more wrong pictures each.
 
 
 \begin{figure}[htbp]
@@ -114,7 +114,7 @@ bar is the audio chain of a rejected idea (Appendix~\ref{app:history}), shown fo
 bell?''. A church tower on screen silences a bell heard off screen; perched birds are taken as the source of a call
 made elsewhere. This is the main cause of the gate's wrong silences (31 of 36 in a hand audit,
 Section~\ref{sec:presence}). The opposite failure, answering ``nothing'' when the source is small or hidden (a hand,
-the footsteps of the person holding the camera), is also large. The failure is not specific to one model: an early image-text matching check (CLIP~\cite{radford2021clip}) was right
+the footsteps of the person holding the camera), is also common (the name question answers ``nothing'' on 42\,\% of visible stretches, Section~\ref{sec:presence}). The failure is not specific to one model: an early image-text matching check (CLIP~\cite{radford2021clip}) was right
 only about half the time, and moving from a 7-billion- to a 27-billion-parameter vision model raised balanced accuracy
 (the mean of the success rates on visible and on needed sounds) only from 0.61 to 0.62. One model that hears and
 sees at once does not close the gap either: Qwen3-Omni, given the audio and eight frames around each picture's start
@@ -134,8 +134,9 @@ object~\cite{juanola2025critical}: they answer \emph{where} a sound comes from, 
 \includegraphics[width=0.8\linewidth]{figures/gate_tradeoff.pdf}
 \caption{Every variant of the on-screen check that was tried, scored on the subset of development sounds that reach
 the check and whose stretches the author labelled (41 on-screen sounds, 38 needed sounds). The dashed line has the same cost as the final system: silencing two more
-on-screen sounds is worth losing one needed sound. All variants lie near this line, and none reached the pass region
-fixed before the tests. Labels name the extra tool tried: an object box, a crop around the named object, an audio-visual
+on-screen sounds is worth losing one needed sound. All variants lie near this line. Two reached the pass region
+fixed before the tests, but neither passed in the full pipeline: the synchrony vote changed no picture, and
+name-all + crop lost three hits (Appendix~\ref{app:history}). Labels name the extra tool tried: an object box, a crop around the named object, an audio-visual
 synchrony model, a longer human-style question chain, or a fourth vote.}
 \label{fig:gate}
 \end{figure}

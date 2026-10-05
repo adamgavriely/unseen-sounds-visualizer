@@ -18,7 +18,7 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
         hears it at that time; or both listeners list it; or one listener lists it and the vision model says the sound
         fits the scene.
   \item \textbf{Refine (4c).} The start of each BEATs sound is moved to where its evidence begins (never earlier than
-        detected), and rescued sounds pass three last filters: FineLAP and DASM must hear them, and only one rescue
+        detected), and rescued sounds pass three last filters: FineLAP (a frame-level audio-text model) and DASM must hear them, and only one rescue
         per family is kept.
   \item \textbf{On-screen check, the gate (5).} A vision-language model (Qwen3.8-27B) looks at frames around the sound.
         If the thing making the sound is visibly making it, no picture is shown.
@@ -125,7 +125,7 @@ precision for speed. CFG: how strongly the picture follows the prompt.
 The two detectors complement each other: BEATs is strong on clear sounds, FlexSED hears quiet sounds under speech and
 music far better. Most of the development effort went into deciding which weak candidates to keep. The listeners are
 asked about each weak candidate in two ways -- a yes/no question (``Is the sound of a siren present in this
-recording?'') and an open list (``List every distinct non-speech sound you hear''). The witness rule rests on how often the listeners agree (Section~\ref{sec:hard}). Speech and music are never drawn; all other sounds with a clear source,
+recording?'') and an open list (``List every distinct non-speech sound you hear''). The witness rule rests on how often the listeners agree (Section~\ref{sec:hard-confirm}, Figure~\ref{fig:listeners}). Speech and music are never drawn; all other sounds with a clear source,
 human sounds included, can be drawn (Appendix~\ref{app:config}).
 
 \subsection{The on-screen check}\label{sec:gate}
@@ -178,11 +178,11 @@ general wording already asks for ``the whole thing, never one part'', which work
 Under \emph{Alarm} it cannot: when the detector hears only \emph{Siren}, the larger things a siren belongs to are
 themselves kinds of siren that were not heard (a police car, an ambulance, a fire engine), so naming one of them is
 exactly the guess described above. Without a larger thing, the picture collapsed to the bare device. \emph{Alarm} is the one
-part of the sound list where these two requirements meet. The picture step therefore asks the vision model (text only) whether the device is part of a larger thing or
+part of the sound list where the two rules, ``draw the whole thing'' and ``never guess a kind'', conflict. The picture step therefore asks the vision model (text only) whether the device is part of a larger thing or
 a whole object. If it is a part, the picture shows the larger thing in a form general enough to cover all its kinds
 (the prompt says ``an emergency vehicle'' rather than a guessed ``ambulance''; a detected \emph{Ambulance (siren)}
 is still drawn as an ambulance) with the device going off. For a siren heard only as \emph{Siren}, the image model
-still has to draw one vehicle and drew a fire engine with lights and siren; what matters for the viewer is that it reads
+still has to draw one vehicle; here it drew a fire engine with lights and siren; what matters for the viewer is that it reads
 at a glance as an emergency vehicle sounding its siren, which the lone beacon did not. If the device is a whole object, it is drawn
 where a person sees it (a fire alarm on a wall, a smoke detector on a ceiling), with what a person sees when it goes
 off (flashing lights, shaking). The same word-list guards as above still apply, and every sound outside the family keeps

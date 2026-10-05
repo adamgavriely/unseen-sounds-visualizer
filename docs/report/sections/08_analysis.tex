@@ -19,7 +19,7 @@ ceiling. Table~\ref{tab:ceiling} gives the order-free view.
 \centering
 \includegraphics[width=\linewidth]{figures/ceiling_waterfall.pdf}
 \caption{Ceiling analysis on a slightly older version of the system (development set, 55 needed sounds). Each bar makes
-one more stage perfect, using the labels, on the same detections. The 2.056 after the joint timing and family step
+one more stage perfect, using the labels, on the same detections. The 2.06 after the joint timing and family step
 equals the final system's development cost only by coincidence. The largest single step, the on-screen check, is
 shown in red. Even
 with every stage perfect, 12 needed sounds remain missed (right): the detectors never hear them clearly enough.}
@@ -50,10 +50,9 @@ sounds stay missed: five are heard by no model at all (a hammer, an explosion, a
 and seven are too faint or too badly timed.
 
 \subsection{The on-screen check in detail}\label{sec:presence}
-A hand audit of the stretches the gate silenced wrongly (36 stretches on the gate-labelled clips: 16 development,
-20 test; the audit tallies the same development stretches at sound level as 43 on-screen and 36 needed sounds, against
-the 41 and 38 of Figure~\ref{fig:gate}) found two kinds of
-error. These are stretches, not sounds: a sound is silenced only if every one of its stretches is called visible. In 31 of the 36 the gate took \emph{presence for production}: either the named object was in the frame but not
+A hand audit looked at the 36 stretches the gate silenced wrongly on the gate-labelled clips (16 development, 20 test;
+at sound level the audit counts 43 on-screen and 36 needed development sounds, against the 41 and 38 of
+Figure~\ref{fig:gate}). It found two kinds of error. These are stretches, not sounds: a sound is silenced only if every one of its stretches is called visible. In 31 of the 36 the gate took \emph{presence for production}: either the named object was in the frame but not
 making the sound (14, such as a church tower for a ringing bell), or another thing of the same kind was (17, such as a
 perched bird for a call made elsewhere). This follows from
 how the vote is built. Two of the three questions effectively test presence -- naming an object, and asking whether that
