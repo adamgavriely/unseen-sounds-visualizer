@@ -91,7 +91,7 @@ vocal events (shout, scream, laughter, cough, snoring). FlexSED and DASM are ask
 The numbers in this report come from the scoring harness, which runs the pipeline's own stage-4 functions on cached
 model scores and replays the gate answers of a full run. A parity check (\fp{benchmark/gold/parity_check.py}) and an
 independent re-export of every decision (the Decision Inspector, Section~\ref{sec:repro}) reproduce the published
-counts exactly (0 of 159 clips differ). The live configuration \cfgv{use_shipped()} differs from the scored one in
+counts exactly (0 of 158 clips differ). The live configuration \cfgv{use_shipped()} differs from the scored one in
 these known ways:
 \begin{itemize}
   \item \textbf{Kinship direction.} Live: a visible label silences only the same or a more specific label. Scored:

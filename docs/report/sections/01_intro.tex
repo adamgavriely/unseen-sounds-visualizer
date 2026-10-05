@@ -26,7 +26,7 @@ heard and its source is \emph{not} on screen, and shows nothing otherwise. Speec
 subtitles, and music is marked in ordinary captions); human sounds such as laughter, coughing or a scream are drawn.
 The output is a picture rather than a word in brackets because a picture can be taken in at a glance, without
 reading, while the viewer is already reading subtitles; this is the design hypothesis behind RQ3
-(Section~\ref{sec:rqs}), and it is not tested with viewers here. No model may be trained: the 159 labelled clips are
+(Section~\ref{sec:rqs}), and it is not tested with viewers here. No model may be trained: the 158 labelled clips are
 far too few to train on, and all of them are needed for evaluation. The system must work on one video at a time, as a
 captioning tool does when a video is uploaded. For every sound this means four questions:
 \begin{enumerate}
@@ -55,7 +55,7 @@ way, and the failures add up:
 \end{itemize}
 The end-to-end effect is measurable. Even with the full detection stack of the final system, drawing every detected
 sound without reading the video (the proposal's direct audio-to-image baseline, Section~\ref{sec:baselines}) finds 26 needed
-sounds but shows 62 wrong pictures on the test set, and is no better than showing nothing. Turning the chain into a
+sounds but shows 61 wrong pictures on the test set, and is no better than showing nothing. Turning the chain into a
 system that costs less than every baseline took the rules of Section~\ref{sec:system}, each one answering a failure described in
 Section~\ref{sec:hard}: two detectors, one of three independent witnesses for every weak sound, a three-question
 on-screen vote, guarded picture prompts with a check-and-redraw loop, and a per-sound metric to decide each step, found
@@ -74,12 +74,12 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
 \subsection{Contributions}
 \begin{enumerate}
   \item \textbf{The task, a metric and a benchmark.} A precise rule for when a picture is needed, a per-sound score
-        that prices a missed sound against a wrong picture, and a benchmark of 308 timed sounds in 159 video clips,
+        that prices a missed sound against a wrong picture, and a benchmark of 308 timed sounds in 158 video clips,
         each sound marked by whether its source is seen making it, whether it is obvious, and how important it is (Sections~\ref{sec:task}
         and~\ref{sec:benchmark}).
   \item \textbf{A system from open models, without training, that costs less than every baseline of the proposal on both sets.} On
         the test set it costs less than both direct audio-to-image generation ($p < 0.001$) and showing nothing
-        ($p = 0.044$, 0.087 after Holm): clearly against direct audio-to-image generation, at the margin against
+        ($p = 0.034$, 0.068 after Holm): clearly against direct audio-to-image generation, at the margin against
         showing nothing. Audio captioning scores the same as direct audio-to-image generation under the per-sound metric. On the
         test set the system keeps every danger sound that drawing every sound finds (10 of 13) while showing 38 fewer wrong pictures
         (Sections~\ref{sec:system} and~\ref{sec:results}).

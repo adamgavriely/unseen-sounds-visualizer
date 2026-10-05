@@ -19,17 +19,17 @@
   "TEST": {
    "needed": 65,
    "hits": 24,
-   "clips": 88,
+   "clips": 87,
    "clips_without_trail": 0,
    "misses": 41,
    "miss_with_reason": 32,
    "miss_trail": 35,
-   "wrong_with_trail": 23,
-   "wrong": 24,
+   "wrong_with_trail": 22,
+   "wrong": 23,
    "visible": 4,
    "cross": 15,
-   "phantom": 5,
-   "cost": 2.409,
+   "phantom": 4,
+   "cost": 2.414,
    "pictures_differ_from_frozen": 0
   }
  },
@@ -50,11 +50,11 @@
   "TEST": [
    24,
    65,
-   24,
+   23,
    4,
    15,
-   5,
-   2.409
+   4,
+   2.414
   ]
  },
  "exact": true

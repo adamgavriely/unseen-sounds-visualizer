@@ -4,13 +4,13 @@
 All results use two sets of short video clips (10--20\,s), labelled per sound as in Section~\ref{sec:needed}:
 \begin{description}
   \item[Development set] 71 clips, 58 needed sounds. Every change was accepted on this set.
-  \item[Test set] 88 clips, 65 needed sounds. Scored only after a change was accepted, and only reported.
+  \item[Test set] 87 clips, 65 needed sounds. Scored only after a change was accepted, and only reported.
 \end{description}
 The clips come from Wikimedia Commons, the Internet Archive, UnAV-100~\cite{geng2023unav100} (its videos are used as
 scene material; its labels are not used), VGGSound~\cite{chen2020vggsound},
 YouTube (city walks, markets, home, transport, incidents, film scenes) and the AudioSet-Strong evaluation split (AudioSet clips that come with timed, per-sound labels). New
 clips were assigned to development or test by a hash of the clip name or in pairs matched by scene, one to each set, never by
-looking at results. The first 109 clips were split by provenance instead: clips that earlier runs had already used became development clips, and clips no run had touched became test clips. A later scene search therefore sits in the test set only: 21 clips, many of them film scenes, war footage and body-, helmet- or dash-camera footage, kinds of scene the development set hardly contains. Appendix~\ref{app:datahistory} describes how the sets grew. Most clips are copyrighted and used for research only, so they are not redistributed
+looking at results. The first 108 clips were split by provenance instead: clips that earlier runs had already used became development clips, and clips no run had touched became test clips. A later scene search therefore sits in the test set only: 21 clips, many of them film scenes, war footage and body-, helmet- or dash-camera footage, kinds of scene the development set hardly contains. Appendix~\ref{app:datahistory} describes how the sets grew. Most clips are copyrighted and used for research only, so they are not redistributed
 (see \hyperref[sec:availability]{Code and data availability}).
 
 \begin{table}[htbp]
@@ -22,7 +22,7 @@ looking at results. The first 109 clips were split by provenance instead: clips 
 Set & Clips & Labelled sounds & Needed sounds & Clips with a needed sound \\
 \midrule
 Development & 71 & 154 & 58 & 38 \\
-Test & 88 & 154 & 65 & 43 \\
+Test & 87 & 154 & 65 & 43 \\
 \bottomrule
 \end{tabular}}
 \end{table}

@@ -5905,22 +5905,6 @@
    "annotator": "AG"
   },
   {
-   "clip": "oc_distant_traffic_hill.mp4",
-   "tag": "no_ambient",
-   "sounds": [],
-   "sentence": "nothing beyond the picture",
-   "picture_due": false,
-   "unsure": false,
-   "bad": false,
-   "note": "",
-   "done": true,
-   "opened_candidates": true,
-   "updated": "2026-09-20T03:40:04.794Z",
-   "prefilled": true,
-   "_ordered": true,
-   "annotator": "AG"
-  },
-  {
    "clip": "oc_distant_train_valley.mp4",
    "tag": "no_ambient",
    "sounds": [

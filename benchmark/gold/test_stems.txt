@@ -43,7 +43,6 @@ movie_madmax_57
 movie_planetearth_58
 mv_air_raid_scene
 mv_bank_robbery_alarm
-oc_distant_traffic_hill
 pdfilm_duckcover_90
 tg_d001
 tg_d009

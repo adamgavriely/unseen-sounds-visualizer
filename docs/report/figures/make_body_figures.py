@@ -14,7 +14,7 @@ DARK, LIGHT, GREY, RED, GREEN = "#2a6f97", "#9ec5dd", "#888888", "#e07a5f", "#5a
 plt.rcParams.update({"font.size": 9})
 B = json.load(open(os.path.join(GOLD, "final_vs_baselines.json"), encoding="utf-8"))
 E = json.load(open(os.path.join(GOLD, "final_vs_baselines_extra.json"), encoding="utf-8"))
-SETS = (("development", "development set (71 clips)"), ("test", "test set (88 clips)"))
+SETS = (("development", "development set (71 clips)"), ("test", "test set (87 clips)"))
 
 # 1. Win breakdown: direct audio-to-image -> remove its extra wrong pictures -> lose its extra hits -> final system
 fig, axes = plt.subplots(1, 2, figsize=(8.0, 3.1), sharey=True)

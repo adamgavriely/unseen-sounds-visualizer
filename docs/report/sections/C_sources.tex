@@ -48,7 +48,7 @@ python benchmark/gold/final_vs_baselines_extra.py   # F1 intervals, danger sound
 # configuration check
 python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL
 python benchmark/gold/inspector_trail_export.py \
-   --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/24/4/15/5/2.409
+   --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/23/4/15/4/2.414
 # figures of the report
 python docs/report/figures/make_results_figure.py
 python docs/report/figures/make_beta_figure.py
@@ -57,11 +57,11 @@ python docs/report/figures/make_analysis_figures.py
 python docs/report/figures/make_examples_figure.py <folder with media/bysig>
 \end{verbatim}
 The \fp{inspector_trail_export.py} command re-runs the final system with every decision logged and stops unless the counts match exactly; it
-reproduces all 159 clips. The figure scripts read the result files above and \fp{docs/decision_trail/data.js}; the
+reproduces all 158 clips. The figure scripts read the result files above and \fp{docs/decision_trail/data.js}; the
 example figure also needs the rendered output videos, which are not in the repository. The cached model outputs of the benchmark clips are not part of the current release (they are
 large); they are in release v1.2.0, or can be rebuilt from the clips with \fp{benchmark/gold/clip_prep.py}.
 
-\paragraph{Decision trail.} \fp{docs/decision_trail/} is a static page over \fp{data.js} (159 clips) that shows, for every
+\paragraph{Decision trail.} \fp{docs/decision_trail/} is a static page over \fp{data.js} (158 clips) that shows, for every
 labelled sound and every candidate of the final system, each step it passed or failed, the value, the threshold and the
 model answers. The logging (\fp{src/trail.py}) only records and never changes a decision.
 

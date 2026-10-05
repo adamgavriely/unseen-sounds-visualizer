@@ -15,10 +15,10 @@ twice as many wrong pictures as right ones on the test set. The final system is 
 rounds, each change accepted only by a rule written before its run, over more than 150 full-pipeline variants and
 more than 30 open models.
 
-On a test set of 88 clips, scored per sound against human labels, the system finds 24 of 65 needed off-screen sounds,
+On a test set of 87 clips, scored per sound against human labels, the system finds 24 of 65 needed off-screen sounds,
 including 10 of the 13 danger sounds, with 24 wrong pictures. Its viewer cost (a miss costs 4, a wrong picture 2) is
-2.409 per clip, against 3.182 for direct audio-to-image generation and 2.955 for showing nothing
-($p < 0.001$ and $p = 0.044$; 0.087 for the second after a Holm correction over five tests). Audio captioning, the
+2.414 per clip, against 3.195 for direct audio-to-image generation and 2.989 for showing nothing
+($p < 0.001$ and $p = 0.034$; 0.068 for the second after a Holm correction over five tests). Audio captioning, the
 same decisions shown as text, scores the same as direct audio-to-image generation.
 
 Most remaining errors are sounds the detectors barely hear under speech or music, and a vision model that confuses
