@@ -10,19 +10,19 @@ The clips come from Wikimedia Commons, the Internet Archive, UnAV-100~\cite{geng
 scene material; its labels are not used), VGGSound~\cite{chen2020vggsound},
 YouTube (city walks, markets, home, transport, incidents, film scenes) and the AudioSet-Strong evaluation split (AudioSet clips that come with timed, per-sound labels). New
 clips were assigned to development or test by a hash of the clip name or in pairs matched by scene, one to each set, never by
-looking at results. The first 108 clips were split by provenance instead: clips that earlier runs had already used became development clips, and clips no run had touched became test clips. A later scene search therefore sits in the test set only: 21 clips, many of them film scenes, war footage and body-, helmet- or dash-camera footage, kinds of scene the development set hardly contains. Appendix~\ref{app:datahistory} describes how the sets grew. Most clips are copyrighted and used for research only, so they are not redistributed
+looking at results. The first 108 clips were split by provenance instead: clips that earlier runs had already used became development clips, and clips no run had touched became test clips. One sourcing route of those first 108 clips, a scene search that no earlier run had touched, therefore sits in the test set only: 21 of the 59 older test clips, many of them film scenes, war footage and body-, helmet- or dash-camera footage, kinds of scene the development set hardly contains. Appendix~\ref{app:datahistory} describes how the sets grew. Most clips are copyrighted and used for research only, so they are not redistributed
 (see \hyperref[sec:availability]{Code and data availability}).
 
 \begin{table}[htbp]
 \centering\small
 \caption{The two evaluation sets.}
 \label{tab:sets}
-\resizebox{\linewidth}{!}{\begin{tabular}{lrrrr}
+\resizebox{\linewidth}{!}{\begin{tabular}{lrrrrr}
 \toprule
-Set & Clips & Labelled sounds & Needed sounds & Clips with a needed sound \\
+Set & Clips & Labelled sounds & Needed sounds & Needed danger sounds & Clips with a needed sound \\
 \midrule
-Development & 71 & 154 & 58 & 38 \\
-Test & 87 & 154 & 65 & 43 \\
+Development & 71 & 154 & 58 & 17 & 38 \\
+Test & 87 & 154 & 65 & 13 & 43 \\
 \bottomrule
 \end{tabular}}
 \end{table}
