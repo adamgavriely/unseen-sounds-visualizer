@@ -45,7 +45,7 @@ All stages perfect & 47 & 1 & 0.648 \\
 \end{table}
 
 The on-screen check and the listeners are the two largest losses. Even with every stage perfect, 11 of 58 needed
-sounds stay missed: five are heard by no model at all (a hammer, an explosion, a clang and two golf-club strikes; the last three are also families the system never draws)
+sounds stay missed: five are heard by no model at all, neither a detector nor a listener (a hammer, an explosion, a clang and two golf-club strikes; the last three are also families the system never draws)
 and six are too faint or too badly timed.
 
 \subsection{The on-screen check in detail}\label{sec:presence}
@@ -70,7 +70,7 @@ because a similar object was in the frame, and the two main kinds of wrong pictu
 \centering
 \includegraphics[width=\linewidth]{figures/examples.pdf}
 \caption{Outputs of the final system: each frame shows the video (left) and the picture panel (right) a moment after
-the sound starts; a dark slot in the panel is empty. Row 1: hits, the source is off screen (a siren and a fire alarm, drawn with the alarm-type rule of
+the sound starts; a dark slot in the panel is empty. Row 1: hits, the source is off screen (a siren, breaking glass and a fire alarm; the siren and the alarm are drawn with the alarm-type rule of
 Section~\ref{sec:pictures}). Row 2: misses; the church,
 the robin and the bus the camera rides in are in the frame, but none is seen making the sound that is heard (a bell, a
 call made by another bird, a horn), and the on-screen check silences it (the panel says no off-screen sound). Row 3:
@@ -82,7 +82,7 @@ car horn, and a gunshot drawn over the sound of a fire.}
 \label{fig:examples}
 \end{figure}
 
-As a worked case, take a development clip filmed outside a church in Miami (clip \fp{bell_miami}, row 2 of
+As a worked case, take a development clip filmed outside a church in Miami (row 2 of
 Figure~\ref{fig:examples}). It has one needed sound: a bell from 0.2 to 14.5\,s, labelled not visible. The
 detectors find it. The gate cuts the 14-s sound into three stretches. In each, the name question answers ``church
 bell'' (it shares the word \emph{bell}, so this vote says visible), the a/b question says not visibly happening, and the

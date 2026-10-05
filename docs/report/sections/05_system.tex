@@ -103,7 +103,7 @@ Table~\ref{tab:stages} lists the model and the main settings of every stage.
 \toprule
 \# & Stage & Model / tool & Key parameters \\
 \midrule
-1 & audio & ffmpeg & mono WAV, 16\,kHz (\cfgv{SAMPLE_RATE}) \\
+1 & audio & ffmpeg & mono WAV, 16\,kHz \\
 2 & frames, objects & OWLv2 object detector~\cite{minderer2023owlv2} (\fp{owlv2-base-patch16-ensemble}) & 6 frames, threshold 0.20; context only, never silences a sound \\
 3 & speech & faster-whisper~\cite{fasterwhispercard} \texttt{base} (Whisper~\cite{radford2023whisper}), int8 & transcript used only to ask whether people react to a sound; never drawn \\
 4 & sound events & BEATs iter3+ AS2M~\cite{chen2023beats}; FlexSED~\cite{hai2025flexsed}; PANNs CNN14~\cite{kong2020panns}; DASM~\cite{cai2025dasm}; Qwen3-Omni-30B-A3B~\cite{xu2025qwen3omni}; Audio Flamingo Next~\cite{afnextcard}; FineLAP~\cite{finelapcard} & 16 ordered steps, Table~\ref{tab:stage4} \\

@@ -31,7 +31,7 @@ Score & model judge & circular or at chance on visibility (Section~\ref{sec:hard
 and a viewer cost \\
 \midrule
 All & full detection stack, every detected sound drawn without reading the video & 26 sounds found, 61 wrong pictures
-on the test set; no better than showing nothing & final system: 24 sounds found, 24 wrong pictures; cheaper than every
+on the test set; no better than showing nothing & final system: 24 sounds found, 23 wrong pictures; cheaper than every
 baseline of the proposal \\
 \bottomrule
 \end{tabular}
@@ -71,7 +71,7 @@ is the sum of many small rules, each one closing a failure described in this sec
 \caption{Cost per clip after each accepted change, from the first full pipeline to the final system: development
 3.690 $\to$ 2.056, test 2.920 $\to$ 2.414. Decisions were made on the development set; the test set was only scored.
 Dotted lines: showing nothing. Each step is a row of Table~\ref{tab:shipchain} (Appendix~\ref{app:history}), except
-three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there. The depict-event row (net effect zero) and the text-read witness-rule row D (Appendix~\ref{app:versions}) are not
+three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there. The depict-event row (net effect zero) and the row in which the scene check is read as text instead of as a probability (Appendix~\ref{app:versions}) are not
 plotted. The step names are short
 forms of the internal names explained in Appendix~\ref{app:glossary}.}
 \label{fig:progression}
@@ -94,7 +94,7 @@ incomplete, so these shares are lower bounds, and the ordering, not the level, i
 detections can be confirmed as real. A full chain of listener, timing and DASM checks reaches 80\,\%, but only for the few sounds
 that survive the chain. Most ways to add more sounds found real ones but paid two or more wrong pictures per new hit
 (Table~\ref{tab:rejected}). The rule that added the most hits added three hits for five wrong pictures on the
-development set (31 hits and 26 wrong, against 28 and 21 for its base); its wrong pictures of other sounds rose from 13 to 17, so it failed its pre-set
+development set (31 hits and 26 wrong, against 28 and 21 for the version it was added to); its wrong pictures of other sounds rose from 13 to 17, so it failed its pre-set
 ``more hits'' rule and was not shipped (Table~\ref{tab:rejected}). No audio stage tried here separates a right off-screen name from a wrong one reliably, and the
 on-screen check cannot refuse a wrong off-screen name.
 
@@ -176,7 +176,7 @@ Short public clips in which an ambient sound is clearly heard, its source is not
 are hard to find by search. Four different
 sourcing routes all yielded only 15--20\,\% usable clips. Gathering enough footage with correct timed labels was
 too hard with the resources of this project and without existing data that fits the task, which is why the benchmark
-has 158 evaluation clips rather than the planned 300, and why every comparison has wide intervals.
+has 158 evaluation clips, and why every comparison has wide intervals.
 
 \subsection{What today's models are missing}\label{sec:missing}
 The failures above, and the rejected ideas of Table~\ref{tab:rejected}, point to six capabilities that current open
