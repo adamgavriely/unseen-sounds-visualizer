@@ -15,10 +15,10 @@ def save(fig, name):
     fig.tight_layout(); fig.savefig(os.path.join(OUT, name)); plt.close(fig); print(name)
 
 
-# 1. Ceiling waterfall -- benchmark/gold/ceiling_ship7.md (older version, development set, 55 needed sounds)
-steps = [("version\nas run", 2.451, 25), ("+ perfect\ntiming", 2.197, 26), ("+ perfect\nfamily", 2.141, 26),
-         ("+ timing and\nfamily\njointly", 2.056, 27), ("+ perfect\non-screen\ncheck", 1.380, 32),
-         ("+ perfect\nvetoes", 1.155, 36), ("+ perfect\nlisteners", 0.761, 43)]
+# 1. Ceiling waterfall -- benchmark/gold/ceiling_final/ceiling_final.md (final system, development set, 58 needed sounds)
+steps = [("final\nsystem", 2.056, 29), ("+ perfect\ntiming", 1.915, 30), ("+ perfect\nfamily", 1.887, 30),
+         ("+ timing and\nfamily\njointly", 1.887, 30), ("+ perfect\non-screen\ncheck", 1.352, 35),
+         ("+ perfect\nvetoes", 1.014, 41), ("+ perfect\nlisteners", 0.648, 47)]
 fig, ax = plt.subplots(figsize=(7.6, 3.4))
 prev = None
 for i, (lab, c, h) in enumerate(steps):
@@ -27,10 +27,10 @@ for i, (lab, c, h) in enumerate(steps):
     else:
         ax.bar(i, prev - c, bottom=c, color=RED if "on-screen" in lab else LIGHT, width=0.6)
         ax.plot([i - 1.3, i + 0.3], [prev, prev], color="#bbbbbb", lw=0.8)
-    ax.text(i, (c if prev is None else prev) + 0.06, f"{c:.2f}\n{h}/55 hits", ha="center", va="bottom", fontsize=7.5)
+    ax.text(i, (c if prev is None else prev) + 0.06, f"{c:.2f}\n{h}/58 hits", ha="center", va="bottom", fontsize=7.5)
     prev = c
 ax.bar(len(steps), steps[-1][1], color=DARK, width=0.6)
-ax.text(len(steps), steps[-1][1] + 0.06, "floor\n12 missed", ha="center", va="bottom", fontsize=7.5)
+ax.text(len(steps), steps[-1][1] + 0.06, "floor\n11 missed", ha="center", va="bottom", fontsize=7.5)
 ax.set_xticks(range(len(steps) + 1))
 ax.set_xticklabels([s[0] for s in steps] + ["what no rule\ncan recover"], fontsize=6.8)
 ax.set_ylabel("cost per clip"); ax.set_ylim(0, 3.1)

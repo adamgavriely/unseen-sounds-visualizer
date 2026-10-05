@@ -7,8 +7,8 @@ error lists and an audit of the on-screen check (sources in Appendix~\ref{app:so
 \subsection{Ceiling analysis}\label{sec:ceiling}
 Figure~\ref{fig:ceiling} makes the stages perfect one after another; Table~\ref{tab:ceiling} instead makes each stage
 perfect on its own, leaving the rest as they are, so the two give different numbers for the same stage.
-The analysis needs saved pictures, so it was run on a slightly older version of the system (25 hits and 27 wrong on the
-development set, 55 needed sounds); the proportions, not the exact numbers, are the point. ``Perfect timing'' moves
+It is run on the final system's saved pictures on the development set (29 of 58 needed sounds found, 15 wrong
+pictures, cost 2.056). ``Perfect timing'' moves
 each picture to the labelled start of its sound; ``perfect family'' (a step in Figure~\ref{fig:ceiling}) gives each picture the family of the labelled
 sound it overlaps. The waterfall applies the stages in the order timing, family, timing and family jointly, on-screen
 check, vetoes, listeners. Timing and family come first so that a picture of the right sound at the wrong moment counts
@@ -18,36 +18,35 @@ ceiling. Table~\ref{tab:ceiling} gives the order-free view.
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/ceiling_waterfall.pdf}
-\caption{Ceiling analysis on a slightly older version of the system (development set, 55 needed sounds). Each bar makes
-one more stage perfect, using the labels, on the same detections. The 2.06 after the joint timing and family step
-equals the final system's development cost only by coincidence. The largest single step, the on-screen check, is
+\caption{Ceiling analysis of the final system (development set, 58 needed sounds). Each bar makes
+one more stage perfect, using the labels, on the same detections. The largest single step, the on-screen check, is
 shown in red. Even
-with every stage perfect, 12 needed sounds remain missed (right): the detectors never hear them clearly enough.}
+with every stage perfect, 11 needed sounds remain missed (right): the detectors never hear them clearly enough.}
 \label{fig:ceiling}
 \end{figure}
 
 \begin{table}[htbp]
 \centering\small
-\caption{One stage made perfect at a time (development set; an older version of the system with 25 hits, 27 wrong
-and cost 2.451, by coincidence the same number as the baseline's development cost in Table~\ref{tab:headline}, scored on earlier labels with 55 needed sounds). Rows in the order of Figure~\ref{fig:ceiling}.}
+\caption{One stage made perfect at a time (development set; the final system with 29 of 58 hits, 15 wrong
+and cost 2.056). Rows in the order of Figure~\ref{fig:ceiling}.}
 \label{tab:ceiling}
 \begin{tabular}{lrrr}
 \toprule
 Stage made perfect & Hits & Wrong & Cost \\
 \midrule
-Timing & 26 & 20 & 2.197 \\
-On-screen check & 30 & 18 & 1.915 \\
-Vetoes and filters & 30 & 27 & 2.169 \\
-Listeners and their filters & 34 & 24 & 1.859 \\
+Timing & 30 & 12 & 1.915 \\
+On-screen check & 34 & 9 & 1.606 \\
+Vetoes and filters & 35 & 15 & 1.718 \\
+Listeners and their filters & 37 & 11 & 1.493 \\
 \midrule
-All stages perfect & 43 & 3 & 0.761 \\
+All stages perfect & 47 & 1 & 0.648 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The on-screen check and the listeners are the two largest losses. Even with every stage perfect, 12 of 55 needed
+The on-screen check and the listeners are the two largest losses. Even with every stage perfect, 11 of 58 needed
 sounds stay missed: five are heard by no model at all (a hammer, an explosion, a clang and two golf-club strikes; the last three are also families the system never draws)
-and seven are too faint or too badly timed.
+and six are too faint or too badly timed.
 
 \subsection{The on-screen check in detail}\label{sec:presence}
 A hand audit looked at the 36 stretches the gate silenced wrongly on the gate-labelled clips (16 development, 20 test;

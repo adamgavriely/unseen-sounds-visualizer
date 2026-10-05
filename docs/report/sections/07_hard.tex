@@ -80,8 +80,8 @@ forms of the internal names explained in Appendix~\ref{app:glossary}.}
 \subsection{Hearing quiet sounds}\label{sec:hard-hear}
 \emph{Expected:} a modern tagger hears a hammer or a door. \emph{Actually:} under speech or music it often does not.
 The tagger's own score for \emph{Speech} or \emph{Music} is higher than for the quiet sound, so the sound never becomes
-a candidate. A ceiling analysis, in which every later stage is made perfect using the labels, shows that about one
-needed sound in five stays missed because no model hears it clearly (Section~\ref{sec:ceiling}). Removing the speech first with a source separation model (HT-Demucs~\cite{rouard2023htdemucs}, keeping its non-vocal
+a candidate. A ceiling analysis, in which every later stage is made perfect using the labels, shows that 11 of 58
+needed sounds stay missed because no model hears them clearly (Section~\ref{sec:ceiling}). Removing the speech first with a source separation model (HT-Demucs~\cite{rouard2023htdemucs}, keeping its non-vocal
 ``other'' stem) made it worse: the share of sounds found under speech fell from 9.5\,\% to 4.8\,\%, because the
 detectors were never trained on separated audio.
 

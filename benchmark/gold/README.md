@@ -16,7 +16,7 @@ v1.2.0.
 | **Per-clip inputs** | `clip_prep.py`, `flexsed_run.py`, `dev_listener.py`, `test_listener.py`, `listener_variants.py`, `listener_afnext.py`, `dasm_rescue.py`, `listener_open_inventory.py`, `finelap_screen.py` (order below) |
 | **Picture prompts** | `picture_templates.py` (picture templates and seeds; imported by `src/stage6_visual_augmentation/` and `comfyui_nodes/run_frozen.py`) |
 | **Decision trail** | `inspector_trail_export.py`, `inspector_data.py` → `docs/decision_trail/` |
-| **Model inputs and analyses cited in the report** | `depictable_vocab.json` (the 215 sound families), `flexsed_extra_queries.json` (extra FlexSED queries of the `FLEXSED_EXTRA` option), `ceiling_ship7.md` (how many needed sounds any detector can find), `visible_weight_sweep.md` (cost of an on-screen picture), `holm_test_final_v33_test_bench.json` (Holm correction of the main tests), `logit_gate_gold.json` |
+| **Model inputs and analyses cited in the report** | `depictable_vocab.json` (the 215 sound families), `flexsed_extra_queries.json` (extra FlexSED queries of the `FLEXSED_EXTRA` option), `ceiling_final/` (ceiling analysis of the final system: how many needed sounds any detector can find), `visible_weight_sweep.md` (cost of an on-screen picture), `holm_test_final_v33_test_bench.json` (Holm correction of the main tests), `logit_gate_gold.json` |
 | **AudioSet side-by-side** (report Appendix E) | `fresh_side_by_side.py` → `fresh_side_by_side.json`; needs `benchmark/detector_round12.py` and `audioset_fresh.json` from release v1.2.0 |
 
 ## Per-clip inputs: what runs for a new clip
