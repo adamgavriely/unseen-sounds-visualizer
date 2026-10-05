@@ -695,12 +695,6 @@
   "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/mv_bank_robbery_alarm.mp4",
   "new_tokens": 13
  },
- "oc_distant_traffic_hill": {
-  "duration": 19.0,
-  "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/oc_distant_traffic_hill.mp4",
-  "new_tokens": 2
- },
  "pdfilm_duckcover_90": {
   "duration": 16.0,
   "reply": "17.8 | 20.9 | Explosion",

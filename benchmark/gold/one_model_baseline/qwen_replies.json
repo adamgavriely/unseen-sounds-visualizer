@@ -579,11 +579,6 @@
   "reply": "0.0 | Vehicle\n6.9 | Car\n11.0 | Crash\n14.4 | Sound effect",
   "new_tokens": 27
  },
- "oc_distant_traffic_hill": {
-  "duration": 19.0,
-  "reply": "0.0 | Rain\n0.0 | Raindrop",
-  "new_tokens": 13
- },
  "pdfilm_duckcover_90": {
   "duration": 16.0,
   "reply": "none",

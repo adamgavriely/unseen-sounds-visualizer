@@ -45,6 +45,9 @@ each clip and replays the pipeline's own decision functions:
 # Table 3: final system and baselines
 python benchmark/gold/final_vs_baselines.py
 python benchmark/gold/final_vs_baselines_extra.py   # F1 intervals, danger sounds
+# Table 4 and Figure 7: one-model baselines
+python benchmark/gold/one_model_baseline/run.py --model m2d   # also qwen, qwen_av
+python benchmark/gold/one_model_baseline/make_m2d_chart.py
 # configuration check
 python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL
 python benchmark/gold/inspector_trail_export.py \
