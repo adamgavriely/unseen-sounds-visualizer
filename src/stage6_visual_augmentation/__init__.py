@@ -26,7 +26,7 @@ import config
 from src.labels import search_query
 
 _OPENVERSE = "https://api.openverse.org/v1/images/"
-_HEADERS = {"User-Agent": "MscFinalProject/0.1 (academic research)"}
+_HEADERS = {"User-Agent": "unseen-sounds-visualizer/1.0 (academic research)"}
 
 
 # ----------------------------------------------------------------------

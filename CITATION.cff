@@ -8,7 +8,7 @@ authors:
 version: 1.3.8
 license: MIT
 date-released: 2026-10-05
-repository-code: "https://github.com/adamgavriely/MscFinalProject"
+repository-code: "https://github.com/adamgavriely/unseen-sounds-visualizer"
 type: software
 preferred-citation:
   type: report
@@ -19,4 +19,4 @@ preferred-citation:
   institution:
     name: "Bar-Ilan University"
   year: 2026
-  url: "https://github.com/adamgavriely/MscFinalProject/blob/main/docs/report/report.pdf"
+  url: "https://github.com/adamgavriely/unseen-sounds-visualizer/blob/main/docs/report/report.pdf"

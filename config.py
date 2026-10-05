@@ -1,7 +1,7 @@
 """Central defaults for the pipeline. Override per-run via main.py CLI flags.
 
 The docs/history/* files and other paths marked "release v1.2.0" in the comments below are in release v1.2.0
-(https://github.com/adamgavriely/MscFinalProject/releases/tag/v1.2.0), not in this release.
+(https://github.com/adamgavriely/unseen-sounds-visualizer/releases/tag/v1.2.0), not in this release.
 
 The rationale for each choice is in the comment beside it.
 """

@@ -1,4 +1,6 @@
-# Visual Augmentation of Audio Semantics for Accessibility
+# Unseen Sounds Visualizer
+
+**Visual Augmentation of Audio Semantics for Accessibility**: visualises off-screen sounds in video as generated images, for deaf and hard-of-hearing viewers.
 
 MSc final project, Bar-Ilan University (Department of Computer Science), Adam Gavriely, 2026.
 
@@ -44,6 +46,7 @@ scored. Limits are discussed in Section 9 of the report.
 ## Installation
 
 ```
+git clone https://github.com/adamgavriely/unseen-sounds-visualizer && cd unseen-sounds-visualizer
 python3.11 -m venv ~/venv_ms && source ~/venv_ms/bin/activate
 pip install -r requirements.txt --extra-index-url https://download.pytorch.org/whl/cu121
 git clone https://github.com/JHU-LCAP/FlexSED ~/FlexSED
