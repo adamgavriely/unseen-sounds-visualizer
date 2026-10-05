@@ -29,3 +29,6 @@ pytest
 
 # optional, only for comfyui_nodes/public_page.py (upload page, separate environment):
 # gradio requests websockets
+
+# optional, only for the one-model baseline benchmark/gold/one_model_baseline/qwen_omni_av.py:
+# qwen-omni-utils

@@ -140,7 +140,7 @@ GEN_BACKEND = "diffusion"    # diffusion | retrieve (Openverse) | placeholder
 # score back by asking for something unambiguous rather than something photographic.
 # Presentation preset (DHH evidence: users want choices; see notes "Rendering improvements"):
 #   full    = stable per-sound slots with imagery, opacity weighted by confidence
-#   minimal = same slots, compact label chips instead of imagery (icon set is a TODO)
+#   minimal = same slots, compact label chips instead of imagery
 #   off     = no augmentation panel (control condition; output = original video)
 RENDER_MODE = "full"
 # The panel is read at a glance beside a video the viewer is already watching, so every

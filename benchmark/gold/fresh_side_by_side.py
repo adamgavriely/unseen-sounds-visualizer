@@ -101,7 +101,7 @@ def summ(rr):
 
 
 def main():
-    splits = os.environ["TG_EXTRA_SPLITS"].split()
+    splits = os.environ["PREP_EXTRA_SPLITS"].split()
     gold, counts = gold_export()
     rows, stems, missing = rows_of(splits, gold)
     assert len(stems) == len(set(stems)) == 340, len(stems)

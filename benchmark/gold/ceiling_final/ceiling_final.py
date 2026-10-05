@@ -4,7 +4,7 @@ ledger_final.py, chain extended to the final arm); clip-aware placed() (GROUP / 
 (final arm has no picture floor; DISPLAY / AUGMENT threshold 0.35); gate-vote proxy also reads the SHIP8 chain arms;
 O7 prose dropped (it described SHIP7); TEST block dropped. Writes only into benchmark/gold/ceiling_final/.
 
-    python benchmark/gold/ceiling_final/ceiling_final.py      # from ~/MscProj_tg (msproj)
+    python benchmark/gold/ceiling_final/ceiling_final.py      # from the repository root
 
 Original docstring: Ceiling analysis of the shipped SHIP7 pipeline on merged DEV (71 clips): why can't we do better?
 Each ORACLE row fixes ONE stage perfectly with the gold and leaves every other stage as shipped; the saved SHIP7 pictures
@@ -20,7 +20,10 @@ Nothing in src/ or config.py is edited; no picture is changed on disk; CPU only.
   O7 doubt     needed / visible calls of the gold that are doubtful (annotator flags + the prereg readings)
   waterfall    shipped -> each oracle alone -> all together (4 -> 5 -> 5+4 joint -> 1 -> 3 -> 2 with filters lifted) -> residual
 
-    TG_ARMS="SHIP6+FLAP SHIP7 ..." python benchmark/gold/ceiling_ship7.py      # from ~/MscProj_tg (msproj)
+    TG_ARMS="SHIP6+FLAP SHIP7 ..." python benchmark/gold/ceiling_ship7.py  (release v1.2.0)      # from the repository root
+
+Needs the screening modules btp_screen.py, cross_group.py and flap_joint_sim.py from release v1.2.0
+(benchmark/gold/); its saved result is ceiling_final.md.
 """
 from __future__ import annotations
 
@@ -32,7 +35,7 @@ from pathlib import Path
 
 os.environ.setdefault("TG_ARMS", "SHIP8+MD3+WW5+SL SHIP8+MD3+WW5 SHIP8+MD3+WW SHIP8+MD3 SHIP8 SHIP7+K4AD SHIP6+FLAP SHIP7 B0r "
                                   "TO1+F7F8 TO1F7F8+N2b SHIP+DR2 SHIP2+KV4 SHIP3+DV SHIP4+BTP SHIP5+CONT TO1+F7")
-_ROOT = Path.home() / "MscProj_tg"
+_ROOT = Path(os.environ.get("MSCPROJ_ROOT", Path(__file__).resolve().parents[3]))
 sys.path.insert(0, str(_ROOT))
 sys.path.insert(0, str(_ROOT / "benchmark" / "gold" / "ceiling_final"))
 import ledger_final as E                                 # sets B.ARM = ARM, B.placed / B.parts = clip-aware copies

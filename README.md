@@ -133,7 +133,7 @@ Some files were renamed after release v1.2.0; the old-to-new name table is in
 | `docs/decision_trail/` | decision trail: every decision of the final system on every clip, and its parity check |
 | decision trail viewer | open `docs/decision_trail/index.html` in a browser (no server needed); the clip videos are not in the repository, so the video box stays empty, but the trails, timelines and counts all work |
 | `comfyui_nodes/` | optional ComfyUI interface ([`comfyui_nodes/README.md`](comfyui_nodes/README.md)) |
-| `data/input/` | a small test clip |
+| `data/input/` | a small synthetic test clip (plain frame, generated soundtrack) for the quick-start command |
 
 ## Citation
 

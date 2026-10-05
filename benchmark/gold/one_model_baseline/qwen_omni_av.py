@@ -57,10 +57,10 @@ def parse(txt, vocab, dur):
 
 
 def video_of(stem):
-    """videos.json: every stem -> its video file (searched once under ~/MscProj_tg/data/input and ~/MscProj/data/input)"""
+    """videos.json: every stem -> its video file (paths relative to the repository root, under data/input)"""
     if not hasattr(video_of, "m"):
         video_of.m = json.loads((HERE / "videos.json").read_text(encoding="utf-8"))
-    return Path(video_of.m[stem])
+    return HERE.parents[2] / video_of.m[stem]
 
 
 def main():

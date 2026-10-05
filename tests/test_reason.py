@@ -126,7 +126,16 @@ def spec(label, a, b, conf):
                             confidence=conf, reason="planned", subject=label)
 
 
+def fake_similarity(a, b, model="", device="cpu"):
+    """Stand-in for the text-embedding model: the two laughter subjects are close, all else apart."""
+    def close(x, y):
+        return x == y or ({"laugh" in x or "giggl" in x, "laugh" in y or "giggl" in y} == {True})
+    return [[0.8 if close(x, y) else 0.0 for y in b] for x in a]
+
+
 def test_decide_subjects_control_flow(monkeypatch):
+    import src.text_similarity as TS
+    monkeypatch.setattr(TS, "similarity", fake_similarity)
     monkeypatch.setattr(R, "_load", fake_load)
     monkeypatch.setattr(R, "_ask", fake_ask)
     monkeypatch.setattr(S2, "_sample_frames", fake_frames)

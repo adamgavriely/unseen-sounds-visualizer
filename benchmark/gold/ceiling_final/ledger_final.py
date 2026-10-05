@@ -4,9 +4,9 @@ CHAIN extended to the final arm; every SHIP6+FLAP literal -> ARM; floor 0.40 -> 
 DISPLAY / AUGMENT threshold 0.35); placed() passes clip= (GROUP / DEPICT display rules, as load_pictures); the dev2 gold
 temp file is written here; new miss class "display-dropped" (augment spec in window, not placed).
 
-    python benchmark/gold/ceiling_final/ledger_final.py      # from ~/MscProj_tg
+    python benchmark/gold/ceiling_final/ledger_final.py      # from the repository root
 
-Original docstring: Round 33 (docs/prereg_round13_detector_push.md "Round 33"): the SHIP7 error ledger and the SpotSound rescued-picture
+Original docstring: Round 33 (docs/prereg_round13_detector_push.md "Round 33", release v1.2.0): the SHIP7 error ledger and the SpotSound rescued-picture
 veto (SPOT-V), CPU only, on the saved SHIP7 pictures of merged DEV (arm `SHIP6+FLAP|proposed`; rows = `SHIP7|proposed`).
 Nothing in src/ or config.py is edited; no picture is changed on disk.
 
@@ -15,7 +15,7 @@ Nothing in src/ or config.py is edited; no picture is changed on disk.
   SPOT-V: drop a rescued placed picture whose matched P2/PV SpotSound EXIST answer starts with "no"; rescored, combined rule
           vs SHIP7. Reported beside: SPOT-no as round 31 (EXIST no OR no GROUND overlap).
 
-    python benchmark/gold/ship7_errors.py            # from ~/MscProj_tg on the cluster (msproj)
+    python benchmark/gold/ship7_errors.py            # (release v1.2.0)
 """
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ from pathlib import Path
 
 os.environ.setdefault("TG_ARMS", "SHIP8+MD3+WW5+SL SHIP8+MD3+WW5 SHIP8+MD3+WW SHIP8+MD3 SHIP8 SHIP7+K4AD SHIP6+FLAP SHIP7 B0r "
                                   "TO1+F7F8 TO1F7F8+N2b SHIP+DR2 SHIP2+KV4 SHIP3+DV SHIP4+BTP SHIP5+CONT TO1+F7")
-_ROOT = Path.home() / "MscProj_tg"
+_ROOT = Path(os.environ.get("MSCPROJ_ROOT", Path(__file__).resolve().parents[3]))
 OUTD = _ROOT / "benchmark" / "gold" / "ceiling_final"
 sys.path.insert(0, str(_ROOT))
 import config

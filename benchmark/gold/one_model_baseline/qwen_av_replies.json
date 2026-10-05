@@ -2,949 +2,949 @@
  "ambient_citywalk_nyc_1689": {
   "duration": 16.0,
   "reply": "13.8 | 15.1 | Door\n14.1 | 14.4 | Hammer",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/ambient_citywalk_nyc_1689.mp4",
+  "video": "data/input/benchmark/unseen_ambient/ambient_citywalk_nyc_1689.mp4",
   "new_tokens": 26
  },
  "ambient_citywalk_nyc_2627": {
   "duration": 16.0,
   "reply": "17.8 | 19.1 | Traffic noise, roadway noise",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ambient_citywalk_nyc_2627.mp4",
+  "video": "data/input/benchmark/mixed/ambient_citywalk_nyc_2627.mp4",
   "new_tokens": 17
  },
  "ambient_harbour_boats_724": {
   "duration": 16.0,
   "reply": "17.8 | 25.9 | Boat, Water vehicle",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/ambient_harbour_boats_724.mp4",
+  "video": "data/input/benchmark/no_ambient/ambient_harbour_boats_724.mp4",
   "new_tokens": 16
  },
  "ambient_market_marrakech_3102": {
   "duration": 16.0,
   "reply": "13.8 | 15.9 | Car passing by",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/ambient_market_marrakech_3102.mp4",
+  "video": "data/input/benchmark/seen_ambient/ambient_market_marrakech_3102.mp4",
   "new_tokens": 15
  },
  "ambient_nature_rainforest_2179": {
   "duration": 16.0,
   "reply": "5.1 | 7.9 | Stream",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ambient_nature_rainforest_2179.mp4",
+  "video": "data/input/benchmark/mixed/ambient_nature_rainforest_2179.mp4",
   "new_tokens": 11
  },
  "ambient_nature_rainforest_7629": {
   "duration": 16.0,
   "reply": "0.0 | 29.9 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ambient_nature_rainforest_7629.mp4",
+  "video": "data/input/benchmark/mixed/ambient_nature_rainforest_7629.mp4",
   "new_tokens": 20
  },
  "ambient_snow_walk_930": {
   "duration": 16.0,
   "reply": "17.8 | 25.9 | Traffic noise, roadway noise",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ambient_snow_walk_930.mp4",
+  "video": "data/input/benchmark/mixed/ambient_snow_walk_930.mp4",
   "new_tokens": 17
  },
  "ambient_transport_subway_10800": {
   "duration": 16.0,
   "reply": "0.0 | 29.9 | Clickety-clack\n0.0 | 29.9 | Subway, metro, underground",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/ambient_transport_subway_10800.mp4",
+  "video": "data/input/benchmark/seen_ambient/ambient_transport_subway_10800.mp4",
   "new_tokens": 31
  },
  "ambient_weather_storm_16200": {
   "duration": 16.0,
   "reply": "0.0 | 29.9 | Thunder",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ambient_weather_storm_16200.mp4",
+  "video": "data/input/benchmark/mixed/ambient_weather_storm_16200.mp4",
   "new_tokens": 12
  },
  "ambient_weather_storm_7200": {
   "duration": 16.0,
   "reply": "0.0 | 30.0 | Thunderstorm",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/ambient_weather_storm_7200.mp4",
+  "video": "data/input/benchmark/seen_ambient/ambient_weather_storm_7200.mp4",
   "new_tokens": 13
  },
  "as_church_bell_pJRAWkLM": {
   "duration": 20.0,
   "reply": "11.8 | 15.9 | Church bell",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/as_church_bell_pJRAWkLM.mp4",
+  "video": "data/input/benchmark/unseen_ambient/as_church_bell_pJRAWkLM.mp4",
   "new_tokens": 14
  },
  "as_explosion_XJ8lc3I6": {
   "duration": 20.0,
   "reply": "11.8 | 16.9 | Fusillade",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/as_explosion_XJ8lc3I6.mp4",
+  "video": "data/input/benchmark/mixed/as_explosion_XJ8lc3I6.mp4",
   "new_tokens": 15
  },
  "as_fire_alarm_kGKZ0YK4": {
   "duration": 20.0,
   "reply": "17.8 | 25.9 | Fire alarm",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/as_fire_alarm_kGKZ0YK4.mp4",
+  "video": "data/input/benchmark/unseen_ambient/as_fire_alarm_kGKZ0YK4.mp4",
   "new_tokens": 14
  },
  "as_glass_oHil9Ip_": {
   "duration": 20.0,
   "reply": "11.8 | 13.1 | Glass\n19.4 | 20.4 | Glass\n25.2 | 26.7 | Glass\n35.6 | 36.4 | Glass",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/as_glass_oHil9Ip_.mp4",
+  "video": "data/input/benchmark/no_ambient/as_glass_oHil9Ip_.mp4",
   "new_tokens": 52
  },
  "b3_airport_terminal": {
   "duration": 28.0,
   "reply": "17.6 | 25.9 | Inside, large room or hall",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_airport_terminal.mp4",
+  "video": "data/input/benchmark/no_ambient/b3_airport_terminal.mp4",
   "new_tokens": 18
  },
  "b3_aviary_birds": {
   "duration": 28.0,
   "reply": "17.6 | 25.9 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/b3_aviary_birds.mp4",
+  "video": "data/input/benchmark/mixed/b3_aviary_birds.mp4",
   "new_tokens": 21
  },
  "b3_bakery_morning": {
   "duration": 28.0,
   "reply": "17.6 | 19.1 | Door\n31.4 | 32.4 | Door",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_bakery_morning.mp4",
+  "video": "data/input/benchmark/unseen_ambient/b3_bakery_morning.mp4",
   "new_tokens": 26
  },
  "b3_barbershop": {
   "duration": 28.0,
   "reply": "17.6 | 25.9 | Buzz",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_barbershop.mp4",
+  "video": "data/input/benchmark/unseen_ambient/b3_barbershop.mp4",
   "new_tokens": 13
  },
  "b3_botanic_garden": {
   "duration": 28.0,
   "reply": "17.6 | 25.9 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_botanic_garden.mp4",
+  "video": "data/input/benchmark/unseen_ambient/b3_botanic_garden.mp4",
   "new_tokens": 21
  },
  "b3_carnival_parade": {
   "duration": 24.0,
   "reply": "17.8 | 20.9 | Clapping",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/b3_carnival_parade.mp4",
+  "video": "data/input/benchmark/mixed/b3_carnival_parade.mp4",
   "new_tokens": 14
  },
  "b3_construction_site": {
   "duration": 28.0,
   "reply": "17.6 | 19.1 | Engine\n19.1 | 24.4 | Engine\n25.3 | 26.8 | Engine\n27.6 | 28.0 | Engine",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/b3_construction_site.mp4",
+  "video": "data/input/benchmark/seen_ambient/b3_construction_site.mp4",
   "new_tokens": 52
  },
  "b3_cow_farm": {
   "duration": 28.0,
   "reply": "17.6 | 19.1 | Livestock, farm animals, working animals",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_cow_farm.mp4",
+  "video": "data/input/benchmark/no_ambient/b3_cow_farm.mp4",
   "new_tokens": 21
  },
  "b3_crossing_bells": {
   "duration": 17.0,
   "reply": "17.6 | 32.1 | Clickety-clack",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/b3_crossing_bells.mp4",
+  "video": "data/input/benchmark/seen_ambient/b3_crossing_bells.mp4",
   "new_tokens": 16
  },
  "b3_favela_rio": {
   "duration": 28.0,
   "reply": "15.6 | 25.9 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_favela_rio.mp4",
+  "video": "data/input/benchmark/unseen_ambient/b3_favela_rio.mp4",
   "new_tokens": 21
  },
  "b3_flea_market": {
   "duration": 28.0,
   "reply": "17.6 | 19.1 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_flea_market.mp4",
+  "video": "data/input/benchmark/no_ambient/b3_flea_market.mp4",
   "new_tokens": 21
  },
  "b3_golf_course": {
   "duration": 28.0,
   "reply": "11.6 | 12.1 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_golf_course.mp4",
+  "video": "data/input/benchmark/unseen_ambient/b3_golf_course.mp4",
   "new_tokens": 21
  },
  "b3_ia_youtube_skxtz9foauw_0": {
   "duration": 28.0,
   "reply": "51.6 | 54.1 | Pour",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_ia_youtube_skxtz9foauw_0.mp4",
+  "video": "data/input/benchmark/no_ambient/b3_ia_youtube_skxtz9foauw_0.mp4",
   "new_tokens": 13
  },
  "b3_laundromat": {
   "duration": 28.0,
   "reply": "17.6 | 25.9 | Washing machine",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_laundromat.mp4",
+  "video": "data/input/benchmark/no_ambient/b3_laundromat.mp4",
   "new_tokens": 14
  },
  "b3_pet_shop": {
   "duration": 28.0,
   "reply": "0.0 | 54.1 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_pet_shop.mp4",
+  "video": "data/input/benchmark/unseen_ambient/b3_pet_shop.mp4",
   "new_tokens": 20
  },
  "bell_miami": {
   "duration": 15.5936875,
   "reply": "10.8 | 14.9 | Traffic noise, roadway noise",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/bell_miami.webm",
+  "video": "data/input/benchmark/unseen_ambient/bell_miami.webm",
   "new_tokens": 17
  },
  "birds_forest": {
   "duration": 18.00025,
   "reply": "10.6 | 12.1 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/gold_trace/birds_forest.mp4",
+  "video": "data/input/gold_trace/birds_forest.mp4",
   "new_tokens": 21
  },
  "helicopter_ossetia": {
   "duration": 18.0,
   "reply": "17.6 | 29.1 | Aircraft engine\n17.6 | 29.1 | Helicopter",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/helicopter_ossetia.mp4",
+  "video": "data/input/benchmark/no_ambient/helicopter_ossetia.mp4",
   "new_tokens": 28
  },
  "kit_piano": {
   "duration": 18.0001875,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/kit_piano.mp4",
+  "video": "data/input/benchmark/no_ambient/kit_piano.mp4",
   "new_tokens": 2
  },
  "london_protest_01": {
   "duration": 11.132625,
   "reply": "11.6 | 15.9 | Vehicle horn, car horn, honking",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/london_protest_01.mp4",
+  "video": "data/input/benchmark/seen_ambient/london_protest_01.mp4",
   "new_tokens": 20
  },
  "ly_ambulance_(siren)_-yPSgCn": {
   "duration": 18.0,
   "reply": "17.6 | 25.9 | Emergency vehicle",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ly_ambulance_(siren)_-yPSgCn.mp4",
+  "video": "data/input/benchmark/mixed/ly_ambulance_(siren)_-yPSgCn.mp4",
   "new_tokens": 14
  },
  "ly_applause_62ZYD0u": {
   "duration": 18.0,
   "reply": "0.0 | 5.6 | Applause\n0.0 | 5.6 | Laughter",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/gold_trace/ly_applause_62ZYD0u.mp4",
+  "video": "data/input/gold_trace/ly_applause_62ZYD0u.mp4",
   "new_tokens": 24
  },
  "ly_helicopter_-v62cK1": {
   "duration": 18.0,
   "reply": "18.6 | 34.1 | Engine",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/ly_helicopter_-v62cK1.mp4",
+  "video": "data/input/benchmark/unseen_ambient/ly_helicopter_-v62cK1.mp4",
   "new_tokens": 13
  },
  "movie_blueplanet_115": {
   "duration": 16.0,
   "reply": "16.0 | 19.1 | Ocean",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/movie_blueplanet_115.mp4",
+  "video": "data/input/benchmark/no_ambient/movie_blueplanet_115.mp4",
   "new_tokens": 13
  },
  "mv_arrest_street_scene": {
   "duration": 24.0,
   "reply": "11.6 | 12.1 | Door\n11.7 | 12.1 | Slam",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/mv_arrest_street_scene.mp4",
+  "video": "data/input/benchmark/seen_ambient/mv_arrest_street_scene.mp4",
   "new_tokens": 26
  },
  "mv_detective_crime_scene": {
   "duration": 19.0,
   "reply": "10.6 | 15.1 | Telephone bell ringing",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/mv_detective_crime_scene.mp4",
+  "video": "data/input/benchmark/unseen_ambient/mv_detective_crime_scene.mp4",
   "new_tokens": 15
  },
  "mv_protest_scene_movie": {
   "duration": 24.0,
   "reply": "17.8 | 25.9 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/mv_protest_scene_movie.mp4",
+  "video": "data/input/benchmark/unseen_ambient/mv_protest_scene_movie.mp4",
   "new_tokens": 13
  },
  "mv_storm_scene_house": {
   "duration": 24.0,
   "reply": "11.8 | 36.1 | Thunder",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/gold_trace/mv_storm_scene_house.mp4",
+  "video": "data/input/gold_trace/mv_storm_scene_house.mp4",
   "new_tokens": 13
  },
  "mv_tornado_scene": {
   "duration": 20.0,
   "reply": "11.8 | 15.9 | Civil defense siren",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_shipcheck/mv_tornado_scene.mp4",
+  "video": "data/input/tagger_shipcheck/mv_tornado_scene.mp4",
   "new_tokens": 16
  },
  "un_driving_motorcycle_4O3bZRYO": {
   "duration": 20.0,
   "reply": "11.8 | 15.9 | Vehicle horn, car horn, honking",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/gold_trace/un_driving_motorcycle_4O3bZRYO.mp4",
+  "video": "data/input/gold_trace/un_driving_motorcycle_4O3bZRYO.mp4",
   "new_tokens": 20
  },
  "un_driving_motorcycle_DgdHSmwA": {
   "duration": 17.0,
   "reply": "13.8 | 15.1 | Car passing by",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/un_driving_motorcycle_DgdHSmwA.mp4",
+  "video": "data/input/benchmark/unseen_ambient/un_driving_motorcycle_DgdHSmwA.mp4",
   "new_tokens": 15
  },
  "un_hair_dryer_drying_WWu24rJs": {
   "duration": 20.0,
   "reply": "17.8 | 19.1 | Background noise",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/un_hair_dryer_drying_WWu24rJs.mp4",
+  "video": "data/input/benchmark/no_ambient/un_hair_dryer_drying_WWu24rJs.mp4",
   "new_tokens": 14
  },
  "un_people_clapping__bAVmK7n": {
   "duration": 18.0,
   "reply": "17.6 | 19.1 | Zipper (clothing)",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/un_people_clapping__bAVmK7n.mp4",
+  "video": "data/input/benchmark/no_ambient/un_people_clapping__bAVmK7n.mp4",
   "new_tokens": 18
  },
  "waterfall_kawaida_01": {
   "duration": 11.2454375,
   "reply": "0.0 | 19.9 | Waterfall",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/waterfall_kawaida_01.mp4",
+  "video": "data/input/benchmark/seen_ambient/waterfall_kawaida_01.mp4",
   "new_tokens": 13
  },
  "waves_herzliya": {
   "duration": 12.4604375,
   "reply": "0.0 | 21.9 | Ocean",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/waves_herzliya.webm",
+  "video": "data/input/benchmark/seen_ambient/waves_herzliya.webm",
   "new_tokens": 12
  },
  "tg_d007": {
   "duration": 17.0,
   "reply": "11.8 | 13.1 | Door",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d007.mp4",
+  "video": "data/input/tagger_set/tg_d007.mp4",
   "new_tokens": 13
  },
  "tg_d016": {
   "duration": 18.0,
   "reply": "17.6 | 25.9 | Car passing by",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d016.mp4",
+  "video": "data/input/tagger_set/tg_d016.mp4",
   "new_tokens": 15
  },
  "tg_d020": {
   "duration": 17.0,
   "reply": "0.0 | 26.9 | Rain\n0.0 | 26.9 | Rain on surface",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d020.mp4",
+  "video": "data/input/tagger_set/tg_d020.mp4",
   "new_tokens": 26
  },
  "tg_d022": {
   "duration": 17.0,
   "reply": "17.8 | 31.1 | Baby cry, infant cry",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d022.mp4",
+  "video": "data/input/tagger_set/tg_d022.mp4",
   "new_tokens": 17
  },
  "tg_d029": {
   "duration": 16.0,
   "reply": "17.8 | 19.1 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d029.mp4",
+  "video": "data/input/tagger_set/tg_d029.mp4",
   "new_tokens": 21
  },
  "tg_d030": {
   "duration": 17.0,
   "reply": "11.8 | 13.1 | Traffic noise, roadway noise",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d030.mp4",
+  "video": "data/input/tagger_set/tg_d030.mp4",
   "new_tokens": 17
  },
  "tg_d032": {
   "duration": 15.0,
   "reply": "0.0 | 28.1 | Rain\n0.0 | 28.1 | Wind",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d032.mp4",
+  "video": "data/input/tagger_set/tg_d032.mp4",
   "new_tokens": 24
  },
  "tg_d033": {
   "duration": 18.0,
   "reply": "17.6 | 19.1 | Breathing",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d033.mp4",
+  "video": "data/input/tagger_set/tg_d033.mp4",
   "new_tokens": 14
  },
  "tg_d054": {
   "duration": 16.0,
   "reply": "17.8 | 29.5 | Engine",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d054.mp4",
+  "video": "data/input/tagger_set/tg_d054.mp4",
   "new_tokens": 13
  },
  "tg_d075": {
   "duration": 19.0,
   "reply": "17.8 | 19.1 | Fire",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d075.mp4",
+  "video": "data/input/tagger_set/tg_d075.mp4",
   "new_tokens": 13
  },
  "tg_d085": {
   "duration": 17.0,
   "reply": "0.0 | 32.1 | Ocean",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d085.mp4",
+  "video": "data/input/tagger_set/tg_d085.mp4",
   "new_tokens": 12
  },
  "tg_d088": {
   "duration": 15.0,
   "reply": "11.6 | 13.9 | Thunder",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d088.mp4",
+  "video": "data/input/tagger_set/tg_d088.mp4",
   "new_tokens": 13
  },
  "tg_d095": {
   "duration": 20.0,
   "reply": "1.6 | 3.5 | Fire\n4.8 | 17.9 | Frying (food)\n20.2 | 21.8 | Frying (food)",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d095.mp4",
+  "video": "data/input/tagger_set/tg_d095.mp4",
   "new_tokens": 43
  },
  "tg_d107": {
   "duration": 9.729,
   "reply": "1.1 | 3.5 | Bird vocalization, bird call, bird song\n4.0 | 6.2 | Bird vocalization, bird call, bird song\n6.5 | 8.8 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d107.mp4",
+  "video": "data/input/tagger_set/tg_d107.mp4",
   "new_tokens": 57
  },
  "tg_d120": {
   "duration": 10.0,
   "reply": "0.0 | 5.6 | Meow",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d120.mp4",
+  "video": "data/input/tagger_set/tg_d120.mp4",
   "new_tokens": 12
  },
  "tg_d121": {
   "duration": 9.514,
   "reply": "1.1 | 3.6 | Drill",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d121.mp4",
+  "video": "data/input/tagger_set/tg_d121.mp4",
   "new_tokens": 11
  },
  "tg_d125": {
   "duration": 10.0,
   "reply": "5.483 | 6.113 | Bang",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d125.mp4",
+  "video": "data/input/tagger_set/tg_d125.mp4",
   "new_tokens": 15
  },
  "tg_d127": {
   "duration": 10.0,
   "reply": "0.0 | 18.0 | Water",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d127.mp4",
+  "video": "data/input/tagger_set/tg_d127.mp4",
   "new_tokens": 12
  },
  "tg_d128": {
   "duration": 10.0,
   "reply": "10.6 | 13.1 | Livestock, farm animals, working animals",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d128.mp4",
+  "video": "data/input/tagger_set/tg_d128.mp4",
   "new_tokens": 21
  },
  "tg_d129": {
   "duration": 10.0,
   "reply": "10.8 | 15.9 | Tools",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d129.mp4",
+  "video": "data/input/tagger_set/tg_d129.mp4",
   "new_tokens": 13
  },
  "tg_d133": {
   "duration": 10.0,
   "reply": "0.0 | 0.5 | Fart\n6.1 | 6.9 | Fart",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d133.mp4",
+  "video": "data/input/tagger_set/tg_d133.mp4",
   "new_tokens": 24
  },
  "tg_d149": {
   "duration": 10.0,
   "reply": "10.8 | 15.9 | Bee, wasp, etc.",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d149.mp4",
+  "video": "data/input/tagger_set/tg_d149.mp4",
   "new_tokens": 19
  },
  "ambient_everyday_farm_2166": {
   "duration": 16.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/ambient_everyday_farm_2166.mp4",
+  "video": "data/input/benchmark/unseen_ambient/ambient_everyday_farm_2166.mp4",
   "new_tokens": 2
  },
  "ambient_market_bangkok_1237": {
   "duration": 16.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/ambient_market_bangkok_1237.mp4",
+  "video": "data/input/benchmark/no_ambient/ambient_market_bangkok_1237.mp4",
   "new_tokens": 2
  },
  "ambient_market_bangkok_4332": {
   "duration": 16.0,
   "reply": "17.8 | 25.9 | Traffic noise, roadway noise",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/ambient_market_bangkok_4332.mp4",
+  "video": "data/input/benchmark/no_ambient/ambient_market_bangkok_4332.mp4",
   "new_tokens": 17
  },
  "ambient_nature_savanna_7706": {
   "duration": 16.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/ambient_nature_savanna_7706.mp4",
+  "video": "data/input/benchmark/no_ambient/ambient_nature_savanna_7706.mp4",
   "new_tokens": 2
  },
  "ambient_nightlife_neon_97": {
   "duration": 16.0,
   "reply": "17.8 | 25.9 | Car",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/ambient_nightlife_neon_97.mp4",
+  "video": "data/input/benchmark/no_ambient/ambient_nightlife_neon_97.mp4",
   "new_tokens": 13
  },
  "ambient_temple_india_1438": {
   "duration": 16.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/ambient_temple_india_1438.mp4",
+  "video": "data/input/benchmark/no_ambient/ambient_temple_india_1438.mp4",
   "new_tokens": 2
  },
  "ambient_waterfall_hike_18078": {
   "duration": 16.0,
   "reply": "0.0 | 29.9 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/ambient_waterfall_hike_18078.mp4",
+  "video": "data/input/benchmark/unseen_ambient/ambient_waterfall_hike_18078.mp4",
   "new_tokens": 20
  },
  "as_alarm_71Xl_uAS": {
   "duration": 20.0,
   "reply": "17.6 | 19.1 | Alarm clock",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/as_alarm_71Xl_uAS.mp4",
+  "video": "data/input/benchmark/unseen_ambient/as_alarm_71Xl_uAS.mp4",
   "new_tokens": 14
  },
  "as_fireworks_jZ9mYtCA": {
   "duration": 20.0,
   "reply": "17.8 | 19.1 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/as_fireworks_jZ9mYtCA.mp4",
+  "video": "data/input/benchmark/unseen_ambient/as_fireworks_jZ9mYtCA.mp4",
   "new_tokens": 13
  },
  "as_glass_GAGt_UEF": {
   "duration": 20.0,
   "reply": "11.8 | 13.1 | Pour\n19.4 | 21.4 | Pour\n25.2 | 26.7 | Pour\n30.6 | 32.4 | Pour",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/as_glass_GAGt_UEF.mp4",
+  "video": "data/input/benchmark/no_ambient/as_glass_GAGt_UEF.mp4",
   "new_tokens": 52
  },
  "b3_aquarium_walk": {
   "duration": 28.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_aquarium_walk.mp4",
+  "video": "data/input/benchmark/no_ambient/b3_aquarium_walk.mp4",
   "new_tokens": 2
  },
  "b3_balloon_burner": {
   "duration": 18.0,
   "reply": "27.6 | 30.1 | Windscreen wiper, windshield wiper",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_balloon_burner.mp4",
+  "video": "data/input/benchmark/no_ambient/b3_balloon_burner.mp4",
   "new_tokens": 20
  },
  "b3_ia_62934flighttothesuncountryvw_1": {
   "duration": 28.0,
   "reply": "17.6 | 54.1 | Human sounds",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_ia_62934flighttothesuncountryvw_1.mp4",
+  "video": "data/input/benchmark/no_ambient/b3_ia_62934flighttothesuncountryvw_1.mp4",
   "new_tokens": 14
  },
  "b3_ia_87954yourchancetolivenuclear_1": {
   "duration": 28.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_ia_87954yourchancetolivenuclear_1.mp4",
+  "video": "data/input/benchmark/no_ambient/b3_ia_87954yourchancetolivenuclear_1.mp4",
   "new_tokens": 2
  },
  "b3_ia_alcf_heydari_0005_0": {
   "duration": 28.0,
   "reply": "15.6 | 16.1 | Wind noise (microphone)",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_ia_alcf_heydari_0005_0.mp4",
+  "video": "data/input/benchmark/unseen_ambient/b3_ia_alcf_heydari_0005_0.mp4",
   "new_tokens": 18
  },
  "b3_leafblower_fall": {
   "duration": 21.0,
   "reply": "0.0 | 40.2 | Lawn mower",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_leafblower_fall.mp4",
+  "video": "data/input/benchmark/unseen_ambient/b3_leafblower_fall.mp4",
   "new_tokens": 13
  },
  "bell_kazansky": {
   "duration": 18.0,
   "reply": "0.0 | 34.2 | Church bell",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/bell_kazansky.mp4",
+  "video": "data/input/benchmark/unseen_ambient/bell_kazansky.mp4",
   "new_tokens": 13
  },
  "dutch_traffic_kids": {
   "duration": 18.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/dutch_traffic_kids.mp4",
+  "video": "data/input/benchmark/no_ambient/dutch_traffic_kids.mp4",
   "new_tokens": 2
  },
  "ev_smoke_alarm_kitchen": {
   "duration": 25.0,
   "reply": "41.8 | 46.9 | Boiling",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/ev_smoke_alarm_kitchen.mp4",
+  "video": "data/input/benchmark/unseen_ambient/ev_smoke_alarm_kitchen.mp4",
   "new_tokens": 14
  },
  "lx_chainsaw_and_power_tool_BBukw6J": {
   "duration": 18.0,
   "reply": "0.0 | 34.1 | Chainsaw",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/_dropped/lx_chainsaw_and_power_tool_BBukw6J.mp4",
+  "video": "data/input/benchmark/_dropped/lx_chainsaw_and_power_tool_BBukw6J.mp4",
   "new_tokens": 13
  },
  "lx_chainsaw_and_power_tool_W1VYWwY": {
   "duration": 18.0,
   "reply": "0.0 | 24.2 | Chainsaw",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/lx_chainsaw_and_power_tool_W1VYWwY.mp4",
+  "video": "data/input/benchmark/seen_ambient/lx_chainsaw_and_power_tool_W1VYWwY.mp4",
   "new_tokens": 13
  },
  "ly_alarm_qCVdVav": {
   "duration": 18.0,
   "reply": "5.1 | 7.6 | Buzzer",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/ly_alarm_qCVdVav.mp4",
+  "video": "data/input/benchmark/seen_ambient/ly_alarm_qCVdVav.mp4",
   "new_tokens": 12
  },
  "m4_airsoft_24a": {
   "duration": 20.0,
   "reply": "17.8 | 25.9 | Machine gun",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m4_airsoft_24a.mp4",
+  "video": "data/input/benchmark/unsorted/m4_airsoft_24a.mp4",
   "new_tokens": 14
  },
  "m4_clay_shoot_11a": {
   "duration": 17.0,
   "reply": "18.6 | 25.9 | Gunshot, gunfire",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m4_clay_shoot_11a.mp4",
+  "video": "data/input/benchmark/unsorted/m4_clay_shoot_11a.mp4",
   "new_tokens": 16
  },
  "m4_dog_doorbell_cam_30a": {
   "duration": 18.0,
   "reply": "15.6 | 16.1 | Door\n19.4 | 19.7 | Door",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m4_dog_doorbell_cam_30a.mp4",
+  "video": "data/input/benchmark/unsorted/m4_dog_doorbell_cam_30a.mp4",
   "new_tokens": 26
  },
  "m4_film_1917_33a": {
   "duration": 16.0,
   "reply": "15.8 | 19.1 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m4_film_1917_33a.mp4",
+  "video": "data/input/benchmark/unsorted/m4_film_1917_33a.mp4",
   "new_tokens": 13
  },
  "m4_film_blackhawk_32a": {
   "duration": 19.0,
   "reply": "17.6 | 25.1 | Aircraft engine\n17.6 | 25.1 | Helicopter",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m4_film_blackhawk_32a.mp4",
+  "video": "data/input/benchmark/unsorted/m4_film_blackhawk_32a.mp4",
   "new_tokens": 28
  },
  "m4_fire_bodycam_23a": {
   "duration": 20.0,
   "reply": "17.8 | 25.9 | Fire",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m4_fire_bodycam_23a.mp4",
+  "video": "data/input/benchmark/unsorted/m4_fire_bodycam_23a.mp4",
   "new_tokens": 13
  },
  "m4_live_fire_26a": {
   "duration": 17.0,
   "reply": "1.6 | 3.5 | Artillery fire\n8.0 | 9.4 | Machine gun\n10.9 | 12.3 | Machine gun",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m4_live_fire_26a.mp4",
+  "video": "data/input/benchmark/unsorted/m4_live_fire_26a.mp4",
   "new_tokens": 39
  },
  "m5_doc_restrepo_138b": {
   "duration": 15.0,
   "reply": "0.0 | 3.6 | Fusillade",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m5_doc_restrepo_138b.mp4",
+  "video": "data/input/benchmark/unsorted/m5_doc_restrepo_138b.mp4",
   "new_tokens": 13
  },
  "m5_horror_conjuring_82": {
   "duration": 16.0,
   "reply": "13.8 | 15.9 | Doorbell",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m5_horror_conjuring_82.mp4",
+  "video": "data/input/benchmark/unsorted/m5_horror_conjuring_82.mp4",
   "new_tokens": 14
  },
  "m5_war_fury_25b": {
   "duration": 15.0,
   "reply": "17.8 | 19.1 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/m5_war_fury_25b.mp4",
+  "video": "data/input/benchmark/unsorted/m5_war_fury_25b.mp4",
   "new_tokens": 13
  },
  "mc_break_in_scene": {
   "duration": 18.0,
   "reply": "11.6 | 15.9 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/mc_break_in_scene.mp4",
+  "video": "data/input/benchmark/seen_ambient/mc_break_in_scene.mp4",
   "new_tokens": 13
  },
  "mc_bridge_scene": {
   "duration": 20.0,
   "reply": "17.8 | 26.9 | Machine gun",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/mc_bridge_scene.mp4",
+  "video": "data/input/benchmark/unseen_ambient/mc_bridge_scene.mp4",
   "new_tokens": 14
  },
  "mc_flood_scene": {
   "duration": 16.0,
   "reply": "11.8 | 15.9 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/mc_flood_scene.mp4",
+  "video": "data/input/benchmark/seen_ambient/mc_flood_scene.mp4",
   "new_tokens": 13
  },
  "mc_riot_scene": {
   "duration": 16.0,
   "reply": "11.8 | 25.9 | Car",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/mc_riot_scene.mp4",
+  "video": "data/input/benchmark/seen_ambient/mc_riot_scene.mp4",
   "new_tokens": 13
  },
  "mc_thriller_basement": {
   "duration": 20.0,
   "reply": "17.8 | 25.9 | Water",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/mc_thriller_basement.mp4",
+  "video": "data/input/benchmark/seen_ambient/mc_thriller_basement.mp4",
   "new_tokens": 13
  },
  "movie_bladerunner_49": {
   "duration": 16.0,
   "reply": "13.8 | 15.9 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/movie_bladerunner_49.mp4",
+  "video": "data/input/benchmark/no_ambient/movie_bladerunner_49.mp4",
   "new_tokens": 13
  },
  "movie_interstellar_98": {
   "duration": 16.0,
   "reply": "17.8 | 25.9 | Wildfire",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/movie_interstellar_98.mp4",
+  "video": "data/input/benchmark/no_ambient/movie_interstellar_98.mp4",
   "new_tokens": 14
  },
  "movie_junglebook_51": {
   "duration": 16.0,
   "reply": "17.8 | 25.1 | Animal",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/movie_junglebook_51.mp4",
+  "video": "data/input/benchmark/no_ambient/movie_junglebook_51.mp4",
   "new_tokens": 13
  },
  "movie_junglebook_95": {
   "duration": 16.0,
   "reply": "17.8 | 19.1 | Roar",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/movie_junglebook_95.mp4",
+  "video": "data/input/benchmark/no_ambient/movie_junglebook_95.mp4",
   "new_tokens": 14
  },
  "movie_madmax_57": {
   "duration": 16.0,
   "reply": "17.8 | 19.1 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/movie_madmax_57.mp4",
+  "video": "data/input/benchmark/no_ambient/movie_madmax_57.mp4",
   "new_tokens": 13
  },
  "movie_planetearth_58": {
   "duration": 16.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/movie_planetearth_58.mp4",
+  "video": "data/input/benchmark/no_ambient/movie_planetearth_58.mp4",
   "new_tokens": 2
  },
  "mv_air_raid_scene": {
   "duration": 21.0,
   "reply": "17.8 | 25.9 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/mv_air_raid_scene.mp4",
+  "video": "data/input/benchmark/unseen_ambient/mv_air_raid_scene.mp4",
   "new_tokens": 21
  },
  "mv_bank_robbery_alarm": {
   "duration": 17.0,
   "reply": "11.8 | 15.9 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/mv_bank_robbery_alarm.mp4",
+  "video": "data/input/benchmark/seen_ambient/mv_bank_robbery_alarm.mp4",
   "new_tokens": 13
  },
  "pdfilm_duckcover_90": {
   "duration": 16.0,
   "reply": "17.8 | 20.9 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/pdfilm_duckcover_90.mp4",
+  "video": "data/input/benchmark/no_ambient/pdfilm_duckcover_90.mp4",
   "new_tokens": 13
  },
  "un_dog_barking_3doKyrCe": {
   "duration": 16.0,
   "reply": "0.0 | 15.9 | Civil defense siren",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/_dropped/un_dog_barking_3doKyrCe.mp4",
+  "video": "data/input/benchmark/_dropped/un_dog_barking_3doKyrCe.mp4",
   "new_tokens": 15
  },
  "un_hair_dryer_drying_jmlpavrE": {
   "duration": 20.0,
   "reply": "17.8 | 19.1 | Hair dryer",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/un_hair_dryer_drying_jmlpavrE.mp4",
+  "video": "data/input/benchmark/no_ambient/un_hair_dryer_drying_jmlpavrE.mp4",
   "new_tokens": 14
  },
  "un_wind_noise_1OctTl0h": {
   "duration": 17.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/un_wind_noise_1OctTl0h.mp4",
+  "video": "data/input/benchmark/no_ambient/un_wind_noise_1OctTl0h.mp4",
   "new_tokens": 2
  },
  "w8_dashcam_ambulance_behind_1a": {
   "duration": 20.0,
   "reply": "15.6 | 19.1 | Ambulance (siren)",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_dashcam_ambulance_behind_1a.mp4",
+  "video": "data/input/benchmark/unsorted/w8_dashcam_ambulance_behind_1a.mp4",
   "new_tokens": 18
  },
  "w8_dashcam_avalanche_road_2b": {
   "duration": 18.0,
   "reply": "17.6 | 25.9 | Civil defense siren",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_dashcam_avalanche_road_2b.mp4",
+  "video": "data/input/benchmark/unsorted/w8_dashcam_avalanche_road_2b.mp4",
   "new_tokens": 16
  },
  "w8_dog_fireworks_window_2a": {
   "duration": 16.0,
   "reply": "0.0 | 3.5 | Fireworks\n4.1 | 5.9 | Fireworks\n7.2 | 8.1 | Fireworks\n10.1 | 13.8 | Fireworks\n18.1 | 20.1 | Fireworks\n20.7 | 21.8 | Fireworks\n23.5 | 24.5 | Fireworks\n25.1 | 25.7 | Fireworks\n26.2 | 26.7 | Fireworks\n27.1 | 28.2 | Fireworks\n29.0 | 30.1 | Fireworks",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_dog_fireworks_window_2a.mp4",
+  "video": "data/input/benchmark/unsorted/w8_dog_fireworks_window_2a.mp4",
   "new_tokens": 148
  },
  "w8_duel_diner_horn_1a": {
   "duration": 20.0,
   "reply": "17.8 | 26.9 | Engine",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_duel_diner_horn_1a.mp4",
+  "video": "data/input/benchmark/unsorted/w8_duel_diner_horn_1a.mp4",
   "new_tokens": 13
  },
  "w8_film_hunt_for_red_october_1b": {
   "duration": 17.0,
   "reply": "17.0 | 25.9 | Alarm",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_film_hunt_for_red_october_1b.mp4",
+  "video": "data/input/benchmark/unsorted/w8_film_hunt_for_red_october_1b.mp4",
   "new_tokens": 13
  },
  "w8_helmetcam_chainsaw_roof_2b": {
   "duration": 17.0,
   "reply": "17.8 | 25.9 | Chainsaw",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_helmetcam_chainsaw_roof_2b.mp4",
+  "video": "data/input/benchmark/unsorted/w8_helmetcam_chainsaw_roof_2b.mp4",
   "new_tokens": 14
  },
  "w8_hide_wolves_howl_1a": {
   "duration": 18.0,
   "reply": "17.6 | 19.1 | Baby cry, infant cry",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_hide_wolves_howl_1a.mp4",
+  "video": "data/input/benchmark/unsorted/w8_hide_wolves_howl_1a.mp4",
   "new_tokens": 17
  },
  "w8_kids_fire_alarm_school_1b": {
   "duration": 18.0,
   "reply": "17.6 | 19.1 | Alarm",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_kids_fire_alarm_school_1b.mp4",
+  "video": "data/input/benchmark/unsorted/w8_kids_fire_alarm_school_1b.mp4",
   "new_tokens": 13
  },
  "w8_kids_ice_cream_truck_2a": {
   "duration": 18.0,
   "reply": "10.6 | 11.1 | Doorbell",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_kids_ice_cream_truck_2a.mp4",
+  "video": "data/input/benchmark/unsorted/w8_kids_ice_cream_truck_2a.mp4",
   "new_tokens": 14
  },
  "w8_pet_parrot_phone_ring_2b": {
   "duration": 17.0,
   "reply": "15.8 | 16.1 | Bark",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unsorted/w8_pet_parrot_phone_ring_2b.mp4",
+  "video": "data/input/benchmark/unsorted/w8_pet_parrot_phone_ring_2b.mp4",
   "new_tokens": 13
  },
  "tg_d001": {
   "duration": 17.0,
   "reply": "16.8 | 19.1 | Dog",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d001.mp4",
+  "video": "data/input/tagger_set/tg_d001.mp4",
   "new_tokens": 13
  },
  "tg_d009": {
   "duration": 16.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d009.mp4",
+  "video": "data/input/tagger_set/tg_d009.mp4",
   "new_tokens": 2
  },
  "tg_d011": {
   "duration": 18.0,
   "reply": "17.6 | 19.1 | Car passing by",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d011.mp4",
+  "video": "data/input/tagger_set/tg_d011.mp4",
   "new_tokens": 15
  },
  "tg_d013": {
   "duration": 18.0,
   "reply": "17.6 | 34.1 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d013.mp4",
+  "video": "data/input/tagger_set/tg_d013.mp4",
   "new_tokens": 13
  },
  "tg_d014": {
   "duration": 20.0,
   "reply": "0.0 | 38.1 | Rain",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d014.mp4",
+  "video": "data/input/tagger_set/tg_d014.mp4",
   "new_tokens": 12
  },
  "tg_d017": {
   "duration": 18.0,
   "reply": "none",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d017.mp4",
+  "video": "data/input/tagger_set/tg_d017.mp4",
   "new_tokens": 2
  },
  "tg_d019": {
   "duration": 17.0,
   "reply": "15.8 | 16.9 | Civil defense siren",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d019.mp4",
+  "video": "data/input/tagger_set/tg_d019.mp4",
   "new_tokens": 16
  },
  "tg_d023": {
   "duration": 19.0,
   "reply": "11.6 | 15.8 | Water",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d023.mp4",
+  "video": "data/input/tagger_set/tg_d023.mp4",
   "new_tokens": 13
  },
  "tg_d031": {
   "duration": 20.0,
   "reply": "11.8 | 13.1 | Frying (food)",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d031.mp4",
+  "video": "data/input/tagger_set/tg_d031.mp4",
   "new_tokens": 17
  },
  "tg_d040": {
   "duration": 20.0,
   "reply": "17.6 | 25.9 | Aircraft engine",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d040.mp4",
+  "video": "data/input/tagger_set/tg_d040.mp4",
   "new_tokens": 14
  },
  "tg_d045": {
   "duration": 18.0,
   "reply": "17.6 | 19.1 | Car passing by",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d045.mp4",
+  "video": "data/input/tagger_set/tg_d045.mp4",
   "new_tokens": 15
  },
  "tg_d046": {
   "duration": 15.0,
   "reply": "11.8 | 13.1 | Vehicle horn, car horn, honking",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d046.mp4",
+  "video": "data/input/tagger_set/tg_d046.mp4",
   "new_tokens": 20
  },
  "tg_d068": {
   "duration": 16.0,
   "reply": "17.8 | 25.9 | Horse",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d068.mp4",
+  "video": "data/input/tagger_set/tg_d068.mp4",
   "new_tokens": 13
  },
  "tg_d076": {
   "duration": 16.0,
   "reply": "11.8 | 15.9 | Wind noise (microphone)",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d076.mp4",
+  "video": "data/input/tagger_set/tg_d076.mp4",
   "new_tokens": 18
  },
  "tg_d077": {
   "duration": 19.0,
   "reply": "0.0 | 36.1 | Sailboat, sailing ship",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d077.mp4",
+  "video": "data/input/tagger_set/tg_d077.mp4",
   "new_tokens": 16
  },
  "tg_d078": {
   "duration": 17.0,
   "reply": "17.8 | 19.1 | Windscreen wiper, windshield wiper",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d078.mp4",
+  "video": "data/input/tagger_set/tg_d078.mp4",
   "new_tokens": 20
  },
  "tg_d079": {
   "duration": 15.0,
   "reply": "17.8 | 19.1 | Engine starting",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d079.mp4",
+  "video": "data/input/tagger_set/tg_d079.mp4",
   "new_tokens": 14
  },
  "tg_d080": {
   "duration": 18.0,
   "reply": "17.6 | 34.1 | Bird vocalization, bird call, bird song",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d080.mp4",
+  "video": "data/input/tagger_set/tg_d080.mp4",
   "new_tokens": 21
  },
  "tg_d101": {
   "duration": 10.0,
   "reply": "10.8 | 15.9 | Vehicle horn, car horn, honking",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d101.mp4",
+  "video": "data/input/tagger_set/tg_d101.mp4",
   "new_tokens": 20
  },
  "tg_d103": {
   "duration": 10.0,
   "reply": "7.1 | 8.5 | Artillery fire",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d103.mp4",
+  "video": "data/input/tagger_set/tg_d103.mp4",
   "new_tokens": 13
  },
  "tg_d104": {
   "duration": 10.0,
   "reply": "0.0 | 18.0 | Gunshot, gunfire",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d104.mp4",
+  "video": "data/input/tagger_set/tg_d104.mp4",
   "new_tokens": 15
  },
  "tg_d105": {
   "duration": 10.0,
   "reply": "11.8 | 13.1 | Vehicle horn, car horn, honking",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d105.mp4",
+  "video": "data/input/tagger_set/tg_d105.mp4",
   "new_tokens": 20
  },
  "tg_d106": {
   "duration": 9.002,
   "reply": "1.1 | 3.5 | Thump, thud",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d106.mp4",
+  "video": "data/input/tagger_set/tg_d106.mp4",
   "new_tokens": 15
  },
  "tg_d109": {
   "duration": 10.0,
   "reply": "0.0 | 17.9 | Clickety-clack\n0.0 | 17.9 | Train",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d109.mp4",
+  "video": "data/input/tagger_set/tg_d109.mp4",
   "new_tokens": 27
  },
  "tg_d110": {
   "duration": 10.0,
   "reply": "3.1 | 5.6 | Glass",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d110.mp4",
+  "video": "data/input/tagger_set/tg_d110.mp4",
   "new_tokens": 11
  },
  "tg_d112": {
   "duration": 10.0,
   "reply": "10.0 | 17.0 | Explosion",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d112.mp4",
+  "video": "data/input/tagger_set/tg_d112.mp4",
   "new_tokens": 13
  },
  "tg_d141": {
   "duration": 9.009,
   "reply": "1.1 | 3.5 | Clip-clop\n4.0 | 7.4 | Clip-clop",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d141.mp4",
+  "video": "data/input/tagger_set/tg_d141.mp4",
   "new_tokens": 26
  },
  "tg_d146": {
   "duration": 10.0,
   "reply": "0.0 | 18.0 | Water",
-  "video": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d146.mp4",
+  "video": "data/input/tagger_set/tg_d146.mp4",
   "new_tokens": 12
  }
 }

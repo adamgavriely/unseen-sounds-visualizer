@@ -2,7 +2,7 @@
 non-speech, non-music sound with its start second. One picture per listed (sound, start). No threshold, nothing tuned.
 
 Fixed before any reply is read:
-  * audio: the whole clip, 16 kHz mono (~/MscProj/data/work/gold_wav_flat/<stem>.wav);
+  * audio: the whole clip, 16 kHz mono (data/work/gold_wav_flat/<stem>.wav);
   * vocabulary: the 447 AudioSet-Strong class names (as M2D uses them, ontology spelling), speech and music removed,
     given in the prompt so every answer has a scoreable name;
   * thinker only (talker disabled); max 512 new tokens; sampling as the Qwen3 model card advises (temperature 0.6,
@@ -20,6 +20,7 @@ Fixed before any reply is read:
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -31,7 +32,7 @@ HERE = Path(__file__).resolve().parent
 _ROOT = HERE.parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 MODEL = "Qwen/Qwen3-Omni-30B-A3B-Instruct"
-WAV = Path.home() / "MscProj" / "data" / "work" / "gold_wav_flat"
+WAV = Path(os.environ.get("MSCPROJ_ROOT", Path(__file__).resolve().parents[3])) / "data" / "work" / "gold_wav_flat"
 OUT = HERE / "qwen_replies.json"
 MAX_NEW = 512
 GEN = dict(do_sample=True, temperature=0.6, top_p=0.95, top_k=20, repetition_penalty=1.05)

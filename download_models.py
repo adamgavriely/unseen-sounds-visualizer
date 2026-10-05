@@ -33,6 +33,7 @@ MODELS = [
     # video understanding, speech, reasoning, pictures
     "google/owlv2-base-patch16-ensemble",
     "google/siglip-so400m-patch14-384",           # scene / setting classifier
+    "google/siglip-base-patch16-224",             # merges two pictures of the same sound (stage 5)
     "Systran/faster-whisper-base",
     "Qwen/Qwen3.8-27B",
     "Qwen/Qwen-Image-2512",
