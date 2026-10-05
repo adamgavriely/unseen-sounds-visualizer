@@ -62,11 +62,12 @@ The main score is the cost per clip,
 \end{equation}
 lower is better. A miss costs twice a wrong picture, so one right picture pays for two wrong ones, and a picture is
 worth showing when it is right at least one time in three. These weights are an assumption, not a measurement, and were fixed early in the
-project, so Section~\ref{sec:sensitivity} also reports other weights, including a version in which an on-screen
-picture costs only 1 or 0 (it is less harmful than a picture of nothing):
+project, so Section~\ref{sec:sensitivity} also reports other weights, including versions that price the three kinds of
+wrong picture (on screen, other sound, nothing) separately; an on-screen picture, for example, is less harmful than a
+picture of nothing:
 \begin{equation}
-  C_w \;=\; \frac{4\cdot\#\text{missed} + w\cdot\#\text{on screen} + 2\cdot\#\text{other sound} + 2\cdot\#\text{nothing}}{\#\text{clips}},
-  \qquad w\in\{0,1,2\}.
+  C_w \;=\; \frac{4\cdot\#\text{missed} + w_{\text{on}}\cdot\#\text{on screen} + w_{\text{other}}\cdot\#\text{other sound} + w_{\text{nothing}}\cdot\#\text{nothing}}{\#\text{clips}},
+  \qquad w\in\{0,2,4\}.
   \label{eq:costw}
 \end{equation}
 \emph{Why not F1?} Event-based F1 is the usual detection score~\cite{mesaros2016metrics,bilen2020psds}, but it counts a

@@ -145,18 +145,18 @@ Section~\ref{sec:support}.
 \centering\small
 \caption{One-model baselines (development set: cost only; test set: 87 clips, 65 needed sounds). Difference: the final
 system's cost minus this system's, per clip, with the 95\,\% interval of the paired clip bootstrap and an uncorrected
-two-sided $p$-value.}
+two-sided $p$-value. Wrong pictures are split as in Table~\ref{tab:headline} (on screen / other sound / nothing).}
 \label{tab:onemodel}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{lrrrrll}
 \toprule
 System & Dev.\ cost & Test hits & Test wrong & Test cost & Difference (final $-$ this) [95\,\% CI] & $p$ \\
 \midrule
-M2D-strong (bar 0.7) & 3.465 & 4 / 65 & 14 & 3.126 & $-0.713\ [-1.310, -0.092]$ & $0.024$ \\
-Qwen3-Omni, audio & 12.366 & 27 / 65 & 326 & 9.241 & $-6.828\ [-8.529, -5.264]$ & $< 0.001$ \\
-Qwen3-Omni, video and audio & 5.099 & 9 / 65 & 85 & 4.529 & $-2.115\ [-2.874, -1.402]$ & $< 0.001$ \\
+M2D-strong (bar 0.7) & 3.465 & 4 / 65 & 14 (3/7/4) & 3.126 & $-0.713\ [-1.310, -0.092]$ & $0.024$ \\
+Qwen3-Omni, audio & 12.366 & 27 / 65 & 326 (18/214/94) & 9.241 & $-6.828\ [-8.529, -5.264]$ & $< 0.001$ \\
+Qwen3-Omni, video and audio & 5.099 & 9 / 65 & 85 (7/39/39) & 4.529 & $-2.115\ [-2.874, -1.402]$ & $< 0.001$ \\
 \midrule
-\textbf{Final system} & 2.056 & 24 / 65 & 23 & 2.414 & & \\
+\textbf{Final system} & 2.056 & 24 / 65 & 23 (4/15/4) & 2.414 & & \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -203,9 +203,9 @@ assumes $\beta = 2$. Figure~\ref{fig:beta} shows how the conclusions change if $
 \centering
 \includegraphics[width=\linewidth]{figures/beta_sensitivity.pdf}
 \caption{Cost per clip as the cost of a wrong picture ($\beta$) varies, with a missed sound fixed at 4 (point estimates).
-Dots mark where a system breaks even with showing nothing: the final system at $\beta = 4.0$ (test) and $7.7$
+Dots mark where a system breaks even with showing nothing: the final system at $\beta = 4.2$ (test) and $7.7$
 (development, off the chart), direct audio-to-image generation at $\beta = 1.7$ (test) and $3.5$ (development). With
-95\,\% bootstrap intervals, the final system is cheaper than showing nothing up to about $\beta = 2.05$ (test) and
+95\,\% bootstrap intervals, the final system is cheaper than showing nothing up to about $\beta = 2.15$ (test) and
 $\beta = 4.4$ (development).}
 \label{fig:beta}
 \end{figure}
@@ -215,10 +215,44 @@ is, until a wrong picture hurts slightly more than a missed sound, and cheaper t
 $\beta$ above 0.21 (test) or 0.83 (development). With intervals, recomputed by the same bootstrap at each $\beta$, the
 95\,\% interval of the test-set difference from showing nothing excludes zero up to about $\beta = 2.15$; on the
 development set it excludes zero up to about $\beta = 4.4$. Drawing every sound is therefore only preferable if wrong
-pictures are almost free. A second check weighs only on-screen pictures less
-(Equation~\ref{eq:costw}). With $w = 1$ the final system costs 1.972 (development) and 2.368 (test), against 2.169 and 3.011
-for direct audio-to-image; with $w = 0$ it costs 1.887 and 2.322, against 1.887 and 2.828. So if an on-screen picture
-is judged harmless, the two systems tie on the development set, and the final system still wins on the test set.
+pictures are almost free.
+
+A second check prices each kind of wrong picture separately (Equation~\ref{eq:costw}): one kind is
+set to 0 or 4 while the other two stay at 2 and a miss at 4 (Table~\ref{tab:kindprice}). The rows follow this one
+rule; none is chosen by hand. On both sets the final system costs less than showing nothing in every row, and on the
+test set it costs less than direct audio-to-image generation in every row. As in Figure~\ref{fig:beta}, the
+test-set interval against showing nothing excludes zero only while a wrong picture costs about 2 or less; the price
+of an other-sound picture moves it most, because that is the kind the final system shows most often (15 of 23).
+On the development set the difference from direct audio-to-image is zero when an on-screen picture is free.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Cost per clip when one kind of wrong picture is priced 0 or 4 and the other two stay at 2 (a miss costs 4).
+Differences are final minus the other system, with the two-sided paired-bootstrap $p$-value (uncorrected).}
+\label{tab:kindprice}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrrrll}
+\toprule
+Set & Price changed & Final & Audio-to-image & Nothing & Final $-$ nothing ($p$) & Final $-$ audio-to-image ($p$) \\
+\midrule
+Development & none (all 2)   & 2.056 & 2.451 & 3.268 & $-1.211$ ($<0.001$) & $-0.394$ ($0.085$) \\
+(71 clips)  & on screen 0    & 1.887 & 1.887 & 3.268 & $-1.380$ ($<0.001$) & $\phantom{-}0.000$ ($1.00$) \\
+            & on screen 4    & 2.225 & 3.014 & 3.268 & $-1.042$ ($0.001$)  & $-0.789$ ($0.006$) \\
+            & other sound 0  & 1.859 & 2.056 & 3.268 & $-1.408$ ($<0.001$) & $-0.197$ ($0.33$) \\
+            & other sound 4  & 2.254 & 2.845 & 3.268 & $-1.014$ ($<0.001$) & $-0.592$ ($0.032$) \\
+            & nothing 0      & 2.000 & 2.310 & 3.268 & $-1.268$ ($<0.001$) & $-0.310$ ($0.16$) \\
+            & nothing 4      & 2.113 & 2.592 & 3.268 & $-1.155$ ($<0.001$) & $-0.479$ ($0.051$) \\
+\midrule
+Test        & none (all 2)   & 2.414 & 3.195 & 2.989 & $-0.575$ ($0.034$)  & $-0.782$ ($<0.001$) \\
+(87 clips)  & on screen 0    & 2.322 & 2.828 & 2.989 & $-0.667$ ($0.007$)  & $-0.506$ ($<0.001$) \\
+            & on screen 4    & 2.506 & 3.563 & 2.989 & $-0.483$ ($0.11$)   & $-1.057$ ($<0.001$) \\
+            & other sound 0  & 2.069 & 2.460 & 2.989 & $-0.920$ ($<0.001$) & $-0.391$ ($0.001$) \\
+            & other sound 4  & 2.759 & 3.931 & 2.989 & $-0.230$ ($0.51$)   & $-1.172$ ($<0.001$) \\
+            & nothing 0      & 2.322 & 2.897 & 2.989 & $-0.667$ ($0.011$)  & $-0.575$ ($<0.001$) \\
+            & nothing 4      & 2.506 & 3.494 & 2.989 & $-0.483$ ($0.094$)  & $-0.989$ ($<0.001$) \\
+\bottomrule
+\end{tabular}}
+\end{table}
 
 \subsection{Where the errors come from}\label{sec:errors}
 Figure~\ref{fig:errors} breaks down the misses of the final system by the step where each was lost, from its logged
