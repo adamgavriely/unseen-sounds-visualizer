@@ -3,8 +3,8 @@
 
 \subsection{Motivation and the gap}\label{sec:need}
 More than 430 million people live with disabling hearing loss~\cite{who2021hearing}. Deaf and hard-of-hearing (DHH) viewers receive speech through subtitles. The rest of the soundtrack is mostly lost.
-Captions for the deaf may name a sound in brackets, but the DCMP Captioning Key~\cite{dcmp} tells captioners that a
-sound's source ``may be omitted if it can be clearly seen onscreen'', and a study of more than 715{,}000 YouTube videos
+Captions for the deaf may name a sound in brackets, but the DCMP Captioning Key~\cite{dcmp} lets captioners leave out a
+sound whose source is clearly seen on screen, and a study of more than 715{,}000 YouTube videos
 found hand-written non-speech captions in only 5--7\,\% of them~\cite{may2024unspoken}. DHH users want to know about
 the sounds that carry information -- knocks, alarms, sirens, a baby crying~\cite{jain2019home,soundwatch} -- and want
 their type and timing~\cite{may2025choices}. Among the needed sounds of the benchmark of this report, 30 of 123 (about
@@ -12,7 +12,8 @@ a quarter) are danger sounds or key moments (importance 3, Section~\ref{sec:need
 
 What a viewer loses therefore depends on whether the source is visible. A siren over a visible ambulance tells the
 viewer nothing new. A siren over a crowd looking up \emph{is} the scene. This project targets the second case, which
-none of the existing tools covers. Subtitles carry speech only. Hand-written sound captions are rare, and the captioning rules
+none of the existing tools covers. Subtitles carry speech only. Hand-written sound captions are rare; YouTube's automatic captions add only three sound tags ([MUSIC], [APPLAUSE],
+[LAUGHTER])~\cite{chaudhuri2017youtube}, whatever is on screen; and the captioning rules
 say which sounds to describe but give no tool to find them. Sound-awareness apps for DHH
 users~\cite{soundwatch,homesound} alert to sounds in the room, not in a recorded video, and do not ask whether the
 viewer can already see the source. Automatic audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho}
@@ -41,7 +42,7 @@ says whether its source is on screen, an image model draws it. In practice every
 way, and the failures add up:
 \begin{itemize}
   \item \textbf{Hearing.} Taggers rank \emph{Speech} or \emph{Music} above a quiet door or hammer, so the sound never
-        becomes a candidate; only about 40\,\% of raw detections can be confirmed as real sounds.
+        becomes a candidate; and of the sounds they do report, only about 40\,\% can be confirmed as real.
   \item \textbf{Confirming.} A sound that only one audio-language model names in its list of heard sounds is real only
         about a third of the time.
   \item \textbf{Seeing.} A vision-language model answers ``is there a bell?'' when asked ``is the bell ringing?'': it takes

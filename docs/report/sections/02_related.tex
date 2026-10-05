@@ -23,7 +23,8 @@ here keeps the onset tolerance but reports a cost instead of F1, in the spirit o
 A known weakness matters here: a quiet sound under speech or music is ranked below \emph{Speech} or \emph{Music}.
 Automatic audio description for blind viewers~\cite{han2023autoad} solves the mirror task, describing what is seen
 but not heard. Automated audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho} describes a whole clip in a
-sentence, without asking whether a source is visible. Dense audio-visual event benchmarks such as
+sentence, without asking whether a source is visible; the one deployed automatic sound captioner, on
+YouTube~\cite{chaudhuri2017youtube}, adds three fixed tags and does not ask it either. Dense audio-visual event benchmarks such as
 UnAV-100~\cite{geng2023unav100} label events that are both heard and seen, the opposite of the selection needed here.
 Audio-visual video parsing~\cite{tian2020avvp} (the LLP dataset) is the closest technical neighbour: it labels each segment of a video as
 audible, visible or both. But ``visible'' there means that the object appears in the frame, not that it is seen
