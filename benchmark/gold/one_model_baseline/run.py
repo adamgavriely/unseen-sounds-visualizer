@@ -45,8 +45,9 @@ NAMES = {"m2d": "PretrainedSED M2D_strong_1 (MIT)", "panns": "PANNs CNN14 (MIT)"
 GRID = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.5, 0.6, 0.7]
 MIN_DUR = 0.5
 MODEL = "m2d"
-TEST_SET = 87      # the report's TEST set (87 clips); final_vs_baselines.json was written on 88
-DROP = {"oc_distant_traffic_hill"}
+TEST_LIST = _ROOT / "benchmark" / "gold" / "test_stems.txt"     # the report's TEST set (87 clips)
+TEST_KEEP = set(TEST_LIST.read_text(encoding="utf-8").split())
+TEST_SET = len(TEST_KEEP)
 
 REC = []                                  # [(stem, gold sounds)] in the exact row order of final_vs_baselines
 _orig_part = FVB._part
@@ -161,12 +162,12 @@ def main():
         rows = dict(rows); rows["one_model"] = rows_at(clips, bar)
         parity = compare(rows, base[name])["parity_with_final_vs_baselines"]
         if name == "test":
-            keep_i = [i for i, (st, _) in enumerate(clips) if st not in DROP]
+            keep_i = [i for i, (st, _) in enumerate(clips) if st in TEST_KEEP]
             rows = {k: [v[i] for i in keep_i] for k, v in rows.items()}
             assert len(keep_i) == TEST_SET, len(keep_i)
         out[name] = compare(rows, base[name])
         out[name]["parity_with_final_vs_baselines"] = parity
-        kept = [c for c in clips if name != "test" or c[0] not in DROP]
+        kept = [c for c in clips if name != "test" or c[0] in TEST_KEEP]
         out[name]["per_clip"] = [{"clip": st, **{s: {"cost": float(DCC.clip_cost(rows[s][i])),
                                                      **{k: int(rows[s][i][k]) for k in ("hit", "miss", "visible", "cross", "phantom", "dup")}}
                                                  for s in rows}} for i, (st, _) in enumerate(kept)]
