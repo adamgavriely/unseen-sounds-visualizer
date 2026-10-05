@@ -21,7 +21,8 @@ frame. Detection is usually
 scored with event-based F1 and a time tolerance (``collar'')~\cite{mesaros2016metrics,bilen2020psds}; the metric used
 here keeps the onset tolerance but reports a cost instead of F1, in the spirit of cost curves~\cite{drummond2006costcurves}.
 A known weakness matters here: a quiet sound under speech or music is ranked below \emph{Speech} or \emph{Music}.
-Automated audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho} describes a whole clip in a
+Automatic audio description for blind viewers~\cite{han2023autoad} solves the mirror task, describing what is seen
+but not heard. Automated audio captioning~\cite{drossos2017aac,kim2019audiocaps,drossos2020clotho} describes a whole clip in a
 sentence, without asking whether a source is visible. Dense audio-visual event benchmarks such as
 UnAV-100~\cite{geng2023unav100} label events that are both heard and seen, the opposite of the selection needed here.
 Audio-visual video parsing~\cite{tian2020avvp} (the LLP dataset) is the closest technical neighbour: it labels each segment of a video as
@@ -30,7 +31,9 @@ producing the sound, which is the distinction this task turns on.
 
 \paragraph{Audio-language and vision-language models.} Audio-language models such as Qwen2-Audio~\cite{chu2024qwen2audio},
 Qwen3-Omni~\cite{xu2025qwen3omni} and Audio Flamingo Next~\cite{afnextcard} answer questions about audio; they name sounds in
-free text but give no calibrated confidence (Section~\ref{sec:missing}). Vision-language models, from LLaVA~\cite{liu2023llava}, which set the instruction-tuning recipe,
+free text but give no calibrated confidence (Section~\ref{sec:missing}). Omni models such as Qwen3-Omni also take
+video frames with the audio, so one model could in principle hear a sound and check its source; given both, it mostly
+named the loudest or most visible thing (Section~\ref{sec:hard-presence}). Vision-language models, from LLaVA~\cite{liu2023llava}, which set the instruction-tuning recipe,
 to Qwen2.5-VL~\cite{bai2025qwen25vl} (used in early versions) and Qwen3.8-27B~\cite{qwen38card} (used in the final
 system), answer questions about frames. Among the tools tried here, vision-language models were the only general means of
 deciding, for any sound, whether its source is visible. Their known failures matter: a preference for some answer

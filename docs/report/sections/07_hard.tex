@@ -54,7 +54,7 @@ Qwen vision-language models~\cite{bai2025qwen25vl,qwen38card}, OWLv2~\cite{minde
 Qwen-Image~\cite{wu2025qwenimage}); and 3 model judges~\cite{zheng2023judge} (Mistral-7B~\cite{jiang2023mistral}, Qwen3-8B~\cite{yang2025qwen3} and Gemma-4-31B~\cite{gemma4card}) \\
 Pre-registered rounds & 66 rounds, each with its rule and pass bar written before the run \\
 Full-pipeline variants scored & more than 150, plus about 90 component screens \\
-Human labels & 308 timed sounds in 159 clips, each marked visible or not and rated for importance \\
+Human labels & 308 timed sounds in 159 clips, each marked seen making it or not and rated for importance \\
 Screening data & 415 AudioSet-Strong clips with timed labels for audio-only rules \\
 \bottomrule
 \end{tabular}
@@ -172,7 +172,8 @@ labels miss some sounds (Section~\ref{sec:strict}), and 14 borderline developmen
 the other class.
 
 \subsection{Scarcity of suitable data}
-Clips in which an ambient sound is heard but its source is not seen are uncommon in public video. Four different
+Short public clips in which an ambient sound is clearly heard, its source is not seen, and its start can be labelled
+are hard to find by search. Four different
 sourcing routes all yielded only 15--20\,\% usable clips, which is why the benchmark has 159 evaluation clips rather than
 the planned 300, and why every comparison has wide intervals.
 
