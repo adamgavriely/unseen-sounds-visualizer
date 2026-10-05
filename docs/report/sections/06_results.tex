@@ -126,6 +126,55 @@ ordinary events; direct audio-to-image finds 88\,\% and 77\,\%, and 46\,\% and 3
 \label{fig:importance}
 \end{figure}
 
+\subsection{One-model baselines}\label{sec:onemodel}
+The baselines above share the final system's detectors. Three more baselines each use one ready-made model and nothing
+from this system; a picture is counted for every sound the model reports, except speech and music:
+\begin{description}
+  \item[M2D-strong] PretrainedSED M2D-strong~\cite{schmid2025pretrainedsed}, a frame-level sound event detector trained
+        on AudioSet-Strong. A sound becomes a picture when its score passes one bar. The bar was chosen on the
+        development set only (0.7, the lowest development cost; Figure~\ref{fig:m2dsweep}) and the test set was scored once at that bar.
+  \item[Qwen3-Omni, audio] Qwen3-Omni-30B-A3B~\cite{xu2025qwen3omni} hears the clip and lists every sound with its start time.
+  \item[Qwen3-Omni, video and audio] the same model watches and hears the clip and lists only the sounds whose source it
+        cannot see, with start and end.
+\end{description}
+The score checks only which sound is shown and when, so these rows count every picture as if it were drawn perfectly.
+Table~\ref{tab:onemodel} gives the results; its $p$-values are uncorrected and are not part of the five tests of
+Section~\ref{sec:support}.
+
+\begin{table}[htbp]
+\centering\small
+\caption{One-model baselines (development set: cost only; test set: 87 clips, 65 needed sounds). Difference: the final
+system's cost minus this system's, per clip, with the 95\,\% interval of the paired clip bootstrap and an uncorrected
+two-sided $p$-value.}
+\label{tab:onemodel}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lrrrrll}
+\toprule
+System & Dev.\ cost & Test hits & Test wrong & Test cost & Difference (final $-$ this) [95\,\% CI] & $p$ \\
+\midrule
+M2D-strong (bar 0.7) & 3.465 & 4 / 65 & 14 & 3.126 & $-0.713\ [-1.310, -0.092]$ & $0.024$ \\
+Qwen3-Omni, audio & 12.366 & 27 / 65 & 326 & 9.241 & $-6.828\ [-8.529, -5.264]$ & $< 0.001$ \\
+Qwen3-Omni, video and audio & 5.099 & 9 / 65 & 85 & 4.529 & $-2.115\ [-2.874, -1.402]$ & $< 0.001$ \\
+\midrule
+\textbf{Final system} & 2.056 & 24 / 65 & 23 & 2.414 & & \\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.62\linewidth]{figures/m2d_dev_sweep.pdf}
+\caption{M2D-strong on the development set at each bar (numbers next to the points): needed sounds caught against wrong
+pictures, with the final system and direct audio-to-image generation on the same clips. A lower bar catches more sounds
+but adds many more wrong pictures; at every bar its development cost (3.47 or more) is higher than the final system's (2.06).}
+\label{fig:m2dsweep}
+\end{figure}
+
+On the test set the final system costs less than each of the three: by 0.713, 6.828 and 2.115 per clip. M2D-strong at
+its chosen bar shows few pictures (4 hits, 14 wrong) and is no better than showing nothing; at lower bars it finds more
+sounds but shows far more wrong pictures (Figure~\ref{fig:m2dsweep}). Qwen3-Omni with audio finds the most needed sounds
+(27 of 65) but shows 326 wrong pictures. Watching the video lowers its wrong pictures to 85 but also its hits to 9.
+
 \subsection{What the statistical tests support}\label{sec:support}
 \begin{description}
   \item[Significant.] On the test set the final system costs less than direct audio-to-image generation and audio
@@ -134,7 +183,7 @@ ordinary events; direct audio-to-image finds 88\,\% and 77\,\%, and 46\,\% and 3
   \item[At the margin.] On the test set, the final system costs less than showing nothing ($p = 0.034$ uncorrected;
         0.068 after the Holm correction below).
   \item[Not significant.] On the development set, the difference from direct audio-to-image generation ($p = 0.085$).
-  \item[Multiple comparisons.] The family is every comparison of the final system against a baseline for which a
+  \item[Multiple comparisons.] The family is every comparison of the final system against a baseline of Table~\ref{tab:headline} for which a
         $p$-value is reported: cost against each baseline on each set, and F1 against direct audio-to-image generation
         on the test set. The two tests of one baseline against the other are descriptive. With a Holm correction over the five, the
         test-set cost difference from direct audio-to-image generation and the development-set difference from showing

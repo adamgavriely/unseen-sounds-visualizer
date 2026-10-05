@@ -1,6 +1,6 @@
-"""Scores one detector variant on the 60 TEST clips, once (the ONE TEST exposure).
+"""Scores one detector variant on the 59 TEST clips, once (the ONE TEST exposure).
 
-One job, 60 TEST clips (benchmark/gold/test_stems.txt), three stage-4 configs through the pipeline's own code
+One job, 59 TEST clips (benchmark/gold/test_stems.txt), three stage-4 configs through the pipeline's own code
 (dev_harness.build -> fuse_flexsed) and the same stage-5 path as DEV (dev_harness.stage5: scored gate answers reused,
 other questions memoised; the memo starts from data/work/r13test/ask_memo.json, B0r's TEST prep run):
   B0r  the scored config (PANNs veto 0.05), flags off; gate D0 (stage 4 == scored trace) and D5 (== scored render)

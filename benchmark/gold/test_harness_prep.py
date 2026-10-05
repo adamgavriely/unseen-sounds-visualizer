@@ -1,6 +1,6 @@
 """PREPARATION for the one TEST exposure. No gold is read, nothing is scored.
 
-Builds, for the 60 TEST clips (benchmark/gold/test_stems.txt), the same feature caches the DEV harness
+Builds, for the 59 TEST clips (benchmark/gold/test_stems.txt), the same feature caches the DEV harness
 (benchmark/gold/dev_harness.py, dev_candidates_check.py, dev_listener.py) has for DEV, into parallel folders, and runs the
 two plumbing gates on B0r (flags off = the scored config) against the scored TEST render (tag test_final_v33, the one the
 frozen amendment-21 TEST table used; config.use_scored()):

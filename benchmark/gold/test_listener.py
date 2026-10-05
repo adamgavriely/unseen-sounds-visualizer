@@ -1,4 +1,4 @@
-"""The audio-LLM listener cache for the 60 TEST clips, gold-free, a SUPERSET of dev_listener.py's pools so it
+"""The audio-LLM listener cache for the 59 TEST clips, gold-free, a SUPERSET of dev_listener.py's pools so it
 serves any R13-3 arm. PREPARATION only: no TEST gold is read, nothing is scored against gold.
 
 Same model, question, yes/no token ids, score and audio cut as benchmark/gold/dev_listener.py (its score() is reused
@@ -136,7 +136,7 @@ def pool():
     vet = {st: _vetoed(C.scored_dir("proposed") / st / "onset_trace.json") for st in T.STEMS}
     items, miss = superset(T.STEMS, p1, C.BEATS_DIR, C.FLEX_DIR, C.WAV16, vet)
     from benchmark.listener_round import MODEL, QUESTION
-    meta = {"round": "13", "split": "TEST (60 clips, benchmark/gold/test_stems.txt); gold-free", "model": MODEL,
+    meta = {"round": "13", "split": "TEST (59 clips, benchmark/gold/test_stems.txt); gold-free", "model": MODEL,
             "question": QUESTION, "score": "max logit over yes ids - max logit over no ids (dev_listener.score, unchanged)",
             "audio": f"{C.WAV16}/<clip>.wav, [cut_start - 1, cut_end + 1] s clipped to the clip, at least 1 s",
             "P1": f"{T.R.STAGE4} B0r|proposed + B0r|blind_a2i, deduped",

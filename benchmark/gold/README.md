@@ -12,7 +12,7 @@ v1.2.0.
 | **Labels** | `annotations/gold_AG.json` (every per-sound label), `dev_stems.txt`, `test_stems.txt` (clip names of the two sets; the `tg_d*` lines are the second batch), `judge100.txt` (the rule for which development clips were scored), `audioset_slice.json` (the AudioSet-Strong clips) |
 | **Scorer** | `score_per_sound.py` (matching rules, cost, clip subsets), `dev_candidates_check.py` (stage-4/5 replay helpers, bootstrap, DASM step), `holm_table.py` (Holm correction) |
 | **Report tables** | `final_vs_baselines.py` → `final_vs_baselines.json` (final system and baselines); `final_vs_baselines_extra.py` → `final_vs_baselines_extra.json` (F1 intervals, danger sounds) |
-| **Scoring harness** | `dev_harness.py` (variants, stage 4/5 through the pipeline code; first 49 development clips) and `merged_dev.py` (all 71); `test_harness_prep.py`, `test_harness.py` (first 60 test clips) and `final_test.py` → `final_test.json` (all 88), `parity_check.py`. The 49- and 60-clip harnesses ran on the first batch of clips; `merged_dev.py` and `final_test.py` give the reported 71/88 results |
+| **Scoring harness** | `dev_harness.py` (variants, stage 4/5 through the pipeline code; first 49 development clips) and `merged_dev.py` (all 71); `test_harness_prep.py`, `test_harness.py` (first 59 test clips) and `final_test.py` → `final_test.json` (all 87), `parity_check.py`. The 49- and 59-clip harnesses ran on the first batch of clips; `merged_dev.py` and `final_test.py` give the reported 71/88 results |
 | **Per-clip inputs** | `clip_prep.py`, `flexsed_run.py`, `dev_listener.py`, `test_listener.py`, `listener_variants.py`, `listener_afnext.py`, `dasm_rescue.py`, `listener_open_inventory.py`, `finelap_screen.py` (order below) |
 | **Picture prompts** | `picture_templates.py` (picture templates and seeds; imported by `src/stage6_visual_augmentation/` and `comfyui_nodes/run_frozen.py`) |
 | **Decision trail** | `inspector_trail_export.py`, `inspector_data.py` → `docs/decision_trail/` |
@@ -46,7 +46,7 @@ every number.
 The scripts that made them read the stage-5 outputs of every benchmark clip (under `data/work/`) and the cached model
 answers of the development and test sets (listener answers, PANNs frame scores, grouping answers). Both are in
 release v1.2.0; the clips are not redistributed (sources: report Section 4). Clip names: `dev_stems.txt` (71) and
-`test_stems.txt` (88); labels: `annotations/gold_AG.json`. With the clips in their input folders (the `tg_d*` clips
+`test_stems.txt` (87); labels: `annotations/gold_AG.json`. With the clips in their input folders (the `tg_d*` clips
 in `data/input/batch2/`; the other paths in `clip_prep.py` and `../run_protocol.py`) and the release caches in place,
 `clip_prep.py` builds the model inputs and outputs (the step order is listed above), and then:
 
@@ -55,7 +55,7 @@ python benchmark/gold/final_vs_baselines.py                 # Table 3: final sys
 python benchmark/gold/final_vs_baselines_extra.py           # F1 intervals, danger sounds
 python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL      # configuration check
 python benchmark/gold/inspector_trail_export.py \
-   --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/24/4/15/5/2.409
+   --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/23/4/15/4/2.414
 ```
 
 From a plain clone these scripts stop at the first missing clip or output.

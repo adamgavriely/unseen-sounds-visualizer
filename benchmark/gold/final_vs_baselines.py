@@ -1,4 +1,4 @@
-"""Final system vs the proposal's baselines, on the merged development set (71 clips) and the merged test set (88 clips).
+"""Final system vs the proposal's baselines, on the merged development set (71 clips) and the merged test set (87 clips).
 
 Baselines (project proposal, Section 7 "Baseline Systems"):
   * direct audio-to-image generation  = the same detector and picture model, every heard sound drawn, no look at the

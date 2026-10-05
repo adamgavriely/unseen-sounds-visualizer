@@ -1,0 +1,4861 @@
+{
+ "model": "Qwen3-Omni-30B-A3B-Instruct (Apache-2.0), audio only",
+ "rule": "speech and music never drawn; one picture per span / listed start; no bar (greedy reply parsed as written)",
+ "development": {
+  "rows": {
+   "proposed": {
+    "hits": 29,
+    "misses": 29,
+    "wrong": 15,
+    "visible": 6,
+    "cross": 7,
+    "phantom": 2,
+    "viewer_cost": 2.056338028169014
+   },
+   "blind_a2i": {
+    "hits": 34,
+    "misses": 24,
+    "wrong": 39,
+    "visible": 20,
+    "cross": 14,
+    "phantom": 5,
+    "viewer_cost": 2.4507042253521125
+   },
+   "one_model": {
+    "hits": 17,
+    "misses": 41,
+    "wrong": 357,
+    "visible": 24,
+    "cross": 256,
+    "phantom": 77,
+    "viewer_cost": 12.366197183098592
+   },
+   "show_nothing": {
+    "viewer_cost": 3.267605633802817
+   }
+  },
+  "diff": {
+   "one_model_vs_show_nothing": [
+    9.098591549295774,
+    6.253521126760563,
+    12.535211267605634,
+    0.0
+   ],
+   "one_model_vs_audio_to_image": [
+    9.915492957746478,
+    7.042253521126761,
+    13.32394366197183,
+    0.0
+   ],
+   "final_vs_one_model": [
+    -10.309859154929578,
+    -13.661971830985916,
+    -7.492957746478873,
+    0.0
+   ]
+  },
+  "clips": 71,
+  "parity_with_final_vs_baselines": true,
+  "per_clip": [
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "proposed": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 3,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 3,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 3,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_citywalk_nyc_2627",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 4,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_harbour_boats_724",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_market_marrakech_3102",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_nature_rainforest_2179",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_nature_rainforest_7629",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 34.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 15,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_snow_walk_930",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_transport_subway_10800",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_weather_storm_16200",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 2,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 2,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 1
+    }
+   },
+   {
+    "clip": "ambient_weather_storm_7200",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 2,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 2,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 1
+    }
+   },
+   {
+    "clip": "as_church_bell_pJRAWkLM",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 4,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "proposed": {
+     "cost": 14.0,
+     "hit": 3,
+     "miss": 3,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 14.0,
+     "hit": 3,
+     "miss": 3,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 28.0,
+     "hit": 2,
+     "miss": 4,
+     "visible": 0,
+     "cross": 5,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "as_fire_alarm_kGKZ0YK4",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "as_glass_oHil9Ip_",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_airport_terminal",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 5,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_aviary_birds",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_bakery_morning",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 22.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 4,
+     "phantom": 5,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_barbershop",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 6,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_botanic_garden",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_carnival_parade",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_construction_site",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 4,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_cow_farm",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_crossing_bells",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 1
+    }
+   },
+   {
+    "clip": "b3_favela_rio",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 4,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_flea_market",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 7,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_golf_course",
+    "proposed": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 22.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 7,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_ia_youtube_skxtz9foauw_0",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_laundromat",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 42.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 21,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_pet_shop",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 54.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 26,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "bell_miami",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 1
+    }
+   },
+   {
+    "clip": "birds_forest",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "helicopter_ossetia",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "kit_piano",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "london_protest_01",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 20.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 10,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ly_ambulance_(siren)_-yPSgCn",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 6,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ly_applause_62ZYD0u",
+    "proposed": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ly_helicopter_-v62cK1",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 1
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "movie_blueplanet_115",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mv_arrest_street_scene",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 1
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mv_protest_scene_movie",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 3,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 3,
+     "miss": 0,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 2,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mv_storm_scene_house",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 1
+    },
+    "one_model": {
+     "cost": 20.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 6,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mv_tornado_scene",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "un_driving_motorcycle_4O3bZRYO",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 18.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 1,
+     "cross": 8,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "un_driving_motorcycle_DgdHSmwA",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 1
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "un_hair_dryer_drying_WWu24rJs",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "un_people_clapping__bAVmK7n",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "waterfall_kawaida_01",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "waves_herzliya",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 1
+    }
+   },
+   {
+    "clip": "tg_d007",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 5,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d016",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d020",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 1
+    }
+   },
+   {
+    "clip": "tg_d022",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d029",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d030",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d032",
+    "proposed": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 22.0,
+     "hit": 0,
+     "miss": 3,
+     "visible": 1,
+     "cross": 4,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d033",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 6,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d054",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 58.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 28,
+     "phantom": 0,
+     "dup": 3
+    }
+   },
+   {
+    "clip": "tg_d075",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 5,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d085",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 4,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d088",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 1,
+     "cross": 3,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 18.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 6,
+     "phantom": 0,
+     "dup": 2
+    }
+   },
+   {
+    "clip": "tg_d095",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 20.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 7,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d107",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 4,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d120",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 1,
+     "dup": 1
+    }
+   },
+   {
+    "clip": "tg_d121",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 5,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d125",
+    "proposed": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d127",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d128",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 80.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 39,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d129",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d133",
+    "proposed": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 1
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d149",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 2,
+     "dup": 0
+    }
+   }
+  ]
+ },
+ "test": {
+  "rows": {
+   "proposed": {
+    "hits": 24,
+    "misses": 41,
+    "wrong": 23,
+    "visible": 4,
+    "cross": 15,
+    "phantom": 4,
+    "viewer_cost": 2.413793103448276
+   },
+   "blind_a2i": {
+    "hits": 26,
+    "misses": 39,
+    "wrong": 61,
+    "visible": 16,
+    "cross": 32,
+    "phantom": 13,
+    "viewer_cost": 3.1954022988505746
+   },
+   "one_model": {
+    "hits": 27,
+    "misses": 38,
+    "wrong": 326,
+    "visible": 18,
+    "cross": 214,
+    "phantom": 94,
+    "viewer_cost": 9.241379310344827
+   },
+   "show_nothing": {
+    "viewer_cost": 2.9885057471264367
+   }
+  },
+  "diff": {
+   "one_model_vs_show_nothing": [
+    6.252873563218391,
+    4.781609195402299,
+    7.862068965517241,
+    0.0
+   ],
+   "one_model_vs_audio_to_image": [
+    6.045977011494253,
+    4.505747126436781,
+    7.724137931034483,
+    0.0
+   ],
+   "final_vs_one_model": [
+    -6.827586206896552,
+    -8.528735632183908,
+    -5.264367816091954,
+    0.0
+   ]
+  },
+  "clips": 87,
+  "parity_with_final_vs_baselines": true,
+  "per_clip": [
+   {
+    "clip": "ambient_everyday_farm_2166",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 24.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 12,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_market_bangkok_1237",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_market_bangkok_4332",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_nature_savanna_7706",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_nightlife_neon_97",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 4,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_temple_india_1438",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ambient_waterfall_hike_18078",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "as_alarm_71Xl_uAS",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 6,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "as_fireworks_jZ9mYtCA",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "as_glass_GAGt_UEF",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 5,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_aquarium_walk",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_balloon_burner",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_ia_62934flighttothesuncountryvw_1",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_ia_87954yourchancetolivenuclear_1",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_ia_alcf_heydari_0005_0",
+    "proposed": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "b3_leafblower_fall",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 4,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "bell_kazansky",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "dutch_traffic_kids",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ev_smoke_alarm_kitchen",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "lx_chainsaw_and_power_tool_BBukw6J",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "lx_chainsaw_and_power_tool_W1VYWwY",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "ly_alarm_qCVdVav",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m4_airsoft_24a",
+    "proposed": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 2,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 12.0,
+     "hit": 2,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 4,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m4_clay_shoot_11a",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m4_dog_doorbell_cam_30a",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 6,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m4_film_1917_33a",
+    "proposed": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 1,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 1,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m4_film_blackhawk_32a",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 5,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m4_fire_bodycam_23a",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m4_live_fire_26a",
+    "proposed": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 3,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 3,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 3,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m5_doc_restrepo_138b",
+    "proposed": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m5_horror_conjuring_82",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "m5_war_fury_25b",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 1
+    },
+    "one_model": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mc_break_in_scene",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mc_bridge_scene",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 2,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 2,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 28.0,
+     "hit": 0,
+     "miss": 3,
+     "visible": 1,
+     "cross": 4,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mc_flood_scene",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 5,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mc_riot_scene",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 3,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mc_thriller_basement",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "movie_bladerunner_49",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "movie_interstellar_98",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "movie_junglebook_51",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "movie_junglebook_95",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "movie_madmax_57",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 4,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "movie_planetearth_58",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mv_air_raid_scene",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 4,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "mv_bank_robbery_alarm",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "pdfilm_duckcover_90",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "un_dog_barking_3doKyrCe",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "un_hair_dryer_drying_jmlpavrE",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "un_wind_noise_1OctTl0h",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_dashcam_ambulance_behind_1a",
+    "proposed": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 3,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 5,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_dashcam_avalanche_road_2b",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 4,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_dog_fireworks_window_2a",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 1
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 4,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_duel_diner_horn_1a",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_film_hunt_for_red_october_1b",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_helmetcam_chainsaw_roof_2b",
+    "proposed": {
+     "cost": 10.0,
+     "hit": 1,
+     "miss": 2,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 10.0,
+     "hit": 1,
+     "miss": 2,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 18.0,
+     "hit": 1,
+     "miss": 2,
+     "visible": 0,
+     "cross": 5,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_hide_wolves_howl_1a",
+    "proposed": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 26.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 9,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_kids_fire_alarm_school_1b",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 1,
+     "cross": 3,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_kids_ice_cream_truck_2a",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 18.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 4,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "w8_pet_parrot_phone_ring_2b",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 20.0,
+     "hit": 2,
+     "miss": 0,
+     "visible": 0,
+     "cross": 7,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d001",
+    "proposed": {
+     "cost": 6.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 1
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d009",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d011",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 6,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d013",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 5,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d014",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d017",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d019",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d023",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 2,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 4,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d031",
+    "proposed": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 2,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 1
+    },
+    "one_model": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d040",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 42.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 18,
+     "phantom": 0,
+     "dup": 2
+    }
+   },
+   {
+    "clip": "tg_d045",
+    "proposed": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 42.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 14,
+     "phantom": 5,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d046",
+    "proposed": {
+     "cost": 18.0,
+     "hit": 0,
+     "miss": 4,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 18.0,
+     "hit": 0,
+     "miss": 4,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 4,
+     "miss": 0,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 0,
+     "dup": 2
+    }
+   },
+   {
+    "clip": "tg_d068",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 3,
+     "phantom": 2,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d076",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d077",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 5,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d078",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d079",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 10.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 1,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d080",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d101",
+    "proposed": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 20.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 3,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d103",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 8.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 2,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d104",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 22.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 1,
+     "cross": 10,
+     "phantom": 0,
+     "dup": 3
+    }
+   },
+   {
+    "clip": "tg_d105",
+    "proposed": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d106",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 1,
+     "miss": 0,
+     "visible": 0,
+     "cross": 3,
+     "phantom": 0,
+     "dup": 1
+    }
+   },
+   {
+    "clip": "tg_d109",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 16.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 7,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d110",
+    "proposed": {
+     "cost": 8.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 12.0,
+     "hit": 0,
+     "miss": 2,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 1,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 6.0,
+     "hit": 1,
+     "miss": 1,
+     "visible": 0,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d112",
+    "proposed": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 0.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 6,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d141",
+    "proposed": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 0,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 6.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 14.0,
+     "hit": 0,
+     "miss": 1,
+     "visible": 1,
+     "cross": 4,
+     "phantom": 0,
+     "dup": 0
+    }
+   },
+   {
+    "clip": "tg_d146",
+    "proposed": {
+     "cost": 2.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 0,
+     "phantom": 0,
+     "dup": 0
+    },
+    "blind_a2i": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    },
+    "one_model": {
+     "cost": 4.0,
+     "hit": 0,
+     "miss": 0,
+     "visible": 1,
+     "cross": 1,
+     "phantom": 0,
+     "dup": 0
+    }
+   }
+  ]
+ },
+ "reply_lines_dropped_unknown_name": 16
+}

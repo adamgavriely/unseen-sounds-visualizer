@@ -19,14 +19,14 @@ Scored per sound against human labels. A hit is the right kind of sound with a p
 before and 1 s after it; cost = (4 × missed + 2 × wrong pictures) / clips, lower is better. The baselines are those
 of the project proposal.
 
-| system | development set (71 clips) | test set (88 clips) |
+| system | development set (71 clips) | test set (87 clips) |
 |---|---|---|
-| show nothing | cost 3.268 | cost 2.955 |
-| direct audio-to-image (and audio captioning) | 34 / 58 found, 39 wrong, cost 2.451 | 26 / 65 found, 62 wrong, cost 3.182 |
-| **final system** | **29 / 58 found, 15 wrong, cost 2.056** | **24 / 65 found, 24 wrong, cost 2.409** |
+| show nothing | cost 3.268 | cost 2.989 |
+| direct audio-to-image (and audio captioning) | 34 / 58 found, 39 wrong, cost 2.451 | 26 / 65 found, 61 wrong, cost 3.195 |
+| **final system** | **29 / 58 found, 15 wrong, cost 2.056** | **24 / 65 found, 23 wrong, cost 2.414** |
 
-On the test set the final system is significantly cheaper than direct audio-to-image generation (−0.773 per clip,
-95 % interval [−1.045, −0.500], p < 0.001) and than showing nothing (−0.545, [−1.091, −0.023], p = 0.044; p = 0.087
+On the test set the final system is significantly cheaper than direct audio-to-image generation (−0.782 per clip,
+95 % interval [−1.057, −0.506], p < 0.001) and than showing nothing (−0.575, [−1.126, −0.046], p = 0.034; p = 0.068
 after a Holm correction over the five main tests). It finds 10 of the 13 danger sounds of the test set (sirens,
 alarms, breaking glass, a crying baby). Every decision was made on the development set; the test set was only
 scored. Limits are discussed in Section 9 of the report.
@@ -113,7 +113,7 @@ Recomputing them from a clone is not possible as is. The scripts (for example
 `python benchmark/gold/final_vs_baselines.py`) read the stage-5 outputs of every benchmark clip and the cached
 model answers of the development and test sets. Both are in release v1.2.0; the clips are not redistributed (their
 source collections are listed in the "Data" section (Section 4) and the "Code and data availability" note of the
-report). The clip names are in `benchmark/gold/dev_stems.txt` (71) and `test_stems.txt` (88); the human labels are
+report). The clip names are in `benchmark/gold/dev_stems.txt` (71) and `test_stems.txt` (87); the human labels are
 in `benchmark/gold/annotations/gold_AG.json`. With the clips in their input folders (paths in
 `benchmark/gold/clip_prep.py` and `benchmark/run_protocol.py`), `benchmark/gold/clip_prep.py` builds the model
 inputs (step order in [`benchmark/gold/README.md`](benchmark/gold/README.md)), then the scripts above run.

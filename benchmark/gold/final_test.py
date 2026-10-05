@@ -1,5 +1,5 @@
 """Scores the merged-DEV pick ONCE on the merged TEST, as one set, vs the old shipped config B0 (= B0r, the scored
-render). Test set (88 clips) = the first-batch test clips (60, gold_AG test_bench) + the second batch (the `tg_d*`
+render). Test set (87 clips) = the first-batch test clips (59, gold_AG test_bench) + the second batch (the `tg_d*`
 lines of benchmark/gold/test_stems.txt, 28 clips, annotations/gold_AG.json; split name `test2` in clip_prep.py).
 
   dasm      DASM frame scores (round-6 scorer, as the other DASM caches) for the first-batch test clips -> data/work/dasm_test
