@@ -1,8 +1,10 @@
 % ======================================================================
 \section{The system}\label{sec:system}
 
-This section describes the final system as the released code runs it.
-Appendix~\ref{app:config} gives every step and threshold.
+This section describes the final system as the released code runs it: twelve open models and ffmpeg in seven stages,
+none of them trained here (Table~\ref{tab:stages}). Each rule of stages~4--6 answers one failure described in
+Section~\ref{sec:hard}, and every threshold was fixed on the development set. Appendix~\ref{app:config} gives every step
+and threshold; Section~\ref{sec:engineering} gives the engineering that makes the results reproducible.
 
 \subsection{Overview}
 Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an output. For one video (stage numbers as in Figure~\ref{fig:pipeline}):
@@ -198,7 +200,19 @@ never which sound is shown or when, so the detection and scoring numbers of Sect
 On screen, repeats of one sound less than 2.5\,s apart become one appearance, every picture stays on screen for at least
 1.5\,s and ends at most 1\,s after its sound ends, and at most three pictures are shown at once.
 
-The scored numbers come from a scoring program (the ``harness'') that re-runs the pipeline's own decision functions
-on saved model outputs; an
-independent re-export of every decision reproduces them exactly. The live pipeline differs in four small ways that do
-not change when a picture starts (Appendix~\ref{app:config}).
+\subsection{Engineering and reproducibility}\label{sec:engineering}
+The final system chains twelve open models and ffmpeg in seven stages (Table~\ref{tab:stages}); stage~4 alone is 16
+ordered steps (Table~\ref{tab:stage4}), governed by more than 40 configuration values (Table~\ref{tab:config}) and 13
+prompt templates (Appendix~\ref{app:prompts}). Three engineering choices make the numbers of Section~\ref{sec:results}
+exact and repeatable. First, every model is run deterministically: greedy decoding with thinking off, fixed seeds for
+the picture model, and answers read from yes/no logits where a text answer could be cut off
+(Appendix~\ref{sec:scenecheck}). Second, every model output is cached per clip, and the scored numbers come from a
+scoring program (the ``harness'') that re-runs the pipeline's own decision functions on these saved outputs; the live
+run computes the outputs first (preparing the listener inputs takes about five minutes per clip, each picture try about
+20\,s). Third, every decision is logged (\fp{docs/decision_trail/}, 158 clips), and an independent re-export of the
+trail reproduces every published count of the final system with no difference on any clip (Appendix~\ref{sec:parity}). The live pipeline
+differs from the harness in four small ways that do not change when a picture starts (Appendix~\ref{sec:parity}). The
+model weights amount to about 200\,GB; the run needs one 80\,GB GPU, with Qwen-Image (about 57\,GB in bf16) and the
+vision model loaded together for the picture check, and FineLAP runs in a second Python environment because its
+dependencies conflict with the rest (Appendix~\ref{sec:repro}). On a fresh GPU machine the released code reproduced the
+published output of a development clip exactly.

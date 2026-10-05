@@ -1,5 +1,10 @@
 % ======================================================================
 \section{Results}\label{sec:results}
+This section reports the final system against the three baselines of the proposal and three one-model baselines, on
+158 clips scored per sound against human labels (Table~\ref{tab:sets}). Every comparison is paired by clip with a
+100{,}000-draw bootstrap, the five main tests are Holm-corrected, and the cost is re-examined across weights
+(Sections~\ref{sec:support} and~\ref{sec:sensitivity}). Every decision was taken on the development set; the test set
+was only scored (Section~\ref{sec:passrules}).
 
 \subsection{Baselines}\label{sec:baselines}
 The proposal names three baselines. All are run on exactly the same clips and scored with exactly the same rules:

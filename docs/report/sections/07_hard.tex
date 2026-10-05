@@ -38,7 +38,9 @@ baseline of the proposal \\
 \end{table}
 
 \subsection{The scale of the search}\label{sec:scale}
-Table~\ref{tab:scale} gives the size of the study behind the final system.
+Table~\ref{tab:scale} gives the size of the study behind the final system. Most of the 66 rounds failed their own
+pre-set rule; Table~\ref{tab:rejected} records the main rejected ideas and why, and Table~\ref{tab:rounds} the verdict of
+every round, so the negative results are part of the evidence, not a by-product.
 
 \begin{table}[htbp]
 \centering\small
@@ -56,6 +58,9 @@ Pre-registered rounds & 66 rounds, each with its rule and pass bar written befor
 Full-pipeline variants scored & more than 150, plus about 90 component screens \\
 Human labels & 308 timed sounds in 158 clips, each marked by whether its source is seen making it, whether it is obvious, and how important it is \\
 Screening data & 415 AudioSet-Strong clips with timed labels for audio-only rules \\
+Rules in the final system & 16 ordered detection steps (Table~\ref{tab:stage4}), more than 40 configuration values (Table~\ref{tab:config}), 13 prompt templates (Appendix~\ref{app:prompts}); every threshold fixed on the development set \\
+Changes accepted & every step from the first full pipeline to the final system, with its development and test numbers (Table~\ref{tab:shipchain}); the verdict of every round in Table~\ref{tab:rounds} \\
+Duration & 6 August (proposal) to 2 October (system frozen), Table~\ref{tab:eras} \\
 \bottomrule
 \end{tabular}
 \end{table}
