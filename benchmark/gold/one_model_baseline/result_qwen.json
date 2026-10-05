@@ -1,0 +1,117 @@
+{
+ "model": "Qwen3-Omni-30B-A3B-Instruct (Apache-2.0), audio only",
+ "rule": "speech and music never drawn; one picture per span / listed start; no bar (greedy reply parsed as written)",
+ "development": {
+  "rows": {
+   "proposed": {
+    "hits": 29,
+    "misses": 29,
+    "wrong": 15,
+    "visible": 6,
+    "cross": 7,
+    "phantom": 2,
+    "viewer_cost": 2.056338028169014
+   },
+   "blind_a2i": {
+    "hits": 34,
+    "misses": 24,
+    "wrong": 39,
+    "visible": 20,
+    "cross": 14,
+    "phantom": 5,
+    "viewer_cost": 2.4507042253521125
+   },
+   "one_model": {
+    "hits": 17,
+    "misses": 41,
+    "wrong": 357,
+    "visible": 24,
+    "cross": 256,
+    "phantom": 77,
+    "viewer_cost": 12.366197183098592
+   },
+   "show_nothing": {
+    "viewer_cost": 3.267605633802817
+   }
+  },
+  "diff": {
+   "one_model_vs_show_nothing": [
+    9.098591549295774,
+    6.253521126760563,
+    12.535211267605634,
+    0.0
+   ],
+   "one_model_vs_audio_to_image": [
+    9.915492957746478,
+    7.042253521126761,
+    13.32394366197183,
+    0.0
+   ],
+   "final_vs_one_model": [
+    -10.309859154929578,
+    -13.661971830985916,
+    -7.492957746478873,
+    0.0
+   ]
+  },
+  "clips": 71,
+  "parity_with_final_vs_baselines": true
+ },
+ "test": {
+  "rows": {
+   "proposed": {
+    "hits": 24,
+    "misses": 41,
+    "wrong": 23,
+    "visible": 4,
+    "cross": 15,
+    "phantom": 4,
+    "viewer_cost": 2.413793103448276
+   },
+   "blind_a2i": {
+    "hits": 26,
+    "misses": 39,
+    "wrong": 61,
+    "visible": 16,
+    "cross": 32,
+    "phantom": 13,
+    "viewer_cost": 3.1954022988505746
+   },
+   "one_model": {
+    "hits": 27,
+    "misses": 38,
+    "wrong": 326,
+    "visible": 18,
+    "cross": 214,
+    "phantom": 94,
+    "viewer_cost": 9.241379310344827
+   },
+   "show_nothing": {
+    "viewer_cost": 2.9885057471264367
+   }
+  },
+  "diff": {
+   "one_model_vs_show_nothing": [
+    6.252873563218391,
+    4.781609195402299,
+    7.862068965517241,
+    0.0
+   ],
+   "one_model_vs_audio_to_image": [
+    6.045977011494253,
+    4.505747126436781,
+    7.724137931034483,
+    0.0
+   ],
+   "final_vs_one_model": [
+    -6.827586206896552,
+    -8.528735632183908,
+    -5.264367816091954,
+    0.0
+   ]
+  },
+  "clips": 87,
+  "parity_with_final_vs_baselines": true
+ },
+ "reply_lines_dropped_unknown_name": 16
+}

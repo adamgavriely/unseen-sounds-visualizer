@@ -1,0 +1,218 @@
+{
+ "model": "PretrainedSED M2D_strong_1 (MIT)",
+ "rule": "speech and music never drawn; one picture per span / listed start; hysteresis low = bar/2, min 0.5 s",
+ "bar_chosen_on_dev": 0.7,
+ "dev_grid": {
+  "0.05": {
+   "hits": 38,
+   "misses": 20,
+   "wrong": 1007,
+   "visible": 48,
+   "cross": 582,
+   "phantom": 377,
+   "viewer_cost": 29.492957746478872
+  },
+  "0.1": {
+   "hits": 40,
+   "misses": 18,
+   "wrong": 667,
+   "visible": 37,
+   "cross": 401,
+   "phantom": 229,
+   "viewer_cost": 19.802816901408452
+  },
+  "0.15": {
+   "hits": 36,
+   "misses": 22,
+   "wrong": 518,
+   "visible": 32,
+   "cross": 303,
+   "phantom": 183,
+   "viewer_cost": 15.830985915492958
+  },
+  "0.2": {
+   "hits": 31,
+   "misses": 27,
+   "wrong": 388,
+   "visible": 29,
+   "cross": 219,
+   "phantom": 140,
+   "viewer_cost": 12.450704225352112
+  },
+  "0.25": {
+   "hits": 30,
+   "misses": 28,
+   "wrong": 306,
+   "visible": 26,
+   "cross": 177,
+   "phantom": 103,
+   "viewer_cost": 10.19718309859155
+  },
+  "0.3": {
+   "hits": 23,
+   "misses": 35,
+   "wrong": 245,
+   "visible": 23,
+   "cross": 147,
+   "phantom": 75,
+   "viewer_cost": 8.873239436619718
+  },
+  "0.35": {
+   "hits": 18,
+   "misses": 40,
+   "wrong": 193,
+   "visible": 18,
+   "cross": 115,
+   "phantom": 60,
+   "viewer_cost": 7.690140845070423
+  },
+  "0.4": {
+   "hits": 14,
+   "misses": 44,
+   "wrong": 145,
+   "visible": 17,
+   "cross": 80,
+   "phantom": 48,
+   "viewer_cost": 6.563380281690141
+  },
+  "0.5": {
+   "hits": 11,
+   "misses": 47,
+   "wrong": 71,
+   "visible": 13,
+   "cross": 36,
+   "phantom": 22,
+   "viewer_cost": 4.647887323943662
+  },
+  "0.6": {
+   "hits": 9,
+   "misses": 49,
+   "wrong": 42,
+   "visible": 8,
+   "cross": 20,
+   "phantom": 14,
+   "viewer_cost": 3.943661971830986
+  },
+  "0.7": {
+   "hits": 4,
+   "misses": 54,
+   "wrong": 15,
+   "visible": 2,
+   "cross": 8,
+   "phantom": 5,
+   "viewer_cost": 3.464788732394366
+  }
+ },
+ "development": {
+  "rows": {
+   "proposed": {
+    "hits": 29,
+    "misses": 29,
+    "wrong": 15,
+    "visible": 6,
+    "cross": 7,
+    "phantom": 2,
+    "viewer_cost": 2.056338028169014
+   },
+   "blind_a2i": {
+    "hits": 34,
+    "misses": 24,
+    "wrong": 39,
+    "visible": 20,
+    "cross": 14,
+    "phantom": 5,
+    "viewer_cost": 2.4507042253521125
+   },
+   "one_model": {
+    "hits": 4,
+    "misses": 54,
+    "wrong": 15,
+    "visible": 2,
+    "cross": 8,
+    "phantom": 5,
+    "viewer_cost": 3.464788732394366
+   },
+   "show_nothing": {
+    "viewer_cost": 3.267605633802817
+   }
+  },
+  "diff": {
+   "one_model_vs_show_nothing": [
+    0.19718309859154928,
+    -0.11267605633802817,
+    0.5070422535211268,
+    0.2519
+   ],
+   "one_model_vs_audio_to_image": [
+    1.0140845070422535,
+    0.28169014084507044,
+    1.8028169014084507,
+    0.00602
+   ],
+   "final_vs_one_model": [
+    -1.408450704225352,
+    -2.056338028169014,
+    -0.7887323943661971,
+    0.0
+   ]
+  },
+  "clips": 71,
+  "parity_with_final_vs_baselines": true
+ },
+ "test": {
+  "rows": {
+   "proposed": {
+    "hits": 24,
+    "misses": 41,
+    "wrong": 23,
+    "visible": 4,
+    "cross": 15,
+    "phantom": 4,
+    "viewer_cost": 2.413793103448276
+   },
+   "blind_a2i": {
+    "hits": 26,
+    "misses": 39,
+    "wrong": 61,
+    "visible": 16,
+    "cross": 32,
+    "phantom": 13,
+    "viewer_cost": 3.1954022988505746
+   },
+   "one_model": {
+    "hits": 4,
+    "misses": 61,
+    "wrong": 14,
+    "visible": 3,
+    "cross": 7,
+    "phantom": 4,
+    "viewer_cost": 3.1264367816091956
+   },
+   "show_nothing": {
+    "viewer_cost": 2.9885057471264367
+   }
+  },
+  "diff": {
+   "one_model_vs_show_nothing": [
+    0.13793103448275862,
+    -0.1839080459770115,
+    0.39080459770114945,
+    0.38892
+   ],
+   "one_model_vs_audio_to_image": [
+    -0.06896551724137931,
+    -0.7586206896551724,
+    0.5977011494252874,
+    0.87604
+   ],
+   "final_vs_one_model": [
+    -0.7126436781609196,
+    -1.3103448275862069,
+    -0.09195402298850575,
+    0.0241
+   ]
+  },
+  "clips": 87,
+  "parity_with_final_vs_baselines": true
+ }
+}

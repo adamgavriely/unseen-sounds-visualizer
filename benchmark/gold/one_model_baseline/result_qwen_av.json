@@ -1,0 +1,117 @@
+{
+ "model": "Qwen3-Omni-30B-A3B-Instruct (Apache-2.0), video + audio, off-screen sounds only",
+ "rule": "speech and music never drawn; one picture per span / listed start; no bar (greedy reply parsed as written)",
+ "development": {
+  "rows": {
+   "proposed": {
+    "hits": 29,
+    "misses": 29,
+    "wrong": 15,
+    "visible": 6,
+    "cross": 7,
+    "phantom": 2,
+    "viewer_cost": 2.056338028169014
+   },
+   "blind_a2i": {
+    "hits": 34,
+    "misses": 24,
+    "wrong": 39,
+    "visible": 20,
+    "cross": 14,
+    "phantom": 5,
+    "viewer_cost": 2.4507042253521125
+   },
+   "one_model": {
+    "hits": 7,
+    "misses": 51,
+    "wrong": 79,
+    "visible": 15,
+    "cross": 34,
+    "phantom": 30,
+    "viewer_cost": 5.098591549295775
+   },
+   "show_nothing": {
+    "viewer_cost": 3.267605633802817
+   }
+  },
+  "diff": {
+   "one_model_vs_show_nothing": [
+    1.8309859154929577,
+    1.267605633802817,
+    2.3661971830985915,
+    0.0
+   ],
+   "one_model_vs_audio_to_image": [
+    2.647887323943662,
+    1.8873239436619718,
+    3.436619718309859,
+    0.0
+   ],
+   "final_vs_one_model": [
+    -3.0422535211267605,
+    -3.859154929577465,
+    -2.2253521126760565,
+    0.0
+   ]
+  },
+  "clips": 71,
+  "parity_with_final_vs_baselines": true
+ },
+ "test": {
+  "rows": {
+   "proposed": {
+    "hits": 24,
+    "misses": 41,
+    "wrong": 23,
+    "visible": 4,
+    "cross": 15,
+    "phantom": 4,
+    "viewer_cost": 2.413793103448276
+   },
+   "blind_a2i": {
+    "hits": 26,
+    "misses": 39,
+    "wrong": 61,
+    "visible": 16,
+    "cross": 32,
+    "phantom": 13,
+    "viewer_cost": 3.1954022988505746
+   },
+   "one_model": {
+    "hits": 9,
+    "misses": 56,
+    "wrong": 85,
+    "visible": 7,
+    "cross": 39,
+    "phantom": 39,
+    "viewer_cost": 4.528735632183908
+   },
+   "show_nothing": {
+    "viewer_cost": 2.9885057471264367
+   }
+  },
+  "diff": {
+   "one_model_vs_show_nothing": [
+    1.5402298850574712,
+    1.0344827586206897,
+    2.0919540229885056,
+    0.0
+   ],
+   "one_model_vs_audio_to_image": [
+    1.3333333333333333,
+    0.5517241379310345,
+    2.160919540229885,
+    0.0007
+   ],
+   "final_vs_one_model": [
+    -2.1149425287356323,
+    -2.8735632183908044,
+    -1.4022988505747127,
+    0.0
+   ]
+  },
+  "clips": 87,
+  "parity_with_final_vs_baselines": true
+ },
+ "reply_lines_dropped_unknown_name": 1
+}
