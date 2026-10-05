@@ -19,7 +19,7 @@ lists the main ideas that failed.
 Step & Ready-made choice & What goes wrong (evidence) & What the final system does \\
 \midrule
 Hear & one sound tagger & quiet sounds under speech or music never become candidates; under 40\,\% of raw detections
-are real (Section~\ref{sec:hard-hear}) & two complementary detectors, with every weak candidate checked \\
+are real (Section~\ref{sec:hard-confirm}, Figure~\ref{fig:listeners}) & two complementary detectors, with every weak candidate checked \\
 Confirm & ask an audio-language model & a sound one listener names is real 37\,\% of the time
 (Figure~\ref{fig:listeners}) & a weak sound needs a witness: DASM, both listeners, or one listener plus the scene \\
 See & ask a vision-language model ``is it visible?'' & presence is taken for production (31 of 36 audited errors);
@@ -71,7 +71,7 @@ is the sum of many small rules, each one closing a failure described in this sec
 \caption{Cost per clip after each accepted change, from the first full pipeline to the final system: development
 3.690 $\to$ 2.056, test 2.909 $\to$ 2.409. Decisions were made on the development set; the test set was only scored.
 Dotted lines: showing nothing. Each step is a row of Table~\ref{tab:shipchain} (Appendix~\ref{app:history}), except
-three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there; the step names are short
+three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there, and the depict-event row, whose net effect on the development counts was zero, is not plotted; the step names are short
 forms of the internal names explained in Appendix~\ref{app:glossary}.}
 \label{fig:progression}
 \end{figure}

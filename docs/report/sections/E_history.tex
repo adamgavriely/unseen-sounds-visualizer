@@ -105,7 +105,7 @@ test numbers are the reads made after each change shipped. Sources: \fp{docs/his
 {\small
 \begin{longtable}{L{2.6cm}L{6.1cm}L{2.5cm}L{3.0cm}}
 \caption{Changes that shipped, from the old pipeline to the final system. Hits / wrong / cost; DEV hits out of 58, TEST out of 65.
-The $p$ in the TEST column is one-sided, against the old pipeline B0r for SHIP5--SHIP8 and against B for D and the final system.}\label{tab:shipchain}\\
+The $p$ in the TEST column is one-sided, against the old pipeline B0r for SHIP5--SHIP8 and against B for the final system (for D, see Table~\ref{tab:versions}).}\label{tab:shipchain}\\
 \toprule
 Step (name in logs) & What it adds & Merged DEV & Merged TEST \\
 \midrule\endfirsthead
@@ -160,7 +160,7 @@ other detectors (Sept, rounds 1--8) & FLAM, PretrainedSED (5 backbones), AST, CE
 source separation (Sept, R7) & HT-Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: with HT-Demucs, recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
 listener as verifier (R13) & ask Qwen3-Omni yes/no, multiple choice, open list on every weak candidate & finds 5--8 dropped real sounds but adds about 3 wrong pictures per hit \\
 newer listeners (R31--34) & MOSS-Audio, SpotSound, Kimi, Step-Audio & 3--10 wrong per extra hit; SpotSound answered yes to every query \\
-EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & best DEV 31/26/2.254 (+3 hits), but TEST 25/35/2.614 (worse); the gate cannot refuse a wrong off-screen name \\
+EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & best DEV 31/26/2.254: 2 more hits than the final system for 11 more wrong pictures (fails pass rule (a)); the gate cannot refuse a wrong off-screen name \\
 short twins, band lists (R49, R56) & add weak or short detections both models half-hear & BANDLIST 0 hits, +6 wrong; TWIN-SHORT 27/36/2.761 \\
 tagger ensemble (R63) & calibrated EAT/SSLAM ensemble on BEATs windows & on the 415: 33\,\% fewer spans but recall 0.152 vs 0.197 \\
 \multicolumn{3}{l}{\emph{Remove wrong pictures}} \\
@@ -294,7 +294,7 @@ not the ranking (Table~\ref{tab:mergegap}).
 \caption{Repeat-merge gap: hits / wrong / cost at three gaps.}\label{tab:mergegap}
 \begin{tabular}{lcccc}
 \toprule
-Gap (s) & SHIP8, dev. & Baseline, dev. & SHIP8, test & Baseline, test \\
+Gap (s) & SHIP8, dev. & Old pipeline (B0r), dev. & SHIP8, test & Old pipeline (B0r), test \\
 \midrule
 1.5 & 28 / 23 / 2.338 & 18 / 57 / 3.859 & 23 / 30 / 2.591 & 21 / 44 / 3.000 \\
 2.0 & 28 / 21 / 2.282 & 18 / 51 / 3.690 & 23 / 29 / 2.568 & 21 / 40 / 2.909 \\
@@ -302,8 +302,9 @@ Gap (s) & SHIP8, dev. & Baseline, dev. & SHIP8, test & Baseline, test \\
 \bottomrule
 \end{tabular}
 \end{table}
-The baseline gains more from a longer gap (many of its pictures are repeats), so the final system (gap 2.5\,s) against
-the baseline (gap 2.0\,s) is not a like-for-like comparison.
+The old pipeline gains more from a longer gap (many of its pictures are repeats), so SHIP8 (gap 2.5\,s) against the
+old pipeline (gap 2.0\,s) is not a like-for-like comparison. The baselines of Table~\ref{tab:headline} use the same
+display rules as the final system, including the 2.5\,s gap.
 
 % ======================================================================
 \FloatBarrier
