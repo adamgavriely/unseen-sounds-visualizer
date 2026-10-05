@@ -51,7 +51,8 @@ as a decision test. The screening set of 415 clips was then used only for single
 clips (340 scored; the last two parts dropped for time before any score was read) was scored once after the system
 was final, with nothing tuned on it: 12 hits of 65 labelled sounds and 31 pictures outside the labels for the final
 system, 21 and 62 for direct audio-to-image (cost 0.806 vs 0.882, $p$ 0.14, paired clip bootstrap); as round 12 found,
-this labelling does not separate any system from showing nothing (0.765). Script and results:
+this labelling does not separate any system from showing nothing (0.765). Script and results (field
+\texttt{diff\_report\_rule}):
 \fp{benchmark/gold/fresh_side_by_side.py}, \fp{benchmark/gold/fresh_side_by_side.json}.
 
 \subsection{Working rules}\label{sec:rules}
@@ -105,7 +106,7 @@ test numbers are the reads made after each change shipped. Sources: \fp{docs/his
 {\small
 \begin{longtable}{L{2.6cm}L{6.1cm}L{2.5cm}L{3.0cm}}
 \caption{Changes that shipped, from the old pipeline to the final system. Hits / wrong / cost; DEV hits out of 58, TEST out of 65.
-The $p$ in the TEST column is one-sided, against the old pipeline B0r for SHIP5--SHIP8 and against B for the final system (for D, see Table~\ref{tab:versions}).}\label{tab:shipchain}\\
+The $p$ in the TEST column is one-sided, against the old pipeline B0r for the rows + BTP to + K4A-D (SHIP5--SHIP8) and against B for the final system (for D, see Table~\ref{tab:versions}).}\label{tab:shipchain}\\
 \toprule
 Step (name in logs) & What it adds & Merged DEV & Merged TEST \\
 \midrule\endfirsthead
@@ -246,7 +247,7 @@ which was the pre-set bar; the text-read result is therefore not plotted as a se
 Before the final detector existed, the on-screen check was compared with and without it on the 60 older test clips
 (same gate model and rule, the September detector); Table~\ref{tab:septgate} gives two-sided $p$-values with Holm
 correction.
-\begin{table}[htbp]\centering\small
+\begin{table}[tbp]\centering\small
 \caption{The September comparison of the on-screen check (60 older test clips).}\label{tab:septgate}
 \begin{tabular}{lrrl}
 \toprule
@@ -270,7 +271,7 @@ price of a few hits, which F1, weighing both equally, does not reward.
 The final development phase compared each accepted change with the version before it and, early on, with the
 September baseline (``B0r''). Paired clip bootstrap on the test set, 2{,}000 draws; $d$ = mean per-clip cost difference;
 one-sided $p$ (a two-sided value is about twice as large); see Table~\ref{tab:versions}. The body uses 100{,}000 draws and two-sided $p$-values, so the two are not directly comparable.
-\begin{table}[htbp]\centering\small
+\begin{table}[tbp]\centering\small
 \caption{Comparisons between versions (test set, one-sided). Test-set reads made during development, uncorrected
 for multiplicity; none was used to accept a change.}\label{tab:versions}
 \resizebox{\linewidth}{!}{\begin{tabular}{lrrl}
@@ -312,7 +313,7 @@ display rules as the final system, including the 2.5\,s gap.
 Verdicts: shipped = accepted into the system; rejected = failed its development rule; stop = failed its screen on the
 screening set; hold = parked; no-op = changed no picture.
 
-One row per round or main arm, in order. Results are hits / wrong / cost on merged DEV (55 or 58 needed, see
+Table~\ref{tab:rounds} has one row per round or main arm, in order. Results are hits / wrong / cost on merged DEV (55 or 58 needed, see
 Appendix~\ref{app:datahistory}) unless marked; ``415'' = held-out AudioSet-Strong screen; ``old DEV'' = DEV-49. Full text,
 bars and line numbers: \fp{docs/history/preregistrations/prereg_v4.md} (amendments), \fp{docs/history/preregistrations/prereg_round*.md},
 \fp{docs/history/preregistrations/prereg_round13_detector_push.md} (rounds 13--66). Counted from that file: rounds 13--28 ran 129 new

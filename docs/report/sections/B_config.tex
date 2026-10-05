@@ -15,7 +15,7 @@ rescued spans in \cfgv{filter_rescued}.
   \item[BEATs] iter3+ fine-tuned on AudioSet-2M (checkpoint
         \fp{BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2}). It scores a whole window, so it is run on 2-s
         windows every 0.25\,s; the first two seconds are mirror-padded so a sound at the very start can be heard; each
-        window's score is stamped 0.5\,s before the window ends, so a detected start is never earlier than the true one.
+        window's score is stamped 0.5\,s before the window ends, so a detected start is never earlier than the window's evidence.
   \item[FlexSED] an open-vocabulary, frame-level detector~\cite{hai2025flexsed}: a self-supervised audio encoder plus
         a CLAP text encoder (\texttt{laion/clap-htsat-unfused}), trained on AudioSet-Strong. It is asked one plain
         query per family over the 215 \emph{depictable} families (\fp{benchmark/gold/depictable_vocab.json}), 25 frames
@@ -117,7 +117,7 @@ check. The detection stack, listeners, display rules and picture model are the s
 drawn.
 
 \subsection{Configuration values}
-Values set by \cfgv{config.use_shipped()} (\fp{config.py}), read by running it. ``$\to$'' gives the
+Values set by \cfgv{config.use_shipped()} (\fp{config.py}; Table~\ref{tab:config}), read by running it. ``$\to$'' gives the
 module default and the shipped value.
 
 {\small

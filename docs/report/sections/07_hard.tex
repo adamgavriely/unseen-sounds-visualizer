@@ -71,7 +71,8 @@ is the sum of many small rules, each one closing a failure described in this sec
 \caption{Cost per clip after each accepted change, from the first full pipeline to the final system: development
 3.690 $\to$ 2.056, test 2.909 $\to$ 2.409. Decisions were made on the development set; the test set was only scored.
 Dotted lines: showing nothing. Each step is a row of Table~\ref{tab:shipchain} (Appendix~\ref{app:history}), except
-three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there. The depict-event row, whose net effect on the development counts was zero, is not plotted. The step names are short
+three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there. The depict-event row (net effect zero) and the text-read witness-rule row D (Appendix~\ref{app:versions}) are not
+plotted. The step names are short
 forms of the internal names explained in Appendix~\ref{app:glossary}.}
 \label{fig:progression}
 \end{figure}
@@ -121,8 +122,8 @@ pictures by its answer kept 15 of 28 development hits (round 44, Appendix~\ref{a
 
 \subsection{Additional vision tools trade one error for another}
 \emph{Expected:} adding an object detector, a segmentation model, a crop of the source, a model of audio-visual
-synchrony or a sound-localisation model should help. \emph{Actually:} each one silenced more on-screen sounds only by
-silencing about as many needed ones (Figure~\ref{fig:gate}). Removing two wrong pictures saves $2\times2 = 4$ cost units;
+synchrony or a sound-localisation model should help. \emph{Actually:} most silenced more on-screen sounds only by
+silencing about as many needed ones, and the two that did better on the labelled stretches gave no gain in the full pipeline (Figure~\ref{fig:gate}). Removing two wrong pictures saves $2\times2 = 4$ cost units;
 losing one needed sound costs 4: no gain. Localisation maps change little when the audio is silent or off-screen, so these models still point at a visible
 object~\cite{juanola2025critical}: they answer \emph{where} a sound comes from, not \emph{whether} its source is visible.
 
