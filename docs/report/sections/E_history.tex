@@ -161,7 +161,7 @@ other detectors (Sept, rounds 1--8) & FLAM, PretrainedSED (5 backbones), AST, CE
 source separation (Sept, R7) & HT-Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: with HT-Demucs, recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
 listener as verifier (R13) & ask Qwen3-Omni yes/no, multiple choice, open list on every weak candidate & finds 5--8 dropped real sounds but adds about 3 wrong pictures per hit \\
 newer listeners (R31--34) & MOSS-Audio, SpotSound, Kimi, Step-Audio & 3--10 wrong per extra hit; SpotSound answered yes to every query \\
-EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & best DEV 31/26/2.254 against its base SHIP8 28/21/2.282: +3 hits for +5 wrong; failed the pre-set ``more hits'' rule (wrong pictures of other sounds rose 13 $\to$ 17), not shipped; the gate cannot refuse a wrong off-screen name \\
+EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & most hits on DEV, 31/26/2.254, against its base SHIP8 28/21/2.282: +3 hits for +5 wrong; failed the pre-set ``more hits'' rule (wrong pictures of other sounds rose 13 $\to$ 17), not shipped; the gate cannot refuse a wrong off-screen name \\
 short twins, band lists (R49, R56) & add weak or short detections both models half-hear & BANDLIST 0 hits, +6 wrong; TWIN-SHORT 27/36/2.761 \\
 tagger ensemble (R63) & calibrated EAT/SSLAM ensemble on BEATs windows & on the 415: 33\,\% fewer spans but recall 0.152 vs 0.197 \\
 \multicolumn{3}{l}{\emph{Remove wrong pictures}} \\
@@ -185,7 +185,7 @@ context $\pm$5\,s (R59) & give the listener more context & it names what it \emp
 }
 
 \paragraph{The main lesson.} Two patterns recur in this table. First, the missing sounds can often be found -- a
-listener asked about the whole clip names the hammer, the train, the bell -- but every way of adding them brings two
+listener asked about the whole clip names the hammer, the train, the bell -- but most ways of adding them bring two
 or more wrong pictures per hit, because nothing downstream can tell a right off-screen name from a wrong one. Second,
 every change to the gate moves along the same trade-off line: it silences more on-screen sounds only by silencing
 about as many needed ones. Section~\ref{sec:analysis} measures both.

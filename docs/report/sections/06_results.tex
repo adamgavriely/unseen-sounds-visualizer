@@ -129,9 +129,10 @@ ordinary events; direct audio-to-image finds 88\,\% and 77\,\%, and 46\,\% and 3
 \subsection{What the statistical tests support}\label{sec:support}
 \begin{description}
   \item[Significant.] On the test set the final system costs less than direct audio-to-image generation and audio
-        captioning ($p < 0.001$), has a higher F1 than them ($p = 0.002$), and costs less than showing nothing
-        ($p = 0.044$ uncorrected; 0.087 after the Holm correction below). On the development set it costs less than
+        captioning ($p < 0.001$) and has a higher F1 than them ($p = 0.002$). On the development set it costs less than
         showing nothing ($p < 0.001$).
+  \item[At the margin.] On the test set, the final system costs less than showing nothing ($p = 0.044$ uncorrected;
+        0.087 after the Holm correction below).
   \item[Not significant.] On the development set, the difference from direct audio-to-image generation ($p = 0.085$).
   \item[Multiple comparisons.] The family is every comparison of the final system against a baseline for which a
         $p$-value is reported: cost against each baseline on each set, and F1 against direct audio-to-image generation
