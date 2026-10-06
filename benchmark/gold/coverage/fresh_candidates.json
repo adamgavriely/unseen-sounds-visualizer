@@ -1,0 +1,5046 @@
+{
+ "source": "audioset_fresh.json (422 clips)",
+ "min_s": 1.0,
+ "n": 223,
+ "clips": [
+  {
+   "id": "yQjnNR7fXKo_50000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Stream, river",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Stream, river",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Car",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Accelerating, revving, vroom",
+     "start": 4.57,
+     "end": 6.93,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "IGFZfTxCc5I_20000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Clapping",
+    "Crowd",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 3.25,
+     "end": 5.98,
+     "masked": true
+    },
+    {
+     "label": "Cheering",
+     "start": 3.28,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Applause",
+     "start": 4.32,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Clapping",
+     "start": 4.32,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "RthneIOXhz0_120000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Jingle bell"
+   ],
+   "events": [
+    {
+     "label": "Jingle bell",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "UapBvuAH7p0_110000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Drawer open or close"
+   ],
+   "events": [
+    {
+     "label": "Drawer open or close",
+     "start": 6.58,
+     "end": 7.69,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "TT8xhjDC3Cg_250000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Typewriter"
+   ],
+   "events": [
+    {
+     "label": "Typewriter",
+     "start": 5.47,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "3pV7d32BfBQ_50000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Chuckle, chortle",
+    "Roaring cats (lions, tigers)"
+   ],
+   "events": [
+    {
+     "label": "Roaring cats (lions, tigers)",
+     "start": 0.0,
+     "end": 1.51,
+     "masked": false
+    },
+    {
+     "label": "Chuckle, chortle",
+     "start": 0.08,
+     "end": 1.52,
+     "masked": false
+    },
+    {
+     "label": "Chuckle, chortle",
+     "start": 7.86,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "ktso7GeckG8_130000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Sheep"
+   ],
+   "events": [
+    {
+     "label": "Bleat",
+     "start": 0.24,
+     "end": 1.39,
+     "masked": true
+    },
+    {
+     "label": "Bleat",
+     "start": 3.46,
+     "end": 6.6,
+     "masked": true
+    },
+    {
+     "label": "Bleat",
+     "start": 8.28,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "vauFW9Nys8Q_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Alarm",
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Buzzer",
+     "start": 0.0,
+     "end": 2.17,
+     "masked": true
+    },
+    {
+     "label": "Crowd",
+     "start": 1.85,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "6Y8wSI1l-Lw_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Bus",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "2k6_k7K_ixg_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle",
+    "Vehicle horn, car horn, honking, toot"
+   ],
+   "events": [
+    {
+     "label": "Engine",
+     "start": 0.0,
+     "end": 3.24,
+     "masked": true
+    },
+    {
+     "label": "Motorcycle",
+     "start": 6.02,
+     "end": 9.14,
+     "masked": false
+    },
+    {
+     "label": "Vehicle horn, car horn, honking, toot",
+     "start": 6.84,
+     "end": 9.13,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "k72FzEY2C7w_130000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Cooking"
+   ],
+   "events": [
+    {
+     "label": "Frying (food)",
+     "start": 0.0,
+     "end": 8.33,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "PwHZ4df5G7w_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Fart"
+   ],
+   "events": [
+    {
+     "label": "Fart",
+     "start": 0.16,
+     "end": 2.01,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Hsink5tWkmI_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Engine",
+     "start": 1.96,
+     "end": 6.56,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "WLXQgcx8qTI_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Traffic noise, roadway noise",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Car",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "y0AYIpO7uVE_130000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Whoop"
+   ],
+   "events": [
+    {
+     "label": "Whoop",
+     "start": 8.15,
+     "end": 9.21,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "jd94Ox7KJ9Q_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Air horn, truck horn"
+   ],
+   "events": [
+    {
+     "label": "Air horn, truck horn",
+     "start": 3.18,
+     "end": 5.07,
+     "masked": true
+    },
+    {
+     "label": "Air horn, truck horn",
+     "start": 7.13,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "NJWBq2eQzg0_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Quack"
+   ],
+   "events": [
+    {
+     "label": "Quack",
+     "start": 2.9,
+     "end": 4.37,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "YRdL_tPsk6Q_340000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Stir"
+   ],
+   "events": [
+    {
+     "label": "Stir",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "y76NbuqEto0_270000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Clapping"
+   ],
+   "events": [
+    {
+     "label": "Clapping",
+     "start": 2.88,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "M6FFePs2fCg_300000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Cheering",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "s4S0WtmlXVg_2000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 9.75,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "nF0pJOjN0gw_120000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Alarm",
+    "Bird",
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 0.0,
+     "end": 1.09,
+     "masked": false
+    },
+    {
+     "label": "Alarm clock",
+     "start": 1.13,
+     "end": 3.09,
+     "masked": false
+    },
+    {
+     "label": "Water tap, faucet",
+     "start": 3.39,
+     "end": 4.42,
+     "masked": false
+    },
+    {
+     "label": "Liquid",
+     "start": 4.61,
+     "end": 6.65,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "WKlC2hswHmM_300000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell",
+    "Jingle bell"
+   ],
+   "events": [
+    {
+     "label": "Jingle bell",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Bell",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Wgnr_ftHhUw_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Whimper"
+   ],
+   "events": [
+    {
+     "label": "Whimper",
+     "start": 0.97,
+     "end": 4.99,
+     "masked": true
+    },
+    {
+     "label": "Whimper",
+     "start": 5.3,
+     "end": 6.54,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "2MpzHv5KNZU_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Cricket"
+   ],
+   "events": [
+    {
+     "label": "Cricket",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Cn3xoxvbkF0_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 6.25,
+     "end": 8.7,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "gtKcxDpBKxk_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Laughter",
+    "Whoosh, swoosh, swish"
+   ],
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 0.53,
+     "end": 2.11,
+     "masked": true
+    },
+    {
+     "label": "Whoosh, swoosh, swish",
+     "start": 2.69,
+     "end": 4.19,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Y9uOpwHbl_s_280000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crying, sobbing",
+    "Wail, moan"
+   ],
+   "events": [
+    {
+     "label": "Crying, sobbing",
+     "start": 7.08,
+     "end": 8.14,
+     "masked": true
+    },
+    {
+     "label": "Wail, moan",
+     "start": 7.09,
+     "end": 8.1,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "43R5uK6JJoA_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Waterfall",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "ry-Ycs7oBik_80000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Screaming"
+   ],
+   "events": [
+    {
+     "label": "Cheering",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Screaming",
+     "start": 0.06,
+     "end": 1.28,
+     "masked": true
+    },
+    {
+     "label": "Screaming",
+     "start": 4.82,
+     "end": 6.87,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "yR32-z5s7aU_60000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Power tool"
+   ],
+   "events": [
+    {
+     "label": "Power tool",
+     "start": 7.85,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "HOIIp5NyFx0_20000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Cheering",
+     "start": 0.01,
+     "end": 6.4,
+     "masked": true
+    },
+    {
+     "label": "Crowd",
+     "start": 0.01,
+     "end": 6.43,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "yCGM8aJV6fM_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Medium engine (mid frequency)",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "xLZp-3_71Vs_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Chorus effect"
+   ],
+   "events": [
+    {
+     "label": "Chorus effect",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "iX71wBMIn5k_380000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Croak"
+   ],
+   "events": [
+    {
+     "label": "Croak",
+     "start": 4.98,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "aLkqkMJup1U_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Trickle, dribble",
+     "start": 0.0,
+     "end": 1.33,
+     "masked": false
+    },
+    {
+     "label": "Water",
+     "start": 0.0,
+     "end": 1.41,
+     "masked": false
+    },
+    {
+     "label": "Water",
+     "start": 6.5,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Trickle, dribble",
+     "start": 6.54,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "EC4GbkL3XvI_80000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Chorus effect"
+   ],
+   "events": [
+    {
+     "label": "Chorus effect",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "OC91IBhiTsQ_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Shout",
+     "start": 1.14,
+     "end": 2.15,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "KE-TVQhdCbs_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Clapping",
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Applause",
+     "start": 0.0,
+     "end": 3.26,
+     "masked": false
+    },
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 3.27,
+     "masked": false
+    },
+    {
+     "label": "Clapping",
+     "start": 0.0,
+     "end": 3.27,
+     "masked": false
+    },
+    {
+     "label": "Cheering",
+     "start": 0.0,
+     "end": 3.27,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "Jb9Udi9N7Xw_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Chuckle, chortle",
+    "Laughter"
+   ],
+   "events": [
+    {
+     "label": "Chuckle, chortle",
+     "start": 0.95,
+     "end": 2.17,
+     "masked": true
+    },
+    {
+     "label": "Laughter",
+     "start": 0.96,
+     "end": 2.17,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "ziY2rPutX18_250000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Shuffling cards"
+   ],
+   "events": [
+    {
+     "label": "Shuffling cards",
+     "start": 0.54,
+     "end": 1.71,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "leOH87itNWM_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Shout",
+    "Whoop"
+   ],
+   "events": [
+    {
+     "label": "Whoop",
+     "start": 0.0,
+     "end": 1.05,
+     "masked": false
+    },
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Cheering",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "6PLlWvC4BiQ_160000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bellow"
+   ],
+   "events": [
+    {
+     "label": "Bellow",
+     "start": 6.21,
+     "end": 8.68,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "fzhJ-Fmt-Po_7000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Cat"
+   ],
+   "events": [
+    {
+     "label": "Hiss",
+     "start": 8.51,
+     "end": 9.54,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "5tM4bPM6E_w_70000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Cat"
+   ],
+   "events": [
+    {
+     "label": "Purr",
+     "start": 5.52,
+     "end": 6.58,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "D4qo1ldD9kc_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Jingle bell",
+    "Rattle"
+   ],
+   "events": [
+    {
+     "label": "Rattle",
+     "start": 0.01,
+     "end": 2.31,
+     "masked": false
+    },
+    {
+     "label": "Jingle bell",
+     "start": 0.02,
+     "end": 2.33,
+     "masked": false
+    },
+    {
+     "label": "Jingle bell",
+     "start": 2.47,
+     "end": 5.21,
+     "masked": true
+    },
+    {
+     "label": "Rattle",
+     "start": 2.51,
+     "end": 5.26,
+     "masked": true
+    },
+    {
+     "label": "Rattle",
+     "start": 7.91,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Jingle bell",
+     "start": 7.95,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "vVo3xT3cHBA_50000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Explosion"
+   ],
+   "events": [
+    {
+     "label": "Explosion",
+     "start": 3.87,
+     "end": 5.44,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Q3LU2xaGzMg_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Aircraft",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Aircraft engine",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Engine",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Aircraft",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "iR976W8_nfg_410000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Drill"
+   ],
+   "events": [
+    {
+     "label": "Drill",
+     "start": 7.21,
+     "end": 9.46,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "VKhIVJuYIk4_190000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Splash, splatter"
+   ],
+   "events": [
+    {
+     "label": "Splash, splatter",
+     "start": 3.89,
+     "end": 5.87,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "xx1RccwlF5g_380000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Effects unit"
+   ],
+   "events": [
+    {
+     "label": "Effects unit",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "uUNlJ4KZTPE_20000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell"
+   ],
+   "events": [
+    {
+     "label": "Ding",
+     "start": 1.11,
+     "end": 2.24,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "nSBDyxxscks_220000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Gargling"
+   ],
+   "events": [
+    {
+     "label": "Gargling",
+     "start": 5.56,
+     "end": 6.61,
+     "masked": true
+    },
+    {
+     "label": "Gargling",
+     "start": 7.13,
+     "end": 8.57,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "-YRJHtktT1g_170000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Idling",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Car",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Fx2yDgMqYJA_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Mechanical fan"
+   ],
+   "events": [
+    {
+     "label": "Mechanical fan",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "b12vm6On2Jw_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Applause",
+     "start": 0.0,
+     "end": 7.08,
+     "masked": true
+    },
+    {
+     "label": "Cheering",
+     "start": 1.25,
+     "end": 5.51,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 1.28,
+     "end": 5.51,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "bwHPVG6vbNQ_20000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "z0ofUZAE_SQ_0",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Jingle bell"
+   ],
+   "events": [
+    {
+     "label": "Jingle bell",
+     "start": 0.13,
+     "end": 4.71,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "614LdgrE13A_110000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Glass shatter"
+   ],
+   "events": [
+    {
+     "label": "Glass shatter",
+     "start": 1.52,
+     "end": 2.99,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "ramrrgh1u9k_0",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Laughter"
+   ],
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 6.93,
+     "end": 9.78,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "ct5Ugjo84W8_50000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Children shouting",
+     "start": 6.59,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "TK2lPYfkG-8_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Air horn, truck horn",
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Air horn, truck horn",
+     "start": 4.85,
+     "end": 7.2,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "hQ1L0ZhzGqo_500000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Stream, river"
+   ],
+   "events": [
+    {
+     "label": "Stream, river",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "K7pObmi_L8o_14000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle",
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Engine",
+     "start": 0.0,
+     "end": 9.85,
+     "masked": true
+    },
+    {
+     "label": "Fill (with liquid)",
+     "start": 2.25,
+     "end": 6.37,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Vy6NLM8dCDc_90000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell",
+    "Electric shaver, electric razor"
+   ],
+   "events": [
+    {
+     "label": "Bell",
+     "start": 0.01,
+     "end": 4.0,
+     "masked": true
+    },
+    {
+     "label": "Electric shaver, electric razor",
+     "start": 4.15,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "th8Zo8xCK-g_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Gears"
+   ],
+   "events": [
+    {
+     "label": "Gears",
+     "start": 6.8,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "IuTfMfzkr5Y_120000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Air horn, truck horn"
+   ],
+   "events": [
+    {
+     "label": "Air horn, truck horn",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "5So_E6yPW40_10000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Splinter",
+    "Thunder"
+   ],
+   "events": [
+    {
+     "label": "Thunder",
+     "start": 0.0,
+     "end": 1.35,
+     "masked": true
+    },
+    {
+     "label": "Splinter",
+     "start": 2.16,
+     "end": 3.35,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "lqWv4X8OhkA_300000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Ducks, geese, waterfowl"
+   ],
+   "events": [
+    {
+     "label": "Ducks, geese, waterfowl",
+     "start": 8.26,
+     "end": 9.67,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "kb3tfk8dxvU_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Gunshot",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Shout",
+     "start": 0.0,
+     "end": 1.33,
+     "masked": true
+    },
+    {
+     "label": "Artillery fire",
+     "start": 1.64,
+     "end": 3.1,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 6.33,
+     "end": 7.53,
+     "masked": true
+    },
+    {
+     "label": "Artillery fire",
+     "start": 7.57,
+     "end": 8.84,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "1F3_bvIT0ig_0",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Race car, auto racing",
+     "start": 0.14,
+     "end": 8.28,
+     "masked": true
+    },
+    {
+     "label": "Accelerating, revving, vroom",
+     "start": 2.7,
+     "end": 8.28,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "YvFY7xU2kGk_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Chorus effect"
+   ],
+   "events": [
+    {
+     "label": "Chorus effect",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "vsBI27QYYhw_34000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell"
+   ],
+   "events": [
+    {
+     "label": "Bell",
+     "start": 0.0,
+     "end": 4.74,
+     "masked": true
+    },
+    {
+     "label": "Bell",
+     "start": 6.37,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "ioJeF3Cz-T4_200000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Squish"
+   ],
+   "events": [
+    {
+     "label": "Squish",
+     "start": 0.0,
+     "end": 1.36,
+     "masked": false
+    },
+    {
+     "label": "Squish",
+     "start": 2.05,
+     "end": 3.08,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "WA9hKrM8xFU_9000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Chop"
+   ],
+   "events": [
+    {
+     "label": "Chop",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "esBiDDM_x2I_20000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Cheering",
+     "start": 1.86,
+     "end": 6.14,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Zlbo8ygfPSM_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell"
+   ],
+   "events": [
+    {
+     "label": "Ding",
+     "start": 5.41,
+     "end": 6.97,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "rFg57dFadN4_250000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Door"
+   ],
+   "events": [
+    {
+     "label": "Creak",
+     "start": 4.39,
+     "end": 6.57,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "hDD8vv3wjHc_40000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Cheering",
+     "start": 2.96,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Applause",
+     "start": 4.39,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "F96fzYqm1u4_70000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Electric shaver, electric razor"
+   ],
+   "events": [
+    {
+     "label": "Electric shaver, electric razor",
+     "start": 5.13,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "-Z8bjo6q6jc_70000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Water",
+    "Whale vocalization"
+   ],
+   "events": [
+    {
+     "label": "Whale vocalization",
+     "start": 2.17,
+     "end": 3.64,
+     "masked": false
+    },
+    {
+     "label": "Water",
+     "start": 2.62,
+     "end": 7.27,
+     "masked": false
+    },
+    {
+     "label": "Whale vocalization",
+     "start": 5.76,
+     "end": 7.01,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "we66pU0MN1M_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Car",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "9WrIbJC_C7A_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Alarm"
+   ],
+   "events": [
+    {
+     "label": "Beep, bleep",
+     "start": 0.0,
+     "end": 1.1,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "8HhaU-YvFq0_10000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Yell"
+   ],
+   "events": [
+    {
+     "label": "Cheering",
+     "start": 2.64,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Yell",
+     "start": 7.63,
+     "end": 9.28,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "LU1CGfgJXfM_80000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell",
+    "Bird"
+   ],
+   "events": [
+    {
+     "label": "Bell",
+     "start": 0.91,
+     "end": 2.44,
+     "masked": true
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 4.28,
+     "end": 6.13,
+     "masked": true
+    },
+    {
+     "label": "Bird",
+     "start": 4.28,
+     "end": 6.12,
+     "masked": true
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 4.32,
+     "end": 6.15,
+     "masked": true
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 6.3,
+     "end": 8.32,
+     "masked": true
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 6.32,
+     "end": 8.37,
+     "masked": true
+    },
+    {
+     "label": "Bird",
+     "start": 6.33,
+     "end": 8.3,
+     "masked": true
+    },
+    {
+     "label": "Bell",
+     "start": 6.34,
+     "end": 7.53,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Gl4VW2wZcuM_1000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell",
+    "Doorbell"
+   ],
+   "events": [
+    {
+     "label": "Bell",
+     "start": 0.23,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Doorbell",
+     "start": 0.23,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "4gFbCdHle0w_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Pump (liquid)"
+   ],
+   "events": [
+    {
+     "label": "Pump (liquid)",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "wyLViHQxXTE_230000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Screaming"
+   ],
+   "events": [
+    {
+     "label": "Screaming",
+     "start": 2.71,
+     "end": 4.02,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "jA7F26-SrPU_80000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 4.95,
+     "end": 5.97,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "ptdTdomX9VY_50000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Laughter"
+   ],
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 3.53,
+     "end": 5.11,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "nq4cdrT7zvs_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell"
+   ],
+   "events": [
+    {
+     "label": "Bell",
+     "start": 1.23,
+     "end": 3.88,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "vDOCkP74-FM_10000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 3.04,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Cheering",
+     "start": 3.05,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 5.48,
+     "end": 6.75,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 7.42,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "oqT3pTJFv5k_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Laughter"
+   ],
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 5.57,
+     "end": 7.24,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "K-1mH8YXX3g_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Filing (rasp)",
+    "Tools",
+    "Wood"
+   ],
+   "events": [
+    {
+     "label": "Filing (rasp)",
+     "start": 0.01,
+     "end": 9.33,
+     "masked": true
+    },
+    {
+     "label": "Wood",
+     "start": 0.01,
+     "end": 9.34,
+     "masked": true
+    },
+    {
+     "label": "Tools",
+     "start": 0.01,
+     "end": 9.37,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "asiBU0VbmtI_0",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Shout",
+     "start": 0.05,
+     "end": 4.77,
+     "masked": true
+    },
+    {
+     "label": "Crowd",
+     "start": 0.06,
+     "end": 8.68,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "BN4k3mnJteo_0",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Jingle bell"
+   ],
+   "events": [
+    {
+     "label": "Jingle bell",
+     "start": 2.17,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "kCXc7_Xie2s_12000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Stomach rumble"
+   ],
+   "events": [
+    {
+     "label": "Stomach rumble",
+     "start": 0.0,
+     "end": 9.37,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "LhpzNXhZ44c_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Boat",
+    "Children playing",
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Motorboat, speedboat",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Water",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Children playing",
+     "start": 1.6,
+     "end": 3.39,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "CsqoaGRJhfM_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bird"
+   ],
+   "events": [
+    {
+     "label": "Crowing, cock-a-doodle-doo",
+     "start": 1.79,
+     "end": 6.12,
+     "masked": true
+    },
+    {
+     "label": "Chicken, rooster",
+     "start": 2.0,
+     "end": 8.02,
+     "masked": true
+    },
+    {
+     "label": "Fowl",
+     "start": 2.06,
+     "end": 6.19,
+     "masked": true
+    },
+    {
+     "label": "Bird",
+     "start": 2.07,
+     "end": 6.15,
+     "masked": true
+    },
+    {
+     "label": "Bird",
+     "start": 6.89,
+     "end": 8.07,
+     "masked": true
+    },
+    {
+     "label": "Crowing, cock-a-doodle-doo",
+     "start": 6.93,
+     "end": 8.12,
+     "masked": true
+    },
+    {
+     "label": "Fowl",
+     "start": 6.95,
+     "end": 8.13,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "HQfF_JXrUUI_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Tap"
+   ],
+   "events": [
+    {
+     "label": "Tap",
+     "start": 1.34,
+     "end": 2.95,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "oRUdvu3Qo-E_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Tap dance"
+   ],
+   "events": [
+    {
+     "label": "Tap dance",
+     "start": 7.58,
+     "end": 8.91,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "vDrbslhtX8o_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Clapping",
+    "Crowd",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Clapping",
+     "start": 0.29,
+     "end": 2.51,
+     "masked": true
+    },
+    {
+     "label": "Clapping",
+     "start": 4.61,
+     "end": 5.73,
+     "masked": true
+    },
+    {
+     "label": "Clapping",
+     "start": 5.89,
+     "end": 8.86,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 8.98,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "X_Y97DHeh50_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Spray"
+   ],
+   "events": [
+    {
+     "label": "Spray",
+     "start": 5.21,
+     "end": 7.2,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "mh6JxDJ0Bno_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Applause",
+     "start": 0.5,
+     "end": 1.91,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "uo-W3Pd9ql4_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Printer",
+    "Unmodified field recording"
+   ],
+   "events": [
+    {
+     "label": "Printer",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Unmodified field recording",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "GqOmKYReRVg_260000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell"
+   ],
+   "events": [
+    {
+     "label": "Wind chime",
+     "start": 1.02,
+     "end": 8.46,
+     "masked": true
+    },
+    {
+     "label": "Chime",
+     "start": 1.09,
+     "end": 9.29,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "3-a8i_MEUl8_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bicycle, tricycle"
+   ],
+   "events": [
+    {
+     "label": "Bicycle, tricycle",
+     "start": 1.69,
+     "end": 3.07,
+     "masked": true
+    },
+    {
+     "label": "Bicycle, tricycle",
+     "start": 3.23,
+     "end": 4.61,
+     "masked": true
+    },
+    {
+     "label": "Bicycle, tricycle",
+     "start": 5.63,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "4aRMZ4ePmMM_210000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Laughter",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Shout",
+     "start": 2.24,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Laughter",
+     "start": 4.39,
+     "end": 5.43,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "ieQIvlmTwWQ_190000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Pour",
+     "start": 0.0,
+     "end": 4.66,
+     "masked": true
+    },
+    {
+     "label": "Trickle, dribble",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Pour",
+     "start": 8.79,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "KNFHL6rv_M4_50000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Blender, food processor"
+   ],
+   "events": [
+    {
+     "label": "Blender, food processor",
+     "start": 5.96,
+     "end": 8.77,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "L6SG_y5AhQ4_220000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Chuckle, chortle",
+    "Crying, sobbing",
+    "Laughter",
+    "Snicker",
+    "Wail, moan"
+   ],
+   "events": [
+    {
+     "label": "Wail, moan",
+     "start": 3.87,
+     "end": 7.95,
+     "masked": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 3.91,
+     "end": 7.94,
+     "masked": true
+    },
+    {
+     "label": "Snicker",
+     "start": 8.28,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Chuckle, chortle",
+     "start": 8.3,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Laughter",
+     "start": 8.31,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "f3hMHFV_WMo_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Shout",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Puu8SEqYN0k_60000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Vehicle",
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Motor vehicle (road)",
+     "start": 4.79,
+     "end": 6.56,
+     "masked": true
+    },
+    {
+     "label": "Water tap, faucet",
+     "start": 8.65,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "yREkNmpG9J4_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Clapping",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Motor vehicle (road)",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Clapping",
+     "start": 0.37,
+     "end": 1.96,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "J46ePPdaEZk_10000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Electric shaver, electric razor"
+   ],
+   "events": [
+    {
+     "label": "Electric shaver, electric razor",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Electric shaver, electric razor",
+     "start": 4.48,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "eKO3x5QVibI_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Shout",
+     "start": 0.0,
+     "end": 5.56,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "TmukiN_btGw_500000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bee, wasp, etc.",
+    "Bird",
+    "Cricket",
+    "Insect"
+   ],
+   "events": [
+    {
+     "label": "Bee, wasp, etc.",
+     "start": 0.0,
+     "end": 5.46,
+     "masked": true
+    },
+    {
+     "label": "Insect",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Cricket",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 5.48,
+     "end": 6.95,
+     "masked": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 5.49,
+     "end": 6.87,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "FhdwqO-sJqk_460000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Bell"
+   ],
+   "events": [
+    {
+     "label": "Wind chime",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Wk7yTeKW230_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Crying, sobbing"
+   ],
+   "events": [
+    {
+     "label": "Crying, sobbing",
+     "start": 0.0,
+     "end": 2.62,
+     "masked": true
+    },
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "4xgYnUrMefU_110000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Power tool"
+   ],
+   "events": [
+    {
+     "label": "Power tool",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "8WnXfe3ud4E_270000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Cheering",
+     "start": 6.33,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 6.34,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "CZoPTJNmiCw_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Electronic tuner"
+   ],
+   "events": [
+    {
+     "label": "Electronic tuner",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "H6T9j3bOW2w_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Chop",
+    "Splinter"
+   ],
+   "events": [
+    {
+     "label": "Chop",
+     "start": 7.65,
+     "end": 9.06,
+     "masked": true
+    },
+    {
+     "label": "Splinter",
+     "start": 7.65,
+     "end": 9.08,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "7uErtxgLWg4_20000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Footsteps"
+   ],
+   "events": [
+    {
+     "label": "Run",
+     "start": 0.18,
+     "end": 4.25,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "NJObNgIHwUw_0",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Doorbell",
+    "Sliding door"
+   ],
+   "events": [
+    {
+     "label": "Doorbell",
+     "start": 0.32,
+     "end": 1.32,
+     "masked": false
+    },
+    {
+     "label": "Sliding door",
+     "start": 2.53,
+     "end": 4.1,
+     "masked": true
+    },
+    {
+     "label": "Sliding door",
+     "start": 4.65,
+     "end": 6.99,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "xqILXIFBZfQ_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Siren",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Car",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Police car (siren)",
+     "start": 1.35,
+     "end": 4.39,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "IcmAVLJQAXs_0",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Power tool"
+   ],
+   "events": [
+    {
+     "label": "Power tool",
+     "start": 6.97,
+     "end": 8.44,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "otb8nHcq-Oo_480000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Sewing machine"
+   ],
+   "events": [
+    {
+     "label": "Sewing machine",
+     "start": 4.66,
+     "end": 5.93,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "cBbA4-EhNf8_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Laughter",
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 0.86,
+     "end": 1.9,
+     "masked": false
+    },
+    {
+     "label": "Water",
+     "start": 1.73,
+     "end": 3.02,
+     "masked": true
+    },
+    {
+     "label": "Water",
+     "start": 5.46,
+     "end": 6.58,
+     "masked": true
+    },
+    {
+     "label": "Water",
+     "start": 7.38,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "SoMBWoCGHCg_40000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Chorus effect"
+   ],
+   "events": [
+    {
+     "label": "Chorus effect",
+     "start": 0.0,
+     "end": 4.57,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "I5KHYgtrVBw_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Air horn, truck horn"
+   ],
+   "events": [
+    {
+     "label": "Air horn, truck horn",
+     "start": 8.89,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "ttXjWxzRfKI_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Cheering",
+     "start": 0.01,
+     "end": 2.33,
+     "masked": false
+    },
+    {
+     "label": "Cheering",
+     "start": 7.66,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "iPh4fPGDKBM_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Whistle"
+   ],
+   "events": [
+    {
+     "label": "Whistle",
+     "start": 1.46,
+     "end": 2.72,
+     "masked": true
+    },
+    {
+     "label": "Whistle",
+     "start": 3.23,
+     "end": 4.42,
+     "masked": true
+    },
+    {
+     "label": "Whistle",
+     "start": 4.54,
+     "end": 6.21,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "rZVzLxiUbE8_90000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Ratchet, pawl"
+   ],
+   "events": [
+    {
+     "label": "Ratchet, pawl",
+     "start": 0.09,
+     "end": 5.76,
+     "masked": true
+    },
+    {
+     "label": "Ratchet, pawl",
+     "start": 8.12,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "HplcVmJhuIc_40000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Explosion"
+   ],
+   "events": [
+    {
+     "label": "Boom",
+     "start": 1.93,
+     "end": 2.96,
+     "masked": false
+    },
+    {
+     "label": "Boom",
+     "start": 3.06,
+     "end": 4.22,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "WxJ6eyZm9rk_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Cooking"
+   ],
+   "events": [
+    {
+     "label": "Chopping (food)",
+     "start": 3.79,
+     "end": 5.55,
+     "masked": true
+    },
+    {
+     "label": "Chopping (food)",
+     "start": 6.76,
+     "end": 8.1,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "wRgusJ3Jil0_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Water tap, faucet",
+     "start": 0.0,
+     "end": 1.99,
+     "masked": false
+    },
+    {
+     "label": "Sink (filling or washing)",
+     "start": 1.98,
+     "end": 4.09,
+     "masked": true
+    },
+    {
+     "label": "Water",
+     "start": 1.98,
+     "end": 6.58,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "7PtHb9jQCtg_130000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Screaming"
+   ],
+   "events": [
+    {
+     "label": "Screaming",
+     "start": 0.0,
+     "end": 4.81,
+     "masked": true
+    },
+    {
+     "label": "Cheering",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Screaming",
+     "start": 6.33,
+     "end": 9.28,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "nRWVeOokxh8_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Cat"
+   ],
+   "events": [
+    {
+     "label": "Hiss",
+     "start": 0.32,
+     "end": 1.39,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "s4PN7iTLdVM_50000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crowd"
+   ],
+   "events": [
+    {
+     "label": "Cheering",
+     "start": 1.71,
+     "end": 4.3,
+     "masked": true
+    },
+    {
+     "label": "Cheering",
+     "start": 8.34,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "1tNkAc29aPE_30000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Effects unit"
+   ],
+   "events": [
+    {
+     "label": "Effects unit",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "6kg_EUG6PPs_320000",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Crying, sobbing"
+   ],
+   "events": [
+    {
+     "label": "Crying, sobbing",
+     "start": 3.56,
+     "end": 7.53,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "JubrxZZlIJE_0",
+   "stratum": "complex",
+   "duration": 10.0,
+   "families": [
+    "Screaming",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Shout",
+     "start": 5.68,
+     "end": 7.05,
+     "masked": true
+    },
+    {
+     "label": "Screaming",
+     "start": 5.73,
+     "end": 7.27,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "8G9eS_GHUiY_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Water",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "dkpsxpeLY-M_150000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Fireworks"
+   ],
+   "events": [
+    {
+     "label": "Firecracker",
+     "start": 4.02,
+     "end": 5.08,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "UT3ve5ZNHCI_300000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Alarm"
+   ],
+   "events": [
+    {
+     "label": "Beep, bleep",
+     "start": 3.04,
+     "end": 4.44,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "PX2xcfpGynA_9000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Train"
+   ],
+   "events": [
+    {
+     "label": "Train",
+     "start": 0.0,
+     "end": 9.39,
+     "masked": false
+    },
+    {
+     "label": "Clickety-clack",
+     "start": 1.21,
+     "end": 6.29,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "9q2xqtfEgdo_280000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Fire",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Fire",
+     "start": 0.0,
+     "end": 3.12,
+     "masked": false
+    },
+    {
+     "label": "Engine",
+     "start": 0.0,
+     "end": 3.69,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "dPEzNUbeS68_4000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Boat",
+    "Steam whistle",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Ship",
+     "start": 0.0,
+     "end": 9.7,
+     "masked": false
+    },
+    {
+     "label": "Steam whistle",
+     "start": 4.14,
+     "end": 5.6,
+     "masked": false
+    },
+    {
+     "label": "Steam whistle",
+     "start": 6.45,
+     "end": 8.61,
+     "masked": false
+    },
+    {
+     "label": "Accelerating, revving, vroom",
+     "start": 7.59,
+     "end": 8.66,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "txLCmaBJsl0_370000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Glass",
+    "Glass shatter"
+   ],
+   "events": [
+    {
+     "label": "Breaking",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Glass shatter",
+     "start": 2.84,
+     "end": 3.85,
+     "masked": false
+    },
+    {
+     "label": "Glass shatter",
+     "start": 7.28,
+     "end": 8.35,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "-PVEno65928_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Unmodified field recording",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Accelerating, revving, vroom",
+     "start": 0.0,
+     "end": 6.66,
+     "masked": false
+    },
+    {
+     "label": "Car",
+     "start": 0.0,
+     "end": 8.03,
+     "masked": false
+    },
+    {
+     "label": "Unmodified field recording",
+     "start": 0.0,
+     "end": 8.04,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "EMbSpcMCnpU_40000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Alarm",
+    "Door",
+    "Footsteps",
+    "Keys jangling"
+   ],
+   "events": [
+    {
+     "label": "Keys jangling",
+     "start": 0.0,
+     "end": 1.82,
+     "masked": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 0.0,
+     "end": 3.54,
+     "masked": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 7.4,
+     "end": 9.67,
+     "masked": false
+    },
+    {
+     "label": "Keys jangling",
+     "start": 7.5,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Door",
+     "start": 7.79,
+     "end": 9.57,
+     "masked": false
+    },
+    {
+     "label": "Fire alarm",
+     "start": 8.26,
+     "end": 9.29,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "lnHivcFKkaM_170000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Drill"
+   ],
+   "events": [
+    {
+     "label": "Drill",
+     "start": 3.69,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "j136TTyG_E8_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Boat"
+   ],
+   "events": [
+    {
+     "label": "Motorboat, speedboat",
+     "start": 4.16,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "WcSu_xJYc18_310000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bird"
+   ],
+   "events": [
+    {
+     "label": "Bird",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "ZeiYTfJzPQc_470000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Cheering",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "E6JcCtlACvc_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bird",
+    "Door"
+   ],
+   "events": [
+    {
+     "label": "Squeak",
+     "start": 1.34,
+     "end": 2.39,
+     "masked": true
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 1.38,
+     "end": 2.41,
+     "masked": true
+    },
+    {
+     "label": "Squeak",
+     "start": 7.7,
+     "end": 8.72,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "yJoELHadsvo_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Laughter"
+   ],
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 1.86,
+     "end": 3.13,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "LctHAtCMnbY_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Belly laugh",
+    "Giggle",
+    "Laughter"
+   ],
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 1.87,
+     "end": 3.65,
+     "masked": false
+    },
+    {
+     "label": "Belly laugh",
+     "start": 1.87,
+     "end": 3.66,
+     "masked": false
+    },
+    {
+     "label": "Giggle",
+     "start": 1.89,
+     "end": 3.65,
+     "masked": false
+    },
+    {
+     "label": "Belly laugh",
+     "start": 5.69,
+     "end": 7.02,
+     "masked": false
+    },
+    {
+     "label": "Laughter",
+     "start": 5.72,
+     "end": 7.04,
+     "masked": false
+    },
+    {
+     "label": "Giggle",
+     "start": 5.78,
+     "end": 7.08,
+     "masked": false
+    },
+    {
+     "label": "Laughter",
+     "start": 7.99,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Giggle",
+     "start": 8.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Belly laugh",
+     "start": 8.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "Y3WXrp3JFxU_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Footsteps"
+   ],
+   "events": [
+    {
+     "label": "Shuffle",
+     "start": 8.22,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "Dta8pxQilKY_0",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Telephone"
+   ],
+   "events": [
+    {
+     "label": "Ringtone",
+     "start": 0.11,
+     "end": 2.08,
+     "masked": true
+    },
+    {
+     "label": "Telephone",
+     "start": 0.14,
+     "end": 2.1,
+     "masked": true
+    },
+    {
+     "label": "Ringtone",
+     "start": 3.58,
+     "end": 5.65,
+     "masked": true
+    },
+    {
+     "label": "Telephone",
+     "start": 3.58,
+     "end": 5.7,
+     "masked": true
+    },
+    {
+     "label": "Ringtone",
+     "start": 7.12,
+     "end": 9.24,
+     "masked": true
+    },
+    {
+     "label": "Telephone",
+     "start": 7.15,
+     "end": 9.31,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "HrQxbNO5jXU_6000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bicycle, tricycle",
+    "Footsteps",
+    "Shout"
+   ],
+   "events": [
+    {
+     "label": "Bicycle, tricycle",
+     "start": 3.07,
+     "end": 6.21,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 5.27,
+     "end": 7.03,
+     "masked": true
+    },
+    {
+     "label": "Run",
+     "start": 5.4,
+     "end": 7.13,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "AWcZq1PRcII_20000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bird",
+    "Ducks, geese, waterfowl"
+   ],
+   "events": [
+    {
+     "label": "Ducks, geese, waterfowl",
+     "start": 2.08,
+     "end": 3.42,
+     "masked": false
+    },
+    {
+     "label": "Crowing, cock-a-doodle-doo",
+     "start": 3.57,
+     "end": 5.64,
+     "masked": false
+    },
+    {
+     "label": "Ducks, geese, waterfowl",
+     "start": 4.5,
+     "end": 5.64,
+     "masked": false
+    },
+    {
+     "label": "Ducks, geese, waterfowl",
+     "start": 8.5,
+     "end": 9.75,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "AJVSqnsBf70_80000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Cooking"
+   ],
+   "events": [
+    {
+     "label": "Chopping (food)",
+     "start": 5.02,
+     "end": 6.31,
+     "masked": false
+    },
+    {
+     "label": "Chopping (food)",
+     "start": 6.84,
+     "end": 7.9,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "PXPKed8mwZs_10000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bird",
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Fill (with liquid)",
+     "start": 0.11,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Water",
+     "start": 0.12,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 1.35,
+     "end": 4.02,
+     "masked": false
+    },
+    {
+     "label": "Bird",
+     "start": 1.36,
+     "end": 4.03,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "bDH6AKUrx5Y_130000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Explosion"
+   ],
+   "events": [
+    {
+     "label": "Boom",
+     "start": 4.55,
+     "end": 8.08,
+     "masked": true
+    },
+    {
+     "label": "Explosion",
+     "start": 4.56,
+     "end": 8.11,
+     "masked": true
+    },
+    {
+     "label": "Boom",
+     "start": 8.82,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Explosion",
+     "start": 8.84,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "5lOHKcRIFqk_580000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Trickle, dribble",
+     "start": 3.6,
+     "end": 9.07,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "xY4YrFk_PI8_570000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Aircraft"
+   ],
+   "events": [
+    {
+     "label": "Aircraft engine",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Propeller, airscrew",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "YTBCmc70I20_270000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Dial tone"
+   ],
+   "events": [
+    {
+     "label": "Dial tone",
+     "start": 1.24,
+     "end": 2.31,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "-qS77R0Y1K8_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bird"
+   ],
+   "events": [
+    {
+     "label": "Coo",
+     "start": 2.28,
+     "end": 3.89,
+     "masked": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 3.94,
+     "end": 5.06,
+     "masked": false
+    },
+    {
+     "label": "Coo",
+     "start": 5.06,
+     "end": 6.81,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "hFKmJx0_Fkg_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bell",
+    "Siren"
+   ],
+   "events": [
+    {
+     "label": "Siren",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Church bell",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "BI8YQ3ueD24_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Effects unit",
+    "Electronic tuner",
+    "Finger snapping"
+   ],
+   "events": [
+    {
+     "label": "Effects unit",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Electronic tuner",
+     "start": 0.02,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Finger snapping",
+     "start": 6.05,
+     "end": 7.89,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "tPYQeZmMPus_10000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Water tap, faucet",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Water",
+     "start": 0.01,
+     "end": 5.92,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "WLrvZ4-OKLQ_3000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bicycle bell"
+   ],
+   "events": [
+    {
+     "label": "Bicycle bell",
+     "start": 0.0,
+     "end": 6.63,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "x6GjHnHZvX4_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Fill (with liquid)",
+     "start": 5.02,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "52P29_VwBT0_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Explosion"
+   ],
+   "events": [
+    {
+     "label": "Explosion",
+     "start": 3.03,
+     "end": 4.93,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "iuc1V_-V51U_21000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Stomach rumble"
+   ],
+   "events": [
+    {
+     "label": "Stomach rumble",
+     "start": 0.0,
+     "end": 9.14,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "LsRS0oDgycs_0",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Alarm"
+   ],
+   "events": [
+    {
+     "label": "Alarm",
+     "start": 2.97,
+     "end": 8.59,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "9SRfLMFUjKI_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Heart sounds, heartbeat"
+   ],
+   "events": [
+    {
+     "label": "Heart sounds, heartbeat",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "TaFbk-RJrLI_0",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Aircraft",
+    "Shout",
+    "Vehicle",
+    "Whoop"
+   ],
+   "events": [
+    {
+     "label": "Fixed-wing aircraft, airplane",
+     "start": 0.2,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Aircraft engine",
+     "start": 0.2,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Vehicle",
+     "start": 0.2,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Aircraft",
+     "start": 0.21,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Whoop",
+     "start": 2.8,
+     "end": 3.99,
+     "masked": false
+    },
+    {
+     "label": "Shout",
+     "start": 2.81,
+     "end": 3.98,
+     "masked": false
+    },
+    {
+     "label": "Shout",
+     "start": 8.15,
+     "end": 9.16,
+     "masked": false
+    },
+    {
+     "label": "Whoop",
+     "start": 8.15,
+     "end": 9.17,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "9oixCTvP8Yw_440000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Power saw, circular saw, table saw"
+   ],
+   "events": [
+    {
+     "label": "Power saw, circular saw, table saw",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "0lJyHuTVMNY_490000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Biting"
+   ],
+   "events": [
+    {
+     "label": "Biting",
+     "start": 7.3,
+     "end": 8.68,
+     "masked": false
+    },
+    {
+     "label": "Biting",
+     "start": 8.87,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "akgqVmFFDiY_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Engine",
+     "start": 0.0,
+     "end": 6.31,
+     "masked": false
+    },
+    {
+     "label": "Motor vehicle (road)",
+     "start": 0.0,
+     "end": 6.34,
+     "masked": false
+    },
+    {
+     "label": "Race car, auto racing",
+     "start": 0.0,
+     "end": 6.35,
+     "masked": false
+    },
+    {
+     "label": "Medium engine (mid frequency)",
+     "start": 0.0,
+     "end": 6.46,
+     "masked": false
+    },
+    {
+     "label": "Vehicle",
+     "start": 0.0,
+     "end": 6.49,
+     "masked": false
+    },
+    {
+     "label": "Car",
+     "start": 0.01,
+     "end": 6.24,
+     "masked": false
+    },
+    {
+     "label": "Accelerating, revving, vroom",
+     "start": 0.01,
+     "end": 6.31,
+     "masked": false
+    },
+    {
+     "label": "Medium engine (mid frequency)",
+     "start": 7.89,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Vehicle",
+     "start": 7.94,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Race car, auto racing",
+     "start": 7.94,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Motor vehicle (road)",
+     "start": 7.95,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Car",
+     "start": 7.95,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Accelerating, revving, vroom",
+     "start": 7.98,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Engine",
+     "start": 8.02,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "kZEoKNtcDbo_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Cash register"
+   ],
+   "events": [
+    {
+     "label": "Cash register",
+     "start": 0.14,
+     "end": 1.32,
+     "masked": false
+    },
+    {
+     "label": "Cash register",
+     "start": 1.72,
+     "end": 5.44,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "tIeVWsRYmE0_40000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Siren"
+   ],
+   "events": [
+    {
+     "label": "Civil defense siren",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "4lnO99-z3TQ_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Whoosh, swoosh, swish"
+   ],
+   "events": [
+    {
+     "label": "Whoosh, swoosh, swish",
+     "start": 3.3,
+     "end": 4.63,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "NtlnhSzHhss_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Boat",
+    "Unmodified field recording",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Boat, Water vehicle",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Motorboat, speedboat",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Unmodified field recording",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Vehicle",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "C3yqIuEs_zQ_430000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Water",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Ocean",
+     "start": 0.02,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Waves, surf",
+     "start": 0.02,
+     "end": 6.45,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "01x0zZpL87I_19000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Accelerating, revving, vroom",
+     "start": 0.0,
+     "end": 1.28,
+     "masked": false
+    },
+    {
+     "label": "Car",
+     "start": 0.0,
+     "end": 9.85,
+     "masked": false
+    },
+    {
+     "label": "Accelerating, revving, vroom",
+     "start": 3.86,
+     "end": 8.65,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "Qv0VEN105nI_350000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Hammer",
+    "Tools",
+    "Wood"
+   ],
+   "events": [
+    {
+     "label": "Wood",
+     "start": 0.75,
+     "end": 2.03,
+     "masked": false
+    },
+    {
+     "label": "Hammer",
+     "start": 0.79,
+     "end": 2.01,
+     "masked": false
+    },
+    {
+     "label": "Tools",
+     "start": 2.33,
+     "end": 3.74,
+     "masked": false
+    },
+    {
+     "label": "Tools",
+     "start": 3.95,
+     "end": 5.02,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "c6wCaNMJwQM_100000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Alarm"
+   ],
+   "events": [
+    {
+     "label": "Alarm",
+     "start": 0.0,
+     "end": 1.76,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "AOijOUuUWwg_100000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Electric shaver, electric razor"
+   ],
+   "events": [
+    {
+     "label": "Electric shaver, electric razor",
+     "start": 0.0,
+     "end": 4.14,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "iIEfBIGEZ0o_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Crowd",
+    "Spray",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Engine",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Spray",
+     "start": 5.24,
+     "end": 7.17,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "_dlpgziE7CU_10000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Sheep"
+   ],
+   "events": [
+    {
+     "label": "Bleat",
+     "start": 1.9,
+     "end": 2.92,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "Qghqqwhl4ZM_0",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Footsteps"
+   ],
+   "events": [
+    {
+     "label": "Walk, footsteps",
+     "start": 3.57,
+     "end": 5.03,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "1V9CWQNZRF8_450000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Aircraft",
+    "Explosion"
+   ],
+   "events": [
+    {
+     "label": "Aircraft engine",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Explosion",
+     "start": 3.13,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "-jcBFqcdpuI_6000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bird"
+   ],
+   "events": [
+    {
+     "label": "Chirp, tweet",
+     "start": 0.0,
+     "end": 6.51,
+     "masked": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 8.1,
+     "end": 9.76,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "5E_8bEnP43Y_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bird",
+    "Shout",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Vehicle",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 0.53,
+     "end": 2.24,
+     "masked": false
+    },
+    {
+     "label": "Shout",
+     "start": 2.39,
+     "end": 3.42,
+     "masked": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 2.46,
+     "end": 4.58,
+     "masked": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 4.8,
+     "end": 6.36,
+     "masked": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 6.81,
+     "end": 8.42,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "BuhCuSnq6DI_90000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Baby laughter"
+   ],
+   "events": [
+    {
+     "label": "Baby laughter",
+     "start": 5.85,
+     "end": 6.97,
+     "masked": true
+    },
+    {
+     "label": "Baby laughter",
+     "start": 8.8,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "rswfS2yjF_w_20000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Engine",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "TYgBrjolmcc_300000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bathtub (filling or washing)",
+    "Gurgling, bubbling",
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Water",
+     "start": 5.46,
+     "end": 8.91,
+     "masked": true
+    },
+    {
+     "label": "Bathtub (filling or washing)",
+     "start": 5.48,
+     "end": 8.92,
+     "masked": true
+    },
+    {
+     "label": "Gurgling, bubbling",
+     "start": 5.5,
+     "end": 8.92,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "u5CPx-em82o_110000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Aircraft"
+   ],
+   "events": [
+    {
+     "label": "Aircraft engine",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "rctt0dhCHxs_16000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Frog"
+   ],
+   "events": [
+    {
+     "label": "Frog",
+     "start": 0.0,
+     "end": 9.03,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "NmauYtUHbyY_140000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Power tool"
+   ],
+   "events": [
+    {
+     "label": "Power tool",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "o6uxKCYu6aQ_400000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Steam"
+   ],
+   "events": [
+    {
+     "label": "Steam",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "LH8GnA-aJ_M_180000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Glass"
+   ],
+   "events": [
+    {
+     "label": "Glass",
+     "start": 6.98,
+     "end": 8.2,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "eZ5iippq3rA_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bird"
+   ],
+   "events": [
+    {
+     "label": "Caw",
+     "start": 5.53,
+     "end": 6.76,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "jJrP7ZF9_WA_320000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Fire"
+   ],
+   "events": [
+    {
+     "label": "Fire",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "VQvPEYqbz5Y_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Shout",
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Truck",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Medium engine (mid frequency)",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    },
+    {
+     "label": "Shout",
+     "start": 3.5,
+     "end": 4.62,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "AVL7Kbpw13U_130000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Laughter"
+   ],
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 7.44,
+     "end": 9.34,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "3saUiDqAqEc_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Medium engine (mid frequency)",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "fllbxiLid5c_530000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Heavy engine (low frequency)",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "1jTQsVs5iWM_230000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Chuckle, chortle"
+   ],
+   "events": [
+    {
+     "label": "Chuckle, chortle",
+     "start": 1.62,
+     "end": 3.57,
+     "masked": true
+    },
+    {
+     "label": "Chuckle, chortle",
+     "start": 3.91,
+     "end": 5.21,
+     "masked": true
+    },
+    {
+     "label": "Chuckle, chortle",
+     "start": 7.26,
+     "end": 8.35,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "1-TnkdEPXEw_20000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Snoring"
+   ],
+   "events": [
+    {
+     "label": "Snoring",
+     "start": 4.05,
+     "end": 5.27,
+     "masked": false
+    },
+    {
+     "label": "Snoring",
+     "start": 7.7,
+     "end": 9.86,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "0slyl34xWug_10000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Water",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "dj3NKqIm_sw_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Engine",
+     "start": 2.27,
+     "end": 3.86,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "y05npVHuQtg_24000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Cattle",
+    "Footsteps"
+   ],
+   "events": [
+    {
+     "label": "Run",
+     "start": 1.08,
+     "end": 4.74,
+     "masked": false
+    },
+    {
+     "label": "Moo",
+     "start": 1.33,
+     "end": 3.62,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "lmPuXKOhfSo_40000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Bell"
+   ],
+   "events": [
+    {
+     "label": "Change ringing (campanology)",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "fCRZmdWU0p8_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Washing machine",
+    "Water"
+   ],
+   "events": [
+    {
+     "label": "Washing machine",
+     "start": 2.58,
+     "end": 10.0,
+     "masked": false
+    },
+    {
+     "label": "Water",
+     "start": 3.26,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "cBRStp9ClEg_190000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Gunshot"
+   ],
+   "events": [
+    {
+     "label": "Fusillade",
+     "start": 0.0,
+     "end": 7.62,
+     "masked": true
+    },
+    {
+     "label": "Machine gun",
+     "start": 0.0,
+     "end": 7.63,
+     "masked": true
+    }
+   ]
+  },
+  {
+   "id": "9Ti98L4PRCo_17000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Vehicle"
+   ],
+   "events": [
+    {
+     "label": "Car",
+     "start": 1.29,
+     "end": 6.38,
+     "masked": false
+    },
+    {
+     "label": "Car",
+     "start": 7.43,
+     "end": 10.0,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "PDOL0amgdjg_60000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Drawer open or close"
+   ],
+   "events": [
+    {
+     "label": "Drawer open or close",
+     "start": 0.0,
+     "end": 1.21,
+     "masked": false
+    }
+   ]
+  },
+  {
+   "id": "h76OxJ8x-6w_30000",
+   "stratum": "random",
+   "duration": 10.0,
+   "families": [
+    "Cooking"
+   ],
+   "events": [
+    {
+     "label": "Sizzle",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true
+    }
+   ]
+  }
+ ]
+}
