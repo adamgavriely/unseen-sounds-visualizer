@@ -1,0 +1,855 @@
+{
+ "no_evidence_labels": [],
+ "D'": {
+  "base": {
+   "clips": 71,
+   "hits": 29,
+   "needed": 58,
+   "wrong": 15,
+   "onset_cost": 2.056338028169014,
+   "cost_cov": 2.5090522889862807,
+   "hit_cov": 0.7229076507066727,
+   "needed_time_cov": 0.40379979035639424,
+   "wrong_s_per_clip": 1.1149295774647887,
+   "stale_s_per_clip": 0.1211267605633803,
+   "n_cov": 58
+  },
+  "cells": {
+   "F0.5_W0.5": {
+    "clips": 71,
+    "hits": 29,
+    "needed": 58,
+    "wrong": 15,
+    "onset_cost": 2.056338028169014,
+    "cost_cov": 2.4820269877147467,
+    "hit_cov": 0.7394489988987326,
+    "needed_time_cov": 0.40835953878406717,
+    "wrong_s_per_clip": 1.128169014084507,
+    "stale_s_per_clip": 0.1211267605633803,
+    "n_cov": 58,
+    "changed": [],
+    "pass": false
+   },
+   "F0.5_W1.0": {
+    "clips": 71,
+    "hits": 28,
+    "needed": 58,
+    "wrong": 16,
+    "onset_cost": 2.140845070422535,
+    "cost_cov": 2.537376629424655,
+    "hit_cov": 0.7486273152754418,
+    "needed_time_cov": 0.4011530398322852,
+    "wrong_s_per_clip": 1.1845070422535213,
+    "stale_s_per_clip": 0.1211267605633803,
+    "n_cov": 58,
+    "changed": [
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "F0.5_W1.5": {
+    "clips": 71,
+    "hits": 28,
+    "needed": 58,
+    "wrong": 16,
+    "onset_cost": 2.140845070422535,
+    "cost_cov": 2.537376629424655,
+    "hit_cov": 0.7486273152754418,
+    "needed_time_cov": 0.4011530398322852,
+    "wrong_s_per_clip": 1.1949295774647888,
+    "stale_s_per_clip": 0.1211267605633803,
+    "n_cov": 58,
+    "changed": [
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "F0.3_W0.5": {
+    "clips": 71,
+    "hits": 28,
+    "needed": 58,
+    "wrong": 16,
+    "onset_cost": 2.140845070422535,
+    "cost_cov": 2.5092488269084168,
+    "hit_cov": 0.7664583329419857,
+    "needed_time_cov": 0.40707547169811326,
+    "wrong_s_per_clip": 1.214225352112676,
+    "stale_s_per_clip": 0.11690140845070424,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "F0.3_W1.0": {
+    "clips": 71,
+    "hits": 26,
+    "needed": 58,
+    "wrong": 18,
+    "onset_cost": 2.3098591549295775,
+    "cost_cov": 2.6103307497910104,
+    "hit_cov": 0.7948703535080602,
+    "needed_time_cov": 0.39059224318658287,
+    "wrong_s_per_clip": 1.348450704225352,
+    "stale_s_per_clip": 0.11690140845070424,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_tornado_scene",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "F0.3_W1.5": {
+    "clips": 71,
+    "hits": 26,
+    "needed": 58,
+    "wrong": 18,
+    "onset_cost": 2.3098591549295775,
+    "cost_cov": 2.6103307497910104,
+    "hit_cov": 0.7948703535080602,
+    "needed_time_cov": 0.39059224318658287,
+    "wrong_s_per_clip": 1.3659154929577464,
+    "stale_s_per_clip": 0.11690140845070424,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_tornado_scene",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "FB_W0.5": {
+    "clips": 71,
+    "hits": 28,
+    "needed": 58,
+    "wrong": 16,
+    "onset_cost": 2.140845070422535,
+    "cost_cov": 2.544061416509739,
+    "hit_cov": 0.7443896377482904,
+    "needed_time_cov": 0.40476939203354295,
+    "wrong_s_per_clip": 1.2009859154929579,
+    "stale_s_per_clip": 0.11690140845070424,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "FB_W1.0": {
+    "clips": 71,
+    "hits": 26,
+    "needed": 58,
+    "wrong": 18,
+    "onset_cost": 2.3098591549295775,
+    "cost_cov": 2.6768758469520417,
+    "hit_cov": 0.749440527561587,
+    "needed_time_cov": 0.39350104821802934,
+    "wrong_s_per_clip": 1.2995774647887326,
+    "stale_s_per_clip": 0.11690140845070424,
+    "n_cov": 58,
+    "changed": [
+     [
+      "as_explosion_XJ8lc3I6",
+      3,
+      2,
+      1,
+      2
+     ],
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "FB_W1.5": {
+    "clips": 71,
+    "hits": 26,
+    "needed": 58,
+    "wrong": 18,
+    "onset_cost": 2.3098591549295775,
+    "cost_cov": 2.6768758469520417,
+    "hit_cov": 0.749440527561587,
+    "needed_time_cov": 0.39350104821802934,
+    "wrong_s_per_clip": 1.3187323943661973,
+    "stale_s_per_clip": 0.11690140845070424,
+    "n_cov": 58,
+    "changed": [
+     [
+      "as_explosion_XJ8lc3I6",
+      3,
+      2,
+      1,
+      2
+     ],
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "ANY_W0.5": {
+    "clips": 71,
+    "hits": 26,
+    "needed": 58,
+    "wrong": 18,
+    "onset_cost": 2.3098591549295775,
+    "cost_cov": 2.644456521775118,
+    "hit_cov": 0.7715729514804479,
+    "needed_time_cov": 0.38453878406708597,
+    "wrong_s_per_clip": 1.3871830985915496,
+    "stale_s_per_clip": 0.11690140845070424,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_storm_scene_house",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d088",
+      1,
+      0,
+      2,
+      3
+     ]
+    ],
+    "pass": false
+   },
+   "ANY_W1.0": {
+    "clips": 71,
+    "hits": 23,
+    "needed": 58,
+    "wrong": 21,
+    "onset_cost": 2.563380281690141,
+    "cost_cov": 2.820538444657712,
+    "hit_cov": 0.8015409829272007,
+    "needed_time_cov": 0.36417714884696023,
+    "wrong_s_per_clip": 1.5808450704225356,
+    "stale_s_per_clip": 0.11690140845070424,
+    "n_cov": 58,
+    "changed": [
+     [
+      "as_explosion_XJ8lc3I6",
+      3,
+      2,
+      1,
+      2
+     ],
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_storm_scene_house",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_tornado_scene",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d088",
+      1,
+      0,
+      2,
+      3
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "ANY_W1.5": {
+    "clips": 71,
+    "hits": 23,
+    "needed": 58,
+    "wrong": 21,
+    "onset_cost": 2.563380281690141,
+    "cost_cov": 2.820538444657712,
+    "hit_cov": 0.8015409829272007,
+    "needed_time_cov": 0.36417714884696023,
+    "wrong_s_per_clip": 1.6338028169014087,
+    "stale_s_per_clip": 0.11690140845070424,
+    "n_cov": 58,
+    "changed": [
+     [
+      "as_explosion_XJ8lc3I6",
+      3,
+      2,
+      1,
+      2
+     ],
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_storm_scene_house",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_tornado_scene",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d088",
+      1,
+      0,
+      2,
+      3
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   }
+  },
+  "selected": null
+ },
+ "AB-m": {
+  "base": {
+   "clips": 71,
+   "hits": 32,
+   "needed": 58,
+   "wrong": 16,
+   "onset_cost": 1.9154929577464788,
+   "cost_cov": 2.4206547710112982,
+   "hit_cov": 0.7197930567046704,
+   "needed_time_cov": 0.44420859538784074,
+   "wrong_s_per_clip": 1.2883098591549298,
+   "stale_s_per_clip": 0.12957746478873242,
+   "n_cov": 58
+  },
+  "cells": {
+   "F0.5_W0.5": {
+    "clips": 71,
+    "hits": 32,
+    "needed": 58,
+    "wrong": 16,
+    "onset_cost": 1.9154929577464788,
+    "cost_cov": 2.3794661682525184,
+    "hit_cov": 0.742639859797431,
+    "needed_time_cov": 0.4493448637316563,
+    "wrong_s_per_clip": 1.304929577464789,
+    "stale_s_per_clip": 0.12957746478873242,
+    "n_cov": 58,
+    "changed": [],
+    "pass": false
+   },
+   "F0.5_W1.0": {
+    "clips": 71,
+    "hits": 31,
+    "needed": 58,
+    "wrong": 17,
+    "onset_cost": 2.0,
+    "cost_cov": 2.4348158099624273,
+    "hit_cov": 0.7510328830053843,
+    "needed_time_cov": 0.44213836477987434,
+    "wrong_s_per_clip": 1.3612676056338031,
+    "stale_s_per_clip": 0.12957746478873242,
+    "n_cov": 58,
+    "changed": [
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "F0.5_W1.5": {
+    "clips": 71,
+    "hits": 31,
+    "needed": 58,
+    "wrong": 17,
+    "onset_cost": 2.0,
+    "cost_cov": 2.4348158099624273,
+    "hit_cov": 0.7510328830053843,
+    "needed_time_cov": 0.44213836477987434,
+    "wrong_s_per_clip": 1.3716901408450706,
+    "stale_s_per_clip": 0.12957746478873242,
+    "n_cov": 58,
+    "changed": [
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "F0.3_W0.5": {
+    "clips": 71,
+    "hits": 31,
+    "needed": 58,
+    "wrong": 17,
+    "onset_cost": 2.0,
+    "cost_cov": 2.383512591313026,
+    "hit_cov": 0.780408113038509,
+    "needed_time_cov": 0.44895178197065,
+    "wrong_s_per_clip": 1.392112676056338,
+    "stale_s_per_clip": 0.13098591549295777,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "F0.3_W1.0": {
+    "clips": 71,
+    "hits": 29,
+    "needed": 58,
+    "wrong": 19,
+    "onset_cost": 2.1690140845070425,
+    "cost_cov": 2.4747353592660426,
+    "hit_cov": 0.8128774956216465,
+    "needed_time_cov": 0.4328354297693921,
+    "wrong_s_per_clip": 1.5263380281690142,
+    "stale_s_per_clip": 0.13098591549295777,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_tornado_scene",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "F0.3_W1.5": {
+    "clips": 71,
+    "hits": 29,
+    "needed": 58,
+    "wrong": 19,
+    "onset_cost": 2.1690140845070425,
+    "cost_cov": 2.4747353592660426,
+    "hit_cov": 0.8128774956216465,
+    "needed_time_cov": 0.4328354297693921,
+    "wrong_s_per_clip": 1.5438028169014084,
+    "stale_s_per_clip": 0.13098591549295777,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_tornado_scene",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "FB_W0.5": {
+    "clips": 71,
+    "hits": 31,
+    "needed": 58,
+    "wrong": 17,
+    "onset_cost": 2.0,
+    "cost_cov": 2.4173008531294573,
+    "hit_cov": 0.7610616082887786,
+    "needed_time_cov": 0.44669811320754715,
+    "wrong_s_per_clip": 1.3777464788732396,
+    "stale_s_per_clip": 0.13098591549295777,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "FB_W1.0": {
+    "clips": 71,
+    "hits": 29,
+    "needed": 58,
+    "wrong": 19,
+    "onset_cost": 2.1690140845070425,
+    "cost_cov": 2.545889931459084,
+    "hit_cov": 0.7693259902276296,
+    "needed_time_cov": 0.435587002096436,
+    "wrong_s_per_clip": 1.4763380281690144,
+    "stale_s_per_clip": 0.13098591549295777,
+    "n_cov": 58,
+    "changed": [
+     [
+      "as_explosion_XJ8lc3I6",
+      3,
+      2,
+      1,
+      2
+     ],
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "FB_W1.5": {
+    "clips": 71,
+    "hits": 29,
+    "needed": 58,
+    "wrong": 19,
+    "onset_cost": 2.1690140845070425,
+    "cost_cov": 2.545889931459084,
+    "hit_cov": 0.7693259902276296,
+    "needed_time_cov": 0.435587002096436,
+    "wrong_s_per_clip": 1.495492957746479,
+    "stale_s_per_clip": 0.13098591549295777,
+    "n_cov": 58,
+    "changed": [
+     [
+      "as_explosion_XJ8lc3I6",
+      3,
+      2,
+      1,
+      2
+     ],
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "ANY_W0.5": {
+    "clips": 71,
+    "hits": 29,
+    "needed": 58,
+    "wrong": 19,
+    "onset_cost": 2.1690140845070425,
+    "cost_cov": 2.5176959583948366,
+    "hit_cov": 0.7865826461548844,
+    "needed_time_cov": 0.4264675052410902,
+    "wrong_s_per_clip": 1.5656338028169017,
+    "stale_s_per_clip": 0.13098591549295777,
+    "n_cov": 58,
+    "changed": [
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_storm_scene_house",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d088",
+      1,
+      0,
+      2,
+      3
+     ]
+    ],
+    "pass": false
+   },
+   "ANY_W1.0": {
+    "clips": 71,
+    "hits": 26,
+    "needed": 58,
+    "wrong": 22,
+    "onset_cost": 2.4225352112676055,
+    "cost_cov": 2.683918726347853,
+    "hit_cov": 0.8215554848971391,
+    "needed_time_cov": 0.406472746331237,
+    "wrong_s_per_clip": 1.7592957746478877,
+    "stale_s_per_clip": 0.13098591549295777,
+    "n_cov": 58,
+    "changed": [
+     [
+      "as_explosion_XJ8lc3I6",
+      3,
+      2,
+      1,
+      2
+     ],
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_storm_scene_house",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_tornado_scene",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d088",
+      1,
+      0,
+      2,
+      3
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   },
+   "ANY_W1.5": {
+    "clips": 71,
+    "hits": 26,
+    "needed": 58,
+    "wrong": 22,
+    "onset_cost": 2.4225352112676055,
+    "cost_cov": 2.683918726347853,
+    "hit_cov": 0.8215554848971391,
+    "needed_time_cov": 0.406472746331237,
+    "wrong_s_per_clip": 1.8122535211267607,
+    "stale_s_per_clip": 0.13098591549295777,
+    "n_cov": 58,
+    "changed": [
+     [
+      "as_explosion_XJ8lc3I6",
+      3,
+      2,
+      1,
+      2
+     ],
+     [
+      "birds_forest",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_storm_scene_house",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "mv_tornado_scene",
+      1,
+      0,
+      0,
+      1
+     ],
+     [
+      "tg_d088",
+      1,
+      0,
+      2,
+      3
+     ],
+     [
+      "tg_d149",
+      1,
+      0,
+      0,
+      1
+     ]
+    ],
+    "pass": false
+   }
+  },
+  "selected": null
+ }
+}
