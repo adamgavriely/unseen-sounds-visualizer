@@ -43,11 +43,12 @@
 bars: hit cover >= 0.90; counts and starts unchanged; wrong <= 1.28 s/clip; stale <= 0.62 s/clip
 passing all four: none
 selected: None
-best passing bars 2-4: F0.4_Boff_Doff_strict
+best passing bars 2-4: F0.4_Boff_Doff_strict (= the frozen system to 0.001; no useful cell passed)
 
 ## Notes (after scoring)
 
-- Strict gate = no change: the gate's stretches end where the original span ends, so a tail has no "not seen" time to run through.
-- Ceiling: if every hit picture ran exactly to its sound's end (starts unchanged), hit cover would be 0.904. The
+- Strict gate = almost no change (cost_cov 2.509 -> 2.508): the gate's stretches end where the original span ends, so a tail has no "not seen" time to run through.
+- Ceiling: if every hit picture ran exactly to its sound's end (starts unchanged), hit cover would be 0.904 and
+  cost_cov 2.213. So bar 1 (>= 0.90) sits at the ceiling, and ~2.1 is not reachable by holding ends. The
   remaining gap after the best lenient cell (0.879) is mostly late starts, which Step 1 does not touch.
 - Bar 3 fails because the hold also lengthens the wrong pictures (wrong seconds 1.11 -> 1.4-1.8 s/clip).
