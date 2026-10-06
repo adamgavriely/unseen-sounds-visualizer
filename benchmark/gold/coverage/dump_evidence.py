@@ -63,7 +63,9 @@ def main():
         troot = base / f"{ARM}_trail_proposed"
         for st in stems:
             aug = json.loads((root / st / "augmentations.json").read_text(encoding="utf-8"))
-            labels = sorted({s["event_label"] for s in aug if s.get("augment")})
+            blind = base / f"{ARM}_blind_a2i" / st / "augmentations.json"      # the gate-free specs: every label any gate rule could draw
+            aug_b = json.loads(blind.read_text(encoding="utf-8")) if blind.exists() else []
+            labels = sorted({s["event_label"] for s in aug + aug_b if s.get("augment")})
             tf = troot / st / "trail.json"
             trail = json.loads(tf.read_text(encoding="utf-8")) if tf.exists() else []
             rec = {"part": part, "labels": {}, "gate": gate_records(trail), "has_trail": tf.exists()}
