@@ -33,17 +33,22 @@ def gate_votes(trail):
     return out
 
 
-res = {}
-for split, part, base, stems in X.parts(ARM):
-    if split != "DEV":
-        continue
-    for st in stems:
-        P = json.loads((base / f"{ARM}_proposed" / st / "augmentations.json").read_text(encoding="utf-8"))
-        B = json.loads((base / f"{ARM}_blind_a2i" / st / "augmentations.json").read_text(encoding="utf-8"))
-        tf = base / f"{ARM}_trail_proposed" / st / "trail.json"
-        trail = json.loads(tf.read_text(encoding="utf-8")) if tf.exists() else []
-        res[st] = {"part": part, "P": P, "B": B, "gate": gate_votes(trail)}
-    print(split, part, len(stems), flush=True)
-out = Path(sys.argv[1] if len(sys.argv) > 1 else "scratch_cov/gate_dev.json")
-out.write_text(json.dumps(res), encoding="utf-8")
-print("->", out)
+def main():
+    res = {}
+    for split, part, base, stems in X.parts(ARM):
+        if split != "DEV":
+            continue
+        for st in stems:
+            P = json.loads((base / f"{ARM}_proposed" / st / "augmentations.json").read_text(encoding="utf-8"))
+            B = json.loads((base / f"{ARM}_blind_a2i" / st / "augmentations.json").read_text(encoding="utf-8"))
+            tf = base / f"{ARM}_trail_proposed" / st / "trail.json"
+            trail = json.loads(tf.read_text(encoding="utf-8")) if tf.exists() else []
+            res[st] = {"part": part, "P": P, "B": B, "gate": gate_votes(trail)}
+        print(split, part, len(stems), flush=True)
+    out = Path(sys.argv[1] if len(sys.argv) > 1 else "scratch_cov/gate_dev.json")
+    out.write_text(json.dumps(res), encoding="utf-8")
+    print("->", out)
+
+
+if __name__ == "__main__":
+    main()

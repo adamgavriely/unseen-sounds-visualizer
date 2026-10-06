@@ -1,0 +1,176 @@
+{
+ "cells": {
+  "SHIP8+MD3+WW5+SL|M": {
+   "clips": 71,
+   "hits": 29,
+   "needed": 58,
+   "wrong": 15,
+   "onset_cost": 2.056338028169014,
+   "cost_cov": 2.5090522889862807,
+   "hit_cov": 0.7229076507066727,
+   "needed_time_cov": 0.40379979035639424,
+   "wrong_s_per_clip": 1.1149295774647887,
+   "stale_s_per_clip": 0.1211267605633803,
+   "n_cov": 58,
+   "pass": false,
+   "changed": []
+  },
+  "SHIP8+MD3+WW5+SL|AB-s": {
+   "clips": 71,
+   "hits": 32,
+   "needed": 58,
+   "wrong": 21,
+   "onset_cost": 2.056338028169014,
+   "cost_cov": 2.5614998414338337,
+   "hit_cov": 0.7197930567046704,
+   "needed_time_cov": 0.44420859538784074,
+   "wrong_s_per_clip": 1.4740845070422537,
+   "stale_s_per_clip": 0.12957746478873242,
+   "n_cov": 58,
+   "pass": false,
+   "changed": [
+    [
+     "ambient_transport_subway_10800",
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     "bell_miami",
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     "mv_arrest_street_scene",
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     "mv_protest_scene_movie",
+     3,
+     3,
+     1,
+     2
+    ],
+    [
+     "tg_d054",
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     "tg_d085",
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     "tg_d088",
+     1,
+     1,
+     2,
+     4
+    ],
+    [
+     "tg_d127",
+     1,
+     1,
+     1,
+     0
+    ],
+    [
+     "tg_d133",
+     0,
+     2,
+     0,
+     0
+    ]
+   ]
+  },
+  "SHIP8+MD3+WW5+SL|AB-m": {
+   "clips": 71,
+   "hits": 32,
+   "needed": 58,
+   "wrong": 16,
+   "onset_cost": 1.9154929577464788,
+   "cost_cov": 2.4206547710112982,
+   "hit_cov": 0.7197930567046704,
+   "needed_time_cov": 0.44420859538784074,
+   "wrong_s_per_clip": 1.2883098591549298,
+   "stale_s_per_clip": 0.12957746478873242,
+   "n_cov": 58,
+   "pass": true,
+   "changed": [
+    [
+     "ambient_transport_subway_10800",
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     "bell_miami",
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     "mv_protest_scene_movie",
+     3,
+     3,
+     1,
+     2
+    ],
+    [
+     "tg_d127",
+     1,
+     1,
+     1,
+     0
+    ],
+    [
+     "tg_d133",
+     0,
+     2,
+     0,
+     0
+    ]
+   ]
+  }
+ },
+ "log": {
+  "SHIP8+MD3+WW5+SL|M": {
+   "restored": 0,
+   "silenced": 0,
+   "restored_kind": 0,
+   "no_votes": 0,
+   "M_differs": []
+  },
+  "SHIP8+MD3+WW5+SL|AB-s": {
+   "restored": 8,
+   "silenced": 1,
+   "restored_kind": 1,
+   "no_votes": 0,
+   "M_differs": []
+  },
+  "SHIP8+MD3+WW5+SL|AB-m": {
+   "restored": 4,
+   "silenced": 1,
+   "restored_kind": 1,
+   "no_votes": 0,
+   "M_differs": []
+  }
+ },
+ "passing": [
+  "SHIP8+MD3+WW5+SL|AB-m"
+ ],
+ "selected": "SHIP8+MD3+WW5+SL|AB-m"
+}
