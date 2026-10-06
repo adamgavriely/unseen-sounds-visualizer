@@ -19,7 +19,7 @@ gathering enough correctly labelled footage was too hard, which is why the set s
 sound. The first export had 138 clips: 108 benchmark clips and 30 AudioSet-Strong clips with a consequential sound at
 least half under speech or music (``slice B'', always reported separately). The 108 were split by provenance into 49
 development clips (``DEV-49'', clips already touched by earlier runs) and 59 test clips (``TEST-59'', labelled after
-the system was frozen). The earlier comparison table (Section~\ref{sec:sept-table}) is on TEST-59.
+the system was frozen). The earlier comparison table (Section~\ref{sec:sept-table}) is on the older test clips as they stood then.
 
 \paragraph{New clips.} 50 more clips were labelled with a stand-alone tool in three
 batches: 31 YouTube clips found by scene type and 19 AudioSet-Strong evaluation clips. They were split into 22
@@ -104,7 +104,7 @@ proposal & proposal: 7 stages (audio, VLM, ASR, BEATs/PANNs, reasoning, FLUX/SDX
 4 & v3: BEATs (replaced PANNs after 11 of 14 complaints traced to its labels), hysteresis + occlusion onsets, 7B gate with 3 votes, FLUX.1-schnell & human-grounded judge reference, dev 174 / test 100 & tie 3.17 vs 3.16; gate wins where nothing is due ($+0.26$), loses where a picture is due ($-0.24$) \\
 5 & v4: one state-of-the-art swap per stage; Qwen3.8-27B gate; FLAM and PretrainedSED detectors tried; rubric-enforced judge & judge with a cap on redundant pictures & PretrainedSED rejected three times; 13 silent bugs found (amendment 3), all earlier judge rows kept as history only \\
 6 & per-sound gold (138 clips); BEATs $\cup$ FlexSED (bar 0.8), FlexSED veto 0.3, PANNs veto 0.05 & per-sound F1, then viewer cost (amendment 9) & F1 difference null ($+0.028$); wrong pictures and precision significant \\
-7 & monotone onsets, no length cap; final earlier comparison table (amendment 21); Qwen-Image frozen as picture setup & Holm-corrected table on TEST-59 & ``Holm wins, F1 null'' (Section~\ref{sec:sept-table}) \\
+7 & monotone onsets, no length cap; final test table of the earlier comparison (amendment 21); Qwen-Image frozen as picture setup & Holm-corrected table on the older test clips & ``Holm wins, F1 null'' (Section~\ref{sec:sept-table}) \\
 8 & detector rounds 1--3: cascade, PE-A-Frame, Qwen3-Omni as verifier & DEV-49 + AudioSet 280 / 415 & none passed; detection declared closed, reopened next day \\
 9 & rounds 4--12 on AudioSet sets: EAT, Dasheng, DASM, SAM-Audio, 17 ideas, local contrast, DASM rescue, masker tests & cost on AudioSet labels & all failed on the 415; round 12 showed the AudioSet cost cannot track the task: harness retired \\
 10 & rounds 13--14: listener rescue (Qwen3-Omni, Audio Flamingo Next) + DASM vote; 50 new clips added & DEV-49, then merged DEV & first gains in hits (TO1+F7F8) \\
@@ -259,11 +259,11 @@ which was the pre-set bar; the text-read result is therefore not plotted as a se
 
 \FloatBarrier
 \subsection{The earlier comparison of the on-screen check}\label{sec:sept-table}
-Before the final detector existed, the on-screen check was compared with and without it on the 59 older test clips
+Before the final detector existed, the on-screen check was compared with and without it on the older test clips
 (same gate model and rule, with the detector and the labels of the time); Table~\ref{tab:septgate} gives
 two-sided $p$-values with Holm correction.
 \begin{table}[tbp]\centering\small
-\caption{The earlier comparison of the on-screen check (59 older test clips).}\label{tab:septgate}
+\caption{The earlier comparison of the on-screen check (older test clips).}\label{tab:septgate}
 \begin{tabular}{lrrl}
 \toprule
 Measure & With minus without & 95\,\% interval & Holm $p$ \\
@@ -352,7 +352,7 @@ am.\ 11--15 & per-family bars; speech-removed view; family silence; any-stretch 
 am.\ 16 & PANNs veto 0.05 & 3.02 / 3.10 & shipped \\
 am.\ 17 & tagger ensemble & CED mis-scaled & rejected \\
 am.\ 18--20 & visibility signals (video, SAM 3, synchrony) & all at break-even 2:1 & rejected \\
-am.\ 21 & final earlier comparison table & Section~\ref{sec:sept-table} & reported \\
+am.\ 21 & final test table of the earlier comparison & Section~\ref{sec:sept-table} & reported \\
 am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUROC 0.53; AUROC 0.661 & rejected \\
 \multicolumn{4}{l}{\emph{Rounds 4--12 (AudioSet harness)}} \\
 4 & BEATs self-veto replaces PANNs veto & 415 neutral; later worse on DEV (13/30/3.10 vs 14/24/2.78 with the PANNs veto) & reverted later \\

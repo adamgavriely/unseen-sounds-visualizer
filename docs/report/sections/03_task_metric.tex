@@ -67,9 +67,9 @@ wrong picture (on screen, other sound, nothing) separately; an on-screen picture
 picture of nothing:
 \begin{equation}
   C_w \;=\; \frac{4\cdot\#\text{missed} + w_{\text{on}}\cdot\#\text{on screen} + w_{\text{other}}\cdot\#\text{other sound} + w_{\text{nothing}}\cdot\#\text{nothing}}{\#\text{clips}},
-  \qquad w\in\{0,2,4\}.
   \label{eq:costw}
 \end{equation}
+where each price $w$ is 0, 2 or 4.
 \emph{Why not F1?} Event-based F1 is the usual detection score~\cite{mesaros2016metrics,bilen2020psds}, but it counts a
 miss and a wrong picture the same, while the gate's value lies almost entirely in the
 wrong pictures it removes. A cost with explicit error prices, as in cost curves~\cite{drummond2006costcurves}, makes that trade-off visible. F1 is
@@ -94,4 +94,4 @@ bar were committed to the repository first; this is called pre-registration). It
 Rounds that aimed only to add hits also pre-set a ``more hits'' rule: wrong pictures of other sounds and of
 nothing must not rise. These pass rules are count rules on the development set, not significance tests.
 Rules about the audio alone could first be screened on the screening set (Section~\ref{sec:benchmark}). The test set
-was scored only after a change was accepted, and only reported; no decision in the final system used it. The 95\,\% intervals of the main comparisons are 0.5 to 1.2 per clip wide on both sets, so small single changes could only be judged on the development rules.
+was scored only after a change was accepted, and only reported; no decision in the final system used it. The 95\,\% intervals of the main comparisons are 0.7 to 1.2 per clip wide on both sets, so small single changes could only be judged on the development rules.

@@ -221,7 +221,7 @@
     window.scrollTo(0, 0);
   }
   var m = D.meta || {};
-  document.getElementById('ver').textContent = 'version ' + (m.version || '?') + ' · ' + (m.arm || '') + (m.sample ? ' · SAMPLE DATA' : '') + (m.built ? ' · built ' + m.built : '');
+  document.getElementById('ver').textContent = 'version ' + (m.version || '?') + ' · ' + (m.arm || '') + (m.sample ? ' · SAMPLE DATA' : '');
   var th = store('theme'); if (th) document.documentElement.setAttribute('data-theme', th);
   document.getElementById('theme').addEventListener('click', function () {
     var cur = document.documentElement.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
