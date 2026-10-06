@@ -133,7 +133,7 @@ TO1+F7F8 (R14) & listener rescue of weak FlexSED runs (tiered: Qwen alone above 
 + DV (R28) & drop a sound DASM never hears in the clip & 27 / 31 / 2.620 & 24 / 32 / 2.667 \\
 + BTP (R30) & start a late picture at an earlier weak run of the same sound & 28 / 30 / 2.535 & 24 / 31 / 2.644 ($p = 0.026$) \\
 + CONT (R31) & drop a picture that is only a later piece of a sound already going on & 28 / 25 / 2.394 & 25 / 30 / 2.575 ($p = 0.019$) \\
-+ FineLAP veto (R31) & a 2025 frame-level model double-checks rescued sounds & 28 / 24 / 2.366 & 25 / 29 / 2.552 ($p = 0.013$) \\
++ FineLAP veto (R31) & a frame-level audio-text model double-checks rescued sounds & 28 / 24 / 2.366 & 25 / 29 / 2.552 ($p = 0.013$) \\
 + K4A-D = SHIP8 (R35) & drop a picture neither listener names, unless DASM clearly hears it & 28 / 21 / 2.282 & 24 / 27 / 2.552 ($p = 0.011$) \\
 + merge gap 2.5\,s & continuing sounds with short breaks no longer drew a second picture & 28 / 20 / 2.254 & 24 / 26 / 2.529 \\
 + grouping $\leq$8\,s (R47) & Qwen3-Omni: same continuing sound or a new event? & 28 / 18 / 2.197 & 23 / 24 / 2.529 \\
@@ -268,11 +268,11 @@ two-sided $p$-values with Holm correction.
 \toprule
 Measure & With minus without & 95\,\% interval & Holm $p$ \\
 \midrule
-Wrong pictures per clip & $-0.525$ & $[-0.797,\ -0.288]$ & $<0.001$ \\
-Viewer cost per clip & $-0.847$ & $[-1.458,\ -0.339]$ & $0.005$ \\
-Precision & $+0.143$ & $[+0.049,\ +0.260]$ & $0.008$ \\
-Clips handled perfectly & $+0.226$ & $[+0.087,\ +0.379]$ & $<0.001$ \\
-F1 & $+0.061$ & $[-0.020,\ +0.144]$ & $0.17^{a}$ \\
+Wrong pictures per clip & $-0.517$ & $[-0.800,\ -0.283]$ & $<0.001$ \\
+Viewer cost per clip & $-0.833$ & $[-1.434,\ -0.300]$ & $0.012$ \\
+Precision & $+0.137$ & $[+0.043,\ +0.256]$ & $0.010$ \\
+Clips handled perfectly & $+0.219$ & $[+0.086,\ +0.364]$ & $0.006$ \\
+F1 & $+0.059$ & $[-0.030,\ +0.144]$ & $0.18^{a}$ \\
 \bottomrule
 \end{tabular}
 
@@ -301,8 +301,8 @@ first listener stack (TO1+F7F8) vs old pipeline (B0r), pre-registered & $-0.092$
 \end{tabular}}
 \end{table}
 Version B scored 29 / 18 / 2.141 (development) and 23 / 24 / 2.529 (test); D scored 29 / 14 / 2.028 and
-25 / 21 / 2.368. The four earliest test reads were also corrected for multiplicity (Holm); none was
-significant after correction.
+25 / 21 / 2.368. The four earliest test reads (the first listener stack and the next three accepted rules, Table~\ref{tab:shipchain}) were also
+Holm-corrected at the time; none was significant after correction.
 
 \paragraph{Repeat-merge gap.} Re-reading the same saved pictures at different merge gaps moves wrong-picture counts but
 not the ranking (Table~\ref{tab:mergegap}).
