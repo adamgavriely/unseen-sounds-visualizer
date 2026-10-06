@@ -20,7 +20,7 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
         hears it at that time; or both listeners list it; or one listener lists it and the vision model says the sound
         fits the scene.
   \item \textbf{Refine (4c).} The start of each BEATs sound is moved to where its evidence begins (never earlier than
-        detected), and rescued sounds pass three last filters: FineLAP (a frame-level audio-text model) and DASM must hear them, and only one rescue
+        detected), and rescued sounds pass three last filters: FineLAP~\cite{finelapcard} (a frame-level audio-text model) and DASM must hear them, and only one rescue
         per family is kept.
   \item \textbf{On-screen check, the gate (5).} A vision-language model (Qwen3.8-27B) looks at frames around the sound.
         If the thing making the sound is visibly making it, no picture is shown.
@@ -152,8 +152,8 @@ qualifier words to the source's name, word lists remove people and places, and a
 subject on a plain white background (Appendix~\ref{app:prompts}). The lights, mist or smoke seen in some pictures are
 the image model's way of drawing that visible effect; the prompt does not name them. Qwen-Image-2512
 draws it at 1024$\times$1024; the vision model then gets a multiple-choice question about what the picture shows, and
-a picture that fails (or contains text) is drawn again, up to five tries in all. In a blind test, the author saw each picture for a
-moment and named the sound without being shown the label (one test, by the author only); Qwen-Image pictures were named right 26 of 54 times,
+a picture that fails (or contains text) is drawn again, up to five tries in all. In one blind test by the author, each picture was seen for a
+moment and the sound named without the label being shown; Qwen-Image pictures were named right 26 of 54 times,
 against 14 of 54 for the earlier FLUX.1~\cite{fluxcard} pictures (difference $+0.22$, 95\,\% interval $[+0.07, +0.37]$).
 
 \paragraph{As specific as what was heard, never a guess.} The picture is as specific as the detected sound: when the

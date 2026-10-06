@@ -8,7 +8,7 @@ All results use two sets of short video clips (10--20\,s), labelled per sound as
 \end{description}
 The clips come from Wikimedia Commons, the Internet Archive, UnAV-100~\cite{geng2023unav100} (its videos are used as
 scene material; its labels are not used), VGGSound~\cite{chen2020vggsound},
-YouTube (city walks, markets, home, transport, incidents, film scenes) and the AudioSet-Strong evaluation split (AudioSet clips that come with timed, per-sound labels). New
+YouTube (city walks, markets, home, transport, incidents, film scenes) and the AudioSet-Strong evaluation split~\cite{hershey2021strong} (AudioSet clips that come with timed, per-sound labels). New
 clips were assigned to development or test by a hash of the clip name or in pairs matched by scene, one to each set, never by
 looking at results. The first 108 clips were split by provenance instead: clips that earlier runs had already used became development clips, and clips no run had touched became test clips. One sourcing route of those first 108 clips, a scene search that no earlier run had touched, therefore sits in the test set only: 21 of the 59 older test clips, many of them film scenes, war footage and body-, helmet- or dash-camera footage, kinds of scene the development set hardly contains. Appendix~\ref{app:datahistory} describes how the sets grew. Most clips are copyrighted and used for research only, so they are not redistributed
 (see \hyperref[sec:availability]{Code and data availability}).
@@ -37,6 +37,6 @@ inter-annotator agreement is unknown. On the earlier clip-level labels, a blind 
 the author's agreement with their own earlier clip-level labels, not per-sound agreement with a second annotator. These and other caveats are listed
 in Section~\ref{sec:limits}.
 
-\paragraph{Screening set.} 415 clips of the AudioSet-Strong evaluation split, which already have timed labels, were
+\paragraph{Screening set.} 415 clips of the AudioSet-Strong evaluation split~\cite{hershey2021strong}, which already have timed labels, were
 used to screen rules about audio alone (for example: how often is a detection that no listener names a real sound?).
 AudioSet labels only a few sounds per clip, so this set was never used to accept a change.
