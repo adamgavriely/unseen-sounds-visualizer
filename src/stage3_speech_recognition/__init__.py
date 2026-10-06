@@ -1,7 +1,7 @@
 """Stage 3 - Speech Recognition.
 
 Transcribe speech into timestamped segments via faster-whisper. Speech is a *secondary*
-signal here (the star is non-speech sound); the transcript gives context to the
+signal here (the system is about non-speech sound); the transcript gives context to the
 cross-modal gate and helps avoid augmenting content captions already cover.
 
 Degrades gracefully: if faster-whisper is not installed, returns [] with a

@@ -3,11 +3,11 @@
 Measure whether generated augmentations communicate the intended audio semantics.
 Runs over the benchmark rather than as a per-clip pipeline step.
 
-The automatic protocol of proposal sec 6.1 lives in stage7_evaluation.protocol and
+The automatic protocol of the project proposal (its Section 6.1; not this report's) lives in stage7_evaluation.protocol and
 is driven by benchmark/run_protocol.py: generate augmentation -> a VLM describes the
 augmented output -> an LLM builds a semantic reference from the original audio+video
 -> an independent LLM judge scores how much of the reference the augmentation
-conveys. The same judge scores all three systems of proposal sec 7 (proposed gate,
+conveys. The same judge scores all three systems of the proposal's Section 7 (proposed gate,
 blind audio-to-image, audio captioning).
 
 gating_accuracy() below measures Stage 5 alone -- a component diagnostic, not the

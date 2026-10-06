@@ -9,7 +9,7 @@ v1.2.0.
 
 | purpose | files |
 |---|---|
-| **Labels** | `annotations/gold_AG.json` (every per-sound label), `dev_stems.txt`, `test_stems.txt` (clip names of the two sets; the `tg_d*` lines are the second batch), `judge100.txt` (the rule for which development clips were scored), `audioset_slice.json` (the AudioSet-Strong clips) |
+| **Labels** | `annotations/gold_AG.json` (every per-sound label), `dev_stems.txt`, `test_stems.txt` (clip names of the two sets; the `tg_d*` lines are the second batch), `judge100.txt` (the 100 clips of the early judge-based evaluation, report Appendix E.7; a named clip subset in `score_per_sound.py`), `audioset_slice.json` (the AudioSet-Strong clips) |
 | **Scorer** | `score_per_sound.py` (matching rules, cost, clip subsets), `dev_candidates_check.py` (stage-4/5 replay helpers, bootstrap, DASM step), `holm_table.py` (Holm correction) |
 | **Report tables** | `final_vs_baselines.py` → `final_vs_baselines.json` (final system and baselines); `final_vs_baselines_extra.py` → `final_vs_baselines_extra.json` (F1 intervals, danger sounds) |
 | **Scoring harness** | `dev_harness.py` (variants, stage 4/5 through the pipeline code; first 49 development clips) and `merged_dev.py` (all 71); `test_harness_prep.py`, `test_harness.py` (first 59 test clips) and `final_test.py` → `final_test.json` (all 87), `parity_check.py`. The 49- and 59-clip harnesses ran on the first batch of clips and their result files are in release v1.2.0; `merged_dev.py` and `final_test.py` give the reported 71/87 results |

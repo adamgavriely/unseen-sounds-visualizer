@@ -60,7 +60,7 @@ python docs/report/figures/make_analysis_figures.py
 python docs/report/figures/make_examples_figure.py <folder with media/bysig>
 \end{verbatim}
 The \fp{inspector_trail_export.py} command re-runs the final system with every decision logged and stops unless the counts match exactly; it
-reproduces all 158 clips. The figure scripts read the result files above and \fp{docs/decision_trail/data.js}; the
+reproduces all 158 clips. The results chart holds the numbers of Table~\ref{tab:headline} in its script; the other figure scripts read the result files above and \fp{docs/decision_trail/data.js}; the
 example figure also needs the rendered output videos, which are not in the repository. The cached model outputs of the benchmark clips are not part of the current release (they are
 large): the listener and grouping answers are in the source tree of release v1.2.0 (\fp{benchmark/gold/}), and the
 per-clip stage outputs under \fp{data/work/} are rebuilt from the clips with \fp{benchmark/gold/clip_prep.py}.

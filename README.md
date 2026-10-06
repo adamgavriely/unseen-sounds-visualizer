@@ -116,7 +116,7 @@ Appendix C of the report gives the source file of every number.
 
 Checks that run from a plain clone, on CPU, in under a minute: `python -m pytest` (11 tests);
 `python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL` (the shipped configuration equals the scored variant);
-`python docs/report/figures/make_results_figure.py` (rebuilds `results_bars.pdf` from `final_vs_baselines.json`).
+`python docs/report/figures/make_results_figure.py` (rebuilds `results_bars.pdf` and `.png` from the numbers of Table 3, written in the script).
 
 Recomputing them from a clone is not possible as is. The scripts (for example
 `python benchmark/gold/final_vs_baselines.py`) read the stage-5 outputs of every benchmark clip (under `data/work/`)
