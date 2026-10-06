@@ -260,7 +260,7 @@ Development & none (all 2)   & 2.056 & 2.451 & 3.268 & $-1.211$ ($<0.001$) & $-0
             & nothing 0      & 2.000 & 2.310 & 3.268 & $-1.268$ ($<0.001$) & $-0.310$ ($0.16$) \\
             & nothing 4      & 2.113 & 2.592 & 3.268 & $-1.155$ ($<0.001$) & $-0.479$ ($0.051$) \\
 \midrule
-Test$^{b}$  & none (all 2)   & 2.391 & 3.103 & 3.034 & $-0.644$ ($0.018$)  & $-0.713$ ($<0.001$) \\
+Test        & none (all 2)   & 2.391 & 3.103 & 3.034 & $-0.644$ ($0.018$)  & $-0.713$ ($<0.001$) \\
 (87 clips)  & on screen 0    & 2.299 & 2.736 & 3.034 & $-0.736$ ($0.003$)  & $-0.437$ ($0.012$) \\
             & on screen 4    & 2.483 & 3.471 & 3.034 & $-0.552$ ($0.064$)  & $-0.989$ ($<0.001$) \\
             & other sound 0  & 2.046 & 2.368 & 3.034 & $-0.989$ ($<0.001$) & $-0.322$ ($0.047$) \\
@@ -283,9 +283,9 @@ Most wrong pictures on the test set show another sound (15 of 22; Figure~\ref{fi
 shows the needed sounds found per gold label, with each miss coloured by the step where it was lost: on the development
 set none of the four needed bird calls is found, two of them lost at the on-screen check, where perched birds are
 taken as the source (Section~\ref{sec:presence}). Two large families of the test set are never found, machine gun (0 of 5) and
-vehicle horn (0 of 4), for different reasons. Three of the horns are in one clip with a continuous vehicle sound:
-the continuation veto reads each repeated honk as a later piece of the traffic sound already going on; the fourth
-is lost to timing. Of the machine guns, two are silenced at the on-screen check, one
+vehicle horn (0 of 4), for different reasons. All four horns are in one clip with a continuous vehicle sound:
+the continuation veto reads three of the repeated honks as later pieces of the traffic sound already going on; the
+fourth is lost to timing. Of the machine guns, two are silenced at the on-screen check, one
 falls to the mirror veto (a sound heard only by BEATs is dropped when FlexSED hears another family much more strongly at
 that moment and the listeners do not put it back; here a helicopter scored higher), one is lost to timing, and one is merged into a
 stronger gunshot of the same family. Section~\ref{sec:hard} explains why these errors are hard to remove.
