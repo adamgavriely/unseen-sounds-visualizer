@@ -69,11 +69,11 @@ ax.spines[["top", "right"]].set_visible(False)
 save(fig, "gate_tradeoff.pdf")
 
 # 3. Development progression -- benchmark/gold/visible_weight_sweep.md, improvements log, history appendix
-chain = [("first full\npipeline", 3.690, 2.920), ("listener\nrescue", 3.070, 2.828), ("masked\nveto", 2.958, 2.759),
-         ("DASM\nrescue", 2.901, 2.713), ("inventory\nkeep", 2.817, 2.736), ("DASM clip\nveto", 2.620, 2.690),
-         ("onset\npull", 2.535, 2.667), ("continuation\nveto", 2.394, 2.598), ("FineLAP\nveto", 2.366, 2.575),
-         ("inventory\n+ DASM", 2.282, 2.575), ("merge\n2.5 s", 2.254, 2.552), ("grouping", 2.197, 2.552),
-         ("min. 0.3 s", 2.141, 2.552), ("witness rule\n= final", 2.056, 2.414)]
+chain = [("first full\npipeline", 3.690, 2.966), ("listener\nrescue", 3.070, 2.874), ("masked\nveto", 2.958, 2.805),
+         ("DASM\nrescue", 2.901, 2.690), ("inventory\nkeep", 2.817, 2.713), ("DASM clip\nveto", 2.620, 2.667),
+         ("onset\npull", 2.535, 2.644), ("continuation\nveto", 2.394, 2.575), ("FineLAP\nveto", 2.366, 2.552),
+         ("inventory\n+ DASM", 2.282, 2.552), ("merge\n2.5 s", 2.254, 2.529), ("grouping", 2.197, 2.529),
+         ("min. 0.3 s", 2.141, 2.529), ("witness rule\n= final", 2.056, 2.391)]
 # The witness rule was first scored with its scene question read as text (2.028 / 2.391). That reading was cut off on a
 # few answers, and one cut-off answer happened to remove a wrong picture. The final system reads the same question
 # from the model's yes/no scores, which cannot be cut off; its honest numbers are the last point. The text-read
@@ -82,9 +82,9 @@ fig, ax = plt.subplots(figsize=(7.2, 3.9))
 x = range(len(chain))
 ax.plot(x, [c[1] for c in chain], "o-", color=DARK, label="development set (decisions made here)")
 ax.plot(x, [c[2] for c in chain], "s-", color=RED, label="test set (scored after each change)")
-ax.axhline(3.268, color=DARK, ls=":", lw=1); ax.axhline(2.989, color=RED, ls=":", lw=1)
+ax.axhline(3.268, color=DARK, ls=":", lw=1); ax.axhline(3.034, color=RED, ls=":", lw=1)
 ax.text(len(chain) - 0.6, 3.29, "show nothing (dev.)", ha="right", fontsize=7.5, color=DARK)
-ax.text(len(chain) - 0.6, 3.009, "show nothing (test)", ha="right", fontsize=7.5, color=RED)
+ax.text(len(chain) - 0.6, 3.054, "show nothing (test)", ha="right", fontsize=7.5, color=RED)
 ax.set_xticks(list(x)); ax.set_xticklabels([c[0].replace("\n", " ") for c in chain], fontsize=8.5, rotation=35, ha="right")
 ax.set_ylabel("cost per clip"); ax.legend(frameon=False, fontsize=8, loc="lower left")
 ax.spines[["top", "right"]].set_visible(False)
@@ -111,7 +111,7 @@ BARS = ["never heard", "listeners and their filters", "on-screen check", "vetoes
 
 def miss_counts(path=os.path.join(OUT, "..", "..", "decision_trail", "data.js")):
     """Recount the misses per bar from the decision trail (falls back to the stored counts if it is absent)."""
-    stored = {"DEV": [6, 10, 5, 3, 5], "TEST": [6, 12, 3, 10, 10]}
+    stored = {"DEV": [6, 10, 5, 3, 5], "TEST": [7, 12, 3, 9, 10]}
     if not os.path.exists(path):
         return {sp: dict(zip(BARS, v)) for sp, v in stored.items()}
     import json

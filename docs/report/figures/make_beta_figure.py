@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 SETS = {
     "development set (71 clips)": {"clips": 71, "needed": 58,
         "final system": (29, 15), "direct audio-to-image": (34, 39)},
-    "test set (87 clips)": {"clips": 87, "needed": 65,
-        "final system": (24, 23), "direct audio-to-image": (26, 61)},
+    "test set (87 clips)": {"clips": 87, "needed": 66,
+        "final system": (25, 22), "direct audio-to-image": (28, 59)},
 }
 COL = {"final system": "#2a6f97", "direct audio-to-image": "#e07a5f", "show nothing": "#777777"}
 b = np.linspace(0, 6, 301)

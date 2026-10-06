@@ -8,8 +8,8 @@ import matplotlib.pyplot as plt
 DATA = {  # system: (hits, wrong, cost) per set
     "development set (71 clips, 58 needed sounds)": {"needed": 58, "rows": [
         ("show\nnothing", 0, 0, 3.268), ("direct\naudio-to-image", 34, 39, 2.451), ("final\nsystem", 29, 15, 2.056)]},
-    "test set (87 clips, 65 needed sounds)": {"needed": 65, "rows": [
-        ("show\nnothing", 0, 0, 2.989), ("direct\naudio-to-image", 26, 61, 3.195), ("final\nsystem", 24, 23, 2.414)]},
+    "test set (87 clips, 66 needed sounds)": {"needed": 66, "rows": [
+        ("show\nnothing", 0, 0, 3.034), ("direct\naudio-to-image", 28, 59, 3.103), ("final\nsystem", 25, 22, 2.391)]},
 }
 HIT, WRONG, INK = "#2a6f97", "#e07a5f", "#333333"
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.4), sharey=True)

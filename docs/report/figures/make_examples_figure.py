@@ -31,7 +31,7 @@ ROWS = [
     ("Missed: object in frame but not making the sound", [
         ("bell_miami", "gold", "Bell", 0.2),
         ("b3_pet_shop", "gold", "Bird", 0.1),
-        ("tg_d078", "gold", "Vehicle horn", 5.2)]),
+        ("m5_doc_restrepo_138b", "gold", "Machine gun", 2.4)]),
     ("Wrong: source is on screen", [
         ("london_protest_01", "pic", "Vehicle", 0.25),
         ("tg_d128", "pic", "Laughter", 3.08, 0.8),

@@ -39,7 +39,7 @@ wrong pictures; the final system keeps most of the hits and removes most of the 
 
 \begin{table}[htbp]
 \centering\small
-\caption{Main result on the development set (71 clips, 58 needed sounds) and the test set (87 clips, 65 needed
+\caption{Main result on the development set (71 clips, 58 needed sounds) and the test set (87 clips, 66 needed
 sounds). Hits: needed sounds with a right picture. Wrong: all other pictures, split into on screen / other sound /
 nothing (Section~\ref{sec:matching}). Cost: viewer cost per clip, (4 $\times$ misses + 2 $\times$ wrong) / clips,
 lower is better. Difference: the final system's cost minus this system's, per clip, with a 95\,\% interval from a
@@ -54,37 +54,39 @@ Development & Show nothing & 0 / 58 & 0 & 0.00 & 3.268 & $-1.211\ [-1.831, -0.62
 (71 clips) & Direct audio-to-image$^{a}$ & 34 / 58 & 39 (20/14/5) & 0.52 & 2.451 & $-0.394\ [-0.817, +0.056]$ & $0.085$ \\
  & \textbf{Final system} & 29 / 58 & 15 (6/7/2) & 0.57 & 2.056 & & \\
 \midrule
-Test & Show nothing & 0 / 65 & 0 & 0.00 & 2.989 & $-0.575\ [-1.126, -0.046]$ & $0.034$ \\
-(87 clips) & Direct audio-to-image$^{a}$ & 26 / 65 & 61 (16/32/13) & 0.34 & 3.195 & $-0.782\ [-1.057, -0.506]$ & $< 0.001$ \\
- & \textbf{Final system} & 24 / 65 & 23 (4/15/4) & 0.43 & 2.414 & & \\
+Test$^{b}$ & Show nothing & 0 / 66 & 0 & 0.00 & 3.034 & $-0.644\ [-1.195, -0.115]$ & $0.018$ \\
+(87 clips) & Direct audio-to-image$^{a}$ & 28 / 66 & 59 (16/32/11) & 0.37 & 3.103 & $-0.713\ [-1.034, -0.368]$ & $< 0.001$ \\
+ & \textbf{Final system} & 25 / 66 & 22 (4/15/3) & 0.44 & 2.391 & & \\
 \bottomrule
 \end{tabular}}
 
 \smallskip
 \footnotesize\raggedright $^{a}$ The final system without the on-screen check; audio captioning has the same score (same decisions,
 shown as text). With the Holm correction over five tests (Section~\ref{sec:support}) the four $p$-values of the
-Difference column become, top to bottom, $< 0.001$, $0.085$, $0.068$ and $< 0.001$, and the test-set F1 difference ($p = 0.002$) becomes $0.006$. The development-set F1
+Difference column become, top to bottom, $< 0.001$, $0.085$, $0.055$ and $0.001$, and the test-set F1 difference ($p = 0.036$) becomes $0.073$. The development-set F1
 difference is reported with its interval only and is not part of the family of five tests fixed in Section~\ref{sec:support}.
+$^{b}$ On the test labels as corrected after a blind second listen (five labels, Section~\ref{sec:limits}); every
+system was re-scored from its saved outputs.
 \end{table}
 
-On the test set the final system finds 24 of 65 needed sounds, and half of its pictures are right. Drawing every detected
-sound finds 26, but only 30\,\% of its pictures are right, and on the test set it is no better than showing nothing:
-it costs 0.207 more per clip ($[-0.414, +0.828]$, $p = 0.54$, uncorrected). On the development set it costs less than
-showing nothing ($-0.817$, $[-1.577, -0.085]$, $p = 0.032$, uncorrected). The final system is cheaper than both: by 0.782 per clip against direct
-audio-to-image generation (24\,\% of that baseline's cost, $p < 0.001$) and by 0.575 against showing nothing
-(19\,\%, $p = 0.034$).
+On the test set the final system finds 25 of 66 needed sounds, and more than half of its pictures are right. Drawing every detected
+sound finds 28, but only 32\,\% of its pictures are right, and on the test set it is no better than showing nothing:
+it costs 0.069 more per clip ($[-0.621, +0.736]$, $p = 0.86$, uncorrected). On the development set it costs less than
+showing nothing ($-0.817$, $[-1.577, -0.085]$, $p = 0.032$, uncorrected). The final system is cheaper than both: by 0.713 per clip against direct
+audio-to-image generation (23\,\% of that baseline's cost, $p < 0.001$) and by 0.644 against showing nothing
+(21\,\%, $p = 0.018$).
 
 On the development set the direction is the same, but the difference from direct audio-to-image is smaller ($-0.394$,
 $p = 0.085$, also after Holm). Two things differ between the sets. Direct audio-to-image shows fewer wrong pictures per clip on the
-development set (39 over 71 clips, 0.55 per clip, against 61 over 87, 0.70), mostly because it shows fewer other-sound
+development set (39 over 71 clips, 0.55 per clip, against 59 over 87, 0.68), mostly because it shows fewer other-sound
 pictures there (14 against 32). And the check costs more hits there: five fewer than direct audio-to-image on the
-development set, but only two fewer on the test set.
+development set, but only three fewer on the test set.
 
 The win over direct audio-to-image generation comes from giving up a few hits to remove many wrong pictures. On the
-test set the final system has 2 fewer hits and 38 fewer wrong pictures: $(2\cdot 38 - 4\cdot 2)/87 = 0.782$ per clip,
-or 19 wrong pictures removed per hit lost. On the development set it has 5 fewer hits and 24 fewer wrong pictures:
-$(2\cdot 24 - 4\cdot 5)/71 = 0.394$, or 4.8 per hit lost. Of the 38 wrong pictures removed on the test set, 12 are
-on-screen pictures, 17 show another sound and 9 show nothing; on the development set the 24 removed are 14, 7 and 3
+test set the final system has 3 fewer hits and 37 fewer wrong pictures: $(2\cdot 37 - 4\cdot 3)/87 = 0.713$ per clip,
+or 12 wrong pictures removed per hit lost. On the development set it has 5 fewer hits and 24 fewer wrong pictures:
+$(2\cdot 24 - 4\cdot 5)/71 = 0.394$, or 4.8 per hit lost. Of the 37 wrong pictures removed on the test set, 12 are
+on-screen pictures, 17 show another sound and 8 show nothing; on the development set the 24 removed are 14, 7 and 3
 (Figure~\ref{fig:wrongkind}). Silencing a sound also removes its late repeat pictures, and the depict-event check,
 which is off in the baseline, removes some more. Figure~\ref{fig:breakdown} shows the two effects on the cost.
 
@@ -92,9 +94,9 @@ which is off in the baseline, removes some more. Figure~\ref{fig:breakdown} show
 \centering
 \includegraphics[width=0.92\linewidth]{figures/wrong_by_kind.pdf}
 \caption{Wrong pictures by kind (Section~\ref{sec:matching}), direct audio-to-image generation against the final
-system. Green: the number removed. Totals: 39 $\to$ 15 (development), 61 $\to$ 23 (test). The on-screen check
+system. Green: the number removed. Totals: 39 $\to$ 15 (development), 59 $\to$ 22 (test). The on-screen check
 removes on-screen pictures directly; silencing a sound also removes its late repeats (other sound), and the
-depict-event check removes some more. On the test set 17 of the 38 removed pictures are of another sound and 9 of
+depict-event check removes some more. On the test set 17 of the 37 removed pictures are of another sound and 8 of
 nothing.}
 \label{fig:wrongkind}
 \end{figure}
@@ -104,20 +106,20 @@ nothing.}
 \includegraphics[width=\linewidth]{figures/win_breakdown.pdf}
 \caption{Where the gain over direct audio-to-image generation comes from. Starting from its cost (left), the steps that
 read the video remove wrong pictures (green, saving 2 per picture) and lose a few hits (red, costing 4 per hit). On
-the test set they remove 38 wrong pictures and lose 2 hits; on the development set 24 and 5. Dotted line: showing
+the test set they remove 37 wrong pictures and lose 3 hits; on the development set 24 and 5. Dotted line: showing
 nothing.}
 \label{fig:breakdown}
 \end{figure}
 
 F1, which weighs a miss and a wrong picture equally, is also higher for the final system on both sets: 0.57 against
-0.52 on the development set ($+0.050$, $[-0.039, +0.128]$) and 0.43 against 0.34 on the test set
-($+0.086$, $[+0.032, +0.144]$, $p = 0.002$). The intervals use the same clip resampling, with F1 recomputed from the
+0.52 on the development set ($+0.050$, $[-0.039, +0.128]$) and 0.44 against 0.37 on the test set
+($+0.076$, $[+0.005, +0.146]$, $p = 0.036$ uncorrected). The intervals use the same clip resampling, with F1 recomputed from the
 resampled counts on each draw. F1 favours the final system even though it
 values a removed wrong picture no more than a lost hit.
 
 \paragraph{Danger sounds.} The sounds that matter most to a deaf viewer are the importance-3 sounds: danger or a key
 moment, such as a siren, an alarm, glass or a baby crying (Section~\ref{sec:needed}). On the test set the final system
-keeps every danger sound that drawing every sound finds (10 of 13) while showing 38 fewer wrong pictures; on the
+keeps every danger sound that drawing every sound finds (10 of 13) while showing 37 fewer wrong pictures; on the
 development set it finds 14 of the 17, one fewer (Figure~\ref{fig:importance}). The misses are mostly ordinary events of importance 2.
 
 \begin{figure}[htbp]
@@ -125,8 +127,8 @@ development set it finds 14 of the 17, one fewer (Figure~\ref{fig:importance}). 
 \includegraphics[width=\linewidth]{figures/importance_bars.pdf}
 \caption{Needed sounds found, by importance level (bars: share found; labels: found / needed). Importance 3: danger or
 a key moment, such as a siren, an alarm, glass or a baby crying; importance 2: an ordinary event one can say in a
-sentence. The final system finds 82\,\% (development) and 77\,\% (test) of the danger sounds and 37\,\% and 27\,\% of the
-ordinary events; direct audio-to-image finds 88\,\% and 77\,\%, and 46\,\% and 31\,\%, with far more wrong pictures
+sentence. The final system finds 82\,\% (development) and 77\,\% (test) of the danger sounds and 37\,\% and 28\,\% of the
+ordinary events; direct audio-to-image finds 88\,\% and 77\,\%, and 46\,\% and 34\,\%, with far more wrong pictures
 (Figure~\ref{fig:results}).}
 \label{fig:importance}
 \end{figure}
@@ -148,7 +150,7 @@ Section~\ref{sec:support}.
 
 \begin{table}[htbp]
 \centering\small
-\caption{One-model baselines (development set: cost only; test set: 87 clips, 65 needed sounds). Difference: the final
+\caption{One-model baselines (development set: cost only; test set: 87 clips, 66 needed sounds). Difference: the final
 system's cost minus this system's, per clip, with the 95\,\% interval of the paired clip bootstrap and an uncorrected
 two-sided $p$-value. Wrong pictures are split as in Table~\ref{tab:headline} (on screen / other sound / nothing).}
 \label{tab:onemodel}
@@ -157,20 +159,20 @@ two-sided $p$-value. Wrong pictures are split as in Table~\ref{tab:headline} (on
 \toprule
 System & Dev.\ cost & Test hits & Test wrong & Test cost & Difference (final $-$ this) [95\,\% CI] & $p$ \\
 \midrule
-M2D-strong (bar 0.7) & 3.465 & 4 / 65 & 14 (3/7/4) & 3.126 & $-0.713\ [-1.310, -0.092]$ & $0.024$ \\
-Qwen3-Omni, audio & 12.366 & 27 / 65 & 326 (18/214/94) & 9.241 & $-6.828\ [-8.529, -5.264]$ & $< 0.001$ \\
-Qwen3-Omni, video and audio & 5.099 & 9 / 65 & 85 (7/39/39) & 4.529 & $-2.115\ [-2.874, -1.402]$ & $< 0.001$ \\
+M2D-strong (bar 0.7) & 3.465 & 5 / 66 & 13 (3/6/4) & 3.103 & $-0.713\ [-1.287, -0.115]$ & $0.023$ \\
+Qwen3-Omni, audio & 12.366 & 28 / 66 & 325 (18/213/94) & 9.218 & $-6.828\ [-8.529, -5.264]$ & $< 0.001$ \\
+Qwen3-Omni, video and audio & 5.099 & 10 / 66 & 84 (7/38/39) & 4.506 & $-2.115\ [-2.897, -1.379]$ & $< 0.001$ \\
 \midrule
-\textbf{Final system} & 2.056 & 24 / 65 & 23 (4/15/4) & 2.414 & & \\
+\textbf{Final system} & 2.056 & 25 / 66 & 22 (4/15/3) & 2.391 & & \\
 \bottomrule
 \end{tabular}}
 \end{table}
 
 
 On the test set the final system costs less than each of the three: by 0.713, 6.828 and 2.115 per clip. M2D-strong at
-its chosen bar shows few pictures (4 hits, 14 wrong) and is no better than showing nothing; at lower bars it finds more
-sounds but shows far more wrong pictures (Figure~\ref{fig:m2dsweep}). Qwen3-Omni with audio finds the most needed sounds
-(27 of 65) but shows 326 wrong pictures. Watching the video lowers its wrong pictures to 85 but also its hits to 9.
+its chosen bar shows few pictures (5 hits, 13 wrong) and is no better than showing nothing; at lower bars it finds more
+sounds but shows far more wrong pictures (Figure~\ref{fig:m2dsweep}). Qwen3-Omni with audio finds as many needed sounds as
+direct audio-to-image generation (28 of 66) but shows 325 wrong pictures. Watching the video lowers its wrong pictures to 84 but also its hits to 10.
 
 \begin{figure}[htbp]
 \centering
@@ -184,18 +186,27 @@ but adds many more wrong pictures; at every bar its development cost (3.47 or mo
 \subsection{What the statistical tests support}\label{sec:support}
 \begin{description}
   \item[Significant.] On the test set the final system costs less than direct audio-to-image generation and audio
-        captioning ($p < 0.001$) and has a higher F1 than them ($p = 0.002$). On the development set it costs less than
-        showing nothing ($p < 0.001$).
-  \item[At the margin.] On the test set, the final system costs less than showing nothing ($p = 0.034$ uncorrected;
-        0.068 after the Holm correction below).
+        captioning ($p < 0.001$; $0.001$ after the Holm correction below). On the development set it costs less than
+        showing nothing ($p < 0.001$ before and after the correction).
+  \item[At the margin.] On the test set, the final system costs less than showing nothing ($p = 0.018$ uncorrected;
+        0.055 after the Holm correction below) and has a higher F1 than direct audio-to-image generation and audio
+        captioning ($p = 0.036$ uncorrected; 0.073 after the correction). Both point the same way as on the development
+        set, and both uncorrected 95\,\% intervals exclude zero, but neither stays below 0.05 once the five tests are
+        taken together.
   \item[Not significant.] On the development set, the difference from direct audio-to-image generation ($p = 0.085$).
-  \item[Multiple comparisons.] The family is every comparison of the final system against a baseline of Table~\ref{tab:headline} for which a
+  \item[Multiple comparisons.] Five comparisons of the final system with a baseline are reported as findings, all on
+        the same clips. Read one at a time at the 5\,\% level, the chance that at least one of five comparisons with no
+        real difference falls below 0.05 by luck would be up to about 23\,\% ($1 - 0.95^5$). The Holm
+        correction~\cite{holm1979} keeps that chance at 5\,\% for the five together. It was chosen because it makes no
+        assumption about how the tests are correlated (they share clips), it is never less powerful than the simpler
+        Bonferroni correction, and it is the correction used for the earlier comparison table
+        (Appendix~\ref{sec:sept-table}). The family is every comparison of the final system against a baseline of Table~\ref{tab:headline} for which a
         $p$-value is reported: cost against each baseline on each set, and F1 against direct audio-to-image generation
         on the test set. The two comparisons of one baseline against the other (direct audio-to-image generation against showing nothing, Section~\ref{sec:headline}) are reported with uncorrected $p$-values for completeness and are not part of the family. With a Holm correction over the five, the
-        test-set cost difference from direct audio-to-image generation and the development-set difference from showing
-        nothing stay at $p < 0.001$, the test-set F1 difference becomes $p = 0.006$, the test-set difference from
-        showing nothing becomes $p = 0.068$, and the development-set difference from direct audio-to-image generation
-        stays at $p = 0.085$.
+        development-set difference from showing nothing stays at $p < 0.001$, the test-set cost difference from direct
+        audio-to-image generation becomes $p = 0.001$, the test-set difference from showing nothing becomes
+        $p = 0.055$, the test-set F1 difference becomes $p = 0.073$, and the development-set difference from direct
+        audio-to-image generation stays at $p = 0.085$.
   \item[Reproduced.] Every count was reproduced by two independent routes, the scoring harness and the logged
         decision trail, with no difference on any of the 158 clips (Appendix~\ref{sec:parity}).
 \end{description}
@@ -209,17 +220,17 @@ assumes $\beta = 2$. Figure~\ref{fig:beta} shows how the conclusions change if $
 \centering
 \includegraphics[width=\linewidth]{figures/beta_sensitivity.pdf}
 \caption{Cost per clip as the cost of a wrong picture ($\beta$) varies, with a missed sound fixed at 4 (point estimates).
-Dots mark where a system breaks even with showing nothing: the final system at $\beta = 4.2$ (test) and $7.7$
-(development, off the chart), direct audio-to-image generation at $\beta = 1.7$ (test) and $3.5$ (development). With
-95\,\% bootstrap intervals, the final system is cheaper than showing nothing up to about $\beta = 2.15$ (test) and
+Dots mark where a system breaks even with showing nothing: the final system at $\beta = 4.5$ (test) and $7.7$
+(development, off the chart), direct audio-to-image generation at $\beta = 1.9$ (test) and $3.5$ (development). With
+95\,\% bootstrap intervals, the final system is cheaper than showing nothing up to about $\beta = 2.34$ (test) and
 $\beta = 4.4$ (development).}
 \label{fig:beta}
 \end{figure}
 
-On point estimates, the final system is cheaper than showing nothing for every $\beta < 4.2$ on the test set, that
+On point estimates, the final system is cheaper than showing nothing for every $\beta < 4.5$ on the test set, that
 is, until a wrong picture hurts slightly more than a missed sound, and cheaper than direct audio-to-image generation for every
-$\beta$ above 0.21 (test) or 0.83 (development). With intervals, recomputed by the same bootstrap at each $\beta$, the
-95\,\% interval of the test-set difference from showing nothing excludes zero up to about $\beta = 2.15$; on the
+$\beta$ above 0.32 (test) or 0.83 (development). With intervals, recomputed by the same bootstrap at each $\beta$, the
+95\,\% interval of the test-set difference from showing nothing excludes zero up to about $\beta = 2.34$; on the
 development set it excludes zero up to about $\beta = 4.4$. Drawing every sound is therefore only preferable if wrong
 pictures are almost free.
 
@@ -227,8 +238,8 @@ A second check prices each kind of wrong picture separately (Equation~\ref{eq:co
 set to 0 or 4 while the other two stay at 2 and a miss at 4 (Table~\ref{tab:kindprice}). The rows follow this one
 rule; none is chosen by hand. On both sets the final system costs less than showing nothing in every row, and on the
 test set it costs less than direct audio-to-image generation in every row. As in Figure~\ref{fig:beta}, the
-test-set interval against showing nothing excludes zero only while a wrong picture costs about 2 or less; the price
-of an other-sound picture moves it most, because that is the kind the final system shows most often (15 of 23).
+test-set interval against showing nothing no longer excludes zero once an on-screen or other-sound picture costs 4;
+the price of an other-sound picture moves it most, because that is the kind the final system shows most often (15 of 22).
 On the development set the difference from direct audio-to-image is zero when an on-screen picture is free.
 
 \begin{table}[htbp]
@@ -249,13 +260,13 @@ Development & none (all 2)   & 2.056 & 2.451 & 3.268 & $-1.211$ ($<0.001$) & $-0
             & nothing 0      & 2.000 & 2.310 & 3.268 & $-1.268$ ($<0.001$) & $-0.310$ ($0.16$) \\
             & nothing 4      & 2.113 & 2.592 & 3.268 & $-1.155$ ($<0.001$) & $-0.479$ ($0.051$) \\
 \midrule
-Test        & none (all 2)   & 2.414 & 3.195 & 2.989 & $-0.575$ ($0.034$)  & $-0.782$ ($<0.001$) \\
-(87 clips)  & on screen 0    & 2.322 & 2.828 & 2.989 & $-0.667$ ($0.007$)  & $-0.506$ ($<0.001$) \\
-            & on screen 4    & 2.506 & 3.563 & 2.989 & $-0.483$ ($0.11$)   & $-1.057$ ($<0.001$) \\
-            & other sound 0  & 2.069 & 2.460 & 2.989 & $-0.920$ ($<0.001$) & $-0.391$ ($0.001$) \\
-            & other sound 4  & 2.759 & 3.931 & 2.989 & $-0.230$ ($0.51$)   & $-1.172$ ($<0.001$) \\
-            & nothing 0      & 2.322 & 2.897 & 2.989 & $-0.667$ ($0.011$)  & $-0.575$ ($<0.001$) \\
-            & nothing 4      & 2.506 & 3.494 & 2.989 & $-0.483$ ($0.094$)  & $-0.989$ ($<0.001$) \\
+Test$^{b}$  & none (all 2)   & 2.391 & 3.103 & 3.034 & $-0.644$ ($0.018$)  & $-0.713$ ($<0.001$) \\
+(87 clips)  & on screen 0    & 2.299 & 2.736 & 3.034 & $-0.736$ ($0.003$)  & $-0.437$ ($0.012$) \\
+            & on screen 4    & 2.483 & 3.471 & 3.034 & $-0.552$ ($0.064$)  & $-0.989$ ($<0.001$) \\
+            & other sound 0  & 2.046 & 2.368 & 3.034 & $-0.989$ ($<0.001$) & $-0.322$ ($0.047$) \\
+            & other sound 4  & 2.736 & 3.839 & 3.034 & $-0.299$ ($0.39$)   & $-1.103$ ($<0.001$) \\
+            & nothing 0      & 2.322 & 2.851 & 3.034 & $-0.713$ ($0.007$)  & $-0.529$ ($0.003$) \\
+            & nothing 4      & 2.460 & 3.356 & 3.034 & $-0.575$ ($0.043$)  & $-0.897$ ($<0.001$) \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -265,16 +276,16 @@ Figure~\ref{fig:errors} breaks down the misses of the final system by the step w
 decision trail.
 Most misses are sounds that were heard as candidates and then removed by a later rule -- on the development set most often because
 the listeners did not confirm a weak detection; on the test set listeners, vetoes and timing account for about equal
-shares (12, 10 and 10 of 41). Each of these rules was accepted because, overall, it removed more wrong
-pictures than real ones; the sounds it removes are the price. Six needed sounds in each set were heard by no detector.
-(These counts are for the final system, with 58 and 65 needed sounds.)
-Most wrong pictures on the test set show another sound (15 of 23; Figure~\ref{fig:wrongkind}). Figure~\ref{fig:bylabel}
+shares (12, 9 and 10 of 41). Each of these rules was accepted because, overall, it removed more wrong
+pictures than real ones; the sounds it removes are the price. Six needed sounds in the development set and seven in the test set were heard by no detector.
+(These counts are for the final system, with 58 and 66 needed sounds.)
+Most wrong pictures on the test set show another sound (15 of 22; Figure~\ref{fig:wrongkind}). Figure~\ref{fig:bylabel}
 shows the needed sounds found per gold label, with each miss coloured by the step where it was lost: on the development
 set none of the four needed bird calls is found, two of them lost at the on-screen check, where perched birds are
-taken as the source (Section~\ref{sec:presence}). The two largest families of the test set, machine gun and vehicle
-horn, are each found 0 of 5 times, for different reasons. Three of the horns are in one clip with a continuous vehicle sound:
-the continuation veto reads each repeated honk as a later piece of the traffic sound already going on; one more horn
-is lost to timing and one at the on-screen check. Of the machine guns, two are silenced at the on-screen check, one
+taken as the source (Section~\ref{sec:presence}). Two large families of the test set are never found, machine gun (0 of 5) and
+vehicle horn (0 of 4), for different reasons. Three of the horns are in one clip with a continuous vehicle sound:
+the continuation veto reads each repeated honk as a later piece of the traffic sound already going on; the fourth
+is lost to timing. Of the machine guns, two are silenced at the on-screen check, one
 falls to the mirror veto (a sound heard only by BEATs is dropped when FlexSED hears another family much more strongly at
 that moment and the listeners do not put it back; here a helicopter scored higher), one is lost to timing, and one is merged into a
 stronger gunshot of the same family. Section~\ref{sec:hard} explains why these errors are hard to remove.

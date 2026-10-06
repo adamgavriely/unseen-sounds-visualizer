@@ -3,7 +3,7 @@ Subtitles carry speech, but deaf and hard-of-hearing viewers still miss the othe
 guidelines allow a caption to leave out a sound whose source is clearly seen on screen. The sounds a deaf viewer loses are
 therefore those whose source is \emph{off screen}: a siren behind the camera, a dog barking in the next room. This project builds a system that
 finds them and shows a generated picture of each one beside the video while it is heard. It also defines the
-decision as a scorable task: a per-sound benchmark of 308 timed sounds, each marked by whether its source is seen
+decision as a scorable task: a per-sound benchmark of 309 timed sounds, each marked by whether its source is seen
 making it, whether it is obvious and whether it is important, with a viewer cost that prices a miss against a wrong picture.
 
 Nothing is trained: the system chains open sound detectors, audio-language ``listeners'', a vision-language model
@@ -15,10 +15,10 @@ twice as many wrong pictures as right ones on the test set. The final system is 
 rounds, each change accepted only by a rule written before its run, over more than 150 full-pipeline variants and
 more than 30 open models.
 
-On a test set of 87 clips, scored per sound against human labels, the system finds 24 of 65 needed off-screen sounds,
-including 10 of the 13 danger sounds, with 23 wrong pictures. Its viewer cost (a miss costs 4, a wrong picture 2) is
-2.414 per clip, against 3.195 for direct audio-to-image generation and 2.989 for showing nothing
-($p < 0.001$ against direct audio-to-image generation; $p = 0.034$ against showing nothing, 0.068 after a Holm correction
+On a test set of 87 clips, scored per sound against human labels, the system finds 25 of 66 needed off-screen sounds,
+including 10 of the 13 danger sounds, with 22 wrong pictures. Its viewer cost (a miss costs 4, a wrong picture 2) is
+2.391 per clip, against 3.103 for direct audio-to-image generation and 3.034 for showing nothing
+($p < 0.001$ against direct audio-to-image generation; $p = 0.018$ against showing nothing, 0.055 after a Holm correction
 over five tests). The audio-captioning baseline, the same decisions shown as text rather than pictures, scores the same
 as direct audio-to-image generation under the per-sound metric.
 

@@ -117,7 +117,7 @@ for split in ("DEV", "TEST"):
                 if g["outcome"] != "hit":
                     lost.setdefault(lab, {}).setdefault(LOST_AT_BAR[g["lost_at"]], 0)
                     lost[lab][LOST_AT_BAR[g["lost_at"]]] += 1
-    assert sum(need.values()) == (58 if split == "DEV" else 65)
+    assert sum(need.values()) == (58 if split == "DEV" else 66)
     rows_by_set[split] = sorted(((SHORT.get(k, k), found[k], n, lost.get(k, {})) for k, n in need.items() if n >= 2),
                                 key=lambda t: (-t[2], -t[1], t[0]))
 nmax = max(len(v) for v in rows_by_set.values())

@@ -17,19 +17,19 @@
    "pictures_differ_from_frozen": 0
   },
   "TEST": {
-   "needed": 65,
-   "hits": 24,
+   "needed": 66,
+   "hits": 25,
    "clips": 87,
    "clips_without_trail": 0,
    "misses": 41,
-   "miss_with_reason": 32,
-   "miss_trail": 35,
-   "wrong_with_trail": 22,
-   "wrong": 23,
+   "miss_with_reason": 30,
+   "miss_trail": 34,
+   "wrong_with_trail": 21,
+   "wrong": 22,
    "visible": 4,
    "cross": 15,
-   "phantom": 4,
-   "cost": 2.414,
+   "phantom": 3,
+   "cost": 2.391,
    "pictures_differ_from_frozen": 0
   }
  },
@@ -48,13 +48,13 @@
    2.056
   ],
   "TEST": [
-   24,
-   65,
-   23,
+   25,
+   66,
+   22,
    4,
    15,
-   4,
-   2.414
+   3,
+   2.391
   ]
  },
  "exact": true

@@ -6651,7 +6651,7 @@
     },
     {
      "label": "buzzing alarm from inside the car",
-     "family": "Buzzer",
+     "family": "Electric toothbrush",
      "visible": false,
      "obvious": false,
      "importance": 2,
@@ -15786,18 +15786,6 @@
      "masked": false,
      "start": 1.8,
      "end": 2.5
-    },
-    {
-     "label": "laughter",
-     "start": 3.2,
-     "end": 4.3,
-     "visible": false,
-     "obvious": false,
-     "masked": false,
-     "importance": 2,
-     "added": "2026-10-06T11:35:00.000Z",
-     "from_suggestion": false,
-     "family": "Laughter"
     }
    ],
    "sentence": "nothing beyond the picture",
@@ -32102,15 +32090,14 @@
      "gate": "vlm unseen"
     },
     {
-     "label": "motorcycle",
+     "label": "chainsaw",
      "visible": false,
      "obvious": false,
      "importance": 2,
      "masked": false,
      "start": 10.3,
      "end": 16.8,
-     "from_detector": true,
-     "family": "Motorcycle"
+     "from_detector": true
     },
     {
      "label": "chainsaw engine running",
@@ -35103,21 +35090,8 @@
   },
   {
    "clip": "tg_d009.mp4",
-   "sounds": [
-    {
-     "label": "laughter (person filming)",
-     "start": 8.53,
-     "end": 9.25,
-     "visible": false,
-     "obvious": false,
-     "masked": false,
-     "importance": 2,
-     "added": "2026-10-06T11:35:00.000Z",
-     "from_suggestion": false,
-     "family": "Laughter"
-    }
-   ],
-   "no_sounds": false,
+   "sounds": [],
+   "no_sounds": true,
    "bad": false,
    "note": "",
    "done": true,
@@ -36021,6 +35995,18 @@
      "importance": 1,
      "added": "2026-09-29T19:24:44.348Z",
      "from_suggestion": true
+    },
+    {
+     "label": "car honk",
+     "start": 5.2,
+     "end": 5.8,
+     "visible": false,
+     "obvious": false,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:25:05.604Z",
+     "from_suggestion": false,
+     "family": "Vehicle horn, car horn, honking"
     }
    ],
    "no_sounds": false,

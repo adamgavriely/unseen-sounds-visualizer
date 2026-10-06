@@ -30,8 +30,8 @@ the picture is checked and redrawn, up to five tries in all \\
 Score & model judge & circular or at chance on visibility (Section~\ref{sec:hard-measure}) & per-sound human labels
 and a viewer cost \\
 \midrule
-All & full detection stack, every detected sound drawn without reading the video & 26 sounds found, 61 wrong pictures
-on the test set; no better than showing nothing & final system: 24 sounds found, 23 wrong pictures; cheaper than every
+All & full detection stack, every detected sound drawn without reading the video & 28 sounds found, 59 wrong pictures
+on the test set; no better than showing nothing & final system: 25 sounds found, 22 wrong pictures; cheaper than every
 baseline of the proposal \\
 \bottomrule
 \end{tabular}
@@ -56,11 +56,11 @@ Qwen vision-language models~\cite{bai2025qwen25vl,qwen38card}, OWLv2~\cite{minde
 Qwen-Image~\cite{wu2025qwenimage}); and 3 model judges~\cite{zheng2023judge} (Mistral-7B~\cite{jiang2023mistral}, Qwen3-8B~\cite{yang2025qwen3} and Gemma-4-31B~\cite{gemma4card}) \\
 Pre-registered rounds & 66 rounds, each with its rule and pass bar written before the run \\
 Full-pipeline variants scored & more than 150, plus about 90 component screens \\
-Human labels & 308 timed sounds in 158 clips, each marked by whether its source is seen making it, whether it is obvious, and how important it is \\
+Human labels & 309 timed sounds in 158 clips, each marked by whether its source is seen making it, whether it is obvious, and how important it is \\
 Screening data & 415 AudioSet-Strong clips with timed labels for audio-only rules \\
 Rules in the final system & 16 ordered detection steps (Table~\ref{tab:stage4}), more than 40 configuration values (Table~\ref{tab:config}), 13 prompt templates (Appendix~\ref{app:prompts}); every threshold fixed on the development set \\
 Changes accepted & every step from the first full pipeline to the final system, with its development and test numbers (Table~\ref{tab:shipchain}); the verdict of every round in Table~\ref{tab:rounds} \\
-Duration & 6 August (proposal) to 2 October (system frozen), Table~\ref{tab:eras} \\
+Duration & about eight weeks, from the proposal to the system freeze, Table~\ref{tab:eras} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -74,7 +74,7 @@ is the sum of many small rules, each one closing a failure described in this sec
 \centering
 \includegraphics[width=\linewidth]{figures/progression.pdf}
 \caption{Cost per clip after each accepted change, from the first full pipeline to the final system: development
-3.690 $\to$ 2.056, test 2.920 $\to$ 2.414. Decisions were made on the development set; the test set was only scored.
+3.690 $\to$ 2.056, test 2.966 $\to$ 2.391. Decisions were made on the development set; the test set was only scored.
 Dotted lines: showing nothing. Each step is a row of Table~\ref{tab:shipchain} (Appendix~\ref{app:history}), except
 three early steps (masked-weak veto, DASM rescue, inventory keep), which share one row there. The depict-event row (net effect zero) and the row in which the scene check is read as text instead of as a probability (Appendix~\ref{app:versions}) are not
 plotted. The step names are short

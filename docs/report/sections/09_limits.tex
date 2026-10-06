@@ -43,7 +43,15 @@ and one picture is shown per sound, without words (Section~\ref{sec:problem}).
   \item \textbf{Small sets.} With 71 and 87 clips, one or two pictures can decide a development comparison: one wrong
         picture moves the development cost by 0.028 and one hit by 0.056 per clip. The 95\,\% intervals of the main comparisons are 0.5 to 1.2 per clip wide.
   \item \textbf{Label changes.} The author re-checked the visibility of 14 disputed development sounds blind (3 changed;
-        0 of 20 random controls changed); test labels were never changed.
+        0 of 20 random controls changed). Five test labels were corrected after the test outputs had been scored: two
+        sounds added, one removed and two renamed. They come from a blind re-listen of the test set built from the
+        outputs of four systems in both directions, so that the check could not favour one system, and only answers
+        confirmed on a second listen were applied (Appendix~\ref{app:datahistory}). Every system was re-scored from
+        its saved outputs; no model, rule or setting changed. The corrections cut both ways: the lead over showing
+        nothing grows a little ($-0.644$ instead of $-0.575$ per clip), the lead over direct audio-to-image generation
+        shrinks ($-0.713$ instead of $-0.782$), and the test-set F1 difference ($p = 0.036$, before $0.002$) is no
+        longer significant after the Holm correction. All test numbers in this report are on the corrected labels; the
+        development results are unchanged.
   \item \textbf{One baseline not run.} A video-conditioned generator raised during supervision (for example
         MiniMax-H3) creates new video; the per-sound score cannot evaluate it, so it was not compared.
   \item \textbf{Scored versus live system.} The scoring harness and the live pipeline differ in four small ways that do

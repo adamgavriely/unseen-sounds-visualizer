@@ -10,19 +10,19 @@ itself made measurable: a per-sound benchmark that marks each sound by whether i
 obvious and whether it is important, and a viewer cost that prices a miss against a wrong picture for this decision.
 
 On the test set the final system
-finds 37\,\% of the needed sounds, half of its pictures are right, and its cost is lower than all three baselines of the
+finds 38\,\% of the needed sounds, more than half of its pictures are right, and its cost is lower than all three baselines of the
 proposal (audio captioning scores the same as direct audio-to-image generation under the per-sound metric): clearly against
-direct audio-to-image generation ($p < 0.001$) and at the margin against showing nothing ($p = 0.034$ uncorrected, 0.068 after a Holm
+direct audio-to-image generation ($p < 0.001$) and at the margin against showing nothing ($p = 0.018$ uncorrected, 0.055 after a Holm
 correction over five tests, on a test set used only for reporting). Its F1 is also higher than that of direct
-audio-to-image generation on the test set ($p = 0.002$; 0.006 after the same correction). The remaining errors sit where today's open models stop: sounds the detectors barely hear under speech and
+audio-to-image generation on the test set ($p = 0.036$ uncorrected; 0.073 after the same correction). The remaining errors sit where today's open models stop: sounds the detectors barely hear under speech and
 music, and a vision model that takes ``the object is there'' for ``the object is making the sound''.
 
 \paragraph{Answers to the research questions.}
 \begin{description}[style=nextline]
   \item[RQ1 -- which audio information matters most?] Danger sounds and key moments whose source is off screen:
-        sirens, alarms, a baby crying, glass. They are about a quarter of the needed sounds (30 of 123), and they are
+        sirens, alarms, a baby crying, glass. They are about a quarter of the needed sounds (30 of 124), and they are
         the sounds the system serves best: it finds 82\,\% of them on the development set and 77\,\% on the test set,
-        against 37\,\% and 27\,\% of ordinary events, and the steps that read the video lose none of them on the test set and one on
+        against 37\,\% and 28\,\% of ordinary events, and the steps that read the video lose none of them on the test set and one on
         the development set, at a fraction of the baseline's wrong pictures (Figure~\ref{fig:importance}). More broadly, the information that
         matters is discrete, sourced events (a bell, a knock), which the benchmark's importance rule (an event one can
         say in a sentence, or danger) captures; steady place noise (wind, traffic hum) is excluded by design, and it is
@@ -42,8 +42,8 @@ music, and a vision model that takes ``the object is there'' for ``the object is
         Automatic protocols with model-written references or model judges failed: they are circular, decide visibility
         at chance, or cannot tell a picture from a text tag.
   \item[RQ5 -- comparison with audio-to-visual approaches?] Against the proposal's direct audio-to-image baseline (the
-        final system without the on-screen check, drawing every detected sound), the final system costs 0.782 less per clip on the test set
-        ($p < 0.001$): it has two fewer hits but 38 fewer wrong pictures. Audio captioning scores the same as direct
+        final system without the on-screen check, drawing every detected sound), the final system costs 0.713 less per clip on the test set
+        ($p < 0.001$): it has three fewer hits but 37 fewer wrong pictures. Audio captioning scores the same as direct
         audio-to-image under the per-sound metric (a separate captioning model was not run; the captioning baseline is
         the same decisions shown as text); whether pictures beat text needs viewers.
 \end{description}
@@ -57,5 +57,5 @@ starts where this one stopped and every claim here can be checked sound by sound
 
 \section*{Code and data availability}\phantomsection\addcontentsline{toc}{section}{Code and data availability}\label{sec:availability}
 The code, the per-sound labels, the scoring harness, the logged decisions of the final system and the sources of this
-report are published as release v1.3.10 of \url{https://github.com/adamgavriely/unseen-sounds-visualizer}~\cite{gavriely2026code}.
+report are published as release v1.3.11 of \url{https://github.com/adamgavriely/unseen-sounds-visualizer}~\cite{gavriely2026code}.
 The video clips are not redistributed; Appendix~\ref{app:sources} explains how to reproduce every number.

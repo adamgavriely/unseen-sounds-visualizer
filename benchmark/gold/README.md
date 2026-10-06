@@ -58,7 +58,7 @@ python benchmark/gold/final_vs_baselines.py                 # Table 3: final sys
 python benchmark/gold/final_vs_baselines_extra.py           # F1 intervals, danger sounds
 python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL      # configuration check
 python benchmark/gold/inspector_trail_export.py \
-   --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/23/4/15/4/2.414
+   --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=25/66/22/4/15/3/2.391
 ```
 
 From a plain clone these scripts stop at the first missing clip or output.

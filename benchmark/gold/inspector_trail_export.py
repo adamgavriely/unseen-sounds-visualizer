@@ -14,7 +14,7 @@ Compatible with the earlier inspector exporter (not in the repository), with the
     video keys to <out>_media_sigs.json.
 
     # cluster, from the checkout of the scored runs (as merged_dev.py and test_vs_ship8.py, release v1.2.0), after the _trail arm ran on all four parts:
-    python benchmark/gold/inspector_trail_export.py --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/23/4/15/4/2.414
+    python benchmark/gold/inspector_trail_export.py --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=25/66/22/4/15/3/2.391
 
 Decides nothing; reads gold only to classify (merged TEST is a reporting re-run of the frozen arm).
 """

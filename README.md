@@ -10,7 +10,7 @@ behind the camera, a dog barking in the next room, glass breaking off screen. Th
 its non-speech, non-music sounds, decides for each one whether its source is already visible, and shows a generated
 picture of the sound beside the video **only while an off-screen sound is heard**. No model is trained: the system
 is a chain of open models joined by rules fixed on a development set, in 66 pre-registered rounds over more than 150
-full-pipeline variants and more than 30 open models, and scored on 308 labelled sounds in 158 clips.
+full-pipeline variants and more than 30 open models, and scored on 309 labelled sounds in 158 clips.
 
 The full description, the benchmark, the results and the limits are in the technical report,
 [`docs/report/report.pdf`](docs/report/report.pdf).
@@ -25,15 +25,16 @@ of the project proposal.
 
 | system | development set (71 clips) | test set (87 clips) |
 |---|---|---|
-| show nothing | cost 3.268 | cost 2.989 |
-| direct audio-to-image (and audio captioning) | 34 / 58 found, 39 wrong, cost 2.451 | 26 / 65 found, 61 wrong, cost 3.195 |
-| **final system** | **29 / 58 found, 15 wrong, cost 2.056** | **24 / 65 found, 23 wrong, cost 2.414** |
+| show nothing | cost 3.268 | cost 3.034 |
+| direct audio-to-image (and audio captioning) | 34 / 58 found, 39 wrong, cost 2.451 | 28 / 66 found, 59 wrong, cost 3.103 |
+| **final system** | **29 / 58 found, 15 wrong, cost 2.056** | **25 / 66 found, 22 wrong, cost 2.391** |
 
-On the test set the final system is cheaper than direct audio-to-image generation (−0.782 per clip,
-95 % interval [−1.057, −0.506], p < 0.001) and, at the margin, than showing nothing (−0.575, [−1.126, −0.046], p = 0.034; p = 0.068
+On the test set the final system is cheaper than direct audio-to-image generation (−0.713 per clip,
+95 % interval [−1.034, −0.368], p < 0.001) and, at the margin, than showing nothing (−0.644, [−1.195, −0.115], p = 0.018; p = 0.055
 after a Holm correction over the five main tests). It finds 10 of the 13 danger sounds of the test set (sirens,
 alarms, breaking glass, a crying baby). Every decision was made on the development set; the test set was only
-scored. Limits are discussed in Section 9 of the report.
+scored. Five test labels were corrected after a blind second listen, and every system was re-scored on the corrected
+labels (the earlier labels are kept in `benchmark/gold/annotations/`). Limits are discussed in Section 9 of the report.
 
 ## How it works
 
@@ -108,7 +109,7 @@ once per clip.
 
 ## Reproducing the reported numbers
 
-This is release v1.3.10, the version the report cites. The reported numbers are stored in the repository:
+This is release v1.3.11, the version the report cites. The reported numbers are stored in the repository:
 [`benchmark/gold/final_vs_baselines.json`](benchmark/gold/final_vs_baselines.json) (final system and baselines),
 [`benchmark/gold/final_vs_baselines_extra.json`](benchmark/gold/final_vs_baselines_extra.json) (F1 intervals,
 danger sounds) and [`docs/decision_trail/data_parity.json`](docs/decision_trail/data_parity.json) (configuration check).
@@ -116,6 +117,7 @@ Appendix C of the report gives the source file of every number.
 
 Checks that run from a plain clone, on CPU, in under a minute: `python -m pytest` (11 tests);
 `python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL` (the shipped configuration equals the scored variant);
+`python benchmark/gold/holm_five.py` (the Holm correction over the five main tests);
 `python docs/report/figures/make_results_figure.py` (rebuilds `results_bars.pdf` and `.png` from the numbers of Table 3, written in the script).
 
 Recomputing them from a clone is not possible as is. The scripts (for example

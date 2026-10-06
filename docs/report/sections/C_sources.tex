@@ -3,7 +3,7 @@
 \subsection{Reproduction}\label{sec:repro}
 The development record (pre-registrations, daily notes, reviews, the labelling tool) is not part of the current release, which holds only the code, the labels, the scoring and this report. It is kept in full in release v1.2.0 (\url{https://github.com/adamgavriely/unseen-sounds-visualizer/releases/tag/v1.2.0}); every path below that starts with \fp{docs/history/} or \fp{docs/README.md} refers to that release.
 
-\paragraph{Code.} Release v1.3.10 of the repository. The final system is the configuration \cfgv{config.use_shipped()}
+\paragraph{Code.} Release v1.3.11 of the repository. The final system is the configuration \cfgv{config.use_shipped()}
 in \fp{config.py}; in the scoring harness it is the variant \texttt{SHIP8+MD3+WW5+SL} (Appendix~\ref{app:glossary}).
 
 \paragraph{Environment.} Python 3.11 with PyTorch 2.5.1, transformers 5.16.1, diffusers, faster-whisper, panns-inference,
@@ -51,7 +51,7 @@ python benchmark/gold/one_model_baseline/make_m2d_chart.py
 # configuration check
 python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL
 python benchmark/gold/inspector_trail_export.py \
-   --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/23/4/15/4/2.414
+   --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=25/66/22/4/15/3/2.391
 # figures of the report
 python docs/report/figures/make_results_figure.py
 python docs/report/figures/make_beta_figure.py
@@ -71,7 +71,8 @@ model answers. The logging (\fp{src/trail.py}) only records and never changes a 
 
 \paragraph{Where the records are.} The development record is in \fp{docs/history/}: pre-registrations with their results
 (\fp{docs/history/preregistrations/}), review panels, daily notes and analyses; \fp{docs/README.md} gives the map. The
-gold labels are \fp{benchmark/gold/annotations/gold_AG.json}.
+gold labels are \fp{benchmark/gold/annotations/gold_AG.json}; the labels before the five test-label corrections are
+\fp{benchmark/gold/annotations/gold_AG_v1.3.10.json}, and the corrections are listed in the README there.
 
 \subsection{Sources of the numbers}
 Every number in the main body comes from one of the files in Table~\ref{tab:sources} (paths relative to the repository root). Counts of the
@@ -91,10 +92,10 @@ Numbers & File \\
 Table~\ref{tab:sets} (set sizes, needed sounds) & \fp{benchmark/gold/annotations/gold_AG.json}, counted with \fp{benchmark/gold/score_per_sound.py} \\
 labelling rules (Section~\ref{sec:needed}) & the labelling tool (release v1.2.0), its clip-category rule in \fp{benchmark/gold/score_per_sound.py} (\texttt{category}), \fp{docs/history/plans/metric_per_sound.md} \\
 scoring rules, cost (Section~\ref{sec:task}) & \fp{benchmark/gold/score_per_sound.py} \\
-bootstrap and pass rules & \fp{benchmark/gold/dev_candidates_check.py}; \fp{benchmark/gold/holm_table.py} \\
+bootstrap and pass rules & \fp{benchmark/gold/dev_candidates_check.py}; \fp{benchmark/gold/holm_table.py} (the September table) \\
 F1 intervals, Figure~\ref{fig:importance} (danger sounds) & \fp{benchmark/gold/final_vs_baselines_extra.json}, from \fp{benchmark/gold/final_vs_baselines_extra.py} \\
 final system and baselines, Table~\ref{tab:headline} & \fp{benchmark/gold/final_vs_baselines.json}; \fp{docs/history/review/detector_final_2026-10-02.md}; \fp{docs/decision_trail/data_parity.json} \\
-Holm correction over five tests (Section~\ref{sec:support}) & the five $p$-values of \fp{benchmark/gold/final_vs_baselines.json} and \fp{benchmark/gold/final_vs_baselines_extra.json} \\
+Holm correction over five tests (Section~\ref{sec:support}) & \fp{benchmark/gold/holm_five.py}, from the five $p$-values of \fp{benchmark/gold/final_vs_baselines.json} and \fp{benchmark/gold/final_vs_baselines_extra.json} \\
 intervals at each $\beta$ (Section~\ref{sec:sensitivity}) & per-clip hits and wrong pictures of \fp{docs/decision_trail/data.js}, with the bootstrap of Section~\ref{sec:passrules} \\
 price of each kind of wrong picture (Table~\ref{tab:kindprice}) & \fp{benchmark/gold/kind_price_sweep.py}, from the per-clip results in \fp{benchmark/gold/one_model_baseline/result_m2d.json}; earlier on-screen-only versions in \fp{benchmark/gold/visible_weight_sweep.md} \\
 fate of misses (Section~\ref{sec:errors}, Figures~\ref{fig:errors} and~\ref{fig:bylabel}; the 8 needed sounds lost at the on-screen check, Section~\ref{sec:presence}) & \fp{docs/decision_trail/data.js} (field \cfgv{lost_at}), grouped into bars by \cfgv{LOST_AT_BAR} in \fp{docs/report/figures/make_analysis_figures.py}; \fp{docs/history/review/inspector_trail_ready.md} \\
