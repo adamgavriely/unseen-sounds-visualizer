@@ -8,7 +8,7 @@ could make the reported numbers wrong. Section~\ref{sec:hard} explains the first
 \begin{itemize}
   \item \textbf{Detector floor.} In the ceiling analysis, 11 of 58 needed sounds could
         not be found with today's open detectors, mostly because they are quiet under speech or music; in the final system
-        six needed sounds per set are heard by no detector at all. No later rule can recover them.
+        six needed sounds in the development set and seven in the test set are heard by no detector at all. No later rule can recover them.
   \item \textbf{Presence is not production.} The on-screen check confuses an object being visible with the object
         making the sound; every alternative tried traded one error for the other.
   \item \textbf{No audio stage tried here separates a right off-screen name from a wrong one} reliably; most rules that added hits also added two or more wrong
@@ -44,11 +44,12 @@ and one picture is shown per sound, without words (Section~\ref{sec:problem}).
         picture moves the development cost by 0.028 and one hit by 0.056 per clip. The 95\,\% intervals of the main comparisons are 0.5 to 1.2 per clip wide.
   \item \textbf{Label changes.} The author re-checked the visibility of 14 disputed development sounds blind (3 changed;
         0 of 20 random controls changed). Five test labels were corrected after the test outputs had been scored: two
-        sounds added, one removed and two renamed. They come from a blind re-listen of the test set built from the
-        outputs of four systems in both directions, so that the check could not favour one system, and only answers
-        confirmed on a second listen were applied (Appendix~\ref{app:datahistory}). Every system was re-scored from
+        sounds added, one removed and two renamed. They come from a blind re-listen of the test set, with questions built from the
+        outputs of four systems with their names hidden, in both directions (needed sounds the systems had not found,
+        and pictures scored as wrong); only answers confirmed on a second listen were applied
+        (Appendix~\ref{app:datahistory}). Every system was re-scored from
         its saved outputs; no model, rule or setting changed. The corrections cut both ways: the lead over showing
-        nothing grows a little ($-0.644$ instead of $-0.575$ per clip), the lead over direct audio-to-image generation
+        nothing grows a little ($-0.644$ instead of $-0.575$ per clip; $p = 0.018$, before $0.034$), the lead over direct audio-to-image generation
         shrinks ($-0.713$ instead of $-0.782$), and the test-set F1 difference ($p = 0.036$, before $0.002$) is no
         longer significant after the Holm correction. All test numbers in this report are on the corrected labels; the
         development results are unchanged.

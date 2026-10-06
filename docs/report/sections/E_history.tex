@@ -8,7 +8,7 @@ that each row can be found in \fp{docs/history/} of release v1.2.0 (the full dev
 Appendix~\ref{app:sources}); Appendix~\ref{app:glossary} maps them to plain names.
 
 \subsection{How the data grew}\label{app:datahistory}
-\paragraph{Clip-level benchmark (August--September).} 274 short clips (10--20\,s) were labelled by the author into four
+\paragraph{Clip-level benchmark.} 274 short clips (10--20\,s) were labelled by the author into four
 scenarios: unseen ambient (48 clips), mixed (25), seen ambient (132) and no ambient (69). Four sourcing strategies
 (keyword scraping, AudioSet strong segments, curated film scenes, UnAV-100 overlap moments) and an automatic filter
 all landed at 15--20\,\% usable clips; with the resources of this project and no existing data that fits the task,
@@ -46,10 +46,11 @@ after the visibility re-check (three sounds changed from seen to needed), 57 aft
 a correction. Every system was re-scored on each version. The test count was 65 until five test labels were corrected
 after the test outputs had been scored (Section~\ref{sec:limits}). The corrections come from a blind re-listen of the
 test set: 92 questions at 76 moments in 51 test clips, built from the outputs of four systems (the final system, direct
-audio-to-image generation and the two Qwen3-Omni one-model baselines) with the systems' names hidden and in both
+audio-to-image generation and the two Qwen3-Omni one-model baselines) with the systems' names hidden. The questions ran in both
 directions: every needed sound that at most one of the four had found, and every wrong picture of the final system or
 of direct audio-to-image generation, or shown by two or more systems (pictures already judged in the blind rating of
-round 46 were not asked again). Only answers confirmed on a second listen were applied: laughter off screen was added
+round 46 were not asked again; the one laugh that rating had called a real off-screen sound was confirmed on the
+second listen and is one of the two added). Only answers confirmed on a second listen were applied: laughter off screen was added
 in two clips, a car horn that is not in the audio was removed, and two sounds were renamed (a buzzer labelled as an
 electric toothbrush, and a motorcycle labelled as a chainsaw). Three answers that were not confirmed on the second
 listen (an explosion first heard as on screen, a crow call, and one more car horn) left their labels unchanged. The
@@ -171,8 +172,8 @@ Idea (round) & What it did & Why it failed \\
 \toprule Idea & What it did & Why it failed \\ \midrule\endhead
 \bottomrule\endfoot
 \multicolumn{3}{l}{\emph{Hear more sounds}} \\
-other detectors (Sept, rounds 1--8) & FLAM, PretrainedSED (5 backbones), AST, CED, SSLAM, EAT, Dasheng, PE-A-Frame, CLAP verifier, tagger ensembles & recall rose only with many more false spans; PretrainedSED lost three times; ensembles mis-scaled \\
-source separation (Sept, R7) & HT-Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: with HT-Demucs, recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
+other detectors (rounds 1--8) & FLAM, PretrainedSED (5 backbones), AST, CED, SSLAM, EAT, Dasheng, PE-A-Frame, CLAP verifier, tagger ensembles & recall rose only with many more false spans; PretrainedSED lost three times; ensembles mis-scaled \\
+source separation (R7) & HT-Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: with HT-Demucs, recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
 listener as verifier (R13) & ask Qwen3-Omni yes/no, multiple choice, open list on every weak candidate & finds 5--8 dropped real sounds but adds about 3 wrong pictures per hit \\
 newer listeners (R31--34) & MOSS-Audio, SpotSound, Kimi, Step-Audio & 3--10 wrong per extra hit; SpotSound answered yes to every query \\
 EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & most hits on DEV, 31/26/2.254, against its base SHIP8 28/21/2.282: +3 hits for +5 wrong; failed the pre-set ``more hits'' rule (wrong pictures of other sounds rose 13 $\to$ 17), not shipped; the gate cannot refuse a wrong off-screen name \\
@@ -183,7 +184,7 @@ stricter witnesses (R53 variants) & require DASM or both listeners for every wea
 named veto, relabel gate (R39--41) & drop or rename a picture when the gate or the listeners name a different sound & real hits lost for no cost gain \\
 held-out family prior (R41) & drop families a detector gets wrong $>70\,\%$ of the time on the 415 & every affected picture had been heard by a listener: no change \\
 \multicolumn{3}{l}{\emph{Better on-screen decision}} \\
-other gate signals (Sept, am.\ 14--20) & OWLv2 or SAM 3 vote, video input, synchrony, ``any stretch'' rule & each removed exactly as many needed sounds as wrong pictures it saved (break-even at $\beta = 2$) \\
+other gate signals (am.\ 14--20) & OWLv2 or SAM 3 vote, video input, synchrony, ``any stretch'' rule & each removed exactly as many needed sounds as wrong pictures it saved (break-even at $\beta = 2$) \\
 SSL-SaN, SigLIP, BOX (R30--38) & audio-visual localiser; picture-vs-frame similarity; VLM draws a box on the source and checks the crop & each un-silenced real visible sounds; BOX-2 in the full pipeline 29/26/2.366 \\
 synchrony (R38) & Synchformer: does on-screen motion move with the sound? & as a veto, +3 needed kept but 5 visible calls lost; as an ``add seen'' vote, on the bar but changed no shipped picture \\
 human-style chain (HUMAN, R50, R66) & name the source, find it, zoom, ask ``is it making the sound now?'' & the VLM names ``nothing'' on most stretches; NAME-ALL passed its gate screen but lost 3 real hits in the pipeline (26/12/2.141) \\
@@ -206,7 +207,7 @@ about as many needed ones. Section~\ref{sec:analysis} measures both.
 
 \subsection{Pictures}\label{sec:pic-history}
 The picture model changed four times: Openverse retrieval (v1), SDXL and SDXL-Turbo, FLUX.1-schnell (chosen over
-PixArt-$\Sigma$ on twelve real prompts), and Qwen-Image-2512 (first frozen as the picture setup, then shipped). Earlier, a
+PixArt-$\Sigma$ on twelve real prompts), and Qwen-Image-2512 (frozen as the picture setup, then shipped). Earlier, a
 retrieval-versus-SDXL ablation on the same 100 clips favoured retrieval by $+0.17$ (gated) and $+0.18$ (blind) judge
 points, but 55\,\% of retrieved images carried a non-commercial or no-derivatives licence and 595 uses drew on only 60
 distinct images, so generation was kept. The decisive picture test was a blind \emph{glance test} by the author:
@@ -216,7 +217,7 @@ typed what the sound was. FLUX was recognised 14/54 times; Qwen-Image with the s
 drawn as a door) and was rejected. One of the 26 Qwen-Image pictures was later found to send a false message (a
 telephone bell drawn as a desk bell), so the $+22$-point result is reported as ``not clean''. A planned sealed
 confirmation sitting was cancelled and replaced by the check-and-redraw loop of Section~\ref{sec:pictures}.
-A wording test the same day kept the hand-written subject table: 7 of 7 known cases right, against 3 of 7 for two
+A wording test run at the same time kept the hand-written subject table: 7 of 7 known cases right, against 3 of 7 for two
 generic VLM wording methods (\fp{docs/history/analyses/picture_sense_test_2026-09-28.md}).
 
 \subsection{Earlier evaluation by model judge (superseded)}\label{app:judge}
@@ -395,7 +396,7 @@ re-check & visibility re-check (gold) & 3/14 flips; control 0/20 & gold change \
 43--43c, 50 & gate gold-set variants (HUMAN, HUMAN-2, HUMAN-ADD) & one sound short of the bar at best & rejected \\
 44 & AVNAME (eyes + ears name the sound) & rename 15/34/3.380 (13 of 28 hits lost); drop 27/17/2.225 & rejected \\
 45 & AGREE-EARS (second listener family) & DEV 31/24/2.197; 415 0.833 $<$ 0.85 & rejected \\
-46, 46b & gold scope (blind rating of wrong pictures) & labels kept at the time; a laugh it rated real was added later, after the blind re-listen of the test labels (Appendix~\ref{app:datahistory}) & no gold edit then \\
+46, 46b & gold scope (blind rating of wrong pictures) & labels kept at the time; the laugh it rated real is one of the two sounds added in the test-label corrections (Appendix~\ref{app:datahistory}) & no gold edit then \\
 -- & merge gap 2.5\,s & 28/20/2.254 & shipped \\
 47 & GRP-A grouping by Qwen3-Omni, $\leq$8\,s & 28/18/2.197 & shipped \\
 48 & MD3 shortest span 0.3\,s & 29/18/2.141 & shipped (= B) \\

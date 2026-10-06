@@ -195,10 +195,10 @@ but adds many more wrong pictures; at every bar its development cost (3.47 or mo
         taken together.
   \item[Not significant.] On the development set, the difference from direct audio-to-image generation ($p = 0.085$).
   \item[Multiple comparisons.] Five comparisons of the final system with a baseline are reported as findings, all on
-        the same clips. Read one at a time at the 5\,\% level, the chance that at least one of five comparisons with no
-        real difference falls below 0.05 by luck would be up to about 23\,\% ($1 - 0.95^5$). The Holm
-        correction~\cite{holm1979} keeps that chance at 5\,\% for the five together. It was chosen because it makes no
-        assumption about how the tests are correlated (they share clips), it is never less powerful than the simpler
+        the same clips. If each were read on its own at the 5\,\% level and none had a real difference, the chance
+        that at least one of the five falls below 0.05 by luck would be about 23\,\% for independent tests
+        ($1 - 0.95^5$). The Holm correction~\cite{holm1979} holds that chance to at most 5\,\% for the five together.
+        It was chosen because it is valid whatever the correlation between the tests (they share clips), it is never less powerful than the simpler
         Bonferroni correction, and it is the correction used for the earlier comparison table
         (Appendix~\ref{sec:sept-table}). The family is every comparison of the final system against a baseline of Table~\ref{tab:headline} for which a
         $p$-value is reported: cost against each baseline on each set, and F1 against direct audio-to-image generation

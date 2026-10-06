@@ -33,8 +33,8 @@ On the test set the final system is cheaper than direct audio-to-image generatio
 95 % interval [−1.034, −0.368], p < 0.001) and, at the margin, than showing nothing (−0.644, [−1.195, −0.115], p = 0.018; p = 0.055
 after a Holm correction over the five main tests). It finds 10 of the 13 danger sounds of the test set (sirens,
 alarms, breaking glass, a crying baby). Every decision was made on the development set; the test set was only
-scored. Five test labels were corrected after a blind second listen, and every system was re-scored on the corrected
-labels (the earlier labels are kept in `benchmark/gold/annotations/`). Limits are discussed in Section 9 of the report.
+scored. Five test labels were corrected on a blind second listen made after the test outputs had been scored, and
+every system was re-scored on the corrected labels (the earlier labels are kept in `benchmark/gold/annotations/`). Limits are discussed in Section 9 of the report.
 
 ## How it works
 
