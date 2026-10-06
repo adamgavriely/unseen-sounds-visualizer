@@ -92,7 +92,7 @@ Numbers & File \\
 Table~\ref{tab:sets} (set sizes, needed sounds) & \fp{benchmark/gold/annotations/gold_AG.json}, counted with \fp{benchmark/gold/score_per_sound.py} \\
 labelling rules (Section~\ref{sec:needed}) & the labelling tool (release v1.2.0), its clip-category rule in \fp{benchmark/gold/score_per_sound.py} (\texttt{category}), \fp{docs/history/plans/metric_per_sound.md} \\
 scoring rules, cost (Section~\ref{sec:task}) & \fp{benchmark/gold/score_per_sound.py} \\
-bootstrap and pass rules & \fp{benchmark/gold/dev_candidates_check.py}; \fp{benchmark/gold/holm_table.py} (the September table) \\
+bootstrap and pass rules & \fp{benchmark/gold/dev_candidates_check.py}; \fp{benchmark/gold/holm_table.py} (the earlier comparison table) \\
 F1 intervals, Figure~\ref{fig:importance} (danger sounds) & \fp{benchmark/gold/final_vs_baselines_extra.json}, from \fp{benchmark/gold/final_vs_baselines_extra.py} \\
 final system and baselines, Table~\ref{tab:headline} & \fp{benchmark/gold/final_vs_baselines.json}; \fp{docs/history/review/detector_final_2026-10-02.md}; \fp{docs/decision_trail/data_parity.json} \\
 Holm correction over five tests (Section~\ref{sec:support}) & \fp{benchmark/gold/holm_five.py}, from the five $p$-values of \fp{benchmark/gold/final_vs_baselines.json} and \fp{benchmark/gold/final_vs_baselines_extra.json} \\
@@ -101,7 +101,7 @@ price of each kind of wrong picture (Table~\ref{tab:kindprice}) & \fp{benchmark/
 fate of misses (Section~\ref{sec:errors}, Figures~\ref{fig:errors} and~\ref{fig:bylabel}; the 8 needed sounds lost at the on-screen check, Section~\ref{sec:presence}) & \fp{docs/decision_trail/data.js} (field \cfgv{lost_at}), grouped into bars by \cfgv{LOST_AT_BAR} in \fp{docs/report/figures/make_analysis_figures.py}; \fp{docs/history/review/inspector_trail_ready.md} \\
 Table~\ref{tab:onemodel}, Figure~\ref{fig:m2dsweep} (one-model baselines) & \fp{benchmark/gold/one_model_baseline/result_m2d.json}, \fp{result_qwen.json}, \fp{result_qwen_av.json}, from \fp{benchmark/gold/one_model_baseline/run.py}; \fp{TABLE.md} in the same folder \\
 Table~\ref{tab:ceiling} (ceiling) & \fp{benchmark/gold/ceiling_final/ceiling_final.md} \\
-September gate comparison (Appendix~\ref{app:history}) & \fp{benchmark/gold/holm_test_final_v33_test_bench.json} \\
+earlier comparison of the on-screen check (Appendix~\ref{app:history}) & \fp{benchmark/gold/holm_test_final_v33_test_bench.json} \\
 gate accuracy, failure modes (31 of 36 wrong silences: 14 of class i, 17 of class ii; 42\,\% ``nothing'') & \fp{docs/history/review/vlm_panel_2026-10-01/f1_audit.md}, sections 4--7 \\
 AudioSet calibration set (1.650 against 0.986) & \fp{docs/history/preregistrations/prereg_round12_v2.md} \\
 AUROC 0.647 of the a/b question read as a score & \fp{benchmark/gold/logit_gate_gold.json}; round 62 in \fp{docs/history/preregistrations/prereg_round13_detector_push.md} \\

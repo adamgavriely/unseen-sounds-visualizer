@@ -19,7 +19,7 @@ gathering enough correctly labelled footage was too hard, which is why the set s
 sound. The first export had 138 clips: 108 benchmark clips and 30 AudioSet-Strong clips with a consequential sound at
 least half under speech or music (``slice B'', always reported separately). The 108 were split by provenance into 49
 development clips (``DEV-49'', clips already touched by earlier runs) and 59 test clips (``TEST-59'', labelled after
-the system was frozen). The September test table (Section~\ref{sec:sept-table}) is on TEST-59.
+the system was frozen). The earlier comparison table (Section~\ref{sec:sept-table}) is on TEST-59.
 
 \paragraph{New clips.} 50 more clips were labelled with a stand-alone tool in three
 batches: 31 YouTube clips found by scene type and 19 AudioSet-Strong evaluation clips. They were split into 22
@@ -41,7 +41,7 @@ TEST2 & 28 & 60 & 22 & 2 & 15 \\
 \end{tabular}
 \end{table}
 
-\paragraph{Needed-sound count.} The development count moved during the last week: 55 at the first merged scoring, 58
+\paragraph{Needed-sound count.} The development count moved in the last rounds: 55 at the first merged scoring, 58
 after the visibility re-check (three sounds changed from seen to needed), 57 after a control round, and back to 58 after
 a correction. Every system was re-scored on each version. The test count was 65 until five test labels were corrected
 after the test outputs had been scored (Section~\ref{sec:limits}). The corrections come from a blind re-listen of the
@@ -56,7 +56,7 @@ electric toothbrush, and a motorcycle labelled as a chainsaw). Three answers tha
 listen (an explosion first heard as on screen, a crow call, and one more car horn) left their labels unchanged. The
 times of added sounds were measured from the audio, never from a system's output. The test set now has 66 needed
 sounds and the benchmark 309 sounds. Every system and every test read of this appendix was re-scored from its saved
-outputs on the corrected labels, except the September comparison and the repeat-merge table, which are on the labels
+outputs on the corrected labels, except the earlier comparison of the on-screen check and the repeat-merge table, which are on the labels
 of the time. Change list and both label files: \fp{benchmark/gold/annotations/} (README there).
 
 \paragraph{AudioSet sets.} A calibration set of 280 AudioSet-Strong clips decided detector rounds 4--12 with a cost on
@@ -104,7 +104,7 @@ proposal & proposal: 7 stages (audio, VLM, ASR, BEATs/PANNs, reasoning, FLUX/SDX
 4 & v3: BEATs (replaced PANNs after 11 of 14 complaints traced to its labels), hysteresis + occlusion onsets, 7B gate with 3 votes, FLUX.1-schnell & human-grounded judge reference, dev 174 / test 100 & tie 3.17 vs 3.16; gate wins where nothing is due ($+0.26$), loses where a picture is due ($-0.24$) \\
 5 & v4: one state-of-the-art swap per stage; Qwen3.8-27B gate; FLAM and PretrainedSED detectors tried; rubric-enforced judge & judge with a cap on redundant pictures & PretrainedSED rejected three times; 13 silent bugs found (amendment 3), all earlier judge rows kept as history only \\
 6 & per-sound gold (138 clips); BEATs $\cup$ FlexSED (bar 0.8), FlexSED veto 0.3, PANNs veto 0.05 & per-sound F1, then viewer cost (amendment 9) & F1 difference null ($+0.028$); wrong pictures and precision significant \\
-7 & monotone onsets, no length cap; final September test table (amendment 21); Qwen-Image frozen as picture setup & Holm-corrected table on TEST-59 & ``Holm wins, F1 null'' (Section~\ref{sec:sept-table}) \\
+7 & monotone onsets, no length cap; final earlier comparison table (amendment 21); Qwen-Image frozen as picture setup & Holm-corrected table on TEST-59 & ``Holm wins, F1 null'' (Section~\ref{sec:sept-table}) \\
 8 & detector rounds 1--3: cascade, PE-A-Frame, Qwen3-Omni as verifier & DEV-49 + AudioSet 280 / 415 & none passed; detection declared closed, reopened next day \\
 9 & rounds 4--12 on AudioSet sets: EAT, Dasheng, DASM, SAM-Audio, 17 ideas, local contrast, DASM rescue, masker tests & cost on AudioSet labels & all failed on the 415; round 12 showed the AudioSet cost cannot track the task: harness retired \\
 10 & rounds 13--14: listener rescue (Qwen3-Omni, Audio Flamingo Next) + DASM vote; 50 new clips added & DEV-49, then merged DEV & first gains in hits (TO1+F7F8) \\
@@ -127,7 +127,7 @@ Step (name in logs) & What it adds & Merged DEV & Merged TEST \\
 \midrule\endfirsthead
 \toprule Step & What it adds & Merged DEV & Merged TEST \\ \midrule\endhead
 \bottomrule\endfoot
-old pipeline (B0r) & September test-table system: BEATs $\cup$ FlexSED, FlexSED and PANNs vetoes, Qwen3.8 gate & 18 / 51 / 3.690 & 21 / 39 / 2.966 \\
+old pipeline (B0r) & system of the earlier comparison table: BEATs $\cup$ FlexSED, FlexSED and PANNs vetoes, Qwen3.8 gate & 18 / 51 / 3.690 & 21 / 39 / 2.966 \\
 TO1+F7F8 (R14) & listener rescue of weak FlexSED runs (tiered: Qwen alone above 0.6, both listeners below), one rescue per family, mirror veto with listener keep, DASM vote on rescues & 26 / 45 / 3.070 & 22 / 37 / 2.874 \\
 + N2b, DR2, K-V4 (R16--21) & masked-weak veto; DASM rescue of new families; a listener keep must also be named in an inventory & 27 / 38 / 2.817 & 24 / 34 / 2.713 \\
 + DV (R28) & drop a sound DASM never hears in the clip & 27 / 31 / 2.620 & 24 / 32 / 2.667 \\
@@ -258,12 +258,12 @@ and 2.391. The final system was accepted because it beats the version before the
 which was the pre-set bar; the text-read result is therefore not plotted as a separate step.
 
 \FloatBarrier
-\subsection{The September comparison of the on-screen check}\label{sec:sept-table}
+\subsection{The earlier comparison of the on-screen check}\label{sec:sept-table}
 Before the final detector existed, the on-screen check was compared with and without it on the 59 older test clips
-(same gate model and rule, the September detector, on the labels of the time); Table~\ref{tab:septgate} gives
+(same gate model and rule, with the detector and the labels of the time); Table~\ref{tab:septgate} gives
 two-sided $p$-values with Holm correction.
 \begin{table}[tbp]\centering\small
-\caption{The September comparison of the on-screen check (59 older test clips).}\label{tab:septgate}
+\caption{The earlier comparison of the on-screen check (59 older test clips).}\label{tab:septgate}
 \begin{tabular}{lrrl}
 \toprule
 Measure & With minus without & 95\,\% interval & Holm $p$ \\
@@ -284,7 +284,7 @@ price of a few hits, which F1, weighing both equally, does not reward.
 
 \subsection{Comparisons between versions}\label{app:versions}
 The final development phase compared each accepted change with the version before it and, early on, with the
-September baseline (``B0r''). Paired clip bootstrap on the test set, 2{,}000 draws; $d$ = mean per-clip cost difference;
+old pipeline (``B0r''). Paired clip bootstrap on the test set, 2{,}000 draws; $d$ = mean per-clip cost difference;
 one-sided $p$ (a two-sided value is about twice as large); see Table~\ref{tab:versions}. The body uses 100{,}000 draws and two-sided $p$-values, so the two are not directly comparable.
 \begin{table}[tbp]\centering\small
 \caption{Comparisons between versions (test set, one-sided). Test-set reads made during development, uncorrected
@@ -295,8 +295,8 @@ Comparison & $d$ & 95\,\% interval & One-sided $p$ \\
 \midrule
 final system vs the version before its last three rules (B) & $-0.138$ & $[-0.299,\ 0.000]$ & 0.035 \\
 same, scene check read as text (D) vs B & $-0.161$ & $[-0.322,\ -0.023]$ & 0.016 \\
-intermediate version (SHIP8) vs September baseline & $-0.414$ & $[-0.736,\ -0.069]$ & 0.011 \\
-first listener stack (TO1+F7F8) vs September baseline, pre-registered & $-0.092$ & $[-0.230,\ +0.046]$ & 0.130 \\
+intermediate version (SHIP8) vs old pipeline (B0r) & $-0.414$ & $[-0.736,\ -0.069]$ & 0.011 \\
+first listener stack (TO1+F7F8) vs old pipeline (B0r), pre-registered & $-0.092$ & $[-0.230,\ +0.046]$ & 0.130 \\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -343,7 +343,7 @@ Round & Idea & Result & Verdict \\
 \midrule\endfirsthead
 \toprule Round & Idea & Result & Verdict \\ \midrule\endhead
 \bottomrule\endfoot
-\multicolumn{4}{l}{\emph{September amendments (prereg\_v4)}} \\
+\multicolumn{4}{l}{\emph{Amendments to the earlier pre-registration (prereg\_v4)}} \\
 am.\ 5 & per-sound gold, F1 headline & $\Delta$F1 $+0.028\ [-0.022, +0.074]$; precision, false alarms significant & F1 null \\
 am.\ 8 & FlexSED union, bar 0.8 & passes 3/3 rules & shipped \\
 am.\ 9 & viewer cost, $\beta = 2$ & gated 3.36 vs blind 4.24; silence 2.79 & reported metric \\
@@ -352,7 +352,7 @@ am.\ 11--15 & per-family bars; speech-removed view; family silence; any-stretch 
 am.\ 16 & PANNs veto 0.05 & 3.02 / 3.10 & shipped \\
 am.\ 17 & tagger ensemble & CED mis-scaled & rejected \\
 am.\ 18--20 & visibility signals (video, SAM 3, synchrony) & all at break-even 2:1 & rejected \\
-am.\ 21 & final September TEST table & Section~\ref{sec:sept-table} & reported \\
+am.\ 21 & final earlier comparison table & Section~\ref{sec:sept-table} & reported \\
 am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUROC 0.53; AUROC 0.661 & rejected \\
 \multicolumn{4}{l}{\emph{Rounds 4--12 (AudioSet harness)}} \\
 4 & BEATs self-veto replaces PANNs veto & 415 neutral; later worse on DEV (13/30/3.10 vs 14/24/2.78 with the PANNs veto) & reverted later \\
