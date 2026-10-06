@@ -37,7 +37,10 @@ moment counts as wrong.
 
 \subsection{Scoring a picture}\label{sec:matching}
 Pictures are scored as they are shown on screen. A picture \textbf{hits} a needed sound if it is of the same family
-and \emph{starts} between 0.5\,s before and 1\,s after the sound starts; each sound takes at most one picture. Every
+and \emph{starts} between 0.5\,s before and 1\,s after the sound starts; each sound takes at most one picture. A hit
+is judged by when its picture starts, not by how long it stays. A picture lasts as long as the detector hears its sound, so it
+can end early when the sound is masked; in the final system a hit picture covers a median 85\,\% of its sound, and 11 of
+the 54 hits cover less than half. Every
 other picture is \textbf{wrong}, of one of three kinds:
 \begin{description}
   \item[on screen] it shows a sound whose source is visible or obvious (the viewer could see it or already knows it);
