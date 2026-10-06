@@ -1,0 +1,54 @@
+{
+ "silence|DEV": {
+  "clips": 71,
+  "hits": 0,
+  "needed": 58,
+  "wrong": 0,
+  "onset_cost": 3.267605633802817,
+  "cost_cov": 3.267605633802817,
+  "hit_cov": null,
+  "needed_time_cov": 0.0,
+  "wrong_s_per_clip": 0.0,
+  "stale_s_per_clip": 0.0,
+  "n_cov": 58
+ },
+ "silence|TEST": {
+  "clips": 87,
+  "hits": 0,
+  "needed": 66,
+  "wrong": 0,
+  "onset_cost": 3.0344827586206895,
+  "cost_cov": 3.0344827586206895,
+  "hit_cov": null,
+  "needed_time_cov": 0.0,
+  "wrong_s_per_clip": 0.0,
+  "stale_s_per_clip": 0.0,
+  "n_cov": 66
+ },
+ "pics_frozen|DEV": {
+  "clips": 71,
+  "hits": 29,
+  "needed": 58,
+  "wrong": 15,
+  "onset_cost": 2.056338028169014,
+  "cost_cov": 2.5090522889862807,
+  "hit_cov": 0.7229076507066727,
+  "needed_time_cov": 0.40379979035639424,
+  "wrong_s_per_clip": 1.1149295774647887,
+  "stale_s_per_clip": 0.1211267605633803,
+  "n_cov": 58
+ },
+ "pics_frozen|TEST": {
+  "clips": 87,
+  "hits": 25,
+  "needed": 66,
+  "wrong": 22,
+  "onset_cost": 2.3908045977011496,
+  "cost_cov": 2.6260670959916457,
+  "hit_cov": 0.7953216264872682,
+  "needed_time_cov": 0.42732094124916314,
+  "wrong_s_per_clip": 1.212873563218391,
+  "stale_s_per_clip": 0.09160919540229888,
+  "n_cov": 66
+ }
+}
