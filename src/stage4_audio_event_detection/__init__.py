@@ -1,14 +1,13 @@
 """Stage 4 - Audio Event Detection.
 
-Detect and classify non-speech (and speech) sounds with time boundaries over the
-AudioSet ontology (527 classes), using PANNs CNN14 (DecisionLevelMax) for
-frame-level Sound Event Detection. Current strategy (per project decision
-2026-08-06): DETECT EVERYTHING with a low threshold and plot it; deciding which
-sounds matter is deferred to later gating.
+Detect non-speech sounds with time boundaries over the AudioSet ontology (527 classes). The final system
+(config.use_shipped(), report Section 5.2 and Appendix B): BEATs and FlexSED propose spans; the Qwen3-Omni and Audio
+Flamingo Next listeners, DASM and FineLAP confirm, rescue or veto them (per-clip inputs from src/listener_prep.py); PANNs
+is kept only as a clip-level veto. The detection threshold is deliberately low: deciding which sounds matter is left to
+the later steps and to the stage-5 on-screen check.
 
-Real implementation. Requires: torch, panns-inference, librosa, matplotlib, and
-the CNN14 SED checkpoint at ~/panns_data/ (auto-fetched once, ~327 MB). Degrades
-gracefully to [] if any of that is missing so the skeleton still runs.
+Requires: torch, librosa, matplotlib, the BEATs checkpoint and ~/panns_data/ (see download_models.py). Earlier
+backends (PANNs frame-level, PSED; FLAM from release v1.2.0) stay selectable for the ablations.
 
 See docs/history/earlier_drafts/project_notes.tex sec:models (release v1.2.0; PANNs executive summary).
 """

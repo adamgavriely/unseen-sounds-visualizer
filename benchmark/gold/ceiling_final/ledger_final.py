@@ -16,6 +16,9 @@ Nothing in src/ or config.py is edited; no picture is changed on disk.
           vs SHIP7. Reported beside: SPOT-no as round 31 (EXIST no OR no GROUND overlap).
 
     python benchmark/gold/ship7_errors.py            # (release v1.2.0)
+
+Needs btp_screen.py, cross_group.py, flap_joint_sim.py and spotsound_screen.py from release v1.2.0 (benchmark/gold/), and
+round13_dev.py (benchmark/gold/dev_harness.py in this release); its saved result is ledger_final.json.
 """
 from __future__ import annotations
 

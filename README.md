@@ -9,7 +9,8 @@ Subtitles carry speech, but a deaf or hard-of-hearing viewer still misses the ot
 behind the camera, a dog barking in the next room, glass breaking off screen. This system watches a video, detects
 its non-speech, non-music sounds, decides for each one whether its source is already visible, and shows a generated
 picture of the sound beside the video **only while an off-screen sound is heard**. No model is trained: the system
-is a chain of open models joined by rules fixed on a development set.
+is a chain of open models joined by rules fixed on a development set, in 66 pre-registered rounds over more than 150
+full-pipeline variants and more than 30 open models, and scored on 308 labelled sounds in 158 clips.
 
 The full description, the benchmark, the results and the limits are in the technical report,
 [`docs/report/report.pdf`](docs/report/report.pdf).
@@ -28,8 +29,8 @@ of the project proposal.
 | direct audio-to-image (and audio captioning) | 34 / 58 found, 39 wrong, cost 2.451 | 26 / 65 found, 61 wrong, cost 3.195 |
 | **final system** | **29 / 58 found, 15 wrong, cost 2.056** | **24 / 65 found, 23 wrong, cost 2.414** |
 
-On the test set the final system is significantly cheaper than direct audio-to-image generation (−0.782 per clip,
-95 % interval [−1.057, −0.506], p < 0.001) and than showing nothing (−0.575, [−1.126, −0.046], p = 0.034; p = 0.068
+On the test set the final system is cheaper than direct audio-to-image generation (−0.782 per clip,
+95 % interval [−1.057, −0.506], p < 0.001) and, at the margin, than showing nothing (−0.575, [−1.126, −0.046], p = 0.034; p = 0.068
 after a Holm correction over the five main tests). It finds 10 of the 13 danger sounds of the test set (sirens,
 alarms, breaking glass, a crying baby). Every decision was made on the development set; the test set was only
 scored. Limits are discussed in Section 9 of the report.
@@ -115,7 +116,7 @@ Appendix C of the report gives the source file of every number.
 
 Checks that run from a plain clone, on CPU, in under a minute: `python -m pytest` (11 tests);
 `python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL` (the shipped configuration equals the scored variant);
-`python docs/report/figures/make_results_figure.py` (rebuilds the results figure from `final_vs_baselines.json`).
+`python docs/report/figures/make_results_figure.py` (rebuilds `results_bars.pdf` from `final_vs_baselines.json`).
 
 Recomputing them from a clone is not possible as is. The scripts (for example
 `python benchmark/gold/final_vs_baselines.py`) read the stage-5 outputs of every benchmark clip (under `data/work/`)

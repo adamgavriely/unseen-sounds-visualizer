@@ -1,9 +1,10 @@
 """Stage 6 - Visual Augmentation Generation + alongside-video compositing.
 
-v1 prototype backend = RETRIEVE: fetch a free Creative-Commons image (Openverse,
-no key) for each augmented sound, cover-crop it, and record attribution. v2 will
-add a 'diffusion' backend (SDXL/FLUX). 'placeholder' draws a labelled panel and
-needs nothing.
+The final system (config.use_shipped(), report Section 5.4) draws each off-screen sound with Qwen-Image-2512 from
+the frozen templates (benchmark/gold/picture_templates.py), checks every picture before it is shown and redraws it up
+to five times (verify.py), with the maker and host rules (host.py), grouping of repeats (group.py) and the depict-event
+check (depict.py). Other backends kept for comparison: 'retrieve' (a Creative-Commons image from Openverse, no key)
+and 'placeholder' (a labelled panel, needs nothing).
 
 Compositing shows the augmentation image for the currently-active sound event
 *alongside* the original video (side-by-side), time-aligned, with the original

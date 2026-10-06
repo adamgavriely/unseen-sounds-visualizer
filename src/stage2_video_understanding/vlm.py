@@ -1,4 +1,4 @@
-"""Stage 2 (v2-b) - full VLM visibility check with Qwen2.5-VL. GPU only.
+"""Stage 2 backend "vlm": whole-clip visibility check with Qwen2.5-VL (an earlier experiment; not used by the final system, whose per-sound check is stage 5). GPU only.
 
 Same contract as the CLIP backend (`analyze_video`): given a video, return a
 SceneContext whose ``visible_entities`` names the sound-source concepts actually

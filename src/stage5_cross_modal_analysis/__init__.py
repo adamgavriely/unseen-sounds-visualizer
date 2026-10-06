@@ -1,4 +1,4 @@
-"""Stage 5 - Cross-Modal Semantic Analysis (the intellectual core).
+"""Stage 5 - Cross-Modal Semantic Analysis: the on-screen check and what to depict.
 
 Decide, per detected sound event: (1) is it salient? (2) is its source/meaning
 already visible in the scene -> if so, STAY SILENT (the gate); (3) if augmenting,
@@ -9,7 +9,7 @@ the per-sound decisions -- visibility from the frames, what kind of sound, what 
 draw, speech context -- are made in reason.py by the VLM. Stage 2's verdict is
 deferred to it when it is available (see `defer` below).
 
-Even in PASS-THROUGH (gate disabled, v1 prototype) we still drop speech, ambience
+Even in PASS-THROUGH (gate disabled, for ablations) we still drop speech, ambience
 and music, and merge PANNs' label families to one entry per real source, so we
 visualize a handful of distinct non-speech sounds rather than 20 near-duplicates.
 """

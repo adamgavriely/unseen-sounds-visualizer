@@ -374,7 +374,7 @@ V4 = {
 FLEXSED_BAR = 0.0
 FLEXSED_FAMILY_BARS = None    # amendment 11: path to the per-family bars fitted on the AudioSet calibration set
 PANNS_VETO = 0.0              # amendment 16: a third detector settles spans only FlexSED raised
-BEATS_SELF_VETO = 0.0         # round 4: BEATs' own clip-max settles them instead (0.1218 in use_shipped; PANNs off)
+BEATS_SELF_VETO = 0.0         # round 4 option: BEATs' own clip-max instead of the PANNs veto (0.1218 tried; not used by use_shipped, see there)
 FLEXSED_VETO = 0.0            # amendment 10: drop a label the second detector never hears in the clip
 FLEXSED_CORROB = None         # amendment 22: (beats_min, panns_min, window_s) -- FlexSED-only spans need a nearby second detector
 UNION_WEAK_TWIN = "absorb"      # amendment 22 cell F: "ignore" = a sub-display BEATs twin no longer swallows a FlexSED span
@@ -526,10 +526,10 @@ def use_shipped() -> dict:
     for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3), ("DEPICT_EVENT", True), ("DASM_LOCAL_VETO", 0.35), ("DASM_LOCAL_KEEP", "both"),
                  ("DASM_LOCAL_SCENE", str(WORK_DIR / "scene_videos.json")),
                  ("SCENE_FIT_LOGIT", True),   # Round 60L SCENE-LOGIT (2 Oct): scene check read as the bias-cancelled logit margin; DEV 29/15/2.056, passes vs B (29/18/2.141)
-                 # Round 53+60 WEAK-WITNESS + SCENE-MARGIN (1 Oct): DEV 29/14/2.028 (was 29/18/2.141); see prereg doc ("DEPICT_CACHE", str(WORK_DIR / "depict_answers.json")),
+                 # Round 53+60 WEAK-WITNESS + SCENE-MARGIN (1 Oct): DEV 29/14/2.028 (was 29/18/2.141); see prereg doc
                  # DEPICT_EVENT (Round 57, design review 1 Oct): DEV 29/17/2.113 (was 29/18/2.141); fires rarely (event "no" on 42/43)
                  # AED_MIN_DUR 0.3 (Round 48 MD3, 1 Oct): merged DEV 29/58, 18, 2.141 (was 28/18/2.197); TEST 23/65, 28, 2.545 (same)
-                 # GROUP (Round 47, 1 Oct): Qwen3-Omni same/new on repeats <= 4 s apart (src/stage6_visual_augmentation/group.py)
+                 # GROUP (Round 47, 1 Oct): Qwen3-Omni same/new on repeats <= 8 s apart, GROUP_MAX_GAP (src/stage6_visual_augmentation/group.py)
                  # MERGE_GAP 2.5 (1 Oct, proposed before any 2.5 number): merged DEV 28/20/2.254, TEST 23/28/2.545
                  # (2.0: 28/21/2.282, 23/29/2.568; 3.0 joins two dog barks 3 s apart); benchmark/gold/merge_gap_items.py (release v1.2.0)
                  # picture check-and-redraw (28 Sept: on after validation; round 1: 7/7 named bad, 32/33 wrong,
@@ -603,8 +603,8 @@ def set_listener_split(name: str) -> dict:
 def use_final_pictures(level: int) -> dict:
     """Demo videos only (week plan C.1, signed 6/6). Level 1 = Qwen-Image-2512 with the shipped subjects (arm N0 of
     the blind round 2); NOT triggered: the N0 rule-2 pass found one false message (phone drawn as a desk bell).
-    Level 2 = the frozen final setup (V3.1 subject with guard 2 + templates + cards + rules tail), to be switched on
-    only if the blind confirmation sitting passes (CI > 0, zero false messages). Call after use_shipped().
+    Level 2 = the frozen final setup (V3.1 subject with guard 2 + templates + cards + rules tail), adopted after the
+    blind confirmation sitting passed (CI > 0, zero false messages); use_shipped() applies it.
     In the pipeline the V3.1 guard runs with no raw firings (the strict side, stage-5 note)."""
     import sys
     me = sys.modules[__name__]

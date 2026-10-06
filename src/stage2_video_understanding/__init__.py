@@ -1,10 +1,10 @@
-"""Stage 2 - Video Understanding (lightweight, CLIP-based).
+"""Stage 2 - Video Understanding: which sound sources are visible on screen.
 
 Answers "which candidate sound-sources are actually visible on screen?" so the
 Stage-5 gate can stay silent on sounds whose source is already visible (the
-seen/not-seen gate). Uses CLIP zero-shot over sampled frames -- small and
-CPU-friendly. This is the v2-(a) lightweight version; a full VLM (Qwen2.5-VL)
-is a later upgrade.
+seen/not-seen gate). Backends: "owlv2" open-vocabulary detection (the final system, config.use_scored()),
+"siglip" and "clip" zero-shot (CPU baselines) and "vlm". In the final system this per-concept list is context; the
+per-sound on-screen decision is made in stage 5 from the frames by the VLM (reason.py).
 
 Sounds whose source is not a persistent visible object (thunder, explosion,
 gunshot, wind, siren) are simply absent from VISIBLE_CONCEPTS, so they are never

@@ -1,12 +1,11 @@
 """Stage 3 - Speech Recognition.
 
-Transcribe speech into timestamped segments via faster-whisper. Real
-implementation (salvaged from the legacy pipeline). Speech is a *secondary*
+Transcribe speech into timestamped segments via faster-whisper. Speech is a *secondary*
 signal here (the star is non-speech sound); the transcript gives context to the
 cross-modal gate and helps avoid augmenting content captions already cover.
 
 Degrades gracefully: if faster-whisper is not installed, returns [] with a
-warning so the skeleton still runs end-to-end.
+warning so the rest of the pipeline still runs.
 """
 from __future__ import annotations
 
