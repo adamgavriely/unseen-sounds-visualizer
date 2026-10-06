@@ -3,7 +3,7 @@
 **Visual Augmentation of Audio Semantics for Accessibility**: visualises off-screen sounds in video as generated images, for deaf and hard-of-hearing viewers.
 
 MSc final project, Bar-Ilan University (Department of Computer Science), Adam Gavriely, 2026.
-Supervisor: Dr Idan Schwartz. Examiner: Dr Oren Glickman.
+Supervisor: Dr Idan Schwartz.
 
 Subtitles carry speech, but a deaf or hard-of-hearing viewer still misses the other sounds of a video: a siren
 behind the camera, a dog barking in the next room, glass breaking off screen. This system watches a video, detects
@@ -108,7 +108,7 @@ once per clip.
 
 ## Reproducing the reported numbers
 
-This is release v1.3.9, the version the report cites. The reported numbers are stored in the repository:
+This is release v1.3.10, the version the report cites. The reported numbers are stored in the repository:
 [`benchmark/gold/final_vs_baselines.json`](benchmark/gold/final_vs_baselines.json) (final system and baselines),
 [`benchmark/gold/final_vs_baselines_extra.json`](benchmark/gold/final_vs_baselines_extra.json) (F1 intervals,
 danger sounds) and [`docs/decision_trail/data_parity.json`](docs/decision_trail/data_parity.json) (configuration check).
