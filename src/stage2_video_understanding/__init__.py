@@ -3,7 +3,7 @@
 Answers "which candidate sound-sources are actually visible on screen?" so the
 Stage-5 gate can stay silent on sounds whose source is already visible (the
 seen/not-seen gate). Backends: "owlv2" open-vocabulary detection (the final system, config.use_scored()),
-"siglip" and "clip" zero-shot (CPU baselines) and "vlm". In the final system this per-concept list is context; the
+"siglip" zero-shot (CPU), "sam3" and "vlm" for the ablations. In the final system this per-concept list is context; the
 per-sound on-screen decision is made in stage 5 from the frames by the VLM (reason.py).
 
 Sounds whose source is not a persistent visible object (thunder, explosion,

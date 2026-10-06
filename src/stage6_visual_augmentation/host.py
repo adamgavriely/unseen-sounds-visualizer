@@ -1,4 +1,4 @@
-"""PICTURE_HOST: pictures for alarm-type sounds (report Section 5.5; three blind review rounds on development clips).
+"""PICTURE_HOST: pictures for alarm-type sounds (report Section 5.4; three blind review rounds on development clips).
 
 For every sound under the AudioSet "Alarm" node (siren, fire alarm, smoke detector, alarm clock, doorbell, horns,
 whistles, telephone ...; by ANY parent, the ontology is a DAG) the shipped subject's head noun is a signalling DEVICE,

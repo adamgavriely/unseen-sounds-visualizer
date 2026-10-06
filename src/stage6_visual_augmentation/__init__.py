@@ -1,9 +1,9 @@
 """Stage 6 - Visual Augmentation Generation + alongside-video compositing.
 
 The final system (config.use_shipped(), report Section 5.4) draws each off-screen sound with Qwen-Image-2512 from
-the frozen templates (benchmark/gold/picture_templates.py), checks every picture before it is shown and redraws it up
-to five times (verify.py), with the maker and host rules (host.py), grouping of repeats (group.py) and the depict-event
-check (depict.py). Other backends kept for comparison: 'retrieve' (a Creative-Commons image from Openverse, no key)
+the frozen templates (benchmark/gold/picture_templates.py) and the maker rule (an action sound is drawn as the thing that
+makes it), checks every picture before it is shown and redraws it up to five times (verify.py), draws alarm-type sounds
+on their host (host.py), groups repeats (group.py) and runs the depict-event check (depict.py). Other backends kept for comparison: 'retrieve' (a Creative-Commons image from Openverse, no key)
 and 'placeholder' (a labelled panel, needs nothing).
 
 Compositing shows the augmentation image for the currently-active sound event

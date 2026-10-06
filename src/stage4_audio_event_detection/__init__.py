@@ -6,8 +6,9 @@ Flamingo Next listeners, DASM and FineLAP confirm, rescue or veto them (per-clip
 is kept only as a clip-level veto. The detection threshold is deliberately low: deciding which sounds matter is left to
 the later steps and to the stage-5 on-screen check.
 
-Requires: torch, librosa, matplotlib, the BEATs checkpoint and ~/panns_data/ (see download_models.py). Earlier
-backends (PANNs frame-level, PSED; FLAM from release v1.2.0) stay selectable for the ablations.
+Requires: torch, panns-inference, librosa, matplotlib, the BEATs checkpoint (download_models.py) and the CNN14
+checkpoint at ~/panns_data/ (auto-fetched once, ~327 MB). Earlier detector variants (PSED; FLAM from release v1.2.0)
+stay selectable for the ablations.
 
 See docs/history/earlier_drafts/project_notes.tex sec:models (release v1.2.0; PANNs executive summary).
 """
