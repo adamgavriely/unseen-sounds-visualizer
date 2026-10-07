@@ -114,7 +114,7 @@ def main():
     log = json.loads(logp.read_text()) if logp.exists() else {"backbone": backbone, "seed": seed, "epochs": []}
     start = len(log["epochs"])
     if start:
-        st = torch.load(out / f"state_{start}.pt", map_location=dev)
+        st = torch.load(out / f"state_{start}.pt", map_location=dev, weights_only=False)   # our own resume file
         student.load_state_dict(st["model"]); opt.load_state_dict(st["opt"]); sched.load_state_dict(st["sched"])
         rng.setstate(tuple(st["rng"]) if isinstance(st["rng"], list) else st["rng"])
     else:

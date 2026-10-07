@@ -7,6 +7,7 @@ pipeline's BEATs ear keeps its shipped bar 0.175.
     python benchmark/gold/coverage/ear_tier1.py EAR_DIR [EAR_DIR ...]   (each EAR_DIR has dev/ and heldout/ npz)
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -86,7 +87,7 @@ def main():
     res = {}
     for d in sys.argv[1:]:
         d = Path(d)
-        bar, f1s = calibrate(d / "heldout", _ROOT / "benchmark" / "gold" / "audioset_heldout.json") if (d / "heldout").exists() else (0.15, {})
+        bar, f1s = calibrate(d / "heldout", os.environ.get("HELDOUT_JSON", _ROOT / "benchmark" / "gold" / "audioset_heldout.json")) if (d / "heldout").exists() else (0.15, {})
         fr = {st: load(d / "dev" / f"{st}.npz") for st in dev}
         sc = []
         for b, _ in rows:
