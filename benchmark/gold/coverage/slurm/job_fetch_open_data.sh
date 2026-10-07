@@ -3,7 +3,7 @@
 #SBATCH --partition=generic
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH --time=12:00:00
+#SBATCH --time=04:00:00
 #SBATCH --output=logs/fetch_open_data_%j.out
 # Step 5 (benchmark/gold/coverage/PREREG_step5_detector_finetune.md): openly licensed sets from their official sources
 # only (no YouTube). Resumable (wget -c); md5 checked for Zenodo; archives deleted after a good unpack.
