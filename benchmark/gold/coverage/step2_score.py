@@ -3,6 +3,7 @@
     python benchmark/gold/coverage/step2_score.py   -> step2_dev.json, step2_dev.md
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -13,7 +14,9 @@ from benchmark.gold.coverage import score_coverage as V
 
 HERE = Path(__file__).resolve().parent
 FROZEN = "SHIP8+MD3+WW5+SL|M"
-NAMES = {"SHIP8+MD3+WW5+SL": "D'", "SHIP8+MD3+WW5+SL+TLS": "TL-span", "SHIP8+MD3+WW5+SL+TLO": "TL-onset"}
+NAMES = {"SHIP8+MD3+WW5+SL": "D'", "SHIP8+MD3+WW5+SL+TLS": "TL-span", "SHIP8+MD3+WW5+SL+TLO": "TL-onset",
+         "SHIP8+MD3+WW5+SL+UNO3": "ATST-F untrained 0.3", "SHIP8+MD3+WW5+SL+UNO5": "ATST-F untrained 0.5",
+         "SHIP8+MD3+WW5+SL+UNF3": "ATST-F fine-tuned 0.3", "SHIP8+MD3+WW5+SL+UNF5": "ATST-F fine-tuned 0.5"}
 
 
 def name(cell):
@@ -25,7 +28,7 @@ def name(cell):
 def main():
     gold = S.load_gold([V.GOLD])
     dev = V.stems("dev")
-    d = json.loads((HERE / "step2_pics_dev.json").read_text(encoding="utf-8"))
+    d = json.loads((HERE / os.environ.get("S2_PICS", "step2_pics_dev.json")).read_text(encoding="utf-8"))
     rows = {c: {st: V.score_clip_v2(gold[st], [tuple(x) for x in v["clips"][st]["pics_none"]]) for st in dev}
             for c, v in d["cells"].items()}
     res = {"cells": {}, "log": d.get("log", {})}
@@ -41,7 +44,7 @@ def main():
     key = lambda c: (round(res["cells"][c]["onset_cost"], 2), res["cells"][c]["cost_cov"])
     res["passing"] = ok
     res["selected"] = min(ok, key=key) if ok else None
-    (HERE / "step2_dev.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
+    (HERE / (os.environ.get("S2_OUT", "step2_dev") + ".json")).write_text(json.dumps(res, indent=1), encoding="utf-8")
     L = ["| cell | hits | wrong | onset cost | cost_cov | hit cover | wrong s/clip | stale s/clip | pass (>= 31 hits, <= 16 wrong) |",
          "|---|---|---|---|---|---|---|---|---|"]
     for c in sorted(res["cells"], key=lambda c: (c != FROZEN, res["cells"][c]["onset_cost"])):
@@ -53,7 +56,7 @@ def main():
     for c in sorted(res["cells"]):
         if c != FROZEN and res["cells"][c]["changed"]:
             L.append(f"- {name(c)}: " + "; ".join(f"{st} {h0}->{h1} / {w0}->{w1}" for st, h0, h1, w0, w1 in res["cells"][c]["changed"]))
-    (HERE / "step2_dev.md").write_text("# Step 2, DEV (71 clips)\n\n" + "\n".join(L) + "\n", encoding="utf-8")
+    (HERE / (os.environ.get("S2_OUT", "step2_dev") + ".md")).write_text("# Step 2, DEV (71 clips)\n\n" + "\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L))
 
 
