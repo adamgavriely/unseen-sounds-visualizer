@@ -3,6 +3,7 @@
     python benchmark/gold/coverage/keep_score.py   -> keep_score_dev.json, keep_score_dev.md
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -95,6 +96,19 @@ def main():
     rows = table()
     B = [b for b, _ in rows]
     X = np.array([x for _, x in rows])
+    ear = os.environ.get("KS_EAR")                     # Step 6 B2: one extra feature, an ear's family max in the burst
+    tag = ""
+    if ear:
+        from benchmark.gold.coverage.ear_tier1 import load, fam_curve
+        fr, ex = {}, []
+        for b in B:
+            if b["clip"] not in fr:
+                fr[b["clip"]] = load(Path(ear) / "dev" / f"{b['clip']}.npz")
+            c, t = fam_curve(fr[b["clip"]], b["family"])
+            m = (t >= b["start"]) & (t <= b["end"])
+            ex.append(float(c[m].max()) if m.any() else float(c[int(np.argmin(np.abs(t - b["start"])))]))
+        X = np.hstack([X, np.array(ex)[:, None]])
+        tag = "_" + Path(ear).name
     y = np.array([good(b, gold) for b in B])
     groups = np.array([b["clip"] for b in B])
     abp = json.loads((HERE / "step2_pics_dev.json").read_text(encoding="utf-8"))["cells"][AB]["clips"]
@@ -146,8 +160,8 @@ def main():
     L += ["", "Reference: frozen 29 hits / 15 wrong (onset 2.056, cost_cov 2.509); a/b candidate 32 / 16 (1.915, 2.421).",
           "Clear win = >= 35 hits at <= 16 wrong, or >= 32 hits at <= 13 wrong (any threshold on the CV curve).",
           f"Clear wins: {win if win else 'NONE -- the keep-score does not beat the a/b candidate by a clear margin.'}"]
-    (HERE / "keep_score_dev.json").write_text(json.dumps(res, indent=1, default=float), encoding="utf-8")
-    (HERE / "keep_score_dev.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+    (HERE / f"keep_score_dev{tag}.json").write_text(json.dumps(res, indent=1, default=float), encoding="utf-8")
+    (HERE / f"keep_score_dev{tag}.md").write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L))
 
 

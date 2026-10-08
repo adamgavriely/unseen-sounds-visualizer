@@ -21,7 +21,8 @@ from src.labels import canonical, is_salient_nonspeech, is_music, ancestors
 
 HERE = Path(__file__).resolve().parent
 D = Path(os.environ.get("OPEN_DATA", Path.home() / "open_data"))
-OUT = D / "mix"
+STYLE = os.environ.get("MIX_STYLE", "plain")          # "video" (Step 6): noise / crowd beds, optional speech or music layer, reverb
+OUT = D / ("mix2" if STYLE == "video" else "mix")
 SR, SEG, HOP = 16000, 160000, 640          # 40-ms label frames: hop 160 x pooling 4
 NF = SEG // HOP                            # 250
 SHARD = 500
@@ -111,6 +112,27 @@ def rms(x):
     return float(np.sqrt((x ** 2).mean() + 1e-12))
 
 
+def bed_seg(rng, pool, dbfs):
+    bed = load(rng.choice(pool))
+    while len(bed) < SEG:
+        bed = np.concatenate([bed, load(rng.choice(pool))])
+    o = rng.randrange(0, len(bed) - SEG + 1)
+    seg = bed[o:o + SEG].copy()
+    return seg * (10 ** (dbfs / 20) / max(rms(seg), 1e-6))
+
+
+def reverb(rng, x):
+    """synthetic room: exponentially decaying noise impulse, RT60 0.2-0.8 s, wet / dry 0.1-0.5; dry length kept"""
+    rt60 = rng.uniform(0.2, 0.8)
+    n = int(rt60 * SR)
+    t = np.arange(n) / SR
+    g = np.random.default_rng(rng.randrange(1 << 30)).standard_normal(n) * np.exp(-6.9 * t / rt60)
+    g /= np.sqrt((g ** 2).sum()) + 1e-9
+    wet = np.convolve(x, g)[: len(x)]
+    w = rng.uniform(0.1, 0.5)
+    return (1 - w) * x + w * wet * (rms(x) / max(rms(wet), 1e-9))
+
+
 def main():
     n_train = int(sys.argv[1]) if len(sys.argv) > 1 else 20000
     n_val = int(sys.argv[2]) if len(sys.argv) > 2 else 1000
@@ -179,16 +201,18 @@ def main():
                 continue
             audio, events = np.zeros((min(SHARD, n - s0), SEG), np.int16), []
             for i in range(audio.shape[0]):
-                kind = rng.choice([k for k in kinds if bykind[k]])
-                bed = load(rng.choice(bykind[kind]))
-                while len(bed) < SEG:
-                    bed = np.concatenate([bed, load(rng.choice(bykind[kind]))])
-                o = rng.randrange(0, len(bed) - SEG + 1)
-                mix = bed[o:o + SEG].copy()
-                mix *= 10 ** (-20 / 20) / max(rms(mix), 1e-6)
+                if STYLE == "video":
+                    mix = bed_seg(rng, bykind[rng.choice(["noise", "crowd"])], -20.0)
+                    if rng.random() < 0.5:
+                        mix = mix + bed_seg(rng, bykind[rng.choice(["speech", "music"])], -26.0)
+                else:
+                    kind = rng.choice([k for k in kinds if bykind[k]])
+                    mix = bed_seg(rng, bykind[kind], -20.0)
                 for _ in range(rng.randint(1, 3)):
                     path, tgt = rng.choice(F)
                     x = load(path)[: SEG]
+                    if STYLE == "video":
+                        x = reverb(rng, x)
                     act = activity(x)
                     if not act.any():
                         continue

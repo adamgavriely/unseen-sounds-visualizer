@@ -22,7 +22,11 @@ from src.stage4_audio_event_detection import psed_infer as P
 
 D = Path(os.environ.get("OPEN_DATA", Path.home() / "open_data"))
 EPOCHS = int(os.environ.get("FT_EPOCHS", 10))
-_E, BATCH, LR_BACKBONE, LR_HEAD = 10, 32, 1e-5, 1e-4
+BATCH = 32
+LR_BACKBONE = float(os.environ.get("FT_LR_BACKBONE", 1e-5))
+LR_HEAD = float(os.environ.get("FT_LR_HEAD", 1e-4))
+TEACHER_W = float(os.environ.get("FT_TEACHER_W", 0.0))      # Step 6: weight of the pure-teacher BCE term
+MIX = os.environ.get("FT_MIX", "mix")
 
 
 def build(backbone):
@@ -42,7 +46,7 @@ def build(backbone):
 
 
 def shards(split):
-    return sorted(glob.glob(str(D / "mix" / f"{split}_*.npz")))
+    return sorted(glob.glob(str(D / MIX / f"{split}_*.npz")))
 
 
 def batches(split, rng, shuffle=True):
@@ -83,6 +87,8 @@ def run_epoch(student, teacher, split, opt, sched, rng, dev):
         with torch.set_grad_enabled(train), torch.autocast("cuda", dtype=torch.bfloat16):
             logit = student(student.mel_forward(x))[0]
         loss = lossf(logit.float(), y)
+        if TEACHER_W > 0:
+            loss = TEACHER_W * lossf(logit.float(), tp) + (1 - TEACHER_W) * loss
         if train:
             opt.zero_grad(set_to_none=True)
             loss.backward()
