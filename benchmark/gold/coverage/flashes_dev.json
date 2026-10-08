@@ -1,0 +1,439 @@
+{
+"ambient_citywalk_nyc_1689": {
+"fps": 30.0,
+"frames": 480,
+"flashes": []
+},
+"ambient_citywalk_nyc_2627": {
+"fps": 30.0,
+"frames": 480,
+"flashes": []
+},
+"ambient_harbour_boats_724": {
+"fps": 29.97002997002997,
+"frames": 480,
+"flashes": []
+},
+"ambient_market_marrakech_3102": {
+"fps": 29.97,
+"frames": 480,
+"flashes": []
+},
+"ambient_nature_rainforest_2179": {
+"fps": 30.0,
+"frames": 480,
+"flashes": []
+},
+"ambient_nature_rainforest_7629": {
+"fps": 30.0,
+"frames": 480,
+"flashes": []
+},
+"ambient_snow_walk_930": {
+"fps": 30.0,
+"frames": 480,
+"flashes": []
+},
+"ambient_transport_subway_10800": {
+"fps": 30.0,
+"frames": 480,
+"flashes": []
+},
+"ambient_weather_storm_16200": {
+"fps": 25.0,
+"frames": 400,
+"flashes": [
+3.24,
+3.36,
+3.48,
+3.64,
+3.72,
+4.12,
+4.2,
+6.44
+]
+},
+"ambient_weather_storm_7200": {
+"fps": 25.0,
+"frames": 400,
+"flashes": [
+3.24,
+3.36,
+3.48,
+3.64,
+3.72,
+4.12,
+4.2,
+6.44
+]
+},
+"as_church_bell_pJRAWkLM": {
+"fps": 29.97002997002997,
+"frames": 600,
+"flashes": []
+},
+"as_explosion_XJ8lc3I6": {
+"fps": 29.97002997002997,
+"frames": 600,
+"flashes": [
+11.178,
+11.311,
+11.445,
+14.248
+]
+},
+"as_fire_alarm_kGKZ0YK4": {
+"fps": 30.0,
+"frames": 600,
+"flashes": [
+14.767,
+18.7
+]
+},
+"as_glass_oHil9Ip_": {
+"fps": 23.976023976023978,
+"frames": 480,
+"flashes": []
+},
+"b3_airport_terminal": {
+"fps": 29.97,
+"frames": 840,
+"flashes": []
+},
+"b3_aviary_birds": {
+"fps": 30.0,
+"frames": 840,
+"flashes": [
+27.933
+]
+},
+"b3_bakery_morning": {
+"fps": 30.0,
+"frames": 840,
+"flashes": []
+},
+"b3_barbershop": {
+"fps": 25.0,
+"frames": 700,
+"flashes": []
+},
+"b3_botanic_garden": {
+"fps": 29.97002997002997,
+"frames": 840,
+"flashes": []
+},
+"b3_carnival_parade": {
+"fps": 25.0,
+"frames": 600,
+"flashes": []
+},
+"b3_construction_site": {
+"fps": 30.0,
+"frames": 840,
+"flashes": []
+},
+"b3_cow_farm": {
+"fps": 29.97002997002997,
+"frames": 840,
+"flashes": [
+7.407,
+13.146,
+24.258
+]
+},
+"b3_crossing_bells": {
+"fps": 29.97002997002997,
+"frames": 510,
+"flashes": [
+10.077
+]
+},
+"b3_favela_rio": {
+"fps": 29.97002997002997,
+"frames": 840,
+"flashes": [
+17.851,
+23.924,
+24.091,
+24.157
+]
+},
+"b3_flea_market": {
+"fps": 29.97002997002997,
+"frames": 840,
+"flashes": [
+16.183,
+17.718,
+25.392
+]
+},
+"b3_golf_course": {
+"fps": 29.97002997002997,
+"frames": 840,
+"flashes": []
+},
+"b3_ia_youtube_skxtz9foauw_0": {
+"fps": 23.98,
+"frames": 672,
+"flashes": []
+},
+"b3_laundromat": {
+"fps": 29.97,
+"frames": 840,
+"flashes": []
+},
+"b3_pet_shop": {
+"fps": 25.0,
+"frames": 700,
+"flashes": []
+},
+"bell_miami": {
+"fps": 30.0,
+"frames": 467,
+"flashes": []
+},
+"birds_forest": {
+"fps": 29.663811563169165,
+"frames": 534,
+"flashes": [
+7.416
+]
+},
+"helicopter_ossetia": {
+"fps": 25.0,
+"frames": 450,
+"flashes": []
+},
+"kit_piano": {
+"fps": 25.0,
+"frames": 450,
+"flashes": []
+},
+"london_protest_01": {
+"fps": 30.0,
+"frames": 332,
+"flashes": []
+},
+"ly_ambulance_(siren)_-yPSgCn": {
+"fps": 25.0,
+"frames": 451,
+"flashes": [
+1.0,
+14.04
+]
+},
+"ly_applause_62ZYD0u": {
+"fps": 25.0,
+"frames": 451,
+"flashes": [
+13.68
+]
+},
+"ly_helicopter_-v62cK1": {
+"fps": 29.97002997002997,
+"frames": 541,
+"flashes": []
+},
+"movie_blueplanet_115": {
+"fps": 25.0,
+"frames": 400,
+"flashes": []
+},
+"mv_arrest_street_scene": {
+"fps": 29.97002997002997,
+"frames": 720,
+"flashes": [
+5.672,
+14.481,
+23.09
+]
+},
+"mv_detective_crime_scene": {
+"fps": 23.976023976023978,
+"frames": 456,
+"flashes": []
+},
+"mv_protest_scene_movie": {
+"fps": 23.976023976023978,
+"frames": 576,
+"flashes": [
+21.563
+]
+},
+"mv_storm_scene_house": {
+"fps": 23.976023976023978,
+"frames": 576,
+"flashes": [
+2.753,
+23.899
+]
+},
+"mv_tornado_scene": {
+"fps": 23.976023976023978,
+"frames": 480,
+"flashes": [
+1.001,
+1.251,
+10.219,
+10.719
+]
+},
+"tg_d007": {
+"fps": 30.0,
+"frames": 510,
+"flashes": []
+},
+"tg_d016": {
+"fps": 30.0,
+"frames": 540,
+"flashes": []
+},
+"tg_d020": {
+"fps": 30.0,
+"frames": 510,
+"flashes": []
+},
+"tg_d022": {
+"fps": 30.0,
+"frames": 510,
+"flashes": []
+},
+"tg_d029": {
+"fps": 30.0,
+"frames": 480,
+"flashes": []
+},
+"tg_d030": {
+"fps": 30.0,
+"frames": 510,
+"flashes": [
+15.8
+]
+},
+"tg_d032": {
+"fps": 30.0,
+"frames": 450,
+"flashes": []
+},
+"tg_d033": {
+"fps": 30.0,
+"frames": 540,
+"flashes": []
+},
+"tg_d054": {
+"fps": 30.0,
+"frames": 480,
+"flashes": []
+},
+"tg_d075": {
+"fps": 30.0,
+"frames": 570,
+"flashes": []
+},
+"tg_d085": {
+"fps": 30.0,
+"frames": 510,
+"flashes": []
+},
+"tg_d088": {
+"fps": 30.0,
+"frames": 450,
+"flashes": []
+},
+"tg_d095": {
+"fps": 30.0,
+"frames": 600,
+"flashes": [
+7.6
+]
+},
+"tg_d107": {
+"fps": 30.0,
+"frames": 290,
+"flashes": []
+},
+"tg_d120": {
+"fps": 15.0,
+"frames": 150,
+"flashes": []
+},
+"tg_d121": {
+"fps": 30.0,
+"frames": 285,
+"flashes": []
+},
+"tg_d125": {
+"fps": 29.97002997002997,
+"frames": 300,
+"flashes": [
+5.372
+]
+},
+"tg_d127": {
+"fps": 29.97002997002997,
+"frames": 300,
+"flashes": []
+},
+"tg_d128": {
+"fps": 30.0,
+"frames": 300,
+"flashes": []
+},
+"tg_d129": {
+"fps": 29.97002997002997,
+"frames": 300,
+"flashes": [
+9.977
+]
+},
+"tg_d133": {
+"fps": 30.0,
+"frames": 300,
+"flashes": []
+},
+"tg_d149": {
+"fps": 29.97002997002997,
+"frames": 300,
+"flashes": [
+3.003
+]
+},
+"un_driving_motorcycle_4O3bZRYO": {
+"fps": 30.0,
+"frames": 600,
+"flashes": [
+7.433,
+8.9
+]
+},
+"un_driving_motorcycle_DgdHSmwA": {
+"fps": 25.0,
+"frames": 426,
+"flashes": []
+},
+"un_hair_dryer_drying_WWu24rJs": {
+"fps": 29.97002997002997,
+"frames": 601,
+"flashes": [
+11.979,
+16.216
+]
+},
+"un_people_clapping__bAVmK7n": {
+"fps": 25.0,
+"frames": 450,
+"flashes": [
+10.76
+]
+},
+"waterfall_kawaida_01": {
+"fps": 30.0,
+"frames": 336,
+"flashes": []
+},
+"waves_herzliya": {
+"fps": 25.0,
+"frames": 314,
+"flashes": []
+}
+}
