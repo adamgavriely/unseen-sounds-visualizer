@@ -49,18 +49,19 @@ def drawable(onto):
 
 
 def leak_ids():
-    """every 11-char YouTube-like id and every file stem under benchmark/ and data/ (as audioset_fresh.py scans)"""
+    """every file stem and 11-char YouTube-like token in the NAMES of files under benchmark/, data/input, data/work (a
+    `find -L` list written before the job, LEAK_NAMES), plus the 11-char tokens in benchmark/ text files. (A full content
+    scan of data/ follows a symlink into hundreds of thousands of files and never finished; the ids that matter are
+    clip names.)"""
     ids = set()
     rx = re.compile(r"[A-Za-z0-9_-]{11}")
-    for root in (_ROOT / "benchmark", _ROOT / "data"):
-        for p in root.rglob("*"):
-            ids.add(p.stem)
-            ids.update(rx.findall(p.name))
-            if p.is_file() and p.suffix in (".txt", ".json", ".csv", ".tsv") and p.stat().st_size < 50e6:
-                try:
-                    ids.update(rx.findall(p.read_text(encoding="utf-8", errors="ignore")))
-                except Exception:
-                    pass
+    names = Path(os.environ.get("LEAK_NAMES", D / "leak_names.txt"))
+    for line in names.read_text(encoding="utf-8", errors="ignore").splitlines():
+        ids.add(Path(line).stem)
+        ids.update(rx.findall(line))
+    for p in (_ROOT / "benchmark").rglob("*"):
+        if p.is_file() and p.suffix in (".txt", ".json", ".csv", ".tsv") and p.stat().st_size < 50e6:
+            ids.update(rx.findall(p.read_text(encoding="utf-8", errors="ignore")))
     return ids
 
 
