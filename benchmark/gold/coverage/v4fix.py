@@ -27,7 +27,7 @@ SPLITS = {
             "wav": Path.home() / "MscProj" / "data" / "work" / "devcand" / "wav16"},
     "dev2": {"v": G_TG / "dev2_listener_v.json", "p1v4": G_TG / "dev2_listener_p1v4.json", "p4": G_TG / "dev2_listener_p4.json",
              "wav": Path.home() / "MscProj" / "data" / "work" / "r13dev2" / "wav16"},
-    "test": {"v": G_MAIN / "test_listener_v.json", "p1v4": G_MAIN / "test_listener_p1v4.json", "p4": G_MAIN / "test_listener_p4.json",
+    "test": {"v": G_MAIN / "test_listener_v.json", "p1v4": G_TG / "test_listener_p1v4.json", "p4": G_TG / "test_listener_p4.json",
              "wav": Path.home() / "MscProj" / "data" / "work" / "r13test" / "wav16"},
     "test2": {"v": G_TG / "test2_listener_v.json", "p1v4": G_TG / "test2_listener_p1v4.json", "p4": G_TG / "test2_listener_p4.json",
               "wav": Path.home() / "MscProj" / "data" / "work" / "r13test2" / "wav16"},
