@@ -21,3 +21,8 @@ Test: arm SHIP8+MD3+WW5+SL+V4FIX = the frozen arm with the three DEV / dev2 cach
 else changed; harness stage 4 + stage 5 (new gate stretches asked live, memoised); then the a/b gate re-decision (Step 2).
 Pass bar: hits >= 32, wrong <= 16, and cost_cov below the a/b candidate's 2.421. Reported also without the a/b rule, and
 hits split by label provenance where the gold records it.
+
+## Amendment (8 Oct, written after the V4FIX DEV result, before the combination was computed)
+
+Combination run, no new tuning: V4FIX + a/b gate (AB-m) + the Step 11 flash rule F exactly as pre-registered there.
+Reported with the same pass bar as Step 10 (hits >= 32, wrong <= 16, cost_cov below 2.421).

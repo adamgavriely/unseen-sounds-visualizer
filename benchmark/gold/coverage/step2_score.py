@@ -16,7 +16,7 @@ HERE = Path(__file__).resolve().parent
 FROZEN = "SHIP8+MD3+WW5+SL|M"
 NAMES = {"SHIP8+MD3+WW5+SL": "D'", "SHIP8+MD3+WW5+SL+TLS": "TL-span", "SHIP8+MD3+WW5+SL+TLO": "TL-onset",
          "SHIP8+MD3+WW5+SL+UNO3": "ATST-F untrained 0.3", "SHIP8+MD3+WW5+SL+UNO5": "ATST-F untrained 0.5",
-         "SHIP8+MD3+WW5+SL+UNF3": "ATST-F fine-tuned 0.3", "SHIP8+MD3+WW5+SL+UNF5": "ATST-F fine-tuned 0.5"}
+         "SHIP8+MD3+WW5+SL+UNF3": "ATST-F fine-tuned 0.3", "SHIP8+MD3+WW5+SL+UNF5": "ATST-F fine-tuned 0.5", "SHIP8+MD3+WW5+SL+V4FIX": "V4 fixed"}
 
 
 def name(cell):
