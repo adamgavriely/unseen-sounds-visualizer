@@ -17,3 +17,9 @@ Bar 2 (only if bar 1 passes), on top of a/b + flash: (i) drop a picture whose bu
 (no picture of its family overlapping) whose score > u, as a picture (family, burst start, burst end).
 t, u = the out-of-fold score quantiles {0.1, 0.2, 0.3} and {0.95, 0.98, 0.99}. Pass: hits >= 33 at wrong <= 14, or
 wrong <= 12 at hits >= 32.
+
+## Note on Step 13 (AudioSet-Strong train download), 9 Oct
+
+Stopped after ~14 100 tries: 434 clips saved; 12 889 refused by YouTube's bot check ("Sign in to confirm you're not a
+bot" / "Please sign in"), the rest gone or private. Not worked around (no cookies, accounts or proxies). The 434 clips
+are kept; the detector-training route on real labels is blocked unless the audio comes from another source.
