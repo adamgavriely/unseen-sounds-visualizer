@@ -28,3 +28,15 @@ the same units: 0.78 on the 59 Step-3 units, 0.82 on the 109 Step-3b units).
 B. Pipeline: on top of a/b + flash, (i) per-second cut: seconds with score >= s are removed from a picture (s chosen
 by 5-fold CV on the training data at 90% precision for "visible"); (ii) gate-loss recovery: a sound the gate silenced is
 drawn if its mean score < s. Pass: wrong <= 12 at hits >= 32.
+
+## Amendment 1 (9 Oct, before any feature was computed)
+
+Version 1 uses the features that run out of the box; Synchformer and CAV-MAE are added in a version 2 only if version 1
+misses bar A. Version 1 features per second t (cut [t - 1, t + 2] s, frames at 6 per second, DenseAV 2-head checkpoint
+`denseav_2head`): for each of the two heads, over the frames and audio steps inside [t, t + 1): mean of the per-frame
+spatial max, mean of the spatial mean, and their difference (6); OWLv2 ("a photo of a {name}") best box score on the
+middle frame, and DenseAV sound-head mean inside the box divided by outside (2, empty if box score < 0.1); frame-difference
+energy inside vs outside the box, at t vs t - 1 s, in place of RAFT flow (1); the Step 11 flash score (max luminance jump
+in the second, robust sigmas) (1). Training items: all AVATAR Off-Screen frames (negatives) and up to 2 000 Single-Sound
+frames from distinct videos (positives), text = AVATAR's category name; AVATAR videos whose id appears in the benchmark
+name scan are removed.
