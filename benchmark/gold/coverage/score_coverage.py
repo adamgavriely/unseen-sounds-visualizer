@@ -88,10 +88,14 @@ def score_clip_v2(gold, pics, early=S.EARLY, late=S.LATE):
             hit_cov.append(cov[-1])
         sec_need += x["end"] - x["start"]; sec_cov += c
     stale = 0.0
+    start_err, end_err = [], []                        # timing of hit pictures: picture - sound, seconds
     for k, covered in matched.items():
         end = max(g[j]["end"] for j in covered)
         stale += max(0.0, pics[k][2] - (end + STALE_AFTER))
-    out.update(cov2=cov, hit_cov=hit_cov,
+        if any(scored(g[j]) for j in covered):
+            start_err.append(pics[k][1] - min(g[j]["start"] for j in covered))
+            end_err.append(pics[k][2] - end)
+    out.update(cov2=cov, hit_cov=hit_cov, start_err=start_err, end_err=end_err,
                sec_need=sec_need, sec_cov=sec_cov, wrong_s=wrong_s, stale_s=stale)
     return out
 
@@ -109,7 +113,11 @@ def aggregate(rows):
             "needed_time_cov": sum(r["sec_cov"] for r in rows) / max(1e-9, sum(r["sec_need"] for r in rows)),
             "wrong_s_per_clip": sum(r["wrong_s"] for r in rows) / n,
             "stale_s_per_clip": sum(r["stale_s"] for r in rows) / n,
-            "n_cov": len(cov)}
+            "n_cov": len(cov),
+            "start_abs_med": float(np.median(np.abs(se))) if (se := [x for r in rows for x in r.get("start_err", [])]) else None,
+            "start_med": float(np.median(se)) if se else None,
+            "end_abs_med": float(np.median(np.abs(ee))) if (ee := [x for r in rows for x in r.get("end_err", [])]) else None,
+            "end_med": float(np.median(ee)) if ee else None}
 
 
 def fmt(a):

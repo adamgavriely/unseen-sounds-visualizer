@@ -5,6 +5,7 @@
     python benchmark/gold/coverage/dump_evidence.py [out.json]
 """
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -20,7 +21,9 @@ from benchmark.gold import dev_candidates_check as DCC
 ARM = "SHIP8+MD3+WW5+SL"
 WORK = DCC.WORK
 CACHES = {"dev": {"beats": WORK / "j2_dev_beats", "flex": WORK / "flexsed_cache", "dasm": WORK / "devcand" / "dasm_cache"},
-          "dev2": {"beats": WORK / "j2_dev2_beats", "flex": WORK / "flexsed_cache", "dasm": WORK / "dasm_dev2"}}
+          "dev2": {"beats": WORK / "j2_dev2_beats", "flex": WORK / "flexsed_cache", "dasm": WORK / "dasm_dev2"},
+          "test": {"beats": WORK / "j2_test_beats", "flex": WORK / "flexsed_cache", "dasm": WORK / "dasm_test"},
+          "test2": {"beats": WORK / "j2_test2_beats", "flex": WORK / "flexsed_cache", "dasm": WORK / "dasm_test2"}}
 STRETCH = re.compile(r"stretch (\d+) \(([\d.]+)-([\d.]+) s")
 VERDICT = re.compile(r"stretch (\d+): (seen|not seen)")
 
@@ -57,7 +60,7 @@ def main():
     out = Path(sys.argv[1] if len(sys.argv) > 1 else "scratch_cov/evidence_dev.json")
     res = {}
     for split, part, base, stems in X.parts(ARM):
-        if split != "DEV":
+        if split != os.environ.get("SPLIT", "DEV"):
             continue
         root = base / f"{ARM}_proposed"
         troot = base / f"{ARM}_trail_proposed"
