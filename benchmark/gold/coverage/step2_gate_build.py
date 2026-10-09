@@ -9,6 +9,7 @@ one with an a/b-not-seen stretch is drawn as its blind_a2i spec), and a "kind of
 """
 import copy
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -71,7 +72,7 @@ def main():
                 out["cells"][cell] = {"clips": {}}
                 log = out["log"][cell] = {"restored": 0, "silenced": 0, "restored_kind": 0, "no_votes": 0, "M_differs": []}
                 for split, part, base, stems in X.parts(FROZEN):
-                    if split != "DEV":
+                    if split != os.environ.get("SPLIT", "DEV"):
                         continue
                     for st in stems:
                         rp = base / f"{arm}_proposed" / st
@@ -85,7 +86,7 @@ def main():
                             log["M_differs"].append(st)
                         out["cells"][cell]["clips"][st] = {"pics_none": pics}
                 print(cell, log, flush=True)
-    p = _ROOT / "scratch_cov" / "step2_pics_dev.json"
+    p = _ROOT / "scratch_cov" / ("step2_pics_dev.json" if os.environ.get("SPLIT", "DEV") == "DEV" else "final_pics_test.json")
     p.write_text(json.dumps(out), encoding="utf-8")
     print("->", p)
 

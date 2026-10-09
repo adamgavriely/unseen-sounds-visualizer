@@ -2,6 +2,7 @@
 5 x robust sigma (1.4826 MAD, floor 2 grey levels), runs of <= 4 frames. Cluster CPU (msproj, OpenCV).
     python benchmark/gold/coverage/flash_scan.py -> scratch_cov/flashes_dev.json  {stem: {"fps":, "flashes": [t, ...]}}"""
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -44,13 +45,14 @@ def scan(path):
 
 
 def main():
-    it = json.loads((HERE / "verify_items_dev.json").read_text(encoding="utf-8"))["videos"]
+    vf = os.environ.get("FLASH_VIDEOS")
+    it = json.loads(Path(vf).read_text(encoding="utf-8")) if vf else json.loads((HERE / "verify_items_dev.json").read_text(encoding="utf-8"))["videos"]
     out = {}
     for st, rel in sorted(it.items()):
         fps, fl, n = scan(_ROOT / rel)
         out[st] = {"fps": fps, "frames": n, "flashes": fl}
         print(st, fps, n, len(fl), flush=True)
-    p = _ROOT / "scratch_cov" / "flashes_dev.json"
+    p = _ROOT / "scratch_cov" / os.environ.get("FLASH_OUT", "flashes_dev.json")
     p.write_text(json.dumps(out, indent=0), encoding="utf-8")
     print("->", p)
 
