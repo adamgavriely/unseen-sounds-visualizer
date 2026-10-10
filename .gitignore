@@ -33,3 +33,19 @@ docs/report/figures/_frames/
 *.synctex.gz
 *.out
 
+
+# Personal working files (supervisor pages, notes, review media, local experiments); not part of the repository
+docs/supervisor_page/
+docs/supervisor_meeting*/
+docs/supervisor_20*/
+docs/supervisor_brief_*
+docs/SUPERVISOR_UPDATE*
+docs/FOR_SUPERVISOR.md
+docs/review/
+HANDOFF.md
+TODO.md
+archive/
+scripts/picture_*_try.py
+slurm/job_picture_*_try.sh
+tagger.zip
+*.lnk
