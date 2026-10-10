@@ -215,6 +215,13 @@ REPEAT_LOCK = False
 HOLD_FLEXSED = None        # hold a picture while FlexSED hears its family at >= this
 HOLD_FLEXSED_DIR = None    # FlexSED frame cache (default data/work/flexsed_cache)
 HOLD_CURVES = None         # offline: precomputed FlexSED family curves (benchmark/gold/v14/flexsed_curves.json)
+# v1.6 onset rules (src/stage6_visual_augmentation/v16.py); all off here, on in use_shipped(). They read each picture's
+# BEATs / FlexSED / DASM family curves around its start, never its position in the clip.
+COONSET_CONTEST = None     # two overlapping pictures of different families starting <= this (s) apart: the weaker onset goes
+WEAK_NO_RISE = None        # (conf, rise): drop a picture with stage-5 confidence < conf and FlexSED rise < rise
+BEATS_NO_RISE = False      # drop a picture whose BEATs family curve does not rise at its start
+BEATS_FRAMES = None        # set by stage 4 for the clip in hand: (clip, framewise, times, labels)
+ONSET_CURVES = None        # offline: precomputed family curves (benchmark/gold/v14/detector_curves.json)
 # When the detector gives no sub-label, the frames from the sound's own moment are asked
 # what KIND of that sound it is -- a crowd chanting, not a crowd cheering -- with the
 # label fixed in the question and "unknown" as an answer. The answer must still name the
@@ -609,6 +616,12 @@ def use_shipped() -> dict:
     # v1.5 (Oct 2026): a sound whose source the gate named on screen is drawn for its first burst only (repeat lock);
     # families no second detector can check are not drawn. benchmark/gold/coverage/wrong_types.md
     for k, v in (("REPEAT_LOCK", True), ("UNVERIFIABLE_BAN", UNVERIFIABLE_FAMILIES)):
+        changed[k] = (getattr(me, k, None), v)
+        setattr(me, k, v)
+    # v1.6 (Oct 2026): onset rules on the detector curves at each picture's start -- of two different pictures starting
+    # <= 3 s apart the weaker onset goes; a weak picture (confidence < 0.41) FlexSED hears no rise at (< 0.2) goes; a
+    # picture BEATs hears no rise at goes. See src/stage6_visual_augmentation/v16.py.
+    for k, v in (("COONSET_CONTEST", 3.0), ("WEAK_NO_RISE", (0.41, 0.2)), ("BEATS_NO_RISE", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed
