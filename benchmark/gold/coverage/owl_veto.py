@@ -39,7 +39,8 @@ def owl_scores(pics):
                 inp = op(text=q, images=img, return_tensors="pt").to("cuda")
                 with torch.no_grad():
                     o = om(**inp)
-                r = op.post_process_object_detection(o, threshold=0.0, target_sizes=torch.tensor([[max(img.size)] * 2], device="cuda"))[0]
+                pp = getattr(op, "post_process_object_detection", None) or op.post_process_grounded_object_detection
+                r = pp(o, threshold=0.0, target_sizes=torch.tensor([[max(img.size)] * 2], device="cuda"))[0]
                 if len(r["scores"]):
                     best = max(best, float(r["scores"].max()))
             out[f"{st}|{lab}|{a:.3f}"] = best
