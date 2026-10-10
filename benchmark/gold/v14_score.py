@@ -1,4 +1,4 @@
-"""Reproduce the v1.6 / v1.5 / v1.4 / v1.3.11 numbers from a plain clone, CPU only, in about a minute.
+"""Reproduce the v1.7 / v1.6 / v1.5 / v1.4 / v1.3.11 numbers from a plain clone, CPU only, in about a minute.
 
 Inputs (benchmark/gold/v14/): the stage-5 outputs of the 158 benchmark clips (each sound's plan with and without the
 on-screen check, and the check's per-stretch votes), the flashes found in each video, FlexSED's family curves, the
@@ -7,8 +7,9 @@ durations, and the grouping / event-check answers the display reads. The script 
 the on-screen decision of config.VISIBILITY_RULE to the stored votes, then src/stage6_visual_augmentation's display
 (_display_spans + _assign_rows) under config.use_shipped(), and scores the pictures with score_per_sound.py.
 
-    python benchmark/gold/v14_score.py            # v1.6 (config.use_shipped(): v1.5 + the three onset rules)
-    python benchmark/gold/v14_score.py --v1.5     # the same inputs with the three v1.6 rules switched off
+    python benchmark/gold/v14_score.py            # v1.7 (config.use_shipped(): v1.6 + the gate-doubt DASM rule)
+    python benchmark/gold/v14_score.py --v1.6     # the same inputs with the v1.7 rule switched off
+    python benchmark/gold/v14_score.py --v1.5     # ... and the three v1.6 rules
     python benchmark/gold/v14_score.py --v1.4     # ... and the two v1.5 rules
     python benchmark/gold/v14_score.py --v1.3.11  # ... and the v1.4 rules
 """
@@ -63,6 +64,9 @@ def decide(P, B, gates):
         if not s.get("augment") and t.get("augment") and str(s.get("reason", "")).startswith("a kind of "):
             if s["reason"][len("a kind of "):].split(",")[0] in drawn:
                 P[i] = dict(t)
+    for s in P:                                        # v1.7: drawn although some stretch voted "seen" (majority or describe)
+        g = [x for x in gates if x["label"] == s["event_label"] and abs(x["start"] - s["start"]) < TOL and abs(x["end"] - s["end"]) < TOL]
+        s["gate_doubt"] = bool(s.get("augment") and g and any(v.get("seen") or v.get("desc") for v in g[0]["stretches"]))
     return P
 
 
@@ -72,7 +76,7 @@ def pictures(specs, dur, stem):
     objs = [AugmentationSpec(index=s.get("index", 0), event_label=s["event_label"], start=float(s["start"]), end=float(s["end"]),
                              augment=bool(s.get("augment")), confidence=float(s.get("confidence", 0)), image_path=s.get("image_path"),
                              talked_about=bool(s.get("talked_about")), spans=[tuple(x) for x in s.get("spans", [])],
-                             breaks=[tuple(x) for x in s.get("breaks", [])]) for s in specs]
+                             breaks=[tuple(x) for x in s.get("breaks", [])], gate_doubt=bool(s.get("gate_doubt"))) for s in specs]
     placed, _ = _assign_rows(_display_spans(objs, dur, require_image=True, clip=stem))
     return [(lab, float(a), float(b)) for _, lab, a, b, _ in placed]
 
@@ -84,6 +88,8 @@ def main():
         config.VISIBILITY_RULE, config.FLASH_RULE, config.PICTURE_BAN, config.HOLD_FLEXSED = "majority", False, None, None
     if "--v1.3.11" in sys.argv or "--v1.4" in sys.argv:
         config.REPEAT_LOCK, config.UNVERIFIABLE_BAN = False, None
+    if any(f in sys.argv for f in ("--v1.3.11", "--v1.4", "--v1.5", "--v1.6")):
+        config.GATE_DOUBT_DASM = None
     if "--v1.3.11" in sys.argv or "--v1.4" in sys.argv or "--v1.5" in sys.argv:
         config.COONSET_CONTEST, config.WEAK_NO_RISE, config.BEATS_NO_RISE = None, None, False
     config.MAX_AFTER_END = None                  # as the benchmark scoring (score_per_sound.load_pictures)

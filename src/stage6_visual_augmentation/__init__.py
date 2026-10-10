@@ -762,6 +762,9 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
     if getattr(config, "COONSET_CONTEST", None) is not None or getattr(config, "WEAK_NO_RISE", None) or getattr(config, "BEATS_NO_RISE", False):
         from src.stage6_visual_augmentation.v16 import onset_drops       # v1.6: onset contest, weak and flat, flat BEATs
         spans = onset_drops(sorted(spans, key=lambda sp: sp[1]), clip_)
+    if getattr(config, "GATE_DOUBT_DASM", None) is not None:
+        from src.stage6_visual_augmentation.v16 import gate_doubt_drops  # v1.7: a doubted picture needs DASM to hear it
+        spans = gate_doubt_drops(spans, clip_)
     return [tuple(sp) for sp in sorted(spans, key=lambda sp: sp[1])]
 
 
