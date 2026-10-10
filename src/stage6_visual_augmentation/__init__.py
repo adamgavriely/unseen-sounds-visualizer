@@ -751,6 +751,10 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
     ban = getattr(config, "PICTURE_BAN", None)
     if ban:
         spans = [sp for sp in spans if sp[0] not in ban]
+    unv = getattr(config, "UNVERIFIABLE_BAN", None)                # v1.5: no second detector can check the family
+    if unv:
+        from src.labels import canonical as _can
+        spans = [sp for sp in spans if _can(sp[0]) not in unv and sp[0] not in unv]
     if getattr(config, "HOLD_FLEXSED", None) is not None:
         from src.stage6_visual_augmentation.v14 import hold_ends
         spans = sorted(spans, key=lambda sp: sp[1])

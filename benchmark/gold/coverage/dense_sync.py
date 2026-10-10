@@ -18,7 +18,11 @@ from benchmark.gold.v14_score import GOLD
 from benchmark.gold.coverage.screen_reason import base_pics, TG
 
 HERE = Path(__file__).resolve().parent
-FEAT = HERE / "dense_sync.json"
+import os
+TAG = os.environ.get("DS_TAG", "")                       # stability variants: "f16" (16 frames at 10 per second), "w2" (other wording)
+FEAT = HERE / f"dense_sync{'_' + TAG if TAG else ''}.json"
+NF, FPS_S, PRE = (16, 10, 0.6) if TAG == "f16" else (12, 8, 0.5)
+K = int(round(PRE * FPS_S)) + 1
 Q = {
     "sync": ("These 12 frames are 1/8 s apart; a sound of {l} starts at frame 5. Does something visible in these frames make "
              "this {l} sound at that moment? Answer yes or no.",
@@ -28,6 +32,17 @@ Q = {
                "make a {l} sound? Answer yes or no.",
                "These 12 frames are 1/8 s apart. Is it true that nothing on screen around frame 5 could be making a {l} sound? "
                "Answer yes or no."),
+}
+
+Q2 = {
+    "sync": ("Frame 5 of these 12 frames (1/8 s apart) is the moment a {l} sound begins. Can you see the thing that makes "
+             "that sound, making it, at that moment? Answer yes or no.",
+             "Frame 5 of these 12 frames (1/8 s apart) is the moment a {l} sound begins. Is the thing making that sound out "
+             "of view at that moment? Answer yes or no."),
+    "change": ("Frame 5 of these 12 frames (1/8 s apart) is the moment a {l} sound begins. Is there a visible event at that "
+               "moment (a flash, an impact, something moving or lighting up) that could produce it? Answer yes or no.",
+               "Frame 5 of these 12 frames (1/8 s apart) is the moment a {l} sound begins. Is the picture calm at that moment, "
+               "with no visible event that could produce it? Answer yes or no."),
 }
 
 
@@ -47,13 +62,14 @@ def score(pics):
             if k in out:
                 continue
             ims = []
-            for i in range(12):
-                f = int(max(0, min(n - 1, (a - 0.5 + i / 8) * fps))); cap.set(cv2.CAP_PROP_POS_FRAMES, f); ok, fr = cap.read()
+            for i in range(NF):
+                f = int(max(0, min(n - 1, (a - PRE + i / FPS_S) * fps))); cap.set(cv2.CAP_PROP_POS_FRAMES, f); ok, fr = cap.read()
                 if ok:
                     im = Image.fromarray(cv2.cvtColor(fr, cv2.COLOR_BGR2RGB)); im.thumbnail((448, 448)); ims.append(im)
             l = lab.split(",")[0].split("(")[0].strip().lower()
+            QQ = {q: tuple(x.replace("12 frames", f"{NF} frames").replace("1/8 s", f"1/{FPS_S} s").replace("frame 5", f"frame {K}") for x in pt) for q, pt in (Q2 if TAG == "w2" else Q).items()}
             out[k] = {q: (R._yes_no_margin(mdl, proc, p.format(l=l), ims) - R._yes_no_margin(mdl, proc, t.format(l=l), ims)) if ims else None
-                      for q, (p, t) in Q.items()}
+                      for q, (p, t) in QQ.items()}
             out[k]["len"] = b - a
             print(k, out[k], flush=True)
             FEAT.write_text(json.dumps(out))
@@ -98,7 +114,7 @@ def main():
                 oof[st] = row(st, best)
         rr = [oof[st] for st in allc]
         L += ["", f"CV by {mode}: choices {ch}; out of fold hits {hits(rr)}, wrong {wr(rr)}, cost {cost(rr):.3f}"]
-    (HERE / "dense_sync.md").write_text("\n".join(L) + "\n", encoding="utf-8"); print("\n".join(L))
+    (HERE / f"dense_sync{'_' + TAG if TAG else ''}.md").write_text("\n".join(L) + "\n", encoding="utf-8"); print("\n".join(L))
 
 
 if __name__ == "__main__":

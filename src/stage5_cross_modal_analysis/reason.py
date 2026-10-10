@@ -1753,6 +1753,12 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 kept = pieces[:1]
                 spec.reason += " | gate: source visible, sound-making hidden inside it (Round 64) - kept"
                 print("       [stage5] concealed-action kept " + spec.event_label, flush=True)
+            if (kept and getattr(config, "REPEAT_LOCK", False) and len(bursts) > 1
+                    and str(spec.reason).startswith("stage 2 saw the source somewhere")
+                    and any(g["votes"].get("name") for g in _gst)):
+                # v1.5 repeat lock: the source was named on screen in some stretch -> only the first burst is drawn
+                spec.spans = bursts[:1]
+                print("       [stage5] repeat lock: " + spec.event_label + " drawn for its first burst only", flush=True)
             _trail_gate(spec, _gst, pieces, kept)
             if not kept:
                 spec.augment = False
