@@ -199,6 +199,19 @@ FLASH_TIMES = None         # set by pipeline.run for the clip in hand
 FLASH_CACHE = None         # {stem: {"flashes": [...]}} for offline scoring
 PICTURE_BAN = None         # labels never drawn
 PICTURE_BAN_V14 = ("Vehicle", "Water", "Engine", "Rain", "Wind", "Liquid", "Mechanisms", "Domestic sounds, home sounds")
+# v1.5: families no second detector can check (neither FlexSED nor DASM has a query for them), never drawn; matched on
+# the canonical family. Taken from the stage-4 vocabularies (benchmark/gold/coverage/wrong_types.md, rule R11).
+UNVERIFIABLE_BAN = None
+UNVERIFIABLE_FAMILIES = (
+    "Animal", "Bass drum", "Breathing", "Chatter", "Crumpling, crinkling", "Domestic animals, pets", "Dubstep",
+    "Environmental noise", "Guitar", "Harp", "Hum", "Humming", "Inside, small room", "Livestock, farm animals, working animals",
+    "Mains hum", "Male speech, man speaking", "Mechanisms", "Music", "Musical instrument", "Narration, monologue", "Noise",
+    "Opera", "Outside, rural or natural", "Piano", "Plucked string instrument", "Pulse", "Rub", "Saxophone", "Scary music",
+    "Shofar", "Silence", "Sound effect", "Speech", "Squeal", "Tearing", "Theme music", "Whir", "Wild animals", "Wind",
+    "Wind noise (microphone)")
+# v1.5 repeat lock (rule R2d): a sound stage 2 saw somewhere in the clip, whose source the gate named on screen in at
+# least one stretch, is drawn for its first burst only
+REPEAT_LOCK = False
 HOLD_FLEXSED = None        # hold a picture while FlexSED hears its family at >= this
 HOLD_FLEXSED_DIR = None    # FlexSED frame cache (default data/work/flexsed_cache)
 HOLD_CURVES = None         # offline: precomputed FlexSED family curves (benchmark/gold/v14/flexsed_curves.json)
@@ -591,6 +604,11 @@ def use_shipped() -> dict:
     # flash silences Thunder / blast pictures; generic texture labels are never drawn; a picture is held while FlexSED
     # still hears its family (>= 0.5). See src/stage6_visual_augmentation/v14.py.
     for k, v in (("VISIBILITY_RULE", "ab"), ("FLASH_RULE", True), ("PICTURE_BAN", PICTURE_BAN_V14), ("HOLD_FLEXSED", 0.5)):
+        changed[k] = (getattr(me, k, None), v)
+        setattr(me, k, v)
+    # v1.5 (Oct 2026): a sound whose source the gate named on screen is drawn for its first burst only (repeat lock);
+    # families no second detector can check are not drawn. benchmark/gold/coverage/wrong_types.md
+    for k, v in (("REPEAT_LOCK", True), ("UNVERIFIABLE_BAN", UNVERIFIABLE_FAMILIES)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed

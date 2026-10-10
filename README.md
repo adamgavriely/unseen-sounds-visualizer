@@ -28,11 +28,12 @@ of the project proposal.
 | show nothing | cost 3.268 | cost 3.034 |
 | direct audio-to-image (and audio captioning) | 34 / 58 found, 39 wrong, cost 2.451 | 28 / 66 found, 59 wrong, cost 3.103 |
 | v1.3.11 (the system of the report) | 29 / 58 found, 15 wrong, cost 2.056 | 25 / 66 found, 22 wrong, cost 2.391 |
-| **v1.4 (this release)** | **31 / 58 found, 12 wrong, cost 1.859** | **28 / 66 found, 22 wrong, cost 2.253** |
+| v1.4 | 31 / 58 found, 12 wrong, cost 1.859 | 28 / 66 found, 22 wrong, cost 2.253 |
+| **v1.5 (this release)** | **31 / 58 found, 10 wrong, cost 1.803** | **28 / 66 found, 17 wrong, cost 2.138** |
 
 v1.4 also keeps each picture on screen for more of its sound: a picture that finds its sound covers on average 83 % of
-it on the development set (v1.3.11: 72 %). Both rows are reproduced from a plain clone by
-`python benchmark/gold/v14_score.py` (see below). Five test labels were corrected on a blind second listen, and every
+it on the development set (v1.3.11: 72 %). v1.5 finds the same sounds as v1.4 with 7 fewer wrong pictures. The last
+three rows are reproduced from a plain clone by `python benchmark/gold/v14_score.py` (see below). Five test labels were corrected on a blind second listen, and every
 system was re-scored on the corrected labels (the earlier labels are kept in `benchmark/gold/annotations/`). The
 report describes v1.3.11; its limits are discussed in Section 9 of the report.
 
@@ -43,14 +44,17 @@ report describes v1.3.11; its limits are discussed in Section 9 of the report.
    DASM and FineLAP confirm or reject them.
 3. **On-screen check**: Qwen3.8-27B looks at the frames of each stretch of a sound and answers three questions; the
    a/b question ("could that thing be what is making the sound?", asked in both orders) decides whether the source is
-   visible, and the majority of the three decides when the two orders disagree. Because the frames are about one per
+   visible, and the majority of the three decides when the two orders disagree. A sound that comes in several bursts
+   and whose source the check named on screen in any stretch is drawn for its first burst only (repeat lock). Because the frames are about one per
    second, a short visible flash (lightning, a blast: a luminance jump of at most four frames) is detected separately
    and silences a Thunder picture, or an Explosion / Fireworks / Gunshot picture that starts within 0.3 s of it.
 4. **Pictures**: Qwen-Image-2512 draws each off-screen sound; a vision model checks the picture and it is redrawn up to five
    times. An alarm-type sound is drawn on the thing it belongs to (a siren as an emergency vehicle with its siren going off).
 5. **Composition**: the pictures are shown beside the video while their sound plays. A picture stays on screen
-   while FlexSED still hears its sound (score 0.5 or more, gaps under 1 s bridged), and generic texture labels
-   (Vehicle, Water, Engine, Rain, Wind, Liquid, Mechanisms, Domestic sounds) are not drawn.
+   while FlexSED still hears its sound (score 0.5 or more, gaps under 1 s bridged). Generic texture labels
+   (Vehicle, Water, Engine, Rain, Wind, Liquid, Mechanisms, Domestic sounds) are not drawn, and neither is a sound
+   that no second detector can check (a family that neither FlexSED nor DASM has a query for, such as Shofar;
+   `UNVERIFIABLE_FAMILIES` in `config.py`).
 
 ## Installation
 
@@ -115,14 +119,15 @@ once per clip.
 
 ## Reproducing the numbers
 
-The v1.4 numbers of the table above, from a plain clone, on CPU, in a few seconds:
+The v1.5, v1.4 and v1.3.11 numbers of the table above, from a plain clone, on CPU, in a few seconds:
 
 ```
-python benchmark/gold/v14_score.py              # v1.4
-python benchmark/gold/v14_score.py --v1.3.11    # the same inputs with the v1.4 rules switched off
+python benchmark/gold/v14_score.py              # v1.5
+python benchmark/gold/v14_score.py --v1.4       # the same inputs with the v1.5 rules switched off
+python benchmark/gold/v14_score.py --v1.3.11    # the same inputs with the v1.4 and v1.5 rules switched off
 ```
 
-It reads the stage-5 outputs of the 158 benchmark clips and the per-clip inputs of the v1.4 rules (flash times,
+It reads the stage-5 outputs of the 158 benchmark clips and the per-clip inputs of the v1.4 and v1.5 rules (flash times,
 FlexSED family curves, durations, grouping answers) from [`benchmark/gold/v14/`](benchmark/gold/v14/), applies the
 system's own on-screen decision and display code under `config.use_shipped()`, and scores the pictures with
 `benchmark/gold/score_per_sound.py` against `benchmark/gold/annotations/gold_AG.json`.

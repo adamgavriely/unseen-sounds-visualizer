@@ -8,7 +8,7 @@ import config
 
 ARM = sys.argv[1] if len(sys.argv) > 1 else "SHIP8+MD3+WW5+SL"
 SKIP = ("CACHE", "DIR", "_W", "PATH", "RELABEL_P1V4", "DASM_LOCAL_SCENE")      # per-split file locations, not behaviour
-V14 = ("VISIBILITY_RULE", "FLASH_RULE", "PICTURE_BAN", "HOLD_FLEXSED")   # v1.4 additions on top of the scored variant (README)
+V14 = ("VISIBILITY_RULE", "FLASH_RULE", "PICTURE_BAN", "HOLD_FLEXSED", "REPEAT_LOCK", "UNVERIFIABLE_BAN")   # v1.4 + v1.5 additions on top of the scored variant (README)
 config.use_shipped()
 from benchmark.gold import dev_harness as R
 bad = []
@@ -18,7 +18,7 @@ for k, v in sorted(R.arm_cfg(ARM).items()):
     c = getattr(config, k, "<absent>")
     if c != v and not (isinstance(v, (int, float)) and isinstance(c, (int, float)) and abs(c - v) < 1e-9):
         bad.append(f"{k}: arm={v!r} shipped={c!r}")
-print(f"parity {ARM}: {'OK' if not bad else 'MISMATCH'} (v1.4 additions not compared: {', '.join(V14)})")
+print(f"parity {ARM}: {'OK' if not bad else 'MISMATCH'} (v1.4 + v1.5 additions not compared: {', '.join(V14)})")
 for b in bad:
     print("  ", b)
 sys.exit(1 if bad else 0)
