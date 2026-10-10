@@ -4,6 +4,7 @@
     python benchmark/gold/coverage/dump_gate.py [out.json]
 """
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -36,7 +37,7 @@ def gate_votes(trail):
 def main():
     res = {}
     for split, part, base, stems in X.parts(ARM):
-        if split != "DEV":
+        if split != os.environ.get("SPLIT", "DEV"):
             continue
         for st in stems:
             P = json.loads((base / f"{ARM}_proposed" / st / "augmentations.json").read_text(encoding="utf-8"))

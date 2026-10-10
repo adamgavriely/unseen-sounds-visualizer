@@ -3,6 +3,7 @@
     python benchmark/gold/coverage/dump_burst_features.py   (verify_items_dev.json -> scratch_cov/burst_features_dev.json)
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -38,14 +39,15 @@ def stat(fr, fam, a, b, pad=0.0):
 
 def items(name):
     out = []
-    for f in (G / f"dev_{name}.json", G / f"dev2_{name}.json"):
+    for f in (G / f"dev_{name}.json", G / f"dev2_{name}.json", G / f"test_{name}.json", G / f"test2_{name}.json"):
         if f.exists():
             out += json.loads(f.read_text(encoding="utf-8"))["items"]
     return out
 
 
 def main():
-    it = json.loads((Path(__file__).resolve().parent / "verify_items_dev.json").read_text(encoding="utf-8"))
+    suf = "dev" if os.environ.get("SPLIT", "DEV") == "DEV" else "test"
+    it = json.loads((Path(__file__).resolve().parent / f"verify_items_{suf}.json").read_text(encoding="utf-8"))
     part = {}
     from benchmark.gold import inspector_trail_export as X
     for split, p, base, stems in X.parts("SHIP8+MD3+WW5+SL"):
@@ -77,7 +79,7 @@ def main():
                         "listener_q": max(q) if q else None,
                         "af_v4": float(any(x["accept"].get("V4") for x in af)) if af else None,
                         "af_yn": float(any(x["accept"].get("YN0") for x in af)) if af else None}
-    out = _ROOT / "scratch_cov" / "burst_features_dev.json"
+    out = _ROOT / "scratch_cov" / f"burst_features_{suf}.json"
     out.write_text(json.dumps(res), encoding="utf-8")
     print(len(res), "->", out)
 

@@ -19,7 +19,9 @@ import numpy as np
 _ROOT = Path(__file__).resolve().parent.parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 HERE = Path(__file__).resolve().parent
-ITEMS, OUT = HERE / "verify_items_dev.json", HERE / "omni_verify_dev.json"
+SPLIT = os.environ.get("SPLIT", "DEV")
+SUF = "dev" if SPLIT == "DEV" else "test"
+ITEMS, OUT = HERE / f"verify_items_{SUF}.json", HERE / f"omni_verify_{SUF}.json"
 MODEL = "Qwen/Qwen3-Omni-30B-A3B-Instruct"
 SR = 16000
 GAP, MAX_SIB = 2.5, 12
@@ -42,7 +44,7 @@ def items():
             kids.setdefault(q, set()).add(c)
     bad = lambda lab: canonical(lab) in ("Speech", "Music") or lab in ("Speech", "Music") or is_music(lab)
     bursts, secs = [], []
-    for c in (c for c in dj["clips"] if c["split"] == "DEV"):
+    for c in (c for c in dj["clips"] if c["split"] == SPLIT):
         st, dur = c["clip"], float(pf[c["clip"]]["dur"])
         by = {}
         for x in c["cands"]:
