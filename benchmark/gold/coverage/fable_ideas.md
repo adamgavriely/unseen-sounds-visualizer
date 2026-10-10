@@ -8,6 +8,6 @@ Current system: 59 hits / 34 wrong, onset cost 2.076, J 2.904, cover 0.85, |end 
 | 2 evidence-bound ends | [(0.5, None, False, 0.0, 'extend'), (0.5, None, False, 0.0, 'both'), (0.5, None, False, 0.5, 'both'), (0.4, None, False, 0.0, 'both'), (0.4, None, False, 0.5, 'both')] | [(0.5, None, False, 0.0, 'extend'), (0.5, None, False, 0.0, 'extend'), (0.5, None, False, 0.0, 'extend'), (0.5, None, False, 0.0, 'extend'), (0.5, None, False, 0.0, 'extend')] | 59 / 34 | 2.076 | 2.904 | no |
 | 3 parent on sibling disputes | [None, 0.5, 1.0] | [None, None, None, None, None] | 59 / 34 | 2.076 | 2.904 | no |
 | 5 best-timed guess | ['current', 'strongest', 'flexfirst'] | ['current', 'current', 'current', 'current', 'current'] | 59 / 34 | 2.076 | 2.904 | no |
-| 4 contrast dropper | - | - | - | - | - | skipped: TEST Omni answers not ready |
+| 4 contrast dropper | bar 0-0.4 | [0.4, 0.4, 0.3, 0.3, 0.4] | 43 / 20 | 2.304 | 2.893 | no |
 
 Final config: {'restart': None, 'parent': None, 'time': 'current', 'hold': (0.5, None, False, 0.0, 'extend')}
