@@ -111,6 +111,7 @@ class AugmentationSpec:
     breaks: List[Tuple[float, float]] = field(default_factory=list)  # R13-6: see AudioEvent.breaks
     rescued: bool = False            # Round 14: every burst came from the listener rescue (see AudioEvent.rescued)
     arbiter: bool = False            # Round 14 amendment F: every burst awaits the VLM arbiter (see AudioEvent.arbiter)
+    gate_doubt: bool = False         # v1.7: drawn, though the on-screen check voted "seen" (majority or describe) in >= 1 stretch
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

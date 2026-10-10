@@ -1759,6 +1759,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 # v1.5 repeat lock: the source was named on screen in some stretch -> only the first burst is drawn
                 spec.spans = bursts[:1]
                 print("       [stage5] repeat lock: " + spec.event_label + " drawn for its first burst only", flush=True)
+            if kept:                                      # v1.7: drawn although some stretch voted "seen" (majority or describe)
+                spec.gate_doubt = any(g["seen"] or g["votes"].get("desc") for g in _gst)
             _trail_gate(spec, _gst, pieces, kept)
             if not kept:
                 spec.augment = False

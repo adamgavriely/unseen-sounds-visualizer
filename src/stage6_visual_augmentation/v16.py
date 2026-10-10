@@ -122,3 +122,24 @@ def onset_drops(spans, clip: Optional[str]):
         if brise and x["beats"] is not None and x["beats"] <= 0:
             drop.add(i)
     return [sp for i, sp in enumerate(spans) if i not in drop]
+
+
+def gate_doubt_drops(spans, clip: Optional[str]):
+    """v1.7 GATE_DOUBT_DASM (t): a picture whose sound the on-screen check voted "seen" (majority or describe) in at least
+    one stretch, yet drawn (spec.gate_doubt), is dropped unless DASM's family curve reaches t somewhere inside the picture.
+    No DASM curve for the family -> kept. benchmark/gold/coverage/opusC_rules.md"""
+    t = getattr(config, "GATE_DOUBT_DASM", None)
+    if t is None or not spans or not clip:
+        return spans
+    stored = _offline(clip)
+    frames = None if stored is not None else _frames(clip)
+    out = []
+    for sp in spans:
+        if getattr(sp[3], "gate_doubt", False):
+            c = curves(sp[0], clip, frames, stored)["dasm"]
+            if c is not None:
+                w = (c[0] >= sp[1]) & (c[0] <= sp[2])
+                if w.any() and float(c[1][w].max()) < float(t):
+                    continue
+        out.append(sp)
+    return out

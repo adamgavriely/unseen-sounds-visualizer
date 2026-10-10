@@ -30,14 +30,16 @@ of the project proposal.
 | v1.3.11 (the system of the report) | 29 / 58 found, 15 wrong, cost 2.056 | 25 / 66 found, 22 wrong, cost 2.391 |
 | v1.4 | 31 / 58 found, 12 wrong, cost 1.859 | 28 / 66 found, 22 wrong, cost 2.253 |
 | v1.5 | 31 / 58 found, 10 wrong, cost 1.803 | 28 / 66 found, 17 wrong, cost 2.138 |
-| **v1.6 (this release)** | **31 / 58 found, 7 wrong, cost 1.718** | **28 / 66 found, 12 wrong, cost 2.023** |
+| v1.6 | 31 / 58 found, 7 wrong, cost 1.718 | 28 / 66 found, 12 wrong, cost 2.023 |
+| **v1.7 (this release)** | **31 / 58 found, 4 wrong, cost 1.634** | **28 / 66 found, 9 wrong, cost 1.954** |
 
 v1.4 also keeps each picture on screen for more of its sound: a picture that finds its sound covers on average 83 % of
 it on the development set (v1.3.11: 72 %). v1.5 finds the same sounds as v1.4 with 7 fewer wrong pictures, and v1.6 the same
 sounds as v1.5 with 8 fewer (19 instead of 27 over the 158 clips). In a clip-grouped 5-fold cross-validation (5 fold
 seeds) that switches each of the three v1.6 rules on or off inside every training fold, the held-out pictures lose no
-sound and have 20 wrong pictures instead of 27 (cost 1.899 vs 1.987 over the 158 clips). The last
-four rows are reproduced from a plain clone by `python benchmark/gold/v14_score.py` (see below). Five test labels were corrected on a blind second listen, and every
+sound and have 20 wrong pictures instead of 27 (cost 1.899 vs 1.987 over the 158 clips). v1.7 finds the same sounds
+as v1.6 with 6 fewer wrong pictures (13 instead of 19); choosing its bar inside each training fold of a clip-grouped
+5-fold cross-validation gives the same 13. The last five rows are reproduced from a plain clone by `python benchmark/gold/v14_score.py` (see below). Five test labels were corrected on a blind second listen, and every
 system was re-scored on the corrected labels (the earlier labels are kept in `benchmark/gold/annotations/`). The
 report describes v1.3.11; its limits are discussed in Section 9 of the report.
 
@@ -63,7 +65,9 @@ report describes v1.3.11; its limits are discussed in Section 9 of the report.
    the 2.5 s ending 0.5 s before the start): of two overlapping pictures of different sounds that start at most 3 s
    apart, the one the three detectors hear less at its start is dropped; a picture with detector confidence under
    0.41 whose FlexSED curve rises by less than 0.2 is dropped; and a picture whose BEATs curve does not rise at its
-   start is dropped (`src/stage6_visual_augmentation/v16.py`).
+   start is dropped. Last, a picture that was drawn although the on-screen check voted "seen" in at least one stretch
+   (by the majority of its three questions or by the description) must be heard by DASM (family score 0.6 or more
+   somewhere inside the picture), or it is dropped (`src/stage6_visual_augmentation/v16.py`).
 
 ## Installation
 
@@ -128,16 +132,17 @@ once per clip.
 
 ## Reproducing the numbers
 
-The v1.6, v1.5, v1.4 and v1.3.11 numbers of the table above, from a plain clone, on CPU, in a few seconds:
+The v1.7, v1.6, v1.5, v1.4 and v1.3.11 numbers of the table above, from a plain clone, on CPU, in a few seconds:
 
 ```
-python benchmark/gold/v14_score.py              # v1.6
-python benchmark/gold/v14_score.py --v1.5       # the same inputs with the v1.6 rules switched off
+python benchmark/gold/v14_score.py              # v1.7
+python benchmark/gold/v14_score.py --v1.6       # the same inputs with the v1.7 rule switched off
+python benchmark/gold/v14_score.py --v1.5       # ... and the v1.6 rules
 python benchmark/gold/v14_score.py --v1.4       # ... and the v1.5 rules
 python benchmark/gold/v14_score.py --v1.3.11    # ... and the v1.4 rules
 ```
 
-It reads the stage-5 outputs of the 158 benchmark clips and the per-clip inputs of the v1.4, v1.5 and v1.6 rules (flash times,
+It reads the stage-5 outputs of the 158 benchmark clips and the per-clip inputs of the v1.4 to v1.7 rules (flash times,
 FlexSED family curves, the BEATs / FlexSED / DASM family curves of the drawn sounds, durations, grouping answers) from [`benchmark/gold/v14/`](benchmark/gold/v14/), applies the
 system's own on-screen decision and display code under `config.use_shipped()`, and scores the pictures with
 `benchmark/gold/score_per_sound.py` against `benchmark/gold/annotations/gold_AG.json`.

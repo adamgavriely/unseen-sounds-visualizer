@@ -220,6 +220,7 @@ HOLD_CURVES = None         # offline: precomputed FlexSED family curves (benchma
 COONSET_CONTEST = None     # two overlapping pictures of different families starting <= this (s) apart: the weaker onset goes
 WEAK_NO_RISE = None        # (conf, rise): drop a picture with stage-5 confidence < conf and FlexSED rise < rise
 BEATS_NO_RISE = False      # drop a picture whose BEATs family curve does not rise at its start
+GATE_DOUBT_DASM = None     # v1.7: a picture drawn although the on-screen check voted "seen" in a stretch needs DASM >= this in it
 BEATS_FRAMES = None        # set by stage 4 for the clip in hand: (clip, framewise, times, labels)
 ONSET_CURVES = None        # offline: precomputed family curves (benchmark/gold/v14/detector_curves.json)
 # When the detector gives no sub-label, the frames from the sound's own moment are asked
@@ -620,8 +621,9 @@ def use_shipped() -> dict:
         setattr(me, k, v)
     # v1.6 (Oct 2026): onset rules on the detector curves at each picture's start -- of two different pictures starting
     # <= 3 s apart the weaker onset goes; a weak picture (confidence < 0.41) FlexSED hears no rise at (< 0.2) goes; a
-    # picture BEATs hears no rise at goes. See src/stage6_visual_augmentation/v16.py.
-    for k, v in (("COONSET_CONTEST", 3.0), ("WEAK_NO_RISE", (0.41, 0.2)), ("BEATS_NO_RISE", True)):
+    # picture BEATs hears no rise at goes. v1.7: a picture drawn although the on-screen check voted "seen" in a stretch
+    # needs DASM >= 0.6 inside it. See src/stage6_visual_augmentation/v16.py.
+    for k, v in (("COONSET_CONTEST", 3.0), ("WEAK_NO_RISE", (0.41, 0.2)), ("BEATS_NO_RISE", True), ("GATE_DOUBT_DASM", 0.6)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed
