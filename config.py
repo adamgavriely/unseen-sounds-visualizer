@@ -192,7 +192,15 @@ VLM_VISIBILITY = True
 VISIBILITY_STRETCH = 5.0
 # How the three visibility votes per stretch combine: "majority" (v3) or "unanimous".
 # Set once on the dev split by benchmark/gate_dev_sweep.py (release v1.2.0), never on test.
-VISIBILITY_RULE = "majority"
+VISIBILITY_RULE = "majority"          # v1.4 use_shipped(): "ab" (the a/b answer decides; split -> majority)
+# v1.4 display rules (src/stage6_visual_augmentation/v14.py); all off here, on in use_shipped().
+FLASH_RULE = False         # drop Thunder / blast pictures when a luminance flash shows the source
+FLASH_TIMES = None         # set by pipeline.run for the clip in hand
+FLASH_CACHE = None         # {stem: {"flashes": [...]}} for offline scoring
+PICTURE_BAN = None         # labels never drawn
+PICTURE_BAN_V14 = ("Vehicle", "Water", "Engine", "Rain", "Wind", "Liquid", "Mechanisms", "Domestic sounds, home sounds")
+HOLD_FLEXSED = None        # hold a picture while FlexSED hears its family at >= this
+HOLD_FLEXSED_DIR = None    # FlexSED frame cache (default data/work/flexsed_cache)
 # When the detector gives no sub-label, the frames from the sound's own moment are asked
 # what KIND of that sound it is -- a crowd chanting, not a crowd cheering -- with the
 # label fixed in the question and "unknown" as an answer. The answer must still name the
@@ -576,6 +584,12 @@ def use_shipped() -> dict:
                  # round 35 K4A-D (new DEV best 1 Oct, corrected gold): a drawn span neither open-inventory listener names
                  # on its cut is dropped unless DASM hears it (>= 0.575 in the span +- 0.5 s). Merged DEV 28 / 21 / 2.282
                  ("KEEP_NEEDS_V4_ALL", "onto"), ("KEEP_NEEDS_V4_ALL_DASM_KEEP", True)):
+        changed[k] = (getattr(me, k, None), v)
+        setattr(me, k, v)
+    # v1.4 (Oct 2026, benchmark/gold/coverage/): the a/b answer decides the on-screen check (split -> majority); a visible
+    # flash silences Thunder / blast pictures; generic texture labels are never drawn; a picture is held while FlexSED
+    # still hears its family (>= 0.5). See src/stage6_visual_augmentation/v14.py.
+    for k, v in (("VISIBILITY_RULE", "ab"), ("FLASH_RULE", True), ("PICTURE_BAN", PICTURE_BAN_V14), ("HOLD_FLEXSED", 0.5)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed

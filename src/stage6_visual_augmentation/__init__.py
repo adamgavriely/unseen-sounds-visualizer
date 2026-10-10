@@ -742,6 +742,19 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
     if getattr(config, "GROUP_ASK", False):          # Round 47 GROUP (1 Oct): Omni-confirmed repeats -> one picture
         from src.stage6_visual_augmentation.group import apply as _group
         spans = _group(spans, clip)
+    # v1.4 display rules (src/stage6_visual_augmentation/v14.py): flash, texture ban, hold. Off unless use_shipped() sets them.
+    clip_ = clip or getattr(config, "GROUP_CLIP", None)
+    if getattr(config, "FLASH_RULE", False):
+        from src.stage6_visual_augmentation.v14 import flash_times, flash_drop
+        fl = flash_times(clip_)
+        spans = [sp for sp in spans if not flash_drop(sp[0], sp[1], sp[2], fl)]
+    ban = getattr(config, "PICTURE_BAN", None)
+    if ban:
+        spans = [sp for sp in spans if sp[0] not in ban]
+    if getattr(config, "HOLD_FLEXSED", None) is not None:
+        from src.stage6_visual_augmentation.v14 import hold_ends
+        spans = sorted(spans, key=lambda sp: sp[1])
+        spans = hold_ends(spans, duration, clip_, 2.5)
     return [tuple(sp) for sp in sorted(spans, key=lambda sp: sp[1])]
 
 

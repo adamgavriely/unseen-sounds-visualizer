@@ -116,6 +116,9 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     _dump(work / "augmentations.json", [s.to_dict() for s in specs])
 
     config.GROUP_CLIP = video_path.stem          # Round 47 GROUP: Omni-confirmed repeats shown as one picture
+    if getattr(config, "FLASH_RULE", False):     # v1.4: visible flashes of this clip (luminance, full frame rate)
+        from src.stage6_visual_augmentation.v14 import scan_flashes
+        config.FLASH_TIMES = scan_flashes(video_path)
     from src.stage6_visual_augmentation.group import ensure as _group_ensure
     if getattr(config, "GROUP_ASK", False):
         if getattr(config, "GROUP_LIVE", False):         # in this process (models of earlier stages may still be loaded)
