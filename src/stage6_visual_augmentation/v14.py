@@ -100,23 +100,47 @@ def _flex(clip: str):
     return _FLEX[clip]
 
 
+_CURVES = {}
+
+
+def _curves(clip: str):
+    """config.HOLD_CURVES: {stem: {"labels": {label: {"flex": {"t": [...], "v": [...]}}}}}, the FlexSED family curves
+    (max over the queries of the label's family), as stored for offline scoring in benchmark/gold/v14/"""
+    path = getattr(config, "HOLD_CURVES", None)
+    if not path:
+        return None
+    if path not in _CURVES:
+        p = Path(path)
+        _CURVES[path] = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+    return (_CURVES[path].get(clip) or {}).get("labels")
+
+
 def hold_ends(spans, duration: float, clip: Optional[str], gap: float):
     """spans: mutable [label, start, end, spec] lists; ends may only grow"""
     bar = getattr(config, "HOLD_FLEXSED", None)
     if bar is None or not clip:
         return spans
     fr = _flex(clip)
+    curves = None
     if fr is None:
-        return spans
+        curves = _curves(clip)                   # offline: precomputed family curves (benchmark/gold/v14/)
+        if curves is None:
+            return spans
     from benchmark.gold.score_per_sound import same_family
-    fw, t, labs = fr
+    fw, t, labs = fr if fr is not None else (None, None, None)
     step, bridge = 0.02, 1.0
     for sp in spans:
         lab, a, b = sp[0], sp[1], sp[2]
-        cols = [i for i, l in enumerate(labs) if same_family(l, lab)]
-        if not cols:
-            continue
-        v = fw[:, cols].max(axis=1)
+        if curves is not None:
+            c = (curves.get(lab) or {}).get("flex")
+            if not c or not c.get("t"):
+                continue
+            t, v = np.asarray(c["t"], float), np.asarray(c["v"], float)
+        else:
+            cols = [i for i, l in enumerate(labs) if same_family(l, lab)]
+            if not cols:
+                continue
+            v = fw[:, cols].max(axis=1)
         nxt = [o[1] for o in spans if o[0] == lab and o[1] > a + 1e-9]
         cap = min([float(duration)] + [n - gap for n in nxt])
         x, last = b, None

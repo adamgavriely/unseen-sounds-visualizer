@@ -201,6 +201,7 @@ PICTURE_BAN = None         # labels never drawn
 PICTURE_BAN_V14 = ("Vehicle", "Water", "Engine", "Rain", "Wind", "Liquid", "Mechanisms", "Domestic sounds, home sounds")
 HOLD_FLEXSED = None        # hold a picture while FlexSED hears its family at >= this
 HOLD_FLEXSED_DIR = None    # FlexSED frame cache (default data/work/flexsed_cache)
+HOLD_CURVES = None         # offline: precomputed FlexSED family curves (benchmark/gold/v14/flexsed_curves.json)
 # When the detector gives no sub-label, the frames from the sound's own moment are asked
 # what KIND of that sound it is -- a crowd chanting, not a crowd cheering -- with the
 # label fixed in the question and "unknown" as an answer. The answer must still name the

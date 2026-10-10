@@ -1,0 +1,2116 @@
+{
+ "tg_d016": {
+  "Cough|5.75": {
+   "subject": "Person coughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d022": {
+  "Dog|7.25": {
+   "subject": "Dog barking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d030": {
+  "Vehicle|0.00": {
+   "subject": "Car driving",
+   "makers": [
+    "scooter"
+   ],
+   "event": false,
+   "lookalike_yes": true,
+   "silenced": false
+  }
+ },
+ "tg_d032": {
+  "Thunder|13.75": {
+   "subject": "Sky rumbles",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d075": {
+  "Alarm|0.14": {
+   "subject": "Alarm clock ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d088": {
+  "Explosion|10.75": {
+   "subject": "Bomb explodes",
+   "makers": [
+    "lightning"
+   ],
+   "event": false,
+   "lookalike_yes": true,
+   "silenced": false
+  },
+  "Thunder|13.25": {
+   "subject": "Clouds rumble",
+   "makers": [
+    "rain",
+    "lightning bolt"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d107": {
+  "Crying, sobbing|0.38": {
+   "subject": "Person crying",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Laughter|8.92": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Screaming|6.52": {
+   "subject": "Parrot screaming",
+   "makers": [
+    "green parrot"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d120": {
+  "Cat|0.56": {
+   "subject": "Cat meowing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d127": {
+  "Laughter|9.32": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Water|0.14": {
+   "subject": "Water pouring",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d128": {
+  "Hammer|9.00": {
+   "subject": "Hammer striking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Laughter|3.08": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d149": {
+  "Bee, wasp, etc.|1.25": {
+   "subject": "Bee buzzing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_nature_rainforest_7629": {
+  "Insect|0.14": {
+   "subject": "Insect buzzing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_snow_walk_930": {
+  "Laughter|8.08": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_weather_storm_16200": {
+  "Thunder|0.06": {
+   "subject": "Sky rumbles",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_weather_storm_7200": {
+  "Thunder|0.06": {
+   "subject": "Sky rumbles",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "as_church_bell_pJRAWkLM": {
+  "Bell|0.14": {
+   "subject": "Bell swinging",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "as_explosion_XJ8lc3I6": {
+  "Explosion|5.68": {
+   "subject": "Bomb explodes",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Gunshot|18.00": {
+   "subject": "Machine gun firing",
+   "makers": [
+    "AK-47 rifle",
+    "ak-47 rifle"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "as_fire_alarm_kGKZ0YK4": {
+  "Alarm|8.89": {
+   "subject": "Fire alarm ringing",
+   "makers": [
+    "fire alarm"
+   ],
+   "event": false,
+   "lookalike_yes": true,
+   "silenced": false
+  }
+ },
+ "b3_bakery_morning": {
+  "Door|4.25": {
+   "subject": "Cupboard door closing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "b3_barbershop": {
+  "Electric shaver, electric razor|16.00": {
+   "subject": "Man shaves face",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "b3_botanic_garden": {
+  "Bird|1.00": {
+   "subject": "Bird chirping",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "b3_crossing_bells": {
+  "Steam|0.22": {
+   "subject": "Train releases steam",
+   "makers": [
+    "steam train"
+   ],
+   "event": true,
+   "lookalike_yes": true,
+   "silenced": true
+  }
+ },
+ "b3_laundromat": {
+  "Train|1.00": {
+   "subject": "Train moving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "birds_forest": {
+  "Bird|10.25": {
+   "subject": "Rooster crows",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "london_protest_01": {
+  "Vehicle|0.25": {
+   "subject": "Train moving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ly_ambulance_(siren)_-yPSgCn": {
+  "Siren|0.00": {
+   "subject": "Emergency vehicle siren",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ly_applause_62ZYD0u": {
+  "Crowd|0.00": {
+   "subject": "Crowd clapping hands",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ly_helicopter_-v62cK1": {
+  "Vehicle|6.31": {
+   "subject": "Car driving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mv_detective_crime_scene": {
+  "Alarm|3.36": {
+   "subject": "Alarm ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mv_protest_scene_movie": {
+  "Crowd|0.00": {
+   "subject": "Crowd cheering",
+   "makers": [
+    "crowd of people"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Glass|10.75": {
+   "subject": "Glass shatters",
+   "makers": [
+    "candles"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mv_storm_scene_house": {
+  "Alarm|2.18": {
+   "subject": "Alarm ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mv_tornado_scene": {
+  "Siren|9.25": {
+   "subject": "Siren sounding",
+   "makers": [
+    "air raid siren"
+   ],
+   "event": false,
+   "lookalike_yes": true,
+   "silenced": false
+  }
+ },
+ "un_driving_motorcycle_4O3bZRYO": {
+  "Laughter|13.36": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "un_driving_motorcycle_DgdHSmwA": {
+  "Explosion|13.92": {
+   "subject": "Bomb exploding",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "un_hair_dryer_drying_WWu24rJs": {
+  "Computer keyboard|11.25": {
+   "subject": "Fingers strike keyboard",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_everyday_farm_2166": {
+  "Bird|0.14": {
+   "subject": "Bird singing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_market_bangkok_1237": {},
+ "ambient_market_bangkok_4332": {},
+ "ambient_nature_savanna_7706": {},
+ "ambient_nightlife_neon_97": {
+  "Typing|0.50": {
+   "subject": "Fingers strike keyboard",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_temple_india_1438": {},
+ "ambient_waterfall_hike_18078": {
+  "Bird|0.14": {
+   "subject": "Bird chirping",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "as_alarm_71Xl_uAS": {},
+ "as_fireworks_jZ9mYtCA": {},
+ "as_glass_GAGt_UEF": {},
+ "b3_aquarium_walk": {},
+ "b3_balloon_burner": {},
+ "b3_ia_62934flighttothesuncountryvw_1": {},
+ "b3_ia_87954yourchancetolivenuclear_1": {},
+ "b3_ia_alcf_heydari_0005_0": {},
+ "b3_leafblower_fall": {},
+ "bell_kazansky": {
+  "Bell|0.14": {
+   "subject": "Bells swinging",
+   "makers": [
+    "bells",
+    "bell"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No",
+    "No"
+   ],
+   "silenced": false
+  }
+ },
+ "dutch_traffic_kids": {},
+ "ev_smoke_alarm_kitchen": {
+  "Alarm|10.00": {
+   "subject": "Smoke detector beeping",
+   "makers": [
+    "stove"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "lx_chainsaw_and_power_tool_BBukw6J": {},
+ "lx_chainsaw_and_power_tool_W1VYWwY": {},
+ "ly_alarm_qCVdVav": {
+  "Electric toothbrush|16.75": {
+   "subject": "Toothbrush vibrating",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "m4_airsoft_24a": {
+  "Explosion|4.50": {
+   "subject": "Gun firing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "m4_clay_shoot_11a": {},
+ "m4_dog_doorbell_cam_30a": {
+  "Dog|3.00": {
+   "subject": "Dog barking",
+   "makers": [
+    "dog"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "m4_film_1917_33a": {
+  "Gunshot|1.75": {
+   "subject": "Cannon firing",
+   "makers": [
+    "rifle"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  },
+  "Explosion|10.88": {
+   "subject": "Bomb explodes",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "m4_film_blackhawk_32a": {},
+ "m4_fire_bodycam_23a": {},
+ "m4_live_fire_26a": {
+  "Gunshot|8.64": {
+   "subject": "Soldier firing gun",
+   "makers": [
+    "tank"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "m5_doc_restrepo_138b": {},
+ "m5_horror_conjuring_82": {
+  "Bell|4.88": {
+   "subject": "Bell ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "m5_war_fury_25b": {},
+ "mc_break_in_scene": {
+  "Glass|6.75": {
+   "subject": "Glass shatters",
+   "makers": [
+    "cracked glass screen"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "mc_bridge_scene": {
+  "Dog|0.10": {
+   "subject": "Dog barking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mc_flood_scene": {},
+ "mc_riot_scene": {},
+ "mc_thriller_basement": {},
+ "movie_bladerunner_49": {},
+ "movie_interstellar_98": {},
+ "movie_junglebook_51": {},
+ "movie_junglebook_95": {},
+ "movie_madmax_57": {},
+ "movie_planetearth_58": {},
+ "mv_air_raid_scene": {
+  "Siren|5.50": {
+   "subject": "Siren sounding",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Shofar|7.75": {
+   "subject": "Man blowing shofar",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mv_bank_robbery_alarm": {},
+ "oc_distant_traffic_hill": {
+  "Rain|0.04": {
+   "subject": "Rain falls",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "pdfilm_duckcover_90": {},
+ "un_dog_barking_3doKyrCe": {
+  "Siren|0.06": {
+   "subject": "Emergency vehicle siren",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "un_hair_dryer_drying_jmlpavrE": {},
+ "un_wind_noise_1OctTl0h": {},
+ "w8_dashcam_ambulance_behind_1a": {
+  "Siren|0.22": {
+   "subject": "Emergency vehicle siren",
+   "makers": [
+    "white van",
+    "emergency van"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No",
+    "Yes."
+   ],
+   "silenced": false
+  },
+  "Shofar|3.00": {
+   "subject": "Man blows shofar",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "w8_dashcam_avalanche_road_2b": {
+  "Alarm|6.25": {
+   "subject": "Car alarm blaring",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "w8_dog_fireworks_window_2a": {
+  "Explosion|0.00": {
+   "subject": "Bomb explodes",
+   "makers": [
+    "fireworks"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "w8_duel_diner_horn_1a": {},
+ "w8_film_hunt_for_red_october_1b": {},
+ "w8_helmetcam_chainsaw_roof_2b": {
+  "Chainsaw|0.06": {
+   "subject": "Chainsaw cutting",
+   "makers": [
+    "chainsaw"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  },
+  "Vehicle|0.00": {
+   "subject": "Car driving",
+   "makers": [
+    "fire truck"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "w8_hide_wolves_howl_1a": {
+  "Baby cry, infant cry|6.32": {
+   "subject": "Baby crying",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Human locomotion|10.00": {
+   "subject": "Person walking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "w8_kids_fire_alarm_school_1b": {
+  "Alarm|0.00": {
+   "subject": "alarm ringing",
+   "makers": [
+    "security panel",
+    "fire alarm control panel"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "w8_kids_ice_cream_truck_2a": {
+  "Ice cream truck, ice cream van|0.06": {
+   "subject": "Ice cream truck driving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "w8_pet_parrot_phone_ring_2b": {
+  "Dog|0.14": {
+   "subject": "Dog barking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d001": {
+  "Duck|0.14": {
+   "subject": "Duck quacking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Honk|5.12": {
+   "subject": "Car horn honking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d009": {
+  "Laughter|8.70": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d011": {},
+ "tg_d013": {},
+ "tg_d014": {},
+ "tg_d017": {
+  "Vehicle|2.75": {
+   "subject": "Black car driving",
+   "makers": [
+    "black car"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "tg_d019": {
+  "Siren|2.25": {
+   "subject": "Siren spinning",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d023": {
+  "Bee, wasp, etc.|10.25": {
+   "subject": "Wasp buzzing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d031": {
+  "Bird|17.50": {
+   "subject": "Bird singing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d040": {
+  "Crowd|14.48": {
+   "subject": "Crowd cheering",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d045": {
+  "Siren|5.44": {
+   "subject": "Siren blaring",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d046": {
+  "Vehicle|1.00": {
+   "subject": "Auto rickshaw engine revving",
+   "makers": [
+    "three wheeler",
+    "motorcycle"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "tg_d068": {
+  "Vehicle|6.75": {
+   "subject": "Tractor driving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d076": {},
+ "tg_d077": {},
+ "tg_d078": {},
+ "tg_d079": {},
+ "tg_d080": {},
+ "tg_d101": {},
+ "tg_d103": {
+  "Explosion|8.80": {
+   "subject": "Bomb explodes",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d104": {
+  "Explosion|2.72": {
+   "subject": "Bomb explodes",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d105": {
+  "Vehicle|0.30": {
+   "subject": "Nissan GT-R engine revving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d106": {},
+ "tg_d109": {},
+ "tg_d110": {},
+ "tg_d112": {},
+ "tg_d141": {},
+ "tg_d146": {
+  "Water|0.00": {
+   "subject": "Water splashing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "b3_flea_market": {
+  "Vehicle|20.00": {
+   "subject": "Car driving",
+   "makers": [
+    "black truck"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "b3_golf_course": {
+  "Bird|3.80": {
+   "subject": "Bird flying",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "3AJuHcjE31w_30000": {
+  "Crowd|0.30": {
+   "subject": "Crowd cheering",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "Bdz-NtAD2SU_30000": {},
+ "jlmyAZSidOQ_290000": {
+  "Toilet flush|0.14": {
+   "subject": "Toilet flushing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "comfy_tg_d088_09e4ce48": {
+  "Thunder|13.25": {
+   "subject": "Thunderstorm clouds rumbling",
+   "makers": [
+    "thunderstorm",
+    "lightning bolt"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "comfy_tg_d088_check2_09e4ce48": {
+  "Thunder|13.25": {
+   "subject": "Clouds rumble",
+   "makers": [
+    "thunderstorm",
+    "lightning bolt"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  },
+  "Explosion|10.75": {
+   "subject": "Bomb explodes",
+   "makers": [
+    "lightning"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "comfy_protest_scene_27ece437": {
+  "Crowd|0.00": {
+   "subject": "Crowd cheering",
+   "makers": [
+    "crowd of people"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  },
+  "Glass|10.75": {
+   "subject": "Glass shatters",
+   "makers": [
+    "candlestick"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "comfy_public_f7dbded6_13d2d0f2": {
+  "Explosion|13.92": {
+   "subject": "Bomb exploding",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "comfy_public_1f9fbee0_2bfe3674": {
+  "Shofar|0.14": {
+   "subject": "Man blows shofar",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "comfy_public_641b2f0d_2bfe3674": {
+  "Shofar|0.14": {
+   "subject": "Man blows shofar",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "comfy_phone_e21da0b5": {},
+ "comfy_public_57604e95_2bfe3674": {
+  "Shofar|0.14": {
+   "subject": "Man blows shofar",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "comfy_public_40e4560d_626eb1e7": {
+  "Alarm|1.72": {
+   "subject": "Fire alarm ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "comfy_public_4ec2ba76_94e52cd3": {},
+ "comfy_public_6765dd32_abe1220c": {},
+ "-PVEno65928_30000": {},
+ "-YRJHtktT1g_170000": {
+  "Vehicle|0.06": {
+   "subject": "Ford engine idling",
+   "makers": [
+    "car"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "-Z8bjo6q6jc_70000": {},
+ "-gCqnkIUmp0_140000": {},
+ "-jcBFqcdpuI_6000": {
+  "Roaring cats (lions, tigers)|4.14": {
+   "subject": "Lions roaring",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "-qBctCzLI5s_50000": {},
+ "-qS77R0Y1K8_30000": {},
+ "00G2vNrTnCc_10000": {},
+ "01x0zZpL87I_19000": {},
+ "0HzbpwB3xDk_30000": {},
+ "0L2ndtt60Q8_30000": {},
+ "0NW8rsCj6xQ_30000": {},
+ "0bsbkdnSgMQ_30000": {
+  "Dog|1.38": {
+   "subject": "Dog barking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "0dC6Ay0oqWk_30000": {},
+ "0fiOM---7QI_140000": {},
+ "0lJyHuTVMNY_490000": {},
+ "0slyl34xWug_10000": {
+  "Water|0.06": {
+   "subject": "Water flowing",
+   "makers": [
+    "school of fish"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "1-TnkdEPXEw_20000": {},
+ "1F3_bvIT0ig_0": {},
+ "1J-E-QqJdkg_30000": {},
+ "1Q1pDQzTW6c_20000": {},
+ "1V9CWQNZRF8_450000": {},
+ "1X0VCv-S2H8_50000": {},
+ "1jTQsVs5iWM_230000": {
+  "Laughter|2.16": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "1tNkAc29aPE_30000": {},
+ "2B-xGbzOjYY_30000": {},
+ "2FQKfGCwjSE_30000": {},
+ "2GepmcbNlJY_0": {},
+ "2KQAtN4XF8o_40000": {},
+ "2MpzHv5KNZU_30000": {},
+ "2ZB7DUGOdZw_30000": {},
+ "2ffgd7k0vI8_40000": {},
+ "2k6_k7K_ixg_30000": {
+  "Drill|5.98": {
+   "subject": "Drill drilling",
+   "makers": [
+    "motorcycle"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "2sGnD9sd1xM_470000": {},
+ "3-a8i_MEUl8_30000": {},
+ "3pV7d32BfBQ_50000": {},
+ "3saUiDqAqEc_30000": {
+  "Vehicle|0.30": {
+   "subject": "Car driving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "40k3AAbA7tM_410000": {},
+ "43R5uK6JJoA_30000": {},
+ "4KNMw4YcCBQ_430000": {},
+ "4aRMZ4ePmMM_210000": {},
+ "4frNzH2u6Us_30000": {},
+ "4gFbCdHle0w_30000": {},
+ "4lnO99-z3TQ_30000": {
+  "Heart sounds, heartbeat|0.22": {
+   "subject": "Heart beating",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "4pAIQCwNNjo_110000": {},
+ "4xgYnUrMefU_110000": {
+  "Power tool|0.00": {
+   "subject": "Drill drilling",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Electric shaver, electric razor|0.30": {
+   "subject": "Man shaves face",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "52P29_VwBT0_30000": {},
+ "53KoRxxr1jc_30000": {},
+ "5E_8bEnP43Y_30000": {
+  "Insect|0.96": {
+   "subject": "Insect buzzing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Vehicle|0.00": {
+   "subject": "Car driving",
+   "makers": [
+    "Audi Q7"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "5FEZg17q5hA_260000": {},
+ "5So_E6yPW40_10000": {},
+ "5TTyaxIvBo4_70000": {
+  "Maraca|1.00": {
+   "subject": "Hands shaking maracas",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "5lOHKcRIFqk_580000": {},
+ "5tM4bPM6E_w_70000": {},
+ "614LdgrE13A_110000": {},
+ "61T8j-vXtnA_430000": {},
+ "6PLlWvC4BiQ_160000": {},
+ "6Y8wSI1l-Lw_30000": {},
+ "6kg_EUG6PPs_320000": {},
+ "72vme5Tdc_g_30000": {},
+ "7MuFNZHhrOE_330000": {},
+ "7PtHb9jQCtg_130000": {
+  "Crowd|0.00": {
+   "subject": "Crowd cheering",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "7SH7rhWgm8U_80000": {
+  "Hi-hat|0.22": {
+   "subject": "Hands strike hi-hat",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "7uErtxgLWg4_20000": {},
+ "7uK5ctEget0_20000": {},
+ "8AdDbRz0SrU_28000": {},
+ "8G9eS_GHUiY_30000": {},
+ "8HhaU-YvFq0_10000": {
+  "Crowd|0.00": {
+   "subject": "Crowd cheering",
+   "makers": [
+    "people"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "8Nnxclrk7dU_220000": {
+  "Telephone|6.75": {
+   "subject": "Phone ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "8WnXfe3ud4E_270000": {},
+ "9Bd657cv4cQ_450000": {},
+ "9SRfLMFUjKI_30000": {
+  "Heart sounds, heartbeat|0.22": {
+   "subject": "Heart beating",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "9Ti98L4PRCo_17000": {},
+ "9WrIbJC_C7A_30000": {},
+ "9oixCTvP8Yw_440000": {},
+ "9piLf5SXqEk_460000": {},
+ "9q2xqtfEgdo_280000": {},
+ "AJLUD830PV0_70000": {},
+ "AJVSqnsBf70_80000": {
+  "Filing (rasp)|7.25": {
+   "subject": "File metal",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "AOijOUuUWwg_100000": {
+  "Electric toothbrush|0.00": {
+   "subject": "Toothbrush vibrating",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "AVL7Kbpw13U_130000": {},
+ "AVmJF1uaRuE_30000": {},
+ "AWcZq1PRcII_20000": {},
+ "Ab1MAIKOmBU_30000": {},
+ "Ah-IBgwj2lg_30000": {},
+ "Al_OdIuqoe0_30000": {},
+ "B9p1c_XCqE4_150000": {},
+ "BI8YQ3ueD24_30000": {},
+ "BN4k3mnJteo_0": {},
+ "BfTn7dwunFY_110000": {},
+ "Bg2XkNb5LZE_140000": {},
+ "Bh_t-5cjTTQ_30000": {},
+ "Bl-lCgr5hGY_30000": {},
+ "BsG6zbdJbpA_0": {
+  "Bell|5.72": {
+   "subject": "Bell rings",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "BuhCuSnq6DI_90000": {},
+ "C3yqIuEs_zQ_430000": {},
+ "CUmTRSZTdU8_30000": {},
+ "CVQt7CVGZPM_580000": {},
+ "CZoPTJNmiCw_30000": {},
+ "Cn3xoxvbkF0_30000": {},
+ "IuTfMfzkr5Y_120000": {
+  "Air horn, truck horn|0.80": {
+   "subject": "Truck honking",
+   "makers": [
+    "air horn"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "J46ePPdaEZk_10000": {},
+ "JRfU_hF1wdM_30000": {},
+ "Jb9Udi9N7Xw_30000": {},
+ "JubrxZZlIJE_0": {},
+ "K-0qmhvJyzE_10000": {
+  "Mallet percussion|0.14": {
+   "subject": "Mallet hits drum",
+   "makers": [
+    "pink mallet"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "K-1mH8YXX3g_30000": {
+  "Filing (rasp)|4.75": {
+   "subject": "Hand filing wood",
+   "makers": [
+    "hand plane"
+   ],
+   "event": true,
+   "lookalike_yes": false,
+   "event_replies": [
+    "Yes.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "K7pObmi_L8o_14000": {},
+ "KDzy3ZL626U_11000": {},
+ "KE-TVQhdCbs_30000": {},
+ "KNFHL6rv_M4_50000": {},
+ "KzvdKLdBw3s_60000": {},
+ "L6SG_y5AhQ4_220000": {},
+ "LH8GnA-aJ_M_180000": {},
+ "LSaLPObrnZw_10000": {},
+ "LU1CGfgJXfM_80000": {
+  "Bird|0.50": {
+   "subject": "Bird flying",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "L_fWnna7Np0_80000": {},
+ "LctHAtCMnbY_30000": {},
+ "LhpzNXhZ44c_30000": {
+  "Vehicle|1.25": {
+   "subject": "Toy boat splashing",
+   "makers": [
+    "small boat",
+    "toy boat"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "LsRS0oDgycs_0": {
+  "Alarm|3.00": {
+   "subject": "Fire alarm ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "M6FFePs2fCg_300000": {
+  "Crowd|0.00": {
+   "subject": "Crowd cheering",
+   "makers": [
+    "crowd",
+    "people"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "MCmoP0OTqY8_210000": {},
+ "Mf6Ql55o7Es_30000": {},
+ "N4PeCoQzfBo_70000": {},
+ "NJObNgIHwUw_0": {
+  "Doorbell|0.14": {
+   "subject": "Hand presses doorbell",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "NJWBq2eQzg0_30000": {},
+ "NmauYtUHbyY_140000": {},
+ "NtlnhSzHhss_30000": {
+  "Vehicle|0.22": {
+   "subject": "Ship engine roaring",
+   "makers": [
+    "boat"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "OC91IBhiTsQ_30000": {},
+ "OQDcvh-ongE_30000": {},
+ "OR_YbeqV5tA_100000": {},
+ "OufubGg-FVQ_180000": {
+  "Scissors|7.89": {
+   "subject": "Scissors cutting",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "P8VTcL2ecs8_30000": {},
+ "PDOL0amgdjg_60000": {},
+ "PX2xcfpGynA_9000": {},
+ "PXPKed8mwZs_10000": {},
+ "PYislCydAPQ_30000": {},
+ "PdzDGNMpPZc_520000": {},
+ "Pi71Wuvwg5Y_50000": {},
+ "PjhKFnOvJII_30000": {},
+ "XcvY-NdM8WA_40000": {
+  "Laughter|5.20": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "XkBXsaSXDJ0_30000": {},
+ "Xx2YziXzVkg_30000": {},
+ "Y3WXrp3JFxU_30000": {},
+ "Y9uOpwHbl_s_280000": {},
+ "YI6ZZV-J9OE_30000": {},
+ "YRdL_tPsk6Q_340000": {},
+ "YTBCmc70I20_270000": {},
+ "YYPoB3gJkPM_30000": {},
+ "YlMLkS8NNqY_21000": {},
+ "Ylr4Uj8Xqwc_90000": {},
+ "YmW1NLRYTRA_270000": {
+  "Dishes|2.50": {
+   "subject": "Dishes clashing",
+   "makers": [
+    "blender"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "YpOHemscGCk_0": {},
+ "Ytk3FImdSEA_30000": {
+  "Alarm|8.08": {
+   "subject": "Alarm ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "YvFY7xU2kGk_30000": {},
+ "YzpzKyzyL0Y_110000": {},
+ "Z0htOHTOtHY_210000": {},
+ "ZeiYTfJzPQc_470000": {},
+ "ZgooDijn2as_30000": {},
+ "Zlbo8ygfPSM_30000": {},
+ "ZnTyglKDTdc_30000": {},
+ "ZqnbgQeeRbM_30000": {},
+ "_5A8lI5UEgo_30000": {
+  "Bell|0.12": {
+   "subject": "Hand strikes bell",
+   "makers": [
+    "small metal bowl"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "_Gmlc1-d3QQ_30000": {},
+ "_b-7P-XsnUI_490000": {
+  "Glass|0.50": {
+   "subject": "Glass shattering",
+   "makers": [
+    "glasses"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No"
+   ],
+   "silenced": false
+  }
+ },
+ "_cYiqHDZGQk_60000": {},
+ "_dlpgziE7CU_10000": {},
+ "_nng6vCB9EQ_21000": {},
+ "_uNDm6YfN2k_90000": {},
+ "aLkqkMJup1U_30000": {},
+ "aTeOMq8ave8_30000": {},
+ "adYFXYPqo2M_30000": {},
+ "akgqVmFFDiY_30000": {},
+ "asiBU0VbmtI_0": {
+  "Battle cry|0.14": {
+   "subject": "Soldiers screaming",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "b12vm6On2Jw_30000": {
+  "Crowd|0.00": {
+   "subject": "Crowd cheering",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "bDH6AKUrx5Y_130000": {},
+ "bNKJR4sJSDE_210000": {},
+ "bkYWnzw_5Bs_30000": {},
+ "bvuUz9Z4BaE_6000": {},
+ "bw8p8qW7gqE_30000": {
+  "Tick-tock|0.75": {
+   "subject": "Clock hands moving",
+   "makers": [
+    "based on the visual evidence"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  },
+  "Tick|0.75": {
+   "subject": "Relay contacts clicking",
+   "makers": [
+    "relay"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "iPh4fPGDKBM_30000": {},
+ "iR976W8_nfg_410000": {},
+ "iSw-5EjXgXc_30000": {},
+ "iX71wBMIn5k_380000": {},
+ "i_NNY_mgxIs_40000": {},
+ "iaDrtIon6FU_30000": {
+  "Alarm|3.05": {
+   "subject": "Alarm beeping",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ieQIvlmTwWQ_190000": {},
+ "ioJeF3Cz-T4_200000": {},
+ "iuc1V_-V51U_21000": {
+  "Stomach rumble|2.75": {
+   "subject": "Stomach rumbling",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ixn9yG0ny8w_30000": {},
+ "j136TTyG_E8_30000": {},
+ "j3hDxL26D48_90000": {},
+ "jA7F26-SrPU_80000": {},
+ "jJrP7ZF9_WA_320000": {},
+ "jbtaC1hOj48_30000": {},
+ "jd94Ox7KJ9Q_30000": {},
+ "k72FzEY2C7w_130000": {},
+ "kBL3pBLQejo_40000": {},
+ "kCXc7_Xie2s_12000": {},
+ "kZEoKNtcDbo_30000": {},
+ "kb3tfk8dxvU_30000": {},
+ "ktso7GeckG8_130000": {},
+ "lV0-LMVpZLg_40000": {},
+ "lVNmt67p86k_3000": {},
+ "l_w8juMmu4k_30000": {},
+ "leOH87itNWM_30000": {
+  "Crowd|0.14": {
+   "subject": "Crowd cheering",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "lmPuXKOhfSo_40000": {},
+ "lmrzR9cSMRY_20000": {},
+ "lnHivcFKkaM_170000": {},
+ "lqWv4X8OhkA_300000": {
+  "Honk|4.92": {
+   "subject": "Car horn honking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "lqpyzxLSNCk_0": {},
+ "mbYYxiabQuA_16000": {},
+ "mh6JxDJ0Bno_30000": {
+  "Crowd|0.00": {
+   "subject": "People clapping hands",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "nF0pJOjN0gw_120000": {
+  "Alarm|2.47": {
+   "subject": "Alarm clock ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Water|3.50": {
+   "subject": "Water splashing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "nLyeNi7WnrY_10000": {},
+ "nRWVeOokxh8_30000": {},
+ "nSBDyxxscks_220000": {},
+ "nU7x170OvJ4_30000": {},
+ "nXtVxMhbGQw_30000": {},
+ "nq4cdrT7zvs_30000": {
+  "Doorbell|1.30": {
+   "subject": "Doorbell rings",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "CsqoaGRJhfM_30000": {},
+ "D4fMdsy_f94_29000": {},
+ "D4qo1ldD9kc_30000": {},
+ "D6QaAYgC4Rk_10000": {},
+ "DKBbLySEGic_30000": {},
+ "DLMKy0_82iw_150000": {},
+ "DUkTaarFgUw_160000": {},
+ "Db7-q3MKvys_30000": {},
+ "Dta8pxQilKY_0": {
+  "Alarm|1.00": {
+   "subject": "Alarm ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "E1E8seuHr-8_580000": {},
+ "E6JcCtlACvc_30000": {},
+ "EC4GbkL3XvI_80000": {},
+ "EMbSpcMCnpU_40000": {
+  "Alarm|8.00": {
+   "subject": "Fire alarm ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "F96fzYqm1u4_70000": {
+  "Electric shaver, electric razor|5.46": {
+   "subject": "Man shaves face",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "FIsQjsUJSiM_30000": {},
+ "FhdwqO-sJqk_460000": {},
+ "Fr6WH57YHxM_70000": {
+  "Patter|8.25": {
+   "subject": "feet running",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "Fx2yDgMqYJA_30000": {},
+ "FzIiCjnwvD4_0": {
+  "Sonar|0.00": {
+   "subject": "Sonar pinging",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "G1LY8Vt6GAU_100000": {},
+ "GPSqrciDLog_30000": {},
+ "GecPVTYJTOQ_50000": {},
+ "GinP_ZRgAoY_30000": {},
+ "Gl4VW2wZcuM_1000": {
+  "Doorbell|0.75": {
+   "subject": "Doorbell chimes",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "GqOmKYReRVg_260000": {},
+ "H6T9j3bOW2w_30000": {},
+ "HDTEPe4qf8E_0": {},
+ "HOIIp5NyFx0_20000": {},
+ "HQfF_JXrUUI_30000": {},
+ "Hh6ofaxCkn0_30000": {},
+ "HplcVmJhuIc_40000": {
+  "Explosion|1.92": {
+   "subject": "Bomb explodes",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Heart murmur|0.22": {
+   "subject": "Heart beating",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "HrQxbNO5jXU_6000": {},
+ "Hsink5tWkmI_30000": {},
+ "I0CQd_aWJ9g_30000": {},
+ "I5KHYgtrVBw_30000": {
+  "Maraca|0.56": {
+   "subject": "Hands shaking maracas",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Air horn, truck horn|9.14": {
+   "subject": "Truck horn blaring",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "I7QODcpToew_80000": {},
+ "IGFZfTxCc5I_20000": {
+  "Crowd|0.06": {
+   "subject": "Crowd clapping hands",
+   "makers": [
+    "people"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "IUcnvQsDX-8_570000": {},
+ "IcmAVLJQAXs_0": {},
+ "Ime3FHuQG4k_30000": {},
+ "Puu8SEqYN0k_60000": {
+  "Explosion|3.80": {
+   "subject": "Bomb explodes",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "PwHZ4df5G7w_30000": {
+  "Fart|0.22": {
+   "subject": "Person farting",
+   "makers": [
+    "Based on the visual evidence"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No",
+    "No."
+   ],
+   "silenced": false
+  }
+ },
+ "Q3LU2xaGzMg_30000": {
+  "Vehicle|0.00": {
+   "subject": "Plane engine roaring",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "Qghqqwhl4ZM_0": {},
+ "QnFbIVjPu_c_440000": {},
+ "Qv0VEN105nI_350000": {},
+ "RLJYigWchf0_30000": {},
+ "RTQJe028VdU_80000": {},
+ "RtgHU1UMo5o_30000": {},
+ "RthneIOXhz0_120000": {
+  "Jingle bell|2.50": {
+   "subject": "Hand shaking jingle bell",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "SSXX0M9_LXU_130000": {},
+ "SoMBWoCGHCg_40000": {},
+ "TK2lPYfkG-8_30000": {},
+ "TT8xhjDC3Cg_250000": {},
+ "TYgBrjolmcc_300000": {},
+ "TaFbk-RJrLI_0": {},
+ "TgCv5a22YUU_50000": {},
+ "TmukiN_btGw_500000": {},
+ "TqWmuwAYmnI_20000": {},
+ "TxK2ZBfuuQY_70000": {},
+ "UNJswfXKJ3s_30000": {},
+ "UT3ve5ZNHCI_300000": {
+  "Alarm|3.05": {
+   "subject": "Alarm beeps",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "UapBvuAH7p0_110000": {},
+ "VKhIVJuYIk4_190000": {},
+ "VQvPEYqbz5Y_30000": {},
+ "VpIhbDN58mA_30000": {
+  "Gunshot|8.52": {
+   "subject": "Gun firing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "Vy6NLM8dCDc_90000": {
+  "Electric shaver, electric razor|4.00": {
+   "subject": "Man shaves face",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "WA9hKrM8xFU_9000": {
+  "Crowd|0.00": {
+   "subject": "Crowd cheering",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "WKlC2hswHmM_300000": {},
+ "WLXQgcx8qTI_30000": {},
+ "WLrvZ4-OKLQ_3000": {},
+ "WSaCGNkM6_k_30000": {},
+ "WaFUS4HVpGg_70000": {},
+ "WcSu_xJYc18_310000": {
+  "Explosion|3.18": {
+   "subject": "Gun firing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "Wgnr_ftHhUw_30000": {},
+ "Wk7yTeKW230_30000": {
+  "Laughter|1.96": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "WmyHFkyiiF8_20000": {},
+ "WxJ6eyZm9rk_30000": {},
+ "XJ3VlCAIWQ0_30000": {},
+ "X_Y97DHeh50_30000": {},
+ "bwHPVG6vbNQ_20000": {},
+ "c6wCaNMJwQM_100000": {},
+ "cBRStp9ClEg_190000": {},
+ "cBbA4-EhNf8_30000": {},
+ "cR3m_2UK4_E_130000": {},
+ "cmjTYz82vJk_30000": {},
+ "cpVfhI_CTto_590000": {
+  "Zipper (clothing)|2.00": {
+   "subject": "Person zips jacket",
+   "makers": [
+    "brown leather handbag"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "ct5Ugjo84W8_50000": {},
+ "dPEzNUbeS68_4000": {},
+ "dUj_6VUendM_30000": {},
+ "dj3NKqIm_sw_30000": {},
+ "dkGXJ6BlCd4_30000": {},
+ "dkpsxpeLY-M_150000": {},
+ "e7WPFeDPFB4_30000": {},
+ "eKO3x5QVibI_30000": {},
+ "eSesh6vnek8_230000": {},
+ "eZ5iippq3rA_30000": {},
+ "esBiDDM_x2I_20000": {},
+ "f21nIJCYy1s_0": {},
+ "f3hMHFV_WMo_30000": {},
+ "f8nysknTFUo_30000": {},
+ "fCRZmdWU0p8_30000": {},
+ "fCx7XGkuLfk_30000": {},
+ "fVTjznfUoT8_21000": {},
+ "fYawTIgEDzg_30000": {},
+ "feC0L9MtghM_190000": {},
+ "fllbxiLid5c_530000": {
+  "Vehicle|0.00": {
+   "subject": "Car engine running",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "fzhJ-Fmt-Po_7000": {},
+ "gGXnTI-n1-w_23000": {},
+ "gYDsLNT6uYs_130000": {},
+ "gtKcxDpBKxk_30000": {
+  "Laughter|0.52": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "h76OxJ8x-6w_30000": {},
+ "hDD8vv3wjHc_40000": {
+  "Crowd|3.68": {
+   "subject": "Crowd clapping hands",
+   "makers": [
+    "the audience"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "event_replies": [
+    "No.",
+    "Yes."
+   ],
+   "silenced": false
+  }
+ },
+ "hFKmJx0_Fkg_30000": {
+  "Bell|0.30": {
+   "subject": "Bell swinging",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "hQ1L0ZhzGqo_500000": {},
+ "hh-y1fBFxoA_120000": {},
+ "hq4s4S9wMWI_100000": {},
+ "iCYA7N-vdZA_0": {},
+ "iIEfBIGEZ0o_30000": {},
+ "iP46w2o_HCk_30000": {}
+}

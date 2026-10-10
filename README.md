@@ -9,7 +9,7 @@ Subtitles carry speech, but a deaf or hard-of-hearing viewer still misses the ot
 behind the camera, a dog barking in the next room, glass breaking off screen. This system watches a video, detects
 its non-speech, non-music sounds, decides for each one whether its source is already visible, and shows a generated
 picture of the sound beside the video **only while an off-screen sound is heard**. No model is trained: the system
-is a chain of open models joined by rules fixed on a development set, in 66 pre-registered rounds over more than 150
+is a chain of open models joined by hand-written rules, developed in 66 pre-registered rounds over more than 150
 full-pipeline variants and more than 30 open models, and scored on 309 labelled sounds in 158 clips.
 
 The full description, the benchmark, the results and the limits are in the technical report,
@@ -27,24 +27,30 @@ of the project proposal.
 |---|---|---|
 | show nothing | cost 3.268 | cost 3.034 |
 | direct audio-to-image (and audio captioning) | 34 / 58 found, 39 wrong, cost 2.451 | 28 / 66 found, 59 wrong, cost 3.103 |
-| **final system** | **29 / 58 found, 15 wrong, cost 2.056** | **25 / 66 found, 22 wrong, cost 2.391** |
+| v1.3.11 (the system of the report) | 29 / 58 found, 15 wrong, cost 2.056 | 25 / 66 found, 22 wrong, cost 2.391 |
+| **v1.4 (this release)** | **31 / 58 found, 12 wrong, cost 1.859** | **28 / 66 found, 22 wrong, cost 2.253** |
 
-On the test set the final system is cheaper than direct audio-to-image generation (−0.713 per clip,
-95 % interval [−1.034, −0.368], p < 0.001) and, at the margin, than showing nothing (−0.644, [−1.195, −0.115], p = 0.018; p = 0.055
-after a Holm correction over the five main tests). It finds 10 of the 13 danger sounds of the test set (sirens,
-alarms, breaking glass, a crying baby). Every decision was made on the development set; the test set was only
-scored. Five test labels were corrected on a blind second listen made after the test outputs had been scored, and
-every system was re-scored on the corrected labels (the earlier labels are kept in `benchmark/gold/annotations/`). Limits are discussed in Section 9 of the report.
+v1.4 also keeps each picture on screen for more of its sound: a picture that finds its sound covers on average 83 % of
+it on the development set (v1.3.11: 72 %). Both rows are reproduced from a plain clone by
+`python benchmark/gold/v14_score.py` (see below). Five test labels were corrected on a blind second listen, and every
+system was re-scored on the corrected labels (the earlier labels are kept in `benchmark/gold/annotations/`). The
+report describes v1.3.11; its limits are discussed in Section 9 of the report.
 
 ## How it works
 
 1. **Audio and context**: extract the audio track, sample frames, detect visible objects (OWLv2) and transcribe speech.
 2. **Sound detection**: BEATs and FlexSED propose sound events; the Qwen3-Omni and Audio Flamingo Next listeners,
    DASM and FineLAP confirm or reject them.
-3. **On-screen check**: Qwen3.8-27B looks at the frames and decides whether each sound's source is visible.
+3. **On-screen check**: Qwen3.8-27B looks at the frames of each stretch of a sound and answers three questions; the
+   a/b question ("could that thing be what is making the sound?", asked in both orders) decides whether the source is
+   visible, and the majority of the three decides when the two orders disagree. Because the frames are about one per
+   second, a short visible flash (lightning, a blast: a luminance jump of at most four frames) is detected separately
+   and silences a Thunder picture, or an Explosion / Fireworks / Gunshot picture that starts within 0.3 s of it.
 4. **Pictures**: Qwen-Image-2512 draws each off-screen sound; a vision model checks the picture and it is redrawn up to five
    times. An alarm-type sound is drawn on the thing it belongs to (a siren as an emergency vehicle with its siren going off).
-5. **Composition**: the pictures are shown beside the video while their sound plays.
+5. **Composition**: the pictures are shown beside the video while their sound plays. A picture stays on screen
+   while FlexSED still hears its sound (score 0.5 or more, gaps under 1 s bridged), and generic texture labels
+   (Vehicle, Water, Engine, Rain, Wind, Liquid, Mechanisms, Domestic sounds) are not drawn.
 
 ## Installation
 
@@ -107,9 +113,21 @@ Run time: about five minutes of GPU time (one NVIDIA H200) to prepare the listen
 picture step (about 20 s per picture try, up to five tries per picture). For a folder of clips, run `python main.py`
 once per clip.
 
-## Reproducing the reported numbers
+## Reproducing the numbers
 
-This is release v1.3.11, the version the report cites. The reported numbers are stored in the repository:
+The v1.4 numbers of the table above, from a plain clone, on CPU, in a few seconds:
+
+```
+python benchmark/gold/v14_score.py              # v1.4
+python benchmark/gold/v14_score.py --v1.3.11    # the same inputs with the v1.4 rules switched off
+```
+
+It reads the stage-5 outputs of the 158 benchmark clips and the per-clip inputs of the v1.4 rules (flash times,
+FlexSED family curves, durations, grouping answers) from [`benchmark/gold/v14/`](benchmark/gold/v14/), applies the
+system's own on-screen decision and display code under `config.use_shipped()`, and scores the pictures with
+`benchmark/gold/score_per_sound.py` against `benchmark/gold/annotations/gold_AG.json`.
+
+The report's numbers (v1.3.11) are stored in the repository:
 [`benchmark/gold/final_vs_baselines.json`](benchmark/gold/final_vs_baselines.json) (final system and baselines),
 [`benchmark/gold/final_vs_baselines_extra.json`](benchmark/gold/final_vs_baselines_extra.json) (F1 intervals,
 danger sounds) and [`docs/decision_trail/data_parity.json`](docs/decision_trail/data_parity.json) (configuration check).
