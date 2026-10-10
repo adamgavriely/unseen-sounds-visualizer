@@ -49,3 +49,11 @@ scripts/picture_*_try.py
 slurm/job_picture_*_try.sh
 tagger.zip
 *.lnk
+# Old local folders and files removed from the repository in later cleanups
+benchmark/gold/beats_fw/
+benchmark/gold/gate_gold/
+benchmark/suggestions.json
+benchmark/tags.json.bak
+docs/inspector/
+docs/second_annotator_*.zip
+tagger/
