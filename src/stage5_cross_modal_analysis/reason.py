@@ -634,7 +634,11 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     no = sum(1 for v in votes if v is False)
     # the rule is set once on the dev split (benchmark/gate_dev_sweep.py, release v1.2.0): majority (v3)
     # or unanimous -- config.VISIBILITY_RULE
-    verdict = (yes == 3) if getattr(config, "VISIBILITY_RULE", "majority") == "unanimous" else yes > no
+    rule = getattr(config, "VISIBILITY_RULE", "majority")
+    if rule == "ab":                    # v1.4: the a/b answer (does the thing on screen make the sound?) decides; split -> majority
+        verdict = by_ab if by_ab is not None else yes > no
+    else:
+        verdict = (yes == 3) if rule == "unanimous" else yes > no
     how = ("name=" + ("yes:" + named if by_name else "no") + " a/b="
            + {True: "yes", False: "no", None: "split"}[by_ab] + " desc="
            + ("yes" if by_desc else "no") + " ['" + desc[:60] + "']")

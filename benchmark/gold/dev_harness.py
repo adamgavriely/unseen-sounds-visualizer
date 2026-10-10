@@ -603,6 +603,9 @@ class UReuse(DCC.Reuse):
                     self.reason.LAST_VOTES = {k: v.get(k) for k in ("name", "ab", "desc", "named")}
                     self.bump("gate_reused")
                     yes = sum(1 for k in ("name", "ab", "desc") if v.get(k) is True)
+                    if getattr(config, "VISIBILITY_RULE", "majority") == "ab":     # v1.4: a/b decides; split -> majority
+                        no = sum(1 for k in ("name", "ab", "desc") if v.get(k) is False)
+                        return (v["ab"] if v.get("ab") is not None else yes > no), v.get("named", "")
                     return yes == 3, v.get("named", "")
         return super().vis(label, frames, mdl, proc, device)
 
