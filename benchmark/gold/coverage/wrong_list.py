@@ -17,6 +17,7 @@ def main():
     gold = S.load_gold([GOLD]); config.use_shipped(); config.MAX_AFTER_END = None
     config.GROUP_CACHE, config.DEPICT_CACHE = str(IN / "group_answers.json"), str(IN / "depict_answers.json")
     config.FLASH_CACHE, config.HOLD_CURVES, config.HOLD_FLEXSED_DIR = str(IN / "flashes.json"), str(IN / "flexsed_curves.json"), str(IN / "x")
+    config.ONSET_CURVES = str(IN / "detector_curves.json")
     st5 = json.loads((IN / "stage5_specs.json").read_text()); dur = json.loads((IN / "durations.json").read_text())
     L = ["# v1.4 wrong pictures, all 158 clips", "", "| clip | class | picture | start-end s | gold playing (needed, importance) |", "|---|---|---|---|---|"]
     n = Counter(); fam = Counter()
