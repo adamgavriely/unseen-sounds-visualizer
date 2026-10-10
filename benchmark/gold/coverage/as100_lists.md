@@ -1,0 +1,475 @@
+# AS100 lists
+
+## The 100 clips (first 100 by sorted name of the 340 fresh clips with stage-4 output)
+
+- -PVEno65928_30000
+- -YRJHtktT1g_170000
+- -Z8bjo6q6jc_70000
+- -gCqnkIUmp0_140000
+- -jcBFqcdpuI_6000
+- -qBctCzLI5s_50000
+- -qS77R0Y1K8_30000
+- 00G2vNrTnCc_10000
+- 01x0zZpL87I_19000
+- 0HzbpwB3xDk_30000
+- 0L2ndtt60Q8_30000
+- 0NW8rsCj6xQ_30000
+- 0bsbkdnSgMQ_30000
+- 0dC6Ay0oqWk_30000
+- 0fiOM---7QI_140000
+- 0lJyHuTVMNY_490000
+- 0slyl34xWug_10000
+- 1-TnkdEPXEw_20000
+- 1F3_bvIT0ig_0
+- 1J-E-QqJdkg_30000
+- 1Q1pDQzTW6c_20000
+- 1V9CWQNZRF8_450000
+- 1X0VCv-S2H8_50000
+- 1jTQsVs5iWM_230000
+- 1tNkAc29aPE_30000
+- 2B-xGbzOjYY_30000
+- 2FQKfGCwjSE_30000
+- 2GepmcbNlJY_0
+- 2KQAtN4XF8o_40000
+- 2MpzHv5KNZU_30000
+- 2ZB7DUGOdZw_30000
+- 2ffgd7k0vI8_40000
+- 2k6_k7K_ixg_30000
+- 2sGnD9sd1xM_470000
+- 3-a8i_MEUl8_30000
+- 3pV7d32BfBQ_50000
+- 3saUiDqAqEc_30000
+- 40k3AAbA7tM_410000
+- 43R5uK6JJoA_30000
+- 4KNMw4YcCBQ_430000
+- 4aRMZ4ePmMM_210000
+- 4frNzH2u6Us_30000
+- 4gFbCdHle0w_30000
+- 4lnO99-z3TQ_30000
+- 4pAIQCwNNjo_110000
+- 4xgYnUrMefU_110000
+- 52P29_VwBT0_30000
+- 53KoRxxr1jc_30000
+- 5E_8bEnP43Y_30000
+- 5FEZg17q5hA_260000
+- 5So_E6yPW40_10000
+- 5TTyaxIvBo4_70000
+- 5lOHKcRIFqk_580000
+- 5tM4bPM6E_w_70000
+- 614LdgrE13A_110000
+- 61T8j-vXtnA_430000
+- 6PLlWvC4BiQ_160000
+- 6Y8wSI1l-Lw_30000
+- 6kg_EUG6PPs_320000
+- 72vme5Tdc_g_30000
+- 7MuFNZHhrOE_330000
+- 7PtHb9jQCtg_130000
+- 7SH7rhWgm8U_80000
+- 7uErtxgLWg4_20000
+- 7uK5ctEget0_20000
+- 8AdDbRz0SrU_28000
+- 8G9eS_GHUiY_30000
+- 8HhaU-YvFq0_10000
+- 8Nnxclrk7dU_220000
+- 8WnXfe3ud4E_270000
+- 9Bd657cv4cQ_450000
+- 9SRfLMFUjKI_30000
+- 9Ti98L4PRCo_17000
+- 9WrIbJC_C7A_30000
+- 9oixCTvP8Yw_440000
+- 9piLf5SXqEk_460000
+- 9q2xqtfEgdo_280000
+- AJLUD830PV0_70000
+- AJVSqnsBf70_80000
+- AOijOUuUWwg_100000
+- AVL7Kbpw13U_130000
+- AVmJF1uaRuE_30000
+- AWcZq1PRcII_20000
+- Ab1MAIKOmBU_30000
+- Ah-IBgwj2lg_30000
+- Al_OdIuqoe0_30000
+- B9p1c_XCqE4_150000
+- BI8YQ3ueD24_30000
+- BN4k3mnJteo_0
+- BfTn7dwunFY_110000
+- Bg2XkNb5LZE_140000
+- Bh_t-5cjTTQ_30000
+- Bl-lCgr5hGY_30000
+- BsG6zbdJbpA_0
+- BuhCuSnq6DI_90000
+- C3yqIuEs_zQ_430000
+- CUmTRSZTdU8_30000
+- CVQt7CVGZPM_580000
+- CZoPTJNmiCw_30000
+- Cn3xoxvbkF0_30000
+
+## Class set C (368 classes)
+
+- Kettle whistle
+- Firecracker
+- Wild animals
+- Motor vehicle (road)
+- Ambulance (siren)
+- Fire engine, fire truck (siren)
+- Toothbrush
+- Sink (filling or washing)
+- Aircraft engine
+- Explosion
+- Dial tone
+- Bird
+- Digestive
+- Basketball bounce
+- Sonic boom
+- Subway, metro, underground
+- Bicycle, tricycle
+- Boat, Water vehicle
+- Sawing
+- Reverberation
+- Cough
+- Bus
+- Drill
+- Snoring
+- Gull, seagull
+- Railroad car, train wagon
+- Stomach rumble
+- Bee, wasp, etc.
+- Engine knocking
+- Yak
+- Ringtone
+- Sneeze
+- Laughter
+- Yawn
+- Chainsaw
+- Heart sounds, heartbeat
+- Echo
+- Toilet flush
+- Scissors
+- Computer keyboard
+- Printer
+- Turkey
+- Zipper (clothing)
+- Cellphone buzz, vibrating alert
+- Yodeling
+- Sine wave
+- Clock
+- Cattle, bovinae
+- Smoke detector, smoke alarm
+- Lawn mower
+- Cat
+- Busy signal
+- Canidae, wild dogs, wolves
+- Chipmunk
+- Bird vocalization, bird call, bird song
+- Cutlery, silverware
+- Sanding
+- Coin (dropping)
+- Cash register
+- Finger snapping
+- Fowl
+- Air conditioning
+- Train horn
+- Applause
+- Fire
+- Fart
+- Ratchet, pawl
+- Telephone dialing, DTMF
+- Door
+- Beep, bleep
+- Electric shaver, electric razor
+- Water tap, faucet
+- Propeller, airscrew
+- Car alarm
+- Engine
+- Filing (rasp)
+- Hiccup
+- Blender, food processor
+- Reversing beeps
+- Motorboat, speedboat
+- Effects unit
+- Mechanical fan
+- Sliding door
+- Purr
+- Fusillade
+- Buzzer
+- Typing
+- Whale vocalization
+- Gunshot, gunfire
+- Waves, surf
+- Glass
+- Chewing, mastication
+- Ice cream truck, ice cream van
+- Bathtub (filling or washing)
+- Goat
+- Emergency vehicle
+- Horse
+- Siren
+- Hammer
+- Wind
+- Jackhammer
+- Burping, eructation
+- Screaming
+- Crowd
+- Keys jangling
+- Insect
+- Hair dryer
+- Doorbell
+- Duck call (hunting tool)
+- Jet engine
+- Crying, sobbing
+- Alarm clock
+- Motorcycle
+- Dishes, pots, and pans
+- Roar
+- Electric toothbrush
+- Foghorn
+- Power windows, electric windows
+- Battle cry
+- Liquid
+- Police car (siren)
+- Mouse
+- Crow
+- Booing
+- Machine gun
+- Train whistle
+- Cheering
+- Rowboat, canoe, kayak
+- Bird flight, flapping wings
+- Ocean
+- Packing tape, duct tape
+- Shuffling cards
+- Bark
+- Air horn, truck horn
+- Pulleys
+- Cupboard open or close
+- Domestic animals, pets
+- Pig
+- Skateboard
+- Environmental noise
+- Radio
+- Rail transport
+- Run
+- Steam whistle
+- Rodents, rats, mice
+- Rain
+- Ship
+- Steam
+- Mains hum
+- Cap gun
+- Snake
+- Sonar
+- Wolf-whistling
+- Sheep
+- Single-lens reflex camera
+- Television
+- Telephone
+- Train
+- Tools
+- Chorus effect
+- Wheeze
+- Shout
+- Slosh
+- Zing
+- Fill (with liquid)
+- Sizzle
+- Idling
+- Walk, footsteps
+- Snap
+- Breaking
+- Chop
+- Biting
+- Rub
+- Chirp, tweet
+- Rumble
+- Ding
+- Smash, crash
+- Buzz
+- Wobble
+- Splinter
+- Crushing
+- Sigh
+- Chopping (food)
+- Telephone bell ringing
+- Alarm
+- Sniff
+- Trickle, dribble
+- Bouncing
+- Pour
+- Pulse
+- Stir
+- Pump (liquid)
+- Bang
+- Eruption
+- Flap
+- Pant
+- Crackle
+- Bleat
+- Snort
+- Accelerating, revving, vroom
+- Bellow
+- Neigh, whinny
+- Squeak
+- Glass chink, clink
+- Scratch
+- Clicking
+- Tap
+- Tearing
+- Quack
+- Howl
+- Jingle, tinkle
+- Creak
+- Tick-tock
+- Tick
+- Spray
+- Squish
+- Clatter
+- Rattle
+- Crowing, cock-a-doodle-doo
+- Thump, thud
+- Boom
+- Meow
+- Crack
+- Burst, pop
+- Scrape
+- Shuffle
+- Wail, moan
+- Ping
+- Honk
+- Rustle
+- Plop
+- Whimper
+- Truck
+- Raindrop
+- Patter
+- Grunt
+- Knock
+- Caw
+- Drip
+- Giggle
+- Ding-dong
+- Caterwaul
+- Coo
+- Hoot
+- Yip
+- Whip
+- Bow-wow
+- Hum
+- Whack, thwack
+- Static
+- Chuckle, chortle
+- Hiss
+- Slam
+- Glass shatter
+- Moo
+- Whoosh, swoosh, swish
+- Thunk
+- Splash, splatter
+- Clang
+- Clip-clop
+- Whoop
+- Clickety-clack
+- Slap, smack
+- Squeal
+- Snicker
+- Gasp
+- Crunch
+- Groan
+- Whir
+- Roll
+- Belly laugh
+- Yell
+- Croak
+- Cluck
+- Gobble
+- Gurgling, bubbling
+- Squawk
+- Cacophony
+- Vehicle
+- Writing
+- Water
+- Wood
+- Dental drill, dentist's drill
+- Vehicle horn, car horn, honking, toot
+- Gargling
+- Noise
+- Chicken, rooster
+- Helicopter
+- Owl
+- Ducks, geese, waterfowl
+- Mosquito
+- Frog
+- Cricket
+- Artillery fire
+- Power tool
+- Electronic tuner
+- Human locomotion
+- Dog
+- Traffic noise, roadway noise
+- Sound effect
+- Typewriter
+- Fire alarm
+- Roaring cats (lions, tigers)
+- Livestock, farm animals, working animals
+- White noise, pink noise
+- Fixed-wing aircraft, airplane
+- Vacuum cleaner
+- Civil defense siren
+- Arrow
+- Throat clearing
+- Boiling
+- Camera
+- Frying (food)
+- Donkey, ass
+- Wildfire
+- Drawer open or close
+- Microwave oven
+- Distortion
+- Fireworks
+- Growling
+- Air brake
+- Pigeon, dove
+- Fly, housefly
+- Tire squeal, skidding
+- Chirp tone
+- Microphone
+- Sailboat, sailing ship
+- Waterfall
+- Stream, river
+- Thunderstorm
+- Animal
+- Car
+- Aircraft
+- Hands
+- Whistle
+- Clapping
+- Gears
+- Sewing machine
+- Race car, auto racing
+- Breathing
+- Thunder
+- Velcro, hook and loop fastener
+- Baby laughter
+- Baby cry, infant cry
+- Children playing
+- Oink
+- Rain on surface
+- Train wheels squealing
+- Non-motorized land vehicle
+- Light engine (high frequency)
+- Medium engine (mid frequency)
+- Heavy engine (low frequency)
+- Mechanisms
+- Gush
+- Sound equipment
+- Wind noise (microphone)
+- Clunk
+- Crumpling, crinkling
+- Boing
+- Inside, small room
+- Inside, large room or hall
+- Inside, public space
+- Outside, urban or manmade
+- Engine starting
+- Car passing by
+- Children shouting
+- Whimper (dog)
+- Snort (horse)
