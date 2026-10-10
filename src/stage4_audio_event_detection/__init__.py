@@ -293,6 +293,8 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
         elif backend == "BEATs":
             from src.stage4_audio_event_detection.beats_infer import infer_beats
             framewise, times, labels = infer_beats(Path(wav_path), device)
+            # v1.6: stage 6's onset rules read the family curves of this very pass (src/stage6_visual_augmentation/v16.py)
+            config.BEATS_FRAMES = (Path(wav_path).parent.name, framewise, times, list(labels))
         else:
             framewise, times, labels = _infer(Path(wav_path), device)
     except Exception as e:  # missing package/checkpoint -> keep the pipeline runnable

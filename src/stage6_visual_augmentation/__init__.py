@@ -759,6 +759,9 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
         from src.stage6_visual_augmentation.v14 import hold_ends
         spans = sorted(spans, key=lambda sp: sp[1])
         spans = hold_ends(spans, duration, clip_, 2.5)
+    if getattr(config, "COONSET_CONTEST", None) is not None or getattr(config, "WEAK_NO_RISE", None) or getattr(config, "BEATS_NO_RISE", False):
+        from src.stage6_visual_augmentation.v16 import onset_drops       # v1.6: onset contest, weak and flat, flat BEATs
+        spans = onset_drops(sorted(spans, key=lambda sp: sp[1]), clip_)
     return [tuple(sp) for sp in sorted(spans, key=lambda sp: sp[1])]
 
 

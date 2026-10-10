@@ -1,14 +1,16 @@
-"""Reproduce the v1.5 / v1.4 / v1.3.11 numbers from a plain clone, CPU only, in about a minute.
+"""Reproduce the v1.6 / v1.5 / v1.4 / v1.3.11 numbers from a plain clone, CPU only, in about a minute.
 
 Inputs (benchmark/gold/v14/): the stage-5 outputs of the 158 benchmark clips (each sound's plan with and without the
-on-screen check, and the check's per-stretch votes), the flashes found in each video, FlexSED's family curves, clip
+on-screen check, and the check's per-stretch votes), the flashes found in each video, FlexSED's family curves, the
+BEATs / FlexSED / DASM family curves the v1.6 onset rules read (detector_curves.json, from the stage-4 caches), clip
 durations, and the grouping / event-check answers the display reads. The script applies the system's own code:
 the on-screen decision of config.VISIBILITY_RULE to the stored votes, then src/stage6_visual_augmentation's display
 (_display_spans + _assign_rows) under config.use_shipped(), and scores the pictures with score_per_sound.py.
 
-    python benchmark/gold/v14_score.py            # v1.5 (config.use_shipped(): v1.4 + repeat lock + unverifiable families)
-    python benchmark/gold/v14_score.py --v1.4     # the same inputs with the two v1.5 rules switched off
-    python benchmark/gold/v14_score.py --v1.3.11  # the same inputs with the v1.4 and v1.5 rules switched off
+    python benchmark/gold/v14_score.py            # v1.6 (config.use_shipped(): v1.5 + the three onset rules)
+    python benchmark/gold/v14_score.py --v1.5     # the same inputs with the three v1.6 rules switched off
+    python benchmark/gold/v14_score.py --v1.4     # ... and the two v1.5 rules
+    python benchmark/gold/v14_score.py --v1.3.11  # ... and the v1.4 rules
 """
 import copy
 import json
@@ -82,10 +84,13 @@ def main():
         config.VISIBILITY_RULE, config.FLASH_RULE, config.PICTURE_BAN, config.HOLD_FLEXSED = "majority", False, None, None
     if "--v1.3.11" in sys.argv or "--v1.4" in sys.argv:
         config.REPEAT_LOCK, config.UNVERIFIABLE_BAN = False, None
+    if "--v1.3.11" in sys.argv or "--v1.4" in sys.argv or "--v1.5" in sys.argv:
+        config.COONSET_CONTEST, config.WEAK_NO_RISE, config.BEATS_NO_RISE = None, None, False
     config.MAX_AFTER_END = None                  # as the benchmark scoring (score_per_sound.load_pictures)
     config.GROUP_CACHE, config.DEPICT_CACHE = str(IN / "group_answers.json"), str(IN / "depict_answers.json")
     config.FLASH_CACHE, config.HOLD_CURVES = str(IN / "flashes.json"), str(IN / "flexsed_curves.json")
     config.HOLD_FLEXSED_DIR = str(IN / "no_npz_here")      # offline: the family curves above, not the FlexSED cache
+    config.ONSET_CURVES = str(IN / "detector_curves.json")  # offline: v1.6 onset rules read these, not the stage-4 caches
     st5 = json.loads((IN / "stage5_specs.json").read_text(encoding="utf-8"))
     dur = json.loads((IN / "durations.json").read_text(encoding="utf-8"))
     for name in ("dev", "test"):

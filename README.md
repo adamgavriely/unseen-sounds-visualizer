@@ -29,11 +29,15 @@ of the project proposal.
 | direct audio-to-image (and audio captioning) | 34 / 58 found, 39 wrong, cost 2.451 | 28 / 66 found, 59 wrong, cost 3.103 |
 | v1.3.11 (the system of the report) | 29 / 58 found, 15 wrong, cost 2.056 | 25 / 66 found, 22 wrong, cost 2.391 |
 | v1.4 | 31 / 58 found, 12 wrong, cost 1.859 | 28 / 66 found, 22 wrong, cost 2.253 |
-| **v1.5 (this release)** | **31 / 58 found, 10 wrong, cost 1.803** | **28 / 66 found, 17 wrong, cost 2.138** |
+| v1.5 | 31 / 58 found, 10 wrong, cost 1.803 | 28 / 66 found, 17 wrong, cost 2.138 |
+| **v1.6 (this release)** | **31 / 58 found, 7 wrong, cost 1.718** | **28 / 66 found, 12 wrong, cost 2.023** |
 
 v1.4 also keeps each picture on screen for more of its sound: a picture that finds its sound covers on average 83 % of
-it on the development set (v1.3.11: 72 %). v1.5 finds the same sounds as v1.4 with 7 fewer wrong pictures. The last
-three rows are reproduced from a plain clone by `python benchmark/gold/v14_score.py` (see below). Five test labels were corrected on a blind second listen, and every
+it on the development set (v1.3.11: 72 %). v1.5 finds the same sounds as v1.4 with 7 fewer wrong pictures, and v1.6 the same
+sounds as v1.5 with 8 fewer (19 instead of 27 over the 158 clips). In a clip-grouped 5-fold cross-validation (5 fold
+seeds) that switches each of the three v1.6 rules on or off inside every training fold, the held-out pictures lose no
+sound and have 20 wrong pictures instead of 27 (cost 1.899 vs 1.987 over the 158 clips). The last
+four rows are reproduced from a plain clone by `python benchmark/gold/v14_score.py` (see below). Five test labels were corrected on a blind second listen, and every
 system was re-scored on the corrected labels (the earlier labels are kept in `benchmark/gold/annotations/`). The
 report describes v1.3.11; its limits are discussed in Section 9 of the report.
 
@@ -54,7 +58,12 @@ report describes v1.3.11; its limits are discussed in Section 9 of the report.
    while FlexSED still hears its sound (score 0.5 or more, gaps under 1 s bridged). Generic texture labels
    (Vehicle, Water, Engine, Rain, Wind, Liquid, Mechanisms, Domestic sounds) are not drawn, and neither is a sound
    that no second detector can check (a family that neither FlexSED nor DASM has a query for, such as Shofar;
-   `UNVERIFIABLE_FAMILIES` in `config.py`).
+   `UNVERIFIABLE_FAMILIES` in `config.py`). Three rules then read the BEATs, FlexSED and DASM curves of each
+   picture's sound around its start (from 0.25 s before to 0.75 s after it; the rise is that peak minus the median of
+   the 2.5 s ending 0.5 s before the start): of two overlapping pictures of different sounds that start at most 3 s
+   apart, the one the three detectors hear less at its start is dropped; a picture with detector confidence under
+   0.41 whose FlexSED curve rises by less than 0.2 is dropped; and a picture whose BEATs curve does not rise at its
+   start is dropped (`src/stage6_visual_augmentation/v16.py`).
 
 ## Installation
 
@@ -119,16 +128,17 @@ once per clip.
 
 ## Reproducing the numbers
 
-The v1.5, v1.4 and v1.3.11 numbers of the table above, from a plain clone, on CPU, in a few seconds:
+The v1.6, v1.5, v1.4 and v1.3.11 numbers of the table above, from a plain clone, on CPU, in a few seconds:
 
 ```
-python benchmark/gold/v14_score.py              # v1.5
-python benchmark/gold/v14_score.py --v1.4       # the same inputs with the v1.5 rules switched off
-python benchmark/gold/v14_score.py --v1.3.11    # the same inputs with the v1.4 and v1.5 rules switched off
+python benchmark/gold/v14_score.py              # v1.6
+python benchmark/gold/v14_score.py --v1.5       # the same inputs with the v1.6 rules switched off
+python benchmark/gold/v14_score.py --v1.4       # ... and the v1.5 rules
+python benchmark/gold/v14_score.py --v1.3.11    # ... and the v1.4 rules
 ```
 
-It reads the stage-5 outputs of the 158 benchmark clips and the per-clip inputs of the v1.4 and v1.5 rules (flash times,
-FlexSED family curves, durations, grouping answers) from [`benchmark/gold/v14/`](benchmark/gold/v14/), applies the
+It reads the stage-5 outputs of the 158 benchmark clips and the per-clip inputs of the v1.4, v1.5 and v1.6 rules (flash times,
+FlexSED family curves, the BEATs / FlexSED / DASM family curves of the drawn sounds, durations, grouping answers) from [`benchmark/gold/v14/`](benchmark/gold/v14/), applies the
 system's own on-screen decision and display code under `config.use_shipped()`, and scores the pictures with
 `benchmark/gold/score_per_sound.py` against `benchmark/gold/annotations/gold_AG.json`.
 
