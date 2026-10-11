@@ -1,0 +1,178 @@
+{
+ "cols": [
+  "len",
+  "start0",
+  "o_beats",
+  "o_flexsed",
+  "o_flexsed band",
+  "o_dasm",
+  "beats_peak",
+  "flex_peak",
+  "band_peak",
+  "dasm_run",
+  "mir_top",
+  "mir_own",
+  "mw_conf",
+  "mw_sm",
+  "dasm_clip",
+  "dasm_local",
+  "dasm_vote",
+  "finelap",
+  "flex_clip",
+  "panns_clip",
+  "q_list",
+  "af_list",
+  "q_logit",
+  "q_v1",
+  "scene",
+  "twin",
+  "refine",
+  "pull",
+  "cont_exempt",
+  "n_asks",
+  "n_steps",
+  "at_survived",
+  "at_beats_extract",
+  "at_flexsed_extract",
+  "at_mirror_veto",
+  "at_masked_weak",
+  "at_dasm_clip_veto",
+  "at_dasm_local_veto",
+  "at_k4a_inventory",
+  "at_continuation_veto",
+  "at_flexsed_cross_veto",
+  "at_panns_clip_veto",
+  "at_band_rescue",
+  "at_dasm_rescue",
+  "at_finelap_veto",
+  "at_dasm_vote",
+  "at_rescue_once",
+  "at_scene_margin",
+  "fam_Vehicle",
+  "fam_Alarm",
+  "fam_Laughter",
+  "fam_Crowd",
+  "fam_Shout",
+  "fam_Bell",
+  "fam_Ratchet, pawl",
+  "fam_Water",
+  "fam_Bird",
+  "fam_Insect",
+  "fam_Tick",
+  "fam_Gasp",
+  "fam_Vacuum cleaner",
+  "fam_Dog",
+  "fam_Bicycle",
+  "fam_Gunshot",
+  "fam_Mechanical fan",
+  "fam_Train",
+  "fam_Crying, sobbing",
+  "fam_Effects unit",
+  "fam_Aircraft",
+  "fam_Glass",
+  "fam_Screaming",
+  "fam_Clapping",
+  "fam_Giggle",
+  "fam_other",
+  "generic"
+ ],
+ "cv_a": {
+  "choices": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "all": [
+   59,
+   13,
+   1.8101265822784811,
+   59,
+   13,
+   1.8101265822784811
+  ],
+  "DEV": [
+   31,
+   4,
+   1.6338028169014085,
+   31,
+   4,
+   1.6338028169014085
+  ],
+  "TEST": [
+   28,
+   9,
+   1.9540229885057472,
+   28,
+   9,
+   1.9540229885057472
+  ]
+ },
+ "cv_b_worst": {
+  "choices": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "all": [
+   59,
+   13,
+   1.8101265822784811,
+   59,
+   13,
+   1.8101265822784811
+  ],
+  "DEV": [
+   31,
+   4,
+   1.6338028169014085,
+   31,
+   4,
+   1.6338028169014085
+  ],
+  "TEST": [
+   28,
+   9,
+   1.9540229885057472,
+   28,
+   9,
+   1.9540229885057472
+  ]
+ },
+ "cv_b_est": {
+  "choices": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "all": [
+   59.0,
+   13.0,
+   1.8101265822784811,
+   59,
+   13,
+   1.8101265822784811
+  ],
+  "DEV": [
+   31.0,
+   4.0,
+   1.6338028169014085,
+   31,
+   4,
+   1.6338028169014085
+  ],
+  "TEST": [
+   28.0,
+   9.0,
+   1.9540229885057472,
+   28,
+   9,
+   1.9540229885057472
+  ]
+ }
+}
