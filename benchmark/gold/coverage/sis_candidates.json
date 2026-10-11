@@ -1,0 +1,859 @@
+[
+ {
+  "split": "dev",
+  "clip": "b3_construction_site",
+  "start": 6.4,
+  "end": 6.56,
+  "peak": 0.588,
+  "qwen": [
+   "Aircraft",
+   "Boat",
+   "Non-motorized land vehicle",
+   "Vehicle",
+   "Squawk"
+  ],
+  "af": [
+   "Engine knocking",
+   "Vehicle"
+  ],
+  "label": "Vehicle"
+ },
+ {
+  "split": "dev",
+  "clip": "b3_golf_course",
+  "start": 6.7,
+  "end": 6.84,
+  "peak": 0.692,
+  "qwen": [
+   "Bird",
+   "Bird flight, flapping wings",
+   "Crow",
+   "Gull, seagull",
+   "Owl",
+   "Squawk",
+   "Arrow",
+   "Miscellaneous sources",
+   "Thump, thud",
+   "Whoosh, swoosh, swish",
+   "Wobble"
+  ],
+  "af": [
+   "Bird",
+   "Bird flight, flapping wings",
+   "Crow",
+   "Frog",
+   "Gull, seagull",
+   "Insect",
+   "Owl",
+   "Roaring cats (lions, tigers)",
+   "Rodents, rats, mice",
+   "Snake",
+   "Whale vocalization"
+  ],
+  "label": "Bird"
+ },
+ {
+  "split": "dev",
+  "clip": "b3_golf_course",
+  "start": 11.4,
+  "end": 11.58,
+  "peak": 0.702,
+  "qwen": [
+   "Arrow",
+   "Miscellaneous sources",
+   "Thump, thud",
+   "Whoosh, swoosh, swish",
+   "Wobble"
+  ],
+  "af": [
+   "Bird",
+   "Bird flight, flapping wings",
+   "Crow",
+   "Frog",
+   "Gull, seagull",
+   "Insect",
+   "Owl",
+   "Roaring cats (lions, tigers)",
+   "Rodents, rats, mice",
+   "Snake",
+   "Squawk",
+   "Whale vocalization"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev",
+  "clip": "b3_golf_course",
+  "start": 19.82,
+  "end": 19.92,
+  "peak": 0.631,
+  "qwen": [
+   "Bird",
+   "Bird flight, flapping wings",
+   "Crow",
+   "Gull, seagull",
+   "Owl",
+   "Squawk",
+   "Arrow",
+   "Miscellaneous sources",
+   "Thump, thud",
+   "Whoosh, swoosh, swish",
+   "Wobble"
+  ],
+  "af": [
+   "Bird",
+   "Bird flight, flapping wings",
+   "Crow",
+   "Frog",
+   "Gull, seagull",
+   "Insect",
+   "Owl",
+   "Roaring cats (lions, tigers)",
+   "Rodents, rats, mice",
+   "Snake",
+   "Squawk",
+   "Whale vocalization"
+  ],
+  "label": "Bird"
+ },
+ {
+  "split": "dev",
+  "clip": "b3_golf_course",
+  "start": 24.7,
+  "end": 24.74,
+  "peak": 0.581,
+  "qwen": [
+   "Booing",
+   "Clapping",
+   "Hands"
+  ],
+  "af": [
+   "Bird",
+   "Bird flight, flapping wings",
+   "Crow",
+   "Duck",
+   "Goose",
+   "Gull, seagull",
+   "Owl"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev",
+  "clip": "mv_arrest_street_scene",
+  "start": 11.16,
+  "end": 12.16,
+  "peak": 0.853,
+  "qwen": [],
+  "af": [
+   "Chink, clink",
+   "Glass"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev",
+  "clip": "mv_protest_scene_movie",
+  "start": 5.06,
+  "end": 6.24,
+  "peak": 0.656,
+  "qwen": [
+   "Booing",
+   "Screaming"
+  ],
+  "af": [
+   "Baby cry, infant cry",
+   "Crying, sobbing",
+   "Screaming",
+   "Whimper"
+  ],
+  "label": "Screaming"
+ },
+ {
+  "split": "dev",
+  "clip": "mv_protest_scene_movie",
+  "start": 11.12,
+  "end": 11.94,
+  "peak": 0.642,
+  "qwen": [
+   "Chink, clink",
+   "Glass"
+  ],
+  "af": [
+   "Chink, clink",
+   "Glass"
+  ],
+  "label": "Chink, clink"
+ },
+ {
+  "split": "dev",
+  "clip": "mv_protest_scene_movie",
+  "start": 17.04,
+  "end": 17.92,
+  "peak": 0.637,
+  "qwen": [
+   "Chink, clink",
+   "Glass",
+   "Arrow",
+   "Miscellaneous sources",
+   "Thump, thud",
+   "Whoosh, swoosh, swish",
+   "Wobble"
+  ],
+  "af": [
+   "Bay",
+   "Dog"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev",
+  "clip": "mv_protest_scene_movie",
+  "start": 18.66,
+  "end": 18.9,
+  "peak": 0.63,
+  "qwen": [
+   "Bell",
+   "Doorbell"
+  ],
+  "af": [
+   "Bell",
+   "Doorbell"
+  ],
+  "label": "Bell"
+ },
+ {
+  "split": "dev",
+  "clip": "mv_protest_scene_movie",
+  "start": 22.78,
+  "end": 22.9,
+  "peak": 0.592,
+  "qwen": [
+   "Burst, pop",
+   "Explosion",
+   "Fireworks",
+   "Gunshot"
+  ],
+  "af": [
+   "Alarm",
+   "Siren"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev",
+  "clip": "un_driving_motorcycle_DgdHSmwA",
+  "start": 14.0,
+  "end": 14.16,
+  "peak": 0.596,
+  "qwen": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "af": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "label": "Explosion"
+ },
+ {
+  "split": "test",
+  "clip": "mc_break_in_scene",
+  "start": 0.02,
+  "end": 0.46,
+  "peak": 0.661,
+  "qwen": [
+   "Chorus effect"
+  ],
+  "af": [
+   "Door",
+   "Doorbell",
+   "Knock",
+   "Sliding door",
+   "Tap"
+  ],
+  "label": null
+ },
+ {
+  "split": "test",
+  "clip": "mc_break_in_scene",
+  "start": 5.62,
+  "end": 9.42,
+  "peak": 0.818,
+  "qwen": [
+   "Chink, clink",
+   "Glass"
+  ],
+  "af": [
+   "Burst, pop",
+   "Explosion",
+   "Fireworks",
+   "Gunshot"
+  ],
+  "label": null
+ },
+ {
+  "split": "test",
+  "clip": "mc_break_in_scene",
+  "start": 10.58,
+  "end": 10.7,
+  "peak": 0.627,
+  "qwen": [],
+  "af": [
+   "Arrow",
+   "Whoosh, swoosh, swish"
+  ],
+  "label": null
+ },
+ {
+  "split": "test",
+  "clip": "mc_break_in_scene",
+  "start": 12.48,
+  "end": 12.72,
+  "peak": 0.689,
+  "qwen": [
+   "Boat"
+  ],
+  "af": [
+   "Door",
+   "Doorbell",
+   "Footsteps",
+   "Human locomotion",
+   "Knock",
+   "Sliding door",
+   "Tap"
+  ],
+  "label": null
+ },
+ {
+  "split": "test",
+  "clip": "mc_bridge_scene",
+  "start": 4.32,
+  "end": 5.08,
+  "peak": 0.743,
+  "qwen": [
+   "Car passing by",
+   "Door",
+   "Doorbell",
+   "Knock",
+   "Power windows, electric windows",
+   "Sliding door",
+   "Tap",
+   "Vehicle"
+  ],
+  "af": [
+   "Car passing by",
+   "Power windows, electric windows",
+   "Vehicle"
+  ],
+  "label": "Car passing by"
+ },
+ {
+  "split": "test",
+  "clip": "mc_bridge_scene",
+  "start": 5.74,
+  "end": 5.82,
+  "peak": 0.598,
+  "qwen": [
+   "Car passing by",
+   "Door",
+   "Doorbell",
+   "Knock",
+   "Power windows, electric windows",
+   "Sliding door",
+   "Tap",
+   "Vehicle"
+  ],
+  "af": [
+   "Car passing by",
+   "Door",
+   "Doorbell",
+   "Knock",
+   "Power windows, electric windows",
+   "Sliding door",
+   "Tap",
+   "Vehicle"
+  ],
+  "label": "Car passing by"
+ },
+ {
+  "split": "test",
+  "clip": "mv_bank_robbery_alarm",
+  "start": 10.92,
+  "end": 11.98,
+  "peak": 0.68,
+  "qwen": [
+   "Burst, pop",
+   "Explosion",
+   "Fireworks",
+   "Gunshot"
+  ],
+  "af": [
+   "Battle cry",
+   "Bellow",
+   "Burst, pop",
+   "Explosion",
+   "Fireworks",
+   "Gunshot",
+   "Shout",
+   "Whoop",
+   "Yell"
+  ],
+  "label": "Burst, pop"
+ },
+ {
+  "split": "test",
+  "clip": "w8_kids_fire_alarm_school_1b",
+  "start": 7.88,
+  "end": 8.02,
+  "peak": 0.595,
+  "qwen": [
+   "Air horn, truck horn",
+   "Alarm",
+   "Crackle",
+   "Doorbell",
+   "Fire",
+   "Foghorn",
+   "Natural sounds",
+   "Siren",
+   "Telephone",
+   "Whistle",
+   "Wildfire"
+  ],
+  "af": [
+   "Alarm",
+   "Ding-dong",
+   "Door",
+   "Doorbell"
+  ],
+  "label": "Alarm"
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d075",
+  "start": 1.4,
+  "end": 1.48,
+  "peak": 0.602,
+  "qwen": [
+   "Sawing",
+   "Tools"
+  ],
+  "af": [
+   "Bay",
+   "Dog"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d075",
+  "start": 2.26,
+  "end": 2.62,
+  "peak": 0.714,
+  "qwen": [
+   "Shuffling cards",
+   "Arrow",
+   "Clunk",
+   "Thump, thud",
+   "Thunk"
+  ],
+  "af": [],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d075",
+  "start": 3.5,
+  "end": 3.98,
+  "peak": 0.616,
+  "qwen": [
+   "Chink, clink",
+   "Glass"
+  ],
+  "af": [
+   "Door",
+   "Doorbell",
+   "Knock",
+   "Sliding door",
+   "Tap"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d075",
+  "start": 4.9,
+  "end": 5.04,
+  "peak": 0.73,
+  "qwen": [
+   "Bell",
+   "Doorbell",
+   "Glass"
+  ],
+  "af": [
+   "Engine knocking",
+   "Vehicle"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d075",
+  "start": 5.54,
+  "end": 6.0,
+  "peak": 0.694,
+  "qwen": [
+   "Glass"
+  ],
+  "af": [
+   "Air conditioning",
+   "Camera",
+   "Cash register",
+   "Clock",
+   "Gears",
+   "Mechanical fan",
+   "Printer",
+   "Pulleys",
+   "Ratchet, pawl",
+   "Sewing machine"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d075",
+  "start": 7.34,
+  "end": 8.7,
+  "peak": 0.681,
+  "qwen": [
+   "Rattle",
+   "Snake"
+  ],
+  "af": [],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d075",
+  "start": 9.62,
+  "end": 10.0,
+  "peak": 0.799,
+  "qwen": [],
+  "af": [],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d095",
+  "start": 0.28,
+  "end": 1.26,
+  "peak": 0.725,
+  "qwen": [
+   "Door",
+   "Whimper",
+   "Arrow",
+   "Clunk",
+   "Thump, thud",
+   "Thunk"
+  ],
+  "af": [
+   "Arrow",
+   "Clunk",
+   "Sonic boom",
+   "Thump, thud",
+   "Thunk"
+  ],
+  "label": "Arrow"
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d095",
+  "start": 1.88,
+  "end": 2.42,
+  "peak": 0.639,
+  "qwen": [
+   "Door",
+   "Doorbell",
+   "Knock",
+   "Sliding door",
+   "Tap",
+   "Sigh"
+  ],
+  "af": [
+   "Arrow",
+   "Clunk",
+   "Sonic boom",
+   "Thump, thud",
+   "Thunk"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d095",
+  "start": 16.86,
+  "end": 16.92,
+  "peak": 0.588,
+  "qwen": [
+   "Cooking",
+   "Door",
+   "Tap"
+  ],
+  "af": [
+   "Natural sounds",
+   "Rain",
+   "Steam",
+   "Water"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d121",
+  "start": 3.24,
+  "end": 3.36,
+  "peak": 0.613,
+  "qwen": [
+   "Hair dryer",
+   "Lawn mower",
+   "Toothbrush",
+   "Vacuum cleaner"
+  ],
+  "af": [
+   "Alarm",
+   "Explosion",
+   "Gunshot",
+   "Siren"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d128",
+  "start": 1.66,
+  "end": 2.54,
+  "peak": 0.611,
+  "qwen": [
+   "Cattle",
+   "Sheep",
+   "Yak",
+   "Bell"
+  ],
+  "af": [
+   "Belly laugh",
+   "Chuckle, chortle",
+   "Giggle",
+   "Laughter"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d128",
+  "start": 5.8,
+  "end": 6.38,
+  "peak": 0.628,
+  "qwen": [
+   "Camera",
+   "Single-lens reflex camera",
+   "Natural sounds",
+   "Rain",
+   "Steam",
+   "Water"
+  ],
+  "af": [
+   "Door",
+   "Doorbell",
+   "Knock",
+   "Sliding door",
+   "Tap"
+  ],
+  "label": null
+ },
+ {
+  "split": "dev2",
+  "clip": "tg_d128",
+  "start": 7.24,
+  "end": 9.48,
+  "peak": 0.683,
+  "qwen": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "af": [
+   "Non-motorized land vehicle",
+   "Skateboard"
+  ],
+  "label": null
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d001",
+  "start": 16.18,
+  "end": 16.62,
+  "peak": 0.592,
+  "qwen": [
+   "Splash, splatter"
+  ],
+  "af": [
+   "Chop",
+   "Crack",
+   "Drawer open or close",
+   "Snap",
+   "Splinter",
+   "Wood"
+  ],
+  "label": null
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d103",
+  "start": 1.5,
+  "end": 3.44,
+  "peak": 0.773,
+  "qwen": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "af": [
+   "Non-motorized land vehicle",
+   "Skateboard"
+  ],
+  "label": null
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d103",
+  "start": 3.96,
+  "end": 4.46,
+  "peak": 0.755,
+  "qwen": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "af": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "label": "Explosion"
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d103",
+  "start": 5.12,
+  "end": 5.48,
+  "peak": 0.734,
+  "qwen": [
+   "Specific impact sounds"
+  ],
+  "af": [],
+  "label": null
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d103",
+  "start": 6.36,
+  "end": 6.46,
+  "peak": 0.592,
+  "qwen": [
+   "Train"
+  ],
+  "af": [
+   "Train"
+  ],
+  "label": "Train"
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d103",
+  "start": 7.66,
+  "end": 8.4,
+  "peak": 0.673,
+  "qwen": [
+   "Burst, pop",
+   "Explosion",
+   "Fireworks",
+   "Gunshot"
+  ],
+  "af": [
+   "Burst, pop",
+   "Explosion",
+   "Fireworks",
+   "Gunshot"
+  ],
+  "label": "Burst, pop"
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d106",
+  "start": 5.2,
+  "end": 7.48,
+  "peak": 0.891,
+  "qwen": [
+   "Cough",
+   "Throat clearing",
+   "Burst, pop",
+   "Explosion",
+   "Fireworks",
+   "Gunshot",
+   "Glass"
+  ],
+  "af": [
+   "Cough",
+   "Throat clearing"
+  ],
+  "label": "Cough"
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d110",
+  "start": 3.14,
+  "end": 5.18,
+  "peak": 0.83,
+  "qwen": [
+   "Glass",
+   "Chink, clink",
+   "Clunk"
+  ],
+  "af": [
+   "Chink, clink",
+   "Glass"
+  ],
+  "label": "Glass"
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d112",
+  "start": 0.08,
+  "end": 2.86,
+  "peak": 0.741,
+  "qwen": [
+   "Chink, clink",
+   "Glass"
+  ],
+  "af": [
+   "Chink, clink",
+   "Glass"
+  ],
+  "label": "Chink, clink"
+ },
+ {
+  "split": "test2",
+  "clip": "tg_d112",
+  "start": 3.72,
+  "end": 4.3,
+  "peak": 0.72,
+  "qwen": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "af": [
+   "Arrow",
+   "Clunk",
+   "Sonic boom",
+   "Thump, thud",
+   "Thunk"
+  ],
+  "label": null
+ }
+]
